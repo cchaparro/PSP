@@ -1,0 +1,51 @@
+<!-- ###################################### -->
+<template name="projectViewTemplate">
+	{{> projectViewMenu}}
+	<div class="project-view-content">
+		{{#if $eq projectViewSelector "general"}}
+			{{> projectInformationTemplate}}
+		{{/if}}
+		{{#if $eq projectViewSelector "timelog"}}
+			{{> timeTemplate}}
+		{{/if}}
+		{{#if $eq projectViewSelector "defectlog"}}
+			{{> defectsTemplate}}
+		{{/if}}
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="projectViewMenu">
+	<ul class="project-view-menu">
+		<li class="{{#if $eq projectViewSelector 'general'}} project-menu-selected {{/if}}" data-value="general">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/General.svg#generalLogo"></use></svg>
+			<h3>Vista General</h3>
+			<span>Opciones y vista general del proyecto.</span>
+		</li>
+		<li class="{{#if $eq projectViewSelector 'timelog'}} project-menu-selected {{/if}}" data-value="timelog">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
+			<h3>Log de tiempos</h3>
+			<span>Registro de tiempos del proyecto.</span>
+		</li>
+		<li class="{{#if $eq projectViewSelector 'defectlog'}} project-menu-selected {{/if}}" data-value="defectlog">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Bug.svg#bugLogo"></use></svg>
+			<h3>Log de defectos</h3>
+			<span>Registro de defectos del proyecto.</span>
+		</li>
+		<li class="{{#if $eq projectViewSelector 'plansummary'}} project-menu-selected {{/if}}" data-value="plansummary">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Summary.svg#summaryLogo"></use></svg>
+			<h3>Plan Summary</h3>
+			<span>Historia general del proyecto.</span>
+		</li>
+		<li class="{{#if $eq projectViewSelector 'scripts'}} project-menu-selected {{/if}}" data-value="scripts">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Script.svg#scriptLogo"></use></svg>
+			<h3>Scripts Generales</h3>
+			<span>Scripts sobre todo el proyecto.</span>
+		</li>
+		<li class="{{#if $eq projectViewSelector 'typedefects'}} project-menu-selected {{/if}}" data-value="typedefects">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Defect.svg#defectLogo"></use></svg>
+			<h3>Tipos de defectos</h3>
+			<span>Personaliza los tipos de defectos</span>
+		</li>
+	</ul>
+</template>
+<!-- ###################################### -->

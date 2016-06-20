@@ -1,0 +1,94 @@
+<!-- ###################################### -->
+<template name="createDefectModal">
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span data-dismiss="modal"><i class="fa fa-times close"></i></span>
+				</div>
+				{{> createDefect}}
+			</div>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="createDefect">
+	<div class="modal-body">
+		{{#if ifLoadsData}}
+			<h3>Modifcar Defecto</h3>
+		{{else}}
+			<h3>Nuevo Defecto</h3>
+		{{/if}}
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="dropdown">
+					<button class="dropdown-toggle {{#if $and errorState ($eq defectData.typeDefect 'Tipo de defecto')}} psp-dropdown-error {{else}} psp-dropdown {{/if}} new-defect-type" type="button" data-toggle="dropdown"> {{defectData.typeDefect}}<span class="{{#if $neq defectData.typeDefect 'Tipo de defecto'}} hide {{/if}}">*</span><i class="fa fa-chevron-down"></i></button>
+					<ul class="dropdown-menu">
+						{{#each allDefectTypes}}
+							<li class="create-sel-defect-type" data-value="{{name}}">{{name}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<input type="date" class="psp-input new-defect-date" placeholder="Fecha">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="dropdown">
+					<button class="dropdown-toggle {{#if $and errorState ($eq defectData.injected 'Inyectado')}}psp-dropdown-error {{else}} psp-dropdown {{/if}} new-defect-injected" type="button" data-toggle="dropdown"> {{defectData.injected}}<span class="{{#if $neq defectData.injected 'Inyectado'}} hide {{/if}}">*</span><i class="fa fa-chevron-down"></i></button>
+					<ul class="dropdown-menu">
+						{{#each injectedPhases}}
+							<li class="create-sel-defect-injected" data-value="{{name}}">{{name}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="dropdown">
+					<button class="dropdown-toggle {{#if $and errorState ($eq defectData.removed 'Removido')}} psp-dropdown-error {{else}} psp-dropdown {{/if}} new-defect-removed" type="button" data-toggle="dropdown"> {{defectData.removed}}<span class="{{#if $neq defectData.removed 'Removido'}} hide {{/if}}">*</span><i class="fa fa-chevron-down"></i></button>
+					<ul class="dropdown-menu">
+						{{#each removedPhases}}
+							<li class="create-sel-defect-removed" data-value="{{name}}">{{name}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
+					<i class="fa fa-pause time-btn {{#if $not timeStatus}} time-status-pause {{/if}}"></i>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<input type="number" min="1" value="{{defectData.fixCount}}" class="psp-input create-defect-fix-count" placeholder="Conteo de Correcciones">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<!-- <svg class="defect-log-svg" viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg> -->
+				<span class="defect-log-time">{{projectTotalTime}}</span>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<div class="btn defect-create-son defect-son">Crear Defecto</div>
+			</div>
+		</div>
+
+		<textarea type="text" class="{{#if $and errorState ($not descriptionText)}} psp-textarea-error {{else}} psp-textarea {{/if}} create-defect-description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
+	</div>
+	<div class="modal-footer">
+		{{#if ifLoadsData}}
+			<span class="psp-btn pry-modal-create">Guardar Cambios</span>
+		{{else}}
+			<span class="pry-modal-create">Crear Defecto</span>
+		{{/if}}
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+</template>
+<!-- ###################################### -->

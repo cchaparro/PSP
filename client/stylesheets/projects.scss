@@ -1,0 +1,364 @@
+@import '_variables.scss';
+
+//--------------- All Projects View --------------
+.allprojects-container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+//------------------ Project Box -----------------
+.project-box {
+	height: 160px;
+	width: 23%;
+	min-width: 265px;
+	position: relative;
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	float: left;
+	background-color: $white;
+	border-left: 5px solid $pj-color-1;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor: pointer;
+	z-index: 1;
+
+	a {
+		text-decoration: none;
+	}
+
+	.project-content {
+		width: 100%;
+		height: 100%;
+
+		.fa-circle {
+			position: absolute;
+			top: 13px;
+			right: 12px;
+		}
+
+		.prj-success {
+			color: $success;
+		}
+
+		.prj-danger {
+			color: $danger;
+		}
+
+		h3 {
+			font-size: 13pt;
+			margin-top: 10px;
+			margin-bottom: 0;
+			padding-right: 17px;
+			color: $pj-color-1;
+			display: block;
+		}
+
+		span {
+			display: block;
+			font-size: 10pt;
+			padding-top: 10px;
+			color: $pj-text;
+		}
+	}
+
+	&:hover {
+		@include box-shadow($default-box-shadow);
+
+		.project-delete {
+			opacity: 1;
+		}
+	}
+}
+
+.project-delete {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	opacity: 0;
+	background-color: $white;
+	@include box-shadow($default-box-shadow);
+	@include border-radius($circle-border-radius);
+	text-align: center;
+	z-index: 3;
+
+
+	.fa-times {
+		margin-top: 10px;
+		font-size: 15pt;
+		color: $danger;
+	}
+}
+
+// .project-delete-confirm {
+// 	width: 100%;
+// 	height: 100%;
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	background-color: rgba(black, 0.7);
+// 	z-index: 2;
+
+// 	.btn {
+// 		background-color: $success;
+// 		color: $white;
+// 	}
+// }
+
+//-------------- Project Iteration Box ------------
+.project-for-iteration-box {
+	@extend .project-box;
+}
+
+.iteration-box {
+	@extend .project-box;
+	background-color: #c3ccd8;
+
+	span {
+		color: $white!important;
+	}
+}
+
+//-------------- General Project View ------------
+.project-view-content {
+	width: calc(100% - 300px);
+	height: 100%;
+	float: right;
+	display: inline;
+	padding-left: 20px;
+}
+
+.project-view-menu {
+	width: 300px;
+	height: 100%;
+	border-right: 1px solid $border;
+	list-style: none;
+	float: left;
+	padding: 0;
+	display: inline;
+	margin-top: -20px;
+	padding-top: 20px;
+	padding-right: 20px!important;
+
+	li {
+		width: 100%;
+		height: 60px;
+		cursor: pointer;
+		padding-top: 5px;
+		@include border-radius($default-border-radius);
+
+		&:hover {
+			background-color: $border;
+		}
+
+		svg {
+			width: 25px;
+			margin: 10px;
+			float: left;
+			fill: $project-title-light;
+		}
+
+		h3 {
+			margin: 0;
+			padding-top: 6px;
+			float: left;
+			font-size: 12pt;
+		}
+
+		span {
+			float: left;
+			font-size: 10pt;
+			color: $project-title-light;
+		}
+	}
+
+	.project-menu-selected {
+		background-color: $blue;
+		color: $white;
+
+		svg {
+			fill: $white;
+		}
+
+		span {
+			color: $border;
+		}
+
+		&:hover {
+			background-color: $blue;
+		}
+	}
+
+}
+
+//----------------- All Defects View --------------
+.defect-box {
+	height: 220px;
+	width: 400px;
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	display: inline-block;
+	padding: 0 20px;
+	border: 1px solid $border;
+	background-color: $white;
+	text-align: center;
+	cursor: pointer;
+	@include border-radius($default-border-radius);
+
+	.defect-content {
+		h3 {
+			font-size: 14pt;
+			font-weight: 700;
+		}
+
+		span {
+			word-wrap: break-word;
+		}
+
+		.defect-content-fase {
+			margin-top: 15px;
+			border: 1px solid $border;
+			@include border-radius($default-border-radius);
+
+			div {
+				width: 50%;
+				display: inline-block;
+				float: left;
+
+				&:first-child {
+					border-right: 1px solid $border;
+				}
+
+				p {
+					font-weight: 700;
+					text-align: center;
+					font-size: 12pt;
+					margin: 0 auto;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.defect-menu {
+		width: 100%;
+		height: 50px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		border-top: 1px solid $border;
+	}
+
+}
+
+//------------------- Time View ------------------
+.time-table {
+	background-color: $white;
+	border: 1px solid $border;
+
+	tbody > tr {
+
+		& > td {
+			padding: 17px 20px;
+			border: none;
+			border-bottom: 1px solid $border;
+
+			&:last-child {
+				width: 110px;
+			}
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+.time-stages-dropdown {
+	width: 200px;
+	height: 100%;
+	float: left;
+
+	button {
+		width: 100%;
+		height: 35px;
+		display: inline;
+		padding: 6.5px;
+		margin-top: 7px;
+		margin-bottom: 10px;
+		outline: none;
+		background-color: $white;
+		@include border-radius($default-border-radius);
+		border: 2px solid $input-bg;
+		color: $input-text;
+		text-align: left;
+
+		i {
+			position: absolute;
+			top: 11px;
+			right: 4px;
+			padding: 7.5px 6px;
+			font-size: 9pt;
+			background-color: $input-button;
+			color: $white;
+			@include border-radius($default-border-radius);
+		}
+
+		&:focus {
+			@include transition($default-transition);
+			background-color: $white;
+			color: $main-text-color;
+		}
+
+	}
+}
+
+.time-submit {
+	span {
+		left: 30px!important;
+	}
+}
+
+.time-btn {
+	float: left;
+	margin-top: 9px;
+	margin-right: 10px;
+	padding: 11px 12px 9px 12px;
+	@include border-radius($default-border-radius);
+	font-size: 8pt;
+	border: 1px solid $border;
+	cursor: pointer;
+	color: $main-text-color;
+
+	&:first-child {
+		margin-left: -10px;
+		margin-right: 5px;
+	}
+}
+
+.time-btn-play {
+	background-color: $success;
+	color: $white;
+	border: 1px solid $success;
+}
+
+.time-status-pause {
+	background-color: $main-text-color;
+	color: $white;
+	border: 1px solid $main-text-color;
+}
+
+.time-completed {
+	border: 2px solid $main-text-color;
+	color: $main-text-color;
+	padding: 8px;
+	@include border-radius(20px);
+}
+//------------------------------------------------

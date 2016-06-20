@@ -1,0 +1,35 @@
+@import '_defaults.scss';
+
+//--------------------- Fonts --------------------
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+//---------------- General Values ----------------
+$default-padding:							25px;
+$default-border-radius:					4px;
+$default-transition: 					all 0.3s ease;
+$circle-border-radius:					50%;
+$default-box-shadow:						0 1px 2px rgba(0,0,0,.1);
+
+//------------- SCSS for all Browsers ------------
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		 -ms-border-radius: $radius;
+			  border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow;
+		-moz-box-shadow: $shadow;
+			  box-shadow: $shadow;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+		-moz-transition: $transition;
+		  -o-transition: $transition;
+			  transition: $transition;
+}
+
+
+//------------------------------------------------

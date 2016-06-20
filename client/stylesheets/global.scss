@@ -1,0 +1,297 @@
+@import '_variables.scss';
+
+//------------------- Main Menu ------------------
+
+// This is used to center what is going to be
+// displayed (e.g. accessLayout).
+.centered-outer {
+	width:100%;
+	height:100%;
+	position: relative;
+	display:table;
+	text-align:center;
+
+	.centered-inner {
+		display:table-cell;
+		margin:0;
+		vertical-align: middle;
+
+		.inner {
+			height:auto;
+		}
+	}
+
+}
+
+.hide {
+	display: none;
+}
+
+//----------------- Global Submenu ---------------
+
+// This is used in the allproyects submenu, defects submenu, time submenu, etc.
+.submenu {
+	width: calc(100% + 40px);
+	height: 50px;
+	margin-top: -20px;
+	margin-left: -20px;
+	margin-right: -20px;
+	margin-bottom: 20px;
+	padding: 0 20px;
+	border-bottom: 1px solid $border;
+
+	.submenu-create {
+		width: 150px;
+		height: 35px;
+		float: right;
+		position: relative;
+		margin-top: 7px;
+		background-color: $success;
+		color: $white;
+		cursor: pointer;
+
+		i {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			padding: 10px 17px;
+			font-size: 11pt;
+		}
+		span {
+			position: absolute;
+			left: 40px;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-top: 1px;
+			display: inline-block;
+			font-size: 10pt;
+			color: $white;
+			cursor: pointer;
+		}
+
+		&:hover {
+			background-color: $success-hover;
+		}
+	}
+
+	.submenu-tabs {
+		position: absolute;
+		padding-left: 0;
+		padding-top: 16px;
+		margin-bottom: 0;
+		list-style: none;
+		color: $popup-bg;
+		font-size: 11pt;
+
+		li {
+			display: inline-block;
+			cursor: pointer;
+			padding: 0 7px;
+			padding-bottom: 10px;
+		}
+
+		.submenu-active-tab {
+			color: $popup-bg;
+			border-bottom: 4px solid $blue;
+		}
+	}
+
+	.submenu-go-back {
+		float: left;
+		padding: 7px 15px;
+		position: relative;
+		margin-top: 7px;
+		color: $main-title-color;
+		cursor: pointer;
+		@include border-radius($default-border-radius);
+		background-color: $white;
+		border: 1px solid $border;
+
+		&:hover {
+			background-color: $border;
+		}
+	}
+
+}
+
+//------------- Global Input, Dropdown -----------
+.dropdown {
+	.dropdown-menu {
+		width: 100%;
+		margin-top: -3px;
+		li {
+			padding: 9px 0 7px 10px;
+			cursor: pointer;
+			&:hover {
+				background-color: $background;
+			}
+		}
+	}
+}
+
+.psp-input {
+	width: 100%;
+	outline: none;
+	color: $input-text;
+	background-color: $input-bg;
+	border: none;
+	padding: 8px 10px;
+	@include border-radius($default-border-radius);
+	margin-bottom: 10px;
+	border: 2px solid $input-bg;
+
+	&:focus {
+		@include transition($default-transition);
+		background-color: $white;
+		color: $main-text-color;
+	}
+}
+
+.psp-input-error {
+	@extend .psp-input;
+	border: 2px solid $danger;
+}
+
+.psp-dropdown {
+	@extend .psp-input;
+	height: 40px;
+	text-align: left;
+	line-height: 1px;
+
+	i {
+		position: absolute;
+		top: 5.5px;
+		right: 5px;
+		background-color: $input-button;
+		color: $white;
+		padding: 7.5px 6px;
+		border-radius: 4px;
+	}
+}
+
+.psp-dropdown-error {
+	@extend .psp-dropdown;
+	border: 2px solid $danger;
+}
+
+.psp-textarea {
+	@extend .psp-input;
+	min-height: 80px;
+	max-width: 100%;
+}
+
+.psp-textarea-error {
+	@extend .psp-textarea;
+	border: 2px solid $danger;
+}
+
+//----------------- Status Messages --------------
+.status-message {
+	width: 150px;
+	height: 35px;
+	position: absolute;
+	z-index: 99;
+	bottom: 10px;
+	top: 12px;
+	right: 5px;
+
+	i {
+		position: absolute;
+		font-size: 11pt;
+		left: 15px;
+		top: 10.5px;
+		color: $white;
+		cursor: pointer;
+	}
+
+	.label {
+		width: 100%;
+		height: 100%;
+		float: right;
+		font-size: 10pt;
+		color: $white;
+		padding: 12px 0 12px 15px;
+	}
+
+	.label-success {
+		@extend .label;
+		background-color: $success;
+	}
+
+	.label-danger {
+		@extend .label;
+		background-color: $danger;
+	}
+}
+
+.warning-slide {
+	-webkit-animation-name: status-slide;
+	-webkit-animation-duration: 0.8s;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-iteration-count: 1;
+
+	animation-name: status-slide;
+	animation-duration: 0.8s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+}
+
+@keyframes status-slide {
+	0%, 60%, 75%, 90%, 100% {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(3000px, 0, 0);
+		transform: translate3d(3000px, 0, 0)
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: translate3d(-25px, 0, 0);
+		transform: translate3d(-25px, 0, 0)
+	}
+	75% {
+		-webkit-transform: translate3d(10px, 0, 0);
+		transform: translate3d(10px, 0, 0)
+	}
+	90% {
+		-webkit-transform: translate3d(-5px, 0, 0);
+		transform: translate3d(-5px, 0, 0)
+	}
+	100% {
+		-webkit-transform: none;
+		transform: none
+	}
+}
+
+@-webkit-keyframes status-slide {
+	0%, 60%, 75%, 90%, 100% {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(3000px, 0, 0);
+		transform: translate3d(3000px, 0, 0)
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: translate3d(-25px, 0, 0);
+		transform: translate3d(-25px, 0, 0)
+	}
+	75% {
+		-webkit-transform: translate3d(10px, 0, 0);
+		transform: translate3d(10px, 0, 0)
+	}
+	90% {
+		-webkit-transform: translate3d(-5px, 0, 0);
+		transform: translate3d(-5px, 0, 0)
+	}
+	100% {
+		-webkit-transform: none;
+		transform: none
+	}
+}
+
+//------------------------------------------------

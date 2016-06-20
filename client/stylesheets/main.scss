@@ -1,0 +1,259 @@
+@import '_variables.scss';
+
+html, body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Lato', sans-serif;
+}
+
+//----------- Dynamic Master Template ------------
+.master-content {
+	width: calc(100% - 70px);
+	height: calc(100% - 60px);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 20px;
+	background-color: $background;
+	overflow-y: scroll;
+	z-index: 1;
+}
+
+//------------------- Main Menu ------------------
+.main-menu {
+	width: 70px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: $primary-bg;
+	z-index: 100;
+
+	a {
+		position: absolute;
+		padding: 10px 10px 5px 10px;
+		margin: 10px;
+		border-radius: 5px;
+		cursor: pointer;
+
+		svg {
+			width: 30px;
+		}
+
+		&:hover {
+			background-color: $primary-dark-bg;
+			span {
+				display: inline-block;
+			}
+		}
+
+		&:nth-child(2){
+			top: 55px;
+		}
+
+		&:nth-child(3){
+			bottom: 55px;
+		}
+
+		&:last-child {
+			bottom: 0;
+		}
+
+		span {
+			width: 100px;
+			height: 35px;
+			position: absolute;
+			top: 8px;
+			left: 70px;
+			padding: 7px 0;
+			display: none;
+			background: $popup-bg;
+			font-size: 11pt;
+			text-align: center;
+			color: $white;
+			border-radius: 5px;
+
+			i {
+				width: 15px;
+				height: 15px;
+				position: absolute;
+				left: -5px;
+				top: 10px;
+				border-radius: 3px;
+				background: $popup-bg;
+				transform: rotate(45deg);
+				-webkit-transform: rotate(45deg);
+			}
+		}
+	}
+
+}
+
+.menu-svg {
+	fill: $primary-light-bg;
+}
+
+.menu-svg-selected {
+	background-color: $primary-dark-bg;
+
+	.menu-svg {
+		fill: $white;
+	}
+}
+
+.search-box {
+	height: 35px;
+	width: 300px;
+	float: right;
+	margin-top: 12.5px;
+	margin-right: 95px;
+	@include border-radius($default-border-radius);
+
+	svg {
+		width: 15px;
+		height: 15px;
+		margin: 10px;
+		position: absolute;
+		fill: $project-title-light;
+	}
+
+	.search-input {
+		width: 100%;
+		height: 100%;
+		border: none;
+		padding-left: 35px;
+		color: $project-title-light;
+		background-color: $search-box-bg;
+		@include border-radius($default-border-radius);
+		outline: none;
+	}
+}
+
+//---------------- Main User Menu ----------------
+.main-user {
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-left: 70px;
+	background-color: $white;
+	z-index: 2;
+	border-bottom: 1px solid $border;
+
+	.user-route {
+		margin-top: 15px;
+		margin-bottom: 11px;
+		padding: 5px;
+		border-radius: 4px;
+		font-size: 11pt;
+		color: $main-text-color;
+		display: inline-block;
+		cursor: pointer;
+		text-decoration: none;
+
+		&:first-child {
+			margin-left: 20px;
+		}
+
+		&:hover {
+			background-color: rgba($border, 0.3);
+		}
+	}
+}
+
+.avatar-box {
+	width: 80px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+
+	.avatar {
+		width: 35px;
+		height: 35px;
+		display: inline-block;
+		float: right;
+		margin: 12px 20px;
+		border-radius: 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.avatar-badge {
+		width: 15px;
+		height: 15px;
+		background-color: red;
+		border: 2px solid $white;
+		position: absolute;
+		right: 15px;
+		top: 10px;
+		@include border-radius($circle-border-radius);
+
+		span {
+			color: $white;
+			font-size: 7pt;
+			font-weight: 800;
+			position: absolute;
+			padding: 0 1.5px;
+		}
+	}
+}
+
+.user-dropdown {
+	width: 400px;
+	position: absolute;
+	left: unset;
+	right: 0;
+	margin: 0;
+	padding-bottom: 0;
+	background-color: $primary-bg;
+	color: $white;
+	border: none;
+	@include border-radius(0px);
+	padding: 20px;
+
+	// li {
+	// 	font-size: 11pt;
+	// 	border-top: 1px solid rgba($project-title-light,0.2);
+	// 	a {
+	// 		padding: 10px 0 10px 10px;
+	// 		color: $project-title-light;
+	// 	}
+	// }
+
+	// li:first-child {
+	// 	cursor: default;
+	// 	padding: 10px 10px 0 10px;
+	// 	background-color: $white;
+	// 	border-top: none;
+	// 	span {
+	// 		display: block;
+	// 		font-weight: 800;
+	// 		margin-bottom: 10px;
+	// 		color: $project-title-light;
+	// 	}
+	// }
+	// li:last-child {
+	// 	a:hover {
+	// 		border-bottom-right-radius: 3px;
+	// 		border-bottom-left-radius: 3px;
+	// 	}
+	// }
+}
+
+//------------------------------------------------
+@media
+only screen and
+(min-width : 1000px) and
+(max-width : 1260px) {
+	// .allprojects-container {
+	// 	width: 765px;
+	// 	margin: 0 auto;
+	// }
+}
+
+

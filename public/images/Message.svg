@@ -1,0 +1,5 @@
+<svg id="messageLogo" xmlns="http://www.w3.org/2000/svg" viewBox="-139 51 512 512">
+	<path d="M245 51H-11l-128 256v224c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32V307L245 51zM309 499H-75V307l96-192h192l96 192V499z"/>
+
+	<polygon class="main-menu-icon" points="181 179 53 179 -11 307 53 307 53 371 181 371 181 307 245 307 "/>
+</svg>

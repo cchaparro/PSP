@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns": [".gitignore","psp.sublime-project","README.md"],
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"tab_size": 3
+	}
+}

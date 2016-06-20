@@ -1,0 +1,37 @@
+<!-- ###################################### -->
+<template name="defectsTemplate">
+	{{> defectsBar}}
+		{{#each alluserDefects}}
+			<div class="defect-box">
+				<div class="defect-content">
+					<h3>Defect</h3>
+					<span>{{description}}</span>
+					<div class="defect-content-fase clearfix">
+						<div>
+							<p>Inyectado</p>
+							<span>{{injected}}</span>
+						</div>
+						<div>
+							<p>Removido</p>
+							<span>{{removed}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="defect-menu">
+					<div class="defect-menu-section">{{timeFormat time}}</div>
+					<div class="defect-menu-section"></div>
+					<div class="defect-menu-section"></div>
+				</div>
+			</div>
+		{{/each}}
+</template>
+<!-- ###################################### -->
+<template name="defectsBar">
+	<div class="submenu">
+		<div class="btn submenu-create">
+			<i class="fa fa-plus"></i>
+			<span>Crear Defecto</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->

@@ -1,0 +1,30 @@
+<!-- ###################################### -->
+<template name="main_userBar">
+	<div class="main-user">
+		{{#each viewState}}
+			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}}">{{title}}</a>
+			<span class="{{#if lastValue}} hide {{/if}}"> > </span>
+		{{/each}}
+		<form class="search-box">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Search.svg#searchLogo"></use></svg>
+			<input type="text" class="search-input" placeholder='Buscar un proyecto...'>
+		</form>
+		{{#with userData}}
+			<div class="avatar-box dropdown-toggle" data-toggle="dropdown">
+				<div class="avatar-badge">
+				</div>
+				<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');"></div>
+			</div>
+			{{> userMenuDropdown}}
+		{{/with}}
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="userMenuDropdown">
+	<ul class="dropdown-menu user-dropdown">
+		<li>{{profile.fname}} {{profile.lname}}<span>Perfil</span></li>
+		<li><a href="#">Ajustes de Cuenta</a></li>
+		<li class="logout"><a href="#">Cerrar sesion</a></li>
+	</ul>
+</template>
+<!-- ###################################### -->

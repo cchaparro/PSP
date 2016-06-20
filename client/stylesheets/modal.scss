@@ -1,0 +1,75 @@
+@import '_variables.scss';
+
+//---------------- Modals ----------------
+.modal-dialog {
+	width: 500px;
+}
+
+.modal-header {
+	height: 40px;
+	border-bottom: none;
+	span {
+		cursor: pointer;
+		position: absolute;
+		right: 15px;
+		font-size: 12pt;
+		padding: 7px 7px 5px 7px;
+		border-radius: 5px;
+		border: 2px solid $border;
+		i {
+			color: $main-title-color;
+			&:hover {
+				color: $main-title-color;
+			}
+		}
+	}
+}
+
+.modal-body {
+	padding: 25px;
+	padding-top: 0;
+	padding-bottom: 5px;
+
+	h3 {
+		margin-top: 0;
+	}
+}
+
+.modal-footer {
+	border-top: none;
+	padding: 0 25px 25px 25px;
+
+	button {
+		height: 40px;
+		border: 2px solid $border;
+		color: $main-title-color;
+		float: left;
+		margin-left: 170px;
+		&:hover {
+			background-color: $border;
+			border: 2px solid $border!important;
+		}
+	}
+}
+
+//------------- Create Project Modal -------------
+.pry-modal-create {
+	width: 160px;
+	height: 40px;
+	left: 10px;
+	bottom: 10px;
+	position: absolute;
+	margin: 15px;
+	background-color: $success;
+	text-align: center;
+	border-radius: 5px;
+	line-height: 40px;
+	font-size: 11pt;
+	color: $white;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $success-hover;
+	}
+}
+//------------------------------------------------

@@ -1,0 +1,49 @@
+<!-- ###################################### -->
+<template name="iterationsViewTemplate">
+	{{> iterationsViewMenu}}
+	{{#with selectedProject}}
+		<a href="{{pathFor 'projectView' fid=_id id=_id}}">
+			<div class="project-for-iteration-box">
+				<div class="project-content">
+					<h3>{{title}}</h3>
+					<span>{{description}}</span>
+				</div>
+			</div>
+		</a>
+	{{/with}}
+
+	{{#each projectIterations}}
+		{{> projectIterationBox}}
+	{{/each}}
+</template>
+<!-- ###################################### -->
+<template name="iterationsViewMenu">
+	<div class="submenu">
+		<div class="submenu-go-back">
+			<i class="fa fa-arrow-left"></i>
+			<span>Atras</span>
+		</div>
+		<div class="btn submenu-create">
+			<i class="fa fa-plus"></i>
+			<span>Crear Iteración</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="projectIterationBox">
+	<div class="iteration-box">
+		<div class="project-delete">
+			<i class="fa fa-times"></i>
+		</div>
+		<!-- <div class="project-delete-confirm">
+			<span class="btn btn-sucess">Eliminar Proyecto</span>
+		</div> -->
+		<a href="{{pathFor 'projectView' fid=parentId id=_id}}">
+			<div class="project-content">
+				<h3>{{title}}</h3>
+				<span>{{description}}</span>
+			</div>
+		</a>
+	</div>
+</template>
+<!-- ###################################### -->

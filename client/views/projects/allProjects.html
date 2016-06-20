@@ -1,0 +1,39 @@
+<!-- ###################################### -->
+<template name="projectsTemplate">
+	{{> allProjectsBar}}
+	<div class="allprojects-container">
+		{{#each allProjects}}
+			<div class="project-box">
+				<div class="project-delete">
+					<i class="fa fa-times"></i>
+				</div>
+				<!-- <div class="project-delete-confirm">
+					<span class="btn btn-sucess">Eliminar Proyecto</span>
+				</div> -->
+				<a href="{{pathFor 'iterationView' fid=_id}}">
+					<div class="project-content">
+						<i class="fa fa-circle {{#if completed}} prj-danger {{else}} prj-success {{/if}}"></i>
+						<h3>{{title}}</h3>
+						<span>{{description}}</span>
+					</div>
+				</a>
+			</div>
+		{{/each}}
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="allProjectsBar">
+	<div class="submenu">
+		<ul class="submenu-tabs">
+			<li class="submenu-tab {{#if $eq tabStatus 'all'}} submenu-active-tab {{/if}}" data-value="all">Todos los Proyectos</li>
+			<li class="submenu-tab {{#if $eq tabStatus 'active'}} submenu-active-tab {{/if}}" data-value="active">Activos</li>
+			<li class="submenu-tab {{#if $eq tabStatus 'finished'}} submenu-active-tab {{/if}}" data-value="finished">Terminados</li>
+		</ul>
+
+		<div class="btn submenu-create">
+			<i class="fa fa-plus"></i>
+			<span>Crear Proyecto</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->

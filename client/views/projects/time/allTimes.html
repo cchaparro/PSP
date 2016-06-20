@@ -1,0 +1,43 @@
+<!-- ###################################### -->
+<template name="timeTemplate">
+	{{> timesBar}}
+	<table class="table time-table">
+		<tbody>
+			{{#each projectStages}}
+				{{> timeTableRow}}
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<!-- ###################################### -->
+<template name="timeTableRow">
+	<tr>
+		<td><span>{{name}}</span></td>
+		<td>{{timeFormat time}}</td>
+		<td><span class="time-completed {{#if $not finished}} hide {{/if}}">Completado</span></td>
+	</tr>
+</template>
+
+<!-- ###################################### -->
+<template name="timesBar">
+	<div class="submenu">
+		<div class="{{#if EmptyStage}} hide {{/if}}">
+			<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
+			<i class="fa time-btn fa-pause {{#if $not timeStatus}} time-status-pause {{/if}}"></i>
+		</div>
+		<div class="dropdown time-stages-dropdown">
+			<button class="dropdown-toggle" type="button" data-toggle="dropdown"> {{currentStage.name}} <i class="fa fa-chevron-down"></i></button>
+			<ul class="dropdown-menu">
+				{{#each dropdownStages}}
+					<li>{{name}}</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="btn submenu-create time-submit">
+			<span>Finalizar Etapa</span>
+		</div>
+	</div>
+</template>
+
+<!-- ###################################### -->

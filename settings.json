@@ -1,0 +1,148 @@
+{
+	"public": {
+		"timeEstimated": [
+			{
+				"name" : "Planeación",
+				"finished" : false,
+				"time" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Diseño",
+				"finished" : false,
+				"time" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Código",
+				"finished" : false,
+				"time" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Compilación",
+				"finished" : false,
+				"time" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Pruebas",
+				"finished" : false,
+				"time" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Postmortem",
+				"finished" : false,
+				"time" : 0,
+				"estimated" : 0
+			}
+		],
+		"InjectedEstimated": [
+			{
+				"name" : "Planeación",
+				"injected" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Diseño",
+				"injected" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Código",
+				"injected" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Compilación",
+				"injected" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Pruebas",
+				"injected" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Postmortem",
+				"injected" : 0,
+				"estimated" : 0
+			}
+		],
+		"RemovedEstimated": [
+			{
+				"name" : "Planeación",
+				"removed" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Diseño",
+				"removed" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Código",
+				"removed" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Compilación",
+				"removed" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Pruebas",
+				"removed" : 0,
+				"estimated" : 0
+			},
+			{
+				"name" : "Postmortem",
+				"removed" : 0,
+				"estimated" : 0
+			}
+		],
+		"defectTypeValues": [
+			{
+				"name": "Documentación",
+				"description": "Estos son errores en el documento."
+			},
+			{
+				"name": "Sintaxis",
+				"description": "Estos son los problemas de puntuación, formatos del texto y la ortografía."
+			},
+			{
+				"name": "Paquetes",
+				"description": "Estos son los cambios de librerías y control de versiones del proyecto."
+			},
+			{
+				"name": "Asignaciones",
+				"description": "Estos son los problemas de declaración de variables, nombres duplicados, scopes y tipos de datos."
+			},
+			{
+				"name": "Interface",
+				"description": "Estos son los errores en notificaciones visuales, I/O, formatos de usuario, navegación, entre otros."
+			},
+			{
+				"name": "Chequeo",
+				"description": "Estos son los mensajes de errores y funcionalidades defectuosas."
+			},
+			{
+				"name": "Datos",
+				"description": "Estos son los defectos en la estructura y el contenido de los datos."
+			},
+			{
+				"name": "Funciones",
+				"description": "Estos son los errores en la lógica, punteros, bucles, recursión y computación."
+			},
+			{
+				"name": "Sistema",
+				"description": "Estos son los errores en la configuración del sistema y uso de memoria."
+			},
+			{
+				"name": "Ambiente",
+				"description": "Estos son los errores en el diseño, compilación, pruebas o problemas de soporte del sistema."
+			}
+		]
+	}
+}
