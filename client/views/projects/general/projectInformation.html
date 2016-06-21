@@ -1,7 +1,10 @@
 <!-- ###################################### -->
 <template name="projectInformationTemplate">
 	{{#with projectInfo }}
-	  <!--{{ printthis }}-->
+	  <div>
+			<h3 class="prj-info-title" contenteditable="true">{{title}}</h3>
+			<p class="prj-info-description" contenteditable="true">{{description}}</p>
+	  </div>
 	{{/with}}
 </template>
 <!-- ###################################### -->
