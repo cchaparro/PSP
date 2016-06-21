@@ -18,65 +18,129 @@
 
 	}
 
+	// Here is defined the width of the .user-access-box
 	.container {
-		width: 400px;
+		width: 450px;
 		max-width: 90%;
 		text-align: center;
 	}
 
 }
 
+// Box that contains the inputs, buttons, etc
 .user-access-box {
-	height: 400px;
-	padding: $default-padding;
-	background-color: white;
+	height: 510px;
+	padding: 40px;
+	padding-top: 30px;
+	background-color: $user-access-bg;
 	position: relative;
-	@include border-radius($default-border-radius);
+
+	h3 {
+		margin-top: 0;
+		margin-bottom: 20px;
+		color: $primary-bg;
+		font-size: 14pt;
+		font-weight: 700;
+	}
 }
 
-//---------------- Login Template ----------------
+.user-access-social {
+	width: 100%;
+	height: 40px;
+	position: relative;
+	margin-bottom: 10px;
+	@include border-radius($default-border-radius);
+	cursor: pointer;
 
+	svg {
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 12px;
+		fill: $white;
+		border-top-left-radius: $default-border-radius;
+		border-bottom-left-radius: $default-border-radius;
+	}
 
-//-------------- Register Template ---------------
+	span {
+		color: $white;
+		line-height: 40px;
+	}
+}
 
+.user-access-facebook {
+	@extend .user-access-social;
+	background-color: $facebook-btn;
+
+	svg {
+		background-color: $facebook-btn-dark;
+	}
+
+	&:hover {
+		background-color: $facebook-btn-dark;
+	}
+}
+
+.user-access-google {
+	@extend .user-access-social;
+	background-color: $google-btn;
+
+	svg {
+		background-color: $google-btn-dark;
+	}
+
+	&:hover {
+		background-color: $google-btn-dark;
+	}
+}
 
 //--------- Login and Register Template ----------
-.access-selection-box {
+.user-access-separator {
 	width: 100%;
-	height: 70px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	background-color: $login-box-gray;
-	cursor: pointer;
-	line-height: 70px;
-	border-bottom-left-radius: $default-border-radius;
-	border-bottom-right-radius: $default-border-radius;
+	height: 20px;
+	border-bottom: 2px solid $input-border;
+	text-align: center;
+	margin-bottom: 20px;
+
+	span {
+		font-size: 16pt;
+		padding: 0 10px;
+		background-color: $user-access-bg;
+		color: $input-border;
+	}
 }
 
-.text-user-access {
-	position:relative;
-
-	input, textarea, select {
-		width: 100%;
-		padding: 12px 15px;
-		margin-bottom: 15px;
-		border: 1px solid $border;
-		@include border-radius($default-border-radius)
-
-		&:focus {
-			outline: none;
-			border:1px solid blue;
-		}
-	}
+.user-access-error-text {
+	color: $danger;
+	float: left;
 }
 
 .user-access-submit {
 	width: 100%;
+	height: 40px;
+	padding: 0;
 	background-color: $blue;
-	padding: 15px 0;
-	margin-top: 20px;
+	margin-top: 10px;
 	border: none;
+	line-height: 40px;
 	cursor: pointer;
+
+	&:hover {
+		background-color: $blue-dark;
+	}
+}
+
+.access-selection-box {
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: $input-empty-text;
+	cursor: pointer;
+	line-height: 60px;
+	border-top: 1px solid $input-border;
 }
 //------------------------------------------------

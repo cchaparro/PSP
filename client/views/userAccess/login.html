@@ -1,13 +1,28 @@
 <!--#######################################-->
 <template name="loginTemplate">
 	<form class="user-access-box">
+		<h3>Inicio de Sesión</h3>
+		<div class="user-access-facebook">
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Facebook.svg#facebookLogo"></use></svg>
+			<span>Conectarse con Facebook</span>
+		</div>
+		<div class="user-access-google">
+		<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Google.svg#googleLogo"></use></svg>
+			<span>Conectarse con Google</span>
+		</div>
+
+		<div class="user-access-separator">
+			<span>o</span>
+		</div>
+
 		<div class="button-row combined-form">
-			<div class="text-user-access">
-				<input name="email" type="email" placeholder='Correo Electronico' id="email" value="">
-				<input name="password" type="password" placeholder='Contraseña' id="password">
+			<div>
+				<input type="email" class="new-input" placeholder='Correo Electronico' id="email" value="">
+				<input type="password" class="new-input" placeholder='Contraseña' id="password">
 			</div>
 		</div>
-		<input type="submit" class="btn btn-primary user-access-submit" value='Iniciar Sesion'>
+		<span class="user-access-error-text">Contraseña incorrecta</span>
+		<input type="submit" class="btn btn-primary user-access-submit" value='Ingresar'>
 		<div class="access-selection-box">
 			<span>No tienes una cuenta? Registrate aquí</span>
 		</div>

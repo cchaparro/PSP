@@ -1,25 +1,31 @@
 <!--#######################################-->
 <template name="registerTemplate">
 	<form class="user-access-box">
-		<div class="button-row combined-form">
-			<div class="text-user-access">
-				<input id="fname" type="text" placeholder='Nombre'>
-				<input id="lname" type="text" placeholder='Apellido'>
-				<input type="email" id="email" placeholder='Correo Electronico'>
-			</div>
+		<h3>Registrarse</h3>
+		<div class="user-access-facebook">
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Facebook.svg#facebookLogo"></use></svg>
+			<span>Registrarse con Facebook</span>
+		</div>
+		<div class="user-access-google">
+		<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Google.svg#googleLogo"></use></svg>
+			<span>Registrarse con Google</span>
+		</div>
+
+		<div class="user-access-separator">
+			<span>o</span>
 		</div>
 
 		<div class="button-row combined-form">
-			<div class="textbox">
-				<input id="password1" type="password" placeholder='Contraseña'>
-				<input id="password2" type="password" placeholder='Repetir Contraseña'>
+			<div class="text-user-access">
+				<input id="name" type="text" class="new-input" placeholder='Nombre y Apellido'>
+				<input type="email" id="email" class="new-input" placeholder='Correo Electronico'>
+				<input id="password" type="password" class="new-input" placeholder='Contraseña'>
 			</div>
 		</div>
-		<div class="button-row">
-			<input type="submit" class="btn btn-primary user-access-submit" value='Registrarse'>
-		</div>
+		<span class="user-access-error-text">Contraseña incorrecta</span>
+		<input type="submit" class="btn btn-primary user-access-submit" value='Registrarse'>
 		<div class="access-selection-box">
-			<span>Ya eres un usuario? Iniciar sesión</span>
+			<span>Ya tienes una cuenta? Iniciar sesión</span>
 		</div>
 	</form>
 </template>
