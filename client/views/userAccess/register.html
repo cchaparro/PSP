@@ -18,11 +18,11 @@
 		<div class="button-row combined-form">
 			<div class="text-user-access">
 				<input id="name" type="text" class="new-input" placeholder='Nombre y Apellido'>
-				<input type="email" id="email" class="new-input" placeholder='Correo Electronico'>
-				<input id="password" type="password" class="new-input" placeholder='Contraseña'>
+				<input type="email" id="email" class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} new-input-error {{/if}} new-input" placeholder='Correo Electronico'>
+				<input id="password" type="password" class="{{#if $eq errorState 'password'}} new-input-error {{/if}} new-input" placeholder='Contraseña'>
 			</div>
 		</div>
-		<span class="user-access-error-text">Contraseña incorrecta</span>
+		<span class="user-access-error-text">{{errorMessage}}</span>
 		<input type="submit" class="btn btn-primary user-access-submit" value='Registrarse'>
 		<div class="access-selection-box">
 			<span>Ya tienes una cuenta? Iniciar sesión</span>

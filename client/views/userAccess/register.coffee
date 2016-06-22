@@ -1,30 +1,47 @@
 ##################################################
+Template.registerTemplate.onCreated () ->
+	@errorState = new ReactiveVar("default")
+
+
+Template.registerTemplate.helpers
+	errorState: () ->
+		return Template.instance().errorState.get()
+
+	errorMessage: () ->
+		switch Template.instance().errorState.get()
+			when 'default'
+				return " "
+			when 'email_exist'
+				return "El correo ya esta registrado"
+			when 'email'
+				return "Ingresaste un correo que no es valido"
+			when 'password'
+				return "La contraseña ingresada no cumple con los requisitos"
+
+
 Template.registerTemplate.events
 	'submit form': (e,t) ->
 		e.preventDefault()
 
 		email = $('#email').val()
-		password = $('#password1').val()
-		password_confirm = $('#password2').val()
+		password = $('#password').val()
 
 		data = {
 			email: email
 			password: password
 			profile:
-				fname: $('#fname').val()
-				lname: $('#lname').val()
+				name: $('#name').val()
 				profileImageUrl: null
 		}
 
-		if sys.isEmail(email) and sys.isValidPassword(password) and (password == password_confirm)
+		if sys.isEmail(email) and sys.isValidPassword(password)
 			Accounts.createUser data, (error) ->
 				if error
 					if error.reason == "Email already exists."
+						t.errorState.set("email_exist")
 						$('#email').val('')
-						$('#password1').val('')
-						$('#password2').val('')
-						$('#fname').val('')
-						$('#lname').val('')
+						$('#password').val('')
+						$('#name').val('')
 				else
 					Meteor.call "create_defect_types", Meteor.userId(), (err)->
 						if err
@@ -32,15 +49,13 @@ Template.registerTemplate.events
 					FlowRouter.go("/")
 
 		else if !sys.isEmail(email)
+			t.errorState.set("email")
 			$('#email').val('')
-			$('#password1').val('')
-			$('#fname').val('')
-			$('#lname').val('')
-			$('#password2').val('')
+			$('#name').val('')
 
 		else
-			$('#password1').val('')
-			$('#password2').val('')
+			t.errorState.set("password")
+			$('#password').val('')
 
 	'click .access-selection-box': (e,t) ->
 		FlowRouter.go("/login")

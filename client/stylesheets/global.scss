@@ -186,8 +186,6 @@
 }
 
 
-
-
 .new-input {
 	width: 100%;
 	height: 40px;
@@ -203,6 +201,12 @@
 	&:focus {
 		border: 2px solid $blue;
 	}
+
+}
+
+.new-input-error {
+	@extend .new-input;
+	border: 2px solid $danger;
 }
 
 //----------------- Status Messages --------------
@@ -312,6 +316,11 @@
 		-webkit-transform: none;
 		transform: none
 	}
+}
+
+//------------- Fix Chrome Yellow Color ----------
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 //------------------------------------------------
