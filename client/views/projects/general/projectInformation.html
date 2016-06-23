@@ -1,10 +1,20 @@
 <!-- ###################################### -->
 <template name="projectInformationTemplate">
 	{{#with projectInfo }}
-	  <div>
+		<div class="prj-information-box">
+			<div class="project-status {{#if completed}} prj-danger {{else}} prj-success {{/if}}">
+				{{#if completed}}
+					<span>Terminado</span>
+				{{else}}
+					<span>Activo</span>
+				{{/if}}
+				<i class="fa fa-circle"></i>
+			</div>
+			<span class="prj-info-text">Titulo del proyecto</span>
 			<h3 class="prj-info-title" contenteditable="true">{{title}}</h3>
+			<span class="prj-info-text">Descripción del proyecto</span>
 			<p class="prj-info-description" contenteditable="true">{{description}}</p>
-	  </div>
+		</div>
 	{{/with}}
 </template>
 <!-- ###################################### -->

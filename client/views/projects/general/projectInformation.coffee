@@ -15,6 +15,8 @@ Template.projectInformationTemplate.events
 				sys.flashError()
 				console.log ("Error updating the projects title")
 				console.warn(error)
+			else
+				sys.flashSuccess()
 
 	'blur .prj-info-description': (e,t) ->
 		set = {
@@ -26,5 +28,20 @@ Template.projectInformationTemplate.events
 				sys.flashError()
 				console.log ("Error updating the projects description")
 				console.warn(error)
+			else
+				sys.flashSuccess()
+
+	'click .prj-information-box': (e,t) ->
+		data = {
+			completed: !@completed
+		}
+
+		Meteor.call "update_project", @_id, data, (error) ->
+			if error
+				sys.flashError()
+				console.log ("Error changing the project completion value")
+				console.warn(error)
+			else
+				sys.flashSuccess()
 
 ##########################################
