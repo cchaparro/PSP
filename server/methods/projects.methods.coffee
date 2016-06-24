@@ -8,6 +8,7 @@ Meteor.methods
 	delete_project: (pid) ->
 		db.projects.remove({ _id: pid })
 		db.defects.remove({ "projectId": pid })
+		db.plan_summary.remove({ "projectId": pid })
 
 	#This function update the values of a project like its title and description
 	update_project: (pid, value) ->

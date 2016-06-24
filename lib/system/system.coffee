@@ -39,6 +39,34 @@ sys.getPageName = (title) ->
 		return "No Disponible"
 
 ##########################################
+##############- Time Display-#############
+sys.displayTime = (time) ->
+	horas = Math.floor(time / 3600000)
+	time = time % 3600000
+	minutos = Math.floor(time / 60000)
+	time = time % 60000
+	segundos = Math.floor(time / 1000)
+	return horas + " hrs, " + minutos + " mins, " + segundos + " sec"
+
+sys.minutesToTime = (time) ->
+	return time * 60000
+
+sys.displayMinutes = (time) ->
+	return Math.floor(time / 60000)
+
+##########################################
+#############- Date Display -#############
+sys.dateDisplay = (time) ->
+	month = time.getMonth()
+	day = time.getDate()
+	year = time.getFullYear()
+
+	Months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
+	month = Months[month]
+	return month + " " + day + ", " + year
+
+##########################################
 ############- Status Messages -###########
 
 sys.removeMessage = () ->

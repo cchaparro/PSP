@@ -3,9 +3,23 @@ Template.projectInformationTemplate.helpers
 	projectInfo: () ->
 		return db.projects.findOne({_id: FlowRouter.getParam("id"), "projectOwner": Meteor.userId()})
 
+	projectTotalTime: () ->
+		planSummary = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())?.timeEstimated
+		time = 0
+
+		_.each planSummary, (stage) ->
+			time = time + stage.time
+
+		return sys.displayTime(time)
+
+	dateDisplay:(date) ->
+		return sys.dateDisplay(date)
+
 
 Template.projectInformationTemplate.events
 	'blur .prj-info-title': (e,t) ->
+		description = $('.prj-info-title').html()
+		console.log description.text
 		data = {
 			"title": $('.prj-info-title').html()
 		}
@@ -31,12 +45,8 @@ Template.projectInformationTemplate.events
 			else
 				sys.flashSuccess()
 
-	'click .prj-information-box': (e,t) ->
-		data = {
-			completed: !@completed
-		}
-
-		Meteor.call "update_project", @_id, data, (error) ->
+	'click .project-status': (e,t) ->
+		Meteor.call "update_project", @_id, { completed: !@completed }, (error) ->
 			if error
 				sys.flashError()
 				console.log ("Error changing the project completion value")

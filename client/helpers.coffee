@@ -10,7 +10,7 @@ Template.registerHelper "getUserAvatarUrl", () ->
 		data = @
 
 	unless data?.profile?.profileImageUrl
-		return "images/defaultAvatar.png"
+		return "/defaultAvatar.png"
 	else
 		return data.profile.profileImageUrl
 

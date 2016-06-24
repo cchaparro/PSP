@@ -7,7 +7,6 @@ Template.createProject.onCreated () ->
 
 Template.createProject.helpers
 	Level: () ->
-		console.log Template.instance().levelPSP.get()
 		return Template.instance().levelPSP.get()
 
 	titleText: () ->

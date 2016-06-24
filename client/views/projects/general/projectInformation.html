@@ -15,6 +15,19 @@
 			<span class="prj-info-text">Descripción del proyecto</span>
 			<p class="prj-info-description" contenteditable="true">{{description}}</p>
 		</div>
+
+		<div class="prj-review-box">
+			<div>
+				<svg class="project-svg" viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
+				<span>Tiempo total</span>
+				<p>{{projectTotalTime}}</p>
+			</div>
+			<div>
+				<svg class="project-svg" viewBox="0 0 100 100"><use xlink:href="/images/Calendar.svg#calendarLogo"></use></svg>
+				<span>Fecha creación</span>
+				<p>{{dateDisplay createdAt}}</p>
+			</div>
+		</div>
 	{{/with}}
 </template>
 <!-- ###################################### -->
