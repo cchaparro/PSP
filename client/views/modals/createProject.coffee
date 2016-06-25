@@ -42,12 +42,13 @@ Template.createProject.events
 			Meteor.call "create_project", data, (error, result)->
 				if error
 					console.log "Error creating a new project"
+					console.warn(error)
 				else
 					Meteor.call "create_plan_summary", Meteor.userId(), result, levelPSP, (error) ->
 						if error
 							console.log "Error creating new projects Plan Summary"
+							console.warn(error)
 						else
-							console.log "Plan summary created successfully!"
 							sys.flashSuccess()
 
 			$('.pry-new-title').val('')

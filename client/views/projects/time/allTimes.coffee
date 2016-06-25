@@ -56,9 +56,9 @@ Template.timesBar.events
 
 			Meteor.call "update_time_stage", FlowRouter.getParam("id"), stage, (err) ->
 				if err
-					#sys.flashError()
-					#Meteor.call "create_error", Meteor.userId(), "Error actualizando tiempo de la etapa en el proyecto", err
-					#console.log ("Error actualizando tiempo de la etapa en el proyecto: " + err)
+					sys.flashError()
+					console.log "Error updating project phase"
+					console.warn(error)
 				else
 					t.timeStarted.set(0)
 					t.timeStatus.set(false)
@@ -74,12 +74,13 @@ Template.timesBar.events
 
 		stage = _.first Stages
 		stage.time = parseInt(totalTime)
-		Meteor.call "update_time_stage", FlowRouter.getParam("id"), stage, true, (err) ->
-			if err
-				#sys.flashError()
-				#Meteor.call "create_error",  Meteor.userId(), "Error terminando recoleccion tiempo etapa proyecto", err
-				#console.log ("Error terminando recoleccion tiempo etapa proyecto: " + err)
+		Meteor.call "update_time_stage", FlowRouter.getParam("id"), stage, true, (error) ->
+			if error
+				sys.flashError()
+				console.log "Error submitting phase time inside project"
+				console.warn(error)
 			else
+				#Probar cambiar _.first Stages por stage (esta definido 8 lineas arriba)
 				t.projectStages.set( _.without Stages, _.first Stages)
 				t.timeStarted.set(0)
 				t.timeStatus.set(false)

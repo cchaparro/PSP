@@ -5,8 +5,8 @@ Template.projectInformationTemplate.helpers
 
 	projectTotalTime: () ->
 		planSummary = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())?.timeEstimated
-		time = 0
 
+		time = 0
 		_.each planSummary, (stage) ->
 			time = time + stage.time
 

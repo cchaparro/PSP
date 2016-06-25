@@ -23,10 +23,12 @@ Template.iterationsViewTemplate.events
 		Meteor.call "create_project", data, (error, result) ->
 			if error
 				console.log "Error creating a new project iteration"
+				console.warn(error)
 			else
 				Meteor.call "create_plan_summary", Meteor.userId(), result, data.levelPSP, (error) ->
 					if error
 						console.log "Error creating new projects iteration Plan Summary"
+						console.warn(error)
 					else
 						console.log "Plan summary of iteration created successfully!"
 
@@ -39,7 +41,6 @@ Template.projectIterationBox.events
 		Meteor.call "delete_project", @_id, (error) ->
 			if error
 				console.log "Error deleting a iteration of a project"
-			else
-				#sys.flashSuccess()
+				console.warn(error)
 
 ##########################################

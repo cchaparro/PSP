@@ -134,10 +134,10 @@ Template.createDefect.events
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
 
-		if !(Defect.description isnt '') or (Defect.typeDefect == "Tipo de defecto") or (Defect.injected == "Inyectado") or (Defect.removed == "Removido")
+		if !(Defect.description!= '') or (Defect.typeDefect == "Tipo de defecto") or (Defect.injected == "Inyectado") or (Defect.removed == "Removido")
 			t.errorState.set(1)
 
-		else if (DefectId isnt '')
+		else if (DefectId!= '')
 			Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (err) ->
 				if err
 					#sys.flashError()
@@ -147,13 +147,14 @@ Template.createDefect.events
 					Modal.hide('createDefectModal')
 					#sys.flashSuccess()
 		else
-			Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, parseInt(totalTime), (err) ->
-				if err
-					#sys.flashError()
-					console.log ("Error creating a new defect: " + err)
+			Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, parseInt(totalTime), (error) ->
+				if error
+					sys.flashError()
+					console.log "Error creating a new defect"
+					console.warn(error)
 				else
 					Modal.hide('createDefectModal')
-					#sys.flashSuccess()
+					sys.flashSuccess()
 
 	'click .close-error-box': (e,t) ->
 		t.errorState.set(0)
@@ -175,20 +176,21 @@ Template.createDefect.events
 			totalTime = parseInt(totalTime)
 			t.timeStatus.set(false)
 
-			if (DefectId isnt '')
-				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (err) ->
-					if err
-						#sys.flashError()
-						console.log ("Error updating a existing Defect: " + err)
+			if (DefectId!= '')
+				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
+					if error
+						sys.flashError()
+						console.log "Error updating a existing Defect"
+						console.warn(error)
 					else
 						t.timeStarted.set(0)
 
 			else
-				Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, totalTime, (err, result) ->
+				Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, totalTime, (error, result) ->
 					t.defectId.set(result)
-					if err
-						#sys.flashError()
-						console.log ("Error creating a new defect:" + err)
+					if error
+						sys.flashError()
+						console.log "Error creating a new defect"
 					else
 						t.timeStarted.set(0)
 
@@ -204,15 +206,15 @@ Template.createDefect.events
 			totalTime = parseInt(totalTime)
 			t.timeStatus.set(false)
 
-			if (DefectId isnt '')
-				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (err) ->
-					if err
-						#sys.flashError()
-						#Meteor.call "create_error", Meteor.userId(), "Error actualizando Defect", err
-						console.log ("Error updating the sonf Defect: " + err)
+			if (DefectId!= '')
+				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
+					if error
+						sys.flashError()
+						console.log "Error updating the sonf Defect"
+						console.warn(error)
 					else
 						t.timeStarted.set(0)
-						#sys.flashSuccess()
+						sys.flashSuccess()
 
 		t.defectState.set(0)
 		t.defect.set({
