@@ -205,7 +205,7 @@ html, body {
 }
 
 .user-dropdown {
-	width: 400px;
+	width: 300px;
 	position: absolute;
 	left: unset;
 	right: 0;
@@ -217,33 +217,61 @@ html, body {
 	@include border-radius(0px);
 	padding: 20px;
 
-	// li {
-	// 	font-size: 11pt;
-	// 	border-top: 1px solid rgba($project-title-light,0.2);
-	// 	a {
-	// 		padding: 10px 0 10px 10px;
-	// 		color: $project-title-light;
-	// 	}
-	// }
+	.logout {
+		cursor: pointer;
 
-	// li:first-child {
-	// 	cursor: default;
-	// 	padding: 10px 10px 0 10px;
-	// 	background-color: $white;
-	// 	border-top: none;
-	// 	span {
-	// 		display: block;
-	// 		font-weight: 800;
-	// 		margin-bottom: 10px;
-	// 		color: $project-title-light;
-	// 	}
-	// }
-	// li:last-child {
-	// 	a:hover {
-	// 		border-bottom-right-radius: 3px;
-	// 		border-bottom-left-radius: 3px;
-	// 	}
-	// }
+		svg {
+			width: 15px;
+			height: 15px;
+			margin: 3px 0;
+			fill: $danger;
+			float: left;
+		}
+
+		span {
+			float: left;
+			padding-left: 5px;
+			color: $primary-light-bg;
+
+			&:hover {
+				color: $white;
+			}
+		}
+	}
+
+	li {
+		padding-bottom: 0px;
+	}
+
+	.notification-box {
+		height: 200px;
+		margin-top: 30px;
+		border-top: 1px solid $primary-dark-bg;
+
+		div {
+			height: 40px;
+
+			h3 {
+				margin: 0;
+				margin-top: 5px;
+				display: inline-block;
+				font-size: 12pt;
+			}
+
+			span {
+				display: inline;
+				padding: 1px 5px;
+				font-size: 10pt;
+				background-color: $danger;
+				@include border-radius($default-border-radius);
+			}
+		}
+
+		ul {
+			height: 160px;
+		}
+	}
+
 }
 
 //------------------------------------------------

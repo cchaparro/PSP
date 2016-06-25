@@ -22,9 +22,20 @@
 <!-- ###################################### -->
 <template name="userMenuDropdown">
 	<ul class="dropdown-menu user-dropdown">
-		<li>{{profile.fname}} {{profile.lname}}<span>Perfil</span></li>
-		<li><a href="#">Ajustes de Cuenta</a></li>
-		<li class="logout"><a href="#">Cerrar sesion</a></li>
+		<li>{{profile.fname}} {{profile.lname}}</li>
+		<div class="logout">
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
+			<span >Cerrar sesion</span>
+		</div>
+		<div class="notification-box">
+			<div>
+				<h3>Notificaciones</h3>
+				<span>0</span>
+			</div>
+			<ul>
+				
+			</ul>
+		</div>
 	</ul>
 </template>
 <!-- ###################################### -->
