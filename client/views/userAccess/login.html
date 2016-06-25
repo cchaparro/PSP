@@ -17,8 +17,8 @@
 
 		<div class="button-row combined-form">
 			<div>
-				<input type="email" class="{{#if $or ($eq errorState 'user') ($eq errorState 'email')}} new-input-error {{/if}} new-input" placeholder='Correo Electronico' id="email" value="">
-				<input type="password" class="{{#if $eq errorState 'password'}} new-input-error {{/if}} new-input" placeholder='Contraseña' id="password">
+				<input type="email" class="{{#if $or ($eq errorState 'user') ($eq errorState 'email')}} psp-input-error {{/if}} psp-input" placeholder='Correo Electronico' id="email" value="">
+				<input type="password" class="{{#if $eq errorState 'password'}} psp-input-error {{/if}} psp-input" placeholder='Contraseña' id="password">
 			</div>
 		</div>
 		<span class="user-access-error-text">{{errorMessage}}</span>

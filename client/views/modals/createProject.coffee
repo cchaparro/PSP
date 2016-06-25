@@ -2,20 +2,19 @@
 Template.createProject.onCreated () ->
 	@levelPSP = new ReactiveVar("PSP 0")
 	#State 0(Default), State 1(Missing Field)
-	#@errorState = new ReactiveVar(0)
+	@errorStateTitle = new ReactiveVar(0)
+	@errorStateDescription = new ReactiveVar(0)
 
 
 Template.createProject.helpers
 	Level: () ->
 		return Template.instance().levelPSP.get()
 
-	titleText: () ->
-		title = $('.new-pry-title').val()
-		return sys.isNotEmpty(title)
+	errorStateTitle: () ->
+		return Template.instance().errorStateTitle.get()
 
-	descriptionText: () ->
-		title = $('.new-pry-description').val()
-		return sys.isNotEmpty(title)
+	errorStateDescription: () ->
+		return Template.instance().errorStateDescription.get()
 
 
 Template.createProject.events
@@ -23,6 +22,15 @@ Template.createProject.events
 		value = $(e.target).data('value')
 		t.levelPSP.set(value)
 
+	'blur .pry-new-title': (e,t) ->
+		title = $(e.target).val()
+		if title!=''
+			t.errorStateTitle.set(0)
+
+	'blur .pry-new-description': (e,t) ->
+		description = $(e.target).val()
+		if description!=''
+			t.errorStateDescription.set(0)
 
 	'click .pry-modal-create': (e,t) ->
 		title = $('.pry-new-title').val()
@@ -36,8 +44,11 @@ Template.createProject.events
 			parendId: null
 		}
 
-		if (title is '') or (description is '')
-			console.log "no tengo titulo o descripcion"
+		if (title== '') or (description== '')
+			if (title== '')
+				t.errorStateTitle.set(1)
+			if (description== '')
+				t.errorStateDescription.set(1)
 		else
 			Meteor.call "create_project", data, (error, result)->
 				if error
