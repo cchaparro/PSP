@@ -9,7 +9,7 @@ Template.summaryTimeRow.helpers
 
 		final = {}
 		final.estimatedTime = planSummary?.estimatedTime
-		final.totalTime = 0
+		final.totalTime = planSummary?.totalTime
 		final.totalToDate = user?.profile.total.time
 
 		return final

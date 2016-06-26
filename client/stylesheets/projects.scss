@@ -410,7 +410,7 @@
 	}
 }
 
-.project-status {
+.project-active {
 	position: absolute;
 	display: inline;
 	right: 15px;
@@ -419,8 +419,15 @@
 	border: 1px solid $border;
 	@include border-radius($default-border-radius);
 	cursor: pointer;
+	color: $success;
 }
 
+.project-completed {
+	@extend .project-active;
+	color: $danger;
+	border: 0;
+	cursor: default;
+}
 
 // This is the box that has the total time and
 // creation date of a project

@@ -2,7 +2,7 @@
 <template name="projectInformationTemplate">
 	{{#with projectInfo }}
 		<div class="prj-information-box">
-			<div class="project-status {{#if completed}} prj-danger {{else}} prj-success {{/if}}">
+			<div class="{{#if completed}} project-completed {{else}} project-active {{/if}}">
 				{{#if completed}}
 					<span>Terminado</span>
 				{{else}}

@@ -45,13 +45,16 @@ Template.projectInformationTemplate.events
 			else
 				sys.flashSuccess()
 
-	'click .project-status': (e,t) ->
+	'click .project-active': (e,t) ->
 		Meteor.call "update_project", @_id, { completed: !@completed }, (error) ->
 			if error
 				sys.flashError()
-				console.log ("Error changing the project completion value")
 				console.warn(error)
 			else
-				sys.flashSuccess()
+				Meteor.call "update_user_plan_summary", FlowRouter.getParam("id"), (error) ->
+					if error
+						console.warn(error)
+					else
+						sys.flashSuccess()
 
 ##########################################

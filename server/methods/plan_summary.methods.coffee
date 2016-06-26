@@ -45,22 +45,22 @@ Meteor.methods
 	update_plan_summary: (pid, data) ->
 		db.plan_summary.update({"projectId": pid, "summaryOwner": Meteor.userId()}, {$set: data})
 
-	#update_plan_summary: (pid, uid, field, value) ->
-	#	if field == "timeEstimated"
-	#		PlanSummary.update({"projectId": pid, "summaryOwner": uid}, {$set: {"timeEstimated": value}})
-	#	if field == "InjectedEstimated"
-	#		PlanSummary.update({"projectId": pid, "summaryOwner": uid}, {$set: {"InjectedEstimated": value}})
-	#	if field == "RemovedEstimated"
-	#		PlanSummary.update({"projectId": pid, "summaryOwner": uid}, {$set: {"RemovedEstimated": value}})
 
 	#This is for completing a stage or updating the time of the current stage
 	update_time_stage: (pid, stage, finishStage=false) ->
-		finalStages = db.plan_summary.findOne({"projectId": pid, "summaryOwner": Meteor.userId()}).timeEstimated
-		currentStage = _.findWhere finalStages, {name: stage.name}
+		planSummary = db.plan_summary.findOne({"projectId": pid, "summaryOwner": Meteor.userId()})
+
+		# the input stage is the stage that just had a new amount of time registered
+		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}
 		currentStage.time = stage.time + currentStage.time
 
 		if finishStage
 			currentStage.finished = true
 
-		db.plan_summary.update({"projectId": pid}, {$set: {"timeEstimated": finalStages}})
+		data = {
+			"timeEstimated": planSummary.timeEstimated
+			"total.totalTime": planSummary.total.totalTime + stage.time
+		}
+
+		db.plan_summary.update({"projectId": pid}, {$set: data})
 #######################################

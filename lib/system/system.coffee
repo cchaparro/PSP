@@ -51,7 +51,7 @@ sys.displayTime = (time) ->
 sys.minutesToTime = (time) ->
 	return time * 60000
 
-sys.displayMinutes = (time) ->
+sys.timeToMinutes = (time) ->
 	return Math.floor(time / 60000)
 
 ##########################################

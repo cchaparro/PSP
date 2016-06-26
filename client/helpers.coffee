@@ -30,5 +30,5 @@ Template.registerHelper "timeFormat", (time) ->
 
 # This helper is used to display the ISO time in minutes
 Template.registerHelper "timeInMinutes", (time) ->
-	return sys.displayMinutes(time)
+	return sys.timeToMinutes(time)
 ##################################################
