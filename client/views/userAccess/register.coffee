@@ -32,10 +32,15 @@ Template.registerTemplate.events
 			profile:
 				name: $('#name').val()
 				profileImageUrl: null
+				summaryAmount: Meteor.settings.public.userAmount
+				total:
+					time: 0
+					injected: 0
+					removed: 0
 		}
 
 		if sys.isEmail(email) and sys.isValidPassword(password)
-			Accounts.createUser data, (error) ->
+			Accounts.createUser data, (error, result) ->
 				if error
 					if error.reason == "Email already exists."
 						t.errorState.set("email_exist")
@@ -43,9 +48,11 @@ Template.registerTemplate.events
 						$('#password').val('')
 						$('#name').val('')
 				else
-					Meteor.call "create_defect_types", Meteor.userId(), (err)->
-						if err
-							console.log "Error creating Defect Types file: " + err
+					Meteor.call "create_defect_types", Meteor.userId(), (error)->
+						if error
+							console.log "Error creating Defect Types file in user registration"
+							console.warn(error)
+
 					FlowRouter.go("/")
 
 		else if !sys.isEmail(email)

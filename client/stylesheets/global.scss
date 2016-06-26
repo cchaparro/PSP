@@ -152,6 +152,13 @@
 	border: 2px solid $danger;
 }
 
+.psp-disabled {
+	@extend .psp-input;
+	color: $input-full-text;
+	background-color: $background;
+	cursor: default;
+}
+
 .psp-dropdown {
 	@extend .psp-input;
 	text-align: left;

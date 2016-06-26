@@ -1,0 +1,41 @@
+<!-- ###################################### -->
+<template name="planSummaryTemplate">
+	<p>Tiempo en Fase</p>
+	<table class="table table-hover table-defects">
+		<thead>
+			<tr>
+				<th>Titulo</th>
+				<th>Plan</th>
+				<th>Actual</th>
+				<th>A la fecha</th>
+				<th>Porcentaje</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{> summaryTimeRow}}
+		</tbody>
+	</table>
+</template>
+<!-- ###################################### -->
+<template name="summaryTimeRow">
+	{{#each timeEstimatedStages}}
+		<tr>
+			<td><p>{{name}}</p></td>
+			<td></td>
+			<td><span class="psp-disabled">{{time}}</span></td>
+			<td><p>{{toDate}}</p></td>
+			<td><p>{{percentage}} %</p></td>
+		</tr>
+	{{/each}}
+	{{#with totalValues}}
+		<tr>
+			{{printthis}}
+			<td><p>Total</p></td>
+			<td><input type="text" class="psp-input" value="{{estimatedTime}}"></td>
+			<td><span class="psp-disabled">{{totalTime}}</span></td>
+			<td><p>{{totalToDate}}</p></td>
+			<td></td>
+		</tr>
+	{{/with}}
+</template>
+<!-- ###################################### -->

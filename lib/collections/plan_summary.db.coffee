@@ -15,9 +15,16 @@ schemas.summarytimeEstimated = new SimpleSchema
 		type: Number
 		label: "Stage timeEstimated time"
 
-	"estimated":
+	"toDate":
 		type: Number
-		label: "Stage timeEstimated estimated"
+		optional: true
+		label: "Value for recolected data until the current date"
+
+	"percentage":
+		type: Number
+		decimal: true
+		optional: true
+		label: "Value for percentage of recolected data until the current date"
 
 ##########################################
 schemas.summaryInjectedEstimated = new SimpleSchema
@@ -29,11 +36,6 @@ schemas.summaryInjectedEstimated = new SimpleSchema
 		type: Number
 		label: "Stage InjectedEstimated injected"
 
-	"estimated":
-		type: Number
-		label: "Stage timeEstimated estimated"
-		optional: true
-
 ##########################################
 schemas.summaryRemovedEstimated = new SimpleSchema
 	"name":
@@ -44,10 +46,15 @@ schemas.summaryRemovedEstimated = new SimpleSchema
 		type: Number
 		label: "Stage RemovedEstimated removed"
 
-	"estimated":
+##########################################
+schemas.totalValues = new SimpleSchema
+	"totalTime":
 		type: Number
-		label: "Stage RemovedEstimated estimated"
-		optional: true
+		label: "Plan Summary total time consumed"
+
+	"estimatedTime":
+		type: Number
+		label: "Estimated time the user gave for the project completion"
 
 ##########################################
 schemas.plan_summary = new SimpleSchema
@@ -76,21 +83,25 @@ schemas.plan_summary = new SimpleSchema
 		type: schemas.summarytimeEstimated
 		label: "One time estimation of Plan Summary"
 
-	"InjectedEstimated":
+	"injectedEstimated":
 		type: Array
 		label: "Injected estimation of Plan Summary"
 
-	"InjectedEstimated.$":
+	"injectedEstimated.$":
 		type: schemas.summaryInjectedEstimated
 		label: "One injected estimation of Plan Summary"
 
-	"RemovedEstimated":
+	"removedEstimated":
 		type: Array
 		label: "Removed estimation of Plan Summary"
 
-	"RemovedEstimated.$":
+	"removedEstimated.$":
 		type: schemas.summaryRemovedEstimated
 		label: "One removed estimation of Plan Summary"
+
+	"total":
+		type: schemas.totalValues
+		label: "Total estimation values for the project"
 
 
 ##########################################

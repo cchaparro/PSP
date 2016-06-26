@@ -1,5 +1,5 @@
 # ##########################################
-# db.users = Meteor.users
+db.users = Meteor.users
 # ##########################################
 # schemas.userPublicFields = new SimpleSchema
 # 	"fname":

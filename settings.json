@@ -1,105 +1,125 @@
 {
 	"public": {
+		"userAmount": [
+			{
+				"name" : "Planeación",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
+				"name" : "Diseño",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
+				"name" : "Código",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
+				"name" : "Compilación",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
+				"name" : "Pruebas",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
+				"name" : "Postmortem",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			}
+		],
 		"timeEstimated": [
 			{
 				"name" : "Planeación",
 				"finished" : false,
-				"time" : 0,
-				"estimated" : 0
+				"time" : 0
 			},
 			{
 				"name" : "Diseño",
 				"finished" : false,
-				"time" : 0,
-				"estimated" : 0
+				"time" : 0
 			},
 			{
 				"name" : "Código",
 				"finished" : false,
-				"time" : 0,
-				"estimated" : 0
+				"time" : 0
 			},
 			{
 				"name" : "Compilación",
 				"finished" : false,
-				"time" : 0,
-				"estimated" : 0
+				"time" : 0
 			},
 			{
 				"name" : "Pruebas",
 				"finished" : false,
-				"time" : 0,
-				"estimated" : 0
+				"time" : 0
 			},
 			{
 				"name" : "Postmortem",
 				"finished" : false,
-				"time" : 0,
-				"estimated" : 0
+				"time" : 0
 			}
 		],
 		"InjectedEstimated": [
 			{
 				"name" : "Planeación",
-				"injected" : 0,
-				"estimated" : 0
+				"injected" : 0
 			},
 			{
 				"name" : "Diseño",
-				"injected" : 0,
-				"estimated" : 0
+				"injected" : 0
 			},
 			{
 				"name" : "Código",
-				"injected" : 0,
-				"estimated" : 0
+				"injected" : 0
 			},
 			{
 				"name" : "Compilación",
-				"injected" : 0,
-				"estimated" : 0
+				"injected" : 0
 			},
 			{
 				"name" : "Pruebas",
-				"injected" : 0,
-				"estimated" : 0
+				"injected" : 0
 			},
 			{
 				"name" : "Postmortem",
-				"injected" : 0,
-				"estimated" : 0
+				"injected" : 0
 			}
 		],
 		"RemovedEstimated": [
 			{
 				"name" : "Planeación",
-				"removed" : 0,
-				"estimated" : 0
+				"removed" : 0
 			},
 			{
 				"name" : "Diseño",
-				"removed" : 0,
-				"estimated" : 0
+				"removed" : 0
 			},
 			{
 				"name" : "Código",
-				"removed" : 0,
-				"estimated" : 0
+				"removed" : 0
 			},
 			{
 				"name" : "Compilación",
-				"removed" : 0,
-				"estimated" : 0
+				"removed" : 0
 			},
 			{
 				"name" : "Pruebas",
-				"removed" : 0,
-				"estimated" : 0
+				"removed" : 0
 			},
 			{
 				"name" : "Postmortem",
-				"removed" : 0,
-				"estimated" : 0
+				"removed" : 0
 			}
 		],
 		"defectTypeValues": [

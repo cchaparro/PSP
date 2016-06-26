@@ -1,5 +1,5 @@
 ##########################################
-projectViewSelector = new ReactiveVar('general')
+projectViewSelector = new ReactiveVar('plansummary')
 ##########################################
 Template.projectViewTemplate.onCreated () ->
 	Meteor.subscribe "projectView", FlowRouter.getParam("id")
