@@ -32,8 +32,7 @@ Template.createDefect.onCreated () ->
 
 Template.createDefect.helpers
 	allDefectTypes: () ->
-		defectTypes = db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})
-		return defectTypes?.defects
+		return db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})?.defects
 
 	defectData: () ->
 		return Template.instance().defect.get()
@@ -42,16 +41,13 @@ Template.createDefect.helpers
 		return $('.create-defect-description').val() isnt ''
 
 	injectedPhases: () ->
-		pid = FlowRouter.getParam("id")
-		Project = db.plan_summary.findOne({projectId: pid})
-		return Project?.InjectedEstimated
+		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.injectedEstimated
 
 	removedPhases: () ->
-		pid = FlowRouter.getParam("id")
 		Defect = Template.instance().defect.get()
 		injected = Defect.injected
 
-		projectStages = db.plan_summary.findOne({projectId: pid}).RemovedEstimated
+		projectStages = db.plan_summary.findOne({projectId: FlowRouter.getParam("id")}).removedEstimated
 
 		unless injected != "Inyectado"
 			return projectStages
@@ -74,15 +70,12 @@ Template.createDefect.helpers
 
 	ifLoadsData: () ->
 		Defect_State = Template.instance().defectState.get()
-		if Defect_State == 1
-			return true
-		else
-			return false
+		return Defect_State == 1
 
 	projectTotalTime: () ->
 		DefectId = Template.instance().defectId.get()
 		time = 0
-		if (DefectId isnt '')
+		if (DefectId!= '')
 			Defect = db.defects.findOne({_id: DefectId, "defectOwner": Meteor.userId()})
 			time = Defect.time
 
@@ -138,14 +131,15 @@ Template.createDefect.events
 			t.errorState.set(1)
 
 		else if (DefectId!= '')
-			Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (err) ->
-				if err
-					#sys.flashError()
-					console.log ("Error updating a Defect: " + err)
+			Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
+				if error
+					sys.flashError()
+					console.log "Error updating a Defect"
+					console.warn(error)
 				else
 					t.timeStarted.set(0)
 					Modal.hide('createDefectModal')
-					#sys.flashSuccess()
+					sys.flashSuccess()
 		else
 			Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, parseInt(totalTime), (error) ->
 				if error
