@@ -3,6 +3,7 @@ searchStatus = new ReactiveVar("all")
 ##########################################
 Template.projectsTemplate.onCreated () ->
 	Meteor.subscribe "allProjects"
+	document.title = "PSP Connect"
 
 Template.projectsTemplate.helpers
 	allProjects: () ->

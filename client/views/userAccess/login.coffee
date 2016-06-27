@@ -1,6 +1,7 @@
 ##################################################
 Template.loginTemplate.onCreated () ->
 	@errorState = new ReactiveVar("default")
+	document.title = "Inicio de Sesión"
 
 
 Template.loginTemplate.helpers

@@ -1,6 +1,7 @@
 ##################################################
 Template.registerTemplate.onCreated () ->
 	@errorState = new ReactiveVar("default")
+	document.title = "Registro"
 
 
 Template.registerTemplate.helpers
