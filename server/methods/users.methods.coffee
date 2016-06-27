@@ -5,11 +5,8 @@ Meteor.methods
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": pid})
 
-		userTime = user?.summaryAmount
-		planSummaryFinalTime = planSummary?.timeEstimated
-
-		finalTime = _.filter userTime, (time) ->
-			planTime = _.findWhere planSummaryFinalTime, {name: time.name}
+		finalTime = _.filter user.summaryAmount, (time) ->
+			planTime = _.findWhere planSummary.timeEstimated, {name: time.name}
 			time.time += planTime.time
 			return time
 

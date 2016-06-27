@@ -1,20 +1,21 @@
 ##########################################
 Meteor.methods
 	create_project: (data) ->
+		# The _.extend adds to data the projectOwner value.
 		data = _.extend data, {projectOwner: Meteor.userId()}
 		db.projects.insert(data)
 
 
 	delete_project: (pid) ->
 		# This removes the time information of this project from
-		# The users complete data recolection
+		# The users complete data recolection.
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": pid})
-		userTime = user?.summaryAmount
-		planSummaryFinalTime = planSummary?.timeEstimated
 
-		finalTime = _.filter userTime, (time) ->
-			planTime = _.findWhere planSummaryFinalTime, {name: time.name}
+		# This takes The user general data and removes this projects
+		# time recolected information.
+		finalTime = _.filter user.summaryAmount, (time) ->
+			planTime = _.findWhere planSummary.timeEstimated, {name: time.name}
 			time.time -= planTime.time
 			return time
 
