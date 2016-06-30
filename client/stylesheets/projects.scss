@@ -374,11 +374,21 @@
 	border-bottom-right-radius: $default-border-radius;
 	word-wrap: break-word;
 
+	svg {
+		width: 20px;
+		height: 20px;
+		fill: $main-text-color;
+		float: right;
+		margin-right: 115px;
+		margin-top: 25px;
+		cursor: pointer;
+	}
+
 	h3 {
 		margin: 0;
 		margin-bottom: 3px;
 		padding: 2px 0 2px 10px;
-		margin: 0 120px 0 20px;
+		margin: 0 155px 0 20px;
 		font-weight: 700;
 		color: $main-title-color;
 
@@ -472,4 +482,47 @@
 		}
 	}
 }
+
+//----------- Project Plan Summary View ----------
+.plan_summary-box {
+	background-color: $white;
+	border: 1px solid $border;
+	@include border-radius($default-border-radius);
+
+	h3 {
+		font-size: 13pt;
+		padding-left: 20px;
+		padding-bottom: 10px;
+	}
+
+	.table-summary {
+		border: 0;
+		width: 100%;
+		table-layout: fixed;
+		thead {
+			border-bottom: 1px solid $border;
+			border-top: 1px solid $border;
+			color: $table-title-color;
+
+			& > tr > th {
+				border: 0;
+				font-weight: 300;
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+
+			}
+		}
+
+		tbody > tr > td {
+			vertical-align: middle;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			text-align: center;
+			cursor: default;
+		}
+
+	}
+}
+
 //------------------------------------------------

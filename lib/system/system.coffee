@@ -54,6 +54,12 @@ sys.minutesToTime = (time) ->
 sys.timeToMinutes = (time) ->
 	return Math.floor(time / 60000)
 
+sys.planSummaryTime = (time) ->
+	minutos = Math.floor(time / 60000)
+	time = time % 60000
+	segundos = Math.floor(time / 1000)
+	return minutos + ":" + segundos
+
 ##########################################
 #############- Date Display -#############
 sys.dateDisplay = (time) ->

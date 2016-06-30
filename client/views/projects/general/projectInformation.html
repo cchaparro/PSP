@@ -1,7 +1,14 @@
 <!-- ###################################### -->
 <template name="projectInformationTemplate">
+	<div class="information-box {{#unless displayInformation}} hide {{/unless}}">
+		<div class="information-box-header">
+			<span><i class="fa fa-times close"></i></span>
+			<h3>Informacion Vista General</h3>
+		</div>
+	</div>
 	{{#with projectInfo }}
-		<div class="prj-information-box">
+		<div class="prj-information-box {{#if displayInformation}} box-fix {{/if}}">
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Information.svg#informationLogo"></use></svg>
 			<div class="{{#if completed}} project-completed {{else}} project-active {{/if}}">
 				{{#if completed}}
 					<span>Terminado</span>
@@ -16,7 +23,7 @@
 			<p class="prj-info-description" contenteditable="true">{{description}}</p>
 		</div>
 
-		<div class="prj-review-box">
+		<div class="prj-review-box {{#if displayInformation}} box-fix {{/if}}">
 			<div>
 				<svg class="project-svg" viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
 				<span>Tiempo total</span>

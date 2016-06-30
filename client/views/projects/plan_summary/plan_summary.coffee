@@ -1,4 +1,17 @@
 ##########################################
+informationState = new ReactiveVar(false)
+##########################################
+Template.planSummaryTemplate.onCreated () ->
+	if (window.innerWidth > 1300)
+		console.log "im bigger than 900"
+		informationState.set(true)
+
+
+Template.planSummaryTemplate.helpers
+	displayInformation: () ->
+		return informationState.get()
+
+
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->
 		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.timeEstimated
@@ -14,6 +27,8 @@ Template.summaryTimeRow.helpers
 
 		return final
 
+	planSummaryTime: (time) ->
+		return sys.planSummaryTime(time)
 
 
 Template.summaryTimeRow.events

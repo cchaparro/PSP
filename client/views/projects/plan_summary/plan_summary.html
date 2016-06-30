@@ -1,38 +1,43 @@
 <!-- ###################################### -->
 <template name="planSummaryTemplate">
-	<p>Tiempo en Fase</p>
-	<table class="table table-hover table-defects">
-		<thead>
-			<tr>
-				<th>Titulo</th>
-				<th>Plan</th>
-				<th>Actual</th>
-				<th>A la fecha</th>
-				<th>Porcentaje</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{> summaryTimeRow}}
-		</tbody>
-	</table>
+	<div class="information-box {{#unless displayInformation}} hide {{/unless}}">
+		kjhjkjh
+	</div>
+	<div class="plan_summary-box {{#if displayInformation}} box-fix {{/if}}">
+		<h3>Tiempo en Fase</h3>
+		<table class="table table-summary">
+			<thead>
+				<tr>
+					<th style="width: ;">Titulo</th>
+					<th>Plan</th>
+					<th>Actual</th>
+					<th>A la fecha</th>
+					<th style="width: 100px;">Porcentaje</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{> summaryTimeRow}}
+			</tbody>
+		</table>
+	</div>
 </template>
 <!-- ###################################### -->
 <template name="summaryTimeRow">
 	{{#each timeEstimatedStages}}
 		<tr>
-			<td><p>{{name}}</p></td>
+			<td>{{name}}</td>
 			<td></td>
-			<td><span>{{timeFormat time}}</span></td>
-			<td><p>{{timeFormat toDate}}</p></td>
-			<td><p>{{percentage}} %</p></td>
+			<td>{{planSummaryTime time}}</td>
+			<td>{{planSummaryTime toDate}}</td>
+			<td>{{percentage}}%</td>
 		</tr>
 	{{/each}}
 	{{#with totalValues}}
 		<tr>
 			<td><p>Total</p></td>
 			<td><input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}"></td>
-			<td><span>{{timeFormat totalTime}}</span></td>
-			<td><p>{{timeFormat totalToDate}}</p></td>
+			<td><span>{{planSummaryTime totalTime}}</span></td>
+			<td><p>{{planSummaryTime totalToDate}}</p></td>
 			<td></td>
 		</tr>
 	{{/with}}

@@ -1,4 +1,8 @@
 ##########################################
+Template.projectInformationTemplate.onCreated () ->
+	@informationState = new ReactiveVar(false)
+
+
 Template.projectInformationTemplate.helpers
 	projectInfo: () ->
 		return db.projects.findOne({_id: FlowRouter.getParam("id"), "projectOwner": Meteor.userId()})
@@ -14,6 +18,9 @@ Template.projectInformationTemplate.helpers
 
 	dateDisplay:(date) ->
 		return sys.dateDisplay(date)
+
+	displayInformation: () ->
+		return Template.instance().informationState.get()
 
 
 Template.projectInformationTemplate.events
@@ -56,5 +63,11 @@ Template.projectInformationTemplate.events
 						console.warn(error)
 					else
 						sys.flashSuccess()
+
+	'click svg': (e,t) ->
+		t.informationState.set(!t.informationState.get())
+
+	'click .information-box-header span': (e,t) ->
+		t.informationState.set(false)
 
 ##########################################

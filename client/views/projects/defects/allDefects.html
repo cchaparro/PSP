@@ -1,6 +1,9 @@
 <!-- ###################################### -->
 <template name="defectsTemplate">
 	{{> defectsBar}}
+		{{#unless amountDefects}}
+			<p>Aun no has creado ningun defecto.</p>
+		{{/unless}}
 		{{#each alluserDefects}}
 			<div class="defect-box">
 				<div class="defect-content">
