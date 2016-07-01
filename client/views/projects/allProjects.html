@@ -5,11 +5,16 @@
 		{{#each allProjects}}
 			<div class="project-box">
 				<div class="project-delete">
-					<i class="fa fa-times"></i>
+					{{#if isHovered}}
+						<i class="fa fa-arrow-left"></i>
+					{{else}}
+						<i class="fa fa-times"></i>
+					{{/if}}
 				</div>
-				<!-- <div class="project-delete-confirm">
-					<span class="btn btn-sucess">Eliminar Proyecto</span>
-				</div> -->
+				<div class="project-delete-confirm">
+					<p>Estas seguro?</p>
+					<span class="btn confirm-delete">Eliminar Proyecto</span>
+				</div>
 				<a href="{{pathFor 'iterationView' fid=_id}}">
 					<div class="project-content">
 						<i class="fa fa-circle {{#if completed}} prj-danger {{else}} prj-success {{/if}}"></i>

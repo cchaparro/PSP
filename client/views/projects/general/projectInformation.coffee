@@ -25,10 +25,8 @@ Template.projectInformationTemplate.helpers
 
 Template.projectInformationTemplate.events
 	'blur .prj-info-title': (e,t) ->
-		description = $('.prj-info-title').html()
-		console.log description.text
 		data = {
-			"title": $('.prj-info-title').html()
+			"title": $('.prj-info-title').text()
 		}
 
 		Meteor.call "update_project", FlowRouter.getParam("id"), data, (error)->
@@ -41,7 +39,7 @@ Template.projectInformationTemplate.events
 
 	'blur .prj-info-description': (e,t) ->
 		set = {
-			"description": $('.prj-info-description').html()
+			"description": $('.prj-info-description').text()
 		}
 
 		Meteor.call "update_project", FlowRouter.getParam("id"), set, (error)->

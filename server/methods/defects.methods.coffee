@@ -39,4 +39,8 @@ Meteor.methods
 			"parentId": Defect.parentId
 		}})
 
+	delete_defect: (defectId) ->
+		db.defects.remove({_id: defectId})
+		#Falta eliminar los datos del summary con esto y poner opcion de si dejar hijos como independientes si los tiene o si eliminarlos tambien
+
 ##########################################

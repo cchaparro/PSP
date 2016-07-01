@@ -4,6 +4,7 @@ searchStatus = new ReactiveVar("all")
 Template.projectsTemplate.onCreated () ->
 	Meteor.subscribe "allProjects"
 	document.title = "PSP Connect"
+	@hoveredProject = new ReactiveVar(false)
 
 Template.projectsTemplate.helpers
 	allProjects: () ->
@@ -15,14 +16,27 @@ Template.projectsTemplate.helpers
 			when "all"
 				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}})
 
+	isHovered: () ->
+		return Template.instance().hoveredProject.get() == @_id
+
 
 Template.projectsTemplate.events
-	'click .project-delete': (e,t) ->
+	'click .fa-times': (e,t) ->
+		t.hoveredProject.set(@_id)
+		$(".project-box").removeClass("project-box-hover")
+		t.$(e.target).closest(".project-box").addClass("project-box-hover")
+
+	'click .fa-arrow-left': (e,t) ->
+		t.hoveredProject.set(false)
+		$(".project-box").removeClass("project-box-hover")
+
+	'click .confirm-delete': (e,t) ->
 		Meteor.call "delete_project", @_id, (error) ->
 			if error
 				console.log "Error deleting a project"
+				console.warn(error)
 			else
-				#sys.flashSuccess()
+				sys.flashSuccess()
 
 ##########################################
 Template.allProjectsBar.helpers

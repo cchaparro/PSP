@@ -5,16 +5,23 @@ Template.defectsTemplate.helpers
 
 	amountDefects: () ->
 		defects = db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})
-		console.log defects.count()
 		return defects.count() != 0
 
 Template.defectsTemplate.events
 	'click .btn-create-defect': (e,t) ->
 		Modal.show('createDefectModal')
 
-	'click .defect-box': (e,t) ->
+	'click .defect-content': (e,t) ->
 		data = @
 		Modal.show('createDefectModal', data)
+
+	'click .defect-delete': (e,t) ->
+		console.log @
+		Meteor.call "delete_defect", @_id, (error) ->
+			if error
+				console.log "Error deleting a defect"
+			else
+				sys.flashSuccess()
 
 ##########################################
 Template.defectsBar.events

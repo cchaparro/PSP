@@ -6,24 +6,16 @@
 		{{/unless}}
 		{{#each alluserDefects}}
 			<div class="defect-box">
+				<div class="defect-delete">
+					<i class="fa fa-times"></i>
+				</div>
 				<div class="defect-content">
 					<h3>Defect</h3>
 					<span>{{description}}</span>
-					<div class="defect-content-fase clearfix">
-						<div>
-							<p>Inyectado</p>
-							<span>{{injected}}</span>
-						</div>
-						<div>
-							<p>Removido</p>
-							<span>{{removed}}</span>
-						</div>
-					</div>
-				</div>
-				<div class="defect-menu">
-					<div class="defect-menu-section">{{timeFormat time}}</div>
-					<div class="defect-menu-section"></div>
-					<div class="defect-menu-section"></div>
+					<p>Injectado: <span>{{injected}}</span></p>
+					<p>Removido: <span>{{removed}}</span></p>
+					<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
+					<span class="defect-time-text">{{timeFormat time}}</span>
 				</div>
 			</div>
 		{{/each}}
