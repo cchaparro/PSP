@@ -31,4 +31,9 @@ Template.registerHelper "timeFormat", (time) ->
 # This helper is used to display the ISO time in minutes
 Template.registerHelper "timeInMinutes", (time) ->
 	return sys.timeToMinutes(time)
+
+
+# This helper is used to make a contenteditable html
+Template.registerHelper "contentEditable", (hash) ->
+	return '<div class="' + hash?.hash?.class + '"' + 'contentEditable="true">' + hash?.hash?.value + '</div>';
 ##################################################
