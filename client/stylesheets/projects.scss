@@ -80,6 +80,7 @@
 }
 
 .project-delete,
+.iteration-delete,
 .defect-delete {
 	width: 40px;
 	height: 40px;
@@ -107,11 +108,38 @@
 	}
 }
 
-.project-box-hover {
-	.project-delete-confirm {
+//-------------- Project Iteration Box ------------
+.project-for-iteration-box {
+	@extend .project-box;
+}
+
+.iteration-box {
+	@extend .project-box;
+	background-color: $iteration-bg;
+
+	span {
+		color: $white!important;
+	}
+
+	&:hover {
+		.iteration-delete {
+			opacity: 1;
+		}
+	}
+
+	.iteration-delete-confirm {
+		display: none;
+	}
+}
+
+//---- Project, Iteration and Defect Hover Box ----
+.project-box-hover,
+.iteration-box-hover {
+	.project-delete-confirm,
+	.iteration-delete-confirm {
 		width: calc(100% + 5px);
 		height: 100%;
-		display: inline;
+		display: inline!important;
 		position: absolute;
 		left: -5px;
 		background-color: rgba($black, 0.7);
@@ -141,23 +169,9 @@
 		}
 	}
 
-	.project-delete {
+	.project-delete,
+	.iteration-delete {
 		opacity: 1;
-	}
-}
-
-
-//-------------- Project Iteration Box ------------
-.project-for-iteration-box {
-	@extend .project-box;
-}
-
-.iteration-box {
-	@extend .project-box;
-	background-color: #c3ccd8;
-
-	span {
-		color: $white!important;
 	}
 }
 
