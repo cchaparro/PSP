@@ -10,7 +10,15 @@
 	{{#each alluserDefects}}
 		<div class="defect-box">
 			<div class="defect-delete">
-				<i class="fa fa-times"></i>
+				{{#if isHovered}}
+					<i class="fa fa-arrow-left"></i>
+				{{else}}
+					<i class="fa fa-times"></i>
+				{{/if}}
+			</div>
+			<div class="defect-delete-confirm">
+				<p>Estas seguro?</p>
+				<span class="btn confirm-delete">Eliminar Defecto</span>
 			</div>
 			<div class="defect-content">
 				<h3>Defect</h3>

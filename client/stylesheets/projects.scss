@@ -134,9 +134,11 @@
 
 //---- Project, Iteration and Defect Hover Box ----
 .project-box-hover,
-.iteration-box-hover {
+.iteration-box-hover,
+.defect-box-hover {
 	.project-delete-confirm,
-	.iteration-delete-confirm {
+	.iteration-delete-confirm,
+	.defect-delete-confirm {
 		width: calc(100% + 5px);
 		height: 100%;
 		display: inline!important;
@@ -170,7 +172,8 @@
 	}
 
 	.project-delete,
-	.iteration-delete {
+	.iteration-delete,
+	.defect-delete {
 		opacity: 1;
 	}
 }
@@ -330,6 +333,10 @@
 		.defect-delete {
 			opacity: 1;
 		}
+	}
+
+	.defect-delete-confirm {
+		display: none;
 	}
 
 }

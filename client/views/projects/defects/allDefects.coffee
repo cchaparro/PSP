@@ -1,4 +1,9 @@
 ##########################################
+Template.defectsTemplate.onCreated () ->
+	document.title = "Defects Log"
+	@hoveredDefect = new ReactiveVar(false)
+
+
 Template.defectsTemplate.helpers
 	alluserDefects: () ->
 		return db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})
@@ -10,6 +15,9 @@ Template.defectsTemplate.helpers
 	defectDescription: () ->
 		return sys.cutText(@description, 75, " ...")
 
+	isHovered: () ->
+		return Template.instance().hoveredDefect.get() == @_id
+
 Template.defectsTemplate.events
 	'click .btn-create-defect': (e,t) ->
 		Modal.show('createDefectModal')
@@ -18,8 +26,16 @@ Template.defectsTemplate.events
 		data = @
 		Modal.show('createDefectModal', data)
 
-	'click .defect-delete': (e,t) ->
-		console.log @
+	'click .fa-times': (e,t) ->
+		t.hoveredDefect.set(@_id)
+		$(".defect-box").removeClass("defect-box-hover")
+		t.$(e.target).closest(".defect-box").addClass("defect-box-hover")
+
+	'click .fa-arrow-left': (e,t) ->
+		t.hoveredDefect.set(false)
+		$(".defect-box").removeClass("defect-box-hover")
+
+	'click .confirm-delete': (e,t) ->
 		Meteor.call "delete_defect", @_id, (error) ->
 			if error
 				console.log "Error deleting a defect"
