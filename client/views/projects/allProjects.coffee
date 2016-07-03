@@ -19,6 +19,10 @@ Template.projectsTemplate.helpers
 	isHovered: () ->
 		return Template.instance().hoveredProject.get() == @_id
 
+	amountProjects: () ->
+		projects = db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}})
+		return projects.count() != 0
+
 
 Template.projectsTemplate.events
 	'click .fa-times': (e,t) ->

@@ -1,6 +1,12 @@
 <!-- ###################################### -->
 <template name="projectsTemplate">
 	{{> allProjectsBar}}
+	{{#unless amountProjects}}
+		<div class="empty-data-box">
+			<h3>No has creado ningun proyecto aun.</h3>
+			<span>Para crear un nuevo proyecto debes dar click en el botón verde superior.</span>
+		</div>
+	{{/unless}}
 	<div class="allprojects-container">
 		{{#each allProjects}}
 			<div class="project-box">

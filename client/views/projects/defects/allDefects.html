@@ -1,24 +1,27 @@
 <!-- ###################################### -->
 <template name="defectsTemplate">
 	{{> defectsBar}}
-		{{#unless amountDefects}}
-			<p>Aun no has creado ningun defecto.</p>
-		{{/unless}}
-		{{#each alluserDefects}}
-			<div class="defect-box">
-				<div class="defect-delete">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="defect-content">
-					<h3>Defect</h3>
-					<span>{{description}}</span>
-					<p>Injectado: <span>{{injected}}</span></p>
-					<p>Removido: <span>{{removed}}</span></p>
-					<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
-					<span class="defect-time-text">{{timeFormat time}}</span>
-				</div>
+	{{#unless amountDefects}}
+		<div class="empty-data-box">
+			<h3>No has creado ningun defecto aun.</h3>
+			<span>Para crear un nuevo defecto debes dar click en el botón verde superior.</span>
+		</div>
+	{{/unless}}
+	{{#each alluserDefects}}
+		<div class="defect-box">
+			<div class="defect-delete">
+				<i class="fa fa-times"></i>
 			</div>
-		{{/each}}
+			<div class="defect-content">
+				<h3>Defect</h3>
+				<span>{{description}}</span>
+				<p>Injectado: <span>{{injected}}</span></p>
+				<p>Removido: <span>{{removed}}</span></p>
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
+				<span class="defect-time-text">{{timeFormat time}}</span>
+			</div>
+		</div>
+	{{/each}}
 </template>
 <!-- ###################################### -->
 <template name="defectsBar">
