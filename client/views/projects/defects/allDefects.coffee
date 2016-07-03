@@ -13,7 +13,7 @@ Template.defectsTemplate.helpers
 		return defects.count() != 0
 
 	defectDescription: () ->
-		return sys.cutText(@description, 75, " ...")
+		return sys.cutText(@description, 75, " ...") or "" if @description
 
 	isHovered: () ->
 		return Template.instance().hoveredDefect.get() == @_id

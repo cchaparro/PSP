@@ -72,4 +72,32 @@
 		background-color: $success-hover;
 	}
 }
+
+//-------------- Create Defect Modal -------------
+.defect-create-son {
+	width: 100%;
+	background-color: $main-text-color;
+	color: $white;
+
+	&:hover {
+		color: $white;
+	}
+}
+
+.defect-time {
+	padding-bottom: 10px;
+	padding-right: 0;
+	i {
+		margin-top: 0;
+		margin-right: 5px;
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	span {
+		line-height: 35px;
+	}
+}
 //------------------------------------------------
