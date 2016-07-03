@@ -7,6 +7,9 @@ Template.defectsTemplate.helpers
 		defects = db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})
 		return defects.count() != 0
 
+	defectDescription: () ->
+		return sys.cutText(@description, 75, " ...")
+
 Template.defectsTemplate.events
 	'click .btn-create-defect': (e,t) ->
 		Modal.show('createDefectModal')

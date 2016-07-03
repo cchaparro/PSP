@@ -275,6 +275,7 @@
 
 		h3 {
 			margin: 0;
+			display: block;
 			font-size: 13pt;
 			padding-top: 10px;
 			padding-bottom: 5px;
@@ -286,11 +287,18 @@
 			width: 100%;
 		}
 
+		.defect-content-stage {
+			padding-top: 10px;
+			position: absolute;
+			bottom: 37px;
+		}
+
 		svg {
 			width: 17px;
 			height: 17px;
 			position: absolute;
 			bottom: 10px;
+			left: 10px;
 			fill: $main-text-color;
 		}
 

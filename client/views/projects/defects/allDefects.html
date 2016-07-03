@@ -14,9 +14,11 @@
 			</div>
 			<div class="defect-content">
 				<h3>Defect</h3>
-				<span>{{description}}</span>
-				<p>Injectado: <span>{{injected}}</span></p>
-				<p>Removido: <span>{{removed}}</span></p>
+				<span>{{defectDescription}}</span>
+				<div class="defect-content-stage">
+					<p>Injectado: <span>{{injected}}</span></p>
+					<p>Removido: <span>{{removed}}</span></p>
+				</div>
 				<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
 				<span class="defect-time-text">{{timeFormat time}}</span>
 			</div>

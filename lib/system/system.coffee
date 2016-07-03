@@ -88,6 +88,23 @@ sys.flashError = () ->
 	window.setTimeout sys.removeMessage, 1500
 
 ##########################################
+###############- Cut Text -###############
+
+sys.cutText = (text, limit, closing) ->
+	text = text.replace(/ +(?= )/g,'');
+
+	if text.length < limit
+		return text
+
+	cutat = text.lastIndexOf(' ', limit)
+
+	unless cutat == -1
+		text = text.substring(0, cutat) + closing
+
+	if text.length > limit + closing.length
+		text = text.substring(0, limit) + closing
+
+	return text
 
 ##########################################
 
