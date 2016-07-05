@@ -1,4 +1,34 @@
 ##########################################
+drawProjectInfoChart = () ->
+	projectStages = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())?.timeEstimated
+	colors = Meteor.settings.public.chartColors
+
+	data = []
+	color_position = 0
+	_.each projectStages, (stage) ->
+		juan = {}
+		juan['value']= stage.time
+		juan['label']= stage.name
+		juan['color']= colors[color_position]
+		data.push(juan)
+		color_position += 1
+
+	# {
+	# 	value: 10
+	# 	color: '#094074'
+	# 	highlight: '#094074'
+	# 	label: 'Planeación'
+	# }
+
+	ctx = $('#projectInformationChart').get(0).getContext('2d')
+	myNewChart = new Chart(ctx)
+	new Chart(ctx).Pie(data)
+
+##########################################
+Template.projectInformationChart.onRendered () ->
+	drawProjectInfoChart()
+
+##########################################
 Template.projectInformationTemplate.onCreated () ->
 	@informationState = new ReactiveVar(false)
 
