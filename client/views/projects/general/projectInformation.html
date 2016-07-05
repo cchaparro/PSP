@@ -11,10 +11,12 @@
 				<i class="fa fa-circle"></i>
 			</div>
 			<span class="prj-info-text">Titulo del proyecto</span>
-			<h3 class="prj-info-title" contenteditable="true">{{title}}</h3>
+			{{{contentEditable class='prj-info-title' value=title}}}
 			<span class="prj-info-text">Descripción del proyecto</span>
-			<p class="prj-info-description" contenteditable="true">{{description}}</p>
+			{{{contentEditable class='prj-info-description' value=description}}}
 		</div>
+
+		{{> projectInformationChart}}
 
 		<div class="prj-review-box">
 			<div>
@@ -31,3 +33,9 @@
 	{{/with}}
 </template>
 <!-- ###################################### -->
+<template name="projectInformationChart">
+	<div class="prj-general-chart-box">
+		<span>Estado Actual del Proyecto</span>
+		<canvas id="projectInformationChart" height="90" width="90"></canvas>
+	</div>
+</template>

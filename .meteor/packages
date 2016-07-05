@@ -30,3 +30,4 @@ accounts-password							# User Accounts package
 fortawesome:fontawesome					# Font Awesome icons
 peppelg:bootstrap-3-modal				# This brings the option of using well made modals
 meteortoys:allthings						# Package of Meteor Toys
+chart:chart									# Package for using charts

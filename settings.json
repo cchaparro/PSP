@@ -163,6 +163,16 @@
 				"name": "Ambiente",
 				"description": "Estos son los errores en el diseño, compilación, pruebas o problemas de soporte del sistema."
 			}
+		],
+		"chartColors": [
+			"#3D52D5",
+			"#B4C5E4",
+			"#7A7D7D",
+			"#5D737E",
+			"#B7D3F2",
+			"#23B5D3",
+			"#C1CAD6",
+			"#56CBF9"
 		]
 	}
 }

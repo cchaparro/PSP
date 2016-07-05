@@ -31,7 +31,8 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6">
-				<input type="date" class="psp-input new-defect-date" placeholder="Fecha">
+				<input type="number" min="1" value="{{defectData.fixCount}}" class="psp-input create-defect-fix-count" placeholder="Conteo de Correcciones">
+				<!-- <input type="date" class="psp-input new-defect-date" placeholder="Fecha"> -->
 			</div>
 		</div>
 
@@ -59,23 +60,13 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div class="col-xs-12 col-sm-12 col-md-12">
-					<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
-					<i class="fa fa-pause time-btn {{#if $not timeStatus}} time-status-pause {{/if}}"></i>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6">
-				<input type="number" min="1" value="{{defectData.fixCount}}" class="psp-input create-defect-fix-count" placeholder="Conteo de Correcciones">
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-6 col-sm-6 col-md-6">
+			<div class="col-xs-12 col-sm-6 col-md-6 defect-time">
+				<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
+				<i class="fa fa-pause time-btn {{#if $not timeStatus}} time-status-pause {{/if}}"></i>
 				<span class="defect-log-time">{{projectTotalTime}}</span>
 			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6">
-				<div class="btn defect-create-son defect-son">Crear Defecto</div>
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="btn defect-create-son">Crear Defecto</div>
 			</div>
 		</div>
 

@@ -188,7 +188,7 @@ Template.createDefect.events
 					else
 						t.timeStarted.set(0)
 
-	'click .defect-son': (e,t) ->
+	'click .defect-create-son': (e,t) ->
 		TimeStarted = t.timeStarted.get()
 		unless TimeStarted == 0
 			date = $('.new-defect-date').val()

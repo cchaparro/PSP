@@ -54,6 +54,12 @@ sys.minutesToTime = (time) ->
 sys.timeToMinutes = (time) ->
 	return Math.floor(time / 60000)
 
+sys.planSummaryTime = (time) ->
+	minutos = Math.floor(time / 60000)
+	time = time % 60000
+	segundos = Math.floor(time / 1000)
+	return minutos + ":" + segundos
+
 ##########################################
 #############- Date Display -#############
 sys.dateDisplay = (time) ->
@@ -82,6 +88,23 @@ sys.flashError = () ->
 	window.setTimeout sys.removeMessage, 1500
 
 ##########################################
+###############- Cut Text -###############
+
+sys.cutText = (text, limit, closing) ->
+	text = text.replace(/ +(?= )/g,'');
+
+	if text.length < limit
+		return text
+
+	cutat = text.lastIndexOf(' ', limit)
+
+	unless cutat == -1
+		text = text.substring(0, cutat) + closing
+
+	if text.length > limit + closing.length
+		text = text.substring(0, limit) + closing
+
+	return text
 
 ##########################################
 

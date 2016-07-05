@@ -1,29 +1,37 @@
 <!-- ###################################### -->
 <template name="defectsTemplate">
 	{{> defectsBar}}
-		{{#each alluserDefects}}
-			<div class="defect-box">
-				<div class="defect-content">
-					<h3>Defect</h3>
-					<span>{{description}}</span>
-					<div class="defect-content-fase clearfix">
-						<div>
-							<p>Inyectado</p>
-							<span>{{injected}}</span>
-						</div>
-						<div>
-							<p>Removido</p>
-							<span>{{removed}}</span>
-						</div>
-					</div>
-				</div>
-				<div class="defect-menu">
-					<div class="defect-menu-section">{{timeFormat time}}</div>
-					<div class="defect-menu-section"></div>
-					<div class="defect-menu-section"></div>
-				</div>
+	{{#unless amountDefects}}
+		<div class="empty-data-box">
+			<h3>No has creado ningun defecto aun.</h3>
+			<span>Para crear un nuevo defecto debes dar click en el botón verde superior.</span>
+		</div>
+	{{/unless}}
+	{{#each alluserDefects}}
+		<div class="defect-box">
+			<div class="defect-delete">
+				{{#if isHovered}}
+					<i class="fa fa-arrow-left"></i>
+				{{else}}
+					<i class="fa fa-times"></i>
+				{{/if}}
 			</div>
-		{{/each}}
+			<div class="defect-delete-confirm">
+				<p>Estas seguro?</p>
+				<span class="btn confirm-delete">Eliminar Defecto</span>
+			</div>
+			<div class="defect-content">
+				<h3>Defect</h3>
+				<span>{{defectDescription}}</span>
+				<div class="defect-content-stage">
+					<p>Injectado: <span>{{injected}}</span></p>
+					<p>Removido: <span>{{removed}}</span></p>
+				</div>
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
+				<span class="defect-time-text">{{timeFormat time}}</span>
+			</div>
+		</div>
+	{{/each}}
 </template>
 <!-- ###################################### -->
 <template name="defectsBar">

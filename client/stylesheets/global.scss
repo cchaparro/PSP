@@ -168,9 +168,17 @@
 		position: absolute;
 		top: 5px;
 		right: 5px;
-		color: $input-border;
-		padding: 7.5px 10px;
-		border-radius: 4px;
+		background-color: $input-border;
+		color: $white;
+		font-size: 10pt;
+		padding: 8px 6px;
+		border-radius: $default-border-radius;
+	}
+
+	&:focus {
+		i {
+			background-color: $main-text-color;
+		}
 	}
 }
 

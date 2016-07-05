@@ -31,6 +31,10 @@
 		text-decoration: none;
 	}
 
+	.project-delete-confirm {
+		display: none;
+	}
+
 	.project-content {
 		width: 100%;
 		height: 100%;
@@ -75,7 +79,9 @@
 	color: $danger;
 }
 
-.project-delete {
+.project-delete,
+.iteration-delete,
+.defect-delete {
 	width: 40px;
 	height: 40px;
 	position: absolute;
@@ -90,26 +96,17 @@
 
 
 	.fa-times {
-		margin-top: 10px;
+		padding: 10px 11px;
 		font-size: 15pt;
 		color: $danger;
 	}
+
+	.fa-arrow-left {
+		padding: 10px 11px;
+		font-size: 15pt;
+		color: rgba($black, 0.7);
+	}
 }
-
-// .project-delete-confirm {
-// 	width: 100%;
-// 	height: 100%;
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	background-color: rgba(black, 0.7);
-// 	z-index: 2;
-
-// 	.btn {
-// 		background-color: $success;
-// 		color: $white;
-// 	}
-// }
 
 //-------------- Project Iteration Box ------------
 .project-for-iteration-box {
@@ -118,10 +115,66 @@
 
 .iteration-box {
 	@extend .project-box;
-	background-color: #c3ccd8;
+	background-color: $iteration-bg;
 
 	span {
 		color: $white!important;
+	}
+
+	&:hover {
+		.iteration-delete {
+			opacity: 1;
+		}
+	}
+
+	.iteration-delete-confirm {
+		display: none;
+	}
+}
+
+//---- Project, Iteration and Defect Hover Box ----
+.project-box-hover,
+.iteration-box-hover,
+.defect-box-hover {
+	.project-delete-confirm,
+	.iteration-delete-confirm,
+	.defect-delete-confirm {
+		width: calc(100% + 5px);
+		height: 100%;
+		display: inline!important;
+		position: absolute;
+		left: -5px;
+		background-color: rgba($black, 0.7);
+		border-top-right-radius: $default-border-radius;
+		border-bottom-right-radius: $default-border-radius;
+		z-index: 2;
+		color: $white;
+
+		p {
+			font-size: 12pt;
+			text-align: center;
+			width: 100%;
+			padding-top: 30px;
+		}
+
+		.btn {
+			background-color: $danger;
+			position: absolute;
+			left: calc(50% - 70px);
+			bottom: 45px;
+			padding: 10px 15px;
+
+			&:hover {
+				color: $white;
+				background-color: $danger-hover;
+			}
+		}
+	}
+
+	.project-delete,
+	.iteration-delete,
+	.defect-delete {
+		opacity: 1;
 	}
 }
 
@@ -199,62 +252,91 @@
 
 //----------------- All Defects View --------------
 .defect-box {
-	height: 220px;
-	width: 400px;
+	height: 160px;
+	width: 23%;
+	min-width: 265px;
+	max-width: 340px;
 	position: relative;
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-bottom: 10px;
 	display: inline-block;
-	padding: 0 20px;
-	border: 1px solid $border;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	float: left;
 	background-color: $white;
-	text-align: center;
+	border-left: 5px solid $pj-color-1;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 	cursor: pointer;
-	@include border-radius($default-border-radius);
+	z-index: 1;
 
 	.defect-content {
+		width: 100%;
+		height: 100%;
+		float: left;
+
 		h3 {
-			font-size: 14pt;
+			margin: 0;
+			display: block;
+			font-size: 13pt;
+			padding-top: 10px;
+			padding-bottom: 5px;
 			font-weight: 700;
+			color: $main-title-color;
 		}
 
 		span {
-			word-wrap: break-word;
+			width: 100%;
 		}
 
-		.defect-content-fase {
-			margin-top: 15px;
-			border: 1px solid $border;
-			@include border-radius($default-border-radius);
+		.defect-content-stage {
+			padding-top: 10px;
+			position: absolute;
+			bottom: 37px;
+		}
 
-			div {
-				width: 50%;
-				display: inline-block;
-				float: left;
+		svg {
+			width: 17px;
+			height: 17px;
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			fill: $main-text-color;
+		}
 
-				&:first-child {
-					border-right: 1px solid $border;
-				}
+		.defect-time-text {
+			position: absolute;
+			bottom: 8px;
+			left: 35px;
+			padding-top: 5px;
+		}
 
-				p {
-					font-weight: 700;
-					text-align: center;
-					font-size: 12pt;
-					margin: 0 auto;
-					width: 100%;
-				}
+		p {
+			font-weight: 700;
+			margin: 0;
+
+			span {
+				font-weight: 300;
 			}
+		}
+
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	&:hover {
+		@include box-shadow($default-box-shadow);
+
+		.defect-delete {
+			opacity: 1;
 		}
 	}
 
-	.defect-menu {
-		width: 100%;
-		height: 50px;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		border-top: 1px solid $border;
+	.defect-delete-confirm {
+		display: none;
 	}
 
 }
@@ -374,12 +456,23 @@
 	border-bottom-right-radius: $default-border-radius;
 	word-wrap: break-word;
 
-	h3 {
+	svg {
+		width: 20px;
+		height: 20px;
+		fill: $main-text-color;
+		float: right;
+		margin-right: 115px;
+		margin-top: 25px;
+		cursor: pointer;
+	}
+
+	.prj-info-title {
 		margin: 0;
 		margin-bottom: 3px;
 		padding: 2px 0 2px 10px;
-		margin: 0 120px 0 20px;
+		margin: 0 155px 0 20px;
 		font-weight: 700;
+		font-size: 18pt;
 		color: $main-title-color;
 
 
@@ -398,7 +491,7 @@
 
 	}
 
-	p {
+	.prj-info-description {
 		margin: 0 20px;
 		font-size: 12pt;
 		padding-left: 10px;
@@ -429,11 +522,37 @@
 	cursor: default;
 }
 
+.prj-general-chart-box {
+	width: calc(50% - 10px);
+	height: 230px ;
+	position: relative;
+	margin-top: 20px;
+	background-color: $white;
+	display: inline-block;
+	float: left;
+	border-left: 5px solid $pj-color-1;
+	border-top-right-radius: $default-border-radius;
+	border-bottom-right-radius: $default-border-radius;
+	text-align: center;
+	padding-top: 10px;
+
+	span {
+		color: $input-empty-text;
+		display: block;
+		padding-bottom: 10px;
+		padding-left: 20px;
+		text-align: left;
+		cursor: default;
+	}
+
+}
+
 // This is the box that has the total time and
 // creation date of a project
 .prj-review-box {
-	width: 100%;
-	height: 100px ;
+	width: calc(50% - 10px);
+	height: 230px ;
+	float: right;
 	position: relative;
 	margin-top: 20px;
 	background-color: $white;
@@ -443,26 +562,26 @@
 	border-bottom-right-radius: $default-border-radius;
 
 	div {
-		width: 50%;
-		height: 100%;
+		width: 100%;
+		height: 50%;
 		float: right;
 		position: relative;
 
 		&:first-child {
-			border-right: 1px solid $border;
+			border-bottom: 1px solid $border;
 			float: left;
 		}
 
 		svg {
 			width: 30px;
 			height: 30px;
-			margin: 35px 20px 35px 30px;
+			margin: 42px 20px 42px 30px;
 			float: left;
 		}
 
 		span {
 			display: inline-block;
-			padding-top: 30px;
+			padding-top: 35px;
 			font-weight: 700;
 			font-size: 13pt;
 		}
@@ -472,4 +591,69 @@
 		}
 	}
 }
+
+//----------- Project Plan Summary View ----------
+.plan_summary-box {
+	background-color: $white;
+	border: 1px solid $border;
+	@include border-radius($default-border-radius);
+
+	h3 {
+		font-size: 13pt;
+		padding-left: 20px;
+		padding-bottom: 10px;
+	}
+
+	.table-summary {
+		border: 0;
+		width: 100%;
+		table-layout: fixed;
+		thead {
+			border-bottom: 1px solid $border;
+			border-top: 1px solid $border;
+			color: $table-title-color;
+
+			& > tr > th {
+				border: 0;
+				font-weight: 300;
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+
+			}
+		}
+
+		tbody > tr > td {
+			vertical-align: middle;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			text-align: center;
+			cursor: default;
+		}
+
+	}
+}
+//----------- No Data Notification Box -----------
+.empty-data-box {
+	width: 100%;
+	background-color: $white;
+	border: 2px dashed $border;
+	text-align: center;
+
+	h3 {
+		display: block;
+		margin: 0;
+		padding-bottom: 5px;
+		padding-top: 40px;
+		font-size: 13pt;
+		color: $main-title-color;
+	}
+
+	span {
+		display: block;
+		color: $main-text-color;
+		padding-bottom: 40px;
+	}
+}
+
 //------------------------------------------------

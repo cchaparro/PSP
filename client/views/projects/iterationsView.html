@@ -32,12 +32,17 @@
 <!-- ###################################### -->
 <template name="projectIterationBox">
 	<div class="iteration-box">
-		<div class="project-delete">
-			<i class="fa fa-times"></i>
+		<div class="iteration-delete">
+			{{#if isHovered}}
+				<i class="fa fa-arrow-left"></i>
+			{{else}}
+				<i class="fa fa-times"></i>
+			{{/if}}
 		</div>
-		<!-- <div class="project-delete-confirm">
-			<span class="btn btn-sucess">Eliminar Proyecto</span>
-		</div> -->
+		<div class="iteration-delete-confirm">
+			<p>Estas seguro?</p>
+			<span class="btn confirm-delete">Eliminar Iteración</span>
+		</div>
 		<a href="{{pathFor 'projectView' fid=parentId id=_id}}">
 			<div class="project-content">
 				<h3>{{title}}</h3>

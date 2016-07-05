@@ -14,6 +14,8 @@ Template.summaryTimeRow.helpers
 
 		return final
 
+	planSummaryTime: (time) ->
+		return sys.planSummaryTime(time)
 
 
 Template.summaryTimeRow.events
