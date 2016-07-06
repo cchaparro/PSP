@@ -15,10 +15,10 @@ FlowRouter.route '/',
 		BlazeLayout.render 'masterLayout', main: 'projectsTemplate'
 	name: 'main'
 
-FlowRouter.route '/notifications',
+FlowRouter.route '/overview',
 	action: ->
-		BlazeLayout.render 'masterLayout', main: 'notificationsTemplate'
-	name: 'notifications'
+		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
+	name: 'overview'
 
 FlowRouter.route '/settings',
 	action: ->

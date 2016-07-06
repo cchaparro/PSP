@@ -29,8 +29,8 @@ sys.displayTime = (time) ->
 sys.getPageName = (title) ->
 	if title == "main" or title == "iterationView" or title == "projectView"
 		return "Proyectos"
-	else if title == "notifications"
-		return "Notificaciones"
+	else if title == "overview"
+		return "Resumen"
 	else if title == "settings"
 		return "Ajustes"
 	else if title == "help"

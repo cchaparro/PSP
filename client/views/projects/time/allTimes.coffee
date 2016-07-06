@@ -1,4 +1,7 @@
 ##########################################
+Template.timeTemplate.onCreated () ->
+	document.title = "Time Log"
+
 Template.timeTemplate.helpers
 	projectStages:() ->
 		pid = FlowRouter.getParam("id")

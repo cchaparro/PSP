@@ -26,12 +26,15 @@ drawProjectInfoChart = () ->
 
 ##########################################
 Template.projectInformationChart.onRendered () ->
-	drawProjectInfoChart()
+	Tracker.autorun () ->
+		if FlowRouter.current().route.name == 'projectView'
+			console.log "Just Rendered drawProjectInfoChart()"
+			drawProjectInfoChart()
 
 ##########################################
 Template.projectInformationTemplate.onCreated () ->
 	@informationState = new ReactiveVar(false)
-
+	document.title = "Proyecto"
 
 Template.projectInformationTemplate.helpers
 	projectInfo: () ->
