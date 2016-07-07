@@ -100,8 +100,6 @@ Template.createDefect.events
 		t.defect.set(Defect)
 
 	'click .pry-modal-create': (e,t) ->
-		date = $('.new-defect-date').val()
-		projectId = FlowRouter.getParam("id")
 		DefectId = t.defectId.get()
 		TimeStarted = t.timeStarted.get()
 		Defect = t.defect.get()
@@ -112,11 +110,21 @@ Template.createDefect.events
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
 
+		data = {
+			"defectOwner": Meteor.userId()
+			"projectId": FlowRouter.getParam("id")
+			"createdAt": new Date()
+			"time": totalTime
+			"created": true
+		}
+		data = _.extend Defect, data
+
 		if !(Defect.description!= '') or (Defect.typeDefect == "Tipo de defecto") or (Defect.injected == "Inyectado") or (Defect.removed == "Removido")
 			t.errorState.set(1)
 
-		else if (DefectId!= '')
-			Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, true, (error) ->
+		else if DefectId!= ''
+			console.log "Di cick a guardar a un proyecto que ya existia"
+			Meteor.call "update_defect", DefectId, data, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error updating a Defect"
@@ -126,7 +134,8 @@ Template.createDefect.events
 					Modal.hide('createDefectModal')
 					sys.flashSuccess()
 		else
-			Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, parseInt(totalTime), true, (error) ->
+			console.log "Creando proyecto nuevo y la di guardar directo sin click en play/pause"
+			Meteor.call "create_defect", data, "juan Pablo", (error) ->
 				if error
 					sys.flashError()
 					console.log "Error creating a new defect"
@@ -144,19 +153,28 @@ Template.createDefect.events
 
 	'click .fa-pause': (e,t) ->
 		DefectId = t.defectId.get()
+		Defect = t.defect.get()
 		TimeStarted = t.timeStarted.get()
 
 		unless TimeStarted == 0
-			date = $('.new-defect-date').val()
-			projectId = FlowRouter.getParam("id")
-			Defect = t.defect.get()
-
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
 			t.timeStatus.set(false)
 
-			if (DefectId!= '')
-				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
+			data = {
+				"defectOwner": Meteor.userId()
+				"projectId": FlowRouter.getParam("id")
+				"createdAt": new Date()
+				"time": totalTime
+			}
+			data = _.extend Defect, data
+
+			unless data.created
+				data.created = false
+
+			if DefectId!= ''
+				console.log "Cuando das play y pause cuando abriste un proyecto"
+				Meteor.call "update_defect", DefectId, data, (error) ->
 					if error
 						sys.flashError()
 						console.log "Error updating a existing Defect"
@@ -165,7 +183,8 @@ Template.createDefect.events
 						t.timeStarted.set(0)
 
 			else
-				Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, totalTime, (error, result) ->
+				console.log "Nuevo defecto das click play y luego pause " + DefectId
+				Meteor.call "create_defect", data, (error, result) ->
 					t.defectId.set(result)
 					if error
 						sys.flashError()
@@ -173,11 +192,10 @@ Template.createDefect.events
 					else
 						t.timeStarted.set(0)
 
+
 	'click .defect-create-son': (e,t) ->
 		TimeStarted = t.timeStarted.get()
 		unless TimeStarted == 0
-			date = $('.new-defect-date').val()
-			projectId = FlowRouter.getParam("id")
 			DefectId = t.defectId.get()
 			Defect = t.defect.get()
 
@@ -185,8 +203,16 @@ Template.createDefect.events
 			totalTime = parseInt(totalTime)
 			t.timeStatus.set(false)
 
-			if (DefectId!= '')
-				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
+			data = {
+				"defectOwner": Meteor.userId()
+				"projectId": FlowRouter.getParam("id")
+				"createdAt": new Date()
+				"time": totalTime
+			}
+			data = _.extend Defect, data
+
+			if DefectId!= ''
+				Meteor.call "update_defect", DefectId, data, (error) ->
 					if error
 						sys.flashError()
 						console.log "Error updating the son Defect"

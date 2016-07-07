@@ -1,46 +1,17 @@
 ##########################################
 Meteor.methods
-	create_defect: (uid, pid, date, Defect, time, create) ->
-		if date?
-			date = new Date()
-
-		db.defects.insert({
-			"defectOwner": uid
-			"projectId": pid
-			"createdAt": date
-			"typeDefect": Defect.typeDefect
-			"injected": Defect.injected
-			"removed": Defect.removed
-			"fixCount": Defect.fixCount
-			"description": Defect.description
-			"time": time
-			"parentId": Defect.parentId
-			"created": create
-		})
+	create_defect: (data) ->
+		db.defects.insert(data)
+		#if delete_values
+		#	console.log data.projectId
+		#	db.defects.remove({_id: "diKYSG8EQ5fJkjsWu"})
 
 
-	update_defect: (did, uid, pid, date, Defect, time, create) ->
-
+	update_defect: (did, data, delete_values=false) ->
 		defect = db.defects.findOne({_id: did}).time
-		time = defect + time
+		data.time = defect + data.time
 
-		if date?
-			date = new Date()
-
-		db.defects.update({_id: did}, {$set: {
-			"defectOwner": uid
-			"projectId": pid
-			"date": date
-			"typeDefect": Defect.typeDefect
-			"injected": Defect.injected
-			"removed": Defect.removed
-			"fixCount": Defect.fixCount
-			"description": Defect.description
-			"lastModified": new Date()
-			"time": time
-			"parentId": Defect.parentId
-			"created": create
-		}})
+		db.defects.update({_id: did}, {$set: data})
 
 
 	delete_defect: (defectId) ->
