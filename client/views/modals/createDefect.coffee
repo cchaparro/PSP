@@ -10,11 +10,18 @@ Template.createDefect.onCreated () ->
 	@errorState = new ReactiveVar(0)
 
 	if @data
-		Template.instance().defectId.set(@.data._id)
+		Template.instance().defectId.set(@data._id)
 		Template.instance().defectState.set(1)
 		Template.instance().defect.set(@data)
 	else
-		Template.instance().defect.set(Meteor.settings.public.defectTemplate)
+		Template.instance().defect.set({
+			"typeDefect":"Tipo de defecto"
+			"injected":"Inyectado"
+			"removed":"Removido"
+			"fixCount": "1"
+			"description": ""
+			"parentId": ""
+		})
 
 
 Template.createDefect.helpers
@@ -189,10 +196,14 @@ Template.createDefect.events
 						sys.flashSuccess()
 
 		t.defectState.set(0)
-		defectTemplate = Meteor.settings.public.defectTemplate
-		defectTemplate.parentId = t.defectId.get()
-
-		t.defect.set(defectTemplate)
+		t.defect.set({
+			"typeDefect":"Tipo de defecto"
+			"injected":"Inyectado"
+			"removed":"Removido"
+			"fixCount": "1"
+			"description": ""
+			"parentId": t.defectId.get()
+		})
 		t.defectId.set('')
 
 # ##########################################

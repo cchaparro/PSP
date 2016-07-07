@@ -173,15 +173,7 @@
 			"#23B5D3",
 			"#C1CAD6",
 			"#56CBF9"
-		],
-		"defectTemplate": {
-			"typeDefect":"Tipo de defecto",
-			"injected":"Inyectado",
-			"removed":"Removido",
-			"fixCount": "1",
-			"description": "",
-			"parentId": ""
-		}
+		]
 
 	}
 }
