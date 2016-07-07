@@ -9,26 +9,13 @@ Template.createDefect.onCreated () ->
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
 
-	if @.data
+	if @data
 		Template.instance().defectId.set(@.data._id)
 		Template.instance().defectState.set(1)
-		Template.instance().defect.set({
-			"typeDefect": @.data.typeDefect
-			"injected": @.data.injected
-			"removed": @.data.removed
-			"fixCount": @.data.fixCount
-			"description": @.data.description
-			"parentId": ""
-		})
+		Template.instance().defect.set(@data)
 	else
-		Template.instance().defect.set({
-			"typeDefect":"Tipo de defecto"
-			"injected":"Inyectado"
-			"removed":"Removido"
-			"fixCount": "1"
-			"description": ""
-			"parentId": ""
-		})
+		Template.instance().defect.set(Meteor.settings.public.defectTemplate)
+
 
 Template.createDefect.helpers
 	allDefectTypes: () ->
@@ -195,21 +182,17 @@ Template.createDefect.events
 				Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
 					if error
 						sys.flashError()
-						console.log "Error updating the sonf Defect"
+						console.log "Error updating the son Defect"
 						console.warn(error)
 					else
 						t.timeStarted.set(0)
 						sys.flashSuccess()
 
 		t.defectState.set(0)
-		t.defect.set({
-			"typeDefect":"Tipo de defecto"
-			"injected":"Inyectado"
-			"removed":"Removido"
-			"fixCount": "1"
-			"description": ""
-			"parentId": t.defectId.get()
-		})
+		defectTemplate = Meteor.settings.public.defectTemplate
+		defectTemplate.parentId = t.defectId.get()
+
+		t.defect.set(defectTemplate)
 		t.defectId.set('')
 
 # ##########################################
