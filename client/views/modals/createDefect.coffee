@@ -124,7 +124,8 @@ Template.createDefect.events
 
 		else if DefectId!= ''
 			console.log "Di cick a guardar a un proyecto que ya existia"
-			Meteor.call "update_defect", DefectId, data, (error) ->
+			# The true in the update_defect is to delete al the defects with the value created: false
+			Meteor.call "update_defect", DefectId, data, true, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error updating a Defect"
@@ -135,7 +136,8 @@ Template.createDefect.events
 					sys.flashSuccess()
 		else
 			console.log "Creando proyecto nuevo y la di guardar directo sin click en play/pause"
-			Meteor.call "create_defect", data, "juan Pablo", (error) ->
+			# The true in the update_defect is to delete al the defects with the value created: false
+			Meteor.call "create_defect", data, true, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error creating a new defect"
@@ -183,14 +185,14 @@ Template.createDefect.events
 						t.timeStarted.set(0)
 
 			else
-				console.log "Nuevo defecto das click play y luego pause " + DefectId
+				console.log "Nuevo defecto das click play y luego pause"
 				Meteor.call "create_defect", data, (error, result) ->
-					t.defectId.set(result)
 					if error
 						sys.flashError()
 						console.log "Error creating a new defect"
 					else
 						t.timeStarted.set(0)
+						t.defectId.set(result)
 
 
 	'click .defect-create-son': (e,t) ->
