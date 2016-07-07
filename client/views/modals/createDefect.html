@@ -25,14 +25,13 @@
 					<button class="dropdown-toggle {{#if $and errorState ($eq defectData.typeDefect 'Tipo de defecto')}} psp-dropdown-error {{else}} psp-dropdown {{/if}} new-defect-type" type="button" data-toggle="dropdown"> {{defectData.typeDefect}}<span class="{{#if $neq defectData.typeDefect 'Tipo de defecto'}} hide {{/if}}">*</span><i class="fa fa-chevron-down"></i></button>
 					<ul class="dropdown-menu">
 						{{#each allDefectTypes}}
-							<li class="create-sel-defect-type" data-value="{{name}}">{{name}}</li>
+							<li class="defect-select-field" data-type="typeDefect" data-value="{{name}}">{{name}}</li>
 						{{/each}}
 					</ul>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6">
-				<input type="number" min="1" value="{{defectData.fixCount}}" class="psp-input create-defect-fix-count" placeholder="Conteo de Correcciones">
-				<!-- <input type="date" class="psp-input new-defect-date" placeholder="Fecha"> -->
+				<input type="number" min="1" value="{{defectData.fixCount}}" class="psp-input defect-input-field" data-field="fixCount" placeholder="Conteo de Correcciones">
 			</div>
 		</div>
 
@@ -42,7 +41,7 @@
 					<button class="dropdown-toggle {{#if $and errorState ($eq defectData.injected 'Inyectado')}}psp-dropdown-error {{else}} psp-dropdown {{/if}} new-defect-injected" type="button" data-toggle="dropdown"> {{defectData.injected}}<span class="{{#if $neq defectData.injected 'Inyectado'}} hide {{/if}}">*</span><i class="fa fa-chevron-down"></i></button>
 					<ul class="dropdown-menu">
 						{{#each injectedPhases}}
-							<li class="create-sel-defect-injected" data-value="{{name}}">{{name}}</li>
+							<li class="defect-select-field" data-type="injected" data-value="{{name}}">{{name}}</li>
 						{{/each}}
 					</ul>
 				</div>
@@ -53,7 +52,7 @@
 					<button class="dropdown-toggle {{#if $and errorState ($eq defectData.removed 'Removido')}} psp-dropdown-error {{else}} psp-dropdown {{/if}} new-defect-removed" type="button" data-toggle="dropdown"> {{defectData.removed}}<span class="{{#if $neq defectData.removed 'Removido'}} hide {{/if}}">*</span><i class="fa fa-chevron-down"></i></button>
 					<ul class="dropdown-menu">
 						{{#each removedPhases}}
-							<li class="create-sel-defect-removed" data-value="{{name}}">{{name}}</li>
+							<li class="defect-select-field" data-value="{{name}}">{{name}}</li>
 						{{/each}}
 					</ul>
 				</div>
@@ -70,7 +69,7 @@
 			</div>
 		</div>
 
-		<textarea type="text" class="{{#if $and errorState ($not descriptionText)}} psp-textarea-error {{else}} psp-textarea {{/if}} create-defect-description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
+		<textarea type="text" class="{{#if $and errorState ($not descriptionText)}} psp-textarea-error {{else}} psp-textarea {{/if}} defect-input-field" data-field="description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
 	</div>
 	<div class="modal-footer">
 		{{#if ifLoadsData}}

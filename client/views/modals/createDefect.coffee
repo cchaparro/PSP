@@ -83,35 +83,26 @@ Template.createDefect.helpers
 
 
 Template.createDefect.events
-	'click .create-sel-defect-type': (e,t) ->
-		type = $(e.target).data('value')
+	'click .defect-select-field': (e,t) ->
+		field = $(e.target).data('value')
+		type = $(e.target).data('type')
 		Defect = t.defect.get()
-		Defect.typeDefect = type
+
+		if type == "typeDefect"
+			Defect[type] = field
+		else if type == "injected"
+			Defect.injected = field
+			Defect.removed = "Removido"
+		else
+			Defect.removed = field
+
 		t.defect.set(Defect)
 
-	'click .create-sel-defect-injected': (e,t) ->
-		injected = $(e.target).data('value')
+	'change .defect-input-field': (e,t) ->
+		field = $(e.target).data('field')
+		value = $(e.target).val()
 		Defect = t.defect.get()
-		Defect.injected = injected
-		Defect.removed = "Removido"
-		t.defect.set(Defect)
-
-	'click .create-sel-defect-removed': (e,t) ->
-		removed = $(e.target).data('value')
-		Defect = t.defect.get()
-		Defect.removed = removed
-		t.defect.set(Defect)
-
-	'change .create-defect-fix-count': (e,t) ->
-		fixCount = $(e.target).val()
-		Defect = t.defect.get()
-		Defect.fixCount = fixCount
-		t.defect.set(Defect)
-
-	'change .create-defect-description': (e,t) ->
-		description = $(e.target).val()
-		Defect = t.defect.get()
-		Defect.description = description
+		Defect[field] = value
 		t.defect.set(Defect)
 
 	'click .pry-modal-create': (e,t) ->
