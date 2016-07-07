@@ -131,7 +131,7 @@ Template.createDefect.events
 			t.errorState.set(1)
 
 		else if (DefectId!= '')
-			Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, (error) ->
+			Meteor.call "update_defect", DefectId, Meteor.userId(), projectId, date, Defect, totalTime, true, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error updating a Defect"
@@ -141,7 +141,7 @@ Template.createDefect.events
 					Modal.hide('createDefectModal')
 					sys.flashSuccess()
 		else
-			Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, parseInt(totalTime), (error) ->
+			Meteor.call "create_defect", Meteor.userId(), projectId, date, Defect, parseInt(totalTime), true, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error creating a new defect"

@@ -1,6 +1,6 @@
 ##########################################
 Meteor.methods
-	create_defect: (uid, pid, date, Defect, time) ->
+	create_defect: (uid, pid, date, Defect, time, create) ->
 		if date?
 			date = new Date()
 
@@ -15,9 +15,11 @@ Meteor.methods
 			"description": Defect.description
 			"time": time
 			"parentId": Defect.parentId
+			"created": create
 		})
 
-	update_defect: (did, uid, pid, date, Defect, time) ->
+
+	update_defect: (did, uid, pid, date, Defect, time, create) ->
 
 		defect = db.defects.findOne({_id: did}).time
 		time = defect + time
@@ -37,7 +39,9 @@ Meteor.methods
 			"lastModified": new Date()
 			"time": time
 			"parentId": Defect.parentId
+			"created": create
 		}})
+
 
 	delete_defect: (defectId) ->
 		db.defects.remove({_id: defectId})

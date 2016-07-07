@@ -60,6 +60,11 @@ schemas.defects = new SimpleSchema
 		optional: true
 		label: "Time that took to fix the defect"
 
+	"created":
+		type: Boolean
+		defaultValue: false
+		label: "This is the value given if all the defect information was delivered by the user"
+
 ##########################################
 db.defects.attachSchema(schemas.defects)
 ##########################################

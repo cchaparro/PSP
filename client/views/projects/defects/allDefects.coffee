@@ -6,10 +6,10 @@ Template.defectsTemplate.onCreated () ->
 
 Template.defectsTemplate.helpers
 	alluserDefects: () ->
-		return db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})
+		return db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id"), "created": {$not: false}})
 
 	amountDefects: () ->
-		defects = db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})
+		defects = db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id"), "created": {$not: false}})
 		return defects.count() != 0
 
 	defectDescription: () ->
