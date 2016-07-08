@@ -17,6 +17,42 @@
 			</tbody>
 		</table>
 	</div>
+	<br>
+	<div class="plan_summary-box">
+		<h3>Defectos Inyectados</h3>
+		<table class="table table-summary">
+			<thead>
+				<tr>
+					<th>Titulo</th>
+					<th>Plan</th>
+					<th>Actual</th>
+					<th>A la fecha</th>
+					<th style="width: 100px;">Porcentaje</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{> summaryInjectedRow}}
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<div class="plan_summary-box">
+		<h3>Defectos Removidos</h3>
+		<table class="table table-summary">
+			<thead>
+				<tr>
+					<th>Titulo</th>
+					<th>Plan</th>
+					<th>Actual</th>
+					<th>A la fecha</th>
+					<th style="width: 100px;">Porcentaje</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{> summaryRemovedRow}}
+			</tbody>
+		</table>
+	</div>
 </template>
 <!-- ###################################### -->
 <template name="summaryTimeRow">
@@ -38,5 +74,29 @@
 			<td></td>
 		</tr>
 	{{/with}}
+</template>
+<!-- ###################################### -->
+<template name="summaryInjectedRow">
+	{{#each injectedDefects}}
+		<tr>
+			<td>{{name}}</td>
+			<td></td>
+			<td>{{injected}}</td>
+			<td>{{toDate}}</td>
+			<td>{{percentage}}%</td>
+		</tr>
+	{{/each}}
+</template>
+<!-- ###################################### -->
+<template name="summaryRemovedRow">
+	{{#each removedDefects}}
+		<tr>
+			<td>{{name}}</td>
+			<td></td>
+			<td>{{removed}}</td>
+			<td>{{toDate}}</td>
+			<td>{{percentage}}%</td>
+		</tr>
+	{{/each}}
 </template>
 <!-- ###################################### -->

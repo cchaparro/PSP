@@ -36,6 +36,17 @@ schemas.summaryInjectedEstimated = new SimpleSchema
 		type: Number
 		label: "Stage InjectedEstimated injected"
 
+	"toDate":
+		type: Number
+		optional: true
+		label: "Value for recolected data until the current date"
+
+	"percentage":
+		type: Number
+		decimal: true
+		optional: true
+		label: "Value for percentage of recolected data until the current date"
+
 ##########################################
 schemas.summaryRemovedEstimated = new SimpleSchema
 	"name":
@@ -45,6 +56,17 @@ schemas.summaryRemovedEstimated = new SimpleSchema
 	"removed":
 		type: Number
 		label: "Stage RemovedEstimated removed"
+
+	"toDate":
+		type: Number
+		optional: true
+		label: "Value for recolected data until the current date"
+
+	"percentage":
+		type: Number
+		decimal: true
+		optional: true
+		label: "Value for percentage of recolected data until the current date"
 
 ##########################################
 schemas.totalValues = new SimpleSchema

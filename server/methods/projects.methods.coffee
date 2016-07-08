@@ -11,20 +11,31 @@ Meteor.methods
 		# The users complete data recolection.
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": pid})
+		amountDefects = db.defects.find({'projectId': pid}).count()
 
-		# This takes The user general data and removes this projects
-		# time recolected information.
-		finalTime = _.filter user.summaryAmount, (time) ->
-			planTime = _.findWhere planSummary.timeEstimated, {name: time.name}
-			time.time -= planTime.time
-			return time
+		if db.projects.findOne({_id: pid})?.completed
+			console.log "soy un proyect completado"
 
-		data = {
-			"profile.total.time": user.total.time - planSummary.total.totalTime
-			"profile.summaryAmount": finalTime
-		}
+			# This takes The user general data and removes this projects
+			# time recolected information.
+			finalTime = _.filter user.summaryAmount, (time) ->
+				planTime = _.findWhere planSummary.timeEstimated, {name: time.name}
+				planInjected = _.findWhere planSummary.injectedEstimated, {name: time.name}
+				planRemoved = _.findWhere planSummary.removedEstimated, {name: time.name}
 
-		db.users.update({_id: Meteor.userId()}, {$set: data})
+				time.time -= planTime.time
+				time.injected -= planInjected.injected
+				time.removed -= planRemoved.removed
+				return time
+
+			data = {
+				"profile.total.time": user.total.time - planSummary.total.totalTime
+				"profile.total.injected": user.total.injected - amountDefects
+				"profile.total.removed": user.total.removed - amountDefects
+				"profile.summaryAmount": finalTime
+			}
+			db.users.update({_id: Meteor.userId()}, {$set: data})
+
 		db.projects.remove({ _id: pid })
 		db.defects.remove({ "projectId": pid })
 		db.plan_summary.remove({ "projectId": pid })

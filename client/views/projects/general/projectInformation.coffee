@@ -26,10 +26,11 @@ drawProjectInfoChart = () ->
 
 ##########################################
 Template.projectInformationChart.onRendered () ->
-	Tracker.autorun () ->
-		if FlowRouter.current().route.name == 'projectView'
-			console.log "Just Rendered drawProjectInfoChart()"
-			drawProjectInfoChart()
+	drawProjectInfoChart()
+	#Tracker.autorun () ->
+	#	if FlowRouter.current().route.name == 'projectView'
+	#		console.log "Just Rendered drawProjectInfoChart()"
+	#		drawProjectInfoChart()
 
 ##########################################
 Template.projectInformationTemplate.onCreated () ->
