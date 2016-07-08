@@ -6,15 +6,18 @@ Meteor.methods
 			db.defects.remove({"projectId": data.projectId, "created": false})
 
 		if update_user
-			console.log "I entered update_user in create"
+			console.log "I entered update_user in create_defect"
 			userStages = db.users.findOne({_id: Meteor.userId()})?.profile.summaryAmount
-			finalValues = []
+			injectedValues = []
+			removedValues = []
 			_.each userStages, (stage) ->
 				injected = db.defects.find({"injected": stage.name}).count()
 				removed = db.defects.find({"removed": stage.name}).count()
-				finalValues.push({'name': stage.name, 'time': stage.time, 'injected': injected, 'removed': removed})
+				injectedValues.push({'name': stage.name, 'injected': injected})
+				removedValues.push({'name': stage.name, 'removed': removed})
 
-			db.users.update({_id: Meteor.userId()}, {$set: {'profile.summaryAmount': finalValues}})
+			#db.users.update({_id: Meteor.userId()}, {$set: {'profile.summaryAmount': finalValues}})
+			db.plan_summary.update({'projectId': data.projectId}, {$set: {'injectedEstimated': injectedValues, 'removedEstimated': removedValues}})
 
 		db.defects.insert(data)
 
@@ -30,15 +33,18 @@ Meteor.methods
 			db.defects.remove({"projectId": data.projectId, "created": false})
 
 		if update_user
-			console.log "I entered update_user in update"
+			console.log "I entered update_user in update_defect"
 			userStages = db.users.findOne({_id: Meteor.userId()})?.profile.summaryAmount
-			finalValues = []
+			injectedValues = []
+			removedValues = []
 			_.each userStages, (stage) ->
 				injected = db.defects.find({"injected": stage.name}).count()
 				removed = db.defects.find({"removed": stage.name}).count()
-				finalValues.push({'name': stage.name, 'time': stage.time, 'injected': injected, 'removed': removed})
+				injectedValues.push({'name': stage.name, 'injected': injected})
+				removedValues.push({'name': stage.name, 'removed': removed})
 
-			db.users.update({_id: Meteor.userId()}, {$set: {'profile.summaryAmount': finalValues}})
+			#db.users.update({_id: Meteor.userId()}, {$set: {'profile.summaryAmount': finalValues}})
+			db.plan_summary.update({'projectId': data.projectId}, {$set: {'injectedEstimated': injectedValues, 'removedEstimated': removedValues}})
 
 
 	delete_defect: (defectId) ->
