@@ -180,11 +180,16 @@
 
 //-------------- General Project View ------------
 .project-view-content {
-	width: calc(100% - 300px);
-	height: 100%;
-	float: right;
+	width: calc(100% - 280px);
+	height: calc(100% + 20px);
 	display: inline;
+	margin-top: -20px;
+	margin-right: -20px;
+	padding-top: 20px;
+	padding-right: 20px;
 	padding-left: 20px;
+	float: right;
+	overflow-y: scroll;
 }
 
 .project-view-menu {
@@ -421,7 +426,6 @@
 	color: $main-text-color;
 
 	&:first-child {
-		margin-left: -10px;
 		margin-right: 5px;
 	}
 }
