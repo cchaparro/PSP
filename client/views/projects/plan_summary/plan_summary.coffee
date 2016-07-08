@@ -33,5 +33,25 @@ Template.summaryTimeRow.events
 
 
 ##########################################
+Template.summaryInjectedRow.helpers
+	injectedDefects: () ->
+		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.injectedEstimated
 
+		final = []
+		_.each planSummary, (stage) ->
+			finalStage = {"name": stage.name, "injected": stage.injected}
+			final.push(finalStage)
+
+		return final
+
+	totalValues: () ->
+		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
+		user = db.users.findOne({_id: Meteor.userId()})
+
+		final = {}
+		final.estimatedTime = planSummary?.estimatedTime
+		final.totalTime = planSummary?.totalTime
+		final.totalToDate = user?.profile.total.time
+
+		return final
 ##########################################
