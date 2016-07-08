@@ -24,9 +24,6 @@ Meteor.methods
 			"profile.summaryAmount": finalTime
 		}
 
-		console.log "------------------>"
-		console.log data
-
 		db.users.update({_id: Meteor.userId()}, {$set: data})
 
 #######################################

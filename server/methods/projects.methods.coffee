@@ -32,8 +32,6 @@ Meteor.methods
 			"profile.summaryAmount": finalTime
 		}
 
-		console.log data
-
 		db.users.update({_id: Meteor.userId()}, {$set: data})
 		db.projects.remove({ _id: pid })
 		db.defects.remove({ "projectId": pid })
