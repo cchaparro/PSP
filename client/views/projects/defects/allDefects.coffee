@@ -36,7 +36,7 @@ Template.defectsTemplate.events
 		$(".defect-box").removeClass("defect-box-hover")
 
 	'click .confirm-delete': (e,t) ->
-		Meteor.call "delete_defect", @_id, (error) ->
+		Meteor.call "delete_defect", @_id, FlowRouter.getParam("id"), (error) ->
 			if error
 				console.log "Error deleting a defect"
 			else

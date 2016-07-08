@@ -184,7 +184,7 @@ Template.createDefect.events
 
 			else
 				#console.log "Nuevo defecto das click play y luego pause"
-				Meteor.call "create_defect", data, (error, result) ->
+				Meteor.call "create_defect", data, false, true, (error, result) ->
 					if error
 						sys.flashError()
 						console.log "Error creating a new defect"
