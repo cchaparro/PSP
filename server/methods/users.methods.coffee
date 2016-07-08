@@ -6,9 +6,11 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": pid})
 
 		finalTime = _.filter user.summaryAmount, (time) ->
+			console.log time
 			planTime = _.findWhere planSummary.timeEstimated, {name: time.name}
-			time.time += planTime.time
-			return time
+			if planTime
+				time.time += planTime.time
+				return time
 
 		data = {
 			"profile.total.time": user.total.time + planSummary.total.totalTime

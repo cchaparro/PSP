@@ -123,9 +123,8 @@ Template.createDefect.events
 			t.errorState.set(1)
 
 		else if DefectId!= ''
-			console.log "Di cick a guardar a un proyecto que ya existia"
-			# The true in the update_defect is to delete al the defects with the value created: false
-			Meteor.call "update_defect", DefectId, data, true, (error) ->
+			#console.log "Di cick a guardar a un proyecto que ya existia"
+			Meteor.call "update_defect", DefectId, data, true, true, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error updating a Defect"
@@ -135,9 +134,8 @@ Template.createDefect.events
 					Modal.hide('createDefectModal')
 					sys.flashSuccess()
 		else
-			console.log "Creando proyecto nuevo y la di guardar directo sin click en play/pause"
-			# The true in the update_defect is to delete al the defects with the value created: false
-			Meteor.call "create_defect", data, true, (error) ->
+			#console.log "Creando proyecto nuevo y la di guardar directo sin click en play/pause"
+			Meteor.call "create_defect", data, true, true, (error) ->
 				if error
 					sys.flashError()
 					console.log "Error creating a new defect"
@@ -175,8 +173,8 @@ Template.createDefect.events
 				data.created = false
 
 			if DefectId!= ''
-				console.log "Cuando das play y pause cuando abriste un proyecto"
-				Meteor.call "update_defect", DefectId, data, (error) ->
+				#console.log "Cuando das play y pause cuando abriste un proyecto"
+				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
 					if error
 						sys.flashError()
 						console.log "Error updating a existing Defect"
@@ -185,7 +183,7 @@ Template.createDefect.events
 						t.timeStarted.set(0)
 
 			else
-				console.log "Nuevo defecto das click play y luego pause"
+				#console.log "Nuevo defecto das click play y luego pause"
 				Meteor.call "create_defect", data, (error, result) ->
 					if error
 						sys.flashError()
@@ -214,7 +212,7 @@ Template.createDefect.events
 			data = _.extend Defect, data
 
 			if DefectId!= ''
-				Meteor.call "update_defect", DefectId, data, (error) ->
+				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
 					if error
 						sys.flashError()
 						console.log "Error updating the son Defect"

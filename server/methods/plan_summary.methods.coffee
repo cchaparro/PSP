@@ -6,8 +6,8 @@ Meteor.methods
 		Removed = Meteor.settings.public.RemovedEstimated
 
 		if psplevel == 'PSP 2'
-			timePlanSummary.splice(2, 0, {"name":"Revisión Diseño", "finished":false, "time":0, "estimated": 0})
-			timePlanSummary.splice(4, 0, {"name":"Revisión Código", "finished":false, "time":0, "estimated": 0})
+			timePlanSummary.splice(2, 0, {"name":"Revisión Diseño", "finished":false, "time":0})
+			timePlanSummary.splice(4, 0, {"name":"Revisión Código", "finished":false, "time":0})
 
 			Injected.splice(2, 0, {"name":"Revisión Diseño", "injected":0, "estimated": 0})
 			Injected.splice(4, 0, {"name":"Revisión Código", "injected":0, "estimated": 0})

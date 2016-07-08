@@ -14,7 +14,19 @@
 				"removed": 0
 			},
 			{
+				"name" : "Revisión Diseño",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
 				"name" : "Código",
+				"time" : 0,
+				"injected": 0,
+				"removed": 0
+			},
+			{
+				"name" : "Revisión Código",
 				"time" : 0,
 				"injected": 0,
 				"removed": 0
