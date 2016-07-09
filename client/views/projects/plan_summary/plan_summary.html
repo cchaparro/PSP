@@ -24,7 +24,7 @@
 			<thead>
 				<tr>
 					<th>Titulo</th>
-					<th>Plan</th>
+					<th></th>
 					<th>Actual</th>
 					<th>A la fecha</th>
 					<th style="width: 100px;">Porcentaje</th>
@@ -42,7 +42,7 @@
 			<thead>
 				<tr>
 					<th>Titulo</th>
-					<th>Plan</th>
+					<th></th>
 					<th>Actual</th>
 					<th>A la fecha</th>
 					<th style="width: 100px;">Porcentaje</th>
@@ -86,6 +86,15 @@
 			<td>{{percentage}}%</td>
 		</tr>
 	{{/each}}
+	{{#with totalInjectedValues}}
+		<tr>
+			<td><p>Total</p></td>
+			<td></td>
+			<td><span>{{totalInjected}}</span></td>
+			<td><p>{{totalInjectedToDate}}</p></td>
+			<td></td>
+		</tr>
+	{{/with}}
 </template>
 <!-- ###################################### -->
 <template name="summaryRemovedRow">
@@ -98,5 +107,14 @@
 			<td>{{percentage}}%</td>
 		</tr>
 	{{/each}}
+	{{#with totalRemovedValues}}
+		<tr>
+			<td><p>Total</p></td>
+			<td></td>
+			<td><span>{{totalRemoved}}</span></td>
+			<td><p>{{totalRemovedToDate}}</p></td>
+			<td></td>
+		</tr>
+	{{/with}}
 </template>
 <!-- ###################################### -->
