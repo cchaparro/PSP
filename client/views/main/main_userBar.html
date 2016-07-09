@@ -1,14 +1,7 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
-		{{#each viewState}}
-			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}}">{{title}}</a>
-			<span class="{{#if lastValue}} hide {{/if}}"> | </span>
-		{{/each}}
-		<form class="search-box">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/Search.svg#searchLogo"></use></svg>
-			<input type="text" class="search-input" placeholder='Buscar un proyecto...'>
-		</form>
+		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		{{#with userData}}
 			<div class="avatar-box dropdown-toggle" data-toggle="dropdown">
 				<div class="avatar-badge">
