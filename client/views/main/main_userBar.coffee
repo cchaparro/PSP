@@ -1,4 +1,8 @@
 ##################################################
+Template.main_userBar.onCreated () ->
+	Meteor.subscribe "UserMenu"
+
+
 Template.main_userBar.helpers
 	userData: () ->
 		user = Meteor.users.findOne({_id: Meteor.userId()})
@@ -41,6 +45,21 @@ Template.main_userBar.helpers
 		return Routes
 
 ##################################################
+Template.userMenuDropdown.helpers
+	userNotifications: () ->
+		return db.notifications.find({"notificationOwner": Meteor.userId()})
+
+	notificationIcon: () ->
+		switch @type
+			when 'new-user'
+				return "fa-check"
+			when "aqui"
+				return "fa-times"
+
+	totalAmountNotifications: () ->
+		return db.notifications.find({"notificationOwner": Meteor.userId()}).count()
+
+
 Template.userMenuDropdown.events
 	'click .logout': () ->
 		Meteor.logout()

@@ -30,10 +30,16 @@
 		<div class="notification-box">
 			<div>
 				<h3>Notificaciones</h3>
-				<span>0</span>
+				<span>{{totalAmountNotifications}}</span>
 			</div>
 			<ul>
-
+				{{#each userNotifications}}
+					<li>
+						<div class="notification-type"><i class="fa {{notificationIcon}}"></i></div>
+						<h3>{{title}}</h3>
+						<span>{{subject}}</span>
+					</li>
+				{{/each}}
 			</ul>
 		</div>
 	</ul>

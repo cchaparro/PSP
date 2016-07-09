@@ -1,5 +1,5 @@
 ##########################################
-projectViewSelector = new ReactiveVar('general')
+projectViewSelector = new ReactiveVar('defectlog')
 ##########################################
 Template.projectViewTemplate.onCreated () ->
 	Meteor.subscribe "projectView", FlowRouter.getParam("id")
