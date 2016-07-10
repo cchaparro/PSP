@@ -40,7 +40,7 @@ Template.defectsTemplate.events
 			if error
 				console.log "Error deleting a defect"
 			else
-				sys.flashSuccess()
+				sys.flashStatus("delete-defect")
 
 ##########################################
 Template.defectsBar.events

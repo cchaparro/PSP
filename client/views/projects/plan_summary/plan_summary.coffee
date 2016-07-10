@@ -29,7 +29,7 @@ Template.summaryTimeRow.events
 			if error
 				console.warn(error)
 			else
-				sys.flashSuccess()
+				sys.flashStatus("save-project")
 
 
 ##########################################

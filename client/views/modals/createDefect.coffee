@@ -126,23 +126,23 @@ Template.createDefect.events
 			#console.log "Di cick a guardar a un proyecto que ya existia"
 			Meteor.call "update_defect", DefectId, data, true, true, (error) ->
 				if error
-					sys.flashError()
+					sys.flashStatus("error-defect")
 					console.log "Error updating a Defect"
 					console.warn(error)
 				else
 					t.timeStarted.set(0)
 					Modal.hide('createDefectModal')
-					sys.flashSuccess()
+					sys.flashStatus("save-defect")
 		else
 			#console.log "Creando proyecto nuevo y la di guardar directo sin click en play/pause"
 			Meteor.call "create_defect", data, true, true, (error) ->
 				if error
-					sys.flashError()
+					sys.flashStatus("error-defect")
 					console.log "Error creating a new defect"
 					console.warn(error)
 				else
 					Modal.hide('createDefectModal')
-					sys.flashSuccess()
+					sys.flashStatus("create-defect")
 
 	'click .close-error-box': (e,t) ->
 		t.errorState.set(0)
@@ -176,7 +176,7 @@ Template.createDefect.events
 				#console.log "Cuando das play y pause cuando abriste un proyecto"
 				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
 					if error
-						sys.flashError()
+						sys.flashStatus("error-defect")
 						console.log "Error updating a existing Defect"
 						console.warn(error)
 					else
@@ -186,7 +186,7 @@ Template.createDefect.events
 				#console.log "Nuevo defecto das click play y luego pause"
 				Meteor.call "create_defect", data, false, true, (error, result) ->
 					if error
-						sys.flashError()
+						sys.flashStatus("error-defect")
 						console.log "Error creating a new defect"
 					else
 						t.timeStarted.set(0)
@@ -214,12 +214,12 @@ Template.createDefect.events
 			if DefectId!= ''
 				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
 					if error
-						sys.flashError()
+						sys.flashStatus("error-defect")
 						console.log "Error updating the son Defect"
 						console.warn(error)
 					else
 						t.timeStarted.set(0)
-						sys.flashSuccess()
+						sys.flashStatus("save-defect")
 
 		t.defectState.set(0)
 		t.defect.set({

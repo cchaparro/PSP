@@ -32,6 +32,6 @@ Template.projectsTemplate.events
 				console.log "Error deleting a project"
 				console.warn(error)
 			else
-				sys.flashSuccess()
+				sys.flashStatus("delete-project")
 
 ##########################################

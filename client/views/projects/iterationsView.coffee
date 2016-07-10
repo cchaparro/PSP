@@ -67,6 +67,6 @@ Template.projectIterationBox.events
 				console.log "Error deleting a iteration"
 				console.warn(error)
 			else
-				sys.flashSuccess()
+				sys.flashStatus("delete-project")
 
 ##########################################

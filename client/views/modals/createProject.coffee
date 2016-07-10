@@ -60,7 +60,7 @@ Template.createProject.events
 							console.log "Error creating new projects Plan Summary"
 							console.warn(error)
 						else
-							sys.flashSuccess()
+							sys.flashStatus("create-project")
 
 			$('.pry-new-title').val('')
 			$('.pry-new-description').val('')
