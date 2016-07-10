@@ -38,6 +38,11 @@ schemas.projects = new SimpleSchema
 			if @isInsert
 				return false
 
+	"color":
+		type: String
+		optional: true
+		label: "Color of the project"
+
 ##########################################
 db.projects.attachSchema(schemas.projects)
 ##########################################

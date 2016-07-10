@@ -107,7 +107,10 @@ sys.cutText = (text, limit, closing) ->
 	return text
 
 ##########################################
-
+sys.selectColor = (last_color) ->
+	position = last_color % 6
+	colors= ["#00c1ed", "#00d5b6", "#ff8052", "#ffb427", "#799e9c", "#91cda5"]
+	return colors[position]
 ##########################################
 
 ##########################################

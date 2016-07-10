@@ -1,6 +1,6 @@
 <!-- ###################################### -->
 <template name="projectsTemplate">
-	{{> allProjectsBar}}
+	<!--{{> allProjectsBar}}-->
 	{{#unless amountProjects}}
 		<div class="empty-data-box">
 			<h3>No has creado ningun proyecto aun.</h3>
@@ -9,7 +9,7 @@
 	{{/unless}}
 	<div class="allprojects-container">
 		{{#each allProjects}}
-			<div class="project-box">
+			<div class="project-box" style="border-left: 5px solid {{color}};">
 				<div class="project-delete">
 					{{#if isHovered}}
 						<i class="fa fa-arrow-left"></i>
@@ -33,7 +33,7 @@
 	</div>
 </template>
 <!-- ###################################### -->
-<template name="allProjectsBar">
+<!-- <template name="allProjectsBar">
 	<div class="submenu">
 		<ul class="submenu-tabs">
 			<li class="submenu-tab {{#if $eq tabStatus 'all'}} submenu-active-tab {{/if}}" data-value="all">Todos los Proyectos</li>
@@ -46,5 +46,5 @@
 			<span>Crear Proyecto</span>
 		</div>
 	</div>
-</template>
+</template> -->
 <!-- ###################################### -->

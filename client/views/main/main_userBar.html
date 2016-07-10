@@ -1,6 +1,7 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
+		{{> createProjectButton}}
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		{{#with userData}}
 			<div class="avatar-box dropdown-toggle" data-toggle="dropdown">
@@ -38,3 +39,9 @@
 	</ul>
 </template>
 <!-- ###################################### -->
+<template name="createProjectButton">
+	<div class="btn create-btn">
+		<i class="fa fa-plus"></i>
+		<span>Crear Proyecto</span>
+	</div>
+</template>
