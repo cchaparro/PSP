@@ -4,9 +4,8 @@
 		{{> createProjectButton}}
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		{{#with userData}}
-			<div class="avatar-box dropdown-toggle" data-toggle="dropdown">
-				<div class="avatar-badge">
-				</div>
+			<div class="avatar-box">
+				<!-- <div class="avatar-badge"></div> -->
 				<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');"></div>
 			</div>
 			{{> userMenuDropdown}}
@@ -15,7 +14,18 @@
 </template>
 <!-- ###################################### -->
 <template name="userMenuDropdown">
-	<ul class="dropdown-menu user-dropdown">
+	<i class="user-dropdown-tab hide"></i>
+	<ul class="user-dropdown hide">
+		<li>
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg>
+			<span>Ajustes de cuenta</span>
+		</li>
+		<li class="logout">
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
+			<span>Cerrar sesión</span>
+		</li>
+	</ul>
+	<!-- <ul class="dropdown-menu user-dropdown">
 		<li>{{profile.name}}</li>
 		<div class="logout">
 			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
@@ -36,7 +46,7 @@
 				{{/each}}
 			</ul>
 		</div>
-	</ul>
+	</ul> -->
 </template>
 <!-- ###################################### -->
 <template name="createProjectButton">

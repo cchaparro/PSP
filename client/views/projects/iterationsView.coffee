@@ -31,6 +31,7 @@ Template.iterationsViewTemplate.events
 						console.warn(error)
 					else
 						console.log "Plan summary of iteration created successfully!"
+						sys.flashStatus("create-project")
 
 	'click .submenu-go-back': (e,t) ->
 		FlowRouter.go("/")

@@ -44,6 +44,12 @@ Template.main_userBar.helpers
 	# 	_.last(Routes).lastValue = true
 	# 	return Routes
 
+Template.main_userBar.events
+	'click .avatar-box': (e,t) ->
+		console.log "aqui"
+		$('.user-dropdown').toggleClass('hide')
+		$('.user-dropdown-tab').toggleClass('hide')
+
 ##################################################
 Template.userMenuDropdown.helpers
 	userNotifications: () ->
