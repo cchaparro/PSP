@@ -56,7 +56,7 @@ Template.timesBar.events
 
 			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, (err) ->
 				if err
-					sys.flashError()
+					sys.flashStatus("error-project")
 					console.log "Error updating project phase"
 					console.warn(error)
 				else
@@ -77,7 +77,7 @@ Template.timesBar.events
 		currentStage.time = parseInt(totalTime)
 		Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, (error) ->
 			if error
-				sys.flashError()
+				sys.flashStatus("error-project")
 				console.log "Error submitting phase time inside project"
 				console.warn(error)
 			else

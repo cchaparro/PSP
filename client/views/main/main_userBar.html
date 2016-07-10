@@ -1,18 +1,11 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
-		{{#each viewState}}
-			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}}">{{title}}</a>
-			<span class="{{#if lastValue}} hide {{/if}}"> | </span>
-		{{/each}}
-		<form class="search-box">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/Search.svg#searchLogo"></use></svg>
-			<input type="text" class="search-input" placeholder='Buscar un proyecto...'>
-		</form>
+		{{> createProjectButton}}
+		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		{{#with userData}}
-			<div class="avatar-box dropdown-toggle" data-toggle="dropdown">
-				<div class="avatar-badge">
-				</div>
+			<div class="avatar-box">
+				<!-- <div class="avatar-badge"></div> -->
 				<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');"></div>
 			</div>
 			{{> userMenuDropdown}}
@@ -21,7 +14,18 @@
 </template>
 <!-- ###################################### -->
 <template name="userMenuDropdown">
-	<ul class="dropdown-menu user-dropdown">
+	<i class="user-dropdown-tab hide"></i>
+	<ul class="user-dropdown hide">
+		<li>
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg>
+			<span>Ajustes de cuenta</span>
+		</li>
+		<li class="logout">
+			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
+			<span>Cerrar sesión</span>
+		</li>
+	</ul>
+	<!-- <ul class="dropdown-menu user-dropdown">
 		<li>{{profile.name}}</li>
 		<div class="logout">
 			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
@@ -42,6 +46,12 @@
 				{{/each}}
 			</ul>
 		</div>
-	</ul>
+	</ul> -->
 </template>
 <!-- ###################################### -->
+<template name="createProjectButton">
+	<div class="btn create-btn">
+		<i class="fa fa-plus"></i>
+		<span>Crear Proyecto</span>
+	</div>
+</template>

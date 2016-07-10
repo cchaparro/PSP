@@ -79,14 +79,44 @@ sys.removeMessage = () ->
 	$('.status-message').animate { opacity: 0 }, 500, ->
 		Session.set "statusMessage", false
 
-sys.flashSuccess = () ->
-	Session.set "statusMessage", {text: "Guardado", css:"success"}
-	window.setTimeout sys.removeMessage, 1500
+sys.flashStatus = (type) ->
+	switch type
+		when 'error-project'
+			title = "Error"
+			subject = "No hemos logrado actualizar los nuevos datos del proyecto."
+			css = "danger"
+		when "create-project"
+			title = "Creado"
+			subject = "El proyecto se ha creado correctamente."
+			css = "success"
+		when "save-project"
+			title = "Guardado"
+			subject = "Los datos del proyecto se han actualizado correctamente."
+			css = "success"
+		when "delete-project"
+			title = "Eliminado"
+			subject = "El projecto ha sido removido correctamente."
+			css = "success"
 
-sys.flashError = () ->
-	Session.set "statusMessage", {text: "Error", css:"danger"}
-	window.setTimeout sys.removeMessage, 1500
+		when "create-defect"
+			title = "Creado"
+			subject = "El defecto se ha creado correctamente."
+			css = "success"
+		when "save-defect"
+			title = "Guardado"
+			subject = "Los datos del defecto se han actualizado correctamente."
+			css = "success"
+		when "error-defect"
+			title = "Error"
+			subject = "No hemos logrado actualizar los nuevos datos del defecto."
+			css = "danger"
+		when "delete-defect"
+			title = "Eliminado"
+			subject = "El defecto ha sido removido del proyecto."
+			css = "success"
 
+	Session.set "statusMessage", {title: title, subject: subject, css: css}
+	window.setTimeout sys.removeMessage, 1500
 ##########################################
 ###############- Cut Text -###############
 
@@ -107,6 +137,12 @@ sys.cutText = (text, limit, closing) ->
 	return text
 
 ##########################################
+########- Project Color Selector -########
+
+sys.selectColor = (last_color) ->
+	position = last_color % 6
+	colors= ["#00c1ed", "#00d5b6", "#ff8052", "#ffb427", "#799e9c", "#91cda5"]
+	return colors[position]
 
 ##########################################
 

@@ -1,4 +1,10 @@
 <!-- ###################################### -->
+<head>
+  <title>PSP Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
+</head>
+<!-- ###################################### -->
 <template name="masterLayout">
 	{{> main_menuBar}}
 	{{> main_userBar}}
@@ -7,8 +13,12 @@
 	</div>
 	{{#unless $.Meteor.status.connected}}
 		<div class="warning-slide status-message">
-			<i class="fa fa-ban"></i>
-			<span class="label label-danger">Conectando ...</span>
+			<h3>Conectando</h3>
+			<span>Estamos tratando de conectarnos a la plataforma.</span>
+			<i class="fa fa-chevron-right"></i>
+			<div class="label-danger">
+				<div></div><div></div>
+			</div>
 		</div>
 	{{/unless}}
 	{{> statusMessage}}
@@ -17,8 +27,12 @@
 <template name="statusMessage">
 	{{#with statusMessage}}
 		<div class="warning-slide status-message">
-			<i class="fa {{#if $eq css 'success'}} fa-check {{/if}}"></i>
-			<span class="label label-{{css}}">{{text}}</span>
+			<h3>{{title}}</h3>
+			<span>{{subject}}</span>
+			<i class="fa fa-chevron-right"></i>
+			<div class="label-{{css}}">
+				<div></div><div></div>
+			</div>
 		</div>
 	{{/with}}
 </template>

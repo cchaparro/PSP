@@ -31,6 +31,7 @@ Template.iterationsViewTemplate.events
 						console.warn(error)
 					else
 						console.log "Plan summary of iteration created successfully!"
+						sys.flashStatus("create-project")
 
 	'click .submenu-go-back': (e,t) ->
 		FlowRouter.go("/")
@@ -67,6 +68,6 @@ Template.projectIterationBox.events
 				console.log "Error deleting a iteration"
 				console.warn(error)
 			else
-				sys.flashSuccess()
+				sys.flashStatus("delete-project")
 
 ##########################################

@@ -1,6 +1,9 @@
 ##########################################
 Meteor.methods
 	create_project: (data) ->
+		amountProjects = db.projects.find({"projectOwner": Meteor.userId()}).count()
+		data.color = sys.selectColor(amountProjects)
+
 		# The _.extend adds to data the projectOwner value.
 		data = _.extend data, {projectOwner: Meteor.userId()}
 		db.projects.insert(data)

@@ -103,34 +103,6 @@ html, body {
 	}
 }
 
-.search-box {
-	height: 35px;
-	width: 300px;
-	float: right;
-	margin-top: 12.5px;
-	margin-right: 95px;
-	@include border-radius($default-border-radius);
-
-	svg {
-		width: 15px;
-		height: 15px;
-		margin: 10px;
-		position: absolute;
-		fill: $project-title-light;
-	}
-
-	.search-input {
-		width: 100%;
-		height: 100%;
-		border: none;
-		padding-left: 35px;
-		color: $project-title-light;
-		background-color: $search-box-bg;
-		@include border-radius($default-border-radius);
-		outline: none;
-	}
-}
-
 //---------------- Main User Menu ----------------
 .main-user {
 	width: 100%;
@@ -162,6 +134,30 @@ html, body {
 			background-color: rgba($border, 0.3);
 		}
 	}
+}
+
+.create-btn {
+	position: absolute;
+	background-color: $blue;
+	color: $white;
+	position: absolute;
+	top: 13px;
+	right: 130px;
+	padding: 6px 15px;
+
+	&:hover {
+		color: $white;
+	}
+}
+
+.notification-svg {
+	width: 20px;
+	height: 20px;
+	fill: $icon-color;
+	position: absolute;
+	right: 80px;
+	top: 20px;
+	cursor: pointer;
 }
 
 .avatar-box {
@@ -204,120 +200,187 @@ html, body {
 	}
 }
 
-.user-dropdown {
-	width: 300px;
+.user-dropdown-tab {
+	width: 15px;
+	height: 15px;
 	position: absolute;
-	left: unset;
-	right: 0;
-	margin: 0;
-	padding-bottom: 0;
+	right: 30px;
+	top: 55px;
+	border-radius: 3px;
+	background: $primary-bg;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	z-index: 1;
+}
+
+.user-dropdown {
+	width: 200px;
+	position: absolute;
+	right: 10px;
+	top: 60px;
 	background-color: $primary-bg;
-	color: $white;
-	border: none;
-	@include border-radius(0px);
-	padding: 20px;
+	@include border-radius($default-border-radius);
+	padding-left: 0;
+	overflow: hidden;
+	z-index: 2;
 
-	.logout {
+	li {
+		padding: 11px 15px;
 		cursor: pointer;
-
 		svg {
-			width: 15px;
-			height: 15px;
-			margin: 3px 0;
-			fill: $danger;
+			width: 18px;
+			height: 18px;
+			fill: $primary-light-bg;
 			float: left;
+			margin-top: 1px;
 		}
 
 		span {
+			color: $white;
+			font-size: 11pt;
 			float: left;
-			padding-left: 5px;
-			color: $primary-light-bg;
-
-			&:hover {
-				color: $white;
-			}
+			padding-left: 10px;
 		}
-	}
 
-	li {
-		padding-bottom: 0px;
-	}
-
-	.notification-box {
-		height: 300px;
-		margin-top: 30px;
-		border-top: 1px solid $primary-dark-bg;
-
-		div {
-			height: 40px;
+		&:first-child {
 			border-bottom: 1px solid $primary-dark-bg;
-
-			h3 {
-				margin: 0;
-				margin-top: 5px;
-				display: inline-block;
-				font-size: 12pt;
-			}
-
-			span {
-				display: inline;
-				padding: 1px 5px;
-				font-size: 10pt;
-				background-color: $danger;
-				@include border-radius($default-border-radius);
-			}
 		}
 
-		ul {
-			height: 260px;
-			margin-right: -15px;
-			padding-right: 15px;
-			list-style: none;
-			padding-left: 0;
-			overflow-y: scroll;
+		&:last-child {
+			padding-bottom: 12px;
+		}
 
-			li {
-				cursor: pointer;
-				display: inline-block;
-				border-bottom: 1px solid $primary-dark-bg;
-
-				.notification-type {
-					width: 25px;
-					height: 25px;
-					float: left;
-					display: inline-block;
-					margin: 10px 0;
-					border-radius: $circle-border-radius;
-					background-color: $primary-dark-bg;
-					text-align: center;
-
-					i {
-						padding: 5px;
-						color: $success;
-					}
-				}
-
-				h3 {
-					float: left;
-					margin: 0;
-					padding-left: 5px;
-					display: inline-block;
-					font-size: 11pt;
-					line-height: 45px;
-				}
-
-				span {
-					display: block;
-					float: left;
-					color: $primary-light-bg;
-					padding-left: 30px;
-					padding-bottom: 10px;
-				}
-
-			}
+		&:hover {
+			background-color: $primary-dark-bg;
 		}
 	}
+	// width: 300px;
+	// position: absolute;
+	// left: unset;
+	// right: 0;
+	// margin: 0;
+	// padding-bottom: 0;
+	// background-color: $primary-bg;
+	// color: $white;
+	// border: none;
+	// @include border-radius(0px);
+	// padding: 20px;
+
+	// .logout {
+	// 	cursor: pointer;
+
+	// 	svg {
+	// 		width: 15px;
+	// 		height: 15px;
+	// 		margin: 3px 0;
+	// 		fill: $danger;
+	// 		float: left;
+	// 	}
+
+	// 	span {
+	// 		float: left;
+	// 		padding-left: 5px;
+	// 		color: $primary-light-bg;
+
+	// 		&:hover {
+	// 			color: $white;
+	// 		}
+	// 	}
+	// }
+
+	// li {
+	// 	padding-bottom: 0px;
+	// }
+
+	// .notification-box {
+	// 	height: 300px;
+	// 	margin-top: 30px;
+	// 	border-top: 1px solid $primary-dark-bg;
+
+	// 	div {
+	// 		height: 40px;
+	// 		border-bottom: 1px solid $primary-dark-bg;
+
+	// 		h3 {
+	// 			margin: 0;
+	// 			margin-top: 5px;
+	// 			display: inline-block;
+	// 			font-size: 12pt;
+	// 		}
+
+	// 		span {
+	// 			display: inline;
+	// 			padding: 1px 5px;
+	// 			font-size: 10pt;
+	// 			background-color: $danger;
+	// 			@include border-radius($default-border-radius);
+	// 		}
+	// 	}
+
+	// 	ul {
+	// 		height: 260px;
+	// 		margin-right: -15px;
+	// 		padding-right: 15px;
+	// 		list-style: none;
+	// 		padding-left: 0;
+	// 		overflow-y: scroll;
+
+	// 		li {
+	// 			cursor: pointer;
+	// 			display: inline-block;
+	// 			border-bottom: 1px solid $primary-dark-bg;
+
+	// 			.notification-type {
+	// 				width: 25px;
+	// 				height: 25px;
+	// 				float: left;
+	// 				display: inline-block;
+	// 				margin: 10px 0;
+	// 				border-radius: $circle-border-radius;
+	// 				background-color: $primary-dark-bg;
+	// 				text-align: center;
+
+	// 				i {
+	// 					padding: 5px;
+	// 					color: $success;
+	// 				}
+	// 			}
+
+	// 			h3 {
+	// 				float: left;
+	// 				margin: 0;
+	// 				padding-left: 5px;
+	// 				display: inline-block;
+	// 				font-size: 11pt;
+	// 				line-height: 45px;
+	// 			}
+
+	// 			span {
+	// 				display: block;
+	// 				float: left;
+	// 				color: $primary-light-bg;
+	// 				padding-left: 30px;
+	// 				padding-bottom: 10px;
+	// 			}
+
+	// 		}
+	// 	}
+	// }
 
 }
 
 //------------------------------------------------
+// Landscape tablets and medium desktops
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+
+}

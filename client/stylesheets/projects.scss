@@ -21,9 +21,8 @@
 	padding-right: 10px;
 	float: left;
 	background-color: $white;
-	border-left: 5px solid $pj-color-1;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
 	cursor: pointer;
 	z-index: 1;
 
@@ -50,13 +49,14 @@
 			margin-top: 10px;
 			margin-bottom: 0;
 			padding-right: 17px;
-			color: $pj-color-1;
+			color: $primary-bg;
+			font-weight: bold;
 			display: block;
 		}
 
 		span {
 			display: block;
-			font-size: 10pt;
+			font-size: 11pt;
 			padding-top: 10px;
 			color: $pj-text;
 		}
@@ -144,7 +144,7 @@
 		display: inline!important;
 		position: absolute;
 		left: -5px;
-		background-color: rgba($black, 0.7);
+		background-color: rgba($black, 0.6);
 		border-top-right-radius: $default-border-radius;
 		border-bottom-right-radius: $default-border-radius;
 		z-index: 2;
