@@ -6,12 +6,51 @@
 	margin: 0 auto;
 }
 
+.allprojects-data {
+	max-width: 1300px;
+	height: 1000px;
+	margin: 0 auto;
+}
+
+@media (min-width: 1820px) {
+	.allprojects-data {
+		max-width: 1710px;
+	}
+}
+
+@media (min-width: 1535px) and (max-width: 1819px){
+	.allprojects-data {
+		max-width: 1425px;
+	}
+}
+
+@media (min-width: 1250px) and (max-width: 1534px){
+	.allprojects-data {
+		max-width: 1141px;
+	}
+}
+
+@media (min-width: 965px) and (max-width: 1249px) {
+	.allprojects-data {
+		max-width: 855px;
+	}
+}
+
+@media (min-width: 680px) and (max-width: 964px) {
+	.allprojects-data {
+		max-width: 572px;
+	}
+}
+
+@media (max-width: 679px) {
+	.allprojects-data {
+		max-width: 305px;
+	}
+}
 //------------------ Project Box -----------------
 .project-box {
 	height: 160px;
-	width: 23%;
-	min-width: 265px;
-	max-width: 340px;
+	width: 265px;
 	position: relative;
 	display: inline-block;
 	margin-left: 10px;

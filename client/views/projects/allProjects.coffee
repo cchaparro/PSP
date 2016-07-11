@@ -27,9 +27,9 @@ Template.projectsTemplate.events
 		$(".project-box").removeClass("project-box-hover")
 
 	'click .confirm-delete': (e,t) ->
-		Meteor.call "delete_project", @_id, (error) ->
+		Meteor.call "delete_project", @_id, true, (error) ->
 			if error
-				console.log "Error deleting a project"
+				console.log "Error deleting a project (and his iterations)"
 				console.warn(error)
 			else
 				sys.flashStatus("delete-project")

@@ -6,6 +6,7 @@ Template.planSummaryTemplate.onCreated () ->
 Template.planSummaryTemplate.helpers
 	userData: () ->
 		return db.users.findOne({_id: Meteor.userId()})
+
 ##########################################
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->
