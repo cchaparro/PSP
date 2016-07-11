@@ -7,6 +7,6 @@ Template.main_menuBar.helpers
 	isProjectView: () ->
 		FlowRouter.watchPathChange()
 		route = FlowRouter.current().route.name
-		return (route == 'main') or (route == 'projectView') or (route == 'iterationView')
+		return (route == 'main') or (route == 'projectView') or (route == 'iterationView') or (route == "projectGeneral") or (route == "projectTimeLog") or (route == "projectDefectLog") or (route == "projectSummary")
 
 ##################################################

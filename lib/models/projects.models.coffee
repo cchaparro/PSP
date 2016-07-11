@@ -32,4 +32,17 @@ if Meteor.isServer
 		db.defects.remove({ "projectId": pid })
 		db.plan_summary.remove({ "projectId": pid })
 
+
+
+	syssrv.createProject = (data) ->
+		amountProjects = db.projects.find({"projectOwner": Meteor.userId()}).count()
+		data.color = sys.selectColor(amountProjects)
+
+		# The _.extend adds to data the projectOwner value.
+		data = _.extend data, {projectOwner: Meteor.userId()}
+		projectId = db.projects.insert(data)
+
+		syssrv.createPlanSummary(Meteor.userId(), projectId, data.levelPSP)
+
+
 ##########################################

@@ -1,13 +1,7 @@
 ##########################################
 Meteor.methods
 	create_project: (data) ->
-		amountProjects = db.projects.find({"projectOwner": Meteor.userId()}).count()
-		data.color = sys.selectColor(amountProjects)
-
-		# The _.extend adds to data the projectOwner value.
-		data = _.extend data, {projectOwner: Meteor.userId()}
-		db.projects.insert(data)
-
+		syssrv.createProject(data)
 
 	delete_project: (pid, delete_iterations=false) ->
 		if delete_iterations
@@ -20,9 +14,21 @@ Meteor.methods
 		syssrv.deleteProject(pid)
 
 
+	update_project: (projectId, value) ->
+		#This function update the values of a project like its title and description
+		db.projects.update({ _id: projectId }, {$set: value})
 
-	#This function update the values of a project like its title and description
-	update_project: (pid, value) ->
-		db.projects.update({ _id: pid }, {$set: value})
+
+	create_static_project: () ->
+		titles = ["Proyecto Blink.it","Arqui II","Inteligencia Artificial","Sistemas Operativos","Redes","Servicios Web","Tesis Javeriana Cali"]
+
+		titles.forEach (title) ->
+			data = {
+				title: title
+				description: "Esta es la descripción para un proyecto que nadie va a leer. Solo son datos fantasmas y nadie quiere ver lo que esto dice."
+				levelPSP: "PSP 0"
+				parendId: null
+			}
+			syssrv.createProject(data)
 
 ##########################################

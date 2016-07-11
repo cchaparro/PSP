@@ -50,17 +50,12 @@ Template.createProject.events
 			if (description== '')
 				t.errorStateDescription.set(1)
 		else
-			Meteor.call "create_project", data, (error, result)->
+			Meteor.call "create_project", data, (error)->
 				if error
 					console.log "Error creating a new project"
 					console.warn(error)
 				else
-					Meteor.call "create_plan_summary", Meteor.userId(), result, levelPSP, (error) ->
-						if error
-							console.log "Error creating new projects Plan Summary"
-							console.warn(error)
-						else
-							sys.flashStatus("create-project")
+					sys.flashStatus("create-project")
 
 			$('.pry-new-title').val('')
 			$('.pry-new-description').val('')

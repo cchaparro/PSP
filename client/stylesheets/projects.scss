@@ -2,8 +2,9 @@
 
 //--------------- All Projects View --------------
 .allprojects-container {
-	width: 100%;
-	margin: 0 auto;
+	width: calc(100% + 40px);
+	margin-left: -20px;
+	margin-right: -20px;
 }
 
 .allprojects-data {

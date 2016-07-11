@@ -20,18 +20,12 @@ Template.iterationsViewTemplate.events
 			parentId: FlowRouter.getParam("fid")
 		}
 
-		Meteor.call "create_project", data, (error, result) ->
+		Meteor.call "create_project", data, (error) ->
 			if error
 				console.log "Error creating a new project iteration"
 				console.warn(error)
 			else
-				Meteor.call "create_plan_summary", Meteor.userId(), result, data.levelPSP, (error) ->
-					if error
-						console.log "Error creating new projects iteration Plan Summary"
-						console.warn(error)
-					else
-						console.log "Plan summary of iteration created successfully!"
-						sys.flashStatus("create-project")
+				sys.flashStatus("create-project")
 
 	'click .submenu-go-back': (e,t) ->
 		FlowRouter.go("/")
