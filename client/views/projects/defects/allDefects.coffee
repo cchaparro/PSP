@@ -1,5 +1,6 @@
 ##########################################
 Template.defectsTemplate.onCreated () ->
+	Meteor.subscribe "projectView", FlowRouter.getParam("id")
 	document.title = "Defects Log"
 	@hoveredDefect = new ReactiveVar(false)
 

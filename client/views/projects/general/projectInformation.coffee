@@ -33,8 +33,10 @@ Template.projectInformationChart.onRendered () ->
 	#		drawProjectInfoChart()
 
 ##########################################
+##########################################
 Template.projectInformationTemplate.onCreated () ->
 	@informationState = new ReactiveVar(false)
+	Meteor.subscribe "projectView", FlowRouter.getParam("id")
 	document.title = "Proyecto"
 
 Template.projectInformationTemplate.helpers

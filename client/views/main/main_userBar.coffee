@@ -8,6 +8,10 @@ Template.main_userBar.helpers
 		user = Meteor.users.findOne({_id: Meteor.userId()})
 		return user if user?
 
+	template: () ->
+		FlowRouter.watchPathChange()
+		return FlowRouter.current().route.name
+
 	# viewState: () ->
 	# 	FlowRouter.watchPathChange()
 	# 	currentState = FlowRouter.current().route.name
@@ -46,7 +50,6 @@ Template.main_userBar.helpers
 
 Template.main_userBar.events
 	'click .avatar-box': (e,t) ->
-		console.log "aqui"
 		$('.user-dropdown').toggleClass('hide')
 		$('.user-dropdown-tab').toggleClass('hide')
 

@@ -116,7 +116,7 @@ sys.flashStatus = (type) ->
 			css = "success"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
-	window.setTimeout sys.removeMessage, 1500
+	window.setTimeout sys.removeMessage, 2000
 ##########################################
 ###############- Cut Text -###############
 

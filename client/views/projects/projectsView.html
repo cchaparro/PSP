@@ -1,53 +1,55 @@
 <!-- ###################################### -->
 <template name="projectViewTemplate">
 	{{> projectViewMenu}}
-	<div class="project-view-content">
-		{{#if $eq projectViewSelector "general"}}
+	<!--<div class="project-view-content">
+		{{#if $eq template "general"}}
 			{{> projectInformationTemplate}}
 		{{/if}}
-		{{#if $eq projectViewSelector "timelog"}}
+		{{#if $eq template "timelog"}}
 			{{> timeTemplate}}
 		{{/if}}
-		{{#if $eq projectViewSelector "defectlog"}}
+		{{#if $eq template "defectlog"}}
 			{{> defectsTemplate}}
 		{{/if}}
-		{{#if $eq projectViewSelector "plansummary"}}
+		{{#if $eq template "plansummary"}}
 			{{> planSummaryTemplate}}
 		{{/if}}
-	</div>
+	</div>-->
 </template>
 <!-- ###################################### -->
 <template name="projectViewMenu">
 	<ul class="project-view-menu">
-		<li class="{{#if $eq projectViewSelector 'general'}} project-menu-selected {{/if}}" data-value="general">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/General.svg#generalLogo"></use></svg>
-			<h3>Vista General</h3>
-			<span>Opciones y vista general del proyecto.</span>
-		</li>
-		<li class="{{#if $eq projectViewSelector 'timelog'}} project-menu-selected {{/if}}" data-value="timelog">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
-			<h3>Log de tiempos</h3>
-			<span>Registro de tiempos del proyecto.</span>
-		</li>
-		<li class="{{#if $eq projectViewSelector 'defectlog'}} project-menu-selected {{/if}}" data-value="defectlog">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/Bug.svg#bugLogo"></use></svg>
-			<h3>Log de defectos</h3>
-			<span>Registro de defectos del proyecto.</span>
-		</li>
-		<li class="{{#if $eq projectViewSelector 'plansummary'}} project-menu-selected {{/if}}" data-value="plansummary">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/Summary.svg#summaryLogo"></use></svg>
-			<h3>Plan Summary</h3>
-			<span>Historia general del proyecto.</span>
-		</li>
-		<li class="{{#if $eq projectViewSelector 'scripts'}} project-menu-selected {{/if}}" data-value="scripts">
+		<a href="{{pathFor 'projectGeneral' fid=routeFid id=routeId}}">
+			<li class="{{#if $eq template 'projectGeneral'}} project-menu-selected {{/if}}" data-value="general">
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/General.svg#generalLogo"></use></svg>
+				<h3>Vista General</h3>
+			</li>
+		</a>
+		<a href="{{pathFor 'projectTimeLog' fid=routeFid id=routeId}}">
+			<li class="{{#if $eq template 'projectTimeLog'}} project-menu-selected {{/if}}" data-value="timelog">
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
+				<h3>Log de tiempos</h3>
+			</li>
+		</a>
+		<a href="{{pathFor 'projectDefectLog' fid=routeFid id=routeId}}">
+			<li class="{{#if $eq template 'projectDefectLog'}} project-menu-selected {{/if}}" data-value="defectlog">
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/Bug.svg#bugLogo"></use></svg>
+				<h3>Log de defectos</h3>
+			</li>
+		</a>
+		<a href="{{pathFor 'projectSummary' fid=routeFid id=routeId}}">
+			<li class="{{#if $eq template 'projectSummary'}} project-menu-selected {{/if}}" data-value="plansummary">
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/Summary.svg#summaryLogo"></use></svg>
+				<h3>Plan Summary</h3>
+			</li>
+		</a>
+		<li class="{{#if $eq template 'scripts'}} project-menu-selected {{/if}}" data-value="scripts">
 			<svg viewBox="0 0 100 100"><use xlink:href="/images/Script.svg#scriptLogo"></use></svg>
 			<h3>Scripts Generales</h3>
-			<span>Scripts sobre todo el proyecto.</span>
 		</li>
-		<li class="{{#if $eq projectViewSelector 'typedefects'}} project-menu-selected {{/if}}" data-value="typedefects">
+		<li class="{{#if $eq template 'typedefects'}} project-menu-selected {{/if}}" data-value="typedefects">
 			<svg viewBox="0 0 100 100"><use xlink:href="/images/Defect.svg#defectLogo"></use></svg>
 			<h3>Tipos de defectos</h3>
-			<span>Personaliza los tipos de defectos</span>
 		</li>
 	</ul>
 </template>

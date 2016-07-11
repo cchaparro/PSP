@@ -1,13 +1,16 @@
 <!-- ###################################### -->
 <template name="timeTemplate">
-	{{> timesBar}}
-	<table class="table time-table">
-		<tbody>
-			{{#each projectStages}}
-				{{> timeTableRow}}
-			{{/each}}
-		</tbody>
-	</table>
+	{{> projectViewMenu}}
+	<div class="project-view-content">
+		{{> timesBar}}
+		<table class="table time-table">
+			<tbody>
+				{{#each projectStages}}
+					{{> timeTableRow}}
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </template>
 
 <!-- ###################################### -->

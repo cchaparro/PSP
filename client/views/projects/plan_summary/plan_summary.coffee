@@ -1,16 +1,23 @@
 ##########################################
+Template.planSummaryTemplate.onCreated () ->
+	Meteor.subscribe "projectView", FlowRouter.getParam("id")
+
+
+Template.planSummaryTemplate.helpers
+	userData: () ->
+		return db.users.findOne({_id: Meteor.userId()})
+##########################################
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->
 		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.timeEstimated
 
 	totalValues: () ->
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
-		user = db.users.findOne({_id: Meteor.userId()})
 
 		final = {}
 		final.estimatedTime = planSummary?.estimatedTime
 		final.totalTime = planSummary?.totalTime
-		final.totalToDate = user?.profile.total.time
+		final.totalToDate = @profile?.total?.time
 
 		return final
 
@@ -38,12 +45,11 @@ Template.summaryInjectedRow.helpers
 		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.injectedEstimated
 
 	totalInjectedValues: () ->
-		user = db.users.findOne({_id: Meteor.userId()})
 		totalAmountDefects = db.defects.find({"projectId": FlowRouter.getParam("id")}).count()
 
 		final = {}
 		final.totalInjected = totalAmountDefects
-		final.totalInjectedToDate = user.profile.total.injected
+		final.totalInjectedToDate = @profile?.total?.injected
 
 		return final
 
@@ -53,12 +59,11 @@ Template.summaryRemovedRow.helpers
 		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.removedEstimated
 
 	totalRemovedValues: () ->
-		user = db.users.findOne({_id: Meteor.userId()})
 		totalAmountDefects = db.defects.find({"projectId": FlowRouter.getParam("id")}).count()
 
 		final = {}
 		final.totalRemoved = totalAmountDefects
-		final.totalRemovedToDate = user.profile.total.removed
+		final.totalRemovedToDate = @profile?.total?.removed
 
 		return final
 

@@ -2,7 +2,7 @@
 <template name="iterationsViewTemplate">
 	{{> iterationsViewMenu}}
 	{{#with selectedProject}}
-		<a href="{{pathFor 'projectView' fid=_id id=_id}}">
+		<a href="{{pathFor 'projectGeneral' fid=_id id=_id}}">
 			<div class="project-for-iteration-box" style="border-left: 5px solid {{color}};">
 				<div class="project-content">
 					<h3>{{title}}</h3>

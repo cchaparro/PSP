@@ -42,3 +42,35 @@ FlowRouter.route '/:fid/:id',
 	name: 'projectView'
 
 ##########################################
+FlowRouter.route '/:fid/:id/general',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate'
+	name: 'projectGeneral'
+
+FlowRouter.route '/:fid/:id/timelog',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'timeTemplate'
+	name: 'projectTimeLog'
+
+FlowRouter.route '/:fid/:id/defectlog',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
+	name: 'projectDefectLog'
+
+FlowRouter.route '/:fid/:id/plansummary',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
+	name: 'projectSummary'
+
+
+
+FlowRouter.route '/:fid/:id/scripts',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
+	name: 'projectDefectLog'
+
+FlowRouter.route '/:fid/:id/defect_types',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
+	name: 'projectSummary'
+##########################################

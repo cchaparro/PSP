@@ -1,7 +1,12 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
-		{{> createProjectButton}}
+		{{#if $eq template "main"}}
+			{{> createProjectButton}}
+		{{/if}}
+		{{#if $eq template "iterationView"}}
+			{{> createIterationButton}}
+		{{/if}}
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		{{#with userData}}
 			<div class="avatar-box">
@@ -55,3 +60,11 @@
 		<span>Crear Proyecto</span>
 	</div>
 </template>
+<!-- ###################################### -->
+<template name="createIterationButton">
+	<div class="btn create-btn">
+		<i class="fa fa-plus"></i>
+		<span>Crear Iteración</span>
+	</div>
+</template>
+<!-- ###################################### -->
