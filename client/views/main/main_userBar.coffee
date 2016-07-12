@@ -95,3 +95,20 @@ Template.createDefectButton.events
 		Modal.show('createDefectModal')
 
 ##################################################
+Template.createIterationButton.events
+	'click .create-btn': (e,t) ->
+		data = {
+			title: "Nueva iteración"
+			description: "Descripción de esta nueva iteración"
+			levelPSP: "PSP 0"
+			parentId: FlowRouter.getParam("fid")
+		}
+
+		Meteor.call "create_project", data, (error) ->
+			if error
+				console.log "Error creating a new project iteration"
+				console.warn(error)
+			else
+				sys.flashStatus("create-project")
+
+##################################################

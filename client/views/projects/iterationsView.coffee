@@ -10,23 +10,6 @@ Template.iterationsViewTemplate.helpers
 	projectIterations: () ->
 		return db.projects.find({parentId: FlowRouter.getParam("fid")}).fetch()
 
-
-Template.iterationsViewTemplate.events
-	'click .submenu-create': (e,t) ->
-		data = {
-			title: "Nueva iteración"
-			description: "Descripción de esta nueva iteración"
-			levelPSP: "PSP 0"
-			parentId: FlowRouter.getParam("fid")
-		}
-
-		Meteor.call "create_project", data, (error) ->
-			if error
-				console.log "Error creating a new project iteration"
-				console.warn(error)
-			else
-				sys.flashStatus("create-project")
-
 ##########################################
 Template.projectIterationBox.onCreated () ->
 	@hoveredIteration = new ReactiveVar(false)
@@ -35,6 +18,9 @@ Template.projectIterationBox.onCreated () ->
 Template.projectIterationBox.helpers
 	isHovered: () ->
 		return Template.instance().hoveredIteration.get() == @_id
+
+	parentColor: () ->
+		return db.projects.findOne({_id: FlowRouter.getParam("fid")}).color
 
 
 Template.projectIterationBox.events
