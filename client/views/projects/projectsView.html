@@ -6,34 +6,34 @@
 <template name="projectViewMenu">
 	<ul class="project-view-menu">
 		<a href="{{pathFor 'projectGeneral' fid=routeFid id=routeId}}">
-			<li class="{{#if $eq template 'projectGeneral'}} project-menu-selected {{/if}}" data-value="general">
+			<li class="{{#if $eq template 'projectGeneral'}} project-menu-selected {{/if}}">
 				<svg viewBox="0 0 100 100"><use xlink:href="/images/General.svg#generalLogo"></use></svg>
 				<h3>Vista General</h3>
 			</li>
 		</a>
 		<a href="{{pathFor 'projectTimeLog' fid=routeFid id=routeId}}">
-			<li class="{{#if $eq template 'projectTimeLog'}} project-menu-selected {{/if}}" data-value="timelog">
+			<li class="{{#if $eq template 'projectTimeLog'}} project-menu-selected {{/if}}">
 				<svg viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
 				<h3>Log de tiempos</h3>
 			</li>
 		</a>
 		<a href="{{pathFor 'projectDefectLog' fid=routeFid id=routeId}}">
-			<li class="{{#if $eq template 'projectDefectLog'}} project-menu-selected {{/if}}" data-value="defectlog">
+			<li class="{{#if $eq template 'projectDefectLog'}} project-menu-selected {{/if}}">
 				<svg viewBox="0 0 100 100"><use xlink:href="/images/Bug.svg#bugLogo"></use></svg>
 				<h3>Log de defectos</h3>
 			</li>
 		</a>
 		<a href="{{pathFor 'projectSummary' fid=routeFid id=routeId}}">
-			<li class="{{#if $eq template 'projectSummary'}} project-menu-selected {{/if}}" data-value="plansummary">
+			<li class="{{#if $eq template 'projectSummary'}} project-menu-selected {{/if}}">
 				<svg viewBox="0 0 100 100"><use xlink:href="/images/Summary.svg#summaryLogo"></use></svg>
 				<h3>Plan Summary</h3>
 			</li>
 		</a>
-		<li class="{{#if $eq template 'scripts'}} project-menu-selected {{/if}}" data-value="scripts">
+		<li class="{{#if $eq template 'scripts'}} project-menu-selected {{/if}}">
 			<svg viewBox="0 0 100 100"><use xlink:href="/images/Script.svg#scriptLogo"></use></svg>
 			<h3>Scripts Generales</h3>
 		</li>
-		<li class="{{#if $eq template 'typedefects'}} project-menu-selected {{/if}}" data-value="typedefects">
+		<li class="{{#if $eq template 'typedefects'}} project-menu-selected {{/if}}">
 			<svg viewBox="0 0 100 100"><use xlink:href="/images/Defect.svg#defectLogo"></use></svg>
 			<h3>Tipos de defectos</h3>
 		</li>

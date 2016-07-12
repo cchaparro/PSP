@@ -63,7 +63,6 @@ FlowRouter.route '/:fid/:id/plansummary',
 	name: 'projectSummary'
 
 
-
 FlowRouter.route '/:fid/:id/scripts',
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
@@ -73,4 +72,7 @@ FlowRouter.route '/:fid/:id/defect_types',
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
 	name: 'projectSummary'
+
+##########################################
+
 ##########################################

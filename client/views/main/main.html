@@ -17,7 +17,7 @@
 			<span>Estamos tratando de conectarnos a la plataforma.</span>
 			<i class="fa fa-chevron-right"></i>
 			<div class="label-danger">
-				<div></div><div></div>
+				<i class="fa fa-times"></i>
 			</div>
 		</div>
 	{{/unless}}
@@ -32,6 +32,13 @@
 			<i class="fa fa-chevron-right"></i>
 			<div class="label-{{css}}">
 				<div></div><div></div>
+			</div>
+		</div>
+		<div class="warning-slide status-message">
+			<h3>{{title}}</h3>
+			<span>{{subject}}</span>
+			<div class="label-{{css}}">
+				<i class="fa {{#if $eq css 'danger'}} fa-times {{else}} fa-check {{/if}}"></i>
 			</div>
 		</div>
 	{{/with}}
