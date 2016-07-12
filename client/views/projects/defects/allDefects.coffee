@@ -44,8 +44,3 @@ Template.defectsTemplate.events
 				sys.flashStatus("delete-defect")
 
 ##########################################
-Template.defectsBar.events
-	'click .submenu-create': (e,t) ->
-		Modal.show('createDefectModal')
-
-##########################################

@@ -27,9 +27,6 @@ Template.iterationsViewTemplate.events
 			else
 				sys.flashStatus("create-project")
 
-	'click .submenu-go-back': (e,t) ->
-		FlowRouter.go("/")
-
 ##########################################
 Template.projectIterationBox.onCreated () ->
 	@hoveredIteration = new ReactiveVar(false)

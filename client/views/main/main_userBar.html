@@ -1,11 +1,20 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
+		{{#unless $eq template "main"}}
+			<div class="menu-go-back">
+				<i class="fa fa-arrow-left"></i>
+				<span>Atras</span>
+			</div>
+		{{/unless}}
 		{{#if $eq template "main"}}
 			{{> createProjectButton}}
 		{{/if}}
 		{{#if $eq template "iterationView"}}
 			{{> createIterationButton}}
+		{{/if}}
+		{{#if $eq template "projectDefectLog"}}
+			{{> createDefectButton}}
 		{{/if}}
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		{{#with userData}}
@@ -65,6 +74,13 @@
 	<div class="btn create-btn">
 		<i class="fa fa-plus"></i>
 		<span>Crear Iteración</span>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="createDefectButton">
+	<div class="btn create-btn">
+		<i class="fa fa-plus"></i>
+		<span>Crear Defecto</span>
 	</div>
 </template>
 <!-- ###################################### -->

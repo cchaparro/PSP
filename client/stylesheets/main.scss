@@ -256,6 +256,23 @@ html, body {
 	}
 }
 
+.menu-go-back {
+	float: left;
+	padding: 7px 17px 7px 12px;
+	position: relative;
+	margin-top: 12px;
+	margin-left: 20px;
+	color: $main-title-color;
+	cursor: pointer;
+	font-size: 11pt;
+	@include border-radius($default-border-radius);
+	border: 1px solid $border;
+
+	&:hover {
+		background-color: $border;
+	}
+}
+
 //------------------------------------------------
 // Landscape tablets and medium desktops
 @media (min-width: 992px) and (max-width: 1199px) {

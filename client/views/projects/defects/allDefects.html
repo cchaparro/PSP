@@ -2,7 +2,6 @@
 <template name="defectsTemplate">
 	{{> projectViewMenu}}
 	<div class="project-view-content">
-		{{> defectsBar}}
 		{{#unless amountDefects}}
 			<div class="empty-data-box">
 				<h3>No has creado ningun defecto aun.</h3>
@@ -34,15 +33,6 @@
 				</div>
 			</div>
 		{{/each}}
-	</div>
-</template>
-<!-- ###################################### -->
-<template name="defectsBar">
-	<div class="submenu">
-		<div class="btn submenu-create">
-			<i class="fa fa-plus"></i>
-			<span>Crear Defecto</span>
-		</div>
 	</div>
 </template>
 <!-- ###################################### -->

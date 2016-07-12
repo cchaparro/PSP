@@ -53,6 +53,15 @@ Template.main_userBar.events
 		$('.user-dropdown').toggleClass('hide')
 		$('.user-dropdown-tab').toggleClass('hide')
 
+	'click .menu-go-back': (e,t) ->
+		FlowRouter.watchPathChange()
+		iterationId = FlowRouter.getParam("fid")
+		template = FlowRouter.current().route.name
+		if template == "iterationView"
+			FlowRouter.go("/")
+		else
+			FlowRouter.go("/#{iterationId}")
+
 ##################################################
 Template.userMenuDropdown.helpers
 	userNotifications: () ->
@@ -80,4 +89,9 @@ Template.createProjectButton.events
 		#FlowRouter.setQueryParams({action: "alerts"});
 		Modal.show('createProjectModal')
 
-##########################################
+##################################################
+Template.createDefectButton.events
+	'click .create-btn': (e,t) ->
+		Modal.show('createDefectModal')
+
+##################################################
