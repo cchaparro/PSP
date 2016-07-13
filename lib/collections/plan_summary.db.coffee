@@ -97,6 +97,12 @@ schemas.plan_summary = new SimpleSchema
 		optional: false
 		label: "Id of the Project owner"
 
+	"timeStarted":
+		type: String
+		optional: false
+		defaultValue: ""
+		label: "TimeStarted for the time logs"
+
 	"timeEstimated":
 		type: Array
 		label: "Time estimation of Plan Summary"
