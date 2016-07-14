@@ -11,32 +11,29 @@
 	<div class="master-content">
 		{{> Template.dynamic template=main}}
 	</div>
-	{{#unless $.Meteor.status.connected}}
-		<div class="warning-slide status-message">
-			<h3>Conectando</h3>
-			<span>Estamos tratando de conectarnos a la plataforma.</span>
-			<i class="fa fa-chevron-right"></i>
-			<div class="label-danger">
-				<i class="fa fa-times"></i>
+	<div class="status-box">
+		{{#unless $.Meteor.status.connected}}
+			<div class="warning-slide status-message">
+				<div class="label-content">
+					<h3>Conectando</h3>
+					<span>Estamos tratando de conectarnos a la plataforma.</span>
+				</div>
+				<div class="label-danger">
+					<i class="fa fa-times"></i>
+				</div>
 			</div>
-		</div>
-	{{/unless}}
-	{{> statusMessage}}
+		{{/unless}}
+		{{> statusMessage}}
+	</div>
 </template>
 <!-- ###################################### -->
 <template name="statusMessage">
 	{{#with statusMessage}}
 		<div class="warning-slide status-message">
-			<h3>{{title}}</h3>
-			<span>{{subject}}</span>
-			<i class="fa fa-chevron-right"></i>
-			<div class="label-{{css}}">
-				<div></div><div></div>
+			<div class="label-content">
+				<h3>{{title}}</h3>
+				<span>{{subject}}</span>
 			</div>
-		</div>
-		<div class="warning-slide status-message">
-			<h3>{{title}}</h3>
-			<span>{{subject}}</span>
 			<div class="label-{{css}}">
 				<i class="fa {{#if $eq css 'danger'}} fa-times {{else}} fa-check {{/if}}"></i>
 			</div>

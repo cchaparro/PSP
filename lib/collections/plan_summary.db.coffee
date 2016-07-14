@@ -100,7 +100,7 @@ schemas.plan_summary = new SimpleSchema
 	"timeStarted":
 		type: String
 		optional: false
-		defaultValue: ""
+		defaultValue: "false"
 		label: "TimeStarted for the time logs"
 
 	"timeEstimated":

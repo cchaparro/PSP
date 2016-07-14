@@ -54,8 +54,8 @@ Template.timesBar.events
 			currentStage = _.first projectStages
 			currentStage.time = parseInt(totalTime)
 
-			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, false, true, (err) ->
-				if err
+			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, false, true, (error) ->
+				if error
 					sys.flashStatus("error-project")
 					console.log "Error updating project phase"
 					console.warn(error)
