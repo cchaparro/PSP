@@ -66,13 +66,14 @@ Template.timesBar.events
 	'click .time-submit': (e,t) ->
 		projectStages = Template.instance().projectStages.get()
 
-		if @timeStarted != 0
+		if @timeStarted != "false"
 			totalTime = new Date() - new Date(@timeStarted)
 		else
 			totalTime = 0
 
 		currentStage = _.first projectStages
 		currentStage.time = parseInt(totalTime)
+
 		Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
 			if error
 				sys.flashStatus("error-project")

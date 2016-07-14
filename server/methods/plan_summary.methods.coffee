@@ -13,13 +13,11 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({"projectId": pid, "summaryOwner": Meteor.userId()})
 
 		# the input stage is the stage that just had a new amount of time registered
-		currentStage = _.findWhere planSummary?.timeEstimated, {name: stage.name}
+		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}
 		currentStage.time = stage.time + currentStage.time
 
 		if finishStage
 			currentStage.finished = true
-
-		console.log planSummary.timeEstimated
 
 		data = {
 			"timeEstimated": planSummary.timeEstimated

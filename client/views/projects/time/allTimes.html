@@ -18,14 +18,14 @@
 	<tr>
 		<td><span>{{name}}</span></td>
 		<td>{{timeFormat time}}</td>
-		<td><span class="time-completed {{#if $not finished}} hide {{/if}}">Completado</span></td>
+		<td style="width: 55px;"><span class="time-completed {{#if $not finished}} hide {{/if}}">Completado</span></td>
 	</tr>
 </template>
 
 <!-- ###################################### -->
 <template name="timesBar">
 	{{#with planSummary}}
-		<div class="submenu">
+		<div class="time-menu">
 			<div class="{{#if isEmptyStage}} hide {{/if}}">
 				<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
 				<i class="fa time-btn fa-pause {{#if $not timeStatus}} time-status-pause {{/if}}"></i>
@@ -38,7 +38,7 @@
 					{{/each}}
 				</ul>
 			</div>
-			<div class="btn submenu-create time-submit">
+			<div class="btn time-submit">
 				<span>Finalizar Etapa</span>
 			</div>
 		</div>
