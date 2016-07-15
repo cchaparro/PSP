@@ -711,6 +711,7 @@
 		border: 0;
 		width: 100%;
 		table-layout: fixed;
+		margin-bottom: 0;
 		thead {
 			border-bottom: 1px solid $border;
 			border-top: 1px solid $border;
@@ -734,6 +735,15 @@
 			cursor: default;
 		}
 
+	}
+}
+
+.td-input-row {
+	padding-top: 0!important;
+	padding-bottom: 0!important;
+
+	input {
+		margin-bottom: 0;
 	}
 }
 //----------- No Data Notification Box -----------

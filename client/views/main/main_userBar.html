@@ -17,6 +17,16 @@
 			{{> createDefectButton}}
 		{{/if}}
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
+		<div class="notification-box">
+			<ul>
+				{{#each userNotifications}}
+					<li>
+						<h3>{{title}}</h3>
+						<span>{{subject}}</span>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
 		{{#with userData}}
 			<div class="avatar-box">
 				<!-- <div class="avatar-badge"></div> -->

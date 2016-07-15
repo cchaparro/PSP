@@ -72,10 +72,10 @@
 	{{/each}}
 	{{#with totalValues}}
 		<tr>
-			<td><p>Total</p></td>
-			<td><input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}"></td>
+			<td><span>Total</span></td>
+			<td class="td-input-row"><input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}"></td>
 			<td><span>{{planSummaryTime totalTime}}</span></td>
-			<td><p>{{planSummaryTime totalToDate}}</p></td>
+			<td><span>{{planSummaryTime totalToDate}}</span></td>
 			<td></td>
 		</tr>
 	{{/with}}
@@ -93,10 +93,10 @@
 	{{/each}}
 	{{#with totalInjectedValues}}
 		<tr>
-			<td><p>Total</p></td>
+			<td><span>Total</span></td>
 			<td></td>
 			<td><span>{{totalInjected}}</span></td>
-			<td><p>{{totalInjectedToDate}}</p></td>
+			<td><span>{{totalInjectedToDate}}</span></td>
 			<td></td>
 		</tr>
 	{{/with}}
@@ -114,10 +114,10 @@
 	{{/each}}
 	{{#with totalRemovedValues}}
 		<tr>
-			<td><p>Total</p></td>
+			<td><span>Total</span></td>
 			<td></td>
 			<td><span>{{totalRemoved}}</span></td>
-			<td><p>{{totalRemovedToDate}}</p></td>
+			<td><span>{{totalRemovedToDate}}</span></td>
 			<td></td>
 		</tr>
 	{{/with}}

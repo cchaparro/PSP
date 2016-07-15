@@ -273,6 +273,37 @@ html, body {
 	}
 }
 
+.notification-box {
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	right: 70px;
+	top: 60px;
+	background-color: $white;
+	border: 1px solid $border;
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+
+		li {
+			padding: 10px;
+			border-bottom: 1px solid $border;
+			cursor: pointer;
+
+			h3 {
+				margin: 0;
+				font-size: 12pt;
+				font-weight: bold;
+			}
+
+			span {
+				font-size: 10pt;
+			}
+		}
+	}
+
+}
 //------------------------------------------------
 // Landscape tablets and medium desktops
 @media (min-width: 992px) and (max-width: 1199px) {

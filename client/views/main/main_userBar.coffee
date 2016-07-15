@@ -12,6 +12,9 @@ Template.main_userBar.helpers
 		FlowRouter.watchPathChange()
 		return FlowRouter.current().route.name
 
+	userNotifications: () ->
+		return db.notifications.find({"notificationOwner": Meteor.userId()})
+
 	# viewState: () ->
 	# 	FlowRouter.watchPathChange()
 	# 	currentState = FlowRouter.current().route.name
@@ -61,6 +64,10 @@ Template.main_userBar.events
 			FlowRouter.go("/")
 		else
 			FlowRouter.go("/#{iterationId}")
+
+	'click .notification-svg': (e,t) ->
+		console.log "Abri notificacion"
+		$('.notification-box').toggleClass('hide')
 
 ##################################################
 Template.userMenuDropdown.helpers
