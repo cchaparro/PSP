@@ -12,6 +12,11 @@ Meteor.methods
 	update_time_stage: (pid, stage, finishStage=false, reset_timeStarted=false) ->
 		planSummary = db.plan_summary.findOne({"projectId": pid, "summaryOwner": Meteor.userId()})
 
+		# If the time saved is more than 3 minutes, send a notification to the user
+		if stage.time > 180000
+			console.log "entre aqui"
+			syssrv.newNotification("time-registered", userId)
+
 		# the input stage is the stage that just had a new amount of time registered
 		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}
 		currentStage.time = stage.time + currentStage.time
