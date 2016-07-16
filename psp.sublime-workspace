@@ -5,59 +5,151 @@
 		[
 			[
 				"padd",
-				"padding-left"
+				"padding-bottom"
 			],
 			[
-				"default-",
-				"default-border-radius	 main.scss"
+				"main",
+				"main-text-color	 projects.scss"
 			],
 			[
-				"margin",
-				"margin-right"
-			],
-			[
-				"marg",
-				"margin-top"
-			],
-			[
-				"tex",
-				"text-decoration"
-			],
-			[
-				"min",
-				"min-width"
-			],
-			[
-				"mar",
-				"margin-bottom"
-			],
-			[
-				"border-lef",
-				"border-top-left-radius"
+				"font",
+				"font-size"
 			],
 			[
 				"inl",
 				"inline-block"
 			],
 			[
-				"bord",
-				"border-radius"
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"z-",
+				"z-index"
+			],
+			[
+				"input-",
+				"input-text	 projects.scss"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"curren",
+				"currentStage"
 			],
 			[
 				"pad",
-				"padding"
+				"padding-left"
+			],
+			[
+				"prima",
+				"primary-dark-bg	 main.scss"
+			],
+			[
+				"prim",
+				"primary-light-bg	 userAccess.scss"
+			],
+			[
+				"default",
+				"default-border-radius	 global.scss"
+			],
+			[
+				"box-",
+				"box-shadow"
+			],
+			[
+				"defaul",
+				"default-border-radius	 projects.scss"
 			],
 			[
 				"border",
-				"border-right"
+				"border-radius"
+			],
+			[
+				"primary",
+				"primary-dark-bg	 main.scss"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"list-s",
+				"list-style"
+			],
+			[
+				"proj",
+				"projectId"
 			],
 			[
 				"plan",
 				"plan_summary"
 			],
 			[
-				"font",
-				"font-size"
+				"pro",
+				"project-box	 projects.scss"
+			],
+			[
+				"defult",
+				"default-border-radius	 projects.scss"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"border-lef",
+				"border-left"
+			],
+			[
+				"paddi",
+				"padding"
+			],
+			[
+				"bord",
+				"border"
+			],
+			[
+				"planSu",
+				"planSummaryFinalTime"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"border-top",
+				"border-top"
+			],
+			[
+				"border-rig",
+				"border-top-right-radius"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"border-bott",
+				"border-bottom"
+			],
+			[
+				"default-",
+				"default-border-radius	 main.scss"
+			],
+			[
+				"min",
+				"min-width"
 			],
 			[
 				"bo",
@@ -66,14 +158,6 @@
 			[
 				"out",
 				"outline"
-			],
-			[
-				"border-bott",
-				"border-bottom-left-radius"
-			],
-			[
-				"paddi",
-				"padding-top"
 			],
 			[
 				"pass",
@@ -172,10 +256,34 @@
 	"buffers":
 	[
 		{
-			"file": ".meteor/packages",
+			"file": "client/views/settings/project_settings/project_settings.html",
 			"settings":
 			{
-				"buffer_size": 1694,
+				"buffer_size": 937,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/views/settings/project_settings/project_settings.coffee",
+			"settings":
+			{
+				"buffer_size": 649,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/stylesheets/settings.scss",
+			"settings":
+			{
+				"buffer_size": 1314,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/views/settings/account_settings/account_settings.html",
+			"settings":
+			{
+				"buffer_size": 199,
 				"line_ending": "Unix"
 			}
 		}
@@ -188,9 +296,17 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "iden",
+		"last_filter": "rein",
 		"selected_items":
 		[
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
 			[
 				"iden",
 				"Indentation: Reindent Lines"
@@ -216,7 +332,7 @@
 				"Package Control: Remove Package"
 			]
 		],
-		"width": 692.0
+		"width": 503.0
 	},
 	"console":
 	{
@@ -237,10 +353,100 @@
 	"expanded_folders":
 	[
 		"/Users/Juanpmd/Documents/PSP-Connect",
-		"/Users/Juanpmd/Documents/PSP-Connect/.meteor"
+		"/Users/Juanpmd/Documents/PSP-Connect/client",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/account_settings",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/system",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/publications"
 	],
 	"file_history":
 	[
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_variables.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/settings.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/settings.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/plan_summary.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/global.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/notification.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/projects.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/plan_summary.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_defaults.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/plan_summary.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/projects.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projectsView.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projectsView.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/_init.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/defect_types.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/defect_types.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/defects.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/general/projectInformation.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/projects.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/general/projectInformation.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/settings.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/projects.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/settings.json",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/settings.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Summary.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Script.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/user.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notification.model.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/users.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/defects.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/userAccess.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/overview.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/.meteor/packages",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/modal.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/users.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/.meteor/local/build/programs/server/node_modules/source-map-support/node_modules/source-map/build/suffix-source-map.jsm",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Power.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Email.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Lock.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Information.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Google.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Facebook.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/.git/COMMIT_EDITMSG",
 		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/main/main.html",
 		"/Users/Juanpmd/Desktop/PSP-Connect/lib/system/system.coffee",
@@ -293,86 +499,11 @@
 		"/Users/Juanpmd/Desktop/PSP-Connect/public/images/Bug.svg",
 		"/Users/Juanpmd/Desktop/PSP-Connect/client/stylesheets/modal.scss",
 		"/Users/Juanpmd/Desktop/PSP-Connect/public/images/ProjectBox.svg",
-		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/_widgets/modal/modal.coffee",
-		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/_widgets/modal/modal.html",
-		"/Users/Juanpmd/Desktop/PSP-Connect/client/stylesheets/userAccess.scss",
-		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/userAccess/login.coffee",
-		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/userAccess/login.html",
-		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/userAccess/userAccess.html",
-		"/Users/Juanpmd/Desktop/PSP-Connect/server/methods/users.methods.coffee",
-		"/Users/Juanpmd/Desktop/PSP-Connect/lib/collections/_init.db.coffee",
-		"/Users/Juanpmd/Desktop/PSP-Connect/public/images/Message.svg",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/accountModifications/welcome_pwd_forgot.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-courses.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/20_parts/login.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/20_parts/modals.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-users.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/00_style_setup/_variables.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/20_parts/editing.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/signInUp/welcome_sign_in.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/signInUp/welcome_sign_in.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/languages/settings-brand.de.i18n.json",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-courses.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/groups.model.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-groups.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-users.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-groups.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/languages/settings-brand.en.i18n.json",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/04_blink/blink_types/quiz/blink_content_quiz.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/03_course_statistics/course_statistics.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/03_course_statistics/course_statistics.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/03_course/course.html",
-		"/Users/Juanpmd/Documents/Blink.it/blinkit.sublime-project",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/04_blink/blink_types/quiz/blink_content_quiz_answers.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/04_blink/blink_types/quiz/blink_content_quiz.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/lib/jquery-ui-1.11.2.custom/jquery-ui.js",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/20_parts/blink_grid.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/04_blink/blink-editing.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/signInUp/userWidget.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/helpers.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/signInUp/userWidget.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/blink.model.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/_system/editing.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/token_go/welcome_go_pwd_set.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods/accessmethods_payment.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods/accessmethods_accesscode.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods/accessmethods_payment.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/token_go/welcome_go_pwd_set.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/20_parts/00_widgets.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods/accessmethods_accesscode.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/token_go/welcome_go_in.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/payments.model.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/routes/go.route.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/collections/courses.db.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods_start.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods_modules.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/accountModifications/welcome_go_unsubscribe.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-settings.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/modal/modal.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/modal/modal.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/02_brand_settings/brand-settings.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/userprofile/widget-userprofile.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/accountModifications/welcome_go_unsubscribe.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/signInUp/welcome_sign_up.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/token_go/welcome_go_in.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/_system/_misc.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/signInUp/welcome_sign_up.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_welcome_screen/accountModifications/welcome_pwd_forgot.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/user.model.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/models/tokens.model.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/01_course_access/accessmethods.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/stylesheets/20_parts/02_brand-settings.scss",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/04_blink/blink-editing.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/lib/collections/memberlist.db.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/03_course_newsletter/course_newsletter.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/03_course_newsletter/course_newsletter.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/filereader/filereader.coffee",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/_widgets/filereader/filereader.html",
-		"/Users/Juanpmd/Documents/Blink.it/app/client/views/03_course_users/course_users.coffee"
+		"/Users/Juanpmd/Desktop/PSP-Connect/client/views/_widgets/modal/modal.coffee"
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
@@ -387,134 +518,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"border-radiu",
-			"submenu",
-			"menu",
-			"back",
+			"26px",
+			"Dep",
+			"!= 0",
+			"time",
 			"success",
-			"submenu",
-			"sub",
-			"submenu",
-			"projects",
-			"project",
-			"return",
-			"only",
-			"@media only",
-			"things.bottle",
-			"isNotEmpty",
-			"stages",
-			"removedfases",
-			".find",
-			"Projects.fin",
-			"create-sel-defect-type",
-			"new-defect-type",
-			"allDefectTypes",
-			"console",
-			"email",
+			"timeStatus",
+			"fullscreen",
+			"project_settings",
+			"projectSettings",
+			"projectSettingsTemplate",
+			"settings",
+			"projectSettings",
+			"projectViewSelector",
+			"seeked",
+			"uid",
+			"psp",
+			"levelPSP",
+			"psplevel",
+			"title",
+			"sys.getPageName",
 			"create_defect_types",
-			"DefectTypes",
-			"areEqual",
-			"$default-",
-			"shadow",
-			"all 0.3s ease",
-			"shadow",
-			"input",
-			"Plan",
-			"plan",
-			"Plan",
-			"Time",
+			"amountDefects",
+			"planSummary",
+			"allprojects-container",
+			"finalTime",
+			"totalInjectedValues",
+			"projectViewSelector",
+			"384",
+			"95a6b9",
+			"content",
+			"flash",
+			"Succ",
+			"flashErr",
+			"flashSucces",
+			"danger",
+			"label-dan",
+			"5F6C80",
+			"project-menu-selected",
+			"projectViewSelector",
+			"avatar",
+			"solid",
+			"defects",
+			"Injected",
+			"time-btn",
+			"fa-time",
+			"injectedStage",
+			"injected",
+			"Injected",
+			"injected",
+			"create_defect",
+			"update_defect",
+			"data",
+			"delete_defect",
+			"projectTotalTime",
+			"new-defect-da",
+			"t.defect.se",
+			"t.defect.",
+			"span",
+			"defect-select-field",
+			"defect-injec",
+			"create-sel-defect-type",
+			"create-sel-defect-removed",
+			"create-defect-description",
+			"amountDefects",
+			"route",
+			"*/",
+			"/*",
+			"end",
+			"prj-info-text",
+			"defect-create-son",
+			"Defect",
+			"defect-son",
+			"defect-create-son",
+			"create_defect",
 			"project",
-			"$user-menu-border",
-			"main-user",
-			"border",
-			"$user-menu-border",
-			"Projects",
-			"allprojec",
-			"Projects",
-			"dov",
-			"prj",
-			"Layout",
-			"border",
-			"red",
-			"juan",
-			"red",
-			"Layout",
-			"dropdown",
-			"dropdown-menu",
-			"$radius",
-			"()\n",
-			"1_confirm",
-			"session_password",
-			"session_email",
-			"last_name",
-			"first_name",
-			"registerLayout",
-			"Template.registerLayout.onRendered ->\n",
-			"loginLayout",
-			"mainLayout",
-			"1",
-			"0",
-			"errorstatePasswd2",
-			"State2",
-			"state2",
-			"State2",
-			"state2",
-			"errorstatePasswd2",
-			"errorstatePasswd1",
-			"State1",
-			"state1",
-			"State1",
-			"state1",
-			"2",
-			"0",
-			"State2",
-			"state2",
-			"State2",
-			"state2",
-			"State1",
-			"state1",
-			"State1",
-			"state1",
-			"420",
-			"420px",
-			"_.map",
-			"submitted",
-			"2",
-			"oncreated",
-			"_.map",
-			"totalPagesUsers",
-			"2",
-			"Meteor.call \"edit_group\", @_id, value, null",
-			"boot",
-			"case",
-			"focusPrev",
-			"container-blink",
-			"registerHelper",
-			"getUserAvatarUrl",
-			"registerHelper",
-			"getUserAvatarUrl",
-			"if file",
-			"blinks_set_seenstate",
-			"sys.console.unseenAllInCourse",
-			"sys.console.unseenAllInCourse()",
-			"invalidateField",
-			"secret",
-			"getModalTemplate",
-			"modal-open-link",
-			"userprofile",
-			"brand_color_picker",
-			"welcome_go_unsubscribe",
-			"-xs",
-			"hidden",
-			"passwordConfirm",
-			"signinup_password_request_recovery",
+			"hoveredDefect",
+			"hoveredProject",
+			"Project",
+			"defects",
+			"<>",
+			"project-delete-confirm",
+			"iteration-delete-confirm",
+			"project",
+			"project-delete-conf",
+			"project-delete",
+			"project",
+			"box-hover",
+			"project-box-hov",
+			"hover",
+			"project-hover",
+			"project",
+			"hoveredProject",
+			"project-for-iteration-box",
+			"iteration-box",
+			"iteration-vox",
+			"project-info",
+			"prj-info-title",
+			"prj-info-ti",
+			"project-info-ti",
+			"deleteStatus",
+			"!t.deleteStatus.get()",
+			"if",
+			"h3",
 			"console",
-			"sys.dontAnnoyPasswordTypingUser",
-			"userprofile",
-			"sys.invalidateField",
-			"main-menu",
-			"table-users",
-			"notifyMissingFields"
+			"project-dele",
+			"projects-box",
+			"defect-box",
+			"project-delete",
+			"console.lo",
+			"stage",
+			"finalStages",
+			"update_user_plan_summary",
+			"amount",
+			"false",
+			"finished",
+			"isnotemp",
+			"descriptionText",
+			"title",
+			"close-error",
+			"new-input",
+			"plan_summary",
+			"pink",
+			"transition",
+			"padding",
+			"Facebook",
+			"#EDF0FA",
+			"facebook",
+			"border-radiu"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -532,24 +663,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": ".meteor/packages",
+					"file": "client/views/settings/project_settings/project_settings.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1694,
+						"buffer_size": 937,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								912,
-								912
+								282,
+								282
 							]
 						],
 						"settings":
@@ -566,33 +697,55 @@
 								}
 							],
 							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										282,
+										283
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										274,
+										275
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -603,28 +756,138 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 9.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client/views/settings/project_settings/project_settings.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								192,
+								192
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -632,13 +895,222 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/stylesheets/settings.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								165,
+								165
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 538.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "client/views/settings/account_settings/account_settings.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 199,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								116,
+								116
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 70.0
 	},
 	"input":
 	{
@@ -684,6 +1156,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"notifcadb",
+				"lib/collections/notification.db.coffee"
+			],
+			[
+				"notificatio",
+				"lib/collections/notification.db.coffee"
+			],
+			[
+				"sus",
+				".meteor/local/build/programs/server/node_modules/source-map-support/node_modules/source-map/build/suffix-source-map.jsm"
+			],
 			[
 				"syst",
 				"lib/system/system.coffee"
@@ -1153,7 +1637,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 312.0,
+	"side_bar_width": 259.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
