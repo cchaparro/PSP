@@ -25,6 +25,16 @@ FlowRouter.route '/settings',
 		BlazeLayout.render 'masterLayout', main: 'settingsTemplate'
 	name: 'settings'
 
+FlowRouter.route '/settings/project_settings',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate'
+	name: 'projectSettings'
+
+FlowRouter.route '/settings/account_settings',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'accountSettingsTemplate'
+	name: 'accountSettings'
+
 FlowRouter.route '/help',
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
@@ -61,18 +71,5 @@ FlowRouter.route '/:fid/:id/plansummary',
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
 	name: 'projectSummary'
-
-
-FlowRouter.route '/:fid/:id/scripts',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
-	name: 'projectDefectLog'
-
-FlowRouter.route '/:fid/:id/defect_types',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
-	name: 'projectSummary'
-
-##########################################
 
 ##########################################

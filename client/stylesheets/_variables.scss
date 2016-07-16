@@ -31,6 +31,12 @@ $default-box-shadow:						0 1px 2px rgba(0,0,0,.1);
 			  transition: $transition;
 }
 
+@mixin translateX($translante) {
+	-webkit-transform: translateX($translante);
+	-ms-transform: translateX($translante);
+	transform: translateX($translante);
+}
+
 @mixin placeholder-color($color) {
 	// Chrome, Opera, Safari
 	&::-webkit-input-placeholder {

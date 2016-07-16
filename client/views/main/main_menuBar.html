@@ -3,7 +3,7 @@
 	<div class="main-menu">
 		<a href="{{pathFor 'main'}}" class="{{#if isProjectView}} menu-svg-selected {{/if}} menu-projects"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Projects.svg#projectLogo"></use></svg><span><i></i>Proyectos</span></a>
 		<a href="{{pathFor 'overview'}}" class="{{#if $eq template 'overview'}} menu-svg-selected {{/if}} menu-overview"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Summary.svg#summaryLogo"></use></svg><span><i></i>Resumen</span></a>
-		<a href="{{pathFor 'settings'}}" class="{{#if $eq template 'settings'}} menu-svg-selected {{/if}} menu-settings"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg><span><i></i>Ajustes</span></a>
+		<a href="{{pathFor 'projectSettings'}}" class="{{#if $eq template 'projectSettings'}} menu-svg-selected {{/if}} menu-settings"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg><span><i></i>Ajustes</span></a>
 		<a href="{{pathFor 'help'}}" class="{{#if $eq template 'help'}} menu-svg-selected {{/if}} menu-help"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Help.svg#helpLogo"></use></svg><span><i></i>Ayuda</span></a>
 	</div>
 </template>
