@@ -59,6 +59,7 @@ input:checked + .switch-slider:before {
 //--------------- Project Settings ---------------
 .project-settings-box {
 	display: block;
+	width: 100%;
 	float: left;
 	padding-bottom: 20px;
 
@@ -82,6 +83,14 @@ input:checked + .switch-slider:before {
 			font-size: 11pt;
 			color: $main-text-color;
 		}
+
+		&:first-child {
+			width: 70px;
+		}
+	}
+
+	.project-setting-information {
+		width: calc(100% - 70px);
 	}
 }
 //------------------------------------------------

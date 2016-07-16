@@ -2,32 +2,20 @@
 <template name="projectSettingsTemplate">
 	{{> settingsMenu}}
 	<div class="project-view-content">
-		<div>
-		</div>
-		<div class="project-settings-box">
-			<div>
-				<label class="switch">
-					<input type="checkbox" checked="{{checked}}" id="settings-checkbox">
-					<div class="switch-slider round"></div>
-				</label>
+		{{#each settings}}
+			<div class="project-settings-box">
+				<div>
+					<label class="switch">
+						<input type="checkbox" checked="{{value}}" id="settings-checkbox">
+						<div class="switch-slider round"></div>
+					</label>
+				</div>
+				<div class="project-setting-information">
+					<h3>{{title}}</h3>
+					<span>{{subject}}</span>
+				</div>
 			</div>
-			<div>
-				<h3>Proyecto con PROBE C</h3>
-				<span>Estoy aqui funcionando con todo lo que necesito peor no entiendo porque se ve asi</span>
-			</div>
-		</div>
-		<div class="project-settings-box">
-			<div>
-				<label class="switch">
-					<input type="checkbox">
-					<div class="switch-slider round"></div>
-				</label>
-			</div>
-			<div>
-				<h3>Proyecto con PROBE D</h3>
-				<span>Estoy aqui funcionando con todo lo que necesito peor no entiendo porque se ve asi</span>
-			</div>
-		</div>
+		{{/each}}
 	</div>
 </template>
 <!-- ###################################### -->
