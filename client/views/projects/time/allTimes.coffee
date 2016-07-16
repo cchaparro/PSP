@@ -44,6 +44,8 @@ Template.timesBar.events
 		Meteor.call "update_timeStarted", FlowRouter.getParam("id"), date, (error) ->
 			if error
 				console.log "Error changing timeStarted in plan Summary"
+			else
+				sys.flashTime()
 
 
 	'click .fa-pause': (e,t) ->
@@ -61,6 +63,7 @@ Template.timesBar.events
 					console.warn(error)
 				else
 					sys.flashStatus("save-project")
+					sys.removeTimeMessage()
 
 
 	'click .time-submit': (e,t) ->
@@ -82,5 +85,6 @@ Template.timesBar.events
 			else
 				t.projectStages.set( _.without projectStages, currentStage)
 				sys.flashStatus("save-project")
+				sys.removeTimeMessage()
 
 ##########################################

@@ -14,8 +14,7 @@ Meteor.methods
 
 		# If the time saved is more than 3 minutes, send a notification to the user
 		if stage.time > 180000
-			console.log "entre aqui"
-			syssrv.newNotification("time-registered", userId)
+			syssrv.newNotification("time-registered", Meteor.userId())
 
 		# the input stage is the stage that just had a new amount of time registered
 		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}

@@ -21,3 +21,11 @@ Template.statusMessage.helpers
 		return false
 
 ##########################################
+Template.statusTimeMessage.helpers
+	timeMessage: () ->
+		msg = Session.get "statusTimeMessage"
+		if msg
+			return msg
+		return false
+
+##########################################

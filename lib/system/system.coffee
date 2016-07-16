@@ -117,6 +117,19 @@ sys.flashStatus = (type) ->
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
+
+
+sys.removeTimeMessage = () ->
+	$('.status-time-message').animate { opacity: 0 }, 800, ->
+		Session.set "statusTimeMessage", false
+
+sys.flashTime = (projectName) ->
+	title = "Toma de Tiempo"
+	subject = "Iniciaste la toma de tiempo en el proyecto: " + projectName
+	css = "warning"
+
+	Session.set "statusTimeMessage", {title: title, subject: subject, css: css}
+
 ##########################################
 ###############- Cut Text -###############
 
@@ -145,5 +158,7 @@ sys.selectColor = (last_color) ->
 	return colors[position]
 
 ##########################################
+###########- Global Variables -###########
 
+sys.runningTimeProject = new ReactiveVar(false)
 ##########################################

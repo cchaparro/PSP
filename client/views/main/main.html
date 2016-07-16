@@ -24,6 +24,7 @@
 			</div>
 		{{/unless}}
 		{{> statusMessage}}
+		{{> statusTimeMessage}}
 	</div>
 </template>
 <!-- ###################################### -->
@@ -36,6 +37,20 @@
 			</div>
 			<div class="label-{{css}}">
 				<i class="fa {{#if $eq css 'danger'}} fa-times {{else}} fa-check {{/if}}"></i>
+			</div>
+		</div>
+	{{/with}}
+</template>
+<!-- ###################################### -->
+<template name="statusTimeMessage">
+	{{#with timeMessage}}
+		<div class="warning-slide status-time-message">
+			<div class="label-content">
+				<h3>{{title}}</h3>
+				<span>{{subject}}</span>
+			</div>
+			<div class="label-warning">
+				<i class="fa fa-exclamation-triangle"></i>
 			</div>
 		</div>
 	{{/with}}
