@@ -125,7 +125,7 @@ sys.removeTimeMessage = () ->
 
 sys.flashTime = (projectName) ->
 	title = "Toma de Tiempo"
-	subject = "Iniciaste la toma de tiempo en el proyecto: " + projectName
+	subject = 'Iniciaste la toma de tiempo en el proyecto "' + projectName + '".'
 	css = "warning"
 
 	Session.set "statusTimeMessage", {title: title, subject: subject, css: css}

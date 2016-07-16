@@ -41,11 +41,12 @@ Template.timesBar.helpers
 Template.timesBar.events
 	'click .fa-play': (e,t) ->
 		date = new Date()
+		projectTitle = db.projects.findOne({_id: FlowRouter.getParam("id")}).title
 		Meteor.call "update_timeStarted", FlowRouter.getParam("id"), date, (error) ->
 			if error
 				console.log "Error changing timeStarted in plan Summary"
 			else
-				sys.flashTime()
+				sys.flashTime(projectTitle)
 
 
 	'click .fa-pause': (e,t) ->

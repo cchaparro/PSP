@@ -1,13 +1,13 @@
 ##########################################
 if Meteor.isServer
-	syssrv.newNotification = (type, userId) ->
+	syssrv.newNotification = (type, userId, data) ->
 		switch type
 			when 'new-user'
 				title = "Bienvenido a PSP Connect"
 				subject = "Gracias por registrarte a nuestra plataforma. esperamos que tengas una gran experiencia en ella."
 			when 'time-registered'
-				title = "Nuevo timepo registrado"
-				subject = "Acabas de registrar un nuevo tiempo en el proyecto"
+				title = "Nuevo tiempo registrado"
+				subject = 'Acabas de registrar un nuevo tiempo en el proyecto "' + data.title + "'."
 			when "aqui"
 				title = "nooo"
 
