@@ -16,15 +16,12 @@
 		{{#if $eq template "projectDefectLog"}}
 			{{> createDefectButton}}
 		{{/if}}
-		<div class="notification-badge"></div>
+		<div class="notification-badge {{#unless showNotificationBadge}} hide {{/unless}}"></div>
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		<div class="notification-box hide">
 			<ul>
 				{{#each userNotifications}}
-					<li>
-						<h3>{{title}}<div class="unseen-badge"></div></h3>
-						<span>{{subject}}</span>
-					</li>
+					{{> userNotification}}
 				{{/each}}
 			</ul>
 			<div class="more-notifications">
@@ -73,5 +70,12 @@
 		<i class="fa fa-plus"></i>
 		<span>Crear Defecto</span>
 	</div>
+</template>
+<!-- ###################################### -->
+<template name="userNotification">
+	<li>
+		<h3>{{title}}<div class="unseen-badge {{#if notificationSeen}} hide {{/if}}"></div></h3>
+		<span>{{subject}}</span>
+	</li>
 </template>
 <!-- ###################################### -->

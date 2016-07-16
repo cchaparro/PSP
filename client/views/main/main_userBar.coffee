@@ -1,7 +1,8 @@
 ##################################################
+notSeenNotifications = new ReactiveVar({})
+##################################################
 Template.main_userBar.onCreated () ->
 	Meteor.subscribe "UserMenu"
-
 
 Template.main_userBar.helpers
 	userData: () ->
@@ -13,7 +14,10 @@ Template.main_userBar.helpers
 		return FlowRouter.current().route.name
 
 	userNotifications: () ->
-		return db.notifications.find({"notificationOwner": Meteor.userId()})
+		return db.notifications.find({"notificationOwner": Meteor.userId()}, {sort: {"createdAt": -1}})
+
+	showNotificationBadge: () ->
+		return db.notifications.find({"notificationOwner": Meteor.userId(), "seen": false}).count() > 0
 
 	# viewState: () ->
 	# 	FlowRouter.watchPathChange()
@@ -66,8 +70,25 @@ Template.main_userBar.events
 			FlowRouter.go("/#{iterationId}")
 
 	'click .notification-svg, click .notification-badge': (e,t) ->
-		console.log "Abri notificacion"
 		$('.notification-box').toggleClass('hide')
+
+		if !$('.notification-box').hasClass('hide')
+			userNotifications = {}
+			userNotifications = db.notifications.find({"notificationOwner": Meteor.userId()}, {sort: {"createdAt": -1}})
+
+			userNotifications.forEach (notification) ->
+				userNotifications[notification._id] = notification.seen
+
+			notSeenNotifications.set(userNotifications)
+			Meteor.call("notificationsSeen")
+
+##################################################
+Template.userNotification.helpers
+	notificationSeen: () ->
+		userNotifications = notSeenNotifications.get()
+		unless userNotifications[@_id]?
+			return true
+		return userNotifications[@_id] == true
 
 ##################################################
 Template.userMenuDropdown.helpers

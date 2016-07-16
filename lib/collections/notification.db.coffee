@@ -30,6 +30,16 @@ schemas.notifications = new SimpleSchema
 		optional: true
 		label: "Description of the notification"
 
+	"seen":
+		type: Boolean
+		label: "The notification was seen by the user"
+		defaultValue: false
+
+	"clicked":
+		type: Boolean
+		label: "The notification was clicked by the user"
+		defaultValue: false
+
 ##########################################
 db.notifications.attachSchema(schemas.notifications)
 ##########################################
