@@ -16,20 +16,23 @@
 		{{#if $eq template "projectDefectLog"}}
 			{{> createDefectButton}}
 		{{/if}}
+		<div class="notification-badge"></div>
 		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
-		<div class="notification-box">
+		<div class="notification-box hide">
 			<ul>
 				{{#each userNotifications}}
 					<li>
-						<h3>{{title}}</h3>
+						<h3>{{title}}<div class="unseen-badge"></div></h3>
 						<span>{{subject}}</span>
 					</li>
 				{{/each}}
 			</ul>
+			<div class="more-notifications">
+				<span>Ver todas las Notificaciónes</span>
+			</div>
 		</div>
 		{{#with userData}}
 			<div class="avatar-box">
-				<!-- <div class="avatar-badge"></div> -->
 				<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');"></div>
 			</div>
 			{{> userMenuDropdown}}
@@ -49,28 +52,6 @@
 			<span>Cerrar sesión</span>
 		</li>
 	</ul>
-	<!-- <ul class="dropdown-menu user-dropdown">
-		<li>{{profile.name}}</li>
-		<div class="logout">
-			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
-			<span >Cerrar sesion</span>
-		</div>
-		<div class="notification-box">
-			<div>
-				<h3>Notificaciones</h3>
-				<span>{{totalAmountNotifications}}</span>
-			</div>
-			<ul>
-				{{#each userNotifications}}
-					<li>
-						<div class="notification-type"><i class="fa {{notificationIcon}}"></i></div>
-						<h3>{{title}}</h3>
-						<span>{{subject}}</span>
-					</li>
-				{{/each}}
-			</ul>
-		</div>
-	</ul> -->
 </template>
 <!-- ###################################### -->
 <template name="createProjectButton">

@@ -179,25 +179,6 @@ html, body {
 		background-repeat: no-repeat;
 		background-position: center;
 	}
-
-	.avatar-badge {
-		width: 15px;
-		height: 15px;
-		background-color: red;
-		border: 2px solid $white;
-		position: absolute;
-		right: 15px;
-		top: 10px;
-		@include border-radius($circle-border-radius);
-
-		span {
-			color: $white;
-			font-size: 7pt;
-			font-weight: 800;
-			position: absolute;
-			padding: 0 1.5px;
-		}
-	}
 }
 
 .user-dropdown-tab {
@@ -273,18 +254,35 @@ html, body {
 	}
 }
 
+.notification-badge {
+	width: 14px;
+	height: 14px;
+	background-color: $danger;
+	border: 2px solid $white;
+	position: absolute;
+	right: 77px;
+	top: 14px;
+	cursor: pointer;
+	z-index: 2;
+	@include border-radius($circle-border-radius);
+}
+
 .notification-box {
-	width: 300px;
+	width: 350px;
 	height: 300px;
 	position: absolute;
 	right: 70px;
-	top: 60px;
+	top: 59px;
 	background-color: $white;
 	border: 1px solid $border;
+	@include box-shadow($default-box-shadow);
 
 	ul {
 		list-style: none;
 		padding-left: 0;
+		margin-bottom: 0;
+		height: 250px;
+		overflow-y: scroll;
 
 		li {
 			padding: 10px;
@@ -300,7 +298,29 @@ html, body {
 			span {
 				font-size: 10pt;
 			}
+
+			.unseen-badge {
+				width: 8px;
+				height: 8px;
+				margin-left: 7px;
+				margin-bottom: 1px;
+				background-color: $danger;
+				display: inline-block;
+				cursor: pointer;
+				z-index: 2;
+				@include border-radius($circle-border-radius);
+			}
 		}
+	}
+
+	.more-notifications {
+		height: 50px;
+		width: 100%;
+		border-top: 1px solid $border;
+		color: $input-text;
+		line-height: 50px;
+		text-align: center;
+
 	}
 
 }

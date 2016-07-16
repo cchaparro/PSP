@@ -65,7 +65,7 @@ Template.main_userBar.events
 		else
 			FlowRouter.go("/#{iterationId}")
 
-	'click .notification-svg': (e,t) ->
+	'click .notification-svg, click .notification-badge': (e,t) ->
 		console.log "Abri notificacion"
 		$('.notification-box').toggleClass('hide')
 

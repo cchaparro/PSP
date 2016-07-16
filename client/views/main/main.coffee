@@ -8,7 +8,7 @@
 # 			Modal.show('createProjectModal')
 # 			#FlowRouter.setQueryParams action: null
 
-Template.masterLayout.onRendered ->
+Template.masterLayout.onCreated ->
 	unless Meteor.userId()
 		FlowRouter.go("/login")
 
