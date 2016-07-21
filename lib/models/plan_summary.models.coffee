@@ -17,8 +17,11 @@ if Meteor.isServer
 
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		historyTotalTime = user.total.time
+		console.log historyTotalTime
 		historyTotalInjected = user.total.injected
 		historyTotalRemoved = user.total.removed
+
+		finishedProjects = db.projects.find({"projectOwner": Meteor.userId()}, "completed": true).count()
 
 		# This will add to the time the toDate and toDate% fields for the Plan Summary
 		finalTime = _.filter timePlanSummary, (time) ->
@@ -26,9 +29,13 @@ if Meteor.isServer
 			time.toDate = onDate.time
 			if (onDate.time == 0) or (historyTotalTime == 0)
 				time.percentage = 0
+				time.average = 0
 			else
 				time.percentage = ((onDate.time * 100) / historyTotalTime).toFixed(2)
+				time.average = (onDate.time/finishedProjects).toFixed(2)
+
 			return time
+		#console.log finalTime
 
 		finalInjected = _.filter Injected, (injected) ->
 			onDate = _.findWhere user.summaryAmount, {name: injected.name}

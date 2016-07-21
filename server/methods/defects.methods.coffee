@@ -15,16 +15,18 @@ Meteor.methods
 				injected = db.defects.find({"injected": stage.name}).count()
 				removed = db.defects.find({"removed": stage.name}).count()
 
-				injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
-				if data.injected == injectedStage.name
-					injectedStage.injected += 1
+				unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
+					injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
+					#console.log injectedStage
+					if data.injected == injectedStage.name
+						injectedStage.injected += 1
 
-				removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
-				if data.removed == removedStage.name
-					removedStage.removed += 1
+					removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
+					if data.removed == removedStage.name
+						removedStage.removed += 1
 
-				injectedValues.push({'name': stage.name, 'injected': injectedStage.injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
-				removedValues.push({'name': stage.name, 'removed': removedStage.removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
+					injectedValues.push({'name': stage.name, 'injected': injectedStage.injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
+					removedValues.push({'name': stage.name, 'removed': removedStage.removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
 
 
 			db.plan_summary.update({'projectId': data.projectId}, {$set: {'injectedEstimated': injectedValues, 'removedEstimated': removedValues}})
@@ -49,14 +51,15 @@ Meteor.methods
 			injectedValues = []
 			removedValues = []
 			_.each userStages, (stage) ->
-				removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
-				injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
+				unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
+					removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
+					injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
 
-				injected = db.defects.find({"projectId": data.projectId, "injected": stage.name}).count()
-				removed = db.defects.find({"projectId": data.projectId, "removed": stage.name}).count()
+					injected = db.defects.find({"projectId": data.projectId, "injected": stage.name}).count()
+					removed = db.defects.find({"projectId": data.projectId, "removed": stage.name}).count()
 
-				injectedValues.push({'name': stage.name, 'injected': injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
-				removedValues.push({'name': stage.name, 'removed': removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
+					injectedValues.push({'name': stage.name, 'injected': injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
+					removedValues.push({'name': stage.name, 'removed': removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
 
 			db.plan_summary.update({'projectId': data.projectId}, {$set: {'injectedEstimated': injectedValues, 'removedEstimated': removedValues}})
 

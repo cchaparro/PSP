@@ -26,6 +26,12 @@ schemas.summarytimeEstimated = new SimpleSchema
 		optional: true
 		label: "Value for percentage of recolected data until the current date"
 
+	"average":
+		type: Number
+		decimal: true
+		optional: true
+		label: "Value for average of recolected data until the current date"
+
 ##########################################
 schemas.summaryInjectedEstimated = new SimpleSchema
 	"name":

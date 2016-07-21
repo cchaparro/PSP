@@ -27,7 +27,7 @@ sys.displayTime = (time) ->
 ###############- Page Name -##############
 
 sys.getPageName = (title) ->
-	if title == "main" or title == "iterationView" or title == "projectGeneral"
+	if title == "main" or title == "iterationView" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
