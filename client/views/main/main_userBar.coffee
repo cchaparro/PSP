@@ -19,55 +19,46 @@ Template.main_userBar.helpers
 	showNotificationBadge: () ->
 		return db.notifications.find({"notificationOwner": Meteor.userId(), "seen": false}).count() > 0
 
-	# viewState: () ->
-	# 	FlowRouter.watchPathChange()
-	# 	currentState = FlowRouter.current().route.name
+	viewState: () ->
+		FlowRouter.watchPathChange()
+		currentState = FlowRouter.current().route.name
 
-	# 	Routes = [{
-	# 		title: sys.getPageName(currentState)
-	# 		route: FlowRouter.current().route.name
-	# 		fid: false
-	# 		pid: false
-	# 		lastValue: false
-	# 	}]
+		Routes = [{
+			title: sys.getPageName(currentState)
+			route: FlowRouter.current().route.name
+			fid: false
+			pid: false
+			lastValue: false
+		}]
 
-	# 	if FlowRouter.getParam("fid")
-	# 		Routes.push({
-	# 			title: "Iteraciónes"
-	# 			route: "iterationView"
-	# 			fid: FlowRouter.getParam("fid")
-	# 			pid: false
-	# 			lastValue: false
-	# 		})
+		if FlowRouter.getParam("fid")
+			Routes.push({
+				title: "Iteraciónes"
+				route: "iterationView"
+				fid: FlowRouter.getParam("fid")
+				pid: false
+				lastValue: false
+			})
 
-	# 	if FlowRouter.getParam("id")
-	# 		Project = db.projects.findOne({_id: FlowRouter.getParam("id"), "projectOwner": Meteor.userId()})
+		if FlowRouter.getParam("id")
+			Project = db.projects.findOne({_id: FlowRouter.getParam("id"), "projectOwner": Meteor.userId()})
 
-	# 		if Project
-	# 			Routes.push({
-	# 				title: Project.title
-	# 				route: "projectView"
-	# 				fid: FlowRouter.getParam("fid")
-	# 				pid: FlowRouter.getParam("id")
-	# 				lastValue: false
-	# 			})
+			if Project
+				Routes.push({
+					title: Project.title
+					route: "projectView"
+					fid: FlowRouter.getParam("fid")
+					pid: FlowRouter.getParam("id")
+					lastValue: false
+				})
 
-	# 	_.last(Routes).lastValue = true
-	# 	return Routes
+		_.last(Routes).lastValue = true
+		return Routes
 
 Template.main_userBar.events
 	'click .avatar-box': (e,t) ->
 		$('.user-dropdown').toggleClass('hide')
 		$('.user-dropdown-tab').toggleClass('hide')
-
-	'click .menu-go-back': (e,t) ->
-		FlowRouter.watchPathChange()
-		iterationId = FlowRouter.getParam("fid")
-		template = FlowRouter.current().route.name
-		if template == "iterationView"
-			FlowRouter.go("/")
-		else
-			FlowRouter.go("/#{iterationId}")
 
 	'click .notification-svg, click .notification-badge': (e,t) ->
 		$('.notification-box').toggleClass('hide')

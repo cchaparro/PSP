@@ -1,12 +1,10 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
-		{{#unless $eq template "main"}}
-			<div class="menu-go-back">
-				<i class="fa fa-arrow-left"></i>
-				<span>Atras</span>
-			</div>
-		{{/unless}}
+		{{#each viewState}}
+ 			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}}">{{title}}</a>
+ 			<span class="{{#if lastValue}} hide {{/if}}"> | </span>
+ 		{{/each}}
 		{{#if $eq template "main"}}
 			{{> createProjectButton}}
 		{{/if}}
