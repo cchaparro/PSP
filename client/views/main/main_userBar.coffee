@@ -46,7 +46,7 @@ Template.main_userBar.helpers
 			if Project
 				Routes.push({
 					title: Project.title
-					route: "projectView"
+					route: "projectGeneral"
 					fid: FlowRouter.getParam("fid")
 					pid: FlowRouter.getParam("id")
 					lastValue: false
