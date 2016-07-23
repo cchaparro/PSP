@@ -36,8 +36,12 @@ if Meteor.isServer
 
 	syssrv.createProject = (data) ->
 		amountProjects = db.projects.find({"projectOwner": Meteor.userId()}).count()
-		data.color = sys.selectColor(amountProjects)
 		data.projectOwner =  Meteor.userId()
+
+		if data.parentId
+			data.color = db.projects.findOne({_id: data.parentId}).color
+		else
+			data.color = sys.selectColor(amountProjects)
 
 		projectId = db.projects.insert(data)
 		syssrv.createPlanSummary(Meteor.userId(), projectId, data.levelPSP)

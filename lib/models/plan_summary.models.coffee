@@ -17,7 +17,6 @@ if Meteor.isServer
 
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		historyTotalTime = user.total.time
-		console.log historyTotalTime
 		historyTotalInjected = user.total.injected
 		historyTotalRemoved = user.total.removed
 

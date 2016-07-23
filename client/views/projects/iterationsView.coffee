@@ -19,9 +19,6 @@ Template.projectIterationBox.helpers
 	isHovered: () ->
 		return Template.instance().hoveredIteration.get() == @_id
 
-	parentColor: () ->
-		return db.projects.findOne({_id: FlowRouter.getParam("fid")}).color
-
 
 Template.projectIterationBox.events
 	'click .project-delete': (e,t) ->
