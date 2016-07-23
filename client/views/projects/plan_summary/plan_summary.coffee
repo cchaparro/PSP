@@ -15,15 +15,19 @@ Template.summaryTimeRow.helpers
 	totalValues: () ->
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
 
-		final = {}
-		final.estimatedTime = planSummary?.estimatedTime
-		final.totalTime = planSummary?.totalTime
-		final.totalToDate = @profile?.total?.time
-
-		return final
+		return {
+			estimatedTime: planSummary?.estimatedTime
+			totalTime: planSummary?.totalTime
+			totalToDate: @profile?.total?.time
+			probeC: @?.settings?.probeC
+			probeD: @?.settings?.probeD
+		}
 
 	planSummaryTime: (time) ->
 		return sys.planSummaryTime(time)
+
+	isProbeC: () ->
+		return db.users.findOne({_id: Meteor.userId()}).settings.probeC
 
 
 Template.summaryTimeRow.events

@@ -64,7 +64,11 @@
 	{{#each timeEstimatedStages}}
 		<tr>
 			<td>{{name}}</td>
-			<td></td>
+			<td>
+				{{#if isProbeC}}
+					{{planSummaryTime average}}
+				{{/if}}
+			</td>
 			<td>{{planSummaryTime time}}</td>
 			<td>{{planSummaryTime toDate}}</td>
 			<td>{{percentage}}%</td>
@@ -73,7 +77,11 @@
 	{{#with totalValues}}
 		<tr>
 			<td><span>Total</span></td>
-			<td class="td-input-row"><input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}"></td>
+			<td class="td-input-row">
+				{{#if probeD}}
+					<input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}">
+				{{/if}}
+			</td>
 			<td><span>{{planSummaryTime totalTime}}</span></td>
 			<td><span>{{planSummaryTime totalToDate}}</span></td>
 			<td></td>

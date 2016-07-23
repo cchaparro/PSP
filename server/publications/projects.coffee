@@ -8,5 +8,6 @@ Meteor.publish "projectView", (pid) ->
 		db.projects.find({_id: pid}),
 		db.defect_types.find({"defectTypeOwner": @userId})
 		db.plan_summary.find({"projectId": pid, "summaryOwner": @userId})
+		db.users.find({_id: @userId})
 	]
 ####################################
