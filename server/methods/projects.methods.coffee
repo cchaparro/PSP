@@ -3,15 +3,16 @@ Meteor.methods
 	create_project: (data) ->
 		syssrv.createProject(data)
 
-	delete_project: (pid, delete_iterations=false) ->
+	delete_project: (projectId, delete_iterations=false) ->
 		if delete_iterations
-			iterations = db.projects.find({"parentId": pid})
+			projectIterations = db.projects.find({"parentId": projectId})
 
-			iterations.forEach (project) ->
-				syssrv.deleteProject(project._id)
+			# This deletes each iteration of the deleted project
+			projectIterations.forEach (iteration) ->
+				syssrv.deleteProject(iteration._id)
 
 		# This deletes the master project
-		syssrv.deleteProject(pid)
+		syssrv.deleteProject(projectId)
 
 
 	update_project: (projectId, value) ->

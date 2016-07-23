@@ -1,9 +1,5 @@
 #######################################
 Meteor.methods
-	create_plan_summary: (userId, projectId, levelPSP) ->
-		syssrv.createPlanSummary(userId, projectId, levelPSP)
-
-
 	update_plan_summary: (pid, data) ->
 		db.plan_summary.update({"projectId": pid, "summaryOwner": Meteor.userId()}, {$set: data})
 

@@ -17,7 +17,6 @@ Meteor.methods
 
 				unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
 					injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
-					#console.log injectedStage
 					if data.injected == injectedStage.name
 						injectedStage.injected += 1
 
@@ -65,20 +64,6 @@ Meteor.methods
 
 
 	delete_defect: (defectId, pid) ->
-		defect = db.defects.findOne({_id: defectId})
-
-		#This part deletes the defect injected and removed values
-		planSummary = db.plan_summary.findOne({'projectId': pid})
-		injectedValues = planSummary.injectedEstimated
-		removedValues = planSummary.removedEstimated
-
-		(_.findWhere injectedValues, {'name': defect.injected}).injected -= 1
-		(_.findWhere removedValues, {'name': defect.removed}).removed -= 1
-		db.plan_summary.update({'projectId': pid}, {$set: {'injectedEstimated': injectedValues, 'removedEstimated': removedValues}})
-
-		# Elimina completamente el defecto
-		db.defects.remove({_id: defectId})
-
-		#Falta eliminar los datos del summary con esto y poner opcion de si dejar hijos como independientes si los tiene o si eliminarlos tambien
+		syssrv.deleteDefect(defectId, pid)
 
 ##########################################

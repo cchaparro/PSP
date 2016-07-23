@@ -1,6 +1,6 @@
 #######################################
 Meteor.methods
-	# # This is used for the Plan Summary Total Amount
+	# This is used for the Plan Summary Total Amount
 	update_user_plan_summary: (pid) ->
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": pid})
@@ -24,6 +24,15 @@ Meteor.methods
 			"profile.summaryAmount": finalTime
 		}
 
+		db.users.update({_id: Meteor.userId()}, {$set: data})
+
+	change_project_settings: () ->
+		userSettings = db.users.findOne({_id: Meteor.userId()}).settings
+
+		data = {
+			"settings.probeC": !userSettings.probeC
+			"settings.probeD": !userSettings.probeD
+		}
 		db.users.update({_id: Meteor.userId()}, {$set: data})
 
 #######################################

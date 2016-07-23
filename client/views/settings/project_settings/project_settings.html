@@ -2,11 +2,12 @@
 <template name="projectSettingsTemplate">
 	{{> settingsMenu}}
 	<div class="project-view-content">
+		<h3>Seleción método de estimación</h3>
 		{{#each settings}}
 			<div class="project-settings-box">
 				<div>
 					<label class="switch">
-						<input type="checkbox" checked="{{value}}" id="settings-checkbox">
+						<input type="checkbox" checked="{{value}}" disabled="disabled" id="settings-checkbox">
 						<div class="switch-slider round"></div>
 					</label>
 				</div>

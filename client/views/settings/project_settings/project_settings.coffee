@@ -1,26 +1,31 @@
 ##################################################
+Template.projectSettingsTemplate.onCreated ()->
+	Meteor.subscribe "projectSettings"
+
+
 Template.projectSettingsTemplate.helpers
 	settings: () ->
 		user = db.users.findOne({_id: Meteor.userId()})
 		return [
 			{
-				title: "Proyecto con Probe C"
-				subject: "Cuando un proyecto utiliza probe C este no tiene que escribir una estimacion de cuanto cree que le va a tomar terminar un proyecto. EL Plan Summary directamente hara la estimacion. Esta opcion solo se habilita despues de completar tres proyectos (AUN NO ESTA IMPLEMENTADO)."
-				value: false
+				title: "PROBE C"
+				subject: "Cuando un proyecto utiliza el método PROBE C este propirciona en el plan summary un valor promedio de estimacion para el tiempo que toma cada etapa."
+				value: user?.settings?.probeC
 			},
 			{
-				title: "Proyecto con Probe D"
+				title: "PROBE D"
 				subject: "El metodo probe D hace que el usuario tenga que ingresar siempre en un proyecto/iteración nuevo el tiempo que piensa que le tomara completar el proyecto. Este valor sera guardado y usado en un futuro."
-				value: true
+				value: user?.settings?.probeD
 			}
 		]
 
 Template.projectSettingsTemplate.events
-	'change #settings-checkbox': (e,t) ->
-		console.log "aqui", document.getElementById('settings-checkbox').checked
-
 	'click .switch': (e,t) ->
-		console.log "di click"
+		completedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).count()
 
+		if completedProjects > 2
+			Meteor.call("change_project_settings")
+
+		#console.log "aqui", document.getElementById('settings-checkbox').checked
 
 ##################################################
