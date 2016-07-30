@@ -26,7 +26,8 @@ Template.createDefect.onCreated () ->
 
 Template.createDefect.helpers
 	allDefectTypes: () ->
-		return db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})?.defects
+		userDefectListId = db.projects.findOne({_id: FlowRouter.getParam("id")})?.defectTypesId
+		return db.defect_types.findOne({_id: userDefectListId})?.defects
 
 	defectData: () ->
 		return Template.instance().defect.get()

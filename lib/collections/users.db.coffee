@@ -42,6 +42,11 @@ db.users = Meteor.users
 # 		type: schemas.userPublicFields
 # 		label: "Users profile information (fname, lname, imageUrl"
 
+# "DefectTypeList":
+# 	type: String
+# 	optional: true
+# 	label: "Id of the defect type created as default"
+
 # ##########################################
 # db.users.attachSchema(schemas.user)
 # ##########################################

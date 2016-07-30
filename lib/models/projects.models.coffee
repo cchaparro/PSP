@@ -35,8 +35,10 @@ if Meteor.isServer
 
 
 	syssrv.createProject = (data) ->
+		user = db.users.findOne({_id: Meteor.userId()})
 		amountProjects = db.projects.find({"projectOwner": Meteor.userId()}).count()
 		data.projectOwner =  Meteor.userId()
+		data.defectTypesId = user.defectTypes.current
 
 		if data.parentId
 			data.color = db.projects.findOne({_id: data.parentId}).color
