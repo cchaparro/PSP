@@ -1,0 +1,23 @@
+<!-- ###################################### -->
+<template name="defectTypeSettingsTemplate">
+	{{> settingsMenu}}
+	<div class="project-view-content">
+		<h3>Tipo de defectos</h3>
+		{{#each defectType}}
+			<div class="defect-type-box clearfix">
+				<div>
+					<h3>{{position}}</h3>
+				</div>
+				<div>
+					<input type="text" value="{{name}}" class="psp-input" placeholder="Titulo tipo de defecto">
+					<textarea value="{{description}}" class="psp-textarea defect-type-description"></textarea>
+				</div>
+			</div>
+		{{/each}}
+		<div class="row defect-type-save-nav">
+			<button class="btn save-defect-types pull-right">Guardar cambios</button>
+			<button class="btn reset-defect-types btn-default pull-right">Volver a valores predeterminados</button>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
