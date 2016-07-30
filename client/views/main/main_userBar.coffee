@@ -33,7 +33,7 @@ Template.main_userBar.helpers
 
 		if FlowRouter.getParam("fid")
 			Routes.push({
-				title: "Iteraciónes"
+				title: "Iteraciones"
 				route: "iterationView"
 				fid: FlowRouter.getParam("fid")
 				pid: false
