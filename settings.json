@@ -152,7 +152,7 @@
 				"description": "Estos son los problemas de declaración de variables, nombres duplicados, scopes y tipos de datos."
 			},
 			{
-				"name": "Interface",
+				"name": "Interfaz",
 				"description": "Estos son los errores en notificaciones visuales, I/O, formatos de usuario, navegación, entre otros."
 			},
 			{
