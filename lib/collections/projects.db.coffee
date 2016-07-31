@@ -43,6 +43,11 @@ schemas.projects = new SimpleSchema
 		optional: true
 		label: "Color of the project"
 
+	"defectTypesId":
+		type: String
+		optional: true
+		label: "Id of the defect types file used"
+
 ##########################################
 db.projects.attachSchema(schemas.projects)
 ##########################################

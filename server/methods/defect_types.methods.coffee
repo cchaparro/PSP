@@ -1,11 +1,6 @@
 #######################################
 Meteor.methods
-	create_defect_types: (uid) ->
-		data = {
-			"defectTypeOwner": uid,
-			"lastModified": new Date(),
-			"defects": Meteor.settings.public.defectTypeValues
-		}
+	create_defect_types: (userId, data=undefined, update_user=false) ->
+		syssrv.create_defect_type(userId, data, update_user)
 
-		db.defect_types.insert(data)
 #######################################

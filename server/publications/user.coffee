@@ -6,6 +6,7 @@ Meteor.publish "projectSettings", () ->
 	return [
 		db.users.find({_id: @userId})
 		db.projects.find({"projectOwner": @userId})
+		db.defect_types.find({"defectTypeOwner": @userId})
 	]
 
 ####################################

@@ -93,4 +93,78 @@ input:checked + .switch-slider:before {
 		width: calc(100% - 70px);
 	}
 }
+
+//------------- Defect Types Settings ------------
+.defect-type-box {
+	width: 100%;
+
+	h3 {
+		margin-top: 5px;
+		padding-right: 5px;
+		text-align: center;
+	}
+
+	.delete-defect-type {
+		color: $main-text-color;
+		padding: 10px;
+		cursor: pointer;
+		@include border-radius($default-border-radius);
+
+		&:hover {
+			background-color: $input-bg;
+		}
+	}
+
+	div {
+		&:first-child {
+			width: 35px;
+			float: left;
+		}
+
+		&:last-child {
+			width: calc(100% - 40px);
+			float: right;
+		}
+	}
+
+	.defect-type-description {
+		margin-bottom: 30px;
+	}
+}
+
+.defect-type-error-box {
+	padding: 0 15px;
+	margin-bottom: 20px;
+}
+
+.add-defect-type {
+	width: 100%;
+	background-color: $white;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid $border;
+	@include border-radius($default-border-radius);
+	cursor: pointer;
+}
+
+.defect-type-save-nav {
+	border-top: 1px solid $border;
+	padding: 0 15px;
+	padding-top: 20px;
+
+	.save-defect-types {
+		background-color: $blue;
+		color: $white;
+		top: 13px;
+		right: 130px;
+		padding: 6px 15px;
+		margin-left: 10px;
+
+		&:hover {
+			background-color: $blue-dark;
+		}
+	}
+}
+
+
 //------------------------------------------------

@@ -35,6 +35,11 @@ FlowRouter.route '/settings/account_settings',
 		BlazeLayout.render 'masterLayout', main: 'accountSettingsTemplate'
 	name: 'accountSettings'
 
+FlowRouter.route '/settings/defect_type_settings',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate'
+	name: 'defectTypeSettings'
+
 FlowRouter.route '/help',
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
