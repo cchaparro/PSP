@@ -32,3 +32,4 @@ peppelg:bootstrap-3-modal				# This brings the option of using well made modals
 meteortoys:allthings						# Package of Meteor Toys
 chart:chart									# Package for using charts
 matb33:collection-hooks
+hitchcott:method-hooks

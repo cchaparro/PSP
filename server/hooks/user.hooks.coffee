@@ -19,3 +19,10 @@ Meteor.users.after.insert (userId, doc) ->
 	syssrv.newNotification("new-user", @_id)
 
 ##################################################
+Meteor.beforeMethods ['login'], (params) ->
+	if params.resume?
+		user = Meteor.users.findOne({"services.resume.loginTokens.hashedToken": Accounts._hashLoginToken(params.resume)})
+	else
+		FlowRouter.go("/login")
+
+##################################################
