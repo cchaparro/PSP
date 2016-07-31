@@ -132,6 +132,11 @@ input:checked + .switch-slider:before {
 	}
 }
 
+.defect-type-error-box {
+	padding: 0 15px;
+	margin-bottom: 20px;
+}
+
 .add-defect-type {
 	width: 100%;
 	background-color: $white;
@@ -143,7 +148,9 @@ input:checked + .switch-slider:before {
 }
 
 .defect-type-save-nav {
+	border-top: 1px solid $border;
 	padding: 0 15px;
+	padding-top: 20px;
 
 	.save-defect-types {
 		background-color: $blue;

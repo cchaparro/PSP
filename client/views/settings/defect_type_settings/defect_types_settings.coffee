@@ -2,6 +2,7 @@
 Template.defectTypeSettingsTemplate.onCreated ()->
 	Meteor.subscribe "projectSettings"
 	@defectTypeList = new ReactiveVar([])
+	@displayWarning = new ReactiveVar(false)
 
 
 Template.defectTypeSettingsTemplate.helpers
@@ -20,6 +21,9 @@ Template.defectTypeSettingsTemplate.helpers
 
 	defectTypes: () ->
 		return Template.instance().defectTypeList.get()
+
+	displayWarning: () ->
+		return Template.instance().displayWarning.get()
 
 
 Template.defectTypeSettingsTemplate.events
@@ -66,6 +70,7 @@ Template.defectTypeSettingsTemplate.events
 				console.log "Error creating defect types file"
 				console.warn(error)
 			else
+				t.displayWarning.set(true)
 				sys.flashStatus("update-defect-types")
 
 	'click .reset-defect-types': (e,t) ->
