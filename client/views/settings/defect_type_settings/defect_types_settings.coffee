@@ -3,8 +3,9 @@ Template.defectTypeSettingsTemplate.onCreated ()->
 	Meteor.subscribe "projectSettings"
 	@defectTypeList = new ReactiveVar([])
 
+
 Template.defectTypeSettingsTemplate.helpers
-	defectType: () ->
+	createDefectList: () ->
 		defectTypeId = db.users.findOne({_id: Meteor.userId()})?.defectTypes?.current
 		defectTypes = db.defect_types.findOne({_id: defectTypeId})?.defects
 
@@ -15,8 +16,10 @@ Template.defectTypeSettingsTemplate.helpers
 			pos += 1
 
 		Template.instance().defectTypeList.set(defects)
+		return
 
-		return defects
+	defectTypes: () ->
+		return Template.instance().defectTypeList.get()
 
 
 Template.defectTypeSettingsTemplate.events
@@ -33,7 +36,24 @@ Template.defectTypeSettingsTemplate.events
 
 		defectList[@position-1].description = value
 		t.defectTypeList.set(defectList)
-		console.log t.defectTypeList.get()
+
+	'click .add-defect-type': (e,t) ->
+		defectList = t.defectTypeList.get()
+		defectList.push({position: defectList.length+1, name: "Nuevo tipo de defecto", description: "Aquí va la descripción del nuevo tipo de defecto"})
+		t.defectTypeList.set(defectList)
+
+	'click .delete-defect-type': (e,t) ->
+		defectList = t.defectTypeList.get()
+		currentDefect = @
+
+		pos = 1
+		defects = []
+		_.each defectList, (defect) ->
+			unless defect.position == currentDefect.position
+				defects.push({position: pos, name: defect.name, description: defect.description})
+				pos += 1
+
+		t.defectTypeList.set(defects)
 
 	'click .save-defect-types': (e,t) ->
 		defects = t.defectTypeList.get()
@@ -49,6 +69,15 @@ Template.defectTypeSettingsTemplate.events
 				sys.flashStatus("update-defect-types")
 
 	'click .reset-defect-types': (e,t) ->
-		console.log "di click a reset"
+		defectTypeId = db.users.findOne({_id: Meteor.userId()})?.defectTypes?.default
+		defectTypes = db.defect_types.findOne({_id: defectTypeId})?.defects
+
+		pos = 1
+		defects = []
+		_.each defectTypes, (defect) ->
+			defects.push({position: pos, name: defect.name, description: defect.description})
+			pos += 1
+
+		t.defectTypeList.set(defects)
 
 ##################################################

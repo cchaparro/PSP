@@ -104,6 +104,17 @@ input:checked + .switch-slider:before {
 		text-align: center;
 	}
 
+	.delete-defect-type {
+		color: $main-text-color;
+		padding: 10px;
+		cursor: pointer;
+		@include border-radius($default-border-radius);
+
+		&:hover {
+			background-color: $input-bg;
+		}
+	}
+
 	div {
 		&:first-child {
 			width: 35px;
@@ -119,6 +130,16 @@ input:checked + .switch-slider:before {
 	.defect-type-description {
 		margin-bottom: 30px;
 	}
+}
+
+.add-defect-type {
+	width: 100%;
+	background-color: $white;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid $border;
+	@include border-radius($default-border-radius);
+	cursor: pointer;
 }
 
 .defect-type-save-nav {
