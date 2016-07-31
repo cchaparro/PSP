@@ -29,10 +29,12 @@
 				<h3>Plan Summary</h3>
 			</li>
 		</a>
-		<li class="{{#if $eq template 'scripts'}} project-menu-selected {{/if}}">
-			<svg viewBox="0 0 100 100"><use xlink:href="/images/Script.svg#scriptLogo"></use></svg>
-			<h3>Scripts Generales</h3>
-		</li>
+		<a href="{{pathFor 'projectScripts' fid=routeFid id=routeId}}">
+			<li class="{{#if $eq template 'projectScripts'}} project-menu-selected {{/if}}">
+				<svg viewBox="0 0 100 100"><use xlink:href="/images/Script.svg#scriptLogo"></use></svg>
+				<h3>Scripts Generales</h3>
+			</li>
+		</a>
 	</ul>
 </template>
 <!-- ###################################### -->

@@ -77,4 +77,9 @@ FlowRouter.route '/:fid/:id/plansummary',
 		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
 	name: 'projectSummary'
 
+FlowRouter.route '/:fid/:id/scripts',
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate'
+	name: 'projectScripts'
+
 ##########################################
