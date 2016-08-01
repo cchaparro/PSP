@@ -23,9 +23,14 @@ Template.main_userBar.helpers
 		FlowRouter.watchPathChange()
 		currentState = FlowRouter.current().route.name
 
+		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="main"
+			initialRoute = "main"
+		else
+			initialRoute = currentState
+
 		Routes = [{
 			title: sys.getPageName(currentState)
-			route: FlowRouter.current().route.name
+			route: initialRoute
 			fid: false
 			pid: false
 			lastValue: false
@@ -53,6 +58,7 @@ Template.main_userBar.helpers
 				})
 
 		_.last(Routes).lastValue = true
+
 		return Routes
 
 Template.main_userBar.events
