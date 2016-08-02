@@ -2,9 +2,10 @@
 Template.createDefect.onCreated () ->
 	@defect = new ReactiveVar({})
 	@defectId = new ReactiveVar('')
-	@timeStatus = new ReactiveVar(false)
 	@defectState = new ReactiveVar(0)
-	@timeStarted = new ReactiveVar(0)
+	@timeStatus = new ReactiveVar(true)
+	currentDate = new Date()
+	@timeStarted = new ReactiveVar(currentDate)
 
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
