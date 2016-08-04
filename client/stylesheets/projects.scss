@@ -378,88 +378,81 @@
 }
 
 //------------------- Time View ------------------
-.time-table {
+.time-content {
 	background-color: $white;
-	border: 1px solid $border;
+	padding: 20px;
 
-	tbody > tr {
+	.time-menu {
+		width: 100%;
+		margin-bottom: 10px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid $border;
 
-		& > td {
-			padding: 17px 20px;
-			border: none;
-			border-bottom: 1px solid $border;
+		div {
+			float: left;
+		}
+	}
 
-			&:last-child {
-				width: 110px;
+	.time-submit {
+		position: relative;
+		float: left;
+		background-color: $blue;
+		color: $white;
+		padding: 6px 15px;
+		margin-left: 10px;
+
+		span {
+			left: 30px;
+		}
+	}
+
+	.time-table {
+		background-color: $white;
+
+		thead {
+			& > tr > th{
+				padding-bottom: 15px;
+				text-align: center;
+				border-bottom: 0px;
+				color: $project-option-selected;
+				font-weight: 300;
+				cursor: default;
 			}
 		}
 
-		&:last-child {
-			border-bottom: none;
+		tbody > tr {
+			background-color: $background;
+			cursor: default;
+
+			& > td {
+				padding: 20px 20px;
+				border: none;
+				border-bottom: 6px solid $white;
+				color: $project-option-selected;
+
+				&:nth-child(2) {
+					text-align: center;
+				}
+
+				&:nth-child(3) {
+					text-align: center;
+					padding-top: 18px;
+					padding-bottom: 14px;
+					margin: 0;
+				}
+
+				&:last-child {
+					text-align: center;
+					width: 110px;
+				}
+			}
+
+			&:last-child {
+				border-bottom: none;
+			}
 		}
 	}
-}
 
-.time-stages-dropdown {
-	width: 200px;
-	height: 100%;
-	float: left;
-
-	button {
-		width: 100%;
-		height: 35px;
-		display: inline;
-		padding: 6.5px;
-		margin-top: 0;
-		margin-bottom: 10px;
-		outline: none;
-		background-color: $white;
-		@include border-radius($default-border-radius);
-		border: 2px solid $input-bg;
-		color: $input-text;
-		text-align: left;
-
-		i {
-			position: absolute;
-			top: 4px;
-			right: 4px;
-			padding: 7.5px 6px;
-			font-size: 9pt;
-			background-color: $input-button;
-			color: $white;
-			@include border-radius($default-border-radius);
-		}
-
-		&:focus {
-			@include transition($default-transition);
-			background-color: $white;
-			color: $main-text-color;
-		}
-
-	}
-}
-
-.time-menu {
-	width: 100%;
-	height: 40px;
-	margin-bottom: 10px;
-
-	div {
-		float: left;
-	}
-}
-
-.time-submit {
-	position: relative;
-	float: left;
-	background-color: $blue;
-	color: $white;
-	padding: 6px 15px;
-	margin-left: 10px;
-
-	span {
-		left: 30px!important;
-	}
 }
 
 .time-btn {
@@ -491,9 +484,23 @@
 }
 
 .time-completed {
+	width: 25px;
+	height: 25px;
+	margin: 0 AUTO;
+	@include border-radius($circle-border-radius);
+	background-color: $success;
+
+	i {
+		color: $background;
+		padding-top: 5px;
+	}
+}
+
+.edit-time {
 	border: 2px solid $main-text-color;
 	color: $main-text-color;
-	padding: 8px;
+	padding: 8px 15px;
+	cursor: pointer;
 	@include border-radius(20px);
 }
 
