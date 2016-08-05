@@ -16,22 +16,17 @@ Template.timesBar.helpers
 	planSummary: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})
 
-	# dropdownStages:() ->
-	# 	planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})
-	# 	if planSummary
-	# 		ProjectStages = _.filter planSummary.timeEstimated, (stage) ->
-	# 			if !stage.finished
-	# 				return stage
-	# 		Template.instance().projectStages.set(ProjectStages)
-
-	# 	return Template.instance().projectStages.get()
-
 	isRecordingTime:() ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})
 		return planSummary?.timeStarted != "false"
 
-	# currentStage: () ->
-	# 	return _.first Template.instance().projectStages.get()
+	currentStage: () ->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		return _.first(projectStages).name
 
 
 Template.timesBar.events
