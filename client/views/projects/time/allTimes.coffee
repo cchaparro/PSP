@@ -84,4 +84,9 @@ Template.timesBar.events
 				sys.flashStatus("save-project")
 				sys.removeTimeMessage()
 
+##################################################
+Template.timeTableRow.events
+	'click .edit-time': (e,t) ->
+		Modal.show('editTimeModal')
+
 ##########################################

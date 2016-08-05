@@ -7,7 +7,7 @@ Template.createProject.onCreated () ->
 
 
 Template.createProject.helpers
-	Level: () ->
+	currentLevel: () ->
 		return Template.instance().levelPSP.get()
 
 	errorStateTitle: () ->
@@ -60,6 +60,6 @@ Template.createProject.events
 			$('.pry-new-title').val('')
 			$('.pry-new-description').val('')
 			Modal.hide('createProjectModal')
-			#FlowRouter.setQueryParams({action: null})
+			FlowRouter.setQueryParams({action: null})
 
 #######################################
