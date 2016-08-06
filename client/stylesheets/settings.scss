@@ -4,8 +4,8 @@
 .switch {
 	position: relative;
 	display: inline-block;
-	width: 56px;
-	height: 30px;
+	width: 46px;
+	height: 25px;
 }
 
 // Hide default HTML checkbox
@@ -35,8 +35,8 @@
 	&:before {
 		position: absolute;
 		content: "";
-		height: 22px;
-		width: 22px;
+		height: 17px;
+		width: 17px;
 		left: 4px;
 		bottom: 4px;
 		background-color: $white;
@@ -53,26 +53,43 @@ input:focus + .switch-slider {
 }
 
 input:checked + .switch-slider:before {
-	@include translateX(26px);
+	@include translateX(21px);
 }
 
 //--------------- Project Settings ---------------
+.prj-settings-content {
+	background-color: $white;
+	padding: 20px;
+
+	h3 {
+		font-size: 15pt;
+		color: $modal-title;
+		margin: 0;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid $border;
+	}
+}
+
 .project-settings-box {
 	display: block;
 	width: 100%;
 	float: left;
 	padding-bottom: 20px;
+	padding-left: 20px;
 
 	div {
 		display: inline-block;
 		float: left;
+		padding-bottom: 10px;
 
 		&:last-child {
 			padding-left: 10px;
 		}
 
-		h3 {
-			margin: 0;
+		p {
+			margin-top: -2px;
+			margin-bottom: 0;
 			padding-bottom: 7px;
 			font-size: 15pt;
 			font-weight: bold;
@@ -85,16 +102,46 @@ input:checked + .switch-slider:before {
 		}
 
 		&:first-child {
-			width: 70px;
+			width: 50px;
 		}
 	}
 
 	.project-setting-information {
-		width: calc(100% - 70px);
+		width: calc(100% - 50px);
+	}
+}
+
+//--------------- Account Settings ---------------
+.account-settings-content {
+	background-color: $white;
+	padding: 20px;
+
+	h3 {
+		font-size: 15pt;
+		color: $modal-title;
+		margin: 0;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid $border;
 	}
 }
 
 //------------- Defect Types Settings ------------
+.defect-type-settings-content {
+	background-color: $white;
+	padding: 20px;
+
+	h3 {
+		font-size: 15pt;
+		color: $modal-title;
+		margin: 0;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid $border;
+	}
+}
+
+
 .defect-type-box {
 	width: 100%;
 

@@ -2,33 +2,35 @@
 <template name="defectTypeSettingsTemplate">
 	{{> settingsMenu}}
 	<div class="project-view-content">
-		<h3>Tipo de defectos</h3>
-		{{createDefectList}}
-		{{#each defectTypes}}
-			<div class="defect-type-box clearfix">
-				<div>
-					<h3>{{position}}</h3>
-					<i class="fa fa-trash delete-defect-type"></i>
+		<div class="defect-type-settings-content">
+			<h3>Tipo de defectos</h3>
+			{{createDefectList}}
+			{{#each defectTypes}}
+				<div class="defect-type-box clearfix">
+					<div>
+						<h3>{{position}}</h3>
+						<i class="fa fa-trash delete-defect-type"></i>
+					</div>
+					<div>
+						<input type="text" value="{{name}}" class="psp-input" placeholder="Titulo tipo de defecto">
+						<textarea value="{{description}}" class="psp-textarea defect-type-description"></textarea>
+					</div>
 				</div>
-				<div>
-					<input type="text" value="{{name}}" class="psp-input" placeholder="Titulo tipo de defecto">
-					<textarea value="{{description}}" class="psp-textarea defect-type-description"></textarea>
+			{{/each}}
+			<div class="add-defect-type">
+				<i class="fa fa-plus"></i>
+				<span>Agregar un nuevo tipo de defecto</span>
+			</div>
+			{{#if displayWarning}}
+				<div class="defect-type-error-box">
+					<i class="fa fa-info-circle"></i>
+					<span>Estos cambios solo se veran reflejados en los proyectos o iteraciones creados a partir de este momento</span>
 				</div>
+			{{/if}}
+			<div class="row defect-type-save-nav">
+				<button class="btn save-defect-types pull-right">Guardar cambios</button>
+				<button class="btn reset-defect-types btn-default pull-right">Volver a valores predeterminados</button>
 			</div>
-		{{/each}}
-		<div class="add-defect-type">
-			<i class="fa fa-plus"></i>
-			<span>Agregar un nuevo tipo de defecto</span>
-		</div>
-		{{#if displayWarning}}
-			<div class="defect-type-error-box">
-				<i class="fa fa-info-circle"></i>
-				<span>Estos cambios solo se veran reflejados en los proyectos o iteraciones creados a partir de este momento</span>
-			</div>
-		{{/if}}
-		<div class="row defect-type-save-nav">
-			<button class="btn save-defect-types pull-right">Guardar cambios</button>
-			<button class="btn reset-defect-types btn-default pull-right">Volver a valores predeterminados</button>
 		</div>
 	</div>
 </template>
