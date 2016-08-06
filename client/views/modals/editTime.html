@@ -30,19 +30,22 @@
 		{{else}}
 			<div class="time-selector-box">
 				<div>
-					<i class="fa fa-chevron-up"></i>
-					<input type="number" class="edit-time-hours" min="1" value="0">
-					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-chevron-up" data-value="hours-selector"></i>
+					<input type="text" class="edit-time-hours" value="0">
+					<span>HOR</span>
+					<i class="fa fa-chevron-down" data-value="hours-selector"></i>
 				</div>
 				<div>
-					<i class="fa fa-chevron-up"></i>
-					<input type="number" class="edit-time-minutes" min="1" value="0">
-					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-chevron-up" data-value="minutes-selector"></i>
+					<input type="text" class="edit-time-minutes" value="0">
+					<span>MIN</span>
+					<i class="fa fa-chevron-down" data-value="minutes-selector"></i>
 				</div>
 				<div>
-					<i class="fa fa-chevron-up"></i>
-					<input type="number" class="edit-time-seconds" min="1" value="0">
-					<i class="fa fa-chevron-down"></i>
+					<i class="fa fa-chevron-up" data-value="seconds-selector"></i>
+					<input type="text" class="edit-time-seconds" value="0">
+					<span>SEG</span>
+					<i class="fa fa-chevron-down" data-value="seconds-selector"></i>
 				</div>
 			</div>
 		{{/if}}

@@ -24,13 +24,55 @@ Template.editTime.events
 		t.isMenuView.set(true)
 		t.actionField.set(false)
 
+	'click .fa-chevron-up': (e,t) ->
+		value = $(e.target).data('value')
+		switch value
+			when "hours-selector"
+				current = $(".edit-time-hours").val()
+				newValue = parseInt(current) + 1
+				$(".edit-time-hours").val(newValue)
+
+			when "minutes-selector"
+				current = $(".edit-time-minutes").val()
+				newValue = parseInt(current) + 1
+				$(".edit-time-minutes").val(newValue)
+
+			when "seconds-selector"
+				current = $(".edit-time-seconds").val()
+				newValue = parseInt(current) + 1
+				$(".edit-time-seconds").val(newValue)
+
+	'click .fa-chevron-down': (e,t) ->
+		value = $(e.target).data('value')
+		switch value
+			when "hours-selector"
+				current = $(".edit-time-hours").val()
+				if current > 0
+					newValue = parseInt(current) - 1
+					$(".edit-time-hours").val(newValue)
+
+			when "minutes-selector"
+				current = $(".edit-time-minutes").val()
+				if current > 0
+					newValue = parseInt(current) - 1
+					$(".edit-time-minutes").val(newValue)
+
+			when "seconds-selector"
+				current = $(".edit-time-seconds").val()
+				if current > 0
+					newValue = parseInt(current) - 1
+					$(".edit-time-seconds").val(newValue)
+
 	'click .finish-edit-time': (e,t) ->
 		hours = $(".edit-time-hours").val()
 		minutes = $(".edit-time-minutes").val()
 		seconds = $(".edit-time-seconds").val()
 		totalTime = (hours*3600000) + (minutes*60000) + (seconds*1000)
 
-		if t.actionField.get() == "add-time"
+		if totalTime == 0
+			Modal.hide('editTimeModal')
+
+		else if t.actionField.get() == "add-time"
 			Meteor.call "add_time_stage", FlowRouter.getParam("id"), @name, totalTime, (error) ->
 				if error
 					console.warn(error)
