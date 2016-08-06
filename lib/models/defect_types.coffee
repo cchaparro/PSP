@@ -15,5 +15,6 @@ if Meteor.isServer
 		defectTypeId = db.defect_types.insert(data)
 
 		db.users.update({_id: userId}, {$set: {"defectTypes.current": defectTypeId}})
+		return defectTypeId
 
 ##########################################
