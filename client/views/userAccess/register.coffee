@@ -31,7 +31,8 @@ Template.registerTemplate.events
 			email: email
 			password: password
 			profile:
-				name: $('#name').val()
+				fname: $('#fname').val()
+				lname: $('#lname').val()
 				profileImageUrl: null
 				summaryAmount: Meteor.settings.public.userAmount
 				total:
@@ -47,14 +48,16 @@ Template.registerTemplate.events
 						t.errorState.set("email_exist")
 						$('#email').val('')
 						$('#password').val('')
-						$('#name').val('')
+						$('#fname').val('')
+						$('#lname').val('')
 				else
 					FlowRouter.go("/")
 
 		else if !sys.isEmail(email)
 			t.errorState.set("email")
 			$('#email').val('')
-			$('#name').val('')
+			$('#fname').val('')
+			$('#lname').val('')
 
 		else
 			t.errorState.set("password")
