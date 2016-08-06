@@ -24,6 +24,7 @@
 
 	p {
 		padding-top: 3px;
+		padding-right: 30px;
 		color: $modal-description;
 	}
 
@@ -106,4 +107,62 @@
 		line-height: 35px;
 	}
 }
+
+//--------------- Edit Time Modal ----------------
+.edit-time-cancel {
+	width: 100%;
+	text-align: center;
+}
+
+.edit-time-options {
+	margin-bottom: 30px;
+
+	div {
+		width: 48%;
+		height: 190px;
+		display: inline-block;
+		background-color: $background;
+		cursor: pointer;
+		color: $background-text;
+
+		i {
+			display: block;
+			font-size: 50pt;
+			padding-top: 50px;
+			text-align: center;
+		}
+
+		span {
+			display: block;
+			font-size: 13pt;
+			text-align: center;
+			padding-bottom: 50px;
+		}
+
+		&:last-child {
+			float: right;
+		}
+	}
+}
+
+.time-selector-box {
+	div {
+		width: 30%;
+		display: inline-block;
+		text-align: center;
+		margin-bottom: 25px;
+
+		i {
+			display: block;
+		}
+
+		input {
+			display: block;
+			width: 100%;
+			outline: none;
+		}
+	}
+
+}
+
 //------------------------------------------------

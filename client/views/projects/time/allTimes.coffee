@@ -87,6 +87,6 @@ Template.timesBar.events
 ##################################################
 Template.timeTableRow.events
 	'click .edit-time': (e,t) ->
-		Modal.show('editTimeModal')
+		Modal.show('editTimeModal', @)
 
 ##########################################
