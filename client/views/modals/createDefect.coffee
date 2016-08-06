@@ -220,8 +220,13 @@ Template.createDefect.events
 						console.log "Error updating the son Defect"
 						console.warn(error)
 					else
-						t.timeStarted.set(0)
+						currentDate = new Date()
+						t.timeStarted.set(currentDate)
 						sys.flashStatus("save-defect")
+
+		t.timeStatus.set(true)
+		currentDate = new Date()
+		t.timeStarted.set(currentDate)
 
 		t.defectState.set(0)
 		t.defect.set({
