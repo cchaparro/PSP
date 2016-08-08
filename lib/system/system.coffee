@@ -13,21 +13,10 @@ sys.isValidPassword = (password) ->
 	return true
 
 ##########################################
-##############- Time Display-#############
-
-sys.displayTime = (time) ->
-	horas = Math.floor(time / 3600000)
-	time = time % 3600000
-	minutos = Math.floor(time / 60000)
-	time = time % 60000
-	segundos = Math.floor(time / 1000)
-	return horas + " hrs, " + minutos + " mins, " + segundos + " sec"
-
-##########################################
 ###############- Page Name -##############
 
 sys.getPageName = (title) ->
-	if title == "main" or title == "iterationView" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary"
+	if title == "main" or title == "iterationView" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
@@ -46,7 +35,7 @@ sys.displayTime = (time) ->
 	minutos = Math.floor(time / 60000)
 	time = time % 60000
 	segundos = Math.floor(time / 1000)
-	return horas + " hrs, " + minutos + " mins, " + segundos + " sec"
+	return horas + " hrs, " + minutos + " mins, " + segundos + " segs"
 
 sys.minutesToTime = (time) ->
 	return time * 60000

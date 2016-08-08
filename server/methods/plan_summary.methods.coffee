@@ -30,6 +30,15 @@ Meteor.methods
 
 		db.plan_summary.update({"projectId": pid}, {$set: data})
 
+
 	update_timeStarted: (pid, timeStarted) ->
 		db.plan_summary.update({"projectId": pid}, {$set: {"timeStarted": timeStarted}})
+
+
+	add_time_stage: (projectId, stage_name, time) ->
+		syssrv.modifyTime(projectId, stage_name, time, true)
+
+	delete_time_stage: (projectId, stage_name, time) ->
+		syssrv.modifyTime(projectId, stage_name, time, false)
+
 #######################################

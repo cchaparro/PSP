@@ -5,37 +5,28 @@ Template.timeTemplate.onCreated () ->
 
 Template.timeTemplate.helpers
 	projectStages:() ->
-		return db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})?.timeEstimated
+		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
 ##########################################
 Template.timesBar.onCreated () ->
-	@projectStages = new ReactiveVar([])
+	#	@projectStages = new ReactiveVar([])
 
 
 Template.timesBar.helpers
 	planSummary: () ->
-		return db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})
+		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})
 
-	dropdownStages:() ->
+	isRecordingTime:() ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})
-		if planSummary
-			ProjectStages = _.filter planSummary.timeEstimated, (stage) ->
-				if !stage.finished
-					return stage
-			Template.instance().projectStages.set(ProjectStages)
-
-		return Template.instance().projectStages.get()
-
-	timeStatus:() ->
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})
-		return planSummary.timeStarted != "false"
+		return planSummary?.timeStarted != "false"
 
 	currentStage: () ->
-		return _.first Template.instance().projectStages.get()
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
 
-	isEmptyStage: () ->
-		Stages = Template.instance().projectStages.get()
-		return Stages.length == 0
+		return _.first(projectStages).name
 
 
 Template.timesBar.events
@@ -50,7 +41,10 @@ Template.timesBar.events
 
 
 	'click .fa-pause': (e,t) ->
-		projectStages = t.projectStages.get()
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
 
 		unless @timeStarted == "false"
 			totalTime = new Date() - new Date(@timeStarted)
@@ -68,7 +62,10 @@ Template.timesBar.events
 
 
 	'click .time-submit': (e,t) ->
-		projectStages = Template.instance().projectStages.get()
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
 
 		if @timeStarted != "false"
 			totalTime = new Date() - new Date(@timeStarted)
@@ -84,8 +81,12 @@ Template.timesBar.events
 				console.log "Error submitting phase time inside project"
 				console.warn(error)
 			else
-				t.projectStages.set( _.without projectStages, currentStage)
 				sys.flashStatus("save-project")
 				sys.removeTimeMessage()
+
+##################################################
+Template.timeTableRow.events
+	'click .edit-time': (e,t) ->
+		Modal.show('editTimeModal', @)
 
 ##########################################

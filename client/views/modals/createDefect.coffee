@@ -2,9 +2,10 @@
 Template.createDefect.onCreated () ->
 	@defect = new ReactiveVar({})
 	@defectId = new ReactiveVar('')
-	@timeStatus = new ReactiveVar(false)
 	@defectState = new ReactiveVar(0)
-	@timeStarted = new ReactiveVar(0)
+	@timeStatus = new ReactiveVar(true)
+	currentDate = new Date()
+	@timeStarted = new ReactiveVar(currentDate)
 
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
@@ -219,8 +220,13 @@ Template.createDefect.events
 						console.log "Error updating the son Defect"
 						console.warn(error)
 					else
-						t.timeStarted.set(0)
+						currentDate = new Date()
+						t.timeStarted.set(currentDate)
 						sys.flashStatus("save-defect")
+
+		t.timeStatus.set(true)
+		currentDate = new Date()
+		t.timeStarted.set(currentDate)
 
 		t.defectState.set(0)
 		t.defect.set({

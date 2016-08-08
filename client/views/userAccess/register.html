@@ -17,13 +17,15 @@
 
 		<div class="button-row combined-form">
 			<div class="text-user-access">
-				<input id="name" type="text" class="psp-input" placeholder='Nombre y Apellido'>
+				<input id="fname" type="text" class="psp-input" placeholder='Nombre'>
+				<input id="lname" type="text" class="psp-input" placeholder='Apellido'>
 				<input type="email" id="email" class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} psp-input-error {{/if}} psp-input" placeholder='Correo Electronico'>
 				<input id="password" type="password" class="{{#if $eq errorState 'password'}} psp-input-error {{/if}} psp-input" placeholder='Contraseña'>
+				<span class="user-access-error-text">{{errorMessage}}</span>
+				<input type="submit" class="btn btn-primary user-access-submit" value='Registrarse'>
 			</div>
 		</div>
-		<span class="user-access-error-text">{{errorMessage}}</span>
-		<input type="submit" class="btn btn-primary user-access-submit" value='Registrarse'>
+
 		<div class="access-selection-box">
 			<span>Ya tienes una cuenta? Iniciar sesión</span>
 		</div>

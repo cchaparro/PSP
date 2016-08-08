@@ -70,5 +70,28 @@ if Meteor.isServer
 		db.plan_summary.insert(data)
 
 
+	syssrv.modifyTime = (projectId, stage_name, time, add_time) ->
+		planSummary = db.plan_summary.findOne({"projectId": projectId})
+		timeEstimated = planSummary?.timeEstimated
+		currentStage = _.findWhere timeEstimated, {name: stage_name}
+
+		if add_time
+			currentStage.time += time
+			planSummary.total.totalTime += time
+		else
+			if time >= currentStage.time
+				planSummary.total.totalTime -= currentStage.time
+				currentStage.time = 0
+			else
+				currentStage.time -= time
+				planSummary.total.totalTime -= time
+
+		data = {
+			"timeEstimated": timeEstimated
+			"total.totalTime": planSummary.total.totalTime
+		}
+
+		db.plan_summary.update({"projectId": projectId}, {$set: data})
+
 
 ##########################################

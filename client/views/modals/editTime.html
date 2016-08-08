@@ -1,0 +1,62 @@
+<!-- ###################################### -->
+<template name="editTimeModal">
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>Tiempos de {{stageName}}</h3>
+					<p>Luego de elegir una opcion podras ingresar un valor de tiempo y luego terminar el proceso.</p>
+					<span data-dismiss="modal"><i class="fa fa-times close"></i></span>
+				</div>
+				{{> editTime}}
+			</div>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="editTime">
+	<div class="modal-body">
+		{{#if isMenuView}}
+			<div class="edit-time-options">
+				<div class="time-option" data-value="delete-time">
+					<i class="fa fa-trash"></i>
+					<span>Eliminar tiempo</span>
+				</div>
+				<div class="time-option" data-value="add-time">
+					<i class="fa fa-plus"></i>
+					<span>Agregar tiempo</span>
+				</div>
+			</div>
+		{{else}}
+			<div class="time-selector-box">
+				<div>
+					<i class="fa fa-chevron-up" data-value="hours-selector"></i>
+					<input type="text" class="edit-time-hours" value="0">
+					<span>HOR</span>
+					<i class="fa fa-chevron-down" data-value="hours-selector"></i>
+				</div>
+				<div>
+					<i class="fa fa-chevron-up" data-value="minutes-selector"></i>
+					<input type="text" class="edit-time-minutes" value="0">
+					<span>MIN</span>
+					<i class="fa fa-chevron-down" data-value="minutes-selector"></i>
+				</div>
+				<div>
+					<i class="fa fa-chevron-up" data-value="seconds-selector"></i>
+					<input type="text" class="edit-time-seconds" value="0">
+					<span>SEG</span>
+					<i class="fa fa-chevron-down" data-value="seconds-selector"></i>
+				</div>
+			</div>
+		{{/if}}
+	</div>
+	<div class="modal-footer">
+		{{#if isMenuView}}
+			<span class="edit-time-cancel" data-dismiss="modal">Cancelar</span>
+		{{else}}
+			<span class="pull-right finish-edit-time">Terminar</span>
+			<span class="time-back">Atras</span>
+		{{/if}}
+	</div>
+</template>
+<!-- ###################################### -->

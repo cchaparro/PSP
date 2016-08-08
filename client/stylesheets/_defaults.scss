@@ -32,11 +32,13 @@ $border:								#ebebeb								!default;
 //----------------- General Colors ---------------
 $white:								#ffffff								!default;
 $black:								#000000								!default;
-$blue:								#1A95FB								!default;
-$blue-dark:							#0D83D3								!default;
+$blue:								#50AAFF								!default;
+$blue-dark:							#1A95FB								!default;
+$blue-light:						#B3E0FF								!default;
 
 //----------------- General Colors ---------------
 $background:						#F5F7FA								!default;
+$background-text:					#CCCFD4								!default;
 $success:							#3cd964								!default;
 $success-hover:					#2cc44c								!default;
 $danger:								#ed5a5a								!default;
@@ -75,5 +77,10 @@ $status-dark-warning:			#B49D00								!default;
 
 
 
-$status-bg:						#DAE1EC								!default;
+$status-bg:						#DAE1EC									!default;
+
+//------------------------------------------------
+$modal-title:					#4E6376									!default;
+$modal-description:			#838B9E									!default;
+
 //------------------------------------------------

@@ -111,6 +111,69 @@
 	border: 2px solid $danger;
 }
 
+
+
+
+
+
+//TODO organizar esto con los valores previos
+.input-field {
+	margin-bottom: 10px;
+
+	span {
+		display: block;
+		color: $modal-title;
+		font-weight: 500;
+		padding-bottom: 2px;
+	}
+
+	input, textarea {
+		width: 100%;
+		height: 40px;
+		padding: 5px 10px;
+		outline: none;
+		border: 2px solid $input-border;
+		color: $input-full-text;
+		@include border-radius($default-border-radius);
+		@include placeholder-color($input-border);
+		display: block;
+
+		&:focus {
+			border: 2px solid $blue;
+		}
+	}
+}
+
+.input-field-error {
+	@extend .input-field;
+	input {
+		border: 2px solid $danger;
+	}
+
+	textarea {
+		border: 2px solid $danger;
+		min-height: 80px;
+		max-width: 100%;
+	}
+}
+
+.input-textarea {
+	@extend .input-field;
+
+	textarea {
+		min-height: 80px;
+		max-width: 100%;
+	}
+}
+
+.input-dropdown {
+	@extend .input-field;
+
+}
+
+
+
+
 //----------------- Status Messages --------------
 .status-box {
 	position: absolute;

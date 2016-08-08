@@ -3,73 +3,80 @@
 //---------------- Modals ----------------
 .modal-dialog {
 	width: 500px;
+
+	.modal-content {
+		padding: 30px;
+	}
 }
 
 .modal-header {
-	height: 40px;
-	border-bottom: none;
+	padding: 0;
+	border-bottom: 0;
+
 	span {
 		cursor: pointer;
+		font-size: 14pt;
+		display: inline;
 		position: absolute;
-		right: 15px;
-		font-size: 12pt;
-		padding: 7px 7px 5px 7px;
-		border-radius: 5px;
-		border: 2px solid $border;
-		i {
-			color: $main-title-color;
-			&:hover {
-				color: $main-title-color;
-			}
-		}
+		top: 35px;
+		right: 30px;
+	}
+
+	p {
+		padding-top: 3px;
+		padding-right: 30px;
+		color: $modal-description;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 15pt;
+		color: $modal-title;
 	}
 }
 
 .modal-body {
-	padding: 25px;
-	padding-top: 0;
-	padding-bottom: 5px;
-
-	h3 {
-		margin-top: 0;
-	}
+	padding: 0;
+	padding-top: 20px;
 }
 
 .modal-footer {
-	border-top: none;
-	padding: 0 25px 25px 25px;
+	background-color: $blue;
+	margin: 0 -30px -30px -30px;
+	padding: 0;
 
-	button {
-		height: 40px;
-		border: 2px solid $border;
-		color: $main-title-color;
+	span {
 		float: left;
-		margin-left: 170px;
+		padding: 20px 30px;
+		color: $blue-light;
+		font-size: 11pt;
+		cursor: pointer;
+
 		&:hover {
-			background-color: $border;
-			border: 2px solid $border!important;
+			color: $white;
 		}
 	}
 }
 
 //------------- Create Project Modal -------------
-.pry-modal-create {
-	width: 160px;
-	height: 40px;
-	left: 10px;
-	bottom: 10px;
-	position: absolute;
-	margin: 15px;
-	background-color: $success;
-	text-align: center;
-	border-radius: 5px;
-	line-height: 40px;
-	font-size: 11pt;
-	color: $white;
-	cursor: pointer;
+.create-prj-row {
+	div {
+		display: inline-block;
 
-	&:hover {
-		background-color: $success-hover;
+		&:first-child {
+			width: 60%;
+			float: left;
+			padding-right: 10px;
+		}
+
+		&:last-child {
+			width: 40%;
+			float: right;
+
+			.dropdown {
+				width: 100%;
+			}
+		}
 	}
 }
 
@@ -100,4 +107,88 @@
 		line-height: 35px;
 	}
 }
+
+//--------------- Edit Time Modal ----------------
+.edit-time-cancel {
+	width: 100%;
+	text-align: center;
+}
+
+.edit-time-options {
+	margin-bottom: 30px;
+
+	div {
+		width: 48%;
+		height: 190px;
+		display: inline-block;
+		background-color: $background;
+		cursor: pointer;
+		color: $background-text;
+
+		i {
+			display: block;
+			font-size: 50pt;
+			padding-top: 50px;
+			text-align: center;
+		}
+
+		span {
+			display: block;
+			font-size: 13pt;
+			text-align: center;
+			padding-bottom: 50px;
+		}
+
+		&:last-child {
+			float: right;
+		}
+	}
+}
+
+.time-selector-box {
+	div {
+		width: 30%;
+		display: inline-block;
+		text-align: center;
+		margin-bottom: 30px;
+		padding-left: 15px;
+
+		i {
+			display: block;
+			color: $border;
+			font-size: 12pt;
+			cursor: pointer;
+
+			&:hover {
+				color: $modal-description;
+			}
+
+			&:first-child {
+				padding-bottom: 10px;
+			}
+		}
+
+		span {
+			color: $modal-description;
+			font-size: 13pt;
+			cursor: default;
+		}
+
+		input {
+			width: 100%;
+			height: 40px;
+			padding: 5px 10px;
+			display: block;
+			outline: none;
+			border: 1px solid $border;
+			color: $input-full-text;
+			margin-bottom: 5px;
+			text-align: center;
+			@include border-radius($default-border-radius);
+			@include placeholder-color($input-border);
+		}
+	}
+
+}
+
 //------------------------------------------------

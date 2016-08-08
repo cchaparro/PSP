@@ -29,7 +29,6 @@
 
 // Box that contains the inputs, buttons, etc
 .user-access-box {
-	height: 510px;
 	padding: 40px;
 	padding-top: 30px;
 	background-color: $user-access-bg;
@@ -133,11 +132,9 @@
 }
 
 .access-selection-box {
-	width: 100%;
+	width: calc(100% + 80px);
 	height: 60px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	margin: 20px -40px -40px -40px;
 	color: $input-empty-text;
 	cursor: pointer;
 	line-height: 60px;
