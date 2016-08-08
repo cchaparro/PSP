@@ -2,7 +2,7 @@
 <template name="main_userBar">
 	<div class="main-user">
 		<div class="mobile-menu">
-			<svg class="" viewBox="0 0 100 100"><use xlink:href="/images/Menu.svg#menuLogo"></use></svg>
+			<svg viewBox="0 0 100 100"><use xlink:href="/images/Menu.svg#menuLogo"></use></svg>
 		</div>
 		{{#each viewState}}
  			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}} hidden-xs">{{title}}</a>
