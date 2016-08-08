@@ -726,3 +726,68 @@
 }
 
 //------------------------------------------------
+
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+	.project-view-menu {
+		width: calc(100% + 40px);
+		height: 80px;
+		margin-top: -20px;
+		text-align: center!important;
+
+		a {
+			li {
+				float: left;
+				display: inline-block;
+				width: 20%;
+				padding-left: 2%;
+				padding-right: 2%;
+				text-align: center;
+				margin: 0;
+				border-bottom: 0;
+
+				svg {
+					width: 20px;
+				}
+
+				h3 {
+					font-size: 9pt;
+					word-break: break-all;
+				}
+			}
+		}
+	}
+
+	.project-view-content {
+		width: calc(100% + 40px);
+		margin-top: 20px;
+	}
+
+	.prj-information-box {
+		min-height: 250px;
+	}
+
+	.prj-general-chart-box {
+		width: 100%;
+	}
+
+	.prj-review-box {
+		width: 100%;
+	}
+
+	.defect-box,
+	.iteration-box,
+	.project-for-iteration-box {
+		margin-left: 0;
+		width: 100%;
+	}
+
+}
+
+
+//------------------------------------------------

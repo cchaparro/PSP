@@ -1,9 +1,12 @@
 <!-- ###################################### -->
 <template name="main_userBar">
 	<div class="main-user">
+		<div class="mobile-menu">
+			<svg class="" viewBox="0 0 100 100"><use xlink:href="/images/Menu.svg#menuLogo"></use></svg>
+		</div>
 		{{#each viewState}}
- 			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}}">{{title}}</a>
- 			<span class="{{#if lastValue}} hide {{/if}}"> | </span>
+ 			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}} hidden-xs">{{title}}</a>
+ 			<span class="{{#if lastValue}} hide {{/if}} hidden-xs"> | </span>
  		{{/each}}
 		{{#if $eq template "main"}}
 			{{> createProjectButton}}
@@ -15,7 +18,7 @@
 			{{> createDefectButton}}
 		{{/if}}
 		<div class="notification-badge {{#unless showNotificationBadge}} hide {{/unless}}"></div>
-		<svg class="notification-svg" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
+		<svg class="notification-svg hidden-xs" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
 		<div class="notification-box hide">
 			<ul>
 				{{#each userNotifications}}

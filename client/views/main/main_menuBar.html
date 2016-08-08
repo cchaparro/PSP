@@ -1,6 +1,6 @@
 <!-- ###################################### -->
 <template name="main_menuBar">
-	<div class="main-menu">
+	<div class="main-menu hidden-xs">
 		<a href="{{pathFor 'main'}}" class="{{#if isProjectView}} menu-svg-selected {{/if}} menu-projects"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Projects.svg#projectLogo"></use></svg><span><i></i>Proyectos</span></a>
 		<a href="{{pathFor 'overview'}}" class="{{#if $eq template 'overview'}} menu-svg-selected {{/if}} menu-overview"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/GeneralSummary.svg#generalSummaryLogo"></use></svg><span><i></i>Resumen</span></a>
 		<a href="{{pathFor 'projectSettings'}}" class="{{#if isSettingsView}} menu-svg-selected {{/if}} menu-settings"><svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg><span><i></i>Ajustes</span></a>
