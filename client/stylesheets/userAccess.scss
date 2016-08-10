@@ -141,3 +141,23 @@
 	border-top: 1px solid $input-border;
 }
 //------------------------------------------------
+
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+	.centered-outer {
+		.centered-inner {
+			.container {
+				width: 100%;
+				max-width: 100%;
+				padding: 0;
+			}
+		}
+	}
+}
+
+//------------------------------------------------
