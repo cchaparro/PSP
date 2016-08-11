@@ -124,6 +124,54 @@ input:checked + .switch-slider:before {
 		margin-bottom: 15px;
 		border-bottom: 1px solid $border;
 	}
+
+	.account-settings-image {
+		div {
+			width: 60px;
+			height: 60px;
+			@include border-radius($circle-border-radius);
+			display: inline-block;
+			float: left;
+			margin-bottom: 20px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		span {
+			display: block;
+			display: block;
+			color: $modal-title;
+			font-weight: 500;
+			padding-bottom: 5px;
+		}
+
+		button {
+			margin-top: 13px;
+			margin-left: 10px;
+			background-color: $blue;
+			color: $white;
+			outline: none;
+
+			&:hover {
+				background-color: $blue-dark;
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	.save-profile-settings {
+		background-color: $blue;
+		color: $white;
+		outline: none;
+
+		&:hover {
+			background-color: $blue-dark;
+		}
+	}
 }
 
 //------------- Defect Types Settings ------------

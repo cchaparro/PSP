@@ -9,4 +9,7 @@ Meteor.publish "projectSettings", () ->
 		db.defect_types.find({"defectTypeOwner": @userId})
 	]
 
+Meteor.publish "accountSettings", () ->
+	return db.users.find({_id: @userId})
+
 ####################################

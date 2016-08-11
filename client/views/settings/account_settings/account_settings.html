@@ -2,9 +2,28 @@
 <template name="accountSettingsTemplate">
 	{{> settingsMenu}}
 	<div class="project-view-content">
-		<div class="account-settings-content">
-			<h3>Datos de cuenta</h3>
-		</div>
+		{{#with userData }}
+			{{printthis}}
+			<div class="account-settings-content">
+				<h3>Datos de cuenta</h3>
+				<div class="account-settings-image clearfix">
+					<span>Foto de perfil</span>
+					<div style="background-image: url('{{getUserAvatarUrl}}');"></div>
+					{{> filereaderTemplate type="button" text="Seleccionar Imagen" classes="btn"}}
+				</div>
+				<div class="input-field">
+					<span>Nombre *</span>
+					<input type="text" placeholder="Nombre aqui" value="{{profile.fname}}">
+				</div>
+				<div class="input-field">
+					<span>Apellido *</span>
+					<input type="text" placeholder="Apellido aqui" value="{{profile.lname}}">
+				</div>
+				<div>
+					<button class="btn save-profile-settings">Guardar Cambios</button>
+				</div>
+			</div>
+		{{/with}}
 	</div>
 </template>
 <!-- ###################################### -->
