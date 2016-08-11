@@ -34,12 +34,9 @@
 	background-color: $user-access-bg;
 	position: relative;
 
-	h3 {
-		margin-top: 0;
+	.user-access-logo {
+		width: 190px;
 		margin-bottom: 20px;
-		color: $primary-bg;
-		font-size: 14pt;
-		font-weight: 700;
 	}
 }
 
