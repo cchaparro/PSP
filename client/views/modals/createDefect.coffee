@@ -1,4 +1,12 @@
-# ##########################################
+###########################################
+modalTitle = new ReactiveVar("Crear nuevo defecto")
+
+###########################################
+Template.createDefectModal.helpers
+	displayTitle: () ->
+		return modalTitle.get()
+
+###########################################
 Template.createDefect.onCreated () ->
 	@defect = new ReactiveVar({})
 	@defectId = new ReactiveVar('')
@@ -14,11 +22,12 @@ Template.createDefect.onCreated () ->
 		Template.instance().defectId.set(@data._id)
 		Template.instance().defectState.set(1)
 		Template.instance().defect.set(@data)
+		modalTitle.set("Modificar defecto")
 	else
 		Template.instance().defect.set({
-			"typeDefect":"Tipo de defecto"
-			"injected":"Inyectado"
-			"removed":"Removido"
+			"typeDefect":"Elegir tipo"
+			"injected":"Elegir etapa"
+			"removed":"Elegir etapa"
 			"fixCount": "1"
 			"description": ""
 			"parentId": ""
@@ -34,7 +43,7 @@ Template.createDefect.helpers
 		return Template.instance().defect.get()
 
 	descriptionText: () ->
-		return $('.create-defect-description').val() isnt ''
+		return $('.defect-modal-description').val() != ''
 
 	injectedPhases: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.injectedEstimated
@@ -88,7 +97,7 @@ Template.createDefect.events
 			Defect[type] = field
 		else if type == "injected"
 			Defect.injected = field
-			Defect.removed = "Removido"
+			Defect.removed = "Elegir etapa"
 		else
 			Defect.removed = field
 
@@ -121,7 +130,7 @@ Template.createDefect.events
 		}
 		data = _.extend Defect, data
 
-		if !(Defect.description!= '') or (Defect.typeDefect == "Tipo de defecto") or (Defect.injected == "Inyectado") or (Defect.removed == "Removido")
+		if !(Defect.description!= '') or (Defect.typeDefect == "Elegir tipo") or (Defect.injected == "Elegir etapa") or (Defect.removed == "Elegir etapa")
 			t.errorState.set(1)
 
 		else if DefectId!= ''
@@ -230,9 +239,9 @@ Template.createDefect.events
 
 		t.defectState.set(0)
 		t.defect.set({
-			"typeDefect":"Tipo de defecto"
-			"injected":"Inyectado"
-			"removed":"Removido"
+			"typeDefect":"Elegir tipo"
+			"injected":"Elegir etapa"
+			"removed":"Elegir etapa"
 			"fixCount": "1"
 			"description": ""
 			"parentId": t.defectId.get()

@@ -6,6 +6,7 @@
 
 	.modal-content {
 		padding: 30px;
+		border-radius: 0;
 	}
 }
 
@@ -81,6 +82,11 @@
 }
 
 //-------------- Create Defect Modal -------------
+.create-defect-modal {
+	.input-dropdown {
+		margin-bottom: 0;
+	}
+}
 .defect-create-son {
 	width: 100%;
 	background-color: $main-text-color;
