@@ -70,7 +70,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-6 defect-time">
 				<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
-				<i class="fa fa-pause time-btn {{#if $not timeStatus}} time-status-pause {{/if}}"></i>
+				<i class="fa fa-pause time-btn {{#unless timeStatus}} time-status-pause {{/unless}}"></i>
 				<span class="defect-log-time">{{projectTotalTime}}</span>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6">

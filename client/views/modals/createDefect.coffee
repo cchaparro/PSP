@@ -4,7 +4,7 @@ titleStatus = new ReactiveVar(true)
 defectsParent = new ReactiveVar(false)
 defectData = new ReactiveVar({})
 defectId = new ReactiveVar('')
-timeStarted = new ReactiveVar(0)
+timeStarted = new ReactiveVar(false)
 
 ###########################################
 Template.createDefectModal.helpers
@@ -36,18 +36,17 @@ Template.createDefectModal.events
 
 ###########################################
 Template.createDefect.onCreated () ->
-	@timeStatus = new ReactiveVar(true)
-	currentDate = new Date()
+	#State 0(Default), State 1(Missing Field)
+	@errorState = new ReactiveVar(0)
 
 	# Start data clean when you open a defect modal
 	titleStatus.set(true)
 	defectId.set('')
 	defectData.set({})
 	defectsParent.set(false)
-	timeStarted.set(currentDate)
 
-	#State 0(Default), State 1(Missing Field)
-	@errorState = new ReactiveVar(0)
+	currentDate = new Date()
+	timeStarted.set(currentDate)
 
 	if @data
 		if @data.parentId
@@ -104,7 +103,7 @@ Template.createDefect.helpers
 		return Template.instance().errorState.get()
 
 	timeStatus: () ->
-		return Template.instance().timeStatus.get()
+		return timeStarted.get()
 
 	ifLoadsData: () ->
 		return titleStatus.get()
@@ -147,11 +146,11 @@ Template.createDefect.events
 		TimeStarted = timeStarted.get()
 		Defect = defectData.get()
 
-		if TimeStarted == 0
-			totalTime = 0
-		else
+		if TimeStarted
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
+		else
+			totalTime = 0
 
 		data = {
 			"defectOwner": Meteor.userId()
@@ -173,7 +172,7 @@ Template.createDefect.events
 					console.log "Error updating a Defect"
 					console.warn(error)
 				else
-					timeStarted.set(0)
+					timeStarted.set(false)
 					Modal.hide('createDefectModal')
 					sys.flashStatus("save-defect")
 		else
@@ -192,17 +191,15 @@ Template.createDefect.events
 
 	'click .fa-play': (e,t) ->
 		timeStarted.set(new Date())
-		t.timeStatus.set(true)
 
 	'click .fa-pause': (e,t) ->
 		DefectId = defectId.get()
 		Defect = defectData.get()
 		TimeStarted = timeStarted.get()
 
-		unless TimeStarted == 0
+		if TimeStarted
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
-			t.timeStatus.set(false)
 
 			data = {
 				"defectOwner": Meteor.userId()
@@ -223,7 +220,7 @@ Template.createDefect.events
 						console.log "Error updating a existing Defect"
 						console.warn(error)
 					else
-						timeStarted.set(0)
+						timeStarted.set(false)
 
 			else
 				#console.log "Nuevo defecto das click play y luego pause"
@@ -232,19 +229,18 @@ Template.createDefect.events
 						sys.flashStatus("error-defect")
 						console.log "Error creating a new defect"
 					else
-						timeStarted.set(0)
+						timeStarted.set(false)
 						defectId.set(result)
 
 
 	'click .defect-create-son': (e,t) ->
 		TimeStarted = timeStarted.get()
-		unless TimeStarted == 0
+		if TimeStarted
 			DefectId = defectId.get()
 			Defect = defectData.get()
 
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
-			t.timeStatus.set(false)
 
 			data = {
 				"defectOwner": Meteor.userId()
@@ -265,7 +261,6 @@ Template.createDefect.events
 						timeStarted.set(currentDate)
 						sys.flashStatus("save-defect")
 
-		t.timeStatus.set(true)
 		currentDate = new Date()
 		timeStarted.set(currentDate)
 
