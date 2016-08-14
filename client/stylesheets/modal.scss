@@ -114,6 +114,16 @@
 	}
 }
 
+.defect-header-description {
+	cursor: default;
+
+	a {
+		text-decoration: underline;
+		cursor: pointer;
+		color: $blue;
+	}
+}
+
 //--------------- Edit Time Modal ----------------
 .edit-time-cancel {
 	width: 100%;

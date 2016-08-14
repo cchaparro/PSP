@@ -1,30 +1,69 @@
 ###########################################
-modalTitle = new ReactiveVar("Crear nuevo defecto")
+# titleStatus true is Create title and false is Modify title
+titleStatus = new ReactiveVar(true)
+defectsParent = new ReactiveVar(false)
+defectData = new ReactiveVar({})
+defectId = new ReactiveVar('')
+timeStarted = new ReactiveVar(0)
 
 ###########################################
 Template.createDefectModal.helpers
 	displayTitle: () ->
-		return modalTitle.get()
+		if titleStatus.get()
+			return "Crear nuevo defecto"
+		else
+			return "Modificar defecto"
+
+	parentId: () ->
+		return defectsParent.get()
+
+
+Template.createDefectModal.events
+	'click .defect-header-description a': (e,t) ->
+		console.log "-----ANTES--------"
+		console.log @
+		parentData = db.defects.findOne({_id: @parentId})
+		currentDate = new Date()
+
+		defectData.set(parentData)
+		defectId.set(parentData._id)
+		titleStatus.set(false)
+		timeStarted.set(currentDate)
+
+		if parentData.parentId?
+			defectsParent.set(parentData.parentId)
+		else
+			defectsParent.set(false)
+		console.log "-----DESPUES--------"
+		console.log parentData
+
+		#t.timeStatus.set(true)
 
 ###########################################
 Template.createDefect.onCreated () ->
-	@defect = new ReactiveVar({})
-	@defectId = new ReactiveVar('')
-	@defectState = new ReactiveVar(0)
 	@timeStatus = new ReactiveVar(true)
 	currentDate = new Date()
-	@timeStarted = new ReactiveVar(currentDate)
+
+	# Start data clean when you open a defect modal
+	titleStatus.set(true)
+	defectId.set('')
+	defectData.set({})
+	defectsParent.set(false)
+	timeStarted.set(currentDate)
 
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
 
 	if @data
-		Template.instance().defectId.set(@data._id)
-		Template.instance().defectState.set(1)
-		Template.instance().defect.set(@data)
-		modalTitle.set("Modificar defecto")
+		console.log "im here"
+		if @data.parentId
+			defectsParent.set(@data.parentId)
+
+		defectId.set(@data._id)
+		defectData.set(@data)
+		titleStatus.set(false)
 	else
-		Template.instance().defect.set({
+		defectData.set({
 			"typeDefect":"Elegir tipo"
 			"injected":"Elegir etapa"
 			"removed":"Elegir etapa"
@@ -40,7 +79,7 @@ Template.createDefect.helpers
 		return db.defect_types.findOne({_id: userDefectListId})?.defects
 
 	defectData: () ->
-		return Template.instance().defect.get()
+		return defectData.get()
 
 	descriptionText: () ->
 		return $('.defect-modal-description').val() != ''
@@ -49,7 +88,7 @@ Template.createDefect.helpers
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.injectedEstimated
 
 	removedPhases: () ->
-		Defect = Template.instance().defect.get()
+		Defect = defectData.get()
 		injected = Defect.injected
 
 		projectStages = db.plan_summary.findOne({projectId: FlowRouter.getParam("id")}).removedEstimated
@@ -74,11 +113,10 @@ Template.createDefect.helpers
 		return Template.instance().timeStatus.get()
 
 	ifLoadsData: () ->
-		Defect_State = Template.instance().defectState.get()
-		return Defect_State == 1
+		return titleStatus.get()
 
 	projectTotalTime: () ->
-		DefectId = Template.instance().defectId.get()
+		DefectId = defectId.get()
 		time = 0
 		if (DefectId!= '')
 			Defect = db.defects.findOne({_id: DefectId, "defectOwner": Meteor.userId()})
@@ -91,7 +129,7 @@ Template.createDefect.events
 	'click .defect-select-field': (e,t) ->
 		field = $(e.target).data('value')
 		type = $(e.target).data('type')
-		Defect = t.defect.get()
+		Defect = defectData.get()
 
 		if type == "typeDefect"
 			Defect[type] = field
@@ -101,19 +139,19 @@ Template.createDefect.events
 		else
 			Defect.removed = field
 
-		t.defect.set(Defect)
+		defectData.set(Defect)
 
 	'change .defect-input-field': (e,t) ->
 		field = $(e.target).data('field')
 		value = $(e.target).val()
-		Defect = t.defect.get()
+		Defect = defectData.get()
 		Defect[field] = value
-		t.defect.set(Defect)
+		defectData.set(Defect)
 
 	'click .pry-modal-create': (e,t) ->
-		DefectId = t.defectId.get()
-		TimeStarted = t.timeStarted.get()
-		Defect = t.defect.get()
+		DefectId = defectId.get()
+		TimeStarted = timeStarted.get()
+		Defect = defectData.get()
 
 		if TimeStarted == 0
 			totalTime = 0
@@ -129,6 +167,7 @@ Template.createDefect.events
 			"created": true
 		}
 		data = _.extend Defect, data
+		#console.log data
 
 		if !(Defect.description!= '') or (Defect.typeDefect == "Elegir tipo") or (Defect.injected == "Elegir etapa") or (Defect.removed == "Elegir etapa")
 			t.errorState.set(1)
@@ -141,7 +180,7 @@ Template.createDefect.events
 					console.log "Error updating a Defect"
 					console.warn(error)
 				else
-					t.timeStarted.set(0)
+					timeStarted.set(0)
 					Modal.hide('createDefectModal')
 					sys.flashStatus("save-defect")
 		else
@@ -159,13 +198,13 @@ Template.createDefect.events
 		t.errorState.set(0)
 
 	'click .fa-play': (e,t) ->
-		t.timeStarted.set(new Date())
+		timeStarted.set(new Date())
 		t.timeStatus.set(true)
 
 	'click .fa-pause': (e,t) ->
-		DefectId = t.defectId.get()
-		Defect = t.defect.get()
-		TimeStarted = t.timeStarted.get()
+		DefectId = defectId.get()
+		Defect = defectData.get()
+		TimeStarted = timeStarted.get()
 
 		unless TimeStarted == 0
 			totalTime = new Date() - TimeStarted
@@ -183,6 +222,8 @@ Template.createDefect.events
 			unless data.created
 				data.created = false
 
+			#console.log data
+
 			if DefectId!= ''
 				#console.log "Cuando das play y pause cuando abriste un proyecto"
 				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
@@ -191,7 +232,7 @@ Template.createDefect.events
 						console.log "Error updating a existing Defect"
 						console.warn(error)
 					else
-						t.timeStarted.set(0)
+						timeStarted.set(0)
 
 			else
 				#console.log "Nuevo defecto das click play y luego pause"
@@ -200,15 +241,15 @@ Template.createDefect.events
 						sys.flashStatus("error-defect")
 						console.log "Error creating a new defect"
 					else
-						t.timeStarted.set(0)
-						t.defectId.set(result)
+						timeStarted.set(0)
+						defectId.set(result)
 
 
 	'click .defect-create-son': (e,t) ->
-		TimeStarted = t.timeStarted.get()
+		TimeStarted = timeStarted.get()
 		unless TimeStarted == 0
-			DefectId = t.defectId.get()
-			Defect = t.defect.get()
+			DefectId = defectId.get()
+			Defect = defectData.get()
 
 			totalTime = new Date() - TimeStarted
 			totalTime = parseInt(totalTime)
@@ -230,22 +271,22 @@ Template.createDefect.events
 						console.warn(error)
 					else
 						currentDate = new Date()
-						t.timeStarted.set(currentDate)
+						timeStarted.set(currentDate)
 						sys.flashStatus("save-defect")
 
 		t.timeStatus.set(true)
 		currentDate = new Date()
-		t.timeStarted.set(currentDate)
+		timeStarted.set(currentDate)
 
-		t.defectState.set(0)
-		t.defect.set({
+		defectData.set({
 			"typeDefect":"Elegir tipo"
 			"injected":"Elegir etapa"
 			"removed":"Elegir etapa"
 			"fixCount": "1"
 			"description": ""
-			"parentId": t.defectId.get()
+			"parentId": defectId.get()
 		})
-		t.defectId.set('')
+		defectId.set('')
+		titleStatus.set(true)
 
 # ##########################################

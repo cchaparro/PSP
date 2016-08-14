@@ -5,7 +5,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3>{{displayTitle}}</h3>
-					<p>Aqui puedes crear un nuevo proyecto para registrar datos.</p>
+					{{#if parentId}}
+						<p class="defect-header-description">Este es un defecto hijo de otro. Puedes volver al defecto padre dando <a>click aqui</a>.</p>
+					{{/if}}
 					<span data-dismiss="modal"><i class="fa fa-times close"></i></span>
 				</div>
 				{{> createDefect}}
@@ -76,12 +78,13 @@
 			</div>
 		</div>
 		<textarea type="text" class="{{#if $and errorState ($not descriptionText)}} psp-textarea-error {{else}} psp-textarea {{/if}} defect-modal-description defect-input-field" data-field="description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
+		<br>
 	</div>
 	<div class="modal-footer">
 		{{#if ifLoadsData}}
-			<span class="psp-btn pry-modal-create pull-right">Guardar Cambios</span>
-		{{else}}
 			<span class="pry-modal-create pull-right">Crear Defecto</span>
+		{{else}}
+			<span class="psp-btn pry-modal-create pull-right">Guardar Cambios</span>
 		{{/if}}
 		<span data-dismiss="modal">Cerrar</span>
 	</div>
