@@ -20,9 +20,8 @@ Template.createDefectModal.helpers
 
 Template.createDefectModal.events
 	'click .defect-header-description a': (e,t) ->
-		console.log "-----ANTES--------"
-		console.log @
-		parentData = db.defects.findOne({_id: @parentId})
+		parentId = defectsParent.get()
+		parentData = db.defects.findOne({_id: parentId})
 		currentDate = new Date()
 
 		defectData.set(parentData)
@@ -34,10 +33,6 @@ Template.createDefectModal.events
 			defectsParent.set(parentData.parentId)
 		else
 			defectsParent.set(false)
-		console.log "-----DESPUES--------"
-		console.log parentData
-
-		#t.timeStatus.set(true)
 
 ###########################################
 Template.createDefect.onCreated () ->
@@ -55,7 +50,6 @@ Template.createDefect.onCreated () ->
 	@errorState = new ReactiveVar(0)
 
 	if @data
-		console.log "im here"
 		if @data.parentId
 			defectsParent.set(@data.parentId)
 
@@ -167,7 +161,6 @@ Template.createDefect.events
 			"created": true
 		}
 		data = _.extend Defect, data
-		#console.log data
 
 		if !(Defect.description!= '') or (Defect.typeDefect == "Elegir tipo") or (Defect.injected == "Elegir etapa") or (Defect.removed == "Elegir etapa")
 			t.errorState.set(1)
@@ -221,8 +214,6 @@ Template.createDefect.events
 
 			unless data.created
 				data.created = false
-
-			#console.log data
 
 			if DefectId!= ''
 				#console.log "Cuando das play y pause cuando abriste un proyecto"
