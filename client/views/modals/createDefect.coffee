@@ -22,12 +22,11 @@ Template.createDefectModal.events
 	'click .defect-header-description a': (e,t) ->
 		parentId = defectsParent.get()
 		parentData = db.defects.findOne({_id: parentId})
-		currentDate = new Date()
 
 		defectData.set(parentData)
 		defectId.set(parentData._id)
 		titleStatus.set(false)
-		timeStarted.set(currentDate)
+		timeStarted.set(new Date())
 
 		if parentData.parentId?
 			defectsParent.set(parentData.parentId)
@@ -44,9 +43,7 @@ Template.createDefect.onCreated () ->
 	defectId.set('')
 	defectData.set({})
 	defectsParent.set(false)
-
-	currentDate = new Date()
-	timeStarted.set(currentDate)
+	timeStarted.set(new Date())
 
 	if @data
 		if @data.parentId
@@ -163,6 +160,7 @@ Template.createDefect.events
 
 		if !(Defect.description!= '') or (Defect.typeDefect == "Elegir tipo") or (Defect.injected == "Elegir etapa") or (Defect.removed == "Elegir etapa")
 			t.errorState.set(1)
+			data.created = false
 
 		else if DefectId!= ''
 			#console.log "Di cick a guardar a un proyecto que ya existia"
