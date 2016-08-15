@@ -3,12 +3,12 @@
 	{{> projectViewMenu}}
 	<div class="project-view-content">
 		{{#with userData }}
-			<div class="plan_summary-box">
+			<div class="plan-summary-content">
 				<h3>Tiempo en Fase</h3>
 				<table class="table table-summary">
 					<thead>
 						<tr>
-							<th style="width: ;">Titulo</th>
+							<th>Titulo</th>
 							<th>Plan</th>
 							<th>Actual</th>
 							<th>A la fecha</th>
@@ -21,7 +21,7 @@
 				</table>
 			</div>
 			<br>
-			<div class="plan_summary-box">
+			<div class="plan-summary-content">
 				<h3>Defectos Inyectados</h3>
 				<table class="table table-summary">
 					<thead>
@@ -39,7 +39,7 @@
 				</table>
 			</div>
 			<br>
-			<div class="plan_summary-box">
+			<div class="plan-summary-content">
 				<h3>Defectos Removidos</h3>
 				<table class="table table-summary">
 					<thead>
@@ -66,11 +66,11 @@
 			<td>{{name}}</td>
 			<td>
 				{{#if isProbeC}}
-					{{planSummaryTime average}}
+					{{timeFormat average}}
 				{{/if}}
 			</td>
-			<td>{{planSummaryTime time}}</td>
-			<td>{{planSummaryTime toDate}}</td>
+			<td>{{timeFormat time}}</td>
+			<td>{{timeFormat toDate}}</td>
 			<td>{{percentage}}%</td>
 		</tr>
 	{{/each}}
@@ -82,8 +82,8 @@
 					<input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}">
 				{{/if}}
 			</td>
-			<td><span>{{planSummaryTime totalTime}}</span></td>
-			<td><span>{{planSummaryTime totalToDate}}</span></td>
+			<td><span>{{timeFormat totalTime}}</span></td>
+			<td><span>{{timeFormat totalToDate}}</span></td>
 			<td></td>
 		</tr>
 	{{/with}}

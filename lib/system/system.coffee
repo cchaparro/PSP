@@ -47,7 +47,7 @@ sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
 	time = time % 60000
 	segundos = Math.floor(time / 1000)
-	return minutos + ":" + segundos
+	return minutos + " : " + segundos
 
 ##########################################
 #############- Date Display -#############

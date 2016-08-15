@@ -652,43 +652,80 @@
 }
 
 //----------- Project Plan Summary View ----------
-.plan_summary-box {
+.plan-summary-content {
 	background-color: $white;
-	border: 1px solid $border;
-	@include border-radius($default-border-radius);
+	padding: 20px;
 
 	h3 {
 		font-size: 13pt;
-		padding-left: 20px;
-		padding-bottom: 10px;
+		margin-top: 5px;
+		padding-bottom: 20px;
+		color: $icon-color;
+		border-bottom: 1px solid $border;
 	}
 
 	.table-summary {
-		border: 0;
-		width: 100%;
-		table-layout: fixed;
-		margin-bottom: 0;
+		background-color: $white;
+
 		thead {
-			border-bottom: 1px solid $border;
-			border-top: 1px solid $border;
-			color: $table-title-color;
-
-			& > tr > th {
-				border: 0;
-				font-weight: 300;
+			& > tr > th{
+				padding-bottom: 15px;
 				text-align: center;
-				padding-top: 10px;
-				padding-bottom: 10px;
-
+				border-bottom: 0px;
+				color: $project-option-selected;
+				font-weight: 300;
+				cursor: default;
 			}
 		}
 
-		tbody > tr > td {
-			vertical-align: middle;
-			padding-top: 15px;
-			padding-bottom: 15px;
-			text-align: center;
+		tbody > tr {
+			background-color: $background;
 			cursor: default;
+
+			& > td {
+				padding: 20px 20px;
+				border: none;
+				border-bottom: 6px solid $white;
+				color: $project-option-selected;
+
+				input {
+					margin-top: 9px;
+					text-align: center;
+					padding-left: 0;
+				}
+
+				&:first-child {
+					width: 200px;
+				}
+
+				&:nth-child(2) {
+					text-align: center;
+					width: 180px;
+				}
+
+				&:nth-child(3) {
+					text-align: center;
+					padding-top: 18px;
+					padding-bottom: 14px;
+					margin: 0;
+				}
+
+				&:nth-child(4) {
+					text-align: center;
+					padding-top: 18px;
+					padding-bottom: 14px;
+					margin: 0;
+				}
+
+				&:last-child {
+					text-align: center;
+					width: 110px;
+				}
+			}
+
+			&:last-child {
+				border-bottom: none;
+			}
 		}
 
 	}
