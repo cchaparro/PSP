@@ -11,7 +11,7 @@
 							<th>Titulo</th>
 							<th>Plan</th>
 							<th>Actual</th>
-							<th>A la fecha</th>
+							<th >A la fecha</th>
 							<th style="width: 100px;">Porcentaje</th>
 						</tr>
 					</thead>
@@ -64,7 +64,7 @@
 	{{#each timeEstimatedStages}}
 		<tr>
 			<td>{{name}}</td>
-			<td>
+			<td class="hidden-xs">
 				{{#if isProbeC}}
 					{{timeFormat average}}
 				{{/if}}
@@ -79,7 +79,11 @@
 			<td><span>Total</span></td>
 			<td class="td-input-row">
 				{{#if probeD}}
-					<input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}">
+					{{#if isTotalTimeEmpty}}
+						<span>{{timeFormat estimatedTime}}</span>
+					{{else}}
+						<input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}">
+					{{/if}}
 				{{/if}}
 			</td>
 			<td><span>{{timeFormat totalTime}}</span></td>

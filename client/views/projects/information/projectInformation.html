@@ -3,7 +3,8 @@
 	{{> projectViewMenu}}
 	<div class="project-view-content">
 		{{#with projectInfo }}
-			<div class="prj-information-box">
+			<div class="prj-information-content">
+				<h3>Informacion General</h3>
 				<div class="{{#if completed}} project-completed {{else}} project-active {{/if}}">
 					{{#if completed}}
 						<span>Terminado</span>
@@ -17,19 +18,25 @@
 				<span class="prj-info-text">Descripción del proyecto</span>
 				{{{contentEditable class='prj-info-description' value=description}}}
 			</div>
+			<br>
 
-			{{> projectInformationChart}}
-
-			<div class="prj-review-box">
+			<div class="prj-information-values-box">
 				<div>
-					<svg class="project-svg" viewBox="0 0 100 100"><use xlink:href="/images/Clock.svg#clockLogo"></use></svg>
-					<span>Tiempo total</span>
-					<p>{{projectTotalTime}}</p>
+					<h3>Tiempo registrado</h3>
+					{{> projectInformationChart}}
 				</div>
-				<div>
-					<svg class="project-svg" viewBox="0 0 100 100"><use xlink:href="/images/Calendar.svg#calendarLogo"></use></svg>
-					<span>Fecha creación</span>
-					<p>{{dateDisplay createdAt}}</p>
+				<div class="prj-registered-values">
+					<h3>Datos registrados</h3>
+					<div>
+						<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
+						<span>Tiempo total</span>
+						<p>{{projectTotalTime}}</p>
+					</div>
+					<div>
+						<svg viewBox="0 0 100 100"><use xlink:href="/images/Calendar.svg#calendarLogo"></use></svg>
+						<span>Fecha creación</span>
+						<p>{{dateDisplay createdAt}}</p>
+					</div>
 				</div>
 			</div>
 		{{/with}}
@@ -37,8 +44,13 @@
 </template>
 <!-- ###################################### -->
 <template name="projectInformationChart">
-	<div class="prj-general-chart-box">
-		<span>Estado Actual del Proyecto</span>
-		<canvas id="projectInformationChart" height="90" width="90"></canvas>
+	<div class="prj-information-chart">
+		<canvas id="projectInformationChart"></canvas>
 	</div>
+	<ul class="prj-information-chart-values">
+		{{#each chartFields}}
+			<li><i class="fa fa-square" style="color: {{color}}"></i>{{name}}</li>
+		{{/each}}
+	</ul>
 </template>
+<!-- ###################################### -->

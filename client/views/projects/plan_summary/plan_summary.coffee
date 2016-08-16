@@ -29,6 +29,9 @@ Template.summaryTimeRow.helpers
 	isProbeC: () ->
 		return db.users.findOne({_id: Meteor.userId()}).settings.probeC
 
+	isTotalTimeEmpty: () ->
+		return @estimatedTime > 0
+
 
 Template.summaryTimeRow.events
 	'blur .psp-input': (e,t) ->

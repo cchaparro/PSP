@@ -1,28 +1,30 @@
 ##########################################
+projectFields = new ReactiveVar([])
+##########################################
 drawProjectInfoChart = () ->
 	projectStages = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())?.timeEstimated
 	colors = Meteor.settings.public.chartColors
 
 	data = []
+	chartFields = []
 	color_position = 0
 	_.each projectStages, (stage) ->
-		juan = {}
-		juan['value']= stage.time
-		juan['label']= stage.name
-		juan['color']= colors[color_position]
-		data.push(juan)
+		chartFields.push({"name": stage.name, "color": colors[color_position]})
+		data.push({"value": stage.time, "label": stage.name, "color": colors[color_position]})
 		color_position += 1
 
-	# {
-	# 	value: 10
-	# 	color: '#094074'
-	# 	highlight: '#094074'
-	# 	label: 'Planeación'
-	# }
+	projectFields.set(chartFields)
+
+	options = {
+		animation : false
+		showTooltips: false
+	}
 
 	ctx = $('#projectInformationChart').get(0).getContext('2d')
-	myNewChart = new Chart(ctx)
-	new Chart(ctx).Pie(data)
+	ctx.canvas.width = 200
+	ctx.canvas.height = 200
+	# myNewChart = new Chart(ctx)
+	new Chart(ctx).Doughnut(data, options)
 
 ##########################################
 Template.projectInformationChart.onRendered () ->
@@ -31,6 +33,11 @@ Template.projectInformationChart.onRendered () ->
 	#	if FlowRouter.current().route.name == 'projectView'
 	#		console.log "Just Rendered drawProjectInfoChart()"
 	#		drawProjectInfoChart()
+
+Template.projectInformationChart.helpers
+	chartFields: () ->
+		console.log projectFields.get()
+		return projectFields.get()
 
 ##########################################
 Template.projectInformationTemplate.onCreated () ->

@@ -1,6 +1,6 @@
 #######################################
 Template.scriptsTemplate.onCreated ()->
-	Meteor.subscribe "script"
+	Meteor.subscribe "projectView", FlowRouter.getParam("id")
 
 Template.scriptsTemplate.helpers
 	projectPSPversion: ()->
