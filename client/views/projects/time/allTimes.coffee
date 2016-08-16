@@ -8,10 +8,6 @@ Template.timeTemplate.helpers
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
 ##########################################
-Template.timesBar.onCreated () ->
-	#	@projectStages = new ReactiveVar([])
-
-
 Template.timesBar.helpers
 	planSummary: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})

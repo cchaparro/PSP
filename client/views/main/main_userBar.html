@@ -5,9 +5,11 @@
 			<svg viewBox="0 0 100 100"><use xlink:href="/images/Menu.svg#menuLogo"></use></svg>
 		</div>
 		{{#each viewState}}
- 			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}} hidden-xs">{{title}}</a>
- 			<span class="{{#if lastValue}} hide {{/if}} hidden-xs"> | </span>
- 		{{/each}}
+			<a href="{{pathFor route fid=fid id=pid}}" class="user-route {{#if lastValue}} last-user-route {{/if}} hidden-xs">{{title}}</a>
+			<span class="{{#if lastValue}} hide {{/if}} hidden-xs">
+				<svg class="breadcrumb-arrow" viewBox="0 0 100 100"><use xlink:href="/images/ArrowBreadcrumb.svg#arrowsBreadCrumb"></use></svg>
+			</span>
+		{{/each}}
 		{{#if $eq template "main"}}
 			{{> createProjectButton}}
 		{{/if}}

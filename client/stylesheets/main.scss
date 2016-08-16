@@ -121,7 +121,7 @@ html, body {
 		padding: 5px;
 		border-radius: 4px;
 		font-size: 11pt;
-		color: $main-text-color;
+		color: $input-button;
 		display: inline-block;
 		cursor: pointer;
 		text-decoration: none;
@@ -133,6 +133,15 @@ html, body {
 		&:hover {
 			background-color: rgba($border, 0.3);
 		}
+	}
+
+	.last-user-route {
+		color: $blue;
+	}
+
+	.breadcrumb-arrow {
+		width: 8px;
+		fill: $border;
 	}
 }
 
