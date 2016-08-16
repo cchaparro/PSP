@@ -175,7 +175,6 @@ html, body {
 	position: absolute;
 	right: 0;
 	top: 0;
-	cursor: pointer;
 
 	.avatar {
 		width: 35px;
@@ -187,6 +186,7 @@ html, body {
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
+		cursor: pointer;
 	}
 }
 

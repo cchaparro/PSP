@@ -62,7 +62,7 @@ Template.main_userBar.helpers
 		return Routes
 
 Template.main_userBar.events
-	'click .avatar-box': (e,t) ->
+	'click .avatar': (e,t) ->
 		$('.user-dropdown').toggleClass('hide')
 		$('.user-dropdown-tab').toggleClass('hide')
 

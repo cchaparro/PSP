@@ -15,6 +15,12 @@ Template.projectsTemplate.helpers
 		projects = db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}})
 		return projects.count() != 0
 
+	projectCompleted: () ->
+		return false if !@completed
+		iterations = db.projects.find({"parentId": @_id, "completed": false}).fetch().length
+		return false if iterations > 0
+		return true
+
 
 Template.projectsTemplate.events
 	'click .fa-times': (e,t) ->
