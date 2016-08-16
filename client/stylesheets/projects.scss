@@ -829,6 +829,88 @@
 	}
 }
 
+//------------------ Scripts View -----------------
+.script-content {
+	background-color: $white;
+	padding: 20px;
+
+	h3 {
+		font-size: 13pt;
+		margin-top: 5px;
+		padding-bottom: 20px;
+		color: $icon-color;
+		border-bottom: 1px solid $border;
+	}
+
+	// .table-summary {
+	// 	background-color: $white;
+
+	// 	thead {
+	// 		& > tr > th{
+	// 			padding-bottom: 15px;
+	// 			text-align: center;
+	// 			border-bottom: 0px;
+	// 			color: $project-option-selected;
+	// 			font-weight: 300;
+	// 			cursor: default;
+	// 		}
+	// 	}
+
+	// 	tbody > tr {
+	// 		background-color: $background;
+	// 		cursor: default;
+
+	// 		& > td {
+	// 			padding: 20px 20px;
+	// 			border: none;
+	// 			border-bottom: 6px solid $white;
+	// 			color: $project-option-selected;
+
+	// 			input {
+	// 				margin-top: 9px;
+	// 				text-align: center;
+	// 				padding-left: 0;
+	// 			}
+
+	// 			&:first-child {
+	// 				width: 200px;
+	// 			}
+
+	// 			&:nth-child(2) {
+	// 				text-align: center;
+	// 				width: 180px;
+	// 			}
+
+	// 			&:nth-child(3) {
+	// 				text-align: center;
+	// 				padding-top: 18px;
+	// 				padding-bottom: 14px;
+	// 				margin: 0;
+	// 			}
+
+	// 			&:nth-child(4) {
+	// 				text-align: center;
+	// 				padding-top: 18px;
+	// 				padding-bottom: 14px;
+	// 				margin: 0;
+	// 			}
+
+	// 			&:last-child {
+	// 				text-align: center;
+	// 				width: 110px;
+	// 			}
+	// 		}
+
+	// 		&:last-child {
+	// 			border-bottom: none;
+	// 			background-color: $white;
+	// 		}
+	// 	}
+
+	// }
+
+}
+
 //------------------------------------------------
 
 // Portrait tablets and small desktops

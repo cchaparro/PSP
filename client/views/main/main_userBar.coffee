@@ -87,11 +87,14 @@ Template.userNotification.helpers
 			return true
 		return userNotifications[@_id] == true
 
+	userNotifications: () ->
+		return db.notifications.find({"notificationOwner": Meteor.userId()}, {sort: {createdAt: -1}})
+
+	momentToNow: (createdAt) ->
+		return moment(createdAt).fromNow()
+
 ##################################################
 Template.userMenuDropdown.helpers
-	userNotifications: () ->
-		return db.notifications.find({"notificationOwner": Meteor.userId()})
-
 	notificationIcon: () ->
 		switch @type
 			when 'new-user'

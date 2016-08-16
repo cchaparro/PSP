@@ -36,7 +36,6 @@ Template.projectInformationChart.onRendered () ->
 
 Template.projectInformationChart.helpers
 	chartFields: () ->
-		console.log projectFields.get()
 		return projectFields.get()
 
 ##########################################

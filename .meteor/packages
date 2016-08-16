@@ -34,3 +34,4 @@ chart:chart									# Package for using charts
 matb33:collection-hooks
 hitchcott:method-hooks
 session
+momentjs:moment

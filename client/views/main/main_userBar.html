@@ -19,18 +19,9 @@
 		{{#if $eq template "projectDefectLog"}}
 			{{> createDefectButton}}
 		{{/if}}
-		<div class="notification-badge {{#unless showNotificationBadge}} hide {{/unless}}"></div>
+		<div class="new-notification-badge {{#unless showNotificationBadge}} hide {{/unless}}"></div>
 		<svg class="notification-svg hidden-xs" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
-		<div class="notification-box hide">
-			<ul>
-				{{#each userNotifications}}
-					{{> userNotification}}
-				{{/each}}
-			</ul>
-			<div class="more-notifications">
-				<span>Ver todas las Notificaciónes</span>
-			</div>
-		</div>
+		{{> userNotification}}
 		{{#with userData}}
 			<div class="avatar-box">
 				<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');"></div>
@@ -76,9 +67,22 @@
 </template>
 <!-- ###################################### -->
 <template name="userNotification">
-	<li>
-		<h3>{{title}}<div class="unseen-badge {{#if notificationSeen}} hide {{/if}}"></div></h3>
-		<span>{{subject}}</span>
-	</li>
+	<div class="notification-box clearfix hide">
+		<h3>Notificaciones</h3>
+		<ul>
+			{{#each userNotifications}}
+				<li class="clearfix">
+					<div class="notification-badge">
+						<i class="fa fa-fw fa-check"></i>
+					</div>
+					<div class="notification-content">
+						<h4>{{title}}<div class="unseen-badge {{#if notificationSeen}} hide {{/if}}"></div></h4>
+						<span>{{subject}}</span>
+						<p>{{momentToNow createdAt}}</p>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
 </template>
 <!-- ###################################### -->
