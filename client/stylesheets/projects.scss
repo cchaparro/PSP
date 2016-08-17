@@ -949,9 +949,23 @@
 		}
 	}
 
+	.defect-create-son {
+		margin-bottom: 10px;
+	}
+
 	.project-view-content {
 		width: calc(100% + 40px);
 		margin-top: 20px;
+
+		.prj-information-values-box {
+			div {
+				width: 100%;
+			}
+
+			.prj-registered-values {
+				margin-top: 30px;
+			}
+		}
 	}
 
 	.prj-information-box {
