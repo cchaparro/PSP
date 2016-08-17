@@ -1,5 +1,21 @@
 @import '_variables.scss';
 
+//----------------- General Colors ---------------
+.success {
+	background-color: $success;
+	color: $white;
+}
+
+.warning {
+	background-color: $warning;
+	color: $warning-hover;
+}
+
+.danger {
+	background-color: $danger;
+	color: $white;
+}
+
 //------------------- Main Menu ------------------
 
 // This is used to center what is going to be

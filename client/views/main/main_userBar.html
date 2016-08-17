@@ -72,11 +72,11 @@
 		<ul>
 			{{#each userNotifications}}
 				<li class="clearfix">
-					<div class="notification-badge">
-						<i class="fa fa-fw fa-check"></i>
+					<div class="notification-badge {{badgeStatus}}">
+						<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-warning {{/if}}"></i>
 					</div>
-					<div class="notification-content">
-						<h4>{{title}}<div class="unseen-badge {{#if notificationSeen}} hide {{/if}}"></div></h4>
+					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}}">
+						<h4>{{title}}</h4>
 						<span>{{subject}}</span>
 						<p>{{momentToNow createdAt}}</p>
 					</div>

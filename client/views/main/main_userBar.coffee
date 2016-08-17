@@ -93,6 +93,14 @@ Template.userNotification.helpers
 	momentToNow: (createdAt) ->
 		return moment(createdAt).fromNow()
 
+	badgeStatus: () ->
+		type = @type
+		switch type
+			when "new-user"
+				return "success"
+			when 'time-registered'
+				return "warning"
+
 ##################################################
 Template.userMenuDropdown.helpers
 	notificationIcon: () ->
