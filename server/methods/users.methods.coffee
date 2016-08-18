@@ -35,4 +35,8 @@ Meteor.methods
 		}
 		db.users.update({_id: Meteor.userId()}, {$set: data})
 
+
+	update_user_public_info: (userId, data) ->
+		db.users.update({_id: userId}, {$set: data})
+
 #######################################

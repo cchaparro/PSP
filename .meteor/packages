@@ -35,3 +35,5 @@ matb33:collection-hooks
 hitchcott:method-hooks
 session
 momentjs:moment
+cfs:standard-packages
+cfs:filesystem
