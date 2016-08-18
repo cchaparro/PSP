@@ -108,6 +108,11 @@ sys.flashStatus = (type) ->
 			subject = "Los nuevos tipos de defectos han sido actualizados correctamente."
 			css = "success"
 
+		when "update-profile-image"
+			title = "Guardado"
+			subject = "La imagen de perfil ha sido cambiada correctamente."
+			css = "success"
+
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
 
