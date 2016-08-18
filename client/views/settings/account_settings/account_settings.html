@@ -3,13 +3,13 @@
 	{{> settingsMenu}}
 	<div class="project-view-content">
 		{{#with userData }}
-			{{printthis}}
 			<div class="account-settings-content">
 				<h3>Datos de cuenta</h3>
 				<div class="account-settings-image clearfix">
 					<span>Foto de perfil</span>
 					<div style="background-image: url('{{getUserAvatarUrl}}');"></div>
-					{{> filereaderTemplate type="button" text="Seleccionar Imagen" classes="btn"}}
+					<!-- <input class="uploadFile" type="file"> -->
+					{{> uploaderTemplate type="button" text="Seleccionar Imagen" classes="btn uploadFile"}}
 				</div>
 				<div class="input-field">
 					<span>Nombre *</span>
