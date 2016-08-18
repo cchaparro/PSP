@@ -9,7 +9,7 @@ Template.accountSettingsTemplate.helpers
 		return user if user?
 
 Template.accountSettingsTemplate.events
-	'change .uploadFile': (e,t) ->
+	'change .uploader_file': (e,t) ->
 		FS.Utility.eachFile e, (file) ->
 			newFile = new FS.File(file)
 			newFile.metadata = {
@@ -26,7 +26,7 @@ Template.accountSettingsTemplate.events
 							data = {
 								"profile.profileImageUrl": "/cfs/files/Files/" + fileObj._id
 							}
-							Meteor.call "update_user_public_info", userId, data
+							Meteor.call "update_user_public_info", userId, data, fileObj._id
 							Meteor.clearInterval intervalHandle
 					), 1000)
 
