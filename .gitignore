@@ -2,3 +2,5 @@ node_modules/
 
 *.psp-sublime-project
 *.sublime-workspace
+
+mup.json
