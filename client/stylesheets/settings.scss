@@ -189,43 +189,48 @@ input:checked + .switch-slider:before {
 	}
 }
 
-
 .defect-type-box {
 	width: 100%;
+	border: 1px solid $border;
+	@include border-radius($default-border-radius);
+	box-shadow: 0 1px 1px rgba(95,108,128,0.3);
+	margin-bottom: 30px;
 
-	h3 {
-		margin-top: 5px;
-		padding-right: 5px;
-		text-align: center;
+	.defect-type-title-box {
+		margin: 20px;
+		padding: 10px;
+		@include border-radius($default-border-radius);
+		border: 1px solid $border;
+		font-size: 11pt;
+		color: $modal-title;
+	}
+
+	.defect-type-data-box {
+		margin: 20px;
+		font-size: 11pt;
+		color: $modal-title;
+	}
+
+	.defect-type-title,
+	.defect-type-description {
+		outline: none
 	}
 
 	.delete-defect-type {
-		color: $main-text-color;
-		padding: 10px;
+		float: right;
+		display: inline;
+		color: $icon-color;
 		cursor: pointer;
-		@include border-radius($default-border-radius);
-
-		&:hover {
-			background-color: $input-bg;
-		}
+		font-size: 12pt;
+		padding-top: 3px;
 	}
 
-	div {
-		&:first-child {
-			width: 35px;
-			float: left;
-		}
-
-		&:last-child {
-			width: calc(100% - 40px);
-			float: right;
-		}
-	}
-
-	.defect-type-description {
-		margin-bottom: 30px;
-	}
 }
+
+.defect-type-selected {
+	border: 1px solid $blue;
+}
+
 
 .defect-type-error-box {
 	padding: 0 15px;

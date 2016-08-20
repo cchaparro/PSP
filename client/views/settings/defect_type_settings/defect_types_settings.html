@@ -6,14 +6,13 @@
 			<h3>Tipo de defectos</h3>
 			{{createDefectList}}
 			{{#each defectTypes}}
-				<div class="defect-type-box clearfix">
-					<div>
-						<h3>{{position}}</h3>
-						<i class="fa fa-trash delete-defect-type"></i>
+				<div class="defect-type-box {{#if selectedRow}} defect-type-selected {{/if}}clearfix">
+					<div class="defect-type-title-box">
+						<i class="fa fa-times-circle delete-defect-type"></i>
+						{{{contentEditable class='defect-type-title' value=name}}}
 					</div>
-					<div>
-						<input type="text" value="{{name}}" class="psp-input" placeholder="Titulo tipo de defecto">
-						<textarea value="{{description}}" class="psp-textarea defect-type-description"></textarea>
+					<div class="defect-type-data-box">
+						{{{contentEditable class='defect-type-description' value=description}}}
 					</div>
 				</div>
 			{{/each}}

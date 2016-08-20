@@ -3,6 +3,7 @@ Template.defectTypeSettingsTemplate.onCreated ()->
 	Meteor.subscribe "projectSettings"
 	@defectTypeList = new ReactiveVar([])
 	@displayWarning = new ReactiveVar(false)
+	@selectedRow = new ReactiveVar(0)
 
 
 Template.defectTypeSettingsTemplate.helpers
@@ -25,18 +26,24 @@ Template.defectTypeSettingsTemplate.helpers
 	displayWarning: () ->
 		return Template.instance().displayWarning.get()
 
+	selectedRow: () ->
+		return Template.instance().selectedRow.get() == @position
+
 
 Template.defectTypeSettingsTemplate.events
-	'blur .psp-input': (e,t) ->
+	'click .defect-type-box': (e,t) ->
+		t.selectedRow.set(@position)
+
+	'blur .defect-type-title': (e,t) ->
 		defectList = t.defectTypeList.get()
-		value = $(e.target).val()
+		value = $(e.target).text()
 
 		defectList[@position-1].name = value
 		t.defectTypeList.set(defectList)
 
-	'blur .psp-textarea': (e,t) ->
+	'blur .defect-type-description': (e,t) ->
 		defectList = t.defectTypeList.get()
-		value = $(e.target).val()
+		value = $(e.target).text()
 
 		defectList[@position-1].description = value
 		t.defectTypeList.set(defectList)
@@ -45,6 +52,7 @@ Template.defectTypeSettingsTemplate.events
 		defectList = t.defectTypeList.get()
 		defectList.push({position: defectList.length+1, name: "Nuevo tipo de defecto", description: "Aquí va la descripción del nuevo tipo de defecto"})
 		t.defectTypeList.set(defectList)
+		t.selectedRow.set(defectList.length)
 
 	'click .delete-defect-type': (e,t) ->
 		defectList = t.defectTypeList.get()
@@ -71,6 +79,7 @@ Template.defectTypeSettingsTemplate.events
 				console.warn(error)
 			else
 				t.displayWarning.set(true)
+				t.selectedRow.set(0)
 				sys.flashStatus("update-defect-types")
 
 	'click .reset-defect-types': (e,t) ->
@@ -84,5 +93,6 @@ Template.defectTypeSettingsTemplate.events
 			pos += 1
 
 		t.defectTypeList.set(defects)
+		t.selectedRow.set(0)
 
 ##################################################
