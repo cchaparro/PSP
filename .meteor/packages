@@ -6,18 +6,18 @@
 
 meteor-base@1.0.4									# Packages every Meteor app needs to have
 mobile-experience@1.0.4							# Packages for a great mobile UX
-mongo@1.1.10										# The database Meteor supports right now
+mongo@1.1.11										# The database Meteor supports right now
 blaze-html-templates@1.0.4						# Compile .html files into Meteor Blaze views
 reactive-var@1.0.10								# Reactive variable for tracker
 jquery@1.11.9										# Helpful client-side library
 tracker@1.1.0										# Meteor's client-side reactive programming library
 
-standard-minifier-css@1.1.8					# CSS minifier run for production mode
-standard-minifier-js@1.1.8						# JS minifier run for production mode
-es5-shim@4.6.13									# ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.7									# Enable ECMAScript2015+ syntax in app code
+standard-minifier-css@1.2.0					# CSS minifier run for production mode
+standard-minifier-js@1.2.0						# JS minifier run for production mode
+es5-shim@4.6.14									# ECMAScript 5 compatibility for older browsers.
+ecmascript@0.5.8									# Enable ECMAScript2015+ syntax in app code
 
-coffeescript@1.2.3								# This is coffeescript
+coffeescript@1.2.4								# This is coffeescript
 underscore@1.0.9									# Package with great JavaScript functions
 twbs:bootstrap										# This is the bootstrap 3 file
 fourseven:scss										# This is SCSS
@@ -26,14 +26,15 @@ kadira:blaze-layout								# This is a package extension for flow:router
 arillo:flow-router-helpers						# This package brings to flow:router the extension PathFor
 aldeed:collection2								# This package verifies inserts with schema for security
 raix:handlebar-helpers							# Package for extra options in Blaze
-accounts-password@1.2.12						# User Accounts package
+accounts-password@1.3.0						# User Accounts package
 fortawesome:fontawesome							# Font Awesome icons
 peppelg:bootstrap-3-modal						# This brings the option of using well made modals
 meteortoys:allthings								# Package of Meteor Toys
 chart:chart											# Package for using charts
 matb33:collection-hooks
-session												# Package for the session variables
+session@1.1.6												# Package for the session variables
 momentjs:moment									# Package to get more time display options
 cfs:standard-packages							# Package used for the upload file system
 cfs:filesystem										# Package used for the upload file system
 gwendall:auth-client-callbacks				# Package used for the onLogin, onLogout in Flowrouter
+shell-server
