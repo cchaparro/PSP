@@ -1,6 +1,5 @@
 ##########################################
 Template.projectsTemplate.onCreated () ->
-	Meteor.subscribe "allProjects"
 	document.title = "PSP Connect"
 	@hoveredProject = new ReactiveVar(false)
 

@@ -1,8 +1,4 @@
 ##########################################
-Template.planSummaryTemplate.onCreated () ->
-	Meteor.subscribe "projectView", FlowRouter.getParam("id")
-
-
 Template.planSummaryTemplate.helpers
 	userData: () ->
 		return db.users.findOne({_id: Meteor.userId()})

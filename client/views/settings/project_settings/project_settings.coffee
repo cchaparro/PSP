@@ -1,6 +1,6 @@
 ##################################################
-Template.projectSettingsTemplate.onCreated ()->
-	Meteor.subscribe "projectSettings"
+#Template.projectSettingsTemplate.onCreated ()->
+#	Meteor.subscribe "projectSettings"
 
 
 Template.projectSettingsTemplate.helpers

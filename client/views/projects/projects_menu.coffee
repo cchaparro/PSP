@@ -1,8 +1,4 @@
 ##########################################
-Template.projectViewTemplate.onCreated () ->
-	Meteor.subscribe "projectView", FlowRouter.getParam("id")
-
-##########################################
 Template.projectViewMenu.helpers
 	projectViewSelector: () ->
 		return projectViewSelector.get()

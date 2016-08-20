@@ -1,8 +1,4 @@
 ##########################################
-Template.iterationsViewTemplate.onCreated () ->
-	Meteor.subscribe "allProjects"
-
-
 Template.iterationsViewTemplate.helpers
 	selectedProject: () ->
 		return db.projects.findOne({_id: FlowRouter.getParam("fid")})

@@ -1,6 +1,5 @@
 ##########################################
 Template.timeTemplate.onCreated () ->
-	Meteor.subscribe "projectView", FlowRouter.getParam("id")
 	document.title = "Time Log"
 
 Template.timeTemplate.helpers

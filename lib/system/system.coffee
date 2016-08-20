@@ -14,9 +14,8 @@ sys.isValidPassword = (password) ->
 
 ##########################################
 ###############- Page Name -##############
-
 sys.getPageName = (title) ->
-	if title == "main" or title == "iterationView" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts"
+	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
