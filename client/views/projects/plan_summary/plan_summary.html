@@ -9,10 +9,10 @@
 					<thead>
 						<tr>
 							<th>Titulo</th>
-							<th>Plan</th>
+							<th class="hidden-xs">Plan</th>
 							<th>Actual</th>
-							<th >A la fecha</th>
-							<th style="width: 100px;">Porcentaje</th>
+							<th class="hidden-xs">A la fecha</th>
+							<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,10 +27,10 @@
 					<thead>
 						<tr>
 							<th>Titulo</th>
-							<th></th>
+							<th class="hidden-xs"></th>
 							<th>Actual</th>
-							<th>A la fecha</th>
-							<th style="width: 100px;">Porcentaje</th>
+							<th class="hidden-xs">A la fecha</th>
+							<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -45,10 +45,10 @@
 					<thead>
 						<tr>
 							<th>Titulo</th>
-							<th></th>
+							<th class="hidden-xs"></th>
 							<th>Actual</th>
-							<th>A la fecha</th>
-							<th style="width: 100px;">Porcentaje</th>
+							<th class="hidden-xs">A la fecha</th>
+							<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -70,14 +70,14 @@
 				{{/if}}
 			</td>
 			<td>{{timeFormat time}}</td>
-			<td>{{timeFormat toDate}}</td>
-			<td>{{percentage}}%</td>
+			<td class="hidden-xs">{{timeFormat toDate}}</td>
+			<td class="hidden-xs">{{percentage}}%</td>
 		</tr>
 	{{/each}}
 	{{#with totalValues}}
 		<tr>
 			<td><span>Total</span></td>
-			<td class="td-input-row">
+			<td class="td-input-row hidden-xs">
 				{{#if probeD}}
 					{{#if isTotalTimeEmpty}}
 						<span>{{timeFormat estimatedTime}}</span>
@@ -87,8 +87,8 @@
 				{{/if}}
 			</td>
 			<td><span>{{timeFormat totalTime}}</span></td>
-			<td><span>{{timeFormat totalToDate}}</span></td>
-			<td></td>
+			<td class="hidden-xs"><span>{{timeFormat totalToDate}}</span></td>
+			<td class="hidden-xs"></td>
 		</tr>
 	{{/with}}
 </template>
@@ -97,19 +97,19 @@
 	{{#each injectedDefects}}
 		<tr>
 			<td>{{name}}</td>
-			<td></td>
+			<td class="hidden-xs"></td>
 			<td>{{injected}}</td>
-			<td>{{toDate}}</td>
-			<td>{{percentage}}%</td>
+			<td class="hidden-xs">{{toDate}}</td>
+			<td class="hidden-xs">{{percentage}}%</td>
 		</tr>
 	{{/each}}
 	{{#with totalInjectedValues}}
 		<tr>
 			<td><span>Total</span></td>
-			<td></td>
+			<td class="hidden-xs"></td>
 			<td><span>{{totalInjected}}</span></td>
-			<td><span>{{totalInjectedToDate}}</span></td>
-			<td></td>
+			<td class="hidden-xs"><span>{{totalInjectedToDate}}</span></td>
+			<td class="hidden-xs"></td>
 		</tr>
 	{{/with}}
 </template>
@@ -118,19 +118,19 @@
 	{{#each removedDefects}}
 		<tr>
 			<td>{{name}}</td>
-			<td></td>
+			<td class="hidden-xs"></td>
 			<td>{{removed}}</td>
-			<td>{{toDate}}</td>
-			<td>{{percentage}}%</td>
+			<td class="hidden-xs">{{toDate}}</td>
+			<td class="hidden-xs">{{percentage}}%</td>
 		</tr>
 	{{/each}}
 	{{#with totalRemovedValues}}
 		<tr>
 			<td><span>Total</span></td>
-			<td></td>
+			<td class="hidden-xs"></td>
 			<td><span>{{totalRemoved}}</span></td>
-			<td><span>{{totalRemovedToDate}}</span></td>
-			<td></td>
+			<td class="hidden-xs"><span>{{totalRemovedToDate}}</span></td>
+			<td class="hidden-xs"></td>
 		</tr>
 	{{/with}}
 </template>
