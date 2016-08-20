@@ -31,7 +31,13 @@
 		<td>
 			<div class="time-completed {{#unless finished}} hide {{/unless}}"><i class="fa fa-fw fa-check"></i></div>
 		</td>
-		<td class="hidden-xs"><span class="edit-time">Editar</span></td>
+		<td class="hidden-xs">
+			{{#if editAvailable}}
+				<span class="edit-time">Editar</span>
+			{{else}}
+				<span> - </span>
+			{{/if}}
+		</td>
 	</tr>
 </template>
 

@@ -21,6 +21,7 @@ Template.timesBar.helpers
 			unless stage.finished
 				return stage
 
+		currentPos = _.first(projectStages).name
 		return _.first(projectStages).name
 
 
@@ -80,6 +81,19 @@ Template.timesBar.events
 				sys.removeTimeMessage()
 
 ##################################################
+Template.timeTableRow.helpers
+	editAvailable: () ->
+		return true if @finished
+
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		return true if @name == _.first(projectStages).name
+		return false
+
+
 Template.timeTableRow.events
 	'click .edit-time': (e,t) ->
 		Modal.show('editTimeModal', @)
