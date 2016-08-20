@@ -19,6 +19,12 @@
 				</div>
 				<div class="clearfix"></div>
 			{{/each}}
+			{{#if displayWarning}}
+				<div>
+					<i class="fa fa-info-circle"></i>
+					<span>Estos cambios solo se veran reflejados en los proyectos o iteraciones creados a partir de este momento</span>
+				</div>
+			{{/if}}
 		</div>
 	</div>
 </template>

@@ -22,11 +22,18 @@ Template.summaryTimeRow.helpers
 	planSummaryTime: (time) ->
 		return sys.planSummaryTime(time)
 
-	isProbeC: () ->
-		return db.users.findOne({_id: Meteor.userId()}).settings.probeC
+	projectProbe: () ->
+		return db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe
 
 	isTotalTimeEmpty: () ->
 		return @estimatedTime > 0
+
+	estimationEditable: () ->
+		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
+		currentStage = _.findWhere projectStages, {finished: false}
+
+		return true if currentStage.name == "Planeación"
+		return false
 
 
 Template.summaryTimeRow.events

@@ -59,26 +59,37 @@ Template.timesBar.events
 
 	'click .time-submit': (e,t) ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		currentStage = _.findWhere projectStages, {finished: false}
+
+		projectProbe = db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe
+
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
 
-		if @timeStarted != "false"
-			totalTime = new Date() - new Date(@timeStarted)
-		else
-			totalTime = 0
-
 		currentStage = _.first projectStages
-		currentStage.time = parseInt(totalTime)
 
-		Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
-			if error
-				sys.flashStatus("error-project")
-				console.log "Error submitting phase time inside project"
-				console.warn(error)
+		# If the user has the probeD option and has not entered a value in the Plan Summary estimation,
+		# This will give it a error and not let the user finish the stage "Planeación"
+		if currentStage.name == "Planeación" and @total.estimatedTime == 0 and projectProbe == "probeD"
+			sys.flashStatus("summary-missing")
+
+		else
+			if @timeStarted != "false"
+				totalTime = new Date() - new Date(@timeStarted)
 			else
-				sys.flashStatus("save-project")
-				sys.removeTimeMessage()
+				totalTime = 0
+
+			currentStage.time = parseInt(totalTime)
+
+			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
+				if error
+					sys.flashStatus("error-project")
+					console.log "Error submitting phase time inside project"
+					console.warn(error)
+				else
+					sys.flashStatus("save-project")
+					sys.removeTimeMessage()
 
 ##################################################
 Template.timeTableRow.helpers

@@ -112,6 +112,16 @@ sys.flashStatus = (type) ->
 			subject = "La imagen de perfil ha sido cambiada correctamente."
 			css = "success"
 
+		when "change-probe"
+			title = "Guardado"
+			subject = "Has cambiado la configuracion PROBE correctamente."
+			css = "success"
+
+		when "summary-missing"
+			title = "Error"
+			subject = "Debes ingresar un tiempo estimado en el Plan Summary para continuar."
+			css = "danger"
+
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
 

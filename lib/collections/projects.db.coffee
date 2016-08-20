@@ -48,6 +48,11 @@ schemas.projects = new SimpleSchema
 		optional: true
 		label: "Id of the defect types file used"
 
+	"projectProbe":
+		type: String
+		optional: true
+		label: "Used probe for the Project"
+
 ##########################################
 db.projects.attachSchema(schemas.projects)
 ##########################################

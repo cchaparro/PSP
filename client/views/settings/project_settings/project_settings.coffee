@@ -1,6 +1,6 @@
 ##################################################
-#Template.projectSettingsTemplate.onCreated ()->
-#	Meteor.subscribe "projectSettings"
+Template.projectSettingsTemplate.onCreated ()->
+	@displayWarning = new ReactiveVar(false)
 
 
 Template.projectSettingsTemplate.helpers
@@ -19,12 +19,18 @@ Template.projectSettingsTemplate.helpers
 			}
 		]
 
+	displayWarning: () ->
+		return Template.instance().displayWarning.get()
+
 Template.projectSettingsTemplate.events
 	'click .switch': (e,t) ->
 		completedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).count()
 
 		if completedProjects > 2
-			Meteor.call("change_project_settings")
+			Meteor.call "change_project_settings", (error) ->
+				unless error
+					t.displayWarning.set(true)
+					sys.flashStatus("change-probe")
 
 		#console.log "aqui", document.getElementById('settings-checkbox').checked
 

@@ -65,7 +65,7 @@
 		<tr>
 			<td>{{name}}</td>
 			<td class="hidden-xs">
-				{{#if isProbeC}}
+				{{#if $eq projectProbe 'probeC'}}
 					{{timeFormat average}}
 				{{/if}}
 			</td>
@@ -78,11 +78,11 @@
 		<tr>
 			<td><span>Total</span></td>
 			<td class="td-input-row hidden-xs">
-				{{#if probeD}}
-					{{#if isTotalTimeEmpty}}
-						<span>{{timeFormat estimatedTime}}</span>
-					{{else}}
+				{{#if $eq projectProbe 'probeD'}}
+					{{#if estimationEditable}}
 						<input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}">
+					{{else}}
+						<span>{{timeFormat estimatedTime}}</span>
 					{{/if}}
 				{{/if}}
 			</td>

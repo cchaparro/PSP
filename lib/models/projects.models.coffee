@@ -40,6 +40,11 @@ if Meteor.isServer
 		data.projectOwner =  Meteor.userId()
 		data.defectTypesId = user.defectTypes.current
 
+		if user.settings.probeC
+			data.projectProbe = "probeC"
+		if user.settings.probeD
+			data.projectProbe = "probeD"
+
 		if data.parentId
 			data.color = db.projects.findOne({_id: data.parentId}).color
 		else
