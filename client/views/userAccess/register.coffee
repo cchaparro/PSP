@@ -51,7 +51,7 @@ Template.registerTemplate.events
 						$('#fname').val('')
 						$('#lname').val('')
 				else
-					FlowRouter.go("/")
+					FlowRouter.go("/projects")
 
 		else if !sys.isEmail(email)
 			t.errorState.set("email")
@@ -64,6 +64,6 @@ Template.registerTemplate.events
 			$('#password').val('')
 
 	'click .access-selection-box': (e,t) ->
-		FlowRouter.go("/login")
+		FlowRouter.go("/")
 
 ##################################################

@@ -1,85 +1,158 @@
 ##########################################
-FlowRouter.route '/login',
-	action: ->
-		BlazeLayout.render 'accessLayout', main: 'loginTemplate'
-	name: 'login'
+# This redirects to projects if the user is logged or to login if the user is not logged
+if Meteor.isClient
+	Accounts.onLogin () ->
+		FlowRouter.go('projects')
 
-FlowRouter.route '/register',
-	action: ->
-		BlazeLayout.render 'accessLayout', main: 'registerTemplate'
-	name: 'register'
+	Accounts.onLogout () ->
+		FlowRouter.go('login')
+
+
+FlowRouter.triggers.enter([ (content, redirect) ->
+	unless Meteor.userId()
+		console.log "Not logged in --> Redirecting"
+		FlowRouter.go('login')
+], except: [
+	'register'
+])
 
 ##########################################
 FlowRouter.route '/',
+	name: 'login'
+	action: ->
+		if Meteor.userId()
+			FlowRouter.go('projects')
+		BlazeLayout.render 'accessLayout', main: 'loginTemplate'
+
+
+FlowRouter.route '/register',
+	name: 'register'
+	action: ->
+		if Meteor.userId()
+			FlowRouter.go('projects')
+		BlazeLayout.render 'accessLayout', main: 'registerTemplate'
+
+
+
+
+Projects = FlowRouter.group(
+	prefix: '/projects'
+)
+
+Projects.route '/',
+	name: 'projects'
+	subscriptions: (params, queryParams) ->
+		@register 'allProjects', Meteor.subscribe "allProjects"
+
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'projectsTemplate'
-	name: 'main'
 
-FlowRouter.route '/overview',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
-	name: 'overview'
 
-FlowRouter.route '/settings',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'settingsTemplate'
-	name: 'settings'
+Projects.route '/:fid',
+	name: 'iterations'
+	subscriptions: (params, queryParams) ->
+		@register 'allProjects', Meteor.subscribe "allProjects"
 
-FlowRouter.route '/settings/project_settings',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate'
-	name: 'projectSettings'
-
-FlowRouter.route '/settings/account_settings',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'accountSettingsTemplate'
-	name: 'accountSettings'
-
-FlowRouter.route '/settings/defect_type_settings',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate'
-	name: 'defectTypeSettings'
-
-FlowRouter.route '/help',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
-	name: 'help'
-
-##########################################
-FlowRouter.route '/:fid',
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'iterationsViewTemplate'
-	name: 'iterationView'
 
-FlowRouter.route '/:fid/:id',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'projectViewTemplate'
-	name: 'projectView'
 
-##########################################
-FlowRouter.route '/:fid/:id/general',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate'
+Projects.route '/:fid/:id',
 	name: 'projectGeneral'
 
-FlowRouter.route '/:fid/:id/timelog',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'timeTemplate'
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "projectView", params.id
+
+	action: () ->
+		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate'
+
+
+Projects.route '/:fid/:id/time-log',
 	name: 'projectTimeLog'
 
-FlowRouter.route '/:fid/:id/defectlog',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "projectView", params.id
+
+	action: () ->
+		BlazeLayout.render 'masterLayout', main: 'timeTemplate'
+
+
+Projects.route '/:fid/:id/defect-log',
 	name: 'projectDefectLog'
 
-FlowRouter.route '/:fid/:id/plansummary',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "projectView", params.id
+
+	action: () ->
+		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
+
+
+Projects.route '/:fid/:id/plan-summary',
 	name: 'projectSummary'
 
-FlowRouter.route '/:fid/:id/scripts',
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate'
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "projectView", params.id
+
+	action: () ->
+		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
+
+
+Projects.route '/:fid/:id/scripts',
 	name: 'projectScripts'
+
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "projectView", params.id
+
+	action: () ->
+		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate'
+
+
+
+
+Settings = FlowRouter.group(
+	prefix: '/settings'
+)
+
+Settings.route '/project',
+	name: 'projectSettings'
+	subscriptions: (params, queryParams) ->
+		@register 'projectSettings', Meteor.subscribe "projectSettings"
+
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate'
+
+
+Settings.route '/account',
+	name: 'accountSettings'
+	subscriptions: (params, queryParams) ->
+		@register 'accountSettings', Meteor.subscribe "accountSettings"
+
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'accountSettingsTemplate'
+
+
+Settings.route '/type-defects',
+	name: 'defectTypeSettings'
+	subscriptions: (params, queryParams) ->
+		@register 'projectSettings', Meteor.subscribe "projectSettings"
+
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate'
+
+
+
+
+FlowRouter.route '/overview',
+	name: 'overview'
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
+
+
+
+
+FlowRouter.route '/help',
+	name: 'help'
+	action: ->
+		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
 
 ##########################################
