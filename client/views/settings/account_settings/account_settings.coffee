@@ -37,4 +37,15 @@ Template.accountSettingsTemplate.events
 			unless error
 				sys.flashStatus("update-profile-image")
 
+	'click .save-profile-settings': (e,t) ->
+		data = {
+			"profile.fname": $("#fname").val()
+			"profile.lname": $("#lname").val()
+		}
+		Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
+			if error
+				sys.flashStatus("profile-update-error")
+			else
+				sys.flashStatus("profile-update")
+
 ##################################################
