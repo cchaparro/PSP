@@ -20,19 +20,17 @@ drawProjectInfoChart = () ->
 		showTooltips: false
 	}
 
-	ctx = $('#projectInformationChart').get(0).getContext('2d')
-	ctx.canvas.width = 200
-	ctx.canvas.height = 200
-	# myNewChart = new Chart(ctx)
-	new Chart(ctx).Doughnut(data, options)
+	ctx = $('#projectInformationChart')?.get(0)?.getContext('2d')
+	ctx?.canvas.width = 200
+	ctx?.canvas.height = 200
+	if ctx
+		new Chart(ctx).Doughnut(data, options)
 
 ##########################################
 Template.projectInformationChart.onRendered () ->
-	drawProjectInfoChart()
-	#Tracker.autorun () ->
-	#	if FlowRouter.current().route.name == 'projectView'
-	#		console.log "Just Rendered drawProjectInfoChart()"
-	#		drawProjectInfoChart()
+	Deps.autorun ->
+		drawProjectInfoChart()
+
 
 Template.projectInformationChart.helpers
 	chartFields: () ->
