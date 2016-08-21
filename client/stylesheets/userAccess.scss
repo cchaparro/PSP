@@ -31,7 +31,7 @@
 .user-access-box {
 	padding: 40px;
 	padding-top: 30px;
-	background-color: $user-access-bg;
+	background-color: $background;
 	position: relative;
 
 	.user-access-logo {
@@ -68,27 +68,27 @@
 
 .user-access-facebook {
 	@extend .user-access-social;
-	background-color: $facebook-btn;
+	background-color: $facebook;
 
 	svg {
-		background-color: $facebook-btn-dark;
+		background-color: $facebook-dark;
 	}
 
 	&:hover {
-		background-color: $facebook-btn-dark;
+		background-color: $facebook-dark;
 	}
 }
 
 .user-access-google {
 	@extend .user-access-social;
-	background-color: $google-btn;
+	background-color: $google;
 
 	svg {
-		background-color: $google-btn-dark;
+		background-color: $google-dark;
 	}
 
 	&:hover {
-		background-color: $google-btn-dark;
+		background-color: $google-dark;
 	}
 }
 
@@ -103,7 +103,7 @@
 	span {
 		font-size: 16pt;
 		padding: 0 10px;
-		background-color: $user-access-bg;
+		background-color: $background;
 		color: $input-border;
 	}
 }

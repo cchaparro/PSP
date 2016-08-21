@@ -18,6 +18,10 @@ Template.defectsTemplate.helpers
 	isHovered: () ->
 		return Template.instance().hoveredDefect.get() == @_id
 
+	projectColor: () ->
+		return db.projects.findOne({_id: FlowRouter.getParam("id")})?.color
+
+
 Template.defectsTemplate.events
 	'click .btn-create-defect': (e,t) ->
 		Modal.show('createDefectModal')

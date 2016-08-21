@@ -3,41 +3,70 @@ $primary-bg:  						#283346								!default;
 $primary-dark-bg:					#1d2531								!default;
 $primary-light-bg:				#6F83A7								!default;
 
-$icon-color:						#5F6C80								!default;
+$success:							#38d80b								!default;
+$success-dark:						#3dc111								!default;
+$warning:							#f4db05								!default;
+$warning-dark:						#d6bd09								!default;
+$danger:								#d60d21								!default;
+$danger-dark:						#bc132b								!default;
 
-// This is for the right hover popup message from each menu icon.
-$popup-bg:							#2d3339								!default;
+$background:						#f5f7fa	 							!default;
+$popup-bg:							#dae1ec								!default;
+$menu-popup-bg:					#2d3339								!default;
 
-//--------------- Colors User Menu ---------------
-$search-box-bg:					#f0f2f5								!default;
-
-//------------- Login / Register View ------------
-$user-access-bg:					#EDF0FA								!default;
-
-$facebook-btn:						#008CC7								!default;
-$facebook-btn-dark:				#0082BD								!default;
-$google-btn:						#FF6B4A								!default;
-$google-btn-dark:					#FF4D38								!default;
-
-$input-border:						#dadee1								!default;
-$input-empty-text:				#8ea4b8								!default;
-$input-full-text:					$popup-bg							!default;
-//----------------- Border Colors ----------------
-
-// This is used in the user menu and in the dynamic template menu
 $border:								#ebebeb								!default;
 
-//----------- Colors Dynamic Template ------------
-
-//----------------- General Colors ---------------
 $white:								#ffffff								!default;
-$black:								#000000								!default;
-$blue:								#50AAFF								!default;
-$blue-dark:							#2391DB								!default;
+$black:								#2e353a								!default;
+$blue:								#50aaff								!default;
+$blue-dark:							#3a93dd								!default;
 $blue-light:						#B3E0FF								!default;
+$text:								#95a6b9								!default;
+$text-dark:							#5f6c80								!default;
+
+
+//----------- Used for svg icon colors -----------
+$icon:								$text-dark							!default;
+
+//------------- Status Messages COlors -----------
+$status-success:					#BBDA5C								!default;
+$status-dark-success:			#89A827								!default;
+$status-warning:					$warning								!default;
+$status-dark-warning:			$warning-dark						!default;
+$status-danger:					#EE5B5F								!default;
+$status-dark-danger:				#CE131B								!default;
+
+//------------- Login / Register View ------------
+$facebook:						#008CC7								!default;
+$facebook-dark:				#0082BD								!default;
+$google:							#FF6B4A								!default;
+$google-dark:					#FF4D38								!default;
+
+
+//------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+$input-border:					$popup-bg							!default;
+$input-empty-text:				#8ea4b8								!default;
+$input-full-text:					$popup-bg							!default;
+
+
+
+
+
+
 
 //----------------- General Colors ---------------
-$background:						#F5F7FA								!default;
 $background-text:					#CCCFD4								!default;
 $success:							#3cd964								!default;
 $success-hover:					#2cc44c								!default;
@@ -50,8 +79,6 @@ $warning-hover:					#B49D00								!default;
 //This color is used in the search box
 $project-title-light:			#9fabaf								!default;
 
-$main-title-color:				#384047								!default;
-$main-text-color:					#8d9aa5								!default;
 $table-title-color:				#B7B7B7								!default;
 
 // This are used for the menu with the defect log, plan summary, etc.
@@ -60,25 +87,13 @@ $project-option-selected:		#95a6b9								!default;
 //---------------- Inputs, Dropdowns -------------
 $input-text:						#a6b0b7								!default;
 $input-bg:							#E8EBED								!default;
-$main-text-color:					#8d9aa5								!default;
 $input-button:						#B7C0C7								!default;
 
 //--------------- Project Box Colors -------------
 $pj-text:							#99a4b7								!default;
 
-$pj-color-1:						#1A95FB								!default;
-$pj-color-2:						#7A98E8								!default;
-
 $iteration-bg:						#CED5DE								!default;
 //------------- Status Messages COlors -----------
-$status-danger:					#EE5B5F								!default;
-$status-dark-danger:				#CE131B								!default;
-$status-success:					#BBDA5C								!default;
-$status-dark-success:			#89A827								!default;
-$status-warning:					#F4DB05								!default;
-$status-dark-warning:			#B49D00								!default;
-
-
 
 $status-bg:						#DAE1EC									!default;
 

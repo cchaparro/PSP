@@ -69,7 +69,7 @@ html, body {
 			left: 70px;
 			padding: 7px 0;
 			display: none;
-			background: $popup-bg;
+			background: $menu-popup-bg;
 			font-size: 11pt;
 			text-align: center;
 			color: $white;
@@ -82,7 +82,7 @@ html, body {
 				left: -5px;
 				top: 10px;
 				border-radius: 3px;
-				background: $popup-bg;
+				background: $menu-popup-bg;
 				transform: rotate(45deg);
 				-webkit-transform: rotate(45deg);
 			}
@@ -131,7 +131,7 @@ html, body {
 		}
 
 		&:hover {
-			color: $main-text-color;
+			color: $text;
 		}
 	}
 
@@ -160,13 +160,14 @@ html, body {
 
 	&:hover {
 		color: $white;
+		background-color: $blue-dark;
 	}
 }
 
 .notification-svg {
 	width: 20px;
 	height: 20px;
-	fill: $icon-color;
+	fill: $icon;
 	position: absolute;
 	right: 80px;
 	top: 20px;
@@ -250,23 +251,6 @@ html, body {
 	}
 }
 
-.menu-go-back {
-	float: left;
-	padding: 7px 17px 7px 12px;
-	position: relative;
-	margin-top: 12px;
-	margin-left: 20px;
-	color: $main-title-color;
-	cursor: pointer;
-	font-size: 11pt;
-	@include border-radius($default-border-radius);
-	border: 1px solid $border;
-
-	&:hover {
-		background-color: $border;
-	}
-}
-
 .new-notification-badge {
 	width: 14px;
 	height: 14px;
@@ -295,7 +279,7 @@ html, body {
 		font-size: 13pt;
 		padding: 10px 0 15px 0;
 		margin: 5px 20px 5px 20px;
-		color: $icon-color;
+		color: $text-dark;
 		cursor: default;
 		border-bottom: 1px solid $border;
 	}
@@ -342,7 +326,7 @@ html, body {
 
 			span {
 				font-size: 11pt;
-				color: $icon-color;
+				color: $text-dark;
 			}
 
 			p {

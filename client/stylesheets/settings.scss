@@ -20,7 +20,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: $main-text-color;
+	background-color: $text;
 	-webkit-transition: .4s;
 	transition: .4s;
 
@@ -93,12 +93,12 @@ input:checked + .switch-slider:before {
 			padding-bottom: 7px;
 			font-size: 15pt;
 			font-weight: bold;
-			color: $main-title-color;
+			color: $black;
 		}
 
 		span {
 			font-size: 11pt;
-			color: $main-text-color;
+			color: $text;
 		}
 
 		&:first-child {
@@ -219,7 +219,7 @@ input:checked + .switch-slider:before {
 	.delete-defect-type {
 		float: right;
 		display: inline;
-		color: $icon-color;
+		color: $text-dark;
 		cursor: pointer;
 		font-size: 12pt;
 		padding-top: 3px;
