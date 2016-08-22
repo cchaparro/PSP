@@ -94,7 +94,7 @@
 			display: block;
 			font-size: 11pt;
 			padding-top: 10px;
-			color: $pj-text;
+			color: $text;
 		}
 	}
 
@@ -112,7 +112,7 @@
 }
 
 .prj-completed {
-	color: $background-text;
+	color: $text;
 }
 
 .project-delete,
@@ -150,7 +150,7 @@
 
 .iteration-box {
 	@extend .project-box;
-	background-color: $iteration-bg;
+	background-color: $popup-bg;
 
 	span {
 		color: $white!important;
@@ -250,13 +250,13 @@
 
 			svg {
 				width: 25px;
-				fill: $project-option-selected;
+				fill: $text;
 			}
 
 			h3 {
 				font-size: 11pt;
 				margin: 0;
-				color: $project-option-selected;
+				color: $text;
 			}
 
 			&:hover {
@@ -406,7 +406,7 @@
 				padding-bottom: 15px;
 				text-align: center;
 				border-bottom: 0px;
-				color: $project-option-selected;
+				color: $text;
 				font-weight: 300;
 				cursor: default;
 			}
@@ -420,7 +420,7 @@
 				padding: 20px 20px;
 				border: none;
 				border-bottom: 6px solid $white;
-				color: $project-option-selected;
+				color: $text;
 
 				&:nth-child(2) {
 					text-align: center;
@@ -514,7 +514,7 @@
 		padding-top: 10px;
 		display: block;
 		font-size: 11pt;
-		color: $project-option-selected;
+		color: $text;
 		margin-bottom: 10px;
 	}
 
@@ -679,7 +679,7 @@
 				padding-bottom: 15px;
 				text-align: center;
 				border-bottom: 0px;
-				color: $project-option-selected;
+				color: $text;
 				font-weight: 300;
 				cursor: default;
 			}
@@ -693,7 +693,7 @@
 				padding: 20px 20px;
 				border: none;
 				border-bottom: 6px solid $white;
-				color: $project-option-selected;
+				color: $text;
 
 				input {
 					margin-top: 9px;

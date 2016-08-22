@@ -26,13 +26,13 @@
 	p {
 		padding-top: 3px;
 		padding-right: 30px;
-		color: $modal-description;
+		color: $text;
 	}
 
 	h3 {
 		margin: 0;
 		font-size: 15pt;
-		color: $modal-title;
+		color: $text-dark;
 	}
 }
 
@@ -139,7 +139,7 @@
 		display: inline-block;
 		background-color: $background;
 		cursor: pointer;
-		color: $background-text;
+		color: $text;
 
 		i {
 			display: block;
@@ -176,7 +176,7 @@
 			cursor: pointer;
 
 			&:hover {
-				color: $modal-description;
+				color: $text;
 			}
 
 			&:first-child {
@@ -185,7 +185,7 @@
 		}
 
 		span {
-			color: $modal-description;
+			color: $text;
 			font-size: 13pt;
 			cursor: default;
 		}
@@ -197,11 +197,11 @@
 			display: block;
 			outline: none;
 			border: 1px solid $border;
-			color: $input-full-text;
+			color: $text;
 			margin-bottom: 5px;
 			text-align: center;
 			@include border-radius($default-border-radius);
-			@include placeholder-color($input-border);
+			@include placeholder-color($text);
 		}
 	}
 

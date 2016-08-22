@@ -63,10 +63,10 @@
 	outline: none;
 	padding: 12px 12px;
 	margin-bottom: 10px;
-	color: $input-full-text;
+	color: $text-dark;
 	@include border-radius($default-border-radius);
-	@include placeholder-color($input-border);
-	border: 2px solid $input-border;
+	@include placeholder-color($text);
+	border: 2px solid $text;
 
 	&:focus {
 		border: 2px solid $blue;
@@ -81,7 +81,7 @@
 
 .psp-disabled {
 	@extend .psp-input;
-	color: $input-full-text;
+	color: $text;
 	background-color: $background;
 	cursor: default;
 }
@@ -97,7 +97,7 @@
 		position: absolute;
 		top: 5px;
 		right: 5px;
-		background-color: $input-border;
+		background-color: $text;
 		color: $white;
 		font-size: 10pt;
 		padding: 12px 6px;
@@ -138,7 +138,7 @@
 
 	span {
 		display: block;
-		color: $modal-title;
+		color: $text-dark;
 		font-weight: 500;
 		padding-bottom: 2px;
 	}
@@ -148,10 +148,10 @@
 		// height: 40px;
 		padding: 11px 12px;
 		outline: none;
-		border: 2px solid $input-border;
-		color: $input-full-text;
+		border: 2px solid $text;
+		color: $text;
 		@include border-radius($default-border-radius);
-		@include placeholder-color($input-border);
+		@include placeholder-color($text);
 		display: block;
 
 		&:focus {
@@ -204,7 +204,7 @@
 		height: 80px;
 		float: right;
 		display: block;
-		background-color: $status-bg;
+		background-color: $popup-bg;
 		border-radius: $default-border-radius;
 		margin-top: 10px;
 		overflow: hidden;

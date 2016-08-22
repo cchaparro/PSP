@@ -63,7 +63,7 @@ input:checked + .switch-slider:before {
 
 	h3 {
 		font-size: 15pt;
-		color: $modal-title;
+		color: $text-dark;
 		margin: 0;
 		padding-bottom: 15px;
 		margin-bottom: 15px;
@@ -118,7 +118,7 @@ input:checked + .switch-slider:before {
 
 	h3 {
 		font-size: 15pt;
-		color: $modal-title;
+		color: $text-dark;
 		margin: 0;
 		padding-bottom: 15px;
 		margin-bottom: 15px;
@@ -141,7 +141,7 @@ input:checked + .switch-slider:before {
 		span {
 			display: block;
 			display: block;
-			color: $modal-title;
+			color: $text-dark;
 			font-weight: 500;
 			padding-bottom: 5px;
 		}
@@ -181,7 +181,7 @@ input:checked + .switch-slider:before {
 
 	h3 {
 		font-size: 15pt;
-		color: $modal-title;
+		color: $text-dark;
 		margin: 0;
 		padding-bottom: 15px;
 		margin-bottom: 15px;
@@ -202,13 +202,13 @@ input:checked + .switch-slider:before {
 		@include border-radius($default-border-radius);
 		border: 1px solid $border;
 		font-size: 11pt;
-		color: $modal-title;
+		color: $text-dark;
 	}
 
 	.defect-type-data-box {
 		margin: 20px;
 		font-size: 11pt;
-		color: $modal-title;
+		color: $text-dark;
 	}
 
 	.defect-type-title,
