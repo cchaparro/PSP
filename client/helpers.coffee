@@ -3,9 +3,11 @@
 
 # This is used to bring the users Avatar or if he
 # doesn't have one it brings the default image.
-Template.registerHelper "getUserAvatarUrl", () ->
+Template.registerHelper "getUserAvatarUrl", (userId=false) ->
 	data = undefined
 
+	if userId?
+		data = db.users.findOne({_id: userId})
 	if @profile?
 		data = @
 
@@ -13,6 +15,13 @@ Template.registerHelper "getUserAvatarUrl", () ->
 		return "/defaultAvatar.png"
 	else
 		return data.profile.profileImageUrl
+
+
+# This is used to bring the users complete name
+Template.registerHelper "userName", (userId) ->
+	user = db.users.findOne({_id: userId})?.profile
+
+	return user.fname + " " + user.lname
 
 
 # This is a helper to show the data that passes through
