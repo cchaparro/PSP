@@ -21,8 +21,9 @@ schemas.notifications = new SimpleSchema
 				return new Date()
 
 	"title":
-		type: String
+		type: Object
 		optional: true
+		blackbox: true
 		label: "Title of the notification"
 
 	"subject":
@@ -39,6 +40,12 @@ schemas.notifications = new SimpleSchema
 		type: Boolean
 		label: "The notification was clicked by the user"
 		defaultValue: false
+
+	"data":
+		type: Object
+		optional: true
+		blackbox: true
+		label: "Extra information of the notification"
 
 ##########################################
 db.notifications.attachSchema(schemas.notifications)

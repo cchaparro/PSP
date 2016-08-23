@@ -71,12 +71,19 @@
 		<h3>Notificaciones</h3>
 		<ul>
 			{{#each userNotifications}}
-				<li class="clearfix">
-					<div class="notification-badge {{badgeStatus}}">
-						<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-warning {{/if}}"></i>
+				<li class="notification-item clearfix">
+					<div class="notification-header">
+						<div class="notification-avatar" style="background-image: url('{{getUserAvatarUrl title.sender}}');"></div>
+						<div class="notification-badge {{badgeStatus}}">
+							<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-exclamation {{/if}}"></i>
+						</div>
 					</div>
 					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}}">
-						<h4>{{title}}</h4>
+						<h4>
+							<span class="notification-sender">{{userName title.sender}}</span>
+							{{title.main}}
+							<span class="notification-secondary">{{title.secondary}}</span>
+						</h4>
 						<span>{{subject}}</span>
 						<p>{{momentToNow createdAt}}</p>
 					</div>

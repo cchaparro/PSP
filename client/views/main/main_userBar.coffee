@@ -101,6 +101,13 @@ Template.userNotification.helpers
 			when 'time-registered'
 				return "warning"
 
+
+Template.userNotification.events
+	'click .notification-item': (e,t) ->
+		console.log @
+		if @type == 'time-registered'
+			Modal.show('editTimeModal', @)
+
 ##################################################
 Template.userMenuDropdown.helpers
 	notificationIcon: () ->

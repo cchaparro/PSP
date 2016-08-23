@@ -135,16 +135,19 @@
 
 	div {
 		width: 48%;
-		height: 190px;
+		height: 90px;
 		display: inline-block;
+		@include border-radius($default-border-radius);
 		background-color: $background;
 		cursor: pointer;
 		color: $text;
+		text-align: center;
 
 		i {
 			display: block;
-			font-size: 50pt;
-			padding-top: 50px;
+			font-size: 30pt;
+			padding: 25px 0 25px 25px;
+			float: left;
 			text-align: center;
 		}
 
@@ -152,11 +155,16 @@
 			display: block;
 			font-size: 13pt;
 			text-align: center;
-			padding-bottom: 50px;
+			padding: 33px 15px 33px 20px;
+			float: left;
 		}
 
 		&:last-child {
 			float: right;
+		}
+
+		&:hover {
+			background-color: $popup-bg;
 		}
 	}
 }

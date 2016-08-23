@@ -16,6 +16,9 @@ Meteor.users.after.insert (userId, doc) ->
 	db.users.update({_id: @_id}, {$set: data})
 
 	# This creates the welcome notification for the new user
-	syssrv.newNotification("new-user", @_id)
+	notificationData = {
+		sender: @_id
+	}
+	syssrv.newNotification("new-user", @_id, notificationData)
 
 ##################################################
