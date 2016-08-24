@@ -115,7 +115,6 @@ Template.editTime.events
 
 		data = timeData.get()
 		if data?.type
-			console.log "soy notificacion"
 			stageName = data.data.stage
 		else
 			stageName = data.name
@@ -136,6 +135,9 @@ Template.editTime.events
 				if error
 					console.warn(error)
 				else
+					if data?.type
+						Meteor.call "disable_notification", data._id
+
 					sys.flashStatus("save-project")
 					Modal.hide('editTimeModal')
 

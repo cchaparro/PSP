@@ -43,14 +43,17 @@ sys.timeToHours = (time) ->
 	return Math.floor(time / 3600000)
 
 sys.timeToMinutes = (time) ->
+	time %= 3600000
 	return Math.floor(time / 60000)
 
 sys.timeToSeconds = (time) ->
+	time %= 3600000
+	time %= 60000
 	return Math.floor(time / 1000)
 
 sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
-	time = time % 60000
+	time %= 60000
 	segundos = Math.floor(time / 1000)
 	return minutos + " : " + segundos
 

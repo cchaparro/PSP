@@ -363,24 +363,13 @@ html, body {
 				margin-bottom: 0;
 				color: $text;
 			}
+
+			.notification-revert {
+				color: $blue;
+				font-weight: bold;
+			}
 		}
 
-		// .unseen-badge {
-		// 	h4 {
-		// 		color: $blue-dark;
-
-		// 		.notification-sender {
-		// 			color: $blue-dark;
-		// 		}
-
-		// 		.notification-secondary {
-		// 			color: $text-dark;
-		// 		}
-		// 	}
-		// 	span {
-		// 		color: $text-dark;
-		// 	}
-		// }
 	}
 
 }

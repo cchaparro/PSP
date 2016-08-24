@@ -9,4 +9,7 @@ Meteor.methods
 	notificationClicked: (notificationId) ->
 		db.notifications.update({_id: notificationId, "notificationOwner": Meteor.userId(), "clicked": false}, {$set: {"seen": true, "clicked": true}})
 
+	disable_notification: (notificationId) ->
+		db.notifications.update({_id: notificationId}, {$set: {"data.reverted": true}})
+
 #######################################

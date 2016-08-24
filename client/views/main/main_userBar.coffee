@@ -61,6 +61,7 @@ Template.main_userBar.helpers
 
 		return Routes
 
+
 Template.main_userBar.events
 	'click .avatar': (e,t) ->
 		$('.user-dropdown').toggleClass('hide')
@@ -101,11 +102,17 @@ Template.userNotification.helpers
 			when 'time-registered'
 				return "warning"
 
+	revertMessage: () ->
+		if @data?.reverted
+			return "(Revertido)"
+		else
+			return ""
+
 
 Template.userNotification.events
 	'click .notification-item': (e,t) ->
-		if @type == 'time-registered'
-			Modal.show('editTimeModal', @)
+		unless @data?.reverted or @type != 'time-registered'
+				Modal.show('editTimeModal', @)
 
 ##################################################
 Template.userMenuDropdown.helpers
