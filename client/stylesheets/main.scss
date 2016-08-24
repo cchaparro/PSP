@@ -165,12 +165,13 @@ html, body {
 }
 
 .notification-svg {
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	fill: $icon;
 	position: absolute;
-	right: 80px;
-	top: 20px;
+	right: 75px;
+	top: 15px;
+	padding: 5px;
 	cursor: pointer;
 }
 
@@ -268,12 +269,25 @@ html, body {
 	width: 350px;
 	height: 400px;
 	position: absolute;
-	right: 65px;
+	right: 58px;
 	top: 65px;
 	background-color: $white;
 	border: 1px solid $border;
 	@include border-radius($default-border-radius);
 	@include box-shadow($default-box-shadow);
+
+	.tail-notification {
+		width: 20px;
+		height: 20px;
+		background-color: $white;
+		position: absolute;
+		right: 20px;
+		top: -10px;
+		transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		border-top-left-radius: 5px;
+		@include box-shadow(-1px -1px 2px rgba(0,0,0,.1));
+	}
 
 	h3 {
 		font-size: 13pt;
