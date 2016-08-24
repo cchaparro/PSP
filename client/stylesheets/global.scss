@@ -66,7 +66,7 @@
 	color: $text-dark;
 	@include border-radius($default-border-radius);
 	@include placeholder-color($text);
-	border: 2px solid $text;
+	border: 2px solid $popup-bg;
 
 	&:focus {
 		border: 2px solid $blue;
@@ -148,7 +148,7 @@
 		// height: 40px;
 		padding: 11px 12px;
 		outline: none;
-		border: 2px solid $text;
+		border: 2px solid $popup-bg;
 		color: $text;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text);

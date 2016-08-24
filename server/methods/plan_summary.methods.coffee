@@ -9,12 +9,14 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({"projectId": pid, "summaryOwner": Meteor.userId()})
 
 		# If the time saved is more than 3 minutes, send a notification to the user
-		if stage.time > 1800 #180000
+		if stage.time > 180000
 
 			notificationData = {
 				title: db.projects.findOne({_id: pid}).title
 				time: stage.time
+				stage: stage.name
 			}
+
 			syssrv.newNotification("time-registered", Meteor.userId(), notificationData)
 
 		# the input stage is the stage that just had a new amount of time registered

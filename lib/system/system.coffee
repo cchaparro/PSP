@@ -39,8 +39,14 @@ sys.displayTime = (time) ->
 sys.minutesToTime = (time) ->
 	return time * 60000
 
+sys.timeToHours = (time) ->
+	return Math.floor(time / 3600000)
+
 sys.timeToMinutes = (time) ->
 	return Math.floor(time / 60000)
+
+sys.timeToSeconds = (time) ->
+	return Math.floor(time / 1000)
 
 sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
