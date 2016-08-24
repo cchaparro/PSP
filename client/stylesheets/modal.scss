@@ -127,7 +127,28 @@
 //--------------- Edit Time Modal ----------------
 .edit-time-cancel {
 	width: 100%;
-	text-align: center;
+	text-align: left;
+}
+
+.edit-time-label {
+	display: block;
+	color: $text-dark;
+	font-weight: 500;
+	padding-bottom: 5px;
+}
+
+.add-time-selected {
+	background-color: rgba($success, 0.3)!important;
+	i, span {
+		color: $success-dark;
+	}
+}
+
+.delete-time-selected {
+	background-color: rgba($danger, 0.3)!important;
+	i, span {
+		color: $danger;
+	}
 }
 
 .edit-time-options {
@@ -176,19 +197,32 @@
 		text-align: center;
 		margin-bottom: 30px;
 		padding-left: 15px;
+		position: relative;
 
-		i {
-			display: block;
-			color: $border;
-			font-size: 12pt;
-			cursor: pointer;
+		div {
+			position: absolute;
+			left: 18px;
+			top: 4px;
+			background-color: $background;
+			@include border-radius($default-border-radius);
+			padding-left: 0;
+			width: 18px;
+			text-align: center;
 
-			&:hover {
+			i {
 				color: $text;
-			}
+				font-size: 8pt;
+				cursor: pointer;
+				display: block;
+				height: 16px;
 
-			&:first-child {
-				padding-bottom: 10px;
+				&:first-child {
+					padding-top: 2px;
+				}
+
+				&:last-child {
+					padding-top: 4px;
+				}
 			}
 		}
 
@@ -202,6 +236,7 @@
 			width: 100%;
 			height: 40px;
 			padding: 5px 10px;
+			padding-left: 22px;
 			display: block;
 			outline: none;
 			border: 1px solid $border;

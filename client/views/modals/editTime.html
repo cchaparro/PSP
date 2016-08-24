@@ -16,46 +16,51 @@
 <!-- ###################################### -->
 <template name="editTime">
 	<div class="modal-body">
-		{{#if isMenuView}}
+		<span class="edit-time-label">Seleccionar accion *</span>
 			<div class="edit-time-options">
-				<div class="time-option" data-value="delete-time">
+				<div class="time-option {{#if $eq selectedOption 'delete-time'}} delete-time-selected {{/if}}" data-value="delete-time">
 					<i class="fa fa-trash"></i>
 					<span>Restar tiempo</span>
 				</div>
-				<div class="time-option" data-value="add-time">
+				<div class="time-option {{#if $eq selectedOption 'add-time'}} add-time-selected {{/if}}" data-value="add-time">
 					<i class="fa fa-plus"></i>
 					<span>Agregar tiempo</span>
 				</div>
 			</div>
-		{{else}}
+			<span class="edit-time-label">Tiempo a modificar *</span>
 			<div class="time-selector-box">
 				<div>
-					<i class="fa fa-chevron-up" data-value="hours-selector"></i>
+					<div>
+						<i class="fa fa-chevron-up" data-value="hours-selector"></i>
+						<i class="fa fa-chevron-down" data-value="hours-selector"></i>
+					</div>
 					<input type="text" class="edit-time-hours" value="0">
 					<span>HOR</span>
-					<i class="fa fa-chevron-down" data-value="hours-selector"></i>
 				</div>
 				<div>
-					<i class="fa fa-chevron-up" data-value="minutes-selector"></i>
+					<div>
+						<i class="fa fa-chevron-up" data-value="minutes-selector"></i>
+						<i class="fa fa-chevron-down" data-value="minutes-selector"></i>
+					</div>
 					<input type="text" class="edit-time-minutes" value="0">
 					<span>MIN</span>
-					<i class="fa fa-chevron-down" data-value="minutes-selector"></i>
 				</div>
 				<div>
-					<i class="fa fa-chevron-up" data-value="seconds-selector"></i>
+					<div>
+						<i class="fa fa-chevron-up" data-value="seconds-selector"></i>
+						<i class="fa fa-chevron-down" data-value="seconds-selector"></i>
+					</div>
 					<input type="text" class="edit-time-seconds" value="0">
 					<span>SEG</span>
-					<i class="fa fa-chevron-down" data-value="seconds-selector"></i>
 				</div>
 			</div>
-		{{/if}}
 	</div>
 	<div class="modal-footer">
-		{{#if isMenuView}}
-			<span class="edit-time-cancel" data-dismiss="modal">Cancelar</span>
-		{{else}}
+		{{#if selectedOption}}
 			<span class="pull-right finish-edit-time">Terminar</span>
-			<span class="time-back">Atras</span>
+			<span data-dismiss="modal">Cancelar</span>
+		{{else}}
+			<span class="edit-time-cancel" data-dismiss="modal">Cancelar</span>
 		{{/if}}
 	</div>
 </template>

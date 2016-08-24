@@ -5,24 +5,18 @@ Template.editTimeModal.helpers
 
 ###########################################
 Template.editTime.onCreated () ->
-	@isMenuView = new ReactiveVar(true)
-	@actionField = new ReactiveVar(false)
+	@selectedOption = new ReactiveVar(false)
 
 
 Template.editTime.helpers
-	isMenuView: () ->
-		return Template.instance().isMenuView.get()
+	selectedOption: () ->
+		return Template.instance().selectedOption.get()
 
 
 Template.editTime.events
 	'click .time-option': (e,t) ->
-		value = $(e.target).closest(".time-option").data('value')
-		t.actionField.set(value)
-		t.isMenuView.set(false)
-
-	'click .time-back': (e,t) ->
-		t.isMenuView.set(true)
-		t.actionField.set(false)
+		option = $(e.target).closest(".time-option").data('value')
+		t.selectedOption.set(option)
 
 	'click .fa-chevron-up': (e,t) ->
 		value = $(e.target).data('value')
@@ -72,7 +66,7 @@ Template.editTime.events
 		if totalTime == 0
 			Modal.hide('editTimeModal')
 
-		else if t.actionField.get() == "add-time"
+		else if t.selectedOption.get() == "add-time"
 			Meteor.call "add_time_stage", FlowRouter.getParam("id"), @name, totalTime, (error) ->
 				if error
 					console.warn(error)
