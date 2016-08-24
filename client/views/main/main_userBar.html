@@ -67,7 +67,7 @@
 </template>
 <!-- ###################################### -->
 <template name="userNotification">
-	<div class="notification-box clearfix hide">
+	<div class="notification-box clearfix {{#unless $.Session.get 'display-notification-box'}} hide {{/unless}}">
 		<h3>Notificaciones</h3>
 		<ul>
 			{{#each userNotifications}}

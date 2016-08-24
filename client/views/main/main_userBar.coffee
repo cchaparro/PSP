@@ -68,10 +68,8 @@ Template.main_userBar.events
 		$('.user-dropdown-tab').toggleClass('hide')
 
 	'click .notification-svg, click .notification-badge': (e,t) ->
-		$('.notification-box').toggleClass('hide')
-
-		if !$('.notification-box').hasClass('hide')
-			userNotifications = {}
+		if Session.get("display-notification-box")
+			Session.set("display-notification-box", false)
 			userNotifications = db.notifications.find({"notificationOwner": Meteor.userId()}, {sort: {"createdAt": -1}})
 
 			userNotifications.forEach (notification) ->
@@ -79,6 +77,8 @@ Template.main_userBar.events
 
 			notSeenNotifications.set(userNotifications)
 			Meteor.call("notificationsSeen")
+		else
+			Session.set("display-notification-box", true)
 
 ##################################################
 Template.userNotification.helpers
