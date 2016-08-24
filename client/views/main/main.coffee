@@ -2,7 +2,6 @@
 Template.masterLayout.events
 	'click': (e,t) ->
 		$this = $(e.target)
-		console.log "Di click aqui"
 
 		checkItem = (item, search) ->
 			return item.is(search) or item.parents(search).is(search)
