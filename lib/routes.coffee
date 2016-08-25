@@ -10,7 +10,6 @@ if Meteor.isClient
 
 FlowRouter.triggers.enter([ (content, redirect) ->
 	unless Meteor.userId()
-		console.log "Not logged in --> Redirecting"
 		FlowRouter.go('login')
 ], except: [
 	'register'
