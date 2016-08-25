@@ -57,4 +57,10 @@ Template.loginTemplate.events
 			if error
 				console.warn(error)
 
+	'click .user-access-google': (e,t) ->
+		e.preventDefault()
+		Meteor.loginWithGoogle { requestPermissions: [ 'email' ] }, (error) ->
+			if error
+				console.warn(error)
+
 ##################################################

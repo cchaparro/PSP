@@ -26,6 +26,17 @@ Meteor.users.after.insert (userId, doc) ->
 			removed: 0
 		}
 
+	if doc.services?.google
+		data.profile["fname"] = doc.services?.google?.given_name
+		data.profile["lname"] = doc.services?.google?.family_name
+		data.profile["profileImageUrl"] = doc.services?.google?.picture
+		data.profile["summaryAmount"] = Meteor.settings.public.userAmount
+		data.profile["total"] = {
+			time: 0
+			injected: 0
+			removed: 0
+		}
+
 
 	db.users.update({_id: @_id}, {$set: data})
 

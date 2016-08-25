@@ -38,3 +38,4 @@ cfs:standard-packages							# Package used for the upload file system
 cfs:filesystem										# Package used for the upload file system
 gwendall:auth-client-callbacks				# Package used for the onLogin, onLogout in Flowrouter
 accounts-facebook
+accounts-google
