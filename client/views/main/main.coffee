@@ -13,7 +13,7 @@ Template.masterLayout.events
 			Session.set("display-notification-box", false)
 
 		if checkItem($this, ".main-user")
-			unless checkItem($this, ".notification-svg")
+			unless checkItem($this, ".notification-svg") or checkItem($this, ".notification-box")
 				Session.set("display-notification-box", false)
 
 ##########################################

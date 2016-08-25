@@ -10,7 +10,7 @@ if Meteor.isServer
 			when 'new-user'
 				title = {
 					sender: sender
-					main: ", bienvenido a la plataforma"
+					main: "bienvenido a la plataforma"
 					secondary: "pspconnect.co"
 				}
 				subject = "Gracias por registrarte a nuestra plataforma. esperamos que tengas una gran experiencia en ella."
