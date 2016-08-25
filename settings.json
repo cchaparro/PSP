@@ -190,10 +190,13 @@
 	"private": {
 		"oAuth": {
 			"facebook": {
-				"appId": "469876196532621",
-				"secret": "2d5cfe161c612f0ffe1d21493a6445d0"
+				"appId": "1572600749710696",
+				"secret": "4306a1f78fe11bc4e0a3be9ef432011b"
 			},
-			"google": {}
+			"google": {
+				"clientId": "",
+				"secret": ""
+			}
 		}
 	}
 }
