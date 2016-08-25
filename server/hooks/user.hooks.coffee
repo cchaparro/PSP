@@ -11,7 +11,21 @@ Meteor.users.after.insert (userId, doc) ->
 		defectTypes:
 			default: defectTypeId
 			current: defectTypeId
+
+		profile: doc.profile
 	}
+
+	if doc.services?.facebook
+		data.profile["fname"] = doc.services?.facebook?.first_name
+		data.profile["lname"] = doc.services?.facebook?.last_name
+		data.profile["profileImageUrl"] = "http://graph.facebook.com/"+doc.services?.facebook?.id+"/picture/?type=large"
+		data.profile["summaryAmount"] = Meteor.settings.public.userAmount
+		data.profile["total"] = {
+			time: 0
+			injected: 0
+			removed: 0
+		}
+
 
 	db.users.update({_id: @_id}, {$set: data})
 

@@ -51,4 +51,10 @@ Template.loginTemplate.events
 	'click .access-selection-box': (e,t) ->
 		FlowRouter.go("/register")
 
+	'click .user-access-facebook': (e,t) ->
+		e.preventDefault()
+		Meteor.loginWithFacebook { requestPermissions: [ 'email' ] }, (error) ->
+			if error
+				console.warn(error)
+
 ##################################################

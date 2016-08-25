@@ -186,5 +186,14 @@
 			"#C1CAD6",
 			"#56CBF9"
 		]
+	},
+	"private": {
+		"oAuth": {
+			"facebook": {
+				"appId": "469876196532621",
+				"secret": "2d5cfe161c612f0ffe1d21493a6445d0"
+			},
+			"google": {}
+		}
 	}
 }
