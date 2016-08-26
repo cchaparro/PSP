@@ -36,9 +36,6 @@ sys.displayTime = (time) ->
 	segundos = Math.floor(time / 1000)
 	return horas + " hrs, " + minutos + " mins, " + segundos + " segs"
 
-sys.minutesToTime = (time) ->
-	return time * 60000
-
 sys.timeToHours = (time) ->
 	return Math.floor(time / 3600000)
 
@@ -50,6 +47,10 @@ sys.timeToSeconds = (time) ->
 	time %= 3600000
 	time %= 60000
 	return Math.floor(time / 1000)
+
+# This is used in the plansummary
+sys.minutesToTime = (time) ->
+	return time * 60000
 
 sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
@@ -142,11 +143,13 @@ sys.flashStatus = (type) ->
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
 
-
+# This is used to fade-out the notification
 sys.removeTimeMessage = () ->
 	$('.status-time-message').animate { opacity: 0 }, 800, ->
 		Session.set "statusTimeMessage", false
 
+# This is a special flashStatus notification used for the time execution
+# (it appears allways until the time was paused)
 sys.flashTime = (projectName) ->
 	title = "Toma de Tiempo"
 	subject = 'Iniciaste la toma de tiempo en el proyecto "' + projectName + '".'
@@ -184,5 +187,8 @@ sys.selectColor = (last_color) ->
 ##########################################
 ###########- Global Variables -###########
 
+# This global variable is made to active the flashTime status
+# message when a project is taking a time recorder
 sys.runningTimeProject = new ReactiveVar(false)
+
 ##########################################

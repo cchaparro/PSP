@@ -65,7 +65,7 @@
 	margin-bottom: 10px;
 	color: $text-dark;
 	@include border-radius($default-border-radius);
-	@include placeholder-color($text);
+	@include placeholder-color($text, 200);
 	border: 2px solid $popup-bg;
 
 	&:focus {
@@ -151,7 +151,7 @@
 		border: 2px solid $popup-bg;
 		color: $text;
 		@include border-radius($default-border-radius);
-		@include placeholder-color($text);
+		@include placeholder-color($text, 200);
 		display: block;
 
 		&:focus {
@@ -186,6 +186,41 @@
 	@extend .input-field;
 
 }
+
+
+
+
+
+//----------FINALES--------------
+
+.final-input {
+	width: 100%;
+	outline: none;
+	padding: 12px 12px;
+	margin-bottom: 10px;
+	color: $text-dark;
+	@include border-radius($default-border-radius);
+	@include placeholder-color($text, 200);
+	border: 1px solid $border;
+
+	&:focus {
+		border: 1px solid $blue;
+	}
+
+}
+
+.final-input-error {
+	@extend .final-input;
+	border: 1px solid $danger;
+}
+
+
+
+
+
+
+
+
 
 
 

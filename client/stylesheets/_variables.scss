@@ -1,8 +1,8 @@
 @import '_defaults.scss';
 
 //--------------------- Fonts --------------------
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-
+//@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 //---------------- General Values ----------------
 $default-padding:							25px;
 $default-border-radius:					4px;
@@ -37,22 +37,26 @@ $default-box-shadow:						0 1px 2px rgba(0,0,0,.1);
 	transform: translateX($translante);
 }
 
-@mixin placeholder-color($color) {
+@mixin placeholder-color($color, $font_weight) {
 	// Chrome, Opera, Safari
 	&::-webkit-input-placeholder {
 		color: $color;
+		font-weight: $font_weight;
 	}
 	// Firefox 19+
 	&:-moz-placeholder {
 		color: $color;
+		font-weight: $font_weight;
 	}
 	// IE 10+
 	&:-ms-input-placeholder {
 		color: $color;
+		font-weight: $font_weight;
 	}
 	// Firefox 18-
 	&:-moz-placeholder {
 		color: $color;
+		font-weight: $font_weight;
 	}
 }
 

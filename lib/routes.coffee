@@ -7,7 +7,7 @@ if Meteor.isClient
 	Accounts.onLogout () ->
 		FlowRouter.go('login')
 
-
+# This triggers the verification if logged in when the route changes. If its not it will always take you to the login route
 FlowRouter.triggers.enter([ (content, redirect) ->
 	unless Meteor.userId()
 		FlowRouter.go('login')
@@ -33,7 +33,7 @@ FlowRouter.route '/register',
 
 
 
-
+# This group is created to structure all the route pages inside the '/projects'
 Projects = FlowRouter.group(
 	prefix: '/projects'
 )
@@ -139,14 +139,10 @@ Settings.route '/type-defects',
 		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate'
 
 
-
-
 FlowRouter.route '/overview',
 	name: 'overview'
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
-
-
 
 
 FlowRouter.route '/help',

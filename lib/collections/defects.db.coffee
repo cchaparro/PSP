@@ -1,5 +1,6 @@
 ##########################################
 db.defects = new Meteor.Collection "Defects"
+
 ##########################################
 ############## Main Schema ###############
 schemas.defects = new SimpleSchema

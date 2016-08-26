@@ -10,14 +10,14 @@ Template.registerTemplate.helpers
 
 	errorMessage: () ->
 		switch Template.instance().errorState.get()
-			when 'default'
-				return " "
 			when 'email_exist'
 				return "El correo ya esta registrado"
 			when 'email'
 				return "Ingresaste un correo que no es valido"
 			when 'password'
 				return "La contraseña ingresada no cumple con los requisitos"
+
+		return " "
 
 
 Template.registerTemplate.events
@@ -65,17 +65,5 @@ Template.registerTemplate.events
 
 	'click .access-selection-box': (e,t) ->
 		FlowRouter.go("/")
-
-	'click .user-access-facebook': (e,t) ->
-		e.preventDefault()
-		Meteor.loginWithFacebook { requestPermissions: [ 'email' ] }, (error) ->
-			if error
-				console.warn(error)
-
-	'click .user-access-google': (e,t) ->
-		e.preventDefault()
-		Meteor.loginWithGoogle { requestPermissions: [ 'email' ] }, (error) ->
-			if error
-				console.warn(error)
 
 ##################################################

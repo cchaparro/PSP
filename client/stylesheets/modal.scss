@@ -244,7 +244,7 @@
 			margin-bottom: 5px;
 			text-align: center;
 			@include border-radius($default-border-radius);
-			@include placeholder-color($text);
+			@include placeholder-color($text, 300);
 		}
 	}
 
