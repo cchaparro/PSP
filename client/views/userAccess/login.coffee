@@ -1,6 +1,6 @@
 ##################################################
 Template.loginTemplate.onCreated () ->
-	@errorState = new ReactiveVar("default")
+	@errorState = new ReactiveVar(false)
 	document.title = "Inicio de Sesión"
 
 
@@ -10,8 +10,6 @@ Template.loginTemplate.helpers
 
 	errorMessage: () ->
 		switch Template.instance().errorState.get()
-			when 'default'
-				return " "
 			when 'user'
 				return "El correo ingresado no esta registrado"
 			when 'email'
@@ -19,8 +17,18 @@ Template.loginTemplate.helpers
 			when 'password'
 				return "La contraseña ingresada es incorrecta"
 
+		return "\xa0"
+
 
 Template.loginTemplate.events
+	'keypress #email': (e,t) ->
+		if t.errorState.get()
+			t.errorState.set(false)
+
+	'keypress #password': (e,t) ->
+		if t.errorState.get()
+			t.errorState.set(false)
+
 	'submit form': (e,t) ->
 		e.preventDefault()
 

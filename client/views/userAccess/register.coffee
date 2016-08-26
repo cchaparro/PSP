@@ -1,6 +1,6 @@
 ##################################################
 Template.registerTemplate.onCreated () ->
-	@errorState = new ReactiveVar("default")
+	@errorState = new ReactiveVar(false)
 	document.title = "Registro"
 
 
@@ -17,10 +17,18 @@ Template.registerTemplate.helpers
 			when 'password'
 				return "La contraseña ingresada no cumple con los requisitos"
 
-		return " "
+		return "\xa0"
 
 
 Template.registerTemplate.events
+	'keypress #email': (e,t) ->
+		if t.errorState.get()
+			t.errorState.set(false)
+
+	'keypress #password': (e,t) ->
+		if t.errorState.get()
+			t.errorState.set(false)
+
 	'submit form': (e,t) ->
 		e.preventDefault()
 
@@ -58,6 +66,7 @@ Template.registerTemplate.events
 			$('#email').val('')
 			$('#fname').val('')
 			$('#lname').val('')
+			$('#password').val('')
 
 		else
 			t.errorState.set("password")
