@@ -108,7 +108,7 @@ Template.userNotification.helpers
 
 	revertMessage: () ->
 		if @data?.reverted
-			return "(Revertido)"
+			return "(Modificado)"
 		else
 			return ""
 
