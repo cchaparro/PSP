@@ -50,7 +50,7 @@ Template.loginTemplate.events
 				else
 					FlowRouter.go("/")
 
-		if !sys.isEmail(email)
+		if !sys.isEmail(email) and email.length > 0
 			t.errorState.set("email")
 			$('#email').val('')
 			$('#password').val('')

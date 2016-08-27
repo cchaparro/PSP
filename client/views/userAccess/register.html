@@ -5,8 +5,12 @@
 
 		<div class="button-row combined-form">
 			<div class="text-user-access">
-				<input id="fname" type="text" class="final-input" placeholder='Nombre'>
-				<input id="lname" type="text" class="final-input" placeholder='Apellido'>
+				<div class="final-input-box">
+					<input id="fname" type="text" placeholder='Nombre'>
+				</div>
+				<div class="final-input-box">
+					<input id="lname" type="text" placeholder='Apellido'>
+				</div>
 				<div class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} final-input-error-box {{else}} final-input-box {{/if}}">
 					<input type="email" id="email" placeholder='Correo Electronico'>
 					<i class="fa fa-times"></i>

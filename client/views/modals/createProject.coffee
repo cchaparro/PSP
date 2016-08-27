@@ -22,12 +22,12 @@ Template.createProject.events
 		value = $(e.target).data('value')
 		t.levelPSP.set(value)
 
-	'blur .pry-new-title': (e,t) ->
+	'keypress .pry-new-title': (e,t) ->
 		title = $(e.target).val()
 		if title!=''
 			t.errorStateTitle.set(0)
 
-	'blur .pry-new-description': (e,t) ->
+	'keypress .pry-new-description': (e,t) ->
 		description = $(e.target).val()
 		if description!=''
 			t.errorStateDescription.set(0)

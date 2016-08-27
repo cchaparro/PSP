@@ -60,7 +60,7 @@
 }
 
 //------------- Create Project Modal -------------
-.create-prj-row {
+.create-project-row {
 	div {
 		display: inline-block;
 
@@ -73,10 +73,6 @@
 		&:last-child {
 			width: 40%;
 			float: right;
-
-			.dropdown {
-				width: 100%;
-			}
 		}
 	}
 }
