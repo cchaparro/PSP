@@ -7,8 +7,14 @@
 			<div class="text-user-access">
 				<input id="fname" type="text" class="final-input" placeholder='Nombre'>
 				<input id="lname" type="text" class="final-input" placeholder='Apellido'>
-				<input type="email" id="email" class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} final-input-error {{/if}} final-input" placeholder='Correo Electronico'>
-				<input id="password" type="password" class="{{#if $eq errorState 'password'}} final-input-error {{/if}} final-input" placeholder='Contraseña'>
+				<div class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} final-input-error-box {{else}} final-input-box {{/if}}">
+					<input type="email" id="email" placeholder='Correo Electronico'>
+					<i class="fa fa-times"></i>
+				</div>
+				<div class="{{#if $eq errorState 'password'}} final-input-error-box {{else}} final-input-box {{/if}}">
+					<input id="password" type="password" placeholder='Contraseña'>
+					<i class="fa fa-times"></i>
+				</div>
 				<span class="user-access-error-text">{{errorMessage}}</span>
 				<input type="submit" class="btn btn-primary user-access-submit" value='Registrarse'>
 			</div>

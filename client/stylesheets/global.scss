@@ -192,6 +192,45 @@
 
 
 //----------FINALES--------------
+.final-input-box {
+	width: 100%;
+	position: relative;
+
+	input {
+		width: 100%;
+		outline: none;
+		padding: 12px 28px 12px 12px;
+		margin-bottom: 10px;
+		color: $text-dark;
+		@include border-radius($default-border-radius);
+		@include placeholder-color($text, 200);
+		border: 1px solid $border;
+
+		&:focus {
+			border: 1px solid $blue;
+		}
+	}
+
+	i {
+		color: $danger;
+		position: absolute;
+		top: 16px;
+		right: 10px;
+		opacity: 0;
+	}
+}
+
+.final-input-error-box {
+	@extend .final-input-box;
+
+	input {
+		border: 1px solid $danger;
+	}
+
+	i {
+		opacity: 1;
+	}
+}
 
 .final-input {
 	width: 100%;

@@ -3,6 +3,8 @@ notSeenNotifications = new ReactiveVar({})
 ##################################################
 Template.main_userBar.onCreated () ->
 	Meteor.subscribe "UserMenu"
+	Session.set("display-user-box", false)
+	Session.set("display-notification-box", false)
 
 Template.main_userBar.helpers
 	userData: () ->
