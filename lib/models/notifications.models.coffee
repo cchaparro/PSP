@@ -41,7 +41,6 @@ if Meteor.isServer
 
 		if extraData?
 			data["data"] = extraData
-			console.log "aquiiii"
 
 		db.notifications.insert(data)
 
