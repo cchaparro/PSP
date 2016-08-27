@@ -8,13 +8,17 @@ Template.masterLayout.events
 
 		if checkItem($this, ".master-content")
 			Session.set("display-notification-box", false)
+			Session.set("display-user-box", false)
 
 		if checkItem($this, ".main-menu")
 			Session.set("display-notification-box", false)
+			Session.set("display-user-box", false)
 
 		if checkItem($this, ".main-user")
 			unless checkItem($this, ".notification-svg") or checkItem($this, ".notification-box")
 				Session.set("display-notification-box", false)
+			unless checkItem($this, ".avatar-box") or checkItem($this, ".user-dropdown")
+				Session.set("display-user-box", false)
 
 ##########################################
 Template.statusMessage.helpers

@@ -196,60 +196,67 @@ html, body {
 	}
 }
 
-.user-dropdown-tab {
-	width: 15px;
-	height: 15px;
-	position: absolute;
-	right: 30px;
-	top: 55px;
-	border-radius: 3px;
-	background: $primary-bg;
-	transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
-	z-index: 1;
-}
-
 .user-dropdown {
 	width: 200px;
 	position: absolute;
 	right: 10px;
-	top: 60px;
-	background-color: $primary-bg;
+	top: 65px;
+	background-color: $white;
 	@include border-radius($default-border-radius);
+	@include box-shadow($popup-box-shadow);
 	padding-left: 0;
-	overflow: hidden;
 	z-index: 2;
 
-	li {
-		padding: 11px 15px;
-		cursor: pointer;
-		svg {
-			width: 18px;
-			height: 18px;
-			fill: $primary-light-bg;
-			float: left;
-			margin-top: 1px;
-		}
+	.tail-user {
+		width: 20px;
+		height: 20px;
+		background-color: $white;
+		position: absolute;
+		right: 20px;
+		top: -10px;
+		transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		border-top-left-radius: 5px;
+		@include box-shadow(-1px -1px 2px rgba(0,0,0,.1));
+	}
 
-		span {
-			color: $white;
-			font-size: 11pt;
-			float: left;
-			padding-left: 10px;
-		}
+	ul {
+		padding-left: 0;
+		margin: 0;
+		overflow: hidden;
 
-		&:first-child {
-			border-bottom: 1px solid $primary-dark-bg;
-		}
+		li {
+			cursor: pointer;
+			padding: 11px 15px;
+			cursor: pointer;
+			z-index: 3;
 
-		&:last-child {
-			padding-bottom: 12px;
-		}
+			svg {
+				width: 18px;
+				height: 18px;
+				fill: $icon;
+				float: left;
+				margin-top: 1px;
+			}
 
-		&:hover {
-			background-color: $primary-dark-bg;
+			span {
+				color: $text;
+				font-size: 11pt;
+				float: left;
+				padding-left: 10px;
+			}
+
+			&:first-child {
+				border-bottom: 1px solid $border;
+			}
+
+			&:hover span {
+				color: $text-dark;
+			}
+
 		}
 	}
+
 }
 
 .new-notification-badge {
@@ -274,7 +281,7 @@ html, body {
 	background-color: $white;
 	border: 1px solid $border;
 	@include border-radius($default-border-radius);
-	@include box-shadow($default-box-shadow);
+	@include box-shadow($popup-box-shadow);
 
 	.tail-notification {
 		width: 20px;

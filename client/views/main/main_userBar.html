@@ -32,17 +32,19 @@
 </template>
 <!-- ###################################### -->
 <template name="userMenuDropdown">
-	<i class="user-dropdown-tab hide"></i>
-	<ul class="user-dropdown hide">
-		<li>
-			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg>
-			<span>Ajustes de cuenta</span>
-		</li>
-		<li class="logout">
-			<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
-			<span>Cerrar sesión</span>
-		</li>
-	</ul>
+	<div class="user-dropdown {{#unless $.Session.get 'display-user-box'}} hide {{/unless}}">
+		<div class="tail-user"></div>
+		<ul>
+			<li>
+				<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg>
+				<span>Ajustes de cuenta</span>
+			</li>
+			<li class="logout">
+				<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
+				<span>Cerrar sesión</span>
+			</li>
+		</ul>
+	</div>
 </template>
 <!-- ###################################### -->
 <template name="createProjectButton">

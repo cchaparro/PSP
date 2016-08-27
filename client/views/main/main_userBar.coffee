@@ -64,8 +64,10 @@ Template.main_userBar.helpers
 
 Template.main_userBar.events
 	'click .avatar': (e,t) ->
-		$('.user-dropdown').toggleClass('hide')
-		$('.user-dropdown-tab').toggleClass('hide')
+		if Session.get("display-user-box")
+			Session.set("display-user-box", false)
+		else
+			Session.set("display-user-box", true)
 
 	'click .notification-svg, click .notification-badge': (e,t) ->
 		if Session.get("display-notification-box")
