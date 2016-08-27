@@ -16,11 +16,17 @@ Template.registerTemplate.helpers
 				return "Ingresaste un correo que no es valido"
 			when 'password'
 				return "La contraseña ingresada no cumple con los requisitos"
+			when 'missing-fields'
+				return "Debes llenar los campos para terminar el registro"
 
 		return "\xa0"
 
 
 Template.registerTemplate.events
+	'keypress #fname, keypress #lname': (e,t) ->
+		if t.errorState.get() == 'missing-fields'
+			t.errorState.set(false)
+
 	'keypress #email': (e,t) ->
 		if t.errorState.get()
 			t.errorState.set(false)
@@ -61,16 +67,23 @@ Template.registerTemplate.events
 				else
 					FlowRouter.go("/projects")
 
-		else if !sys.isEmail(email)
+		else if !sys.isEmail(email) and email.length > 0
 			t.errorState.set("email")
 			$('#email').val('')
 			$('#fname').val('')
 			$('#lname').val('')
 			$('#password').val('')
 
-		else
+		else if password.length > 0 and !sys.isValidPassword(password)
 			t.errorState.set("password")
 			$('#password').val('')
+
+		else
+			$('#fname').val('')
+			$('#lname').val('')
+			$('#email').val('')
+			$('#password').val('')
+			t.errorState.set("missing-fields")
 
 	'click .access-selection-box': (e,t) ->
 		FlowRouter.go("/")
