@@ -58,140 +58,6 @@
 	}
 }
 
-.psp-input {
-	width: 100%;
-	outline: none;
-	padding: 12px 12px;
-	margin-bottom: 10px;
-	color: $text-dark;
-	@include border-radius($default-border-radius);
-	@include placeholder-color($text, 200);
-	border: 2px solid $popup-bg;
-
-	&:focus {
-		border: 2px solid $blue;
-	}
-
-}
-
-.psp-input-error {
-	@extend .psp-input;
-	border: 2px solid $danger;
-}
-
-.psp-disabled {
-	@extend .psp-input;
-	color: $text;
-	background-color: $background;
-	cursor: default;
-}
-
-.psp-dropdown {
-	@extend .psp-input;
-	text-align: left;
-	line-height: 1px;
-	background-color: $white;
-	height: 47px;
-
-	i {
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		background-color: $text;
-		color: $white;
-		font-size: 10pt;
-		padding: 12px 6px;
-		border-radius: $default-border-radius;
-	}
-
-	&:focus {
-		i {
-			background-color: $text;
-		}
-	}
-}
-
-.psp-dropdown-error {
-	@extend .psp-dropdown;
-	border: 2px solid $danger;
-}
-
-.psp-textarea {
-	@extend .psp-input;
-	min-height: 80px;
-	max-width: 100%;
-}
-
-.psp-textarea-error {
-	@extend .psp-textarea;
-	border: 2px solid $danger;
-}
-
-
-
-
-
-
-//TODO organizar esto con los valores previos
-.input-field {
-	margin-bottom: 10px;
-
-	span {
-		display: block;
-		color: $text-dark;
-		font-weight: 500;
-		padding-bottom: 2px;
-	}
-
-	input, textarea {
-		width: 100%;
-		// height: 40px;
-		padding: 11px 12px;
-		outline: none;
-		border: 2px solid $popup-bg;
-		color: $text;
-		@include border-radius($default-border-radius);
-		@include placeholder-color($text, 200);
-		display: block;
-
-		&:focus {
-			border: 2px solid $blue;
-		}
-	}
-}
-
-.input-field-error {
-	@extend .input-field;
-	input {
-		border: 2px solid $danger;
-	}
-
-	textarea {
-		border: 2px solid $danger;
-		min-height: 80px;
-		max-width: 100%;
-	}
-}
-
-.input-textarea {
-	@extend .input-field;
-
-	textarea {
-		min-height: 80px;
-		max-width: 100%;
-	}
-}
-
-.input-dropdown {
-	@extend .input-field;
-
-}
-
-
-
-
-
-//----------FINALES--------------
 .final-input-box {
 	width: 100%;
 	position: relative;
@@ -279,17 +145,22 @@
 
 		&:focus {
 			border: 1px solid $blue;
+
+			i {
+				background-color: $blue;
+			}
 		}
 
 		i {
 			position: absolute;
 			top: 3.5px;
 			right: 3.5px;
-			background-color: $text;
+			background-color: $border;
 			color: $white;
 			font-size: 10pt;
 			padding: 12px 6px;
 			border-radius: $default-border-radius;
+
 		}
 	}
 
@@ -307,6 +178,14 @@
 				background-color: $background;
 			}
 		}
+	}
+}
+
+.final-dropdown-error-box {
+	@extend .final-dropdown-box;
+
+	button {
+		border: 1px solid $danger;
 	}
 }
 

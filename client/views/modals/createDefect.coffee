@@ -72,7 +72,8 @@ Template.createDefect.helpers
 		return defectData.get()
 
 	descriptionText: () ->
-		return $('.defect-modal-description').val() != ''
+		description = $('.defect-modal-description').val()
+		return description?.length > 0
 
 	injectedPhases: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.injectedEstimated

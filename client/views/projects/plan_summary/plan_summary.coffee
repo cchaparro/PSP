@@ -37,7 +37,7 @@ Template.summaryTimeRow.helpers
 
 
 Template.summaryTimeRow.events
-	'blur .psp-input': (e,t) ->
+	'blur .final-input-box input': (e,t) ->
 		value = $(e.target).val()
 
 		data = {

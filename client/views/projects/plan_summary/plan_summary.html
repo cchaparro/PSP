@@ -80,7 +80,9 @@
 			<td class="td-input-row hidden-xs">
 				{{#if $eq projectProbe 'probeD'}}
 					{{#if estimationEditable}}
-						<input type="text" class="psp-input" value="{{timeInMinutes estimatedTime}}">
+						<div class="final-input-box">
+							<input type="text" value="{{timeInMinutes estimatedTime}}">
+						</div>
 					{{else}}
 						<span>{{timeFormat estimatedTime}}</span>
 					{{/if}}
