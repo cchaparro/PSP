@@ -9,6 +9,7 @@ Template.accountSettingsTemplate.helpers
 		return user if user?
 
 	profilePicture: () ->
+		console.log db.Images.findOne({_id: @profile.profileImageUrl})
 		return db.Images.findOne({_id: @profile.profileImageUrl})
 
 
