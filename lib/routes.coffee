@@ -121,14 +121,6 @@ Settings.route '/project',
 		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate'
 
 
-Settings.route '/account',
-	name: 'accountSettings'
-	subscriptions: (params, queryParams) ->
-		@register 'accountSettings', Meteor.subscribe "accountSettings"
-
-	action: ->
-		BlazeLayout.render 'masterLayout', main: 'accountSettingsTemplate'
-
 
 Settings.route '/type-defects',
 	name: 'defectTypeSettings'

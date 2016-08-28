@@ -132,9 +132,12 @@ Template.userMenuDropdown.helpers
 
 
 Template.userMenuDropdown.events
-	'click .logout': () ->
+	'click .logout': (e,t) ->
 		Meteor.logout()
 		FlowRouter.go("/")
+
+	'click .edit-profile': (e,t) ->
+		Modal.show('editProfileModal')
 
 ##################################################
 Template.createProjectButton.events

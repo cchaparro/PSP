@@ -245,6 +245,64 @@
 
 }
 
+//-------------- Edit Profile Modal --------------
+.profile-avatar {
+	width: 100px;
+	height: 100px;
+	background: $text;
+	margin: 0 auto;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	overflow: hidden;
+	@include border-radius($circle-border-radius);
+	cursor: pointer;
+
+	i {
+		color: $white;
+		font-size: 14pt;
+		opacity: 0;
+	}
+
+	&:hover {
+		.centered-outer {
+			background-color: rgba($blue, 0.5);
+
+			i {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.profile-default-image {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 7px;
+	background-color: $blue;
+	color: $white;
+	outline: none;
+
+	&:hover {
+		color: $white;
+		background-color: $blue-dark;
+	}
+
+	&:focus {
+		outline: none;
+		color: $white;
+	}
+}
+
+.profile-edit-message,
+.profile-progress-message {
+	display: block;
+	color: $text;
+	padding: 0 90px;
+	text-align: center;
+	margin-bottom: 7px;
+}
+
 //------------------------------------------------
 
 // Portrait tablets and small desktops

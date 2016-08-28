@@ -1,20 +1,23 @@
-##################################################
-Template.accountSettingsTemplate.onCreated () ->
-	Meteor.subscribe "accountSettings"
-	@currentUpload = new ReactiveVar(false);
+#######################################
+Template.profileView.onCreated () ->
+	Meteor.subscribe "UserMenu"
+	@currentUpload = new ReactiveVar(false)
 
 
-Template.accountSettingsTemplate.helpers
+Template.profileView.helpers
 	userData: () ->
-		user = Meteor.users.findOne({_id: Meteor.userId()})
-		return user if user?
+		return db.users.findOne({_id: Meteor.userId()})
 
 	currentUpload: () ->
 		return Template.instance().currentUpload.get()
 
 
-Template.accountSettingsTemplate.events
-	'change .uploader_file': (e,t) ->
+Template.profileView.events
+	'click .profile-avatar': (e, t) ->
+		$fileUploader = t.$(".image-upload")
+		$fileUploader.click()
+
+	'change .image-upload': (e,t) ->
 		userId = Meteor.userId()
 		hostPath = window.location.host
 
@@ -56,8 +59,7 @@ Template.accountSettingsTemplate.events
 
 				uploadInstance.start()
 
-
-	'click .default-image': (e,t) ->
+	'click .profile-default-image': (e,t) ->
 		data = {
 			"profile.profileImageUrl": null
 		}
@@ -76,4 +78,4 @@ Template.accountSettingsTemplate.events
 			else
 				sys.flashStatus("profile-update")
 
-##################################################
+#######################################
