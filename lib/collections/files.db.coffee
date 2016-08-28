@@ -1,8 +1,4 @@
 ##########################################
-# db.files = new FS.Collection "Files", {
-# 	stores: [new FS.Store.FileSystem("Files", {path: "~/uploads"})]
-# }
-##########################################
 db.Images = new (Meteor.Files)(
 	collectionName: 'Images'
 	storagePath: '~/data',
@@ -14,9 +10,5 @@ db.Images = new (Meteor.Files)(
 		else
 			return 'Please upload image, with size equal or less than 10MB'
 )
-# if Meteor.isServer
-#   Images.denyClient()
-#   Meteor.publish 'files.images.all', ->
-#     Images.find().cursor
-# else
-#   Meteor.subscribe 'files.images.all'
+
+##########################################

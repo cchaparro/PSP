@@ -1,7 +1,8 @@
-##########################################
-# db.files.allow
+# ##########################################
+# db.Images.allow
 # 	insert: (userId, file) ->
-# 		return true
+# 		console.log "Entre a subir un archivo"
+# 		return false
 # 		# if userId == file.metadata.fileOwner
 # 		# 	console.log "estoy aqui"
 # 		# 	#myProfilePic = db.files.findOne({"metadata.fileOwner": Meteor.userId()})
@@ -18,7 +19,5 @@
 # 		return true
 # 	remove: () ->
 # 		return true
-# 	download: () ->
-# 		return true
 
-##########################################
+# ##########################################

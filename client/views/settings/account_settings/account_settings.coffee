@@ -1,6 +1,7 @@
 ##################################################
 Template.accountSettingsTemplate.onCreated () ->
 	Meteor.subscribe "accountSettings"
+	@currentUpload = new ReactiveVar(false);
 
 
 Template.accountSettingsTemplate.helpers
@@ -8,14 +9,14 @@ Template.accountSettingsTemplate.helpers
 		user = Meteor.users.findOne({_id: Meteor.userId()})
 		return user if user?
 
-	profilePicture: () ->
-		console.log db.Images.findOne({_id: @profile.profileImageUrl})
-		return db.Images.findOne({_id: @profile.profileImageUrl})
+	currentUpload: () ->
+		return Template.instance().currentUpload.get()
 
 
 Template.accountSettingsTemplate.events
 	'change .uploader_file': (e,t) ->
 		userId = Meteor.userId()
+		hostPath = window.location.host
 
 		if e.currentTarget.files and e.currentTarget.files[0]
 			# We upload only one file, in case there was multiple files selected
@@ -28,21 +29,30 @@ Template.accountSettingsTemplate.events
 				}, false)
 
 				uploadInstance.on 'start', ->
-					#template.currentUpload.set this
+					t.currentUpload.set(@)
+
+				#uploadInstance.on 'progress', (value) ->
+				#	console.log "progreso nuevo " + value
 
 				uploadInstance.on 'end', (error, fileObj) ->
 					if error
 						console.log 'Error during upload: ' + error.reason
 					else
-						#console.log 'File "', fileObj
+						switch fileObj.type
+							when "image/jpeg"
+								type = "jpeg"
+							when "image/jpg"
+								type = "jpg"
+							when "image/png"
+								type = "png"
+
 						data = {
-							"profile.profileImageUrl": fileObj._id
+							"profile.profileImageUrl": "http://#{hostPath}/cdn/storage/Images/#{fileObj._id}/original/#{fileObj._id}.#{type}"
 						}
-						Meteor.call "update_user_public_info", userId, data, (error) ->
+						Meteor.call "update_user_public_info", userId, data, fileObj._id, (error) ->
 							unless error
 								sys.flashStatus("update-profile-image")
-
-						#template.currentUpload.set false
+								t.currentUpload.set(false)
 
 				uploadInstance.start()
 
