@@ -12,8 +12,11 @@ if Meteor.isServer
 		(_.findWhere removedValues, {'name': defect.removed}).removed -= 1
 		db.plan_summary.update({'projectId': projectId}, {$set: {'injectedEstimated': injectedValues, 'removedEstimated': removedValues}})
 
-		# Elimina completamente el defecto
+		# Deletes the defect completely
 		db.defects.remove({_id: defectId})
+
+		# This changes the parentId value of all the defects that had this deleted defect as parent
+		db.defects.update({parentId: defectId}, {$set: {parentId: null}},{multi:true})
 
 
 ##########################################
