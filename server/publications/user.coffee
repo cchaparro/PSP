@@ -15,7 +15,8 @@ Meteor.publish "projectSettings", () ->
 Meteor.publish "accountSettings", () ->
 	return [
 		db.users.find({_id: @userId})
-		db.files.find({ "metadata.fileOwner": @userId})
+		db.Images.find().cursor
+		#db.files.find({ "metadata.fileOwner": @userId})
 	]
 
 ####################################

@@ -34,8 +34,7 @@ chart:chart											# Package for using charts
 matb33:collection-hooks
 session												# Package for the session variables
 momentjs:moment									# Package to get more time display options
-cfs:standard-packages							# Package used for the upload file system
-cfs:filesystem										# Package used for the upload file system
 gwendall:auth-client-callbacks				# Package used for the onLogin, onLogout in Flowrouter
 accounts-facebook
 accounts-google
+ostrio:files										#Package for uploading files
