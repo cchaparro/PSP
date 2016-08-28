@@ -2,18 +2,24 @@
 projectFields = new ReactiveVar([])
 ##########################################
 drawProjectInfoChart = () ->
-	projectStages = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())?.timeEstimated
+	projectStages = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())
 	colors = Meteor.settings.public.chartColors
 
 	data = []
 	chartFields = []
 	color_position = 0
-	_.each projectStages, (stage) ->
+	_.each projectStages?.timeEstimated, (stage) ->
 		chartFields.push({"name": stage.name, "color": colors[color_position]})
 		data.push({"value": stage.time, "label": stage.name, "color": colors[color_position]})
 		color_position += 1
 
 	projectFields.set(chartFields)
+
+
+	if projectStages?.total?.totalTime == 0
+		# This point is only reached when the project has no time registered,
+		# In that case it will show a full bar for the stage "Planeación"
+		data = [{"value": 100, "label": "Planeación", "color": colors[0]}]
 
 	options = {
 		animation : false

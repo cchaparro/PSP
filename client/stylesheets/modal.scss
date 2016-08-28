@@ -255,6 +255,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	overflow: hidden;
+	background-color: $white;
 	@include border-radius($circle-border-radius);
 	cursor: pointer;
 
