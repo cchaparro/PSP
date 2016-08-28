@@ -11,6 +11,9 @@ Template.main_userBar.helpers
 		user = Meteor.users.findOne({_id: Meteor.userId()})
 		return user if user?
 
+	profilePicture: () ->
+		return db.Images.findOne({_id: @profile.profileImageUrl})
+
 	template: () ->
 		FlowRouter.watchPathChange()
 		return FlowRouter.current().route.name

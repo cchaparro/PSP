@@ -8,6 +8,10 @@ Template.accountSettingsTemplate.helpers
 		user = Meteor.users.findOne({_id: Meteor.userId()})
 		return user if user?
 
+	profilePicture: () ->
+		return db.Images.findOne({_id: @profile.profileImageUrl})
+
+
 Template.accountSettingsTemplate.events
 	'change .uploader_file': (e,t) ->
 		userId = Meteor.userId()
@@ -23,56 +27,42 @@ Template.accountSettingsTemplate.events
 				}, false)
 
 				uploadInstance.on 'start', ->
-					console.log "I just started, this is: ", this
 					#template.currentUpload.set this
 
 				uploadInstance.on 'end', (error, fileObj) ->
 					if error
 						console.log 'Error during upload: ' + error.reason
 					else
-						console.log 'File "' + fileObj.name + '" successfully uploaded'
+						console.log 'File "', fileObj
+						data = {
+							"profile.profileImageUrl": fileObj._id
+						}
+						Meteor.call "update_user_public_info", userId, data, (error) ->
+							unless error
+								sys.flashStatus("update-profile-image")
+
 						#template.currentUpload.set false
+
 				uploadInstance.start()
 
 
-		#FS.Utility.eachFile e, (file) ->
-		#	newFile = new FS.File(file)
-		#	newFile.metadata = {
-		#		fileOwner: userId
-		#	}
-		#	db.files.insert newFile, (error, fileObj) ->
-		#		if error
-		#			console.warn(error)
-		#		else
-		#			intervalHandle = Meteor.setInterval(( ()->
-		#				if fileObj.hasStored('Files')
-		#					data = {
-		#						"profile.profileImageUrl": "/cfs/files/Files/" + fileObj._id
-		#					}
-		#					Meteor.call "update_user_public_info", userId, data, fileObj._id, (error) ->
-		#						unless error
-		#							sys.flashStatus("update-profile-image")
-#
-#							Meteor.clearInterval intervalHandle
-#					), 1000)
+	'click .default-image': (e,t) ->
+		data = {
+			"profile.profileImageUrl": null
+		}
+		Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
+			unless error
+				sys.flashStatus("update-profile-image")
 
-	# 'click .default-image': (e,t) ->
-	# 	data = {
-	# 		"profile.profileImageUrl": null
-	# 	}
-	# 	Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
-	# 		unless error
-	# 			sys.flashStatus("update-profile-image")
-
-	# 'click .save-profile-settings': (e,t) ->
-	# 	data = {
-	# 		"profile.fname": $("#fname").val()
-	# 		"profile.lname": $("#lname").val()
-	# 	}
-	# 	Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
-	# 		if error
-	# 			sys.flashStatus("profile-update-error")
-	# 		else
-	# 			sys.flashStatus("profile-update")
+	'click .save-profile-settings': (e,t) ->
+		data = {
+			"profile.fname": $("#fname").val()
+			"profile.lname": $("#lname").val()
+		}
+		Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
+			if error
+				sys.flashStatus("profile-update-error")
+			else
+				sys.flashStatus("profile-update")
 
 ##################################################
