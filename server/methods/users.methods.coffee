@@ -36,7 +36,7 @@ Meteor.methods
 		db.users.update({_id: Meteor.userId()}, {$set: data})
 
 
-	update_user_public_info: (userId, data, fileId) ->
+	update_user_public_info: (userId, data) ->
 		#db.files.remove({"metadata.fileOwner": userId}, {multi: true})
 		#console.log "fileId: ", db.files.findOne({_id: fileId})
 		db.users.update({_id: userId}, {$set: data})

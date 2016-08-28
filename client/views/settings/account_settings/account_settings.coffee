@@ -1,33 +1,50 @@
 ##################################################
+Template.accountSettingsTemplate.onCreated () ->
+	Meteor.subscribe "accountSettings"
+
+
 Template.accountSettingsTemplate.helpers
 	userData: () ->
 		user = Meteor.users.findOne({_id: Meteor.userId()})
 		return user if user?
 
+	profilePicture: () ->
+		return db.Images.findOne({_id: @profile.profileImageUrl})
+
+
 Template.accountSettingsTemplate.events
 	'change .uploader_file': (e,t) ->
 		userId = Meteor.userId()
 
-		FS.Utility.eachFile e, (file) ->
-			newFile = new FS.File(file)
-			newFile.metadata = {
-				fileOwner: userId
-			}
-			db.files.insert newFile, (error, fileObj) ->
-				if error
-					console.warn(error)
-				else
-					intervalHandle = Meteor.setInterval(( ()->
-						if fileObj.hasStored('Files')
-							data = {
-								"profile.profileImageUrl": "/cfs/files/Files/" + fileObj._id
-							}
-							Meteor.call "update_user_public_info", userId, data, fileObj._id, (error) ->
-								unless error
-									sys.flashStatus("update-profile-image")
+		if e.currentTarget.files and e.currentTarget.files[0]
+			# We upload only one file, in case there was multiple files selected
+			file = e.currentTarget.files[0]
+			if file
+				uploadInstance = db.Images.insert({
+					file: file
+					streams: 'dynamic'
+					chunkSize: 'dynamic'
+				}, false)
 
-							Meteor.clearInterval intervalHandle
-					), 1000)
+				uploadInstance.on 'start', ->
+					#template.currentUpload.set this
+
+				uploadInstance.on 'end', (error, fileObj) ->
+					if error
+						console.log 'Error during upload: ' + error.reason
+					else
+						console.log 'File "', fileObj
+						data = {
+							"profile.profileImageUrl": fileObj._id
+						}
+						Meteor.call "update_user_public_info", userId, data, (error) ->
+							unless error
+								sys.flashStatus("update-profile-image")
+
+						#template.currentUpload.set false
+
+				uploadInstance.start()
+
 
 	'click .default-image': (e,t) ->
 		data = {
