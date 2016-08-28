@@ -33,7 +33,7 @@ Template.accountSettingsTemplate.events
 					if error
 						console.log 'Error during upload: ' + error.reason
 					else
-						console.log 'File "', fileObj
+						#console.log 'File "', fileObj
 						data = {
 							"profile.profileImageUrl": fileObj._id
 						}

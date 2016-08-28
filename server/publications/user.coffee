@@ -3,6 +3,7 @@ Meteor.publish "UserMenu", () ->
 	return [
 		db.notifications.find({"notificationOwner": @userId})
 		db.users.find({_id: @userId})
+		db.Images.find({userId: @userId}).cursor
 	]
 
 Meteor.publish "projectSettings", () ->
@@ -15,7 +16,7 @@ Meteor.publish "projectSettings", () ->
 Meteor.publish "accountSettings", () ->
 	return [
 		db.users.find({_id: @userId})
-		db.Images.find().cursor
+		db.Images.find({userId: @userId}).cursor
 		#db.files.find({ "metadata.fileOwner": @userId})
 	]
 
