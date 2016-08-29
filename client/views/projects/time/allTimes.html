@@ -1,28 +1,24 @@
 <!-- ###################################### -->
 <template name="timeTemplate">
-	{{> projectViewMenu}}
-	<div class="project-view-content">
-		<div class="time-content">
-			{{> timesBar}}
-			<table class="table time-table">
-				<thead>
-					<tr>
-						<th>Etapa</th>
-						<th class="hidden-xs">Tiempo registrado</th>
-						<th>Completado</th>
-						<th class="hidden-xs">Edición</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each projectStages}}
-						{{> timeTableRow}}
-					{{/each}}
-				</tbody>
-			</table>
-		</div>
+	<div class="time-content">
+		{{> timesBar}}
+		<table class="table time-table">
+			<thead>
+				<tr>
+					<th>Etapa</th>
+					<th class="hidden-xs">Tiempo registrado</th>
+					<th>Completado</th>
+					<th class="hidden-xs">Edición</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each projectStages}}
+					{{> timeTableRow}}
+				{{/each}}
+			</tbody>
+		</table>
 	</div>
 </template>
-
 <!-- ###################################### -->
 <template name="timeTableRow">
 	<tr>

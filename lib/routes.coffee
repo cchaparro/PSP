@@ -63,7 +63,7 @@ Projects.route '/:fid/:id',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate'
+		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate', menu: "projectViewMenu"
 
 
 Projects.route '/:fid/:id/time-log',
@@ -73,7 +73,7 @@ Projects.route '/:fid/:id/time-log',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'timeTemplate'
+		BlazeLayout.render 'masterLayout', main: 'timeTemplate', menu: "projectViewMenu"
 
 
 Projects.route '/:fid/:id/defect-log',
@@ -83,7 +83,7 @@ Projects.route '/:fid/:id/defect-log',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'defectsTemplate'
+		BlazeLayout.render 'masterLayout', main: 'defectsTemplate', menu: "projectViewMenu"
 
 
 Projects.route '/:fid/:id/plan-summary',
@@ -93,7 +93,7 @@ Projects.route '/:fid/:id/plan-summary',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate'
+		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate', menu: "projectViewMenu"
 
 
 Projects.route '/:fid/:id/scripts',
@@ -103,7 +103,7 @@ Projects.route '/:fid/:id/scripts',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate'
+		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
 
 
 
@@ -118,7 +118,7 @@ Settings.route '/project',
 		@register 'projectSettings', Meteor.subscribe "projectSettings"
 
 	action: ->
-		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate'
+		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate', menu: "settingsMenu"
 
 
 
@@ -128,7 +128,7 @@ Settings.route '/type-defects',
 		@register 'projectSettings', Meteor.subscribe "projectSettings"
 
 	action: ->
-		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate'
+		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate', menu: "settingsMenu"
 
 
 FlowRouter.route '/overview',

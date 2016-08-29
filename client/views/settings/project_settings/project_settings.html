@@ -1,31 +1,28 @@
 <!-- ###################################### -->
 <template name="projectSettingsTemplate">
-	{{> settingsMenu}}
-	<div class="project-view-content">
-		<div class="prj-settings-content">
-			<h3>Seleción método de estimación</h3>
-			{{#each settings}}
-				<div class="project-settings-box">
-					<div>
-						<label class="switch">
-							<input type="checkbox" checked="{{value}}" disabled="disabled" id="settings-checkbox">
-							<div class="switch-slider round"></div>
-						</label>
-					</div>
-					<div class="project-setting-information">
-						<p>{{title}}</p>
-						<span>{{subject}}</span>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			{{/each}}
-			{{#if displayWarning}}
+	<div class="prj-settings-content">
+		<h3>Seleción método de estimación</h3>
+		{{#each settings}}
+			<div class="project-settings-box">
 				<div>
-					<i class="fa fa-info-circle"></i>
-					<span>Estos cambios solo se veran reflejados en los proyectos o iteraciones creados a partir de este momento</span>
+					<label class="switch">
+						<input type="checkbox" checked="{{value}}" disabled="disabled" id="settings-checkbox">
+						<div class="switch-slider round"></div>
+					</label>
 				</div>
-			{{/if}}
-		</div>
+				<div class="project-setting-information">
+					<p>{{title}}</p>
+					<span>{{subject}}</span>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		{{/each}}
+		{{#if displayWarning}}
+			<div>
+				<i class="fa fa-info-circle"></i>
+				<span>Estos cambios solo se veran reflejados en los proyectos o iteraciones creados a partir de este momento</span>
+			</div>
+		{{/if}}
 	</div>
 </template>
 <!-- ###################################### -->

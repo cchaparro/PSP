@@ -10,7 +10,14 @@
 	{{> main_menuBar}}
 	{{> main_userBar}}
 	<div class="master-content">
-		{{> Template.dynamic template=main}}
+		{{#if menu}}
+			{{> Template.dynamic template=menu}}
+			<div class="content-menu-box">
+				{{> Template.dynamic template=main}}
+			</div>
+		{{else}}
+			{{> Template.dynamic template=main}}
+		{{/if}}
 	</div>
 	<div class="status-box">
 		{{#unless $.Meteor.status.connected}}

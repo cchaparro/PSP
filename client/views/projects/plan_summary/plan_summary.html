@@ -1,63 +1,60 @@
 <!-- ###################################### -->
 <template name="planSummaryTemplate">
-	{{> projectViewMenu}}
-	<div class="project-view-content">
-		{{#with userData }}
-			<div class="plan-summary-content">
-				<h3>Tiempo en Fase</h3>
-				<table class="table table-summary">
-					<thead>
-						<tr>
-							<th>Titulo</th>
-							<th class="hidden-xs">Plan</th>
-							<th>Actual</th>
-							<th class="hidden-xs">A la fecha</th>
-							<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{> summaryTimeRow}}
-					</tbody>
-				</table>
-			</div>
-			<br>
-			<div class="plan-summary-content">
-				<h3>Defectos Inyectados</h3>
-				<table class="table table-summary">
-					<thead>
-						<tr>
-							<th>Titulo</th>
-							<th class="hidden-xs"></th>
-							<th>Actual</th>
-							<th class="hidden-xs">A la fecha</th>
-							<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
-						</tr>
-					</thead>
-					<tbody>
-						 {{> summaryInjectedRow}}
-					</tbody>
-				</table>
-			</div>
-			<br>
-			<div class="plan-summary-content">
-				<h3>Defectos Removidos</h3>
-				<table class="table table-summary">
-					<thead>
-						<tr>
-							<th>Titulo</th>
-							<th class="hidden-xs"></th>
-							<th>Actual</th>
-							<th class="hidden-xs">A la fecha</th>
-							<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{> summaryRemovedRow}}
-					</tbody>
-				</table>
-			</div>
-		{{/with}}
-	</div>
+	{{#with userData }}
+		<div class="plan-summary-content">
+			<h3>Tiempo en Fase</h3>
+			<table class="table table-summary">
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th class="hidden-xs">Plan</th>
+						<th>Actual</th>
+						<th class="hidden-xs">A la fecha</th>
+						<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{> summaryTimeRow}}
+				</tbody>
+			</table>
+		</div>
+		<br>
+		<div class="plan-summary-content">
+			<h3>Defectos Inyectados</h3>
+			<table class="table table-summary">
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th class="hidden-xs"></th>
+						<th>Actual</th>
+						<th class="hidden-xs">A la fecha</th>
+						<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
+					</tr>
+				</thead>
+				<tbody>
+					 {{> summaryInjectedRow}}
+				</tbody>
+			</table>
+		</div>
+		<br>
+		<div class="plan-summary-content">
+			<h3>Defectos Removidos</h3>
+			<table class="table table-summary">
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th class="hidden-xs"></th>
+						<th>Actual</th>
+						<th class="hidden-xs">A la fecha</th>
+						<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{> summaryRemovedRow}}
+				</tbody>
+			</table>
+		</div>
+	{{/with}}
 </template>
 <!-- ###################################### -->
 <template name="summaryTimeRow">

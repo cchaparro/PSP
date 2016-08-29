@@ -1,46 +1,43 @@
 <!-- ###################################### -->
 <template name="projectInformationTemplate">
-	{{> projectViewMenu}}
-	<div class="project-view-content">
-		{{#with projectInfo }}
-			<div class="prj-information-content">
-				<h3>Informacion General</h3>
-				<div class="{{#if completed}} project-completed {{else}} project-active {{/if}}">
-					{{#if completed}}
-						<span>Terminado</span>
-					{{else}}
-						<span>Activo</span>
-					{{/if}}
-					<i class="fa fa-circle"></i>
-				</div>
-				<span class="prj-info-text">Titulo del proyecto</span>
-				{{{contentEditable class='prj-info-title' value=title}}}
-				<span class="prj-info-text">Descripción del proyecto</span>
-				{{{contentEditable class='prj-info-description' value=description}}}
+	{{#with projectInfo}}
+		<div class="prj-information-content">
+			<h3>Informacion General</h3>
+			<div class="{{#if completed}} project-completed {{else}} project-active {{/if}}">
+				{{#if completed}}
+					<span>Terminado</span>
+				{{else}}
+					<span>Activo</span>
+				{{/if}}
+				<i class="fa fa-circle"></i>
 			</div>
-			<br>
+			<span class="prj-info-text">Titulo del proyecto</span>
+			{{{contentEditable class='prj-info-title' value=title}}}
+			<span class="prj-info-text">Descripción del proyecto</span>
+			{{{contentEditable class='prj-info-description' value=description}}}
+		</div>
+		<br>
 
-			<div class="prj-information-values-box">
+		<div class="prj-information-values-box">
+			<div>
+				<h3>Tiempo registrado</h3>
+				{{> projectInformationChart}}
+			</div>
+			<div class="prj-registered-values">
+				<h3>Datos registrados</h3>
 				<div>
-					<h3>Tiempo registrado</h3>
-					{{> projectInformationChart}}
+					<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
+					<span>Tiempo total</span>
+					<p>{{projectTotalTime}}</p>
 				</div>
-				<div class="prj-registered-values">
-					<h3>Datos registrados</h3>
-					<div>
-						<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
-						<span>Tiempo total</span>
-						<p>{{projectTotalTime}}</p>
-					</div>
-					<div>
-						<svg viewBox="0 0 100 100"><use xlink:href="/images/Calendar.svg#calendarLogo"></use></svg>
-						<span>Fecha creación</span>
-						<p>{{dateDisplay createdAt}}</p>
-					</div>
+				<div>
+					<svg viewBox="0 0 100 100"><use xlink:href="/images/Calendar.svg#calendarLogo"></use></svg>
+					<span>Fecha creación</span>
+					<p>{{dateDisplay createdAt}}</p>
 				</div>
 			</div>
-		{{/with}}
-	</div>
+		</div>
+	{{/with}}
 </template>
 <!-- ###################################### -->
 <template name="projectInformationChart">
