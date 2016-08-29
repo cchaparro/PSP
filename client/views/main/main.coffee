@@ -17,7 +17,7 @@ Template.masterLayout.events
 		if checkItem($this, ".main-user")
 			unless checkItem($this, ".notification-svg") or checkItem($this, ".notification-box")
 				Session.set("display-notification-box", false)
-			unless checkItem($this, ".avatar-box") or checkItem($this, ".user-dropdown")
+			unless checkItem($this, ".avatar-box")
 				Session.set("display-user-box", false)
 
 ##########################################

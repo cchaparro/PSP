@@ -3,6 +3,7 @@
 	[
 		{
 			"file_exclude_patterns": [".gitignore","psp.sublime-project","README.md"],
+			"folder_exclude_patterns":[".meteor"],
 			"path": "."
 		}
 	],
