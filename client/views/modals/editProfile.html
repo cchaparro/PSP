@@ -13,16 +13,15 @@
 </template>
 <!-- ###################################### -->
 <template name="profileView">
-	<div class="modal-body create-defect-modal">
+	<div class="modal-body create-defect-modal profile-slide">
 		{{#with userData}}
-			{{#if isGeneralView}}
+			<div class="profile-active">
 				<div class="text-center">
 					<div class="profile-avatar general-view-avatar" style="background-image: url('{{getUserAvatarUrl}}');" id="profilePicUploader">
 						<div class="centered-outer">
 							<i class="centered-inner fa fa-camera"></i>
 						</div>
 					</div>
-					<!-- <input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/> -->
 				</div>
 				<div class="profile-user-information">
 					<h4>Usuario</h4>
@@ -40,23 +39,22 @@
 				<div class="input-box">
 					<input type="text" id="lname" placeholder="Apellido aqui" value="{{profile.lname}}">
 				</div><br>
-			{{else}}
+				<span class="pull-right primary-button save-profile-settings"> Guardar Cambios</span>
+			</div>
+
+			<div class="profile-hidden">
 				<div class="text-center">
 					<div class="profile-avatar" style="background-image: url('{{getUserAvatarUrl}}');" id="profilePicUploader"></div>
 					<div class="profile-upload-box">
 						<svg viewBox="0 0 100 100"><use xlink:href="/images/Upload.svg#uploadLogo"></use></svg>
 						<span>Haz click aquí o arrastra una imagen para añadirla</span>
 					</div>
-					<!-- <input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/> -->
+					<input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/>
 				</div>
 				<span class="pull-right primary-button profile-default-image"> Elegir imagen predeterminada</span>
 				<span class="pull-right primary-button back-profile"> Regresar al perfil</span>
-			{{/if}}
+			</div>
 		{{/with}}
-	</div>
-	<div class="modal-footer">
-		<span class="pull-right primary-button save-profile-settings {{#unless isGeneralView}} hide {{/unless}}"> Guardar Cambios</span>
-		<!-- <span class="pull-left default-button" data-dismiss="modal">Cerrar</span> -->
 	</div>
 </template>
 <!-- ###################################### -->

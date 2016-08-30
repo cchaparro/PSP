@@ -2,7 +2,6 @@
 Template.profileView.onCreated () ->
 	Meteor.subscribe "UserMenu"
 	@currentUpload = new ReactiveVar(false)
-	@generalView = new ReactiveVar(true)
 
 
 Template.profileView.helpers
@@ -12,16 +11,15 @@ Template.profileView.helpers
 	currentUpload: () ->
 		return Template.instance().currentUpload.get()
 
-	isGeneralView: () ->
-		return Template.instance().generalView.get()
-
 
 Template.profileView.events
 	'click .back-profile': (e,t) ->
-		t.generalView.set(true)
+		activeTab = $(e.target).closest(".profile-slide")
+		activeTab.removeClass("activate")
 
 	'click .general-view-avatar': (e,t) ->
-		t.generalView.set(false)
+		activeTab = $(e.target).closest(".profile-slide")
+		activeTab.addClass("activate")
 
 	'click .profile-upload-box': (e,t) ->
 		$fileUploader = t.$(".image-upload")
