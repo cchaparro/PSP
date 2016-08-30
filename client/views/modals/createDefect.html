@@ -20,7 +20,7 @@
 	<div class="modal-body create-defect-modal">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div class="{{#if $and errorState ($eq defectData.typeDefect 'Elegir tipo')}} final-dropdown-error-box {{else}} final-dropdown-box {{/if}}">
+				<div class="{{#if $and errorState ($eq defectData.typeDefect 'Elegir tipo')}} dropdown-error-box {{else}} dropdown-box {{/if}}">
 					<span>Tipo de defecto *</span>
 					<button type="button" data-toggle="dropdown">
 						{{defectData.typeDefect}}
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div class="final-input-box">
+				<div class="input-box">
 					<span>Numero veces registrado</span>
 					<input type="number" min="1" value="{{defectData.fixCount}}" class="defect-input-field" data-field="fixCount" placeholder="Conteo de Correcciones">
 				</div>
@@ -43,7 +43,7 @@
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div class="{{#if $and errorState ($eq defectData.injected 'Elegir etapa')}} final-dropdown-error-box {{else}} final-dropdown-box {{/if}}">
+				<div class="{{#if $and errorState ($eq defectData.injected 'Elegir etapa')}} dropdown-error-box {{else}} dropdown-box {{/if}}">
 					<span>Etapa inyectado *</span>
 					<button type="button" data-toggle="dropdown">
 						{{defectData.injected}}
@@ -58,7 +58,7 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div class="{{#if $and errorState ($eq defectData.removed 'Elegir etapa')}} final-dropdown-error-box {{else}} final-dropdown-box {{/if}}">
+				<div class="{{#if $and errorState ($eq defectData.removed 'Elegir etapa')}} dropdown-error-box {{else}} dropdown-box {{/if}}">
 					<span>Etapa removido *</span>
 					<button type="button" data-toggle="dropdown">
 						{{defectData.removed}}
@@ -82,7 +82,7 @@
 				<div class="btn defect-create-son">Crear Defecto sobre Este</div>
 			</div>
 		</div>
-		<div class="{{#if $and errorState ($not descriptionText)}} final-textarea-error-title-box {{else}} final-textarea-box {{/if}}">
+		<div class="{{#if $and errorState ($not descriptionText)}} textarea-error-title-box {{else}} textarea-box {{/if}}">
 			<span>Descripcion del defecto *</span>
 			<textarea type="text" class="defect-modal-description defect-input-field" data-field="description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
 			<i class="fa fa-times"></i>

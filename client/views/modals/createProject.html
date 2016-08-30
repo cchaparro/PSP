@@ -17,12 +17,12 @@
 <template name="createProject">
 	<div class="modal-body">
 		<div class="create-project-row clearfix">
-			<div class="{{#if errorStateTitle}} final-input-error-title-box {{else}} final-input-box {{/if}}">
+			<div class="{{#if errorStateTitle}} input-error-title-box {{else}} input-box {{/if}}">
 				<span>Titulo del proyecto *</span>
 				<input class="pry-new-title" type="text" placeholder="Ingresar titulo">
 				<i class="fa fa-times"></i>
 			</div>
-			<div class="final-dropdown-box">
+			<div class="dropdown-box">
 				<span>Titulo del proyecto *</span>
 				<button type="button" data-toggle="dropdown">
 					{{currentLevel}}<i class="fa fa-chevron-down"></i>
@@ -34,7 +34,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="{{#if errorStateDescription}} final-textarea-error-title-box {{else}} final-textarea-box {{/if}}">
+		<div class="{{#if errorStateDescription}} textarea-error-title-box {{else}} textarea-box {{/if}}">
 			<span>Descripcion del proyecto *</span>
 			<textarea class="pry-new-description" placeholder="Ingresar descripcion del nuevo proyecto ..."></textarea>
 			<i class="fa fa-times"></i>

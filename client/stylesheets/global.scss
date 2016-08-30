@@ -58,7 +58,7 @@
 	}
 }
 
-.final-input-box {
+.input-box {
 	width: 100%;
 	position: relative;
 
@@ -93,8 +93,8 @@
 	}
 }
 
-.final-input-error-box {
-	@extend .final-input-box;
+.input-error-box {
+	@extend .input-box;
 
 	input {
 		border: 1px solid $danger;
@@ -105,8 +105,8 @@
 	}
 }
 
-.final-input-error-title-box {
-	@extend .final-input-box;
+.input-error-title-box {
+	@extend .input-box;
 
 	input {
 		border: 1px solid $danger;
@@ -120,7 +120,7 @@
 }
 
 
-.final-dropdown-box {
+.dropdown-box {
 	width: 100%;
 	position: relative;
 
@@ -181,15 +181,15 @@
 	}
 }
 
-.final-dropdown-error-box {
-	@extend .final-dropdown-box;
+.dropdown-error-box {
+	@extend .dropdown-box;
 
 	button {
 		border: 1px solid $danger;
 	}
 }
 
-.final-textarea-box {
+.textarea-box {
 	width: 100%;
 	position: relative;
 
@@ -226,8 +226,8 @@
 	}
 }
 
-.final-textarea-error-box {
-	@extend .final-textarea-box;
+.textarea-error-box {
+	@extend .textarea-box;
 
 	input {
 		border: 1px solid $danger;
@@ -238,8 +238,8 @@
 	}
 }
 
-.final-textarea-error-title-box {
-	@extend .final-textarea-box;
+.textarea-error-title-box {
+	@extend .textarea-box;
 
 	textarea {
 		border: 1px solid $danger;
@@ -250,7 +250,6 @@
 		opacity: 1;
 	}
 }
-
 
 //----------------- Box with Menu ----------------
 .content-menu-box {

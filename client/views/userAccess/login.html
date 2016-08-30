@@ -17,11 +17,11 @@
 
 		<div class="button-row combined-form">
 			<div>
-				<div class="{{#if $or ($eq errorState 'user') ($eq errorState 'email')}} final-input-error-box {{else}} final-input-box {{/if}}">
+				<div class="{{#if $or ($eq errorState 'user') ($eq errorState 'email')}} input-error-box {{else}} input-box {{/if}}">
 					<input type="email" placeholder='Correo Electronico' id="email" value="">
 					<i class="fa fa-times"></i>
 				</div>
-				<div class="{{#if $eq errorState 'password'}} final-input-error-box {{else}} final-input-box {{/if}}">
+				<div class="{{#if $eq errorState 'password'}} input-error-box {{else}} input-box {{/if}}">
 					<input type="password" placeholder='Contraseña' id="password">
 					<i class="fa fa-times"></i>
 				</div>

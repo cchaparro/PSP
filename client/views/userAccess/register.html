@@ -5,17 +5,17 @@
 
 		<div class="button-row combined-form">
 			<div class="text-user-access">
-				<div class="final-input-box">
+				<div class="input-box">
 					<input id="fname" type="text" placeholder='Nombre'>
 				</div>
-				<div class="final-input-box">
+				<div class="input-box">
 					<input id="lname" type="text" placeholder='Apellido'>
 				</div>
-				<div class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} final-input-error-box {{else}} final-input-box {{/if}}">
+				<div class="{{#if $or ($eq errorState 'email_exist') ($eq errorState 'email')}} input-error-box {{else}} input-box {{/if}}">
 					<input type="email" id="email" placeholder='Correo Electronico'>
 					<i class="fa fa-times"></i>
 				</div>
-				<div class="{{#if $eq errorState 'password'}} final-input-error-box {{else}} final-input-box {{/if}}">
+				<div class="{{#if $eq errorState 'password'}} input-error-box {{else}} input-box {{/if}}">
 					<input id="password" type="password" placeholder='Contraseña'>
 					<i class="fa fa-times"></i>
 				</div>

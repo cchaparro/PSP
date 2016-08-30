@@ -37,7 +37,7 @@ Template.summaryTimeRow.helpers
 
 
 Template.summaryTimeRow.events
-	'blur .final-input-box input': (e,t) ->
+	'blur .input-box input': (e,t) ->
 		value = $(e.target).val()
 
 		data = {
