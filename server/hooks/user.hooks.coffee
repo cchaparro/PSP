@@ -16,6 +16,7 @@ Meteor.users.after.insert (userId, doc) ->
 	}
 
 	if doc.services?.facebook
+		data.profile["email"] = doc.services?.facebook?.email
 		data.profile["fname"] = doc.services?.facebook?.first_name
 		data.profile["lname"] = doc.services?.facebook?.last_name
 		data.profile["profileImageUrl"] = "http://graph.facebook.com/"+doc.services?.facebook?.id+"/picture/?type=large"
@@ -27,6 +28,7 @@ Meteor.users.after.insert (userId, doc) ->
 		}
 
 	if doc.services?.google
+		data.profile["email"] = doc.services?.google?.email
 		data.profile["fname"] = doc.services?.google?.given_name
 		data.profile["lname"] = doc.services?.google?.family_name
 		data.profile["profileImageUrl"] = doc.services?.google?.picture

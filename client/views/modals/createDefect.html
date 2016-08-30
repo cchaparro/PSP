@@ -1,7 +1,7 @@
 <!-- ###################################### -->
 <template name="createDefectModal">
 	<div id="createModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog general-modal">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3>{{displayTitle}}</h3>
@@ -91,11 +91,11 @@
 	</div>
 	<div class="modal-footer">
 		{{#if ifLoadsData}}
-			<span class="pry-modal-create pull-right">Crear Defecto</span>
+			<span class="pry-modal-create primary-button pull-right">Crear Defecto</span>
 		{{else}}
-			<span class="psp-btn pry-modal-create pull-right">Guardar Cambios</span>
+			<span class="psp-btn pry-modal-create primary-button pull-right">Guardar Cambios</span>
 		{{/if}}
-		<span data-dismiss="modal">Cerrar</span>
+		<span class="pull-left default-button" data-dismiss="modal">Cerrar</span>
 	</div>
 </template>
 <!-- ###################################### -->

@@ -30,6 +30,7 @@
 	border: none;
 	line-height: 42.5px;
 	cursor: pointer;
+	text-align: center;
 	border: 1px solid $blue;
 	outline: none!important;
 	@include border-radius($default-border-radius);
@@ -321,6 +322,7 @@
 	bottom: 15px;
 	right: 15px;
 	width: 290px;
+	//z-index: 1051;
 
 	.status-message,
 	.status-time-message {
