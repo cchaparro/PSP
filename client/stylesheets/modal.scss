@@ -1,63 +1,71 @@
 @import '_variables.scss';
 
 //---------------- Modals ----------------
-.modal-dialog {
-	width: 500px;
+.general-modal {
+	width: $modal-width;
 
 	.modal-content {
 		padding: 30px;
-		border-radius: 0;
-	}
-}
+		@include border-radius($default-border-radius);
+		box-shadow: $popup-box-shadow;
+		border: none;
 
-.modal-header {
-	padding: 0;
-	border-bottom: 0;
+		.modal-header {
+			padding: 0;
+			border-bottom: 0;
 
-	span {
-		cursor: pointer;
-		font-size: 14pt;
-		display: inline;
-		position: absolute;
-		top: 35px;
-		right: 30px;
-	}
+			span {
+				cursor: pointer;
+				font-size: 14pt;
+				display: inline;
+				position: absolute;
+				top: 35px;
+				right: 30px;
 
-	p {
-		padding-top: 3px;
-		padding-right: 30px;
-		color: $text;
-	}
+				i {
+					color: $text;
 
-	h3 {
-		margin: 0;
-		font-size: 15pt;
-		color: $text-dark;
-	}
-}
+					&:hover {
+						color: $text-dark;
+					}
+				}
+			}
 
-.modal-body {
-	padding: 0;
-	padding-top: 20px;
-}
+			p {
+				padding-top: 10px;
+				padding-right: 30px;
+				font-weight: 300;
+				color: $text;
+			}
 
-.modal-footer {
-	background-color: $blue;
-	margin: 0 -30px -30px -30px;
-	padding: 0;
-
-	span {
-		float: left;
-		padding: 20px 30px;
-		color: $blue-light;
-		font-size: 11pt;
-		cursor: pointer;
-
-		&:hover {
-			color: $white;
+			h3 {
+				margin: 0;
+				padding-top: 5px;
+				font-size: 15pt;
+				color: $text-dark;
+			}
 		}
+
+		.modal-body {
+			padding: 0;
+			padding-top: 20px;
+		}
+
+		.modal-footer {
+			//background-color: $blue;
+			margin: -20px -15px;
+			border: none;
+			//padding: 0;
+		}
+
 	}
 }
+
+.profile-modal {
+	@extend .general-modal;
+	width: $profile-modal-width;
+}
+
 
 //------------- Create Project Modal -------------
 .create-project-row {
@@ -73,6 +81,12 @@
 		&:last-child {
 			width: 40%;
 			float: right;
+		}
+	}
+
+	.input-error-box {
+		i {
+			padding-right: 10px;
 		}
 	}
 }

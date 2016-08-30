@@ -1,11 +1,9 @@
 <!-- ###################################### -->
 <template name="editProfileModal">
 	<div id="createModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog profile-modal">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3>Ajustes de Cuenta</h3>
-					<p class="defect-header-description">Aqui puedes ajustar tus datos personales como foto de perfil, nombre y apellido</p>
 					<span data-dismiss="modal"><i class="fa fa-times close"></i></span>
 				</div>
 				{{> profileView}}
@@ -25,12 +23,12 @@
 				</div>
 				<input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/>
 			</div><br>
-			{{#with currentUpload }}
+			<!--{{#with currentUpload }}
 				<span class="profile-progress-message">Subiendo Imagen...</span>
 			{{else}}
 				<button class="btn profile-default-image">Volver a imagen por defecto</button>
 				<span class="profile-edit-message">Puedes elegir una nueva foto de perfil de formato (PNG o JPG).</span>
-			{{/with}}
+			{{/with}}-->
 			<div class="input-box">
 				<input type="text" id="fname" placeholder="Nombre aqui" value="{{profile.fname}}">
 			</div>
@@ -41,8 +39,8 @@
 		{{/with}}
 	</div>
 	<div class="modal-footer">
-		<span class="pull-right save-profile-settings"> Guardar Cambios</span>
-		<span data-dismiss="modal">Cerrar</span>
+		<span class="pull-right primary-button save-profile-settings"> Guardar Cambios</span>
+		<span class="pull-left default-button" data-dismiss="modal">Cerrar</span>
 	</div>
 </template>
 <!-- ###################################### -->

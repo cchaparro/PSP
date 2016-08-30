@@ -47,7 +47,7 @@ Template.createProject.events
 		if (title== '') or (description== '')
 			if (title== '')
 				t.errorStateTitle.set(1)
-			if (description== '')
+			if (description == '')
 				t.errorStateDescription.set(1)
 		else
 			Meteor.call "create_project", data, (error)->

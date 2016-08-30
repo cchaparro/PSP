@@ -16,6 +16,57 @@
 	color: $white;
 }
 
+
+
+
+.primary-button {
+	height: 45px;
+	display: inline-block;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: $white;
+	color: $blue;
+	margin-top: 10px;
+	border: none;
+	line-height: 42.5px;
+	cursor: pointer;
+	border: 1px solid $blue;
+	outline: none!important;
+	@include border-radius($default-border-radius);
+
+	&:hover {
+		background-color: $blue;
+		border: 1px solid $blue;
+		color: $white;
+	}
+
+	&:focus {
+		background-color: $blue;
+		border: 1px solid $blue;
+		color: $white;
+	}
+}
+
+.default-button {
+	@extend .primary-button;
+	color: $text-dark;
+	border: 1px solid $text;
+
+	&:hover {
+		background-color: $text;
+		border: 1px solid $text;
+		color: $white;
+	}
+
+	&:focus {
+		background-color: $text;
+		border: 1px solid $text;
+		color: $white;
+	}
+}
+
+
+
 //------------------- Main Menu ------------------
 
 // This is used to center what is going to be
@@ -75,6 +126,7 @@
 		padding: 12px 28px 12px 12px;
 		margin-bottom: 10px;
 		color: $text-dark;
+		font-size: 11pt;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text, 200);
 		border: 1px solid $border;
@@ -138,6 +190,8 @@
 		padding: 12px 33px 12px 12px;
 		margin-bottom: 10px;
 		color: $text-dark;
+		font-size: 11pt;
+		text-align: left;
 		background-color: $white;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text, 200);
@@ -145,22 +199,15 @@
 
 		&:focus {
 			border: 1px solid $blue;
-
-			i {
-				background-color: $blue;
-			}
 		}
 
 		i {
 			position: absolute;
 			top: 3.5px;
 			right: 3.5px;
-			background-color: $border;
-			color: $white;
+			color: $text-dark;
 			font-size: 10pt;
 			padding: 12px 6px;
-			border-radius: $default-border-radius;
-
 		}
 	}
 
@@ -168,10 +215,10 @@
 		width: 100%;
 		margin-top: -5px;
 		border: 1px solid $border;
-		padding: 0;
 
 		li {
 			padding: 5px 5px 5px 10px;
+			color: $text-dark;
 			cursor: pointer;
 
 			&:hover {
@@ -208,6 +255,7 @@
 		padding: 12px 28px 12px 12px;
 		margin-bottom: 10px;
 		color: $text-dark;
+		font-size: 11pt;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text, 200);
 		border: 1px solid $border;
@@ -229,7 +277,7 @@
 .textarea-error-box {
 	@extend .textarea-box;
 
-	input {
+	textarea {
 		border: 1px solid $danger;
 	}
 
