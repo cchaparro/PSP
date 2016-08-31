@@ -28,6 +28,12 @@ sys.getPageName = (title) ->
 
 ##########################################
 ##############- Time Display-#############
+IntegerTwoDigits =(number) ->
+	if number < 10
+		return "0#{number}"
+	else
+		return number
+
 sys.displayTime = (time) ->
 	horas = Math.floor(time / 3600000)
 	time = time % 3600000
@@ -35,6 +41,14 @@ sys.displayTime = (time) ->
 	time = time % 60000
 	segundos = Math.floor(time / 1000)
 	return horas + " hrs, " + minutos + " mins, " + segundos + " segs"
+
+sys.displayShortTime = (time) ->
+	horas = Math.floor(time / 3600000)
+	time = time % 3600000
+	minutos = Math.floor(time / 60000)
+	time = time % 60000
+	segundos = Math.floor(time / 1000)
+	return IntegerTwoDigits(horas) + " : " + IntegerTwoDigits(minutos) + " : " + IntegerTwoDigits(segundos)
 
 sys.timeToHours = (time) ->
 	return Math.floor(time / 3600000)

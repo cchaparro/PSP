@@ -113,7 +113,7 @@ Template.createDefect.helpers
 			Defect = db.defects.findOne({_id: DefectId, "defectOwner": Meteor.userId()})
 			time = Defect.time
 
-		return sys.displayTime(time)
+		return sys.displayShortTime(time)
 
 
 Template.createDefect.events
