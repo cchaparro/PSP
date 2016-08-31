@@ -18,6 +18,18 @@
 <!-- ###################################### -->
 <template name="createDefect">
 	<div class="modal-body create-defect-modal">
+
+		<div class="row row-defect-buttons">
+			<div class="col-xs-12 col-sm-6 col-md-6 defect-time">
+				<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
+				<i class="fa fa-pause time-btn {{#unless timeStatus}} time-status-pause {{/unless}}"></i>
+				<span class="defect-log-time">{{projectTotalTime}}</span>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="btn primary-button defect-create-son">Crear Defecto hijo</div>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-6">
 				<div class="{{#if $and errorState ($eq defectData.typeDefect 'Elegir tipo')}} dropdown-error-box {{else}} dropdown-box {{/if}}">
@@ -72,22 +84,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="row row-defect-buttons">
-			<div class="col-xs-12 col-sm-6 col-md-6 defect-time">
-				<i class="fa time-btn fa-play {{#if timeStatus}} time-btn-play {{/if}}"></i>
-				<i class="fa fa-pause time-btn {{#unless timeStatus}} time-status-pause {{/unless}}"></i>
-				<span class="defect-log-time">{{projectTotalTime}}</span>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div class="btn defect-create-son">Crear Defecto sobre Este</div>
-			</div>
-		</div>
-		<div class="{{#if $and errorState ($not descriptionText)}} textarea-error-title-box {{else}} textarea-box {{/if}}">
-			<span>Descripcion del defecto *</span>
+
+		<div class="{{#if $and errorState ($not descriptionText)}} textarea-error-box {{else}} textarea-box {{/if}}">
 			<textarea type="text" class="defect-modal-description defect-input-field" data-field="description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
 			<i class="fa fa-times"></i>
-		</div>
-		<br>
+		</div><br>
+
 	</div>
 	<div class="modal-footer">
 		{{#if ifLoadsData}}

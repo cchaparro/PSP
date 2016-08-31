@@ -103,16 +103,22 @@
 //-------------- Create Defect Modal -------------
 .row-defect-buttons {
 	padding: 5px 0;
+
+	.time-btn {
+		padding: 17px 17px 15px 17px;
+		@include border-radius($default-border-radius * 2);
+	}
+
+	.defect-log-time {
+		color: $text;
+		line-height: 12px;
+	}
 }
 
 .defect-create-son {
 	width: 100%;
-	background-color: $text;
-	color: $white;
-
-	&:hover {
-		color: $white;
-	}
+	padding-top: 0;
+	margin-top: 0;
 }
 
 .defect-time {
@@ -134,11 +140,26 @@
 
 .defect-header-description {
 	cursor: default;
+	margin-bottom: -10px;
 
 	a {
 		text-decoration: underline;
 		cursor: pointer;
 		color: $blue;
+	}
+}
+
+.create-defect-modal {
+	.row {
+		div {
+			&:first-child {
+				padding-right: 3px;
+			}
+
+			&:last-child {
+				padding-left: 3px;
+			}
+		}
 	}
 }
 
