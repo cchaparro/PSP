@@ -1,7 +1,7 @@
 <!-- ###################################### -->
 <template name="editTimeModal">
 	<div id="createModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog general-modal">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3>{{modalTitle}}</h3>
@@ -57,10 +57,10 @@
 	</div>
 	<div class="modal-footer">
 		{{#if selectedOption}}
-			<span class="pull-right finish-edit-time">Terminar</span>
-			<span data-dismiss="modal">Cancelar</span>
+			<span class="pull-right primary-button finish-edit-time">Terminar</span>
+			<span class="pull-left default-button" data-dismiss="modal">Cancelar</span>
 		{{else}}
-			<span class="edit-time-cancel" data-dismiss="modal">Cancelar</span>
+			<span class="pull-left default-button edit-time-cancel" data-dismiss="modal">Cancelar</span>
 		{{/if}}
 	</div>
 </template>

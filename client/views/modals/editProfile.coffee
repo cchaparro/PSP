@@ -11,6 +11,18 @@ Template.profileView.helpers
 	currentUpload: () ->
 		return Template.instance().currentUpload.get()
 
+	registeredService: () ->
+		if @profile?.service?
+			switch @profile?.service
+				when "email"
+					return "fa-envelope"
+				when "google"
+					return "fa-google"
+				when "facebook"
+					return "fa-facebook-official"
+		else
+			return ""
+
 
 Template.profileView.events
 	'click .back-profile': (e,t) ->

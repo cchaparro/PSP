@@ -46,6 +46,7 @@ Template.registerTemplate.events
 			password: password
 			profile:
 				email: email
+				service: "email"
 				fname: $('#fname').val()
 				lname: $('#lname').val()
 				profileImageUrl: null

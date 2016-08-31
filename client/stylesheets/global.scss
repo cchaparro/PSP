@@ -26,6 +26,7 @@
 	padding-right: 15px;
 	background-color: $white;
 	color: $blue;
+	font-size: 11.5pt;
 	margin-top: 10px;
 	border: none;
 	line-height: 42.5px;
@@ -130,7 +131,7 @@
 		font-size: 11pt;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text, 200);
-		border: 1px solid $border;
+		border: 1px solid $border-input;
 
 		&:focus {
 			border: 1px solid $blue;
@@ -196,7 +197,7 @@
 		background-color: $white;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text, 200);
-		border: 1px solid $border;
+		border: 1px solid $border-input;
 
 		&:focus {
 			border: 1px solid $blue;
@@ -259,7 +260,7 @@
 		font-size: 11pt;
 		@include border-radius($default-border-radius);
 		@include placeholder-color($text, 200);
-		border: 1px solid $border;
+		border: 1px solid $border-input;
 
 		&:focus {
 			border: 1px solid $blue;

@@ -25,14 +25,8 @@
 				</div>
 				<div class="profile-user-information">
 					<h4>Usuario</h4>
-					<span>{{profile.email}}</span>
+					<span><i class="fa {{registeredService}}"></i>{{profile.email}}</span>
 				</div>
-				<!--{{#with currentUpload }}
-					<span class="profile-progress-message">Subiendo Imagen...</span>
-				{{else}}
-					<button class="btn profile-default-image">Volver a imagen por defecto</button>
-					<span class="profile-edit-message">Puedes elegir una nueva foto de perfil de formato (PNG o JPG).</span>
-				{{/with}}-->
 				<div class="input-box">
 					<input type="text" id="fname" placeholder="Nombre aqui" value="{{profile.fname}}">
 				</div>
@@ -46,8 +40,12 @@
 				<div class="text-center">
 					<div class="profile-avatar" style="background-image: url('{{getUserAvatarUrl}}');" id="profilePicUploader"></div>
 					<div class="profile-upload-box">
-						<svg viewBox="0 0 100 100"><use xlink:href="/images/Upload.svg#uploadLogo"></use></svg>
+						{{#with currentUpload }}
+							<span class="profile-progress-message">Subiendo Imagen...</span>
+						{{else}}
+							<svg viewBox="0 0 100 100"><use xlink:href="/images/Upload.svg#uploadLogo"></use></svg>
 						<span>Haz click aquí o arrastra una imagen para añadirla</span>
+						{{/with}}
 					</div>
 					<input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/>
 				</div>
