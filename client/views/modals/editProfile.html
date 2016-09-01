@@ -39,13 +39,15 @@
 			<div class="profile-hidden">
 				<div class="text-center">
 					<div class="profile-avatar" style="background-image: url('{{getUserAvatarUrl}}');" id="profilePicUploader"></div>
-					<div class="profile-upload-box">
-						{{#with currentUpload }}
-							<span class="profile-progress-message">Subiendo Imagen...</span>
-						{{else}}
-							<svg viewBox="0 0 100 100"><use xlink:href="/images/Upload.svg#uploadLogo"></use></svg>
-						<span>Haz click aquí o arrastra una imagen para añadirla</span>
-						{{/with}}
+					<div class="primary-button profile-upload-box">
+						<div>
+							{{#with currentUpload }}
+								<span class="profile-progress-message">Subiendo Imagen...</span>
+							{{else}}
+								<svg viewBox="0 0 100 100"><use xlink:href="/images/Upload.svg#uploadLogo"></use></svg>
+								<span>Añadir una imagen</span>
+							{{/with}}
+						</div>
 					</div>
 					<input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/>
 				</div>
