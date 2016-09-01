@@ -203,6 +203,6 @@ sys.selectColor = (last_color) ->
 
 # This global variable is made to active the flashTime status
 # message when a project is taking a time recorder
-sys.runningTimeProject = new ReactiveVar(false)
+# sys.runningTimeProject = new ReactiveVar(false)
 
 ##########################################
