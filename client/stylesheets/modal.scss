@@ -167,30 +167,11 @@
 }
 
 //--------------- Edit Time Modal ----------------
-.edit-time-cancel {
-	width: 100%;
-	text-align: left;
-}
-
 .edit-time-label {
 	display: block;
-	color: $text-dark;
-	font-weight: 500;
-	padding-bottom: 5px;
-}
-
-.add-time-selected {
-	background-color: rgba($success, 0.3)!important;
-	i, span {
-		color: $success-dark;
-	}
-}
-
-.delete-time-selected {
-	background-color: rgba($danger, 0.3)!important;
-	i, span {
-		color: $danger;
-	}
+		color: $text;
+		font-weight: 400;
+		padding-bottom: 5px;
 }
 
 .edit-time-options {
@@ -198,28 +179,25 @@
 
 	div {
 		width: 48%;
-		height: 90px;
-		display: inline-block;
-		@include border-radius($default-border-radius);
-		background-color: $background;
-		cursor: pointer;
+		height: 45px;
+		line-height: 42px;
 		color: $text;
+		display: inline-block;
+		border: 1px solid $popup-bg;
+		@include border-radius($default-border-radius);
+		cursor: pointer;
 		text-align: center;
 
 		i {
-			display: block;
-			font-size: 30pt;
-			padding: 25px 0 25px 25px;
-			float: left;
+			display: inline-block;
+			font-size: 14pt;
 			text-align: center;
 		}
 
 		span {
-			display: block;
-			font-size: 13pt;
-			text-align: center;
-			padding: 33px 15px 33px 20px;
-			float: left;
+			display: inline-block;
+			font-size: 12pt;
+			font-weight: 300;
 		}
 
 		&:last-child {
@@ -227,28 +205,40 @@
 		}
 
 		&:hover {
-			background-color: $popup-bg;
+			span, i {
+				color: $text-dark;
+			}
+		}
+	}
+
+	.time-selected {
+		border: 1px solid $blue;
+		i, span {
+			color: $blue;
+		}
+
+		&:hover {
+			span, i {
+				color: $blue;
+			}
 		}
 	}
 }
 
 .time-selector-box {
 	div {
-		width: 30%;
+		width: 32.7%;
 		display: inline-block;
 		text-align: center;
 		margin-bottom: 30px;
-		padding-left: 15px;
 		position: relative;
 
 		div {
-			position: absolute;
-			left: 18px;
-			top: 4px;
 			background-color: $background;
 			@include border-radius($default-border-radius);
-			padding-left: 0;
-			width: 18px;
+			padding: 0;
+			width: 20px;
+			float: left;
 			text-align: center;
 
 			i {
@@ -256,14 +246,18 @@
 				font-size: 8pt;
 				cursor: pointer;
 				display: block;
-				height: 16px;
+				height: 20px;
 
 				&:first-child {
 					padding-top: 2px;
 				}
 
 				&:last-child {
-					padding-top: 4px;
+					padding-top: 8px;
+				}
+
+				&:hover {
+					color: $white;
 				}
 			}
 		}
@@ -275,11 +269,10 @@
 		}
 
 		input {
-			width: 100%;
+			width: calc(100% - 30px);
 			height: 40px;
 			padding: 5px 10px;
-			padding-left: 22px;
-			display: block;
+			display: inline-block;
 			outline: none;
 			border: 1px solid $border;
 			color: $text;

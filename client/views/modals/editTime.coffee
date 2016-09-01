@@ -63,7 +63,7 @@ Template.editTime.events
 			option = $(e.target).closest(".time-option").data('value')
 			t.selectedOption.set(option)
 
-	'click .fa-chevron-up': (e,t) ->
+	'click .fa-caret-up': (e,t) ->
 		value = $(e.target).data('value')
 		data = timeData.get()
 
@@ -86,7 +86,7 @@ Template.editTime.events
 					newValue = parseInt(current) + 1
 					$(".edit-time-seconds").val(newValue)
 
-	'click .fa-chevron-down': (e,t) ->
+	'click .fa-caret-down': (e,t) ->
 		value = $(e.target).data('value')
 		switch value
 			when "hours-selector"
