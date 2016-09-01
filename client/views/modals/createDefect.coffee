@@ -37,6 +37,7 @@ Template.createDefectModal.events
 Template.createDefect.onCreated () ->
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
+	@descriptionError = new ReactiveVar(false)
 
 	# Start data clean when you open a defect modal
 	titleStatus.set(true)
@@ -71,9 +72,13 @@ Template.createDefect.helpers
 	defectData: () ->
 		return defectData.get()
 
-	descriptionText: () ->
-		description = $('.defect-modal-description').val()
-		return description?.length > 0
+	descripcionError: () ->
+		errorState = Template.instance().errorState.get()
+		descriptionError = Template.instance().descriptionError.get()
+
+		return false if !errorState
+		return false if !descriptionError
+		return true
 
 	injectedPhases: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.injectedEstimated
@@ -132,6 +137,10 @@ Template.createDefect.events
 
 		defectData.set(Defect)
 
+	'keypress .defect-modal-description': (e,t) ->
+		if $(e.target).val().length > 0
+			t.descriptionError.set(false)
+
 	'change .defect-input-field': (e,t) ->
 		field = $(e.target).data('field')
 		value = $(e.target).val()
@@ -161,6 +170,9 @@ Template.createDefect.events
 
 		if !(Defect.description!= '') or (Defect.typeDefect == "Elegir tipo") or (Defect.injected == "Elegir etapa") or (Defect.removed == "Elegir etapa")
 			t.errorState.set(1)
+			if Defect.description == ''
+				t.descriptionError.set(true)
+
 			data.created = false
 
 		else if DefectId!= ''

@@ -85,7 +85,7 @@
 			</div>
 		</div>
 
-		<div class="{{#if $and errorState ($not descriptionText)}} textarea-error-box {{else}} textarea-box {{/if}}">
+		<div class="{{#if descripcionError}} textarea-error-box {{else}} textarea-box {{/if}}">
 			<textarea type="text" class="defect-modal-description defect-input-field" data-field="description" placeholder="Descripción" value="{{defectData.description}}"></textarea>
 			<i class="fa fa-times"></i>
 		</div><br>
