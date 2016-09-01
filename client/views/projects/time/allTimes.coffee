@@ -1,7 +1,4 @@
 ##########################################
-Template.timeTemplate.onCreated () ->
-	document.title = "Time Log"
-
 Template.timeTemplate.helpers
 	projectStages:() ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated

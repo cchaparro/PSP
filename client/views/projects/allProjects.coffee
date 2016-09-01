@@ -1,6 +1,5 @@
 ##########################################
 Template.projectsTemplate.onCreated () ->
-	document.title = "PSP Connect"
 	@hoveredProject = new ReactiveVar(false)
 
 Template.projectsTemplate.helpers

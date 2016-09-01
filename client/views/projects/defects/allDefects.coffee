@@ -1,6 +1,5 @@
 ##########################################
 Template.defectsTemplate.onCreated () ->
-	document.title = "Defects Log"
 	@hoveredDefect = new ReactiveVar(false)
 
 

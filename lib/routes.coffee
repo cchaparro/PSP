@@ -44,6 +44,7 @@ Projects.route '/',
 		@register 'allProjects', Meteor.subscribe "allProjects"
 
 	action: ->
+		Session.set "route", "projects"
 		BlazeLayout.render 'masterLayout', main: 'projectsTemplate'
 
 
@@ -53,6 +54,7 @@ Projects.route '/:fid',
 		@register 'allProjects', Meteor.subscribe "allProjects"
 
 	action: ->
+		Session.set "route", "iterations"
 		BlazeLayout.render 'masterLayout', main: 'iterationsViewTemplate'
 
 
@@ -63,6 +65,7 @@ Projects.route '/:fid/:id',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
+		Session.set "route", "general"
 		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate', menu: "projectViewMenu"
 
 
@@ -70,6 +73,7 @@ Projects.route '/:fid/:id/time-log',
 	name: 'projectTimeLog'
 
 	subscriptions: (params) ->
+		Session.set "route", "timeLog"
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
@@ -83,6 +87,7 @@ Projects.route '/:fid/:id/defect-log',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
+		Session.set "route", "defectLog"
 		BlazeLayout.render 'masterLayout', main: 'defectsTemplate', menu: "projectViewMenu"
 
 
@@ -93,6 +98,7 @@ Projects.route '/:fid/:id/plan-summary',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
+		Session.set "route", "planSummary"
 		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate', menu: "projectViewMenu"
 
 
@@ -103,6 +109,7 @@ Projects.route '/:fid/:id/scripts',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
+		Session.set "route", "scripts"
 		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
 
 
@@ -118,6 +125,7 @@ Settings.route '/project',
 		@register 'projectSettings', Meteor.subscribe "projectSettings"
 
 	action: ->
+		Session.set "route", "settings"
 		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate', menu: "settingsMenu"
 
 
@@ -128,6 +136,7 @@ Settings.route '/type-defects',
 		@register 'projectSettings', Meteor.subscribe "projectSettings"
 
 	action: ->
+		Session.set "route", "defectTypes"
 		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate', menu: "settingsMenu"
 
 
@@ -140,6 +149,7 @@ FlowRouter.route '/overview',
 FlowRouter.route '/help',
 	name: 'help'
 	action: ->
+		Session.set "route", "help"
 		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
 
 ##########################################

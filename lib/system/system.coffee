@@ -191,6 +191,31 @@ sys.cutText = (text, limit, closing) ->
 	return text
 
 ##########################################
+#########- Document Title Route -#########
+sys.getSessionRoute = (value) ->
+	switch value
+		when "projects"
+			return "Proyectos"
+		when "iterations"
+			return "Iteraciones"
+		when "general"
+			return "Proyecto"
+		when "timeLog"
+			return "Log de tiempos"
+		when "defectLog"
+			return "Log de defectos"
+		when "planSummary"
+			return "Plan Summary"
+		when "scripts"
+			return "Scripts"
+		when "settings"
+			return "Ajustes"
+		when "defectTypes"
+			return "Tipos de defecto"
+		when "help"
+			return "Ayuda"
+
+##########################################
 ########- Project Color Selector -########
 
 sys.selectColor = (last_color) ->

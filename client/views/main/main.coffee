@@ -1,4 +1,15 @@
 ##########################################
+Template.masterLayout.helpers
+	documentTitle: () ->
+		if Session.get("route")
+			route = sys.getSessionRoute(Session.get("route"))
+
+		if Session.get("statusTimeMessage")
+			document.title = "(Registrando) #{route}"
+		else
+			document.title = route
+
+
 Template.masterLayout.events
 	'click': (e,t) ->
 		$this = $(e.target)
