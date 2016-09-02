@@ -38,3 +38,4 @@ gwendall:auth-client-callbacks				# Package used for the onLogin, onLogout in Fl
 accounts-facebook
 accounts-google
 ostrio:files										#Package for uploading files
+u2622:persistent-session

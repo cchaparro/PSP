@@ -8,6 +8,7 @@ Template.masterLayout.helpers
 			document.title = "(Registrando) #{route}"
 		else
 			document.title = route
+		return ""
 
 
 Template.masterLayout.events
