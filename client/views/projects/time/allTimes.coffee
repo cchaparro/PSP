@@ -18,8 +18,8 @@ Template.timesBar.helpers
 			unless stage.finished
 				return stage
 
-		currentPos = _.first(projectStages).name
-		return _.first(projectStages).name
+		currentPos = _.first(projectStages)?.name
+		return currentPos
 
 
 Template.timesBar.events

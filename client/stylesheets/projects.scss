@@ -382,6 +382,12 @@
 		}
 	}
 
+	.time-submit-disabled {
+		@extend .time-submit;
+		background-color: $popup-bg;
+		cursor: default;
+	}
+
 	.time-table {
 		background-color: $white;
 

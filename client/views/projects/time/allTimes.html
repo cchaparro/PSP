@@ -45,9 +45,15 @@
 				<i class="fa time-btn fa-play {{#if isRecordingTime}} time-btn-play {{/if}}"></i>
 				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} time-status-pause {{/unless}}"></i>
 			</div>
-			<div class="btn time-submit">
-				<span>Finalizar {{currentStage}}</span>
-			</div>
+			{{#if currentStage}}
+				<div class="btn time-submit">
+					<span>Finalizar {{currentStage}}</span>
+				</div>
+			{{else}}
+				<div class="btn time-submit-disabled">
+					<span>Etapas Completadas</span>
+				</div>
+			{{/if}}
 		</div>
 	{{/with}}
 </template>
