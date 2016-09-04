@@ -223,6 +223,21 @@
 			}
 		}
 	}
+
+	.time-disabled {
+		border: 1px solid $background;
+
+		i, span {
+			color: $popup-bg;
+		}
+
+		&:hover {
+			span, i {
+				color: $popup-bg;
+			}
+		}
+	}
+
 }
 
 .time-selector-box {

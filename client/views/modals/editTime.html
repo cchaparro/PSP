@@ -22,7 +22,7 @@
 					<i class="fa fa-trash"></i>
 					<span>Restar tiempo</span>
 				</div>
-				<div class="time-option {{#if $eq selectedOption 'add-time'}} time-selected {{/if}}" data-value="add-time">
+				<div class="time-option {{#if $eq selectedOption 'add-time'}} time-selected {{/if}} {{#if addDisabled}} time-disabled {{/if}}" data-value="add-time">
 					<i class="fa fa-plus"></i>
 					<span>Agregar tiempo</span>
 				</div>

@@ -20,11 +20,13 @@ Template.editTimeModal.helpers
 ###########################################
 Template.editTime.onCreated () ->
 	@selectedOption = new ReactiveVar(false)
+	@disableAddOption = new ReactiveVar(false)
 	timeData.set({})
 
 	if @data?.type
 		timeData.set(@data)
 		Template.instance().selectedOption.set('delete-time')
+		Template.instance().disableAddOption.set(true)
 	else
 		timeData.set(@data)
 		Template.instance().selectedOption.set(false)
@@ -55,6 +57,8 @@ Template.editTime.helpers
 		else
 			return "0"
 
+	addDisabled: () ->
+		return Template.instance().disableAddOption.get()
 
 Template.editTime.events
 	'click .time-option': (e,t) ->
