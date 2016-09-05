@@ -2,6 +2,84 @@
 db.plan_summary = new Meteor.Collection "PlanSummary"
 ##########################################
 ############## Main Schema ###############
+schemas.plan_summary = new SimpleSchema
+	"projectId":
+		type: String
+		optional: false
+		label: "Id of the Project"
+
+	"createdAt":
+		type: Date
+		label: "Date when the project was created"
+		autoValue: (doc) ->
+			if @isInsert
+				return new Date()
+
+	"summaryOwner":
+		type: String
+		optional: false
+		label: "Id of the Project owner"
+
+	"timeStarted":
+		type: String
+		optional: false
+		defaultValue: "false"
+		label: "TimeStarted for the time logs"
+
+	"timeEstimated":
+		type: Array
+		label: "Time estimation of Plan Summary"
+
+	"timeEstimated.$":
+		type: schemas.summarytimeEstimated
+		label: "One time estimation of Plan Summary"
+
+	"injectedEstimated":
+		type: Array
+		label: "Injected estimation of Plan Summary"
+
+	"injectedEstimated.$":
+		type: schemas.summaryInjectedEstimated
+		label: "One injected estimation of Plan Summary"
+
+	"removedEstimated":
+		type: Array
+		label: "Removed estimation of Plan Summary"
+
+	"removedEstimated.$":
+		type: schemas.summaryRemovedEstimated
+		label: "One removed estimation of Plan Summary"
+
+	"baseLOC":
+		type: Array
+		label: "Base Size data"
+
+	"baseLOC.$":
+		type: schemas.summaryBase
+		label: "Base Size data"
+
+	"addLOC":
+		type: Array
+		label: "Added Size data"
+
+	"addLOC.$":
+		type: schemas.summaryAdd
+		label: "Added Size data"
+
+	#Re used
+	"ruLOC":
+		type: Array
+		label: "Re Used LOC data"
+
+	"ruLOC.$":
+		type: schemas.summaryReuse
+		label: "Re Used LOC data"
+
+	"total":
+		type: schemas.totalValues
+		label: "Total estimation values for the project"
+
+##########################################
 schemas.summarytimeEstimated = new SimpleSchema
 	"name":
 		type: String
@@ -75,6 +153,119 @@ schemas.summaryRemovedEstimated = new SimpleSchema
 		label: "Value for percentage of recolected data until the current date"
 
 ##########################################
+schemas.summaryBase = new SimpleSchema
+	"Estimated":
+		type: schemas.summaryBaseSize
+		label: "Estimated values for base LOC"
+
+	"Actual":
+		type: schemas.summaryBaseSizeActual
+		label: "Actual values for base LOC"
+
+##########################################
+schemas.summaryBaseSize = new SimpleSchema
+	"name":
+		type: String
+		label: "Name of the base part"
+	"base":
+		type: Number
+		label: "Number of base LOC"
+	"add":
+		type: Number
+		label: "Number of added LOC"
+	"modified":
+		type: Number
+		label: "Number of modified LOC"
+	"deleted":
+		type: Number
+		label: "Number of deleted LOC"
+
+##########################################
+schemas.summaryBaseSizeActual = new SimpleSchema
+	"base":
+		type: Number
+		label: "Number of base LOC"
+	"add":
+		type: Number
+		label: "Number of added LOC"
+	"modified":
+		type: Number
+		label: "Number of modified LOC"
+	"deleted":
+		type: Number
+		label: "Number of deleted LOC"
+
+##########################################
+schemas.summaryAdd = new SimpleSchema
+	"Estimated":
+		type: schemas.summaryAddSize
+		label: "Estimated values for added LOC"
+	"Actual":
+		type: schemas.summaryAddSizeActual
+		label: "Estimated values for added LOC"
+
+##########################################
+schemas.summaryAddSize = new SimpleSchema
+	"name":
+		type: String
+		label: "Name of the added part"
+	"type":
+		type: String
+		optional: true
+		label: "Part type"
+	"items":
+		type: Number
+		label: "Number of added parts"
+	"relSize":
+		type: String
+		optional: true
+		label: "Relative size of the part"
+	"size":
+		type: Number
+		label: "Part size"
+	"nr":
+		type: Boolean
+		label: "New reusable part"
+
+##########################################
+schemas.summaryAddSizeActual = new SimpleSchema
+	"items":
+		type: Number
+		label: "Number of added parts"
+	"size":
+		type: Number
+		label: "Part size"
+	"nr":
+		type: Boolean
+		label: "New reusable part"
+
+##########################################
+schemas.summaryReuse = new SimpleSchema
+	"Estimated":
+		type: schemas.summaryReuseSize
+		label: "Estimated values for re used LOC"
+
+	"Actual":
+		type: schemas.summaryReuseSizeActual
+		label: "Actual values for re used LOC"
+
+##########################################
+schemas.summaryReuseSize = new SimpleSchema
+	"name":
+		type: String
+		label: "Name of the added part"
+
+	"size":
+		type: Number
+		label: "Part size"
+
+##########################################
+schemas.summaryReuseSizeActual = new SimpleSchema
+	"size":
+		type: Number
+		label: "Part size"
+
+##########################################
 schemas.totalValues = new SimpleSchema
 	"totalTime":
 		type: Number
@@ -83,60 +274,6 @@ schemas.totalValues = new SimpleSchema
 	"estimatedTime":
 		type: Number
 		label: "Estimated time the user gave for the project completion"
-
-##########################################
-schemas.plan_summary = new SimpleSchema
-	"projectId":
-		type: String
-		optional: false
-		label: "Id of the Project"
-
-	"createdAt":
-		type: Date
-		label: "Date when the project was created"
-		autoValue: (doc) ->
-			if @isInsert
-				return new Date()
-
-	"summaryOwner":
-		type: String
-		optional: false
-		label: "Id of the Project owner"
-
-	"timeStarted":
-		type: String
-		optional: false
-		defaultValue: "false"
-		label: "TimeStarted for the time logs"
-
-	"timeEstimated":
-		type: Array
-		label: "Time estimation of Plan Summary"
-
-	"timeEstimated.$":
-		type: schemas.summarytimeEstimated
-		label: "One time estimation of Plan Summary"
-
-	"injectedEstimated":
-		type: Array
-		label: "Injected estimation of Plan Summary"
-
-	"injectedEstimated.$":
-		type: schemas.summaryInjectedEstimated
-		label: "One injected estimation of Plan Summary"
-
-	"removedEstimated":
-		type: Array
-		label: "Removed estimation of Plan Summary"
-
-	"removedEstimated.$":
-		type: schemas.summaryRemovedEstimated
-		label: "One removed estimation of Plan Summary"
-
-	"total":
-		type: schemas.totalValues
-		label: "Total estimation values for the project"
-
 
 ##########################################
 db.plan_summary.attachSchema(schemas.plan_summary)

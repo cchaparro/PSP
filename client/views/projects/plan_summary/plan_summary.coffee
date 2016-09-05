@@ -3,6 +3,9 @@ Template.planSummaryTemplate.helpers
 	userData: () ->
 		return db.users.findOne({_id: Meteor.userId()})
 
+	actualLevelPSP: () ->
+		return db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP
+
 ##########################################
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->
