@@ -459,6 +459,12 @@
 	border: 1px solid $success;
 }
 
+.time-btn-disabled {
+	background-color: $disabled-button;
+	border: 1px solid $disabled-button;
+	color: $white;
+}
+
 .time-status-pause {
 	background-color: $text;
 	color: $white;

@@ -43,7 +43,7 @@
 		<div class="time-menu clearfix">
 			<div>
 				<i class="fa time-btn fa-play {{#if isRecordingTime}} time-btn-play {{/if}}"></i>
-				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} time-status-pause {{/unless}}"></i>
+				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} {{#if disabledPlayButton}} time-btn-disabled {{else}} time-status-pause {{/if}} {{/unless}} "></i>
 			</div>
 			{{#if currentStage}}
 				<div class="btn time-submit">

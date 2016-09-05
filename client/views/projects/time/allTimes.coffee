@@ -4,6 +4,10 @@ Template.timeTemplate.helpers
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
 ##########################################
+Template.timesBar.onCreated () ->
+	@disablePlayButton = new ReactiveVar(false)
+
+
 Template.timesBar.helpers
 	planSummary: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})
@@ -19,18 +23,26 @@ Template.timesBar.helpers
 				return stage
 
 		currentPos = _.first(projectStages)?.name
+
+		unless currentPos
+			Template.instance().disablePlayButton.set(true)
+
 		return currentPos
+
+	disabledPlayButton: () ->
+		return Template.instance().disablePlayButton.get()
 
 
 Template.timesBar.events
 	'click .fa-play': (e,t) ->
-		date = new Date()
-		projectTitle = db.projects.findOne({_id: FlowRouter.getParam("id")}).title
-		Meteor.call "update_timeStarted", FlowRouter.getParam("id"), date, (error) ->
-			if error
-				console.log "Error changing timeStarted in plan Summary"
-			else
-				sys.flashTime(projectTitle)
+		unless t.disablePlayButton.get()
+			date = new Date()
+			projectTitle = db.projects.findOne({_id: FlowRouter.getParam("id")}).title
+			Meteor.call "update_timeStarted", FlowRouter.getParam("id"), date, (error) ->
+				if error
+					console.log "Error changing timeStarted in plan Summary"
+				else
+					sys.flashTime(projectTitle)
 
 
 	'click .fa-pause': (e,t) ->
