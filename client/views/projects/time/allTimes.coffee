@@ -98,7 +98,7 @@ Template.timeTableRow.helpers
 			unless stage.finished
 				return stage
 
-		return true if @name == _.first(projectStages).name
+		return true if @name == _.first(projectStages)?.name
 		return false
 
 

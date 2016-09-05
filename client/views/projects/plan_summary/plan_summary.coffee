@@ -32,7 +32,7 @@ Template.summaryTimeRow.helpers
 		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
 		currentStage = _.findWhere projectStages, {finished: false}
 
-		return true if currentStage.name == "Planeación"
+		return true if currentStage?.name == "Planeación"
 		return false
 
 
