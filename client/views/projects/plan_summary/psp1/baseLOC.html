@@ -1,0 +1,139 @@
+<template name="baseSummary">
+	{{createBaseData}}
+	{{#each baseData}}
+		<table class="table table-size-base">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Base</th>
+					<th>Adicionadas</th>
+					<th>Modificadas</th>
+					<th>Borradas</th>
+
+					<th>Base</th>
+					<th>Adicionadas</th>
+					<th>Modificadas</th>
+					<th>Borradas</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div class="input-box">
+							<input type="text" class="size-base-title" value="{{Estimated.name}}" placeholder="Ingresar nombre...">
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.base}}">
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.add}}">
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.modified}}">
+						</div>
+					</td>
+					<td>
+						<div class="input-box base-field-last">
+							<input type="text" value="{{Estimated.deleted}}">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box">
+							<input type="text" value="{{Actual.base}}" placeholder="Ingresar nombre...">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box">
+							<input type="text" value="{{Actual.add}}">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box base-actual">
+							<input type="text" value="{{Actual.modified}}">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box base-actual-last">
+							<input type="text" value="{{Actual.deleted}}">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	{{/each}}
+	<div class="base-option-bar">
+		<div class="pull-left btn primary-button">Nueva Fila</div>
+		<div class="pull-right btn primary-button">Guardar Cambios</div>
+	</div>
+	<!-- <table class="table table-summary">
+		<thead>
+			<tr>
+				<th style="width:50px;"></th>
+				<th>Nombre</th>
+				<th>Base</th>
+				<th>Adicionadas</th>
+				<th>Modificadas</th>
+				<th>Borradas</th> -->
+
+				<!--Actual inputs -->
+				<!-- <th style="width:100px; border-left:1px solid black;">Base</th>
+				<th>Borradas</th>
+				<th>Adicionadas</th>
+				<th>Modificadas</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{{createBaseList}}
+			{{#each basesList}}
+				<tr> -->
+					<!--Estimated inputs -->
+					<!-- <td style="width:50px;">
+						<i class="fa fa-trash delete-row"></i>
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="name" value="{{Estimated.name}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="eBas" value="{{Estimated.base}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="eAdd" value="{{Estimated.add}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="eMod" value="{{Estimated.modified}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="eDel" value="{{Estimated.deleted}}">
+					</td> -->
+					<!--Actual inputs -->
+					<!-- <td style="border-left:1px solid black">
+						<input type="text" class="psp-input" name="aBas" value="{{Actual.base}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="aAdd" value="{{Actual.add}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="aMod" value="{{Actual.modified}}">
+					</td>
+					<td>
+						<input type="text" class="psp-input" name="aDel" value="{{Actual.deleted}}">
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	<div class="add-defect-type add-row">
+		<i class="fa fa-plus"></i>
+		<span>Nueva fila</span>
+	</div>
+	<div class="row defect-type-save-nav">
+		<button class="btn save-rows save-defect-types pull-right">Guardar cambios</button>
+	</div> -->
+</template>

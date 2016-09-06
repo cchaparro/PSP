@@ -5,6 +5,13 @@ if Meteor.isServer
 		Injected = Meteor.settings.public.InjectedEstimated
 		Removed = Meteor.settings.public.RemovedEstimated
 
+		baseSize = [{
+			"Estimated": Meteor.settings.public.BaseSize[0]
+			"Actual": Meteor.settings.public.BaseSize[1]
+		}]
+
+		console.log Meteor.settings.public.BaseSize[0]
+
 		if levelPSP == 'PSP 2'
 			timePlanSummary.splice(2, 0, {"name":"Revisión Diseño", "finished":false, "time":0})
 			timePlanSummary.splice(4, 0, {"name":"Revisión Código", "finished":false, "time":0})
@@ -62,6 +69,7 @@ if Meteor.isServer
 			timeEstimated: finalTime
 			injectedEstimated: finalInjected
 			removedEstimated: finalRemoved
+			baseLOC: baseSize
 			total:
 				totalTime: 0
 				estimatedTime: 0
