@@ -190,17 +190,8 @@ input:checked + .switch-slider:before {
 	padding: 0 15px;
 	padding-top: 20px;
 
-	.save-defect-types {
-		background-color: $blue;
-		color: $white;
-		top: 13px;
-		right: 130px;
-		padding: 6px 15px;
-		margin-left: 10px;
-
-		&:hover {
-			background-color: $blue-dark;
-		}
+	button {
+		padding-top: 0;
 	}
 }
 
