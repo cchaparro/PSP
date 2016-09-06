@@ -69,12 +69,12 @@
 </template>
 <!-- ###################################### -->
 <template name="userNotification">
-	<div class="notification-box clearfix {{#unless $.Session.get 'display-notification-box'}} hide {{/unless}}">
+	<div class="notification-box {{#unless $.Session.get 'display-notification-box'}} hide {{/unless}}">
 		<div class="tail-notification"></div>
 		<h3>Notificaciones</h3>
 		<ul>
 			{{#each userNotifications}}
-				<li class="notification-item clearfix">
+				<li class="notification-item">
 					<div class="notification-header">
 						<div class="notification-avatar" style="background-image: url('{{getUserAvatarUrl title.sender}}');"></div>
 						<div class="notification-badge {{badgeStatus}}">

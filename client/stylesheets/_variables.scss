@@ -65,5 +65,16 @@ $profile-modal-width:					400px;
 	}
 }
 
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
 
 //------------------------------------------------

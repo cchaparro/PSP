@@ -10,8 +10,6 @@ if Meteor.isServer
 			"Actual": Meteor.settings.public.BaseSize[1]
 		}]
 
-		console.log Meteor.settings.public.BaseSize[0]
-
 		if levelPSP == 'PSP 2'
 			timePlanSummary.splice(2, 0, {"name":"Revisión Diseño", "finished":false, "time":0})
 			timePlanSummary.splice(4, 0, {"name":"Revisión Código", "finished":false, "time":0})

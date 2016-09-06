@@ -5,6 +5,7 @@
 	width: calc(100% + 40px);
 	margin-left: -20px;
 	margin-right: -20px;
+	@include clearfix();
 }
 
 .allprojects-data {
@@ -363,6 +364,7 @@
 		margin-bottom: 10px;
 		padding-bottom: 15px;
 		border-bottom: 1px solid $border;
+		@include clearfix();
 
 		div {
 			float: left;

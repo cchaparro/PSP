@@ -4,7 +4,7 @@
 		<h3>Tipo de defectos</h3>
 		{{createDefectList}}
 		{{#each defectTypes}}
-			<div class="defect-type-box {{#if selectedRow}} defect-type-selected {{/if}}clearfix">
+			<div class="defect-type-box {{#if selectedRow}} defect-type-selected {{/if}}">
 				<div class="defect-type-title-box">
 					<i class="fa fa-times-circle delete-defect-type"></i>
 					{{{contentEditable class='defect-type-title' value=name}}}
