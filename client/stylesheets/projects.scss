@@ -141,6 +141,7 @@
 		border-top-right-radius: $default-border-radius;
 		border-bottom-right-radius: $default-border-radius;
 		z-index: 2;
+		font-weight: 300;
 		color: $white;
 
 		p {
@@ -151,7 +152,7 @@
 		}
 
 		.btn {
-			background-color: $status-danger;
+			background-color: $danger;
 			position: absolute;
 			left: calc(50% - 70px);
 			bottom: 45px;
@@ -159,7 +160,7 @@
 
 			&:hover {
 				color: $white;
-				background-color: $status-dark-danger;
+				background-color: $danger-dark;
 			}
 		}
 	}
