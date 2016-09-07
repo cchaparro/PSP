@@ -7,30 +7,28 @@
 		</div>
 	{{/unless}}
 	<div class="allprojects-container">
-		<div class="allprojects-data">
-			{{#each allProjects}}
-				<div class="project-box" style="border-left: 5px solid {{color}};">
-					<div class="project-delete">
-						{{#if isHovered}}
-							<i class="fa fa-arrow-left"></i>
-						{{else}}
-							<i class="fa fa-times"></i>
-						{{/if}}
-					</div>
-					<div class="project-delete-confirm">
-						<p>Estas seguro?</p>
-						<span class="btn confirm-delete">Eliminar Proyecto</span>
-					</div>
-					<a href="{{pathFor 'iterations' fid=_id}}">
-						<div class="project-content">
-							<i class="fa fa-circle {{#if projectCompleted}} prj-completed {{else}} prj-success {{/if}}"></i>
-							<h3>{{title}}</h3>
-							<span>{{description}}</span>
-						</div>
-					</a>
+		{{#each allProjects}}
+			<div class="project-box" style="border-left: 5px solid {{color}};">
+				<div class="project-delete">
+					{{#if isHovered}}
+						<i class="fa fa-arrow-left"></i>
+					{{else}}
+						<i class="fa fa-times"></i>
+					{{/if}}
 				</div>
-			{{/each}}
-		</div>
+				<div class="project-delete-confirm">
+					<p>Estas seguro?</p>
+					<span class="btn confirm-delete">Eliminar Proyecto</span>
+				</div>
+				<a href="{{pathFor 'iterations' fid=_id}}">
+					<div class="project-content">
+						<i class="fa fa-circle {{#if projectCompleted}} prj-completed {{else}} prj-success {{/if}}"></i>
+						<h3>{{title}}</h3>
+						<span>{{description}}</span>
+					</div>
+				</a>
+			</div>
+		{{/each}}
 	</div>
 </template>
 <!-- ###################################### -->
