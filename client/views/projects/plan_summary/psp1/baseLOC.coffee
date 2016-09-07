@@ -14,76 +14,40 @@ Template.baseSummary.helpers
 				Estimated: base.Estimated
 				Actual: base.Actual
 			}
-
 		Template.instance().baseData.set(data)
 
 	baseData: ()->
 		return Template.instance().baseData.get()
 
-Template.baseSummary.events
-	'click .add-row': (e,t) ->
-		baseTmp = t.baseData.get()
-		estimatedBase={
-			"name": "",
-			"base": 0,
-			"add": 0,
-			"modified": 0,
-			"deleted": 0
-		}
-		actualBase = {
-			"base": 0,
-			"add": 0,
-			"modified": 0,
-			"deleted": 0
-		}
-		row = {
-			position:baseTmp.length+1,
-			Estimated:estimatedBase,
-			Actual:actualBase
-		}
-		baseTmp.push(row)
-		t.baseData.set(baseTmp)
 
-	'blur .psp-input': (e,t) ->
-		baseTmp = t.baseData.get()
-		input = $(e.target)
-		switch input.attr("name")
-			when "name"
-				baseTmp[@position-1].Estimated.name = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "eBas"
-				baseTmp[@position-1].Estimated.base = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "eAdd"
-				baseTmp[@position-1].Estimated.add = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "eMod"
-				baseTmp[@position-1].Estimated.modified = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "eDel"
-				baseTmp[@position-1].Estimated.deleted = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "aBas"
-				baseTmp[@position-1].Actual.base = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "aAdd"
-				baseTmp[@position-1].Actual.add = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "aMod"
-				baseTmp[@position-1].Actual.modified = input.val()
-				t.baseData.set(baseTmp)
-				return
-			when "aDel"
-				baseTmp[@position-1].Actual.deleted = input.val()
-				t.baseData.set(baseTmp)
-				return
+Template.baseSummary.events
+	'click .base-add-row': (e,t) ->
+		data = t.baseData.get()
+		estimatedBase = { "name": "", "base": 0, "add": 0, "modified": 0, "deleted": 0 }
+		actualBase = { "base": 0, "add": 0, "modified": 0, "deleted": 0 }
+
+		data.push({
+			position: data.length,
+			Estimated: estimatedBase,
+			Actual:actualBase
+		})
+		t.baseData.set(data)
+
+	'blur .input-box input': (e,t) ->
+		data = t.baseData.get()
+		value = $(e.target).val()
+		dataField = $(e.target).data('value')
+
+		#This separated the "Estimated/Actual" form the field (e.g. base, name, modified)
+		dataField = dataField.split(".")
+		section = dataField[0]
+		field = dataField[1]
+
+		data[@position][section][field] = value
+		t.baseData.set(data)
+
+	'click .base-save-data': (e,t)->
+		console.log t.baseData.get()
 
 	# 'click .delete-row': (e,t)->
 	# 	baseTmp = t.baseData.get()
