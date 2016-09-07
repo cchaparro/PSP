@@ -488,3 +488,17 @@ input:-webkit-autofill {
 }
 
 //------------------------------------------------
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+	.content-menu-box {
+		width: calc(100% + 40px);
+		margin-top: 20px;
+	}
+}
+
+//------------------------------------------------
