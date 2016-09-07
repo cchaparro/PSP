@@ -1,23 +1,23 @@
 <!-- ###################################### -->
 <template name="baseSummary">
 	{{createBaseData}}
-	{{#each baseData}}
-		<table class="table table-size-base">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Base</th>
-					<th>Adicionadas</th>
-					<th>Modificadas</th>
-					<th>Borradas</th>
+	<table class="table table-size-base">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Base</th>
+				<th>Adicionadas</th>
+				<th>Modificadas</th>
+				<th>Borradas</th>
 
-					<th>Base</th>
-					<th>Adicionadas</th>
-					<th>Modificadas</th>
-					<th>Borradas</th>
-				</tr>
-			</thead>
-			<tbody>
+				<th>Base</th>
+				<th>Adicionadas</th>
+				<th>Modificadas</th>
+				<th>Borradas</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each baseData}}
 				<tr>
 					<td>
 						<div class="input-box">
@@ -64,21 +64,24 @@
 							<input type="text" value="{{Actual.deleted}}" data-value="Actual.deleted">
 						</div>
 					</td>
+					<td class="{{#unless activeDelete}} hide {{/unless}}">
+						<i class="fa fa-times base-delete-row"></i>
+					</td>
 				</tr>
-			</tbody>
-		</table>
-	{{/each}}
+			{{/each}}
+		</tbody>
+	</table>
+
 	<div class="base-option-bar">
 		<div class="pull-left btn primary-button base-add-row">Nueva Fila</div>
+		<div class="pull-left btn primary-button base-active-delete">
+			{{#if activeDelete}}
+				Deshabilitar Eliminar
+			{{else}}
+				Habilitar Eliminar
+			{{/if}}
+		</div>
 		<div class="pull-right btn primary-button base-save-data">Guardar Cambios</div>
 	</div>
-
-	<!--<div class="add-defect-type add-row">
-		<i class="fa fa-plus"></i>
-		<span>Nueva fila</span>
-	</div>
-	<div class="row defect-type-save-nav">
-		<button class="btn save-rows save-defect-types pull-right">Guardar cambios</button>
-	</div> -->
 </template>
 <!-- ###################################### -->

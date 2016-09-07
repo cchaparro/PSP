@@ -2,6 +2,7 @@
 Template.baseSummary.onCreated () ->
 	#Meteor.subscribe "projectView"
 	@baseData = new ReactiveVar([])
+	@deleteActive = new ReactiveVar(false)
 
 
 Template.baseSummary.helpers
@@ -18,6 +19,10 @@ Template.baseSummary.helpers
 
 	baseData: ()->
 		return Template.instance().baseData.get()
+
+	activeDelete: ()->
+		return Template.instance().deleteActive.get()
+
 
 
 Template.baseSummary.events
@@ -47,33 +52,39 @@ Template.baseSummary.events
 		t.baseData.set(data)
 
 	'click .base-save-data': (e,t)->
-		console.log t.baseData.get()
+		data = t.baseData.get()
 
-	# 'click .delete-row': (e,t)->
-	# 	baseTmp = t.baseData.get()
-	# 	if baseTmp.length > 1
-	# 		currentBase = @
-	# 		pos = 1
-	# 		bases = []
-	# 		_.each baseTmp, (base) ->
-	# 			unless base.position == currentBase.position
-	# 				bases.push({position: pos, Estimated: base.Estimated, Actual: base.Actual})
-	# 				pos += 1
-	# 				t.baseData.set(bases)
-	# 			else
-	# 				sys.flashStatus("empty-delete")
+		finalData = _.map data, (value) ->
+			return {"Actual": value.Actual, "Estimated": value.Estimated}
 
-	# 'click .save-rows': (e,t)->
-	# 	bases = t.baseData.get()
-	# 	basesList = _.map bases, (base) ->
-	# 		return {Estimated: base.Estimated, Actual: base.Actual}
-	# 	console.log basesList
+		Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("error-project")
+			else
+				sys.flashStatus("save-project")
 
-	# 	Meteor.call "update_base_size", FlowRouter.getParam("id"), basesList, (error) ->
-	# 		if error
-	# 			console.warn(error)
-	# 			sys.flashStatus("error-project")
-	# 		else
-	# 			sys.flashStatus("save-project")
+	'click .base-active-delete': (e,t) ->
+		activeDelete = t.deleteActive.get()
+		t.deleteActive.set(!activeDelete)
+
+	'click .base-delete-row': (e,t) ->
+		data = t.baseData.get()
+		if data.length > 1
+			deletePos = @position
+			finalData = []
+
+			_.each data, (value, index) ->
+				unless value.position == deletePos
+					finalData.push({
+						position: index
+						Estimated: value.Estimated
+						Actual: value.Actual
+					})
+
+			t.baseData.set(finalData)
+			sys.flashStatus("base-delete-success")
+		else
+			sys.flashStatus("base-delete-error")
 
 ##########################################

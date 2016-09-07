@@ -59,6 +59,18 @@
 			}
 		}
 
+		.base-delete-row {
+			background-color: $danger;
+			padding: 8px;
+			@include border-radius($default-border-radius);
+			color: $white;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $danger-dark;
+			}
+		}
+
 		&:last-child {
 			border-bottom: none;
 			background-color: $white;
@@ -72,6 +84,10 @@
 	div {
 		padding-top: 0;
 		padding-bottom: 0;
+
+		&:nth-child(2) {
+			margin-left: 10px;
+		}
 	}
 }
 //--------------- All Projects View --------------
