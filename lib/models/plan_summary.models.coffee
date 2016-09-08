@@ -5,11 +5,17 @@ if Meteor.isServer
 		Injected = Meteor.settings.public.InjectedEstimated
 		Removed = Meteor.settings.public.RemovedEstimated
 
+		# Definition of a empty baseLOC data for a new project
 		baseSize = [{
-			"Estimated": Meteor.settings.public.BaseSize[0]
-			"Actual": Meteor.settings.public.BaseSize[1]
+			"Estimated": { name: "", base: 0, add: 0, modified: 0, deleted: 0 }
+			"Actual": { base: 0, add: 0, modified: 0, deleted: 0 }
+		}]
+		addSize = [{
+			"Estimated": { name: "Default", type: "Default", items: 0, relSize: "Default", size: 0, nr: false }
+			"Actual": { items: 0, size: 0, nr: false }
 		}]
 
+		#If the project is PSP 2 it will add the 2 missing stages
 		if levelPSP == 'PSP 2'
 			timePlanSummary.splice(2, 0, {"name":"Revisión Diseño", "finished":false, "time":0})
 			timePlanSummary.splice(4, 0, {"name":"Revisión Código", "finished":false, "time":0})
@@ -68,6 +74,7 @@ if Meteor.isServer
 			injectedEstimated: finalInjected
 			removedEstimated: finalRemoved
 			baseLOC: baseSize
+			addLOC: addSize
 			total:
 				totalTime: 0
 				estimatedTime: 0

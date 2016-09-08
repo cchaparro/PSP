@@ -118,50 +118,50 @@ schemas.summaryBase = new SimpleSchema
 		label: "Actual values for base LOC"
 
 ##########################################
-# schemas.summaryAddSize = new SimpleSchema
-# 	"name":
-# 		type: String
-# 		label: "Name of the added part"
-# 	"type":
-# 		type: String
-# 		optional: true
-# 		label: "Part type"
-# 	"items":
-# 		type: Number
-# 		label: "Number of added parts"
-# 	"relSize":
-# 		type: String
-# 		optional: true
-# 		label: "Relative size of the part"
-# 	"size":
-# 		type: Number
-# 		label: "Part size"
-# 	"nr":
-# 		type: Boolean
-# 		label: "New reusable part"
+schemas.summaryAddSize = new SimpleSchema
+	"name":
+		type: String
+		label: "Name of the added part"
+	"type":
+		type: String
+		optional: true
+		label: "Part type"
+	"items":
+		type: Number
+		label: "Number of added parts"
+	"relSize":
+		type: String
+		optional: true
+		label: "Relative size of the part"
+	"size":
+		type: Number
+		label: "Part size"
+	"nr":
+		type: Boolean
+		label: "New reusable part"
 
 # ##########################################
-# schemas.summaryAddSizeActual = new SimpleSchema
-# 	"items":
-# 		type: Number
-# 		label: "Number of added parts"
-# 	"size":
-# 		type: Number
-# 		label: "Part size"
-# 	"nr":
-# 		type: Boolean
-# 		label: "New reusable part"
+schemas.summaryAddSizeActual = new SimpleSchema
+	"items":
+		type: Number
+		label: "Number of added parts"
+	"size":
+		type: Number
+		label: "Part size"
+	"nr":
+		type: Boolean
+		label: "New reusable part"
 
-# ##########################################
-# schemas.summaryAdd = new SimpleSchema
-# 	"Estimated":
-# 		type: schemas.summaryAddSize
-# 		label: "Estimated values for added LOC"
-# 	"Actual":
-# 		type: schemas.summaryAddSizeActual
-# 		label: "Estimated values for added LOC"
+##########################################
+schemas.summaryAdd = new SimpleSchema
+	"Estimated":
+		type: schemas.summaryAddSize
+		label: "Estimated values for added LOC"
+	"Actual":
+		type: schemas.summaryAddSizeActual
+		label: "Estimated values for added LOC"
 
-# ##########################################
+##########################################
 # schemas.summaryReuseSize = new SimpleSchema
 # 	"name":
 # 		type: String
@@ -171,7 +171,7 @@ schemas.summaryBase = new SimpleSchema
 # 		type: Number
 # 		label: "Part size"
 
-# ##########################################
+##########################################
 # schemas.summaryReuseSizeActual = new SimpleSchema
 # 	"size":
 # 		type: Number
@@ -258,13 +258,13 @@ schemas.plan_summary = new SimpleSchema
 		type: schemas.summaryBase
 		label: "Base Size data"
 
-	# "addLOC":
-	# 	type: Array
-	# 	label: "Added Size data"
+	"addLOC":
+		type: Array
+		label: "Added Size data"
 
-	# "addLOC.$":
-	# 	type: schemas.summaryAdd
-	# 	label: "Added Size data"
+	"addLOC.$":
+		type: schemas.summaryAdd
+		label: "Added Size data"
 
 	# #Re used
 	# "ruLOC":

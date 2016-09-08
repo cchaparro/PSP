@@ -137,21 +137,6 @@
 				"removed" : 0
 			}
 		],
-		"BaseSize": [
-			{
-				"name": "",
-				"base": 0,
-				"add": 0,
-				"modified": 0,
-				"deleted": 0
-			},
-			{
-				"base": 0,
-				"add": 0,
-				"modified": 0,
-				"deleted": 0
-			}
-		],
 		"defectTypeValues": [
 			{
 				"name": "Documentación",

@@ -68,6 +68,7 @@ Template.timesBar.events
 
 	'click .time-submit': (e,t) ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 		currentStage = _.findWhere projectStages, {finished: false}
 
 		projectProbe = db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe

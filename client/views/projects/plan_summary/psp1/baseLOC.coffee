@@ -1,6 +1,5 @@
 ##########################################
 Template.baseSummary.onCreated () ->
-	#Meteor.subscribe "projectView"
 	@baseData = new ReactiveVar([])
 	@deleteActive = new ReactiveVar(false)
 
