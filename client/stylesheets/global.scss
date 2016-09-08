@@ -67,6 +67,20 @@
 	}
 }
 
+.disabled-button {
+	@extend .primary-button;
+	color: $disabled-button;
+	border: 1px solid $disabled-button;
+	cursor: default;
+
+	&:hover, &:focus {
+		background-color: $white;
+		border: 1px solid $disabled-button;
+		color: $disabled-button;
+	}
+
+}
+
 
 
 //------------------- Main Menu ------------------

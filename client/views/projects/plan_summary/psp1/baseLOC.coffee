@@ -63,6 +63,7 @@ Template.baseSummary.events
 				sys.flashStatus("error-project")
 			else
 				sys.flashStatus("save-project")
+				t.deleteActive.set(false)
 
 	'click .base-active-delete': (e,t) ->
 		activeDelete = t.deleteActive.get()
