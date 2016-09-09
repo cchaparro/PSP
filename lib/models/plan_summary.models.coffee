@@ -11,7 +11,7 @@ if Meteor.isServer
 			"Actual": { base: 0, add: 0, modified: 0, deleted: 0 }
 		}]
 		addSize = [{
-			"Estimated": { name: "Default", type: "Default", items: 0, relSize: "Default", size: 0, nr: false }
+			"Estimated": { name: "", type: "Elegir", items: 0, relSize: "Elegir", size: 0, nr: false }
 			"Actual": { items: 0, size: 0, nr: false }
 		}]
 

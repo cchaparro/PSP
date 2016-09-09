@@ -121,6 +121,7 @@ schemas.summaryBase = new SimpleSchema
 schemas.summaryAddSize = new SimpleSchema
 	"name":
 		type: String
+		optional: true
 		label: "Name of the added part"
 	"type":
 		type: String

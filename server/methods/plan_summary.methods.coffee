@@ -49,10 +49,12 @@ Meteor.methods
 
 
 
-	update_base_size: (projectId, baseData) ->
+	update_base_size: (projectId, baseData, dataField) ->
+		# dataField would be the value "addLOC", "baseLOC", "ruLOC"
 		data = {
-			"baseLOC": baseData
+			"#{dataField}": baseData
 		}
+
 		db.plan_summary.update({ "projectId": projectId}, {$set: data})
 
 #######################################

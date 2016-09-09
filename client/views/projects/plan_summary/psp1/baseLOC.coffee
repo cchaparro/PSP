@@ -56,7 +56,7 @@ Template.baseSummary.events
 		finalData = _.map data, (value) ->
 			return {"Actual": value.Actual, "Estimated": value.Estimated}
 
-		Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, (error) ->
+		Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, "baseLOC", (error) ->
 			if error
 				console.warn(error)
 				sys.flashStatus("error-project")
@@ -83,8 +83,11 @@ Template.baseSummary.events
 					})
 
 			t.baseData.set(finalData)
-			sys.flashStatus("base-delete-success")
+			Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, "baseLOC", (error) ->
+				if error
+					console.warn(error)
+
 		else
-			sys.flashStatus("base-delete-error")
+			sys.flashStatus("size-delete-error")
 
 ##########################################

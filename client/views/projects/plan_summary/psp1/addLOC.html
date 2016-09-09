@@ -26,22 +26,19 @@
 					</td>
 					<td>
 						<div class="dropdown-box">
-							<button type="button" data-toggle="dropdown" data-value="Estimated.type">
+							<button type="button" data-toggle="dropdown">
 								{{Estimated.type}}
 								<i class="fa fa-caret-down"></i>
 							</button>
-							<ul class="dropdown-menu">
-								<li data-value="">Cálculos</li>
-								<li data-value="">Datos</li>
-								<li data-value="">I/0</li>
-								<li data-value="">Logica</li>
-								<li data-value="">Configuracion</li>
-								<li data-value="">Texto</li>
+							<ul class="dropdown-menu" data-value="Estimated.type">
+								<li class="add-size-option" data-value="calc">Cálculos</li>
+								<li class="add-size-option" data-value="data">Datos</li>
+								<li class="add-size-option" data-value="io">I/0</li>
+								<li class="add-size-option" data-value="logic">Logica</li>
+								<li class="add-size-option" data-value="configuration">Configuracion</li>
+								<li class="add-size-option" data-value="text">Texto</li>
 							</ul>
 						</div>
-						<!-- <div class="input-box">
-							<input type="text" value="{{Estimated.type}}" data-value="Estimated.type">
-						</div> -->
 					</td>
 					<td>
 						<div class="input-box">
@@ -50,21 +47,18 @@
 					</td>
 					<td>
 						<div class="dropdown-box">
-							<button type="button" data-toggle="dropdown" data-value="Estimated.relSize">
+							<button type="button" data-toggle="dropdown">
 								{{Estimated.relSize}}
 								<i class="fa fa-caret-down"></i>
 							</button>
-							<ul class="dropdown-menu">
-								<li data-value="vs">Muy pequeño</li>
-								<li data-value="s">Pequeño</li>
-								<li data-value="m">Mediano</li>
-								<li data-value="l">Grande</li>
-								<li data-value="xl">Muy grande</li>
+							<ul class="dropdown-menu" data-value="Estimated.relSize">
+								<li class="add-size-option" data-value="vs">Muy pequeño</li>
+								<li class="add-size-option" data-value="s">Pequeño</li>
+								<li class="add-size-option" data-value="m">Mediano</li>
+								<li class="add-size-option" data-value="l">Grande</li>
+								<li class="add-size-option" data-value="vl">Muy grande</li>
 							</ul>
 						</div>
-						<!-- <div class="input-box">
-							<input type="text" value="{{Estimated.relSize}}" data-value="Estimated.relSize">
-						</div> -->
 					</td>
 					<td>
 						<div class="input-box">
@@ -73,7 +67,7 @@
 					</td>
 					<td>
 						<div class="checkbox-box add-field-last">
-							<input type="checkbox" value="{{Estimated.nr}}" data-value="Estimated.nr"/>
+							<input class="add-checkbox" type="checkbox" {{isChecked Estimated.nr}} data-value="Estimated.nr"/>
 						</div>
 					</td>
 					<td class="add-actual">
@@ -88,7 +82,7 @@
 					</td>
 					<td class="add-actual">
 						<div class="checkbox-box add-actual-last">
-							<input type="checkbox" value="{{Actual.nr}}" data-value="Actual.nr"/>
+							<input class="add-checkbox" type="checkbox" {{isChecked Actual.nr}} data-value="Actual.nr"/>
 						</div>
 					</td>
 					<td class="{{#unless activeDelete}} hide {{/unless}}">
@@ -101,13 +95,13 @@
 
 	<div class="add-option-bar">
 		<div class="pull-left btn primary-button add-row">Nueva Fila</div>
-		<!--<div class="pull-left btn primary-button add-active-delete">
+		<div class="pull-left btn primary-button add-active-delete">
 			{{#if activeDelete}}
 				Deshabilitar Eliminar
 			{{else}}
 				Habilitar Eliminar
 			{{/if}}
-		</div>-->
+		</div>
 		<div class="pull-right btn primary-button add-save-data">Guardar Cambios</div>
 	</div>
 </template>
