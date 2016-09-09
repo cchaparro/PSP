@@ -163,32 +163,33 @@ schemas.summaryAdd = new SimpleSchema
 		label: "Estimated values for added LOC"
 
 ##########################################
-# schemas.summaryReuseSize = new SimpleSchema
-# 	"name":
-# 		type: String
-# 		label: "Name of the added part"
+schemas.summaryReuseSize = new SimpleSchema
+	"name":
+		type: String
+		optional: true
+		label: "Name of the added part"
 
-# 	"size":
-# 		type: Number
-# 		label: "Part size"
-
-##########################################
-# schemas.summaryReuseSizeActual = new SimpleSchema
-# 	"size":
-# 		type: Number
-# 		label: "Part size"
+	"size":
+		type: Number
+		label: "Part size"
 
 ##########################################
-# schemas.summaryReuse = new SimpleSchema
-# 	"Estimated":
-# 		type: schemas.summaryReuseSize
-# 		label: "Estimated values for re used LOC"
+schemas.summaryReuseSizeActual = new SimpleSchema
+	"size":
+		type: Number
+		label: "Part size"
 
-# 	"Actual":
-# 		type: schemas.summaryReuseSizeActual
-# 		label: "Actual values for re used LOC"
+##########################################
+schemas.summaryReuse = new SimpleSchema
+	"Estimated":
+		type: schemas.summaryReuseSize
+		label: "Estimated values for re used LOC"
 
-# ##########################################
+	"Actual":
+		type: schemas.summaryReuseSizeActual
+		label: "Actual values for re used LOC"
+
+##########################################
 schemas.totalValues = new SimpleSchema
 	"totalTime":
 		type: Number
@@ -267,14 +268,14 @@ schemas.plan_summary = new SimpleSchema
 		type: schemas.summaryAdd
 		label: "Added Size data"
 
-	# #Re used
-	# "ruLOC":
-	# 	type: Array
-	# 	label: "Re Used LOC data"
+	#Re used
+	"reusedLOC":
+		type: Array
+		label: "Re Used LOC data"
 
-	# "ruLOC.$":
-	# 	type: schemas.summaryReuse
-	# 	label: "Re Used LOC data"
+	"reusedLOC.$":
+		type: schemas.summaryReuse
+		label: "Re Used LOC data"
 
 	"total":
 		type: schemas.totalValues

@@ -14,6 +14,10 @@ if Meteor.isServer
 			"Estimated": { name: "", type: "Elegir", items: 0, relSize: "Elegir", size: 0, nr: false }
 			"Actual": { items: 0, size: 0, nr: false }
 		}]
+		reusedSize = [{
+			"Estimated": { name: "", size: 0 }
+			"Actual": { size: 0 }
+		}]
 
 		#If the project is PSP 2 it will add the 2 missing stages
 		if levelPSP == 'PSP 2'
@@ -75,6 +79,7 @@ if Meteor.isServer
 			removedEstimated: finalRemoved
 			baseLOC: baseSize
 			addLOC: addSize
+			reusedLOC: reusedSize
 			total:
 				totalTime: 0
 				estimatedTime: 0

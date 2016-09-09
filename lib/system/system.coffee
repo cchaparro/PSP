@@ -158,15 +158,7 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Como mínimo debe haber una fila de datos."
 			css = "danger"
-		when "base-delete-success"
-			title = "Guardado"
-			subject = "Has eliminado existosamente una fila de las lineas base."
-			css = "success"
 
-		when "add-delete-success"
-			title = "Guardado"
-			subject = "Has eliminado existosamente una fila de las lineas agregadas."
-			css = "success"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
