@@ -199,6 +199,45 @@ schemas.totalValues = new SimpleSchema
 		type: Number
 		label: "Estimated time the user gave for the project completion"
 
+	"estimatedBase":
+		type: Number
+		label: "Estimated base LOC"
+
+	"actualBase":
+		type: Number
+		label: "Actual base LOC"
+
+	"estimatedAdd":
+		type: Number
+		label: "Estimated added LOC"
+
+	"actualAdd":
+		type: Number
+		label: "Actual added LOC"
+
+	"estimatedModified":
+		type: Number
+		label: "Estimated modified LOC"
+
+	"actualModified":
+		type: Number
+		label: "Actual modified LOC"
+
+	"estimatedDeleted":
+		type: Number
+		label: "Estimated deleted LOC"
+
+	"actualDeleted":
+		type: Number
+		label: "Actual deleted LOC"
+
+	"estimatedReused":
+		type: Number
+		label: "Estimated reused LOC"
+
+	"actualReused":
+		type: Number
+		label: "Actual reused LOC"
 
 ##########################################
 ############## Main Schema ###############

@@ -1,0 +1,144 @@
+<!-- ###################################### -->
+<template name="sizeSummary">
+	<table class="table table-summary">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Plan</th>
+				<th>Actual</th>
+				<th>A la fecha</th>
+			</tr>
+		</thead>
+		{{#with sizeData}}
+			<tbody>
+				<tr>
+					<td>
+						<span>Base (B)</span>
+					</td>
+					<td>
+						<span>{{sizeData.estimatedBase}}</span>
+					</td>
+					<td>
+						<span>{{sizeData.actualBase}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Añadido (A)</span>
+					</td>
+					<td>
+						<span>{{sizeData.estimatedAdd}}</span>
+					</td>
+					<td>
+						<span>{{sizeData.actualAdd}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Modificado (M)</span>
+					</td>
+					<td>
+						<span>{{sizeData.estimatedMod}}</span>
+					</td>
+					<td>
+						<span>{{sizeData.actualMod}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Re Usado (R)</span>
+					</td>
+					<td>
+						<span>{{sizeData.estimatedRu}}</span>
+					</td>
+					<td>
+						<span>{{sizeData.actualRu}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Eliminado (D)</span>
+					</td>
+					<td>
+						<span>{{sizeData.estimatedDel}}</span>
+					</td>
+					<td>
+						<span>{{sizeData.actualDel}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Añadidas + Modificadas (A+M)</span>
+					</td>
+					<td>
+						<span>{{addTwoValues sizeData.estimatedAdd sizeData.estimatedModified}}</span>
+					</td>
+					<td>
+						<span>{{addTwoValues sizeData.actualAdd sizeData.actualModified}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Tamaño Total (T)</span>
+					</td>
+					<td>
+						<span>{{addThreeValues sizeData.estimatedAdd sizeData.estimatedModified sizeData.estimatedReused}}</span>
+					</td>
+					<td>
+						<span>{{addThreeValues sizeData.actualAdd sizeData.actualModified sizeData.actualReused}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Tamaño Nuevos Reusables</span>
+					</td>
+					<td>
+						<span>{{newReusableValue "estimated"}}</span>
+					</td>
+					<td>
+						<span>{{newReusableValue "actual"}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span><i>Proxy Size</i> (E)</span>
+					</td>
+					<td>
+						<span>{{addThreeValues sizeData.estimatedAdd sizeData.estimatedModified sizeData.estimatedBase}}</span>
+					</td>
+					<td>
+						<span>{{addThreeValues sizeData.actualAdd sizeData.actualModified sizeData.actualBase}}</span>
+					</td>
+					<td>
+						<span>A la fecha</span>
+					</td>
+				</tr>
+			</tbody>
+		{{/with}}
+	</table>
+</template>
+<!-- ###################################### -->
