@@ -46,6 +46,8 @@ Template.summaryTimeRow.events
 		data = {
 			"total.estimatedTime": sys.minutesToTime(value)
 		}
+
+		# This is called here to update the estimatedTime for the PROBE D
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
 				console.warn(error)

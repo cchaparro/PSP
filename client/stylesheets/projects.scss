@@ -129,6 +129,11 @@
 .project-box-hover,
 .iteration-box-hover,
 .defect-box-hover {
+
+	.project-content {
+		opacity: 0;
+	}
+
 	.project-delete-confirm,
 	.iteration-delete-confirm,
 	.defect-delete-confirm {
@@ -137,7 +142,7 @@
 		display: inline!important;
 		position: absolute;
 		left: -5px;
-		background-color: rgba($black, 0.6);
+		background-color: rgba($primary-bg, 0.6);
 		border-top-right-radius: $default-border-radius;
 		border-bottom-right-radius: $default-border-radius;
 		z-index: 2;

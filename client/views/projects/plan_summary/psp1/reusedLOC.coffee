@@ -56,7 +56,7 @@ Template.reusedSummary.events
 		finalData = _.map data, (value) ->
 			return {"Actual": value.Actual, "Estimated": value.Estimated}
 
-		Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, "reusedLOC", (error) ->
+		Meteor.call "update_reused_size", FlowRouter.getParam("id"), finalData, (error) ->
 			if error
 				console.warn(error)
 				sys.flashStatus("error-project")
@@ -83,7 +83,7 @@ Template.reusedSummary.events
 					})
 
 			t.reusedData.set(finalData)
-			Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, "reusedLOC", (error) ->
+			Meteor.call "update_reused_size", FlowRouter.getParam("id"), finalData, (error) ->
 				if error
 					console.warn(error)
 
