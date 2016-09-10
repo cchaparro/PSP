@@ -6,6 +6,11 @@ Template.iterationsViewTemplate.helpers
 	projectIterations: () ->
 		return db.projects.find({parentId: FlowRouter.getParam("fid")}).fetch()
 
+	isRegistering: () ->
+		recordingProject = Session.get "statusTimeMessage"
+		return true if @_id == recordingProject.iterationId
+		return false
+
 ##########################################
 Template.projectIterationBox.onCreated () ->
 	@hoveredIteration = new ReactiveVar(false)
@@ -14,6 +19,11 @@ Template.projectIterationBox.onCreated () ->
 Template.projectIterationBox.helpers
 	isHovered: () ->
 		return Template.instance().hoveredIteration.get() == @_id
+
+	isRegistering: () ->
+		recordingProject = Session.get "statusTimeMessage"
+		return true if @_id == recordingProject.iterationId
+		return false
 
 
 Template.projectIterationBox.events

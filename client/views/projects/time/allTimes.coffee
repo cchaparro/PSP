@@ -42,7 +42,9 @@ Template.timesBar.events
 				if error
 					console.log "Error changing timeStarted in plan Summary"
 				else
-					sys.flashTime(projectTitle)
+					projectId = FlowRouter.getParam("fid")
+					iterationId = FlowRouter.getParam("id")
+					sys.flashTime(projectTitle, projectId, iterationId)
 
 
 	'click .fa-pause': (e,t) ->

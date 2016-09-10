@@ -6,7 +6,12 @@
 				<a href="{{pathFor 'projectGeneral' fid=_id id=_id}}">
 					<div class="project-for-iteration-box" style="border-left: 5px solid {{color}};">
 						<div class="project-content">
-							<h3>{{title}}</h3>
+							<h3>
+								{{#if isRegistering}}
+									<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
+								{{/if}}
+								{{title}}
+							</h3>
 							<span>{{description}}</span>
 						</div>
 					</div>
@@ -34,7 +39,12 @@
 		</div>
 		<a href="{{pathFor 'projectGeneral' fid=parentId id=_id}}">
 			<div class="project-content">
-				<h3>{{title}}</h3>
+				<h3>
+					{{#if isRegistering}}
+						<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
+					{{/if}}
+					{{title}}
+				</h3>
 				<span>{{description}}</span>
 			</div>
 		</a>

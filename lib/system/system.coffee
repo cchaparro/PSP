@@ -170,12 +170,12 @@ sys.removeTimeMessage = () ->
 
 # This is a special flashStatus notification used for the time execution
 # (it appears allways until the time was paused)
-sys.flashTime = (projectName) ->
+sys.flashTime = (projectName, projectId, iterationId) ->
 	title = "Toma de Tiempo"
 	subject = 'Iniciaste la toma de tiempo en el proyecto "' + projectName + '".'
 	css = "warning"
 
-	Session.setPersistent "statusTimeMessage", {title: title, subject: subject, css: css}
+	Session.setPersistent "statusTimeMessage", {title: title, subject: subject, css: css, projectId: projectId, iterationId: iterationId}
 
 ##########################################
 ###############- Cut Text -###############
