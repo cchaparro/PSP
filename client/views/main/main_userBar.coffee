@@ -153,10 +153,13 @@ Template.createDefectButton.events
 ##################################################
 Template.createIterationButton.events
 	'click .create-btn': (e,t) ->
+		currentProject = db.projects.findOne({ _id: FlowRouter.getParam("fid") })
+
+		# The currentProject takes the parent projects levelPSP and gives it to the new interation
 		data = {
 			title: "Nueva iteración"
 			description: "Descripción de esta nueva iteración"
-			levelPSP: "PSP 0"
+			levelPSP: currentProject.levelPSP
 			parentId: FlowRouter.getParam("fid")
 		}
 

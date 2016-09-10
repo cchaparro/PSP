@@ -2,58 +2,16 @@
 
 //--------------- All Projects View --------------
 .allprojects-container {
-	width: calc(100% + 40px);
-	margin-left: -20px;
-	margin-right: -20px;
+	width: 100%;
+	@include clearfix();
 }
 
-.allprojects-data {
-	max-width: 1300px;
-	margin: 0 auto;
-}
-
-@media (min-width: 1820px) {
-	.allprojects-data {
-		max-width: 1710px;
-	}
-}
-
-@media (min-width: 1535px) and (max-width: 1819px){
-	.allprojects-data {
-		max-width: 1425px;
-	}
-}
-
-@media (min-width: 1250px) and (max-width: 1534px){
-	.allprojects-data {
-		max-width: 1141px;
-	}
-}
-
-@media (min-width: 965px) and (max-width: 1249px) {
-	.allprojects-data {
-		max-width: 855px;
-	}
-}
-
-@media (min-width: 680px) and (max-width: 964px) {
-	.allprojects-data {
-		max-width: 572px;
-	}
-}
-
-@media (max-width: 679px) {
-	.allprojects-data {
-		max-width: 305px;
-	}
-}
 //------------------ Project Box -----------------
 .project-box {
 	height: 160px;
-	width: 265px;
 	position: relative;
 	display: inline-block;
-	margin: 0 10px 20px 10px;
+	margin-bottom: 20px;
 	padding: 0 10px;
 	float: left;
 	background-color: $white;
@@ -171,6 +129,11 @@
 .project-box-hover,
 .iteration-box-hover,
 .defect-box-hover {
+
+	.project-content {
+		opacity: 0;
+	}
+
 	.project-delete-confirm,
 	.iteration-delete-confirm,
 	.defect-delete-confirm {
@@ -179,10 +142,11 @@
 		display: inline!important;
 		position: absolute;
 		left: -5px;
-		background-color: rgba($black, 0.6);
+		background-color: rgba($primary-dark-bg, 0.6);
 		border-top-right-radius: $default-border-radius;
 		border-bottom-right-radius: $default-border-radius;
 		z-index: 2;
+		font-weight: 300;
 		color: $white;
 
 		p {
@@ -193,7 +157,7 @@
 		}
 
 		.btn {
-			background-color: $status-danger;
+			background-color: $danger;
 			position: absolute;
 			left: calc(50% - 70px);
 			bottom: 45px;
@@ -201,7 +165,7 @@
 
 			&:hover {
 				color: $white;
-				background-color: $status-dark-danger;
+				background-color: $danger-dark;
 			}
 		}
 	}
@@ -270,12 +234,13 @@
 
 //----------------- All Defects View --------------
 .defect-box {
+	@include clearfix();
 	height: 160px;
-	width: 255px;
 	float: left;
 	position: relative;
 	display: inline-block;
-	margin: 0 10px 20px 10px;
+	margin-bottom: 20px;
+	//margin: 0 10px 20px 10px;
 	padding: 0 10px;
 	background-color: $white;
 	border-top-right-radius: 5px;
@@ -363,23 +328,27 @@
 		margin-bottom: 10px;
 		padding-bottom: 15px;
 		border-bottom: 1px solid $border;
+		@include clearfix();
 
 		div {
 			float: left;
 		}
+
+		.time-btn {
+			margin-top: 2px;
+			padding: 15px 15px 13px 15px;
+			@include border-radius($default-border-radius * 2);
+		}
+
+		.disabled-button {
+			padding-top: 0;
+			margin-top: 0;
+		}
 	}
 
 	.time-submit {
-		position: relative;
-		float: left;
-		background-color: $blue;
-		color: $white;
-		padding: 6px 15px;
-		margin-left: 10px;
-
-		span {
-			left: 30px;
-		}
+		margin-top: 0;
+		padding-top: 0;
 	}
 
 	.time-submit-disabled {
@@ -666,6 +635,19 @@
 		border-bottom: 1px solid $border;
 	}
 
+	h4 {
+		font-size: 13pt;
+		padding-top: 10px;
+		color: $text;
+		margin-bottom: 0;
+		padding-bottom: 5px;
+		cursor: default;
+
+		span {
+			color: $text-dark;
+		}
+	}
+
 	.table-summary {
 		background-color: $white;
 		margin-bottom: 0;
@@ -920,5 +902,306 @@
 
 }
 
+//--------- Mobile View for Project-box ----------
+@media (min-width: 1820px) and (max-width: 3000px) {
+	.allprojects-container {
+		max-width: 2965px;
+
+		.project-box {
+			width: calc(14.28% - 17.5px)!important;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(7n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(7n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1535px) and (max-width: 1819px) {
+	.allprojects-container {
+		max-width: 1774px;
+
+		.project-box {
+			width: calc(16.667% - 17px)!important;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(6n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(6n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1301px) and (max-width: 1534px) {
+	.allprojects-container {
+		max-width: 1489px;
+
+		.project-box {
+			width: calc(20% - 16px)!important;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(5n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(5n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1031px) and (max-width: 1300px) {
+	.allprojects-container {
+		max-width: 1205px;
+
+		.project-box {
+			width: calc(25% - 15px)!important;
+			margin-left: 0;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(4n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(4n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1030px){
+	.allprojects-container {
+		max-width: 985px;
+
+		.project-box {
+			width: calc(33.333% - 14px)!important;
+			margin-left: 0;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(3n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+	.allprojects-container {
+		max-width: 723px;
+
+		.project-box {
+			width: calc(50% - 10px)!important;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(2n) {
+				margin-left: 20px;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.allprojects-container {
+		max-width: 445px;
+
+		.project-box {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+
+//--------- Mobile View for Defect-box ----------
+@media (min-width: 1820px) and (max-width: 3000px) {
+	.content-menu-box {
+
+		.defect-box {
+			width: calc(14.28% - 17.5px)!important;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(7n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(7n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1535px) and (max-width: 1819px) {
+	.content-menu-box {
+
+		.defect-box {
+			width: calc(16.667% - 17px)!important;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(6n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(6n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1351px) and (max-width: 1534px) {
+	.content-menu-box {
+		.defect-box {
+			width: calc(20% - 16px)!important;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(5n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(5n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1150px) and (max-width: 1350px) {
+	.content-menu-box {
+		max-width: 1205px;
+
+		.defect-box {
+			width: calc(25% - 15px)!important;
+			margin-left: 0;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(4n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(4n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 850px) and (max-width: 1149px){
+	.content-menu-box {
+		.defect-box {
+			width: calc(33.333% - 14px)!important;
+			margin-left: 0;
+			margin-right: 0;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(3n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 481px) and (max-width: 849px) {
+	.content-menu-box {
+		//max-width: 723px;
+
+		.defect-box {
+			width: calc(50% - 10px)!important;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:nth-child(2n) {
+				margin-left: 20px;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.content-menu-box {
+		//max-width: 445px;
+
+		.defect-box {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
 
 //------------------------------------------------

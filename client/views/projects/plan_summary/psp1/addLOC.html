@@ -1,0 +1,108 @@
+<!-- ###################################### -->
+<template name="addSummary">
+	{{createaddData}}
+	<table class="table add-size-table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Tipo</th>
+				<th>Cantidad</th>
+				<th>Tamaño Relativo</th>
+				<th>Tamaño</th>
+				<th>NR</th>
+
+				<th>Tamaño</th>
+				<th>Cantidad</th>
+				<th>NR</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each addData}}
+				<tr>
+					<td>
+						<div class="input-box">
+							<input type="text" class="size-add-title" value="{{Estimated.name}}" data-value="Estimated.name" placeholder="Ingresar nombre...">
+						</div>
+					</td>
+					<td>
+						<div class="dropdown-box">
+							<button type="button" data-toggle="dropdown">
+								{{Estimated.type}}
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<ul class="dropdown-menu" data-value="Estimated.type">
+								<li class="add-size-option" data-value="calc">Cálculos</li>
+								<li class="add-size-option" data-value="data">Datos</li>
+								<li class="add-size-option" data-value="io">I/0</li>
+								<li class="add-size-option" data-value="logic">Logica</li>
+								<li class="add-size-option" data-value="configuration">Configuracion</li>
+								<li class="add-size-option" data-value="text">Texto</li>
+							</ul>
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.items}}" data-value="Estimated.items">
+						</div>
+					</td>
+					<td>
+						<div class="dropdown-box">
+							<button type="button" data-toggle="dropdown">
+								{{Estimated.relSize}}
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<ul class="dropdown-menu" data-value="Estimated.relSize">
+								<li class="add-size-option" data-value="vs">Muy pequeño</li>
+								<li class="add-size-option" data-value="s">Pequeño</li>
+								<li class="add-size-option" data-value="m">Mediano</li>
+								<li class="add-size-option" data-value="l">Grande</li>
+								<li class="add-size-option" data-value="vl">Muy grande</li>
+							</ul>
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.size}}" data-value="Estimated.size">
+						</div>
+					</td>
+					<td>
+						<div class="checkbox-box add-field-last">
+							<input class="add-checkbox" type="checkbox" {{isChecked Estimated.nr}} data-value="Estimated.nr"/>
+						</div>
+					</td>
+					<td class="add-actual">
+						<div class="input-box">
+							<input type="text" value="{{Actual.size}}" data-value="Actual.size">
+						</div>
+					</td>
+					<td class="add-actual">
+						<div class="input-box add-actual">
+							<input type="text" value="{{Actual.items}}" data-value="Actual.items">
+						</div>
+					</td>
+					<td class="add-actual">
+						<div class="checkbox-box add-actual-last">
+							<input class="add-checkbox" type="checkbox" {{isChecked Actual.nr}} data-value="Actual.nr"/>
+						</div>
+					</td>
+					<td class="{{#unless activeDelete}} hide {{/unless}}">
+						<i class="fa fa-times add-delete-row"></i>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	<div class="add-option-bar">
+		<div class="pull-left btn primary-button add-row">Nueva Fila</div>
+		<div class="pull-left btn primary-button add-active-delete">
+			{{#if activeDelete}}
+				Deshabilitar Eliminar
+			{{else}}
+				Habilitar Eliminar
+			{{/if}}
+		</div>
+		<div class="pull-right btn primary-button add-save-data">Guardar Cambios</div>
+	</div>
+</template>
+<!-- ###################################### -->

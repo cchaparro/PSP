@@ -1,0 +1,48 @@
+<template name="reusedSummary">
+	{{createreusedData}}
+	<table class="table reused-size-table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Tamaño</th>
+				<th>Tamaño</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each reusedData}}
+				<tr>
+					<td class="size-reused-title">
+						<div class="input-box">
+							<input type="text" value="{{Estimated.name}}" data-value="Estimated.name" placeholder="Ingresar nombre...">
+						</div>
+					</td>
+					<td>
+						<div class="input-box reused-field-last">
+							<input type="text" value="{{Estimated.size}}" data-value="Estimated.size">
+						</div>
+					</td>
+					<td class="reused-actual">
+						<div class="input-box reused-actual-last">
+							<input type="text" value="{{Actual.size}}" data-value="Actual.size">
+						</div>
+					</td>
+					<td class="{{#unless activeDelete}} hide {{/unless}}">
+						<i class="fa fa-times reused-delete-row"></i>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	<div class="reused-option-bar">
+		<div class="pull-left btn primary-button reused-add-row">Nueva Fila</div>
+		<div class="pull-left btn primary-button reused-active-delete">
+			{{#if activeDelete}}
+				Deshabilitar Eliminar
+			{{else}}
+				Habilitar Eliminar
+			{{/if}}
+		</div>
+		<div id="juan" class="pull-right btn primary-button reused-save-data">Guardar Cambios</div>
+	</div>
+</template>

@@ -1,4 +1,8 @@
 ##########################################
+Template.masterLayout.onCreated () ->
+	Session.set "statusMessage", false
+
+
 Template.masterLayout.helpers
 	documentTitle: () ->
 		if Session.get("route")

@@ -4,7 +4,7 @@
 		<h3>Tipo de defectos</h3>
 		{{createDefectList}}
 		{{#each defectTypes}}
-			<div class="defect-type-box {{#if selectedRow}} defect-type-selected {{/if}}clearfix">
+			<div class="defect-type-box {{#if selectedRow}} defect-type-selected {{/if}}">
 				<div class="defect-type-title-box">
 					<i class="fa fa-times-circle delete-defect-type"></i>
 					{{{contentEditable class='defect-type-title' value=name}}}
@@ -25,8 +25,8 @@
 			</div>
 		{{/if}}
 		<div class="row defect-type-save-nav">
-			<button class="btn save-defect-types pull-right">Guardar cambios</button>
-			<button class="btn reset-defect-types btn-default pull-right">Volver a valores predeterminados</button>
+			<button class="btn default-button reset-defect-types btn-default pull-left">Volver a valores predeterminados</button>
+			<button class="btn primary-button save-defect-types pull-right">Guardar cambios</button>
 		</div>
 	</div>
 </template>

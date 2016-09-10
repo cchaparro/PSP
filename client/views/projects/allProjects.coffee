@@ -4,7 +4,7 @@ Template.projectsTemplate.onCreated () ->
 
 Template.projectsTemplate.helpers
 	allProjects: () ->
-		return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}})
+		return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {createdAt: 1}})
 
 	isHovered: () ->
 		return Template.instance().hoveredProject.get() == @_id

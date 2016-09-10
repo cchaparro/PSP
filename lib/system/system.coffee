@@ -154,6 +154,12 @@ sys.flashStatus = (type) ->
 			subject = "Debes ingresar un tiempo estimado en el Plan Summary para continuar."
 			css = "danger"
 
+		when "size-delete-error"
+			title = "Error"
+			subject = "Como mínimo debe haber una fila de datos."
+			css = "danger"
+
+
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
 

@@ -40,17 +40,17 @@
 <!-- ###################################### -->
 <template name="timesBar">
 	{{#with planSummary}}
-		<div class="time-menu clearfix">
+		<div class="time-menu">
 			<div>
 				<i class="fa time-btn fa-play {{#if isRecordingTime}} time-btn-play {{/if}}"></i>
 				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} {{#if disabledPlayButton}} time-btn-disabled {{else}} time-status-pause {{/if}} {{/unless}} "></i>
 			</div>
 			{{#if currentStage}}
-				<div class="btn time-submit">
+				<div class="btn primary-button time-submit">
 					<span>Finalizar {{currentStage}}</span>
 				</div>
 			{{else}}
-				<div class="btn time-submit-disabled">
+				<div class="btn disabled-button">
 					<span>Etapas Completadas</span>
 				</div>
 			{{/if}}

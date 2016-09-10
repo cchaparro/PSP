@@ -67,7 +67,19 @@
 	}
 }
 
+.disabled-button {
+	@extend .primary-button;
+	color: $disabled-button;
+	border: 1px solid $disabled-button;
+	cursor: default;
 
+	&:hover, &:focus {
+		background-color: $white;
+		border: 1px solid $disabled-button;
+		color: $disabled-button;
+	}
+
+}
 
 //------------------- Main Menu ------------------
 
@@ -485,6 +497,20 @@
 //---------- Fix Chrome Yellow Input Color -------
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+//------------------------------------------------
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+	.content-menu-box {
+		width: calc(100% + 40px);
+		margin-top: 20px;
+	}
 }
 
 //------------------------------------------------

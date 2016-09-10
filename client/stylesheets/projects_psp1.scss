@@ -1,0 +1,296 @@
+@import '_variables.scss';
+
+//--------------- Base LOC Table --------------
+.table-size-base {
+	background-color: $white;
+	margin-bottom: 0;
+
+	thead {
+		& > tr > th{
+			padding-bottom: 0;
+			text-align: center;
+			border-bottom: 0px;
+			color: $text;
+			font-weight: 300;
+			cursor: default;
+		}
+	}
+
+	tbody > tr {
+		//background-color: $background;
+		cursor: default;
+
+		& > td {
+			padding: 0 0 0 5px;
+			border: none;
+			border-bottom: 6px solid $white;
+			color: $text;
+			vertical-align: middle;
+
+			input {
+				margin-top: 9px;
+				padding: 12px;
+				text-align: center;
+			}
+
+			&:first-child {
+				padding: 0;
+			}
+
+			.size-base-title {
+				text-align: left;
+				width: 150px;
+			}
+		}
+
+		.base-field-last {
+			padding-right: 5px;
+		}
+
+		.base-actual {
+			background-color: $background;
+
+			div {
+				background-color: $background;
+
+				&.base-actual-last {
+					padding-right: 5px;
+				}
+			}
+		}
+
+		.base-delete-row {
+			background-color: $danger;
+			padding: 8px;
+			@include border-radius($default-border-radius);
+			color: $white;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $danger-dark;
+			}
+		}
+
+		&:last-child {
+			border-bottom: none;
+			background-color: $white;
+		}
+	}
+
+}
+.base-option-bar {
+	@include clearfix();
+
+	div {
+		padding-top: 0;
+		padding-bottom: 0;
+
+		&:nth-child(2) {
+			margin-left: 10px;
+		}
+	}
+}
+//--------------- Add LOC Table --------------
+.add-size-table {
+	background-color: $white;
+	margin-bottom: 0;
+
+	thead {
+		& > tr > th{
+			padding-bottom: 0;
+			text-align: center;
+			border-bottom: 0px;
+			color: $text;
+			font-weight: 300;
+			cursor: default;
+		}
+	}
+
+	tbody > tr {
+		cursor: default;
+
+		& > td {
+			padding: 0 0 0 5px;
+			border: none;
+			border-bottom: 6px solid $white;
+			color: $text;
+			vertical-align: middle;
+
+			input {
+				margin-top: 9px;
+				padding: 12px;
+				text-align: center;
+			}
+
+			&:first-child {
+				padding: 0;
+			}
+
+			button {
+				margin-bottom: 0;
+			}
+
+			.dropdown-menu {
+				margin-top: 2px;
+				@include box-shadow($default-box-shadow);
+			}
+
+			.checkbox-box {
+				text-align: center;
+
+				input {
+					margin-top: 4px;
+				}
+			}
+
+			.size-add-title {
+				text-align: left;
+				width: 150px;
+			}
+		}
+
+		.add-field-last {
+			padding-right: 5px;
+		}
+
+		.add-actual {
+			background-color: $background;
+
+			div {
+				background-color: $background;
+
+				&.add-actual-last {
+					padding-right: 5px;
+				}
+			}
+		}
+
+		.add-delete-row {
+			background-color: $danger;
+			padding: 8px;
+			@include border-radius($default-border-radius);
+			color: $white;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $danger-dark;
+			}
+		}
+
+		&:last-child {
+			border-bottom: none;
+			background-color: $white;
+		}
+	}
+}
+
+.add-option-bar {
+	@include clearfix();
+
+	div {
+		padding-top: 0;
+		padding-bottom: 0;
+
+		&:nth-child(2) {
+			margin-left: 10px;
+		}
+	}
+}
+
+
+
+
+
+//--------------- Add LOC Table --------------
+.reused-size-table {
+	background-color: $white;
+	margin-bottom: 0;
+
+	thead {
+		& > tr > th{
+			padding-bottom: 0;
+			text-align: center;
+			border-bottom: 0px;
+			color: $text;
+			font-weight: 300;
+			cursor: default;
+		}
+	}
+
+	tbody > tr {
+		cursor: default;
+
+		& > td {
+			padding: 0 0 0 5px;
+			border: none;
+			border-bottom: 6px solid $white;
+			color: $text;
+			vertical-align: middle;
+
+			input {
+				margin-top: 9px;
+				padding: 12px;
+				text-align: center;
+			}
+
+			&:first-child {
+				padding: 0;
+				width: 60%;
+
+				input {
+					text-align: left;
+				}
+			}
+
+			button {
+				margin-bottom: 0;
+			}
+		}
+
+		.reused-field-last {
+			padding-right: 5px;
+		}
+
+		.reused-actual {
+			background-color: $background;
+
+			div {
+				background-color: $background;
+
+				&.reused-actual-last {
+					padding-right: 5px;
+				}
+			}
+		}
+
+		.reused-delete-row {
+			background-color: $danger;
+			padding: 8px;
+			@include border-radius($default-border-radius);
+			color: $white;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $danger-dark;
+			}
+		}
+
+		&:last-child {
+			border-bottom: none;
+			background-color: $white;
+		}
+	}
+}
+
+.reused-option-bar {
+	@include clearfix();
+
+	div {
+		padding-top: 0;
+		padding-bottom: 0;
+
+		&:nth-child(2) {
+			margin-left: 10px;
+		}
+	}
+}

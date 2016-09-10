@@ -1,0 +1,87 @@
+<!-- ###################################### -->
+<template name="baseSummary">
+	{{createBaseData}}
+	<table class="table table-size-base">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Base</th>
+				<th>Adicionadas</th>
+				<th>Modificadas</th>
+				<th>Borradas</th>
+
+				<th>Base</th>
+				<th>Adicionadas</th>
+				<th>Modificadas</th>
+				<th>Borradas</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each baseData}}
+				<tr>
+					<td>
+						<div class="input-box">
+							<input type="text" class="size-base-title" value="{{Estimated.name}}" data-value="Estimated.name" placeholder="Ingresar nombre...">
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.base}}" data-value="Estimated.base">
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.add}}" data-value="Estimated.add">
+						</div>
+					</td>
+					<td>
+						<div class="input-box">
+							<input type="text" value="{{Estimated.modified}}" data-value="Estimated.modified">
+						</div>
+					</td>
+					<td>
+						<div class="input-box base-field-last">
+							<input type="text" value="{{Estimated.deleted}}" data-value="Estimated.deleted">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box">
+							<input type="text" value="{{Actual.base}}" data-value="Actual.base" placeholder="Ingresar nombre...">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box">
+							<input type="text" value="{{Actual.add}}" data-value="Actual.add">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box base-actual">
+							<input type="text" value="{{Actual.modified}}" data-value="Actual.modified">
+						</div>
+					</td>
+					<td class="base-actual">
+						<div class="input-box base-actual-last">
+							<input type="text" value="{{Actual.deleted}}" data-value="Actual.deleted">
+						</div>
+					</td>
+					<td class="{{#unless activeDelete}} hide {{/unless}}">
+						<i class="fa fa-times base-delete-row"></i>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	<div class="base-option-bar">
+		<div class="pull-left btn primary-button base-add-row">Nueva Fila</div>
+		<div class="pull-left btn primary-button base-active-delete">
+			{{#if activeDelete}}
+				Deshabilitar Eliminar
+			{{else}}
+				Habilitar Eliminar
+			{{/if}}
+		</div>
+		<div class="pull-right btn primary-button base-save-data">Guardar Cambios</div>
+	</div>
+</template>
+<!-- ###################################### -->
