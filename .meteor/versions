@@ -81,6 +81,7 @@ minifier-js@1.2.13
 minimongo@1.0.17
 mobile-experience@1.0.4
 mobile-status-bar@1.0.12
+modernize:chart-scatter@1.1.2
 modules@0.7.5
 modules-runtime@0.7.5
 momentjs:moment@2.14.4

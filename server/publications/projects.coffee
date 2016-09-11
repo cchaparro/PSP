@@ -11,3 +11,9 @@ Meteor.publish "projectView", (pid) ->
 		db.users.find({_id: @userId})
 	]
 ####################################
+
+Meteor.publish "chartStages", ()->
+	return [
+		db.projects.find({"projectOwner": @userId})
+		db.plan_summary.find({"summaryOwner": @userId})
+ ]

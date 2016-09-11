@@ -1,3 +1,8 @@
 <template name="overviewTemplate">
-	<p>Este es el overview del proyecto</p>
+	<h3>Tiempo por etapas</h3>
+	{{>timeCharts}}
+	<h3>Defectos inyectados por etapa</h3>
+	{{>injectedCharts}}
+	<h3>Defectos removidos por etapa</h3>
+	{{>removedCharts}}
 </template>
