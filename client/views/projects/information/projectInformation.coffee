@@ -67,6 +67,9 @@ Template.projectInformationTemplate.helpers
 	displayInformation: () ->
 		return Template.instance().informationState.get()
 
+	projectIsCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
 
 Template.projectInformationTemplate.events
 	'blur .prj-info-title': (e,t) ->
