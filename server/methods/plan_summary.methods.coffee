@@ -156,4 +156,16 @@ Meteor.methods
 
 		db.plan_summary.update({ "projectId":projectId }, {$set: data })
 
+	update_stages_percentage: (projectId)->
+		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
+		totalTime = planSummary.total.totalTime
+		stages = planSummary.timeEstimated
+		_.each stages, (stage)->
+			console.log "Stage"+stage.time
+			stage.percentage = ((stage.time*100)/totalTime).toFixed(2)
+		data = {
+			"timeEstimated":stages
+		}
+		console.log totalTime
+		db.plan_summary.update({ "projectId":projectId }, {$set: data })		
 #######################################

@@ -105,7 +105,12 @@ Template.projectInformationTemplate.events
 					if error
 						console.warn(error)
 					else
-						sys.flashStatus("save-project")
+						Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
+							if error
+								sys.flashStatus("error-project")
+							else
+								sys.flashStatus("save-project")
+
 
 	'click svg': (e,t) ->
 		t.informationState.set(!t.informationState.get())

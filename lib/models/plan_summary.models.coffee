@@ -41,11 +41,10 @@ if Meteor.isServer
 		finalTime = _.filter timePlanSummary, (time) ->
 			onDate = _.findWhere user.summaryAmount, {name: time.name}
 			time.toDate = onDate.time
+			time.percentage = 0
 			if (onDate.time == 0) or (historyTotalTime == 0)
-				time.percentage = 0
 				time.average = 0
 			else
-				time.percentage = ((onDate.time * 100) / historyTotalTime).toFixed(2)
 				time.average = (onDate.time/finishedProjects).toFixed(2)
 
 			return time
