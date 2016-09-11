@@ -6,6 +6,7 @@
 			<thead>
 				<tr>
 					<th>Etapa</th>
+					<th>Estimado</th>
 					<th class="hidden-xs">Tiempo registrado</th>
 					<th>Completado</th>
 					<th class="hidden-xs">Edición</th>
@@ -23,6 +24,7 @@
 <template name="timeTableRow">
 	<tr>
 		<td><span>{{name}}</span></td>
+		<td class="hidden-xs">{{timeFormat estimated}}</td>
 		<td class="hidden-xs">{{timeFormat time}}</td>
 		<td>
 			<div class="time-completed {{#unless finished}} hide {{/unless}}"><i class="fa fa-fw fa-check"></i></div>

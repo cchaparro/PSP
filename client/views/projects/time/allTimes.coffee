@@ -98,7 +98,16 @@ Template.timesBar.events
 					console.log "Error submitting phase time inside project"
 					console.warn(error)
 				else
-					sys.flashStatus("save-project")
+					if currentStage.name == "Planeación"
+						Meteor.call "update_estimated", FlowRouter.getParam("id"), (error)->
+							if error
+								sys.flashStatus("error-project")
+								console.log "Error updating estimated time"
+								console.warn(error)
+							else
+								sys.flashStatus("save-project")
+					else
+						sys.flashStatus("save-project")
 					sys.removeTimeMessage()
 
 ##################################################

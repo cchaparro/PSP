@@ -12,8 +12,14 @@ schemas.summarytimeEstimated = new SimpleSchema
 
 	"time":
 		type: Number
-		label: "Stage timeEstimated time"
+		label: "Stage time"
 
+	"estimated":
+		type: Number
+		decimal: true
+		optional: true
+		label: "Stage estimated time"
+		
 	"toDate":
 		type: Number
 		optional: true
@@ -24,12 +30,6 @@ schemas.summarytimeEstimated = new SimpleSchema
 		decimal: true
 		optional: true
 		label: "Value for percentage of recolected data until the current date"
-
-	"average":
-		type: Number
-		decimal: true
-		optional: true
-		label: "Value for average of recolected data until the current date"
 
 ##########################################
 schemas.summaryInjectedEstimated = new SimpleSchema
