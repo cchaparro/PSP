@@ -66,6 +66,12 @@ sys.timeToSeconds = (time) ->
 sys.minutesToTime = (time) ->
 	return time * 60000
 
+# This brings the timeValue to amount of minutes, the difference
+# from this to the sys.timeToMinutes() is that this takes in account
+# the hours
+sys.timeInOnlyMinutes = (time) ->
+	return Math.floor(time / 60000)
+
 sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
 	time %= 60000
