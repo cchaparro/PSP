@@ -5,48 +5,54 @@ drawChart = () ->
   #finished projects ids
   finishedProjects = db.projects.find({"projectOwner":Meteor.userId(),"completed":true,"levelPSP":"PSP 0"}).fetch()
   colors = Meteor.settings.public.chartColors
-  projectsInjected=[] #Defects Injected
-  numberStages=0
-  _.each finishedProjects, (f)->
-    itQuery = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId":f._id})
-    projectsInjected.push(itQuery.injectedEstimated)
-    numberStages=itQuery.injectedEstimated.length
-  valuesInjected = []
-  stagesLabel = []
-  #Initialize arrays with the number of stages
-  iterator = 0
-  while iterator < numberStages
-    valuesInjected.push([])
-    iterator+=1
-  i = 0
-  while i < projectsInjected.length
-    prjI = projectsInjected[i]
-    valuePos = 0
-    j = 0
-    #Stage per project
-    while j < prjI.length
-      #Defects Injected per stage
-      sPrjI = prjI[j]
-      #i is the number of the project
-      valuesInjected[j].push({x:i+1,y:sPrjI.toDate})
-      stagesLabel.push(sPrjI.name)
-      j+=1
-    i+=1
-  dataInjected = []
-  #Draw a line per stage, Defects injected Chart data
-  color_position = 0
-  _.each valuesInjected, (v)->
-    dataInjected.push({label: stagesLabel[color_position],strokeColor: colors[color_position],data:v})
-    color_position+=1
+  projectsInjected = [] #Defects Injected
+  InplanChart = []
+  IndisChart = []
+  IncodChart = []
+  IncompChart = []
+  InprubChart = [ ]
+  InposChart = []
+  numberStages = 0
+  if finishedProjects.length > 0
+    _.each finishedProjects, (f)->
+      itQuery = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId":f._id})
+      projectsInjected.push(itQuery.injectedEstimated)
+      numberStages=itQuery.injectedEstimated.length
+    valuesInjected = []
+    stagesLabel = []
+    #Initialize arrays with the number of stages
+    iterator = 0
+    while iterator < numberStages
+      valuesInjected.push([])
+      iterator+=1
+    i = 0
+    while i < projectsInjected.length
+      prjI = projectsInjected[i]
+      valuePos = 0
+      j = 0
+      #Stage per project
+      while j < prjI.length
+        #Defects Injected per stage
+        sPrjI = prjI[j]
+        #i is the number of the project
+        valuesInjected[j].push({x:i+1,y:sPrjI.toDate})
+        stagesLabel.push(sPrjI.name)
+        j+=1
+      i+=1
+    dataInjected = []
+    #Draw a line per stage, Defects injected Chart data
+    color_position = 0
+    _.each valuesInjected, (v)->
+      dataInjected.push({label: stagesLabel[color_position],strokeColor: colors[color_position],data:v})
+      color_position+=1
 
-
-  #Stages values, injected bugs
-  InplanChart = [dataInjected[0]]
-  IndisChart = [dataInjected[1]]
-  IncodChart = [dataInjected[2]]
-  IncompChart = [dataInjected[3]]
-  InprubChart = [dataInjected[4]]
-  InposChart = [dataInjected[5]]
+    #Stages values, injected bugs
+    InplanChart = [dataInjected[0]]
+    IndisChart = [dataInjected[1]]
+    IncodChart = [dataInjected[2]]
+    IncompChart = [dataInjected[3]]
+    InprubChart = [dataInjected[4]]
+    InposChart = [dataInjected[5]]
 
   #Injected bug chart Context
   c1 = document.getElementById('InplanChart').getContext('2d')
