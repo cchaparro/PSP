@@ -159,6 +159,16 @@ sys.flashStatus = (type) ->
 			subject = "Como mínimo debe haber una fila de datos."
 			css = "danger"
 
+		when "base-deleted-error"
+			title = "Error"
+			subject = "Las líneas eliminadas no pueden ser mayores que las líneas base."
+			css = "danger"
+
+		when "base-modified-error"
+			title = "Error"
+			subject = "Las líneas modificadas no pueden ser mayores que las líneas base."
+			css = "danger"
+
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
