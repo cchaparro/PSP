@@ -50,6 +50,23 @@ Template.addSummary.events
 		section = dataField[0]
 		field = dataField[1]
 
+		if field == "items"
+			relSize = data[@position]["Estimated"]["relSize"]
+			if relSize != "Elegir"
+				switch relSize
+					when "Muy pequeño"
+						sizeValue = value * 5
+					when "Pequeño"
+						sizeValue = value * 10
+					when "Mediano"
+						sizeValue = value * 20
+					when "Grande"
+						sizeValue = value * 30
+					when "Muy grande"
+						sizeValue = value * 40
+
+				data[@position]["Estimated"]["size"] = sizeValue
+
 		data[@position][section][field] = value
 		t.addData.set(data)
 

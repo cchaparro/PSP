@@ -19,6 +19,12 @@ Template.projectsTemplate.helpers
 		return false if iterations > 0
 		return true
 
+	isRegistering: () ->
+		recordingProject = Session.get "statusTimeMessage"
+		return true if @_id == recordingProject.projectId
+		return true if @parentId? and @parentId == recordingProject.projectId
+		return false
+
 
 Template.projectsTemplate.events
 	'click .fa-times': (e,t) ->

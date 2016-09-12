@@ -46,9 +46,15 @@
 				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} {{#if disabledPlayButton}} time-btn-disabled {{else}} time-status-pause {{/if}} {{/unless}} "></i>
 			</div>
 			{{#if currentStage}}
-				<div class="btn primary-button time-submit">
-					<span>Finalizar {{currentStage}}</span>
-				</div>
+				{{#if projectIsCompleted}}
+					<div class="btn disabled-button">
+						<span>Proyecto Finaliado</span>
+					</div>
+				{{else}}
+					<div class="btn primary-button time-submit">
+						<span>Finalizar {{currentStage}}</span>
+					</div>
+				{{/if}}
 			{{else}}
 				<div class="btn disabled-button">
 					<span>Etapas Completadas</span>

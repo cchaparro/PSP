@@ -62,7 +62,7 @@
 </template>
 <!-- ###################################### -->
 <template name="createDefectButton">
-	<div class="btn create-btn">
+	<div class="btn {{#if projectIsCompleted}} disabled-btn {{else}} create-btn {{/if}}">
 		<i class="fa fa-plus"></i>
 		<span>Crear Defecto</span>
 	</div>

@@ -146,9 +146,16 @@ Template.createProjectButton.events
 		Modal.show('createProjectModal')
 
 ##################################################
+Template.createDefectButton.helpers
+	projectIsCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
+
 Template.createDefectButton.events
 	'click .create-btn': (e,t) ->
-		Modal.show('createDefectModal')
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+		unless project.completed
+			Modal.show('createDefectModal')
 
 ##################################################
 Template.createIterationButton.events

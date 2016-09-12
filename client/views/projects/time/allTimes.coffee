@@ -30,19 +30,31 @@ Template.timesBar.helpers
 		return currentPos
 
 	disabledPlayButton: () ->
-		return Template.instance().disablePlayButton.get()
+		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+		disableRecording = Template.instance().disablePlayButton.get()
+
+		return true if projectIsCompleted
+		return true if disableRecording
+		return false
+
+	projectIsCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
 
 Template.timesBar.events
 	'click .fa-play': (e,t) ->
-		unless t.disablePlayButton.get()
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+
+		unless t.disablePlayButton.get() or project?.completed
 			date = new Date()
-			projectTitle = db.projects.findOne({_id: FlowRouter.getParam("id")}).title
+
 			Meteor.call "update_timeStarted", FlowRouter.getParam("id"), date, (error) ->
 				if error
 					console.log "Error changing timeStarted in plan Summary"
 				else
-					sys.flashTime(projectTitle)
+					projectId = FlowRouter.getParam("fid")
+					iterationId = FlowRouter.getParam("id")
+					sys.flashTime(project.title, projectId, iterationId)
 
 
 	'click .fa-pause': (e,t) ->

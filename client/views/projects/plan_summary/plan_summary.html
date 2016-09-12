@@ -83,7 +83,7 @@
 				{{#if $eq projectProbe 'probeD'}}
 					{{#if estimationEditable}}
 						<div class="input-box">
-							<input type="text" value="{{timeInMinutes estimatedTime}}">
+							<input type="text" value="{{timeInOnlyMinutes estimatedTime}}">
 						</div>
 					{{else}}
 						<span>{{timeFormat estimatedTime}}</span>

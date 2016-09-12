@@ -66,6 +66,12 @@ sys.timeToSeconds = (time) ->
 sys.minutesToTime = (time) ->
 	return time * 60000
 
+# This brings the timeValue to amount of minutes, the difference
+# from this to the sys.timeToMinutes() is that this takes in account
+# the hours
+sys.timeInOnlyMinutes = (time) ->
+	return Math.floor(time / 60000)
+
 sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
 	time %= 60000
@@ -159,6 +165,16 @@ sys.flashStatus = (type) ->
 			subject = "Como mínimo debe haber una fila de datos."
 			css = "danger"
 
+		when "base-deleted-error"
+			title = "Error"
+			subject = "Las líneas eliminadas no pueden ser mayores que las líneas base."
+			css = "danger"
+
+		when "base-modified-error"
+			title = "Error"
+			subject = "Las líneas modificadas no pueden ser mayores que las líneas base."
+			css = "danger"
+
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000
@@ -170,12 +186,12 @@ sys.removeTimeMessage = () ->
 
 # This is a special flashStatus notification used for the time execution
 # (it appears allways until the time was paused)
-sys.flashTime = (projectName) ->
+sys.flashTime = (projectName, projectId, iterationId) ->
 	title = "Toma de Tiempo"
 	subject = 'Iniciaste la toma de tiempo en el proyecto "' + projectName + '".'
 	css = "warning"
 
-	Session.setPersistent "statusTimeMessage", {title: title, subject: subject, css: css}
+	Session.setPersistent "statusTimeMessage", {title: title, subject: subject, css: css, projectId: projectId, iterationId: iterationId}
 
 ##########################################
 ###############- Cut Text -###############
@@ -225,8 +241,8 @@ sys.getSessionRoute = (value) ->
 ########- Project Color Selector -########
 
 sys.selectColor = (last_color) ->
-	position = last_color % 6
-	colors= ["#00c1ed", "#00d5b6", "#ff8052", "#ffb427", "#799e9c", "#91cda5"]
+	position = last_color % 8
+	colors = ["#587291", "#00c1ed", "#00d5b6", "#ff8052", "#ffb427", "#F1E8B8", "#799e9c", "#91cda5"]
 	return colors[position]
 
 ##########################################

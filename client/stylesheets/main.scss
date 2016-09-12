@@ -164,6 +164,16 @@ html, body {
 	}
 }
 
+.disabled-btn {
+	@extend .create-btn;
+	background-color: $disabled-button;
+
+	&:hover {
+		color: $white;
+		background-color: $disabled-button;
+	}
+}
+
 .notification-svg {
 	width: 30px;
 	height: 30px;

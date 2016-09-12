@@ -46,8 +46,11 @@ if Meteor.isServer
 			data.projectProbe = "probeD"
 
 		if data.parentId
+			# It enters here when the user creates a new iteration
 			data.color = db.projects.findOne({_id: data.parentId}).color
-		else
+
+		unless data.color
+			# It enters here when you use the Meteor.call("create_static_projects")
 			data.color = sys.selectColor(amountProjects)
 
 		projectId = db.projects.insert(data)

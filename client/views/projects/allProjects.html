@@ -22,8 +22,14 @@
 				</div>
 				<a href="{{pathFor 'iterations' fid=_id}}">
 					<div class="project-content">
-						<i class="fa fa-circle {{#if projectCompleted}} prj-completed {{else}} prj-success {{/if}}"></i>
-						<h3>{{title}}</h3>
+						{{#if isRegistering}}
+							<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
+						{{else}}
+							<i class="fa fa-circle {{#if projectCompleted}} prj-completed {{else}} prj-success {{/if}}"></i>
+						{{/if}}
+						<h3>
+							{{title}}
+						</h3>
 						<span>{{description}}</span>
 					</div>
 				</a>

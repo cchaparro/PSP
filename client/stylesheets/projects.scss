@@ -38,11 +38,20 @@
 			right: 12px;
 		}
 
+		svg {
+			width: 17px;
+			fill: $text;
+			position: absolute;
+			margin-top: 1px;
+			top: 10px;
+			right: 10px;
+		}
+
 		h3 {
 			font-size: 13pt;
 			margin-top: 10px;
 			margin-bottom: 0;
-			padding-right: 17px;
+			padding-right: 22px;
 			color: $primary-bg;
 			font-weight: bold;
 			display: block;
@@ -432,6 +441,7 @@
 	background-color: $disabled-button;
 	border: 1px solid $disabled-button;
 	color: $white;
+	cursor: default;
 }
 
 .time-status-pause {
@@ -494,10 +504,15 @@
 		border: 1px solid $border;
 		outline: none;
 
-
 		&:focus {
 			border: 1px solid $blue;
 		}
+	}
+
+	.prj-title-completed {
+		@extend .prj-info-title;
+		border: 0;
+		cursor: default;
 	}
 
 	.prj-info-description {
@@ -513,6 +528,12 @@
 		&:focus {
 			border: 1px solid $blue;
 		}
+	}
+
+	.prj-description-completed {
+		@extend .prj-info-description;
+		border: 0;
+		cursor: default;
 	}
 
 	.project-active {
