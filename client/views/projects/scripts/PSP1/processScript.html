@@ -1,17 +1,45 @@
 <template name="processScript1">
+	<span>El próposito de este es script es indicar que debe hacer en cada etapa del proceso. No te olvides de registrar el tiempo en cada etapa.</span>
 	<table class="table">
+		<thead>
+			<tr>
+				<th>Actividad</th>
+				<th>Descripción</th>
+			</tr>
+		</thead>
 		<tbody>
+
 			<tr>
-				<td> Descripción del problema </td>
-				<td>Debes contar con la especificación del problema, en este debe estar bien definido lo que se estará y lo que no estará en el alcance del proyecto. </td>
+				<td>Planeación</td>
+				<td>
+					<ul>
+						<li> Hacer o revisar el documento de requerimientos.</li>
+						<li> Completa la plantilla de estimación de tamaño.</li>
+						<li> Utiliza el método <i>PROBE</i> para estimar las lineas añadidas y modificadas.</li>
+						<li>Utiliza el método <i>PROBE</i> para estimar el tiempo desarrollo del proyecto.</li>
+					</ul>
+				</td>
 			</tr>
 			<tr>
-				<td> Plan Summary</td>
-				<td>Es el formulario donde está toda la información relevante del proeycto.</td>
+				<td>Desarrollo</td>
+				<td>
+					<ul>
+						<li>Diseña el programa.</li>
+						<li>Implementa el programa.</li>
+						<li>Compila el programa, registra y corrige todos los defectos encontrados.</li>
+						<li>Pruebe el programa, registra y corrige todos los defectos encontrados.</li>
+						<li>Si es necesario completa el registro de los tiempos.</li>
+					</ul>
+				</td>
 			</tr>
 			<tr>
-				<td> Reporte de tiempos y defectos </td>
-				<td> Es el registro del tiempo que tomó completar cada etapa y cuantos defectos fueron inyectados y removidos en cada una de estas </td>
+				<td>Post Mortem</td>
+				<td>
+					<ul>
+						<li>Completa la plantilla de estimación de tamaño con los tamaños actuales.</li>
+						<li>Completa el <i>PIP form</i>.</li>
+					</ul>
+				</td>
 			</tr>
 		</tbody>
 	</table>

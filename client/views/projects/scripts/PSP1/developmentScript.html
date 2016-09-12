@@ -1,82 +1,55 @@
 <template name="developmentScript1">
 	<span>El propósito de este script es guíarte en el transcurso del proceso. Antes de iniciar debes cumplir con los siguientes criterios, la herramienta te ayudará con alguno de estos así que no deberás preocuparte por todos.</span>
-	<table class="table">
-		<tbody>
-			<tr>
-				<td> Descripción del problema </td>
-				<td>Debes contar con la especificación del problema, en este debe estar bien definido lo que se estará y lo que no estará en el alcance del proyecto. </td>
-			</tr>
-			<tr>
-				<td> Plan Summary</td>
-				<td>Es el formulario donde está toda la información relevante del proeycto.</td>
-			</tr>
-			<tr>
-				<td> Reporte de tiempos y defectos </td>
-				<td> Es el registro del tiempo que tomó completar cada etapa y cuantos defectos fueron inyectados y removidos en cada una de estas </td>
-			</tr>
-		</tbody>
-	</table>
-	<span> Cada etapa tiene un propósito que se deberá cumplir en su totalidad. A continuación se muestran las activdades y las etapas que agrupan y los propósitos de estas. Te recomendamos seguir los consejos.
-	</span>
+	<span> Cada etapa tiene un propósito que se deberá cumplir en su totalidad. A continuación se muestran las activdades y las etapas que agrupan y los propósitos de estas.</span>
 	<table class="table script-table-list">
 		<thead>
 			<tr>
-				<th>Actividades</th>
+				<th>Actividad</th>
 				<th>Propósito</th>
-				<th>Consejos</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Planeación</td>
+				<td>Diseño</td>
 				<td>
 					<ul>
-						<li> Si no se tiene, obtener el documento de requisitos del proyecto.</li>
-						<li> Estimar el tiempo que tomará finalizar el proyecto.</li>
-						<li> Llenar el formulario <i> Plan Summary</i> con los datos obtenidos.</li>
-					</ul>
-				</td>
-				<td>
-					<ul>
-						<li>Toma el tiempo de esta etapa antes de llenar los datos del <i>Plan Summary</i> y sumale el resultado a tu estimación.</li>
-						<li>Recuerda que la estimación no es el fuerte de PSP0 así que no dediques mucho en la estimación del tiempo.</li>
-						<li> Inicialmente el <i>Plan Summary</i> lo deberás llenar con el tiempo que tomará completar el proyecto.</li>
+						<li> Diseña una solución de acuerdo a la especificación de requermientos.</li>
+						<li> Si encuentras algún error en los requerimientos registralo como un defecto.</li>
+						<li> No te olvides de registrar el tiempo.</li>
 					</ul>
 				</td>
 			</tr>
 			<tr>
-				<td>Desarollo (Diseño, Codificación, Compilación y Pruebas)</td>
+				<td>Codificación</td>
 				<td>
 					<ul>
-						<li> Diseña la solución del problema-proyecto.</li>
 						<li> Implementa el programa de acuerdo al diseño.</li>
-						<li> Compila el programa, corrige y registra todos los defectos encontrados.</li>
-						<li> Prueba el programa, corrige y registra todos los defectos encontrados.</li>
+						<li> Si encuentras algún error en el diseño registralo como un defecto.</li>
+						<li> No te olvides de registrar el tiempo.</li>
 						<li> Completa el reporte de pruebas con los resultados obtenidos.</li>
 					</ul>
 				</td>
+			</tr>
+			<tr>
+				<td> Compilación</td>
 				<td>
 					<ul>
-						<li>No te olvides de tomar el tiempo cada vez que inicies una etapa.</li>
-						<li>Es probable que en el diseño encuentres defectos en la planeación, como lo podrían ser requerimientos ambiguos, deberás registrar estos defectos.</li>
-						<li>La metología cuenta con que acabarás el código sin parar de ahí la razón de la etapa de compilación, has el cambio entre etapas cada vez que compiles tu código.</li>
-						<li>Muchos de los defectos no se encontrarán en la etapa en la que se cometieron, así que reportalos en la que lo encontraste.</li>
+						<li> Compila el programa, si aplica, hasta que no hayan errores.</li>
+						<li> Registra y corrige cada error que aparezca.</li>
+						<li> No te olvides de registrar el tiempo.</li>
 					</ul>
 				</td>
 			</tr>
 			<tr>
-				<td> Post Mortem</td>
+				<td> Pruebas</td>
 				<td>
 					<ul>
-						<li>Completa el <i>Plan Summary</i> con los tiempos y defectos faltantes</li>
+						<li> Prueba el programa, corrige y registra todos los defectos encontrados.</li>
+						<li> Completa la plantilla de registro de pruebas, indicando las pruebas realizadas y los resultados obtenidos.</li>
+						<li> No te olvides de registrar el tiempo.</li>
 					</ul>
 				</td>
-				<td>
-					<ul>
-						<li> Si hiciste las cosas bien esta etapa será un cierre de proyecto y servirá de retroalimentacion ya que verás tus resultados y podrás hacer un contraste entre lo que planeaste y lo que te de verdad te demoraste.</li>
-					</ul>
-				</td>
-			</tr>
+			</tr>			
 		</tbody>
 	</table>
 </template>
