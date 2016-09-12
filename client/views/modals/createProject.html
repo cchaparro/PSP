@@ -32,6 +32,17 @@
 				</ul>
 			</div>
 		</div>
+		<div class="create-project-color-row">
+			<span>Color Proyecto:</span>
+			{{#each colorList}}
+				<div class="color-option {{#if selected}} selected {{/if}}">
+					{{#if selected}}
+						<svg viewBox="0 0 100 100"><use xlink:href="/images/Color.svg#colorLogo"></use></svg>
+					{{/if}}
+					<div style="background-color: {{color}}"></div>
+				</div>
+			{{/each}}
+		</div>
 		<div class="{{#if errorStateDescription}} textarea-error-box {{else}} textarea-box {{/if}}">
 			<textarea class="pry-new-description" placeholder="Ingresar descripcion del nuevo proyecto ..."></textarea>
 			<i class="fa fa-times"></i>

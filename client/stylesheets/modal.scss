@@ -102,6 +102,55 @@
 	}
 }
 
+.create-project-color-row {
+	margin-bottom: 10px;
+	height: 40px;
+	line-height: 40px;
+
+	span {
+		color: $text;
+		float: left;
+		font-weight: 300;
+		padding-right: 10px;
+	}
+
+	.color-option {
+		width: 28px;
+		height: 28px;
+		float: left;
+		margin-top: 6px;
+		margin-right: 5px;
+		@include border-radius($circle-border-radius);
+		display: inline-block;
+		border: 1px solid $white;
+		cursor: pointer;
+		position: relative;
+
+		&.selected {
+			border: 2px solid $text;
+
+			svg {
+				left: 7px;
+				top: 6.5px;
+			}
+		}
+
+		div {
+			width: 100%;
+			height: 100%;
+			@include border-radius($circle-border-radius);
+		}
+
+		svg {
+			width: 10px;
+			left: 8px;
+			top: 7.5px;
+			position: absolute;
+			fill: rgba($white, 0.8);
+		}
+	}
+}
+
 //-------------- Create Defect Modal -------------
 .row-defect-buttons {
 	padding: 5px 0;

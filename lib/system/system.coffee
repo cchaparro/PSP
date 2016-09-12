@@ -241,8 +241,8 @@ sys.getSessionRoute = (value) ->
 ########- Project Color Selector -########
 
 sys.selectColor = (last_color) ->
-	position = last_color % 6
-	colors= ["#00c1ed", "#00d5b6", "#ff8052", "#ffb427", "#799e9c", "#91cda5"]
+	position = last_color % 8
+	colors = ["#587291", "#00c1ed", "#00d5b6", "#ff8052", "#ffb427", "#F1E8B8", "#799e9c", "#91cda5"]
 	return colors[position]
 
 ##########################################
