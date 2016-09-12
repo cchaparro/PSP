@@ -1,10 +1,10 @@
 <!-- ###################################### -->
 <template name="scriptsTemplate">
 	<div class="script-content">
-		{{#if $eq projectPSPversion "PSP 0"}}
+		{{#if $eq levelPSP "PSP 0"}}
 			{{> PSP0Script}}
 		{{else}}
-			{{#if $eq projectPSPversion "PSP 1"}}
+			{{#if $eq levelPSP "PSP 1"}}
 				{{> PSP1Script}}
 			{{/if}}
 		{{/if}}
