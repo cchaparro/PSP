@@ -22,6 +22,7 @@
 	<div class="status-box">
 		{{#unless $.Meteor.status.connected}}
 			<div class="warning-slide status-message">
+				<i class="fa fa-times close-status"></i>
 				<div class="label-content">
 					<h3>Conectando</h3>
 					<span>Estamos tratando de conectarnos a la plataforma.</span>
@@ -40,6 +41,7 @@
 <template name="statusMessage">
 	{{#with statusMessage}}
 		<div class="warning-slide status-message">
+			<i class="fa fa-times close-status"></i>
 			<div class="label-content">
 				<h3>{{title}}</h3>
 				<span>{{subject}}</span>

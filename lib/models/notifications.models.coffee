@@ -25,6 +25,7 @@ if Meteor.isServer
 				extraData = {
 					time: data.time
 					stage: data.stage
+					id: data.id
 				}
 				#Fueron registrados 18horas, 12 minutos, 29 segundos. Para modificar este dato de click aqui
 				subject = 'Fueron registrados ' + sys.displayTime(data.time) + ". Para modificar este dato de click aqui."

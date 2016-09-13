@@ -22,14 +22,16 @@ Template.editTime.onCreated () ->
 	@selectedOption = new ReactiveVar(false)
 	@disableAddOption = new ReactiveVar(false)
 	timeData.set({})
+	@inputValues = new ReactiveVar({"hours": 0, "minutes": 0, "seconds": 0})
 
 	if @data?.type
 		timeData.set(@data)
+		Template.instance().inputValues.set({"hours": sys.timeToHours(@data.data.time), "minutes": sys.timeToMinutes(@data.data.time), "seconds": sys.timeToSeconds(@data.data.time)})
 		Template.instance().selectedOption.set('delete-time')
 		Template.instance().disableAddOption.set(true)
 	else
 		timeData.set(@data)
-		Template.instance().selectedOption.set(false)
+		Template.instance().selectedOption.set('add-time')
 
 
 Template.editTime.helpers
@@ -60,6 +62,51 @@ Template.editTime.helpers
 	addDisabled: () ->
 		return Template.instance().disableAddOption.get()
 
+	currentStage: () ->
+		currentData = timeData.get()
+		if currentData?.name?
+			return currentData.name
+		else
+			return currentData?.data?.stage
+
+	currentTime: () ->
+		currentData = timeData.get()
+		if currentData?.time?
+			return sys.displayTime(currentData.time)
+		else
+			planSummary = db.plan_summary.findOne({_id: currentData?.data?.id}).timeEstimated
+			summaryTime = _.findWhere planSummary, {name: currentData?.data?.stage}
+			return sys.displayTime(summaryTime.time)
+
+	newTime: () ->
+		currentData = timeData.get()
+
+		if currentData?.time?
+			currentTime = currentData.time
+		else
+			planSummary = db.plan_summary.findOne({_id: currentData?.data?.id}).timeEstimated
+			summaryTime = _.findWhere planSummary, {name: currentData?.data?.stage}
+			currentTime = summaryTime.time
+
+		option = Template.instance().selectedOption.get()
+		input = Template.instance().inputValues.get()
+
+		hours = sys.hoursToTime(input.hours)
+		minutes = sys.minutesToTime(input.minutes)
+		seconds = sys.secondsToTime(input.seconds)
+		editValue = parseInt(hours) + parseInt(minutes) + parseInt(seconds)
+
+		if option == 'delete-time'
+			newValue = currentTime - editValue
+		else
+			newValue = currentTime + editValue
+
+		if newValue < 0
+			return sys.displayTime(0)
+		else
+			return sys.displayTime(newValue)
+
+
 Template.editTime.events
 	'click .time-option': (e,t) ->
 		data = timeData.get()
@@ -78,17 +125,29 @@ Template.editTime.events
 					newValue = parseInt(current) + 1
 					$(".edit-time-hours").val(newValue)
 
+					data = t.inputValues.get()
+					data.hours = newValue
+					t.inputValues.set(data)
+
 			when "minutes-selector"
 				current = $(".edit-time-minutes").val()
 				unless parseInt(current) == sys.timeToMinutes(data?.data?.time)
 					newValue = parseInt(current) + 1
 					$(".edit-time-minutes").val(newValue)
 
+					data = t.inputValues.get()
+					data.minutes = newValue
+					t.inputValues.set(data)
+
 			when "seconds-selector"
 				current = $(".edit-time-seconds").val()
 				unless parseInt(current) == sys.timeToSeconds(data?.data?.time)
 					newValue = parseInt(current) + 1
 					$(".edit-time-seconds").val(newValue)
+
+					data = t.inputValues.get()
+					data.seconds = newValue
+					t.inputValues.set(data)
 
 	'click .fa-caret-down': (e,t) ->
 		value = $(e.target).data('value')
@@ -99,17 +158,29 @@ Template.editTime.events
 					newValue = parseInt(current) - 1
 					$(".edit-time-hours").val(newValue)
 
+					data = t.inputValues.get()
+					data.hours = newValue
+					t.inputValues.set(data)
+
 			when "minutes-selector"
 				current = $(".edit-time-minutes").val()
 				if current > 0
 					newValue = parseInt(current) - 1
 					$(".edit-time-minutes").val(newValue)
 
+					data = t.inputValues.get()
+					data.minutes = newValue
+					t.inputValues.set(data)
+
 			when "seconds-selector"
 				current = $(".edit-time-seconds").val()
 				if current > 0
 					newValue = parseInt(current) - 1
 					$(".edit-time-seconds").val(newValue)
+
+					data = t.inputValues.get()
+					data.seconds = newValue
+					t.inputValues.set(data)
 
 	'click .finish-edit-time': (e,t) ->
 		hours = $(".edit-time-hours").val()

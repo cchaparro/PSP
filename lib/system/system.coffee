@@ -63,8 +63,14 @@ sys.timeToSeconds = (time) ->
 	return Math.floor(time / 1000)
 
 # This is used in the plansummary
+sys.hoursToTime = (time) ->
+	return time * 3600000
+
 sys.minutesToTime = (time) ->
 	return time * 60000
+
+sys.secondsToTime = (time) ->
+	return time * 1000
 
 # This brings the timeValue to amount of minutes, the difference
 # from this to the sys.timeToMinutes() is that this takes in account
@@ -177,7 +183,7 @@ sys.flashStatus = (type) ->
 
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
-	window.setTimeout sys.removeMessage, 2000
+	window.setTimeout sys.removeMessage, 3500
 
 # This is used to fade-out the notification
 sys.removeTimeMessage = () ->

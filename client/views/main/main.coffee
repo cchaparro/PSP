@@ -36,6 +36,12 @@ Template.masterLayout.events
 			unless checkItem($this, ".avatar-box")
 				Session.set("display-user-box", false)
 
+	'click .close-status': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+		$(e.target).closest('.status-message').animate { opacity: 0 }, 200, ->
+			Session.set "statusMessage", false
+
 ##########################################
 Template.statusMessage.helpers
 	statusMessage: () ->
@@ -43,6 +49,13 @@ Template.statusMessage.helpers
 		if msg
 			return msg
 		return false
+
+Template.statusMessage.events
+	'click .close-status': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+		$(e.target).closest('.status-message').animate { opacity: 0 }, 200, ->
+			Session.set "statusMessage", false
 
 ##########################################
 Template.statusTimeMessage.helpers

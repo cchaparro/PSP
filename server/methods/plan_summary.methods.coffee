@@ -34,6 +34,7 @@ Meteor.methods
 				title: db.projects.findOne({_id: projectId}).title
 				time: stage.time
 				stage: stage.name
+				id: planSummary._id
 			}
 
 			syssrv.newNotification("time-registered", Meteor.userId(), notificationData)
