@@ -13,18 +13,16 @@ Template.sizeSummary.helpers
 		planSummary = db.plan_summary.findOne({ "projectId": FlowRouter.getParam("id") })
 		estimated = 0
 		actual = 0
-
 		addData = planSummary.addLOC
 		_.each addData, (addOption) ->
 			if addOption.Estimated.nr
 				estimated += addOption.Estimated.size
 			if addOption.Actual.nr
 				actual += addOption.Actual.size
-
-			switch type
-				when "estimated"
-					return estimated
-				when "actual"
-					return actual
+		switch type
+			when "estimated"
+				return estimated
+			when "actual"
+				return actual
 
 ##########################################
