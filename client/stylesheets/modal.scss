@@ -207,11 +207,52 @@
 	.row {
 		div {
 			&:first-child {
-				padding-right: 3px;
+				padding-right: 2px;
 			}
 
-			&:last-child {
-				padding-left: 3px;
+			&:nth-child(2) {
+				padding-left: 7px;
+				padding-right: 12px;
+			}
+		}
+
+		input[type="number"] {
+			padding-right: 15px;
+		}
+	}
+}
+
+.defect-type-dropdown {
+	li {
+		position: relative;
+		width: 100%;
+		cursor: pointer;
+
+		&:hover span {
+			display: inline;
+		}
+		span {
+			width: 214px;
+			background: $menu-popup-bg;
+			position: absolute;
+			top: -3px;
+			right: -224px;
+			padding: 7px 7px 7px 12px;
+			font-size: 10pt;
+			color: $white;
+			border-radius: 5px;
+			display: none;
+
+			i {
+				width: 15px;
+				height: 15px;
+				position: absolute;
+				left: -5px;
+				top: 10px;
+				border-radius: 3px;
+				background: $menu-popup-bg;
+				transform: rotate(45deg);
+				-webkit-transform: rotate(45deg);
 			}
 		}
 	}

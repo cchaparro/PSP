@@ -31,16 +31,19 @@
 		</div>
 
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-6">
+			<div class="col-xs-12 col-sm-6 col-md-6 first-column">
 				<div class="{{#if $and errorState ($eq defectData.typeDefect 'Elegir tipo')}} dropdown-error-box {{else}} dropdown-box {{/if}}">
 					<span>Tipo de defecto *</span>
 					<button type="button" data-toggle="dropdown">
 						{{defectData.typeDefect}}
 						<i class="fa fa-caret-down"></i>
 					</button>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu defect-type-dropdown">
 						{{#each allDefectTypes}}
-							<li class="defect-select-field" data-type="typeDefect" data-value="{{name}}">{{name}}</li>
+							<li class="defect-select-field" data-type="typeDefect" data-value="{{name}}">
+								{{name}}
+								<span><i></i>{{description}}</span>
+							</li>
 						{{/each}}
 					</ul>
 				</div>
@@ -54,7 +57,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-6">
+			<div class="col-xs-12 col-sm-6 col-md-6 first-column">
 				<div class="{{#if $and errorState ($eq defectData.injected 'Elegir etapa')}} dropdown-error-box {{else}} dropdown-box {{/if}}">
 					<span>Etapa inyectado *</span>
 					<button type="button" data-toggle="dropdown">
