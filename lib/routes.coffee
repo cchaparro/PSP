@@ -113,6 +113,15 @@ Projects.route '/:fid/:id/scripts',
 		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
 
 
+Projects.route '/:fid/:id/estimating-template',
+	name: 'estimating_Template'
+
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "projectView", params.id
+
+	action: () ->
+		Session.set "route", "planSummary"
+		BlazeLayout.render 'masterLayout', main: 'estimatingTemplate', menu: "projectViewMenu"
 
 
 Settings = FlowRouter.group(
