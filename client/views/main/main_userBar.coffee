@@ -25,7 +25,7 @@ Template.main_userBar.helpers
 		FlowRouter.watchPathChange()
 		currentState = FlowRouter.current().route.name
 
-		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="projects"
+		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="projects" or currentState=="estimatingtemplate"
 			initialRoute = "projects"
 		else
 			initialRoute = currentState

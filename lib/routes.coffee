@@ -114,13 +114,13 @@ Projects.route '/:fid/:id/scripts',
 
 
 Projects.route '/:fid/:id/estimating-template',
-	name: 'estimating_Template'
+	name: 'estimatingtemplate'
 
 	subscriptions: (params) ->
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		Session.set "route", "planSummary"
+		Session.set "route", "estimatingTemplate"
 		BlazeLayout.render 'masterLayout', main: 'estimatingTemplate', menu: "projectViewMenu"
 
 
