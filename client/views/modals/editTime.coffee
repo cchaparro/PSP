@@ -182,6 +182,22 @@ Template.editTime.events
 					data.seconds = newValue
 					t.inputValues.set(data)
 
+	'change input': (e,t) ->
+		data = t.inputValues.get()
+		value = $(e.target).val()
+
+		if $(e.target).hasClass("edit-time-hours")
+			data.hours = value
+			t.inputValues.set(data)
+
+		if $(e.target).hasClass("edit-time-minutes")
+			data.minutes = value
+			t.inputValues.set(data)
+
+		if $(e.target).hasClass("edit-time-seconds")
+			data.seconds = value
+			t.inputValues.set(data)
+
 	'click .finish-edit-time': (e,t) ->
 		hours = $(".edit-time-hours").val()
 		minutes = $(".edit-time-minutes").val()
