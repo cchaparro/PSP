@@ -8,7 +8,7 @@ Template.iterationsViewTemplate.helpers
 
 	isRegistering: () ->
 		recordingProject = Session.get "statusTimeMessage"
-		return true if @_id == recordingProject.iterationId
+		return true if @_id == recordingProject?.iterationId
 		return false
 
 ##########################################
@@ -22,7 +22,7 @@ Template.projectIterationBox.helpers
 
 	isRegistering: () ->
 		recordingProject = Session.get "statusTimeMessage"
-		return true if @_id == recordingProject.iterationId
+		return true if @_id == recordingProject?.iterationId
 		return false
 
 
