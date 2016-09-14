@@ -1,6 +1,9 @@
 ####################################
 Meteor.publish "allProjects", () ->
-	return db.projects.find({"projectOwner": @userId})
+	return [
+		db.projects.find({"projectOwner": @userId})
+		db.plan_summary.find({"summaryOwner": @userId})
+	]
 
 Meteor.publish "projectView", (pid) ->
 	return [
