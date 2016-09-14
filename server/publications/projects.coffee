@@ -16,4 +16,4 @@ Meteor.publish "chartStages", ()->
 	return [
 		db.projects.find({"projectOwner": @userId})
 		db.plan_summary.find({"summaryOwner": @userId})
- ]
+	]
