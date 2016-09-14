@@ -84,6 +84,7 @@ overviewTimeChart = () ->
 
 	#Chart properties, Time Stages
 	myLineChartT = new Chart(c1).Scatter(planChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -95,6 +96,7 @@ overviewTimeChart = () ->
 	)
 
 	myLineChartI = new Chart(c2).Scatter(disChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -105,6 +107,7 @@ overviewTimeChart = () ->
 		scaleBeginAtZero: true)
 
 	myLineChartR = new Chart(c3).Scatter(codChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -115,6 +118,7 @@ overviewTimeChart = () ->
 		scaleBeginAtZero: true)
 
 	myLineChartR = new Chart(c4).Scatter(compChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -125,6 +129,7 @@ overviewTimeChart = () ->
 		scaleBeginAtZero: true)
 
 	myLineChartR = new Chart(c5).Scatter(prubChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -135,6 +140,7 @@ overviewTimeChart = () ->
 		scaleBeginAtZero: true)
 
 	myLineChartR = new Chart(c6).Scatter(posChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true

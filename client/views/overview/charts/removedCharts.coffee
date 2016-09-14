@@ -79,6 +79,7 @@ overviewRemovedChart = () ->
 
 	#Chart properties, injected bugs
 	myLineChartT = new Chart(c1).Scatter(ReplanChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -90,6 +91,7 @@ overviewRemovedChart = () ->
 	)
 
 	myLineChartI = new Chart(c2).Scatter(RedisChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -101,6 +103,7 @@ overviewRemovedChart = () ->
 	)
 
 	myLineChartR = new Chart(c3).Scatter(RecodChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -112,6 +115,7 @@ overviewRemovedChart = () ->
 	)
 
 	myLineChartR = new Chart(c4).Scatter(RecompChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -123,6 +127,7 @@ overviewRemovedChart = () ->
 	)
 
 	myLineChartR = new Chart(c5).Scatter(ReprubChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -134,6 +139,7 @@ overviewRemovedChart = () ->
 	)
 
 	myLineChartR = new Chart(c6).Scatter(ReposChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true

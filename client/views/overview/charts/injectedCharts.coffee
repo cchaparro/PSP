@@ -9,7 +9,7 @@ overviewInjectedChart = () ->
 	IndisChart = []
 	IncodChart = []
 	IncompChart = []
-	InprubChart = [ ]
+	InprubChart = []
 	InposChart = []
 	numberStages = 0
 
@@ -80,6 +80,7 @@ overviewInjectedChart = () ->
 
 	#Chart properties, injected bugs
 	myLineChartT = new Chart(c1).Scatter(InplanChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -91,6 +92,7 @@ overviewInjectedChart = () ->
 	)
 
 	myLineChartI = new Chart(c2).Scatter(IndisChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -102,6 +104,7 @@ overviewInjectedChart = () ->
 	)
 
 	myLineChartR = new Chart(c3).Scatter(IncodChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -113,6 +116,7 @@ overviewInjectedChart = () ->
 	)
 
 	myLineChartR = new Chart(c4).Scatter(IncompChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -124,6 +128,7 @@ overviewInjectedChart = () ->
 	)
 
 	myLineChartR = new Chart(c5).Scatter(InprubChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
@@ -135,6 +140,7 @@ overviewInjectedChart = () ->
 	)
 
 	myLineChartR = new Chart(c6).Scatter(InposChart,
+		animation : false
 		bezierCurve: true
 		showTooltips: true
 		scaleShowHorizontalLines: true
