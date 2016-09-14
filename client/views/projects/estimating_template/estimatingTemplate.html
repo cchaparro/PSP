@@ -4,6 +4,33 @@
 </template>
 
 <template name="historicalData">
-	{{#each historicalProjects}}
-	{{/each}}
+	{{gethistoricalProjects}}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Proyecto</th>
+				<th><i>Proxy Estimated</i></th>
+				<th>Líneas añadidas y modificadas (Plan)</th>
+				<th>Líneas añadidas y modificadas (Actual)</th>
+				<th>Tiempo Estimado</th>
+				<th>Tiempo Actual</th>
+				<th>PROBE A</th>
+				<th>PROBE B</th>
+			</tr>
+		</thead>
+		<tbody>			
+			{{#each historicalProjects}}
+				<tr>
+					<td>{{Name}}</td>
+					<td>{{Proxy}}</td>
+					<td>{{Proxy}}</td>
+					<td>{{ActualLOC}}</td>
+					<td>{{timeFormat EstimatedTime}}</td>
+					<td>{{timeFormat ActualTime}}</td>
+					<td>{{PROBEA}}</td>
+					<td>{{PROBEB}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
 </template>

@@ -117,7 +117,7 @@ Projects.route '/:fid/:id/estimating-template',
 	name: 'estimatingtemplate'
 
 	subscriptions: (params) ->
-		@register 'projectView', Meteor.subscribe "projectView", params.id
+		@register 'projectView', Meteor.subscribe "estimatingView", params.id
 
 	action: () ->
 		Session.set "route", "estimatingTemplate"
