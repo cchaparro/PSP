@@ -183,7 +183,7 @@ sys.flashStatus = (type) ->
 
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
-	window.setTimeout sys.removeMessage, 3500
+	window.setTimeout sys.removeMessage, 3800
 
 # This is used to fade-out the notification
 sys.removeTimeMessage = () ->
