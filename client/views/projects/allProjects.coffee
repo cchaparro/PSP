@@ -21,7 +21,7 @@ Template.projectsTemplate.helpers
 
 	isRegistering: () ->
 		recordingProject = Session.get "statusTimeMessage"
-		return true if @_id == recordingProject.projectId
+		return true if @_id == recordingProject?.projectId
 		return true if @parentId? and @parentId == recordingProject?.projectId
 		return false
 
