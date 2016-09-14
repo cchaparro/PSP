@@ -1,0 +1,42 @@
+@import '_variables.scss';
+
+//--------------- Overview Charts ----------------
+.overview-content {
+	background-color: $white;
+	padding: 20px;
+	cursor: default;
+
+	h3 {
+		font-size: 13pt;
+		margin-top: 5px;
+		padding-bottom: 20px;
+		color: $text-dark;
+		border-bottom: 1px solid $border;
+	}
+}
+
+.overview-chart-box {
+	width: 49%;
+	height: 300px;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: 1px solid $border;
+
+	&:nth-child(2n+1) {
+		float: right;
+	}
+
+	span {
+		display: block;
+		width: calc(100% - 40px);
+		float: left;
+		margin: 20px;
+		padding-bottom: 10px;
+		font-size: 12pt;
+		color: $text-dark;
+		border-bottom: 1px solid $border;
+	}
+}
+
+//------------------------------------------------
