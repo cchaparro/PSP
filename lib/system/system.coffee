@@ -149,8 +149,12 @@ sys.flashStatus = (type) ->
 			css = "success"
 
 		when "change-probe"
+				title = "Guardado"
+				subject = "Has cambiado la configuracion PROBE correctamente."
+				css = "success"
+		when "change-project-sorting"
 			title = "Guardado"
-			subject = "Has cambiado la configuracion PROBE correctamente."
+			subject = "Has cambiado el orden de los proyectos."
 			css = "success"
 		when "profile-update"
 			title = "Guardado"

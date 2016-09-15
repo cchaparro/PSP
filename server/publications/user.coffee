@@ -2,9 +2,9 @@
 Meteor.publish "UserMenu", () ->
 	return [
 		db.notifications.find({"notificationOwner": @userId})
+		db.plan_summary.find({"summaryOwner": @userId})
 		db.users.find({_id: @userId})
 		db.Images.find({userId: @userId}).cursor
-		db.plan_summary.find({"summaryOwner": @userId})
 	]
 
 Meteor.publish "projectSettings", () ->

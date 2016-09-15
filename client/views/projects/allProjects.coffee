@@ -4,7 +4,14 @@ Template.projectsTemplate.onCreated () ->
 
 Template.projectsTemplate.helpers
 	allProjects: () ->
-		return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {createdAt: 1}})
+		user = db.users.findOne({_id: Meteor.userId()})
+		switch user?.settings?.projectSort
+			when "date"
+				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {createdAt: 1}})
+			when "title"
+				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {title: 1}})
+			when "color"
+				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {color: 1}})
 
 	isHovered: () ->
 		return Template.instance().hoveredProject.get() == @_id

@@ -72,6 +72,7 @@ Template.main_userBar.events
 			Session.set("display-user-box", true)
 
 	'click .notification-svg, click .notification-badge': (e,t) ->
+		Meteor.call "notificationsSeen"
 		if Session.get("display-notification-box")
 			Session.set("display-notification-box", false)
 			userNotifications = db.notifications.find({"notificationOwner": Meteor.userId()}, {sort: {"createdAt": -1}})
@@ -80,7 +81,6 @@ Template.main_userBar.events
 				userNotifications[notification._id] = notification.seen
 
 			notSeenNotifications.set(userNotifications)
-			Meteor.call("notificationsSeen")
 		else
 			Session.set("display-notification-box", true)
 
@@ -116,7 +116,8 @@ Template.userNotification.helpers
 Template.userNotification.events
 	'click .notification-item': (e,t) ->
 		unless @data?.reverted or @type != 'time-registered'
-				Modal.show('editTimeModal', @)
+			Session.set("display-notification-box", false)
+			Modal.show('editTimeModal', @)
 
 ##################################################
 Template.userMenuDropdown.helpers
