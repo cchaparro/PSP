@@ -7,6 +7,7 @@ Meteor.users.after.insert (userId, doc) ->
 		settings:
 			probeC: false
 			probeD: true
+			projectSort: "title"
 
 		defectTypes:
 			default: defectTypeId
