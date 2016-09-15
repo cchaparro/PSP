@@ -1,0 +1,86 @@
+@import '_variables.scss';
+
+//------------------ Help View -------------------
+.help-content {
+	background-color: $white;
+	padding: 20px;
+	cursor: default;
+
+	h3 {
+		font-size: 13pt;
+		margin-top: 30px;
+		margin-bottom: 10px;
+		text-align: center;
+		color: $text-dark;
+	}
+}
+
+.help-options {
+	width: 100%;
+	@include clearfix();
+
+	.help-option-box {
+		width: 33%;
+		display: inline-block;
+		float: left;
+		padding: 40px;
+		//border: 1px solid $border;
+
+		&:hover {
+			.option-header {
+				border: 2px solid $blue;
+				
+				svg, span {
+					color: $blue;
+					fill: $blue;
+				}
+			}
+		}
+
+		&:nth-child(1) {
+			padding-right: 10px;
+			padding-left: 70px;
+		}
+
+		&:nth-child(3) {
+			padding-right: 70px;
+			padding-left: 10px;
+		}
+
+		.option-header {
+			width: 100%;
+			border: 2px solid $text;
+			padding: 40px 0;
+			@include border-radius($default-border-radius * 4);
+			text-align: center;
+			cursor: pointer;
+
+			svg {
+				width: 60px;
+				fill: $text;
+			}		
+
+			span {
+				display: block;
+				color: $text;
+				font-size: 11pt;
+				font-weight: 600;
+			}
+		}
+
+		.option-content {
+			margin-top: 20px;
+			text-align: center;
+
+			span {
+				display: block;
+				font-size: 12pt;
+				color: $text;
+				font-weight: 300;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+//------------------------------------------------
