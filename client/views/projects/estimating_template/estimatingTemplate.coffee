@@ -1,64 +1,60 @@
 Template.historicalData.onCreated () ->
 	@historicalProjectsData = new ReactiveVar([])
-	@totalProxy = new ReactiveVar(0)
-	@totalActualLOC = new ReactiveVar(0)
-	@totalEstimatedTime = new ReactiveVar(0)
+	@PROBEActive = new ReactiveVar("D")
+	@Beta0 = new ReactiveVar(0)
+	@Beta1 = new ReactiveVar(0)
+	#PROBE C
+	#Size Estimated Proxy Size actual added and modified lines
+	@totalProxySize = new ReactiveVar(0)
+	@totalActualAddedModifiedLOC = new ReactiveVar(0)
+	#Time Estimated Proxy Size - Actual hours
 	@totalActualTime = new ReactiveVar(0)
-	@squareTotalSize = new ReactiveVar(0)
-	@squareTotalProxy = new ReactiveVar(0)
-	@TotalXYA = new ReactiveVar(0) #PROBE A X * Y
-	@TotalXYB = new ReactiveVar(0) #PROBE B X * Y
-	@squareTotalTimeActual = new ReactiveVar(0)
+	#PROBE B
+	#Size Planned Added & Modified Size - Actual Added & Modified Size
+	@totalPlanAddedModifiedLOC = new ReactiveVar(0)
+	#Time Planned Added & Modified Size - Actual hours
+	#PROBE A
+	#Size Estimated Proxy Size actual - Added and modified lines
+	#Time Estimated Proxy Size actual - Actual Hours
 
 Template.historicalData.helpers
 	gethistoricalProjects:()->
 		totalProxy = 0
 		totalActualLOC = 0
-		totalEstimatedTime = 0
+		totalPlanLOC = 0
 		totalActualTime = 0
-		squareTotalSize = 0
-		squareTotalProxy = 0
-		TotalXYA = 0
-		TotalXYB = 0
-		squareTotalTimeActual = 0
 		projects = db.projects.find({"completed":true}).fetch()
 		data = []
 		_.each projects, (project)->
 			unless project._id == FlowRouter.getParam("id")
-				psProject = db.plan_summary.findOne({"projectId":project._id})
+				psProject = db.plan_summary.findOne({"projectId":project._id})?.total
 
-				totalProxy += psProject.total.estimatedAdd + psProject.total.estimatedModified 
+				totalProxy += psProject.proxyEstimated
 				totalActualLOC += psProject.ActualLOC
-				totalEstimatedTime += psProject.EstimatedTime
+				totalPlanLOC += psProject.estimatedAddedSize
 				totalActualTime += psProject.ActualTime
-				squareTotalSize += Math.pow(psProject.total.actualAdd + psProject.total.actualModified,2)
-				squareTotalProxy += Math.pow(psProject.total.estimatedAdd + psProject.total.estimatedModified,2)
-				TotalXYA += (psProject.total.estimatedAdd + psProject.total.estimatedModified)*psProject.total.totalTime
-				TotalXYB += (psProject.total.estimatedAdd + psProject.total.estimatedModified)*(psProject.total.actualAdd + psProject.total.actualModified)
-				squareTotalTimeActual += Math.pow(psProject.total.totalTime,2)
 				#X is the proxy size for probe A and Planned added and modified 
-				data.push({"Name":project.title, "Proxy":psProject.total.estimatedAdd + psProject.total.estimatedModified, "ActualLOC": psProject.total.actualAdd + psProject.total.actualModified, "EstimatedTime":psProject.total.estimatedTime, "ActualTime":psProject.total.totalTime,"PROBEA":(psProject.total.estimatedAdd + psProject.total.estimatedModified)*psProject.total.totalTime, "PROBEB":(psProject.total.estimatedAdd + psProject.total.estimatedModified)*(psProject.total.actualAdd + psProject.total.actualModified)})
-		Template.instance().totalProxy.set(totalProxy)
-		Template.instance().totalActualLOC.set(totalActualLOC)
-		Template.instance().totalEstimatedTime.set(totalEstimatedTime)
+				data.push({"Name":project.title, "Proxy":psProject.estimatedAdd + psProject.estimatedModified, "ActualLOC": psProject.actualAdd + psProject.actualModified, "EstimatedTime":psProject.estimatedTime, "ActualTime":psProject.totalTime})
+		Template.instance().totalProxySize.set(totalProxy)
+		Template.instance().totalActualAddedModifiedLOC.set(totalActualLOC)
+		Template.instance().totalPlanAddedModifiedLOC.set(totalPlanLOC)
 		Template.instance().totalActualTime.set(totalActualTime)
-		Template.instance().squareTotalSize.set(squareTotalSize)
-		Template.instance().squareTotalProxy.set(squareTotalProxy)
 		Template.instance().historicalProjectsData.set(data)
-		console.log data
 	historicalProjects:()->
 		return Template.instance().historicalProjectsData.get()
-	detailValues:()->
-		data = Template.instance().historicalProjectsData.get()
-		returnData = []		
-
-		_.each data,(d)->
-
-
-		return totals
-	ProxyAverage:()->
-		return Template.instance().totalProxy.get()/Template.instance().historicalProjectsData.get().length
-	ActualLOCAverage:()->
-		return Template.instance().totalActualLOC.get()/Template.instance().historicalProjectsData.get().length
-	ActualTimeAverage:()->
-		return Template.instance().totalActualTime.get()/Template.instance().historicalProjectsData.get().length
+Template.historicalData.events
+	'click .save-data': (e,t)->
+		PROBE = t.PROBEActive.get()
+		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		console.log PROBE
+		if PROBE == "D"
+			data= {
+				"total.estimatedAddedSize" : psProject.proxyEstimated
+			}
+			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
+				if error
+					console.warn(error)
+					sys.flashStatus("error-project")
+				else
+					sys.flashStatus("save-project")
+					t.deleteActive.set(false)

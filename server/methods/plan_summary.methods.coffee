@@ -74,14 +74,14 @@ Meteor.methods
 		totalActualDeleted		= 0
 		totalEstimatedModified	= 0
 		totalActualModified		= 0
-		totalEstimatedAdd			= 0
-		totalActualAdd				= 0
-
+		totalEstimatedAdd		= 0
+		totalActualAdd			= 0
+		proxySize	= 0
 		_.each baseData, (baseOption)->
 			totalEstimatedBase		+= parseInt(baseOption.Estimated.base)
 			totalActualBase			+= parseInt(baseOption.Actual.base)
-			totalEstimatedAdd			+= parseInt(baseOption.Estimated.add)
-			totalActualAdd				+= parseInt(baseOption.Actual.add)
+			totalEstimatedAdd		+= parseInt(baseOption.Estimated.add)
+			totalActualAdd			+= parseInt(baseOption.Actual.add)
 			totalEstimatedModified	+= parseInt(baseOption.Estimated.modified)
 			totalActualModified		+= parseInt(baseOption.Actual.modified)
 
@@ -91,9 +91,9 @@ Meteor.methods
 
 		addData = planSummary.addLOC
 		_.each addData, (addOption)->
-			totalEstimatedAdd			+= parseInt(addOption.Estimated.size)
-			totalActualAdd				+= parseInt(addOption.Actual.size)
-
+			totalEstimatedAdd	+= parseInt(addOption.Estimated.size)
+			totalActualAdd		+= parseInt(addOption.Actual.size)
+		proxySize	= totalEstimatedAdd + totalEstimatedModified
 		newtotal = {
 			totalTime:					planSummary.total.totalTime
 			estimatedTime:				planSummary.total.estimatedTime
@@ -101,12 +101,14 @@ Meteor.methods
 			actualBase:					totalActualBase
 			estimatedAdd:				totalEstimatedAdd
 			actualAdd:					totalActualAdd
-			estimatedModified:		totalEstimatedModified
-			actualModified:			totalActualModified
+			estimatedModified:			totalEstimatedModified
+			actualModified:				totalActualModified
 			estimatedDeleted:			totalEstimatedDeleted
 			actualDeleted:				totalActualDeleted
 			estimatedReused:			planSummary.total.estimatedReused
 			actualReused:				planSummary.total.actualReused
+			proxyEstimated:				proxySize
+			estimatedAddedSize:			planSummary.total.estimatedAddedSize
 		}
 
 		data = {
@@ -121,7 +123,7 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({ "projectId":projectId })
 		totalEstimatedAdd = 0
 		totalActualAdd = 0
-
+		totalEstimatedModified = 0
 		_.each addData, (addOption) ->
 			totalEstimatedAdd += parseInt(addOption.Estimated.size)
 			totalActualAdd += parseInt(addOption.Actual.size)
@@ -130,11 +132,13 @@ Meteor.methods
 		_.each baseData, (baseOption)->
 			totalEstimatedAdd += parseInt(baseOption.Estimated.add)
 			totalActualAdd += parseInt(baseOption.Actual.add)
-
+			totalEstimatedModified += parseInt(baseOption.Estimated.modified)
+		proxySize	= totalEstimatedAdd + totalEstimatedModified
 		data = {
 			"addLOC": addData
 			"total.estimatedAdd": totalEstimatedAdd
 			"total.actualAdd": totalActualAdd
+			"total.proxyEstimated": proxySize
 		}
 
 		db.plan_summary.update({ "projectId":projectId }, { $set: data })

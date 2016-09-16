@@ -92,7 +92,9 @@ if Meteor.isServer
 				estimatedDeleted: 0,
 				actualDeleted: 0,
 				estimatedReused: 0,
-				actualReused: 0
+				actualReused: 0,
+				estimatedAddedSize: 0,
+				proxyEstimated: 0
 		}
 
 		db.plan_summary.insert(data)

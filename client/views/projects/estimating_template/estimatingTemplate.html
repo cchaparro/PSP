@@ -14,8 +14,6 @@
 				<th>Líneas añadidas y modificadas (Actual)</th>
 				<th>Tiempo Estimado</th>
 				<th>Tiempo Actual</th>
-				<th>PROBE A</th>
-				<th>PROBE B</th>
 			</tr>
 		</thead>
 		<tbody>			
@@ -27,10 +25,9 @@
 					<td>{{ActualLOC}}</td>
 					<td>{{timeFormat EstimatedTime}}</td>
 					<td>{{timeFormat ActualTime}}</td>
-					<td>{{PROBEA}}</td>
-					<td>{{PROBEB}}</td>
 				</tr>
 			{{/each}}
 		</tbody>
 	</table>
+	<div class="pull-left btn primary-button save-data">Guardar Cambios</div>
 </template>

@@ -46,16 +46,15 @@ Template.baseSummary.events
 		dataField = dataField.split(".")
 		section = dataField[0]
 		field = dataField[1]
-
 		if section == "Estimated" and field == "deleted"
 			baseField = data[@position]["Estimated"]["base"]
-			if value > baseField
+			if parseInt(value) > parseInt(baseField)
 				$(e.target).val(0)
 				return sys.flashStatus("base-deleted-error")
 
 		if section == "Actual" and field == "modified"
 			baseField = data[@position]["Actual"]["base"]
-			if value > baseField
+			if parseInt(value) > parseInt(baseField)
 				$(e.target).val(0)
 				return sys.flashStatus("base-modified-error")
 

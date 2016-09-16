@@ -239,6 +239,14 @@ schemas.totalValues = new SimpleSchema
 		type: Number
 		label: "Actual reused LOC"
 
+	"estimatedAddedSize":
+		type: Number
+		label: "Estimated added and modified size using PROBE"
+
+	"proxyEstimated":
+		type: Number
+		label: "Estimated proxy size"
+
 ##########################################
 ############## Main Schema ###############
 

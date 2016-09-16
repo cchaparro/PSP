@@ -15,7 +15,7 @@ sys.isValidPassword = (password) ->
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts"
+	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
@@ -236,6 +236,8 @@ sys.getSessionRoute = (value) ->
 			return "Tipos de defecto"
 		when "help"
 			return "Ayuda"
+		when "estimatingTemplate"
+			return "Estimacion"
 
 ##########################################
 ########- Project Color Selector -########
