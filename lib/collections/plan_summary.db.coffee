@@ -194,7 +194,9 @@ schemas.totalValues = new SimpleSchema
 	"totalTime":
 		type: Number
 		label: "Plan Summary total time consumed"
-
+	"totalSize":
+		type: Number
+		label: "Plan Summary total size of the project"
 	"estimatedTime":
 		type: Number
 		label: "Estimated time the user gave for the project completion"

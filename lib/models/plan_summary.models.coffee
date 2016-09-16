@@ -82,20 +82,21 @@ if Meteor.isServer
 			reusedLOC: reusedSize
 			total:
 				totalTime: 0
-				estimatedTime: 0,
-				estimatedBase: 0,
-				actualBase: 0,
-				estimatedAdd: 0,
-				actualAdd: 0,
-				estimatedModified: 0,
-				actualModified: 0,
-				estimatedDeleted: 0,
-				actualDeleted: 0,
-				estimatedReused: 0,
-				actualReused: 0,
-				estimatedAddedSize: 0,
+				totalSize: 0
+				estimatedTime: 0
+				estimatedBase: 0
+				actualBase: 0
+				estimatedAdd: 0
+				actualAdd: 0
+				estimatedModified: 0
+				actualModified: 0
+				estimatedDeleted: 0
+				actualDeleted: 0
+				estimatedReused: 0
+				actualReused: 0
+				estimatedAddedSize: 0
 				proxyEstimated: 0
-		}
+			}
 
 		db.plan_summary.insert(data)
 

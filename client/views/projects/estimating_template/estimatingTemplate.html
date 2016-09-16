@@ -5,6 +5,33 @@
 
 <template name="historicalData">
 	{{gethistoricalProjects}}
+	<span>Probe para tamaño</span>
+	<div class="dropdown-box">
+		<button type="button" data-toggle="dropdown">
+			{{PROBESizeGet}}
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<ul class="dropdown-menu">
+			<li class="probe-size-option" data-value="A">PROBE A</li>
+			<li class="probe-size-option" data-value="B">PROBE B</li>
+			<li class="probe-size-option" data-value="C">PROBE C</li>
+			<li class="probe-size-option" data-value="D">PROBE D</li>
+		</ul>
+	</div>
+	<span>Probe para tiempo</span>
+	<div class="dropdown-box">
+		<button type="button" data-toggle="dropdown">
+			{{PROBETimeGet}}
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<ul class="dropdown-menu">
+			<li class="probe-time-option" data-value="A">PROBE A</li>
+			<li class="probe-time-option" data-value="B">PROBE B</li>
+			<li class="probe-time-option" data-value="C">PROBE C</li>
+			<li class="probe-time-option" data-value="D">PROBE D</li>
+		</ul>
+	</div>
+	<h3>Datos historicos</h3>
 	<table class="table">
 		<thead>
 			<tr>
@@ -18,15 +45,139 @@
 		</thead>
 		<tbody>			
 			{{#each historicalProjects}}
-				<tr>
-					<td>{{Name}}</td>
-					<td>{{Proxy}}</td>
-					<td>{{Proxy}}</td>
-					<td>{{ActualLOC}}</td>
-					<td>{{timeFormat EstimatedTime}}</td>
-					<td>{{timeFormat ActualTime}}</td>
-				</tr>
+			<tr>
+				<td>{{Name}}</td>
+				<td>{{Proxy}}</td>
+				<td>{{Proxy}}</td>
+				<td>{{ActualLOC}}</td>
+				<td>{{timeFormat EstimatedTime}}</td>
+				<td>{{timeFormat ActualTime}}</td>
+			</tr>
 			{{/each}}
+		</tbody>
+	</table>
+	
+	<h3>Valores de la estimación</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Beta 0</th>
+				<th>Beta 1</th>
+				<th>Correlacion</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#with GetEstimationValues}}
+				<tr>
+					<td>{{Beta0}}</td>
+					<td>{{Beta1}}</td>
+					<td>{{r}}</td>
+				</tr>
+			{{/with}}
+		</tbody>
+	</table>
+
+	<h3>Resultados de la estimación para tamaño</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Lineas añadidas y modificadas Planeadas</th>
+				<th>Descripción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#if $eq PROBETimeGet "PROBE D"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<input type="text" name="newLOC">
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBETimeGet "PROBE C"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>Valor Lineas</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse41</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBETimeGet "PROBE B"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>Valor Lineas</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse2</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBETimeGet "PROBE A"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>Valor Lineas</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse3</td>
+				</tr>
+			{{/if}}
+		</tbody>
+	</table>
+
+	<h3>Resultados de la estimación para tiempo</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Tiempo de desarrollo planeado</th>
+				<th>Descripción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#if $eq PROBESizeGet "PROBE D"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<input type="text" name="newLOC">
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBESizeGet "PROBE C"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>Valor Lineas</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse41</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBESizeGet "PROBE B"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>Valor Lineas</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse2</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBESizeGet "PROBE A"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>Valor Lineas</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse3</td>
+				</tr>
+			{{/if}}
 		</tbody>
 	</table>
 	<div class="pull-left btn primary-button save-data">Guardar Cambios</div>

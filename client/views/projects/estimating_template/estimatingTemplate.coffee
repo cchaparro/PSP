@@ -1,8 +1,15 @@
+PROBEC:(Projects)->
+	return Projects
+
+
+
 Template.historicalData.onCreated () ->
 	@historicalProjectsData = new ReactiveVar([])
-	@PROBEActive = new ReactiveVar("D")
+	@PROBESize = new ReactiveVar("PROBE D")
+	@PROBETime = new ReactiveVar("PROBE D")
 	@Beta0 = new ReactiveVar(0)
 	@Beta1 = new ReactiveVar(0)
+	@correlation = new ReactiveVar(0)
 	#PROBE C
 	#Size Estimated Proxy Size actual added and modified lines
 	@totalProxySize = new ReactiveVar(0)
@@ -42,12 +49,18 @@ Template.historicalData.helpers
 		Template.instance().historicalProjectsData.set(data)
 	historicalProjects:()->
 		return Template.instance().historicalProjectsData.get()
+	PROBETimeGet:()->
+		return Template.instance().PROBETime.get()
+	PROBESizeGet:()->
+		return Template.instance().PROBESize.get()
+	GetEstimationValues:()->
+		return {"Beta0":Template.instance().Beta0.get(),"Beta1":Template.instance().Beta1.get(),"r":Template.instance().correlation.get()}
 Template.historicalData.events
 	'click .save-data': (e,t)->
-		PROBE = t.PROBEActive.get()
+		PROBE = t.PROBESize.get()
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		console.log PROBE
-		if PROBE == "D"
+		if PROBE == "PROBE D"
 			data= {
 				"total.estimatedAddedSize" : psProject.proxyEstimated
 			}
@@ -58,3 +71,25 @@ Template.historicalData.events
 				else
 					sys.flashStatus("save-project")
 					t.deleteActive.set(false)
+	'click .probe-size-option':(e,t)->
+		value = $(e.target).data('value')
+		switch value
+			when "A"
+				Template.instance().PROBESize.set("PROBE A")
+			when "B"
+				Template.instance().PROBESize.set("PROBE B")
+			when "C"
+				Template.instance().PROBESize.set("PROBE C")
+			when "D"
+				Template.instance().PROBESize.set("PROBE D")
+	'click .probe-time-option':(e,t)->
+		value = $(e.target).data('value')
+		switch value
+			when "A"
+				Template.instance().PROBETime.set("PROBE A")
+			when "B"
+				Template.instance().PROBETime.set("PROBE B")
+			when "C"
+				Template.instance().PROBETime.set("PROBE C")
+			when "D"
+				Template.instance().PROBETime.set("PROBE D")
