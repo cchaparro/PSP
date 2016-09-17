@@ -1,6 +1,9 @@
 ##########################################
+openStageStatus = new ReactiveVar(false)
+
+##########################################
 Template.timeTemplate.helpers
-	projectStages:() ->
+	projectStages: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
 ##########################################
@@ -39,6 +42,23 @@ Template.timesBar.helpers
 
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
+	openStageStatus: () ->
+		return openStageStatus.get()
+
+	availableOpenStage: () ->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectProbe = project?.projectProbe
+
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		currentStage = _.first projectStages
+
+		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and projectProbe == "probeD" and project?.levelPSP == "PSP 0"
+		return true
 
 
 Template.timesBar.events
@@ -79,11 +99,9 @@ Template.timesBar.events
 
 
 	'click .time-submit': (e,t) ->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
-		currentStage = _.findWhere projectStages, {finished: false}
-
-		projectProbe = db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe
+		projectProbe = project?.projectProbe
 
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
@@ -113,6 +131,11 @@ Template.timesBar.events
 					sys.flashStatus("save-project")
 					sys.removeTimeMessage()
 
+	'click .reopen-stage': (e,t) ->
+		openStatus = openStageStatus.get()
+		openStageStatus.set(!openStatus)
+
+
 ##################################################
 Template.timeTableRow.helpers
 	editAvailable: () ->
@@ -128,9 +151,22 @@ Template.timeTableRow.helpers
 		return true if @name == _.first(projectStages)?.name
 		return false
 
+	openStageStatus: () ->
+		return openStageStatus.get()
+
 
 Template.timeTableRow.events
 	'click .edit-time': (e,t) ->
 		Modal.show('editTimeModal', @)
+
+	'click .time-stage-status': (e,t) ->
+		currentStage = @
+		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
+			if error
+				#sys.flashStatus("error-project")
+				console.warn(error)
+			else
+				#sys.flashStatus("save-project")
+
 
 ##########################################

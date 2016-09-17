@@ -349,7 +349,7 @@
 			@include border-radius($default-border-radius * 2);
 		}
 
-		.disabled-button {
+		.primary-button, .disabled-button {
 			padding-top: 0;
 			margin-top: 0;
 		}
@@ -453,13 +453,65 @@
 .time-completed {
 	width: 25px;
 	height: 25px;
-	margin: 0 AUTO;
+	margin: 0 auto;
 	@include border-radius($circle-border-radius);
 	background-color: $success;
 
 	i {
 		color: $background;
-		padding-top: 5px;
+		padding-top: 6px;
+	}
+}
+
+.time-stage-status {
+	@extend .time-completed;
+	border: 2px solid $success;
+	background-color: $background;
+	cursor: pointer;
+
+	i {
+		padding-top: 4px;
+	}
+
+	&.active {
+		background-color: $success;
+	}
+}
+
+.open-stage-box {
+	position: relative;
+	right: 0;
+
+	&.popup-active:hover {
+		.reopen-stage-popup {
+			display: inline;
+		}
+	}
+
+	.reopen-stage-popup {
+		width: 230px;
+		background: $menu-popup-bg;
+		position: absolute;
+		top: 54px;
+		right: 0px;
+		padding: 7px 7px 7px 12px;
+		font-size: 10pt;
+		color: $white;
+		border-radius: 5px;
+		cursor: default;
+		display: none;
+
+		i {
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			right: 10px;
+			top: -5px;
+			border-radius: 3px;
+			background: $menu-popup-bg;
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+		}
 	}
 }
 

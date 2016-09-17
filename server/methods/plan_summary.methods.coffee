@@ -29,14 +29,12 @@ Meteor.methods
 
 		# If the time saved is more than 3 minutes, send a notification to the user
 		if stage.time > 180000
-
 			notificationData = {
 				title: db.projects.findOne({_id: projectId}).title
 				time: stage.time
 				stage: stage.name
 				id: planSummary._id
 			}
-
 			syssrv.newNotification("time-registered", Meteor.userId(), notificationData)
 
 		# the input stage is the stage that just had a new amount of time registered
@@ -55,6 +53,18 @@ Meteor.methods
 			data.timeStarted = "false"
 
 		db.plan_summary.update({"projectId": projectId}, {$set: data})
+
+
+	# This is used to change the finished field of a projects stage between true/false
+	update_stage_completed_value: (projectId, stage) ->
+		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
+		projectStages = planSummary?.timeEstimated
+
+		currentStage = _.findWhere projectStages, {name: stage.name}
+		currentStage.finished = !stage.finished
+
+		db.plan_summary.update({"projectId": projectId}, {$set: { "timeEstimated": projectStages }})
+
 
 
 	update_timeStarted: (projectId, timeStarted) ->

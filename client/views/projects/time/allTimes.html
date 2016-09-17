@@ -25,7 +25,11 @@
 		<td><span>{{name}}</span></td>
 		<td class="hidden-xs">{{timeFormat time}}</td>
 		<td>
-			<div class="time-completed {{#unless finished}} hide {{/unless}}"><i class="fa fa-fw fa-check"></i></div>
+			{{#if openStageStatus}}
+				<div class="time-stage-status {{#if finished}} active {{/if}}"><i class="fa fa-fw fa-check"></i></div>
+			{{else}}
+				<div class="time-completed {{#unless finished}} hide {{/unless}}"><i class="fa fa-fw fa-check"></i></div>
+			{{/if}}
 		</td>
 		<td class="hidden-xs">
 			{{#if editAvailable}}
@@ -60,6 +64,16 @@
 					<span>Etapas Completadas</span>
 				</div>
 			{{/if}}
+			<div class="open-stage-box pull-right {{#unless availableOpenStage}} popup-active {{/unless}}">
+				<div class="btn pull-right {{#if availableOpenStage}} reopen-stage primary-button {{else}} disabled-button {{/if}}">
+					{{#if openStageStatus}}
+						<span>Finalizar Editar Etapas</span>
+					{{else}}
+						<span>Editar Estado Etapas</span>
+					{{/if}}
+				</div>
+				<span class="reopen-stage-popup"><i></i>Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
+			</div>
 		</div>
 	{{/with}}
 </template>
