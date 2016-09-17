@@ -483,6 +483,7 @@
 		padding-bottom: 20px;
 		color: $text-dark;
 		border-bottom: 1px solid $border;
+		cursor: default;
 	}
 
 	.prj-info-text {
@@ -491,6 +492,7 @@
 		font-size: 11pt;
 		color: $text;
 		margin-bottom: 10px;
+		cursor: default;
 	}
 
 	.prj-info-title {
@@ -568,6 +570,7 @@
 			padding-bottom: 20px;
 			color: $text-dark;
 			border-bottom: 1px solid $border;
+			cursor: default;
 		}
 
 		&:first-child {

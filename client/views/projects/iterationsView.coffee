@@ -4,7 +4,7 @@ Template.iterationsViewTemplate.helpers
 		return db.projects.findOne({_id: FlowRouter.getParam("fid")})
 
 	projectIterations: () ->
-		return db.projects.find({parentId: FlowRouter.getParam("fid")}, {sort: {createdAt: -1}}).fetch()
+		return db.projects.find({parentId: FlowRouter.getParam("fid")}, {sort: {createdAt: 1}}).fetch()
 
 	isRegistering: () ->
 		recordingProject = Session.get "statusTimeMessage"

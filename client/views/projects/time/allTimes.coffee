@@ -116,6 +116,8 @@ Template.timesBar.events
 ##################################################
 Template.timeTableRow.helpers
 	editAvailable: () ->
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+		return false if project?.completed
 		return true if @finished
 
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
