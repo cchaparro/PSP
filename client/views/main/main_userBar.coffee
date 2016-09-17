@@ -114,6 +114,12 @@ Template.userNotification.helpers
 		else
 			return ""
 
+	notificationDisabled: () ->
+		if @data?.reverted or @data?.disabled
+			return true
+		else
+			return false
+
 
 Template.userNotification.events
 	'click .notification-item': (e,t) ->
