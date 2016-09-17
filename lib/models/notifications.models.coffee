@@ -30,8 +30,6 @@ if Meteor.isServer
 				#Fueron registrados 18horas, 12 minutos, 29 segundos. Para modificar este dato de click aqui
 				subject = 'Fueron registrados ' + sys.displayTime(data.time) + ". Para modificar este dato de click aqui."
 
-			when "aqui"
-				title = "nooo"
 
 		data = {
 			title: title
@@ -44,6 +42,10 @@ if Meteor.isServer
 			data["data"] = extraData
 
 		db.notifications.insert(data)
+
+	# This is used to disable all the time notfications of a completed project, this means that the user should not be able to edit the time of a project that was already computed.
+	syssrv.disableTimeNotifications = (summaryId) ->
+		db.notifications.update({ "data.id": summaryId }, {$set: {"data.disabled": true}}, {multi:true})
 
 
 ##########################################

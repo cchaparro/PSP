@@ -1,6 +1,6 @@
 #######################################
 Meteor.methods
-	# This is used for the Plan Summary Total Amount
+	# This method is used to complete a project and process the projects data to the user total amount
 	update_user_plan_summary: (pid) ->
 		user = db.users.findOne({_id: Meteor.userId()}).profile
 		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": pid})
@@ -25,6 +25,8 @@ Meteor.methods
 		}
 
 		db.users.update({_id: Meteor.userId()}, {$set: data})
+		# This disables all the edit options for the finished project notifications
+		syssrv.disableTimeNotifications(planSummary._id)
 
 
 	change_project_settings: () ->

@@ -109,13 +109,15 @@ Template.userNotification.helpers
 	revertMessage: () ->
 		if @data?.reverted
 			return "(Modificado)"
+		else if @data?.disabled
+			return "(Proyecto Completado)"
 		else
 			return ""
 
 
 Template.userNotification.events
 	'click .notification-item': (e,t) ->
-		unless @data?.reverted or @type != 'time-registered'
+		unless @data?.reverted or @data?.disabled or @type != 'time-registered'
 			Session.set("display-notification-box", false)
 			Modal.show('editTimeModal', @)
 

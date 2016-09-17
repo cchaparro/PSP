@@ -16,7 +16,7 @@ Meteor.methods
 
 
 	update_project: (projectId, value) ->
-		#This function update the values of a project like its title and description
+		#This function update the values of a project like its title, description and completed field
 		db.projects.update({ _id: projectId }, {$set: value})
 
 ##########################################
