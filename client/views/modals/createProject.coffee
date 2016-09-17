@@ -69,8 +69,8 @@ Template.createProject.events
 		else
 			Meteor.call "create_project", data, (error)->
 				if error
-					console.log "Error creating a new project"
 					console.warn(error)
+					sys.flashStatus("error-create-project")
 				else
 					sys.flashStatus("create-project")
 

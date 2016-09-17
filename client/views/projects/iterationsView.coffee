@@ -45,9 +45,9 @@ Template.projectIterationBox.events
 	'click .confirm-delete': (e,t) ->
 		Meteor.call "delete_project", @_id, (error) ->
 			if error
-				console.log "Error deleting a iteration"
 				console.warn(error)
+				sys.flashStatus("error-iteration-delete")
 			else
-				sys.flashStatus("delete-project")
+				sys.flashStatus("iteration-delete")
 
 ##########################################

@@ -181,9 +181,9 @@ Template.createIterationButton.events
 
 		Meteor.call "create_project", data, (error) ->
 			if error
-				console.log "Error creating a new project iteration"
 				console.warn(error)
+				sys.flashStatus("error-create-iteration")
 			else
-				sys.flashStatus("create-project")
+				sys.flashStatus("create-iteration")
 
 ##################################################

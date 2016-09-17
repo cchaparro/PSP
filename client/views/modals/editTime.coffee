@@ -218,7 +218,7 @@ Template.editTime.events
 				if error
 					console.warn(error)
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
 
 		else
@@ -229,7 +229,7 @@ Template.editTime.events
 					if data?.type
 						Meteor.call "disable_notification", data._id
 
-					sys.flashStatus("save-project")
+					sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
 
 # ##########################################

@@ -71,9 +71,9 @@ Template.baseSummary.events
 		Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-project")
+				sys.flashStatus("error-save-size-summary")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-size-summary")
 				t.deleteActive.set(false)
 
 	'click .base-active-delete': (e,t) ->

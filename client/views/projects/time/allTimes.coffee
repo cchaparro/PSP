@@ -90,11 +90,10 @@ Template.timesBar.events
 
 			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, false, true, (error) ->
 				if error
-					sys.flashStatus("error-project")
-					console.log "Error updating project phase"
 					console.warn(error)
+					sys.flashStatus("error-new-time-project")
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("new-time-project")
 					sys.removeTimeMessage()
 
 
@@ -124,11 +123,10 @@ Template.timesBar.events
 
 			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
 				if error
-					sys.flashStatus("error-project")
-					console.log "Error submitting phase time inside project"
 					console.warn(error)
+					sys.flashStatus("error-submit-stage-project")
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("submit-stage-project")
 					sys.removeTimeMessage()
 
 	'click .reopen-stage': (e,t) ->
@@ -163,10 +161,10 @@ Template.timeTableRow.events
 		currentStage = @
 		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
 			if error
-				#sys.flashStatus("error-project")
 				console.warn(error)
+				sys.flashStatus("error-submit-stage-project")
 			else
-				#sys.flashStatus("save-project")
+				sys.flashStatus("submit-stage-project")
 
 
 ##########################################

@@ -79,11 +79,10 @@ Template.projectInformationTemplate.events
 
 		Meteor.call "update_project", FlowRouter.getParam("id"), data, (error)->
 			if error
-				sys.flashStatus("error-project")
-				console.log ("Error updating the projects title")
 				console.warn(error)
+				sys.flashStatus("error-save-title-project")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-title-project")
 
 	'blur .prj-info-description': (e,t) ->
 		set = {
@@ -92,23 +91,22 @@ Template.projectInformationTemplate.events
 
 		Meteor.call "update_project", FlowRouter.getParam("id"), set, (error)->
 			if error
-				sys.flashStatus("error-project")
-				console.log ("Error updating the projects description")
 				console.warn(error)
+				sys.flashStatus("error-save-description-project")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-description-project")
 
 	'click .project-active': (e,t) ->
 		Meteor.call "update_project", @_id, { completed: !@completed }, (error) ->
 			if error
-				sys.flashStatus("error-project")
 				console.warn(error)
+				sys.flashStatus("error-finish-project")
 			else
 				Meteor.call "update_user_plan_summary", FlowRouter.getParam("id"), (error) ->
 					if error
 						console.warn(error)
 					else
-						sys.flashStatus("save-project")
+						sys.flashStatus("finish-project")
 
 	'click svg': (e,t) ->
 		t.informationState.set(!t.informationState.get())
