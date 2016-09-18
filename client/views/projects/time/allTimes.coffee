@@ -57,6 +57,7 @@ Template.timesBar.helpers
 
 		currentStage = _.first projectStages
 
+		return false if project?.completed
 		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and projectProbe == "probeD" and project?.levelPSP == "PSP 0"
 		return true
 

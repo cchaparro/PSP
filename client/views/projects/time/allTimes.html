@@ -72,7 +72,7 @@
 						<span>Editar Estado Etapas</span>
 					{{/if}}
 				</div>
-				<span class="reopen-stage-popup"><i></i>Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
+				<span class="reopen-stage-popup {{#if projectIsCompleted}} hide {{/if}}"><i></i>Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
 			</div>
 		</div>
 	{{/with}}
