@@ -41,7 +41,6 @@ Template.registerHelper "timeFormat", (time) ->
 Template.registerHelper "timeInOnlyMinutes", (time) ->
 	return sys.timeInOnlyMinutes(time)
 
-
 # This helper is used to make a contenteditable html
 Template.registerHelper "contentEditable", (hash) ->
 	return '<div class="' + hash?.hash?.class + '"' + 'contentEditable="true">' + hash?.hash?.value + '</div>';

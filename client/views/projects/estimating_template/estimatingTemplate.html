@@ -5,20 +5,8 @@
 
 <template name="historicalData">
 	{{gethistoricalProjects}}
-	<span>Probe para tamaño</span>
-	<div class="dropdown-box">
-		<button type="button" data-toggle="dropdown">
-			{{PROBESizeGet}}
-			<i class="fa fa-caret-down"></i>
-		</button>
-		<ul class="dropdown-menu">
-			<li class="probe-size-option" data-value="A">PROBE A</li>
-			<li class="probe-size-option" data-value="B">PROBE B</li>
-			<li class="probe-size-option" data-value="C">PROBE C</li>
-			<li class="probe-size-option" data-value="D">PROBE D</li>
-		</ul>
-	</div>
-	<span>Probe para tiempo</span>
+
+	<span>PROBE para tiempo</span>
 	<div class="dropdown-box">
 		<button type="button" data-toggle="dropdown">
 			{{PROBETimeGet}}
@@ -29,6 +17,20 @@
 			<li class="probe-time-option" data-value="B">PROBE B</li>
 			<li class="probe-time-option" data-value="C">PROBE C</li>
 			<li class="probe-time-option" data-value="D">PROBE D</li>
+		</ul>
+	</div>
+
+	<span>PROBE para tamaño</span>
+	<div class="dropdown-box">
+		<button type="button" data-toggle="dropdown">
+			{{PROBESizeGet}}
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<ul class="dropdown-menu">
+			<li class="probe-size-option" data-value="A">PROBE A</li>
+			<li class="probe-size-option" data-value="B">PROBE B</li>
+			<li class="probe-size-option" data-value="C">PROBE C</li>
+			<li class="probe-size-option" data-value="D">PROBE D</li>
 		</ul>
 	</div>
 	<h3>Datos historicos</h3>
@@ -57,7 +59,7 @@
 		</tbody>
 	</table>
 	
-	<h3>Valores de la estimación</h3>
+	<h3>Valores de la estimación para el tiempo</h3>
 	<table class="table">
 		<thead>
 			<tr>
@@ -67,13 +69,88 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#with GetEstimationValues}}
+			{{#with GetTimeEstimationValues}}
 				<tr>
 					<td>{{Beta0}}</td>
 					<td>{{Beta1}}</td>
 					<td>{{r}}</td>
 				</tr>
 			{{/with}}
+		</tbody>
+	</table>
+
+	<h3>Valores de la estimación para el tamaño</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Beta 0</th>
+				<th>Beta 1</th>
+				<th>Correlacion</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#with GetSizeEstimationValues}}
+				<tr>
+					<td>{{Beta0}}</td>
+					<td>{{Beta1}}</td>
+					<td>{{r}}</td>
+				</tr>
+			{{/with}}
+		</tbody>
+	</table>
+
+
+	<h3>Resultados de la estimación para tiempo</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Tiempo de desarrollo planeado (Mins)</th>
+				<th>Descripción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#if $eq PROBETimeGet "PROBE D"}}
+				<tr>
+					<td>
+						{{#with PlanSummary}}
+							<div class="input-box" style="width:50%;">
+								<input type="text" class="newTime" value="{{timeInOnlyMinutes estimatedTime}}">
+							</div>
+						{{/with}}
+					</td>
+					<td>Lore iṕsum ya me canse</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBETimeGet "PROBE C"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>{{AdjustedTime}}</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse41</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBETimeGet "PROBE B"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>{{AdjustedTime}}</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse2</td>
+				</tr>
+			{{/if}}
+			{{#if $eq PROBETimeGet "PROBE A"}}
+				<tr>
+					<td>
+						<div class="input-box" style="width:50%;">
+							<span>{{AdjustedTime}}</span>
+						</div>
+					</td>
+					<td>Lore iṕsum ya me canse3</td>
+				</tr>
+			{{/if}}
 		</tbody>
 	</table>
 
@@ -86,64 +163,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#if $eq PROBETimeGet "PROBE D"}}
-				<tr>
-					<td>
-						<div class="input-box" style="width:50%;">
-							<input type="text" name="newLOC">
-						</div>
-					</td>
-					<td>Lore iṕsum ya me canse</td>
-				</tr>
-			{{/if}}
-			{{#if $eq PROBETimeGet "PROBE C"}}
-				<tr>
-					<td>
-						<div class="input-box" style="width:50%;">
-							<span>Valor Lineas</span>
-						</div>
-					</td>
-					<td>Lore iṕsum ya me canse41</td>
-				</tr>
-			{{/if}}
-			{{#if $eq PROBETimeGet "PROBE B"}}
-				<tr>
-					<td>
-						<div class="input-box" style="width:50%;">
-							<span>Valor Lineas</span>
-						</div>
-					</td>
-					<td>Lore iṕsum ya me canse2</td>
-				</tr>
-			{{/if}}
-			{{#if $eq PROBETimeGet "PROBE A"}}
-				<tr>
-					<td>
-						<div class="input-box" style="width:50%;">
-							<span>Valor Lineas</span>
-						</div>
-					</td>
-					<td>Lore iṕsum ya me canse3</td>
-				</tr>
-			{{/if}}
-		</tbody>
-	</table>
-
-	<h3>Resultados de la estimación para tiempo</h3>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Tiempo de desarrollo planeado</th>
-				<th>Descripción</th>
-			</tr>
-		</thead>
-		<tbody>
 			{{#if $eq PROBESizeGet "PROBE D"}}
 				<tr>
 					<td>
+					{{#with PlanSummary}}
 						<div class="input-box" style="width:50%;">
-							<input type="text" name="newLOC">
+							<input type="text" name="newLOC" value="{{proxyEstimated}}">
 						</div>
+					{{/with}}
 					</td>
 					<td>Lore iṕsum ya me canse</td>
 				</tr>
@@ -152,7 +179,7 @@
 				<tr>
 					<td>
 						<div class="input-box" style="width:50%;">
-							<span>Valor Lineas</span>
+							<span>{{AdjustedSize}}</span>
 						</div>
 					</td>
 					<td>Lore iṕsum ya me canse41</td>
@@ -162,7 +189,7 @@
 				<tr>
 					<td>
 						<div class="input-box" style="width:50%;">
-							<span>Valor Lineas</span>
+							<span>{{AdjustedSize}}</span>
 						</div>
 					</td>
 					<td>Lore iṕsum ya me canse2</td>
@@ -172,7 +199,7 @@
 				<tr>
 					<td>
 						<div class="input-box" style="width:50%;">
-							<span>Valor Lineas</span>
+							<span>{{AdjustedSize}}</span>
 						</div>
 					</td>
 					<td>Lore iṕsum ya me canse3</td>

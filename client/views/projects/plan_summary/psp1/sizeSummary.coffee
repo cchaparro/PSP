@@ -9,6 +9,9 @@ Template.sizeSummary.helpers
 	addThreeValues: (v1,v2,v3) ->
 		return v1 + v2 + v3
 
+	addFourValues: (v1,v2,v3, v4) ->
+		return v1 + v2 + v3 - v4
+
 	newReusableValue : (type)->
 		planSummary = db.plan_summary.findOne({ "projectId": FlowRouter.getParam("id") })
 		estimated = 0
