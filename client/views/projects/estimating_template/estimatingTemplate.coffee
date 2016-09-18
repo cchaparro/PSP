@@ -8,7 +8,7 @@ Template.historicalData.onCreated () ->
 	@Beta1Size = new ReactiveVar(0)
 	@Beta0Time = new ReactiveVar(0)
 	@Beta1Time = new ReactiveVar(0)
-	@correlation = new ReactiveVar(0)
+	@Correlation = new ReactiveVar(0)
 	#PROBE C
 	#Size Estimated Proxy Size - actual added and modified lines
 	@totalProxySize = new ReactiveVar(0)
@@ -43,24 +43,39 @@ Template.historicalData.helpers
 				totalPlanLOC += psProject.estimatedAddedSize
 				totalActualTime += psProject.totalTime
 				#X is the proxy size for probe A and Planned added and modified 
-				data.push({"Name":project.title, "Proxy":psProject.estimatedAdd + psProject.estimatedModified, "ActualLOC": psProject.actualAdd + psProject.actualModified, "EstimatedTime":psProject.estimatedTime, "ActualTime":psProject.totalTime})
+				data.push(
+					{
+						"Name":project.title
+						"ProxyE":psProject.proxyEstimated
+						"ActualLOC": psProject.actualAdd + psProject.actualModified
+						"EstimatedTime":psProject.estimatedTime
+						"ActualTime":psProject.totalTime
+						"PlanLOC":psProject.estimatedAddedSize
+					})
 		Template.instance().totalProxySize.set(totalProxy)
 		Template.instance().totalActualAddedModifiedLOC.set(totalAddedModifiedActualLOC)
 		Template.instance().totalPlanAddedModifiedLOC.set(totalPlanLOC)
 		Template.instance().totalActualTime.set(totalActualTime)
 		Template.instance().historicalProjectsData.set(data)
+
 	historicalProjects:()->
 		return Template.instance().historicalProjectsData.get()
+
 	PROBETimeGet:()->
 		return Template.instance().PROBETime.get()
+
 	PROBESizeGet:()->
 		return Template.instance().PROBESize.get()
+
 	GetTimeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Time.get(),"Beta1":Template.instance().Beta1Time.get(),"r":Template.instance().correlation.get()}
+		return {"Beta0":Template.instance().Beta0Time.get(),"Beta1":Template.instance().Beta1Time.get(),"r":Template.instance().Correlation.get()}
+
 	GetSizeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Size.get(),"Beta1":Template.instance().Beta1Size.get(),"r":Template.instance().correlation.get()}
+		return {"Beta0":Template.instance().Beta0Size.get(),"Beta1":Template.instance().Beta1Size.get(),"r":Template.instance().Correlation.get()}
+
 	PlanSummary:()->
 		return db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+
 	AdjustedSize:()->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		B0=Template.instance().Beta0Size.get()
@@ -68,6 +83,7 @@ Template.historicalData.helpers
 		newsize = (B0+B1)*psProject.proxyEstimated
 		Template.instance().adjustedSize.set(newsize)
 		return newsize
+
 	AdjustedTime:()->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		B0=Template.instance().Beta0Time.get()
@@ -75,6 +91,7 @@ Template.historicalData.helpers
 		newTime = (B0+B1)*psProject.proxyEstimated
 		Template.instance().adjustedTime.set(newTime)
 		return newTime
+
 Template.historicalData.events
 	'click .save-data': (e,t)->
 		PROBESize = t.PROBESize.get()
@@ -129,10 +146,25 @@ Template.historicalData.events
 	'click .probe-size-option':(e,t)->
 		value = $(e.target).data('value')
 		switch value
+
 			when "A"
 				Template.instance().PROBESize.set("PROBE A")
+				totalProxy = Template.instance().totalProxySize.get()
+				totalAddedModifiedActualLOC = Template.instance().totalActualAddedModifiedLOC.get()
+				LinearRegressionData = sys.regressionDataSize(Template.instance().historicalProjectsData.get(),"A",totalProxy,totalAddedModifiedActualLOC)
+				Template.instance().Beta0Size.set(LinearRegressionData.Beta0)
+				Template.instance().Beta1Size.set(LinearRegressionData.Beta1)
+				Template.instance().Correlation.set(LinearRegressionData.Correlation)
+
 			when "B"
 				Template.instance().PROBESize.set("PROBE B")
+				totalAddedModifiedPlanLOC = Template.instance().totalPlanAddedModifiedLOC.get()
+				totalAddedModifiedActualLOC = Template.instance().totalActualAddedModifiedLOC.get()
+				LinearRegressionData = sys.regressionDataSize(Template.instance().historicalProjectsData.get(),"B",totalAddedModifiedPlanLOC,totalAddedModifiedActualLOC)
+				Template.instance().Beta0Size.set(LinearRegressionData.Beta0)
+				Template.instance().Beta1Size.set(LinearRegressionData.Beta1)
+				Template.instance().Correlation.set(LinearRegressionData.Correlation)
+
 			when "C"
 				Template.instance().PROBESize.set("PROBE C")
 				Template.instance().Beta0Size.set(0)
@@ -146,12 +178,27 @@ Template.historicalData.events
 		switch value
 			when "A"
 				Template.instance().PROBETime.set("PROBE A")
+				totalProxy = Template.instance().totalProxySize.get()
+				ActualTime = sys.timeToMinutes(Template.instance().totalActualTime.get())
+				LinearRegressionData = sys.regressionDataTime(Template.instance().historicalProjectsData.get(),"A",totalProxy,ActualTime)
+				Template.instance().Beta0Time.set(LinearRegressionData.Beta0)
+				Template.instance().Beta1Time.set(LinearRegressionData.Beta1)
+				Template.instance().Correlation.set(LinearRegressionData.Correlation)
+
 			when "B"
 				Template.instance().PROBETime.set("PROBE B")
+				totalAddedModifiedPlanLOC = Template.instance().totalPlanAddedModifiedLOC.get()
+				ActualTime = sys.timeToMinutes(Template.instance().totalActualTime.get())
+				LinearRegressionData = sys.regressionDataTime(Template.instance().historicalProjectsData.get(),"A",totalAddedModifiedPlanLOC,ActualTime)
+				Template.instance().Beta0Time.set(LinearRegressionData.Beta0)
+				Template.instance().Beta1Time.set(LinearRegressionData.Beta1)
+				Template.instance().Correlation.set(LinearRegressionData.Correlation)
+
 			when "C"
 				Template.instance().PROBETime.set("PROBE C")
 				newBeta1=(sys.timeToMinutes(Template.instance().totalActualTime.get())/Template.instance().totalProxySize.get()).toFixed(2)
 				Template.instance().Beta0Time.set(0)
 				Template.instance().Beta1Time.set(newBeta1)
+
 			when "D"
 				Template.instance().PROBETime.set("PROBE D")

@@ -255,3 +255,56 @@ sys.selectColor = (last_color) ->
 # sys.runningTimeProject = new ReactiveVar(false)
 
 ##########################################
+
+#Data for Size linear Regression
+sys.regressionDataSize = (Data,PROBE,x,y)->
+	#Size Planned Added & Modified Size - Actual Added & Modified Size for PROBE B
+	#Estimated Proxy Size actual - Added and modified lines for PROBE A
+	n = Data.length
+	sumsquarex = 0
+	xavg = x/n
+	yavg = y/n
+	sumsquarey = 0 
+	sumxy = 0
+	switch PROBE
+		when "B"
+			_.each Data,(d)->
+				sumsquarex += Math.pow(d.PlanLOC,2)
+				sumsquarey += Math.pow(d.ActualLOC,2)
+				sumxy+= d.PlanLOC * d.ActualLOC
+		when "A"
+			_.each Data,(d)->
+				sumsquarey += Math.pow(d.ProxyE,2)
+				sumsquarex += Math.pow(d.ActualLOC,2)
+				sumxy+= d.PlanLOC * d.ActualLOC
+	
+	correlation = ((n*sumxy)-(sumsquarex*sumsquarey))/(Math.sqrt( ((n*sumsquarex)-Math.pow(sumsquarex,2))*((n*sumsquarey)-Math.pow(sumsquarey,2))))
+	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
+	b0 = yavg - (b1*xavg)
+	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
+
+sys.regressionDataTime = (Data,PROBE,x,y)->
+	#Size Planned Added & Modified Size - Actual Added & Modified Size for PROBE B
+	#Estimated Proxy Size actual - Added and modified lines for PROBE A
+	n = Data.length
+	sumsquarex = 0
+	xavg = x/n
+	yavg = y/n
+	sumsquarey = 0 
+	sumxy = 0
+	switch PROBE
+		when "B"
+			_.each Data,(d)->
+				sumsquarex += Math.pow(d.PlanLOC,2)
+				sumsquarey += Math.pow(d.ActualTime,2)
+				sumxy+= d.PlanLOC * d.ActualTime
+		when "A"
+			_.each Data,(d)->
+				sumsquarey += Math.pow(d.ProxyE,2)
+				sumsquarex += Math.pow(d.ActualTime,2)
+				sumxy+= d.ProxyE * d.ActualTime
+	
+	correlation = ((n*sumxy)-(sumsquarex*sumsquarey))/(Math.sqrt( ((n*sumsquarex)-Math.pow(sumsquarex,2))*((n*sumsquarey)-Math.pow(sumsquarey,2))))
+	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
+	b0 = yavg - (b1*xavg)
+	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
