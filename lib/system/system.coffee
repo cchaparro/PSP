@@ -276,7 +276,7 @@ sys.regressionDataSize = (Data,PROBE,x,y)->
 			_.each Data,(d)->
 				sumsquarey += Math.pow(d.ProxyE,2)
 				sumsquarex += Math.pow(d.ActualLOC,2)
-				sumxy+= d.PlanLOC * d.ActualLOC
+				sumxy+= d.ProxyE * d.ActualLOC
 	
 	correlation = ((n*sumxy)-(sumsquarex*sumsquarey))/(Math.sqrt( ((n*sumsquarex)-Math.pow(sumsquarex,2))*((n*sumsquarey)-Math.pow(sumsquarey,2))))
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))

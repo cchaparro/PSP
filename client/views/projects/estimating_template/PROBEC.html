@@ -1,0 +1,46 @@
+
+<template name="PROBEC">
+	{{setData}}
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Estimacion</th>
+				<th><i>Beta 0</i></th>
+				<th><i>Beta 1</i></th>
+				<th>Descripción</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Tiempo(mins)</td>
+				<td>
+					<div class="input-box" style="width:50%;">
+						<span>{{AdjustedTime}}</span>
+					</div>
+				</td>
+				{{#with GetTimeEstimationValues}}
+					<td>{{Beta0}}</td>
+					<td>{{Beta1}}</td>
+				{{/with}}
+				<td>{{DescriptionTime}}</td>
+				<td><div class="pull-left btn primary-button save-data-time">Escoger</div></td>
+			</tr>
+			<tr>
+				<td>Líneas añadidas y modificadas</td>
+				<td>
+					<div class="input-box" style="width:50%;">
+						<span>{{AdjustedSize}}</span>
+					</div>
+				</td>
+				{{#with GetSizeEstimationValues}}
+					<td>{{Beta0}}</td>
+					<td>{{Beta1}}</td>
+				{{/with}}
+				<td>{{DescriptionSize}}</td>
+				<td><div class="pull-left btn primary-button save-data-size">Escoger</div></td>
+			</tr>
+		</tbody>
+	</table>
+</template>
