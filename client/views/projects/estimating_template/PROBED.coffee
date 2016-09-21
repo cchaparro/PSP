@@ -24,9 +24,9 @@ Template.PROBED.events
 			sys.flashStatus("summary-missing")
 	'click .save-data-size':(e,t)->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
-		if psProject.proxyEstimated != 0
+		if psProject?.proxyEstimated != 0
 			data= {
-				"total.estimatedAddedSize" : psProject.proxyEstimated
+				"total.estimatedAddedSize" : psProject?.proxyEstimated
 			}
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error

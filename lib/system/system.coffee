@@ -237,7 +237,7 @@ sys.getSessionRoute = (value) ->
 		when "help"
 			return "Ayuda"
 		when "estimatingTemplate"
-			return "Estimacion"
+			return "Estimación"
 
 ##########################################
 ########- Project Color Selector -########
