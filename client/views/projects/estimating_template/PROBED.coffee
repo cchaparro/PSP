@@ -13,6 +13,7 @@ Template.PROBED.events
 		if estimatedHours != 0 
 			data= {
 				"total.estimatedTime": estimatedHours
+				"probeTime":"D"
 			}
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error
@@ -27,6 +28,7 @@ Template.PROBED.events
 		if psProject?.proxyEstimated != 0
 			data= {
 				"total.estimatedAddedSize" : psProject?.proxyEstimated
+				"probeSize":"D"
 			}
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error

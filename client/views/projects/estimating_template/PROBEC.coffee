@@ -66,6 +66,7 @@ Template.PROBEC.events
 	'click .save-data-time': (e,t)->
 		data= {
 			"total.estimatedTime": sys.minutesToTime(Template.instance().adjustedTime.get())
+			"probeTime":"C"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
@@ -76,6 +77,7 @@ Template.PROBEC.events
 	'click .save-data-size': (e,t)->
 		data= {
 			"total.estimatedAddedSize" : parseInt(Template.instance().adjustedSize.get())
+			"probeSize":"C"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error

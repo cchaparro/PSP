@@ -114,6 +114,7 @@ Template.PROBEA.events
 	'click .save-data-time': (e,t)->
 		data= {
 			"total.estimatedTime": sys.minutesToTime(Template.instance().adjustedTime.get())
+			"probeTime":"A"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
@@ -124,6 +125,7 @@ Template.PROBEA.events
 	'click .save-data-size': (e,t)->
 		data= {
 			"total.estimatedAddedSize" : parseInt(Template.instance().adjustedSize.get())
+			"probeSize":"A"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
