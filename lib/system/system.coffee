@@ -296,13 +296,13 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 		when "B"
 			_.each Data,(d)->
 				sumsquarex += Math.pow(d.PlanLOC,2)
-				sumsquarey += Math.pow(d.ActualTime,2)
-				sumxy+= d.PlanLOC * d.ActualTime
+				sumsquarey += Math.pow(sys.timeToHours(d.ActualTime),2)
+				sumxy+= d.PlanLOC * sys.timeToHours(d.ActualTime)
 		when "A"
 			_.each Data,(d)->
 				sumsquarey += Math.pow(d.ProxyE,2)
-				sumsquarex += Math.pow(d.ActualTime,2)
-				sumxy+= d.ProxyE * d.ActualTime
+				sumsquarex += Math.pow(sys.timeToHours(d.ActualTime),2)
+				sumxy+= d.ProxyE * sys.timeToHours(d.ActualTime)
 	
 	correlation = ((n*sumxy)-(sumsquarex*sumsquarey))/(Math.sqrt( ((n*sumsquarex)-Math.pow(sumsquarex,2))*((n*sumsquarey)-Math.pow(sumsquarey,2))))
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))

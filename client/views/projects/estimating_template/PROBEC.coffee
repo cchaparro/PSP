@@ -31,7 +31,7 @@ Template.PROBEC.helpers
 		newBetaSize1=(totalAddedModifiedActualLOC/totalProxy).toFixed(2)
 		Template.instance().Beta1Size.set(newBetaSize1)
 
-		newBetaTime1=(sys.timeToMinutes(totalActualTime)/totalProxy).toFixed(2)
+		newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy).toFixed(2)
 		Template.instance().Beta1Time.set(newBetaTime1)
 
 		
