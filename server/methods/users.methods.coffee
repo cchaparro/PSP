@@ -21,6 +21,7 @@ Meteor.methods
 			"profile.total.time": user.total.time + planSummary.total.totalTime
 			"profile.total.injected": user.total.injected + amountDefects
 			"profile.total.removed": user.total.removed + amountDefects
+			"profile.total.size": user.total.size + planSummary.total.totalSize
 			"profile.summaryAmount": finalTime
 		}
 

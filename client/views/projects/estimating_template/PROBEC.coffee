@@ -14,26 +14,32 @@ Template.PROBEC.onCreated () ->
 	@adjustedSize = new ReactiveVar(0)
 
 	@descriptionTime = new ReactiveVar("")
-	@descriptionSize = new ReactiveVar("")
+	@descriptionSize = new ReactiveVar("")	
+
+	@validProbeTime = new ReactiveVar(false)
+	@validProbeSize = new ReactiveVar(false)
 Template.PROBEC.helpers
 	setData:()->
 		totalProxy = 0
 		totalAddedModifiedActualLOC = 0
 		totalActualTime = 0
 		projects = db.projects.find({"completed":true}).fetch()
-		_.each projects, (project)->
-			unless project._id == FlowRouter.getParam("id")
-				psProject = db.plan_summary.findOne({"projectId":project._id})?.total
-				totalProxy += psProject?.proxyEstimated
-				totalAddedModifiedActualLOC += (psProject?.actualAdd + psProject?.actualModified)
-				totalActualTime += psProject?.totalTime
-				
-		newBetaSize1=(totalAddedModifiedActualLOC/totalProxy).toFixed(2)
-		Template.instance().Beta1Size.set(newBetaSize1)
+		if projects.length >1
+			_.each projects, (project)->
+				unless project._id == FlowRouter.getParam("id")
+					psProject = db.plan_summary.findOne({"projectId":project._id})?.total
+					totalProxy += psProject?.proxyEstimated
+					totalAddedModifiedActualLOC += (psProject?.actualAdd + psProject?.actualModified)
+					totalActualTime += psProject?.totalTime
+					
+			newBetaSize1=(totalAddedModifiedActualLOC/totalProxy).toFixed(2)
+			Template.instance().Beta1Size.set(newBetaSize1)
 
-		newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy).toFixed(2)
-		Template.instance().Beta1Time.set(newBetaTime1)
+			newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy).toFixed(2)
+			Template.instance().Beta1Time.set(newBetaTime1)
 
+			Template.instance().validProbeTime.set(true)
+			Template.instance().validProbeSize.set(true)
 		
 	GetTimeEstimationValues:()->
 		return {"Beta0":Template.instance().Beta0Time.get(),"Beta1":Template.instance().Beta1Time.get()}
@@ -58,14 +64,35 @@ Template.PROBEC.helpers
 		return newTime
 		
 	DescriptionTime:()->
+		projects = db.projects.find({"completed":true}).fetch()
+		if projects.length >1
+			Template.instance().descriptionTime.set("Faltan los betas")
+		else
+			Template.instance().descriptionTime.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionTime.get()
 
+
 	DescriptionSize:()->
+		projects = db.projects.find({"completed":true}).fetch()
+		if projects.length >1
+			Template.instance().descriptionSize.set("Faltan los betas")
+		else
+			Template.instance().descriptionSize.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionSize.get()
+	
+	validTime:()->
+		return Template.instance().validProbeTime.get()
+
+	validSize:()->
+		return Template.instance().validProbeSize.get()
+
 Template.PROBEC.events
 	'click .save-data-time': (e,t)->
+		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		plannedProductivity = parseInt(planSummary?.estimatedAddedSize/Template.instance().adjustedTime.get())
 		data= {
-			"total.estimatedTime": sys.minutesToTime(Template.instance().adjustedTime.get())
+			"total.estimatedTime": sys.hoursToTime(Template.instance().adjustedTime.get())
+			"total.productivityPlan" : plannedProductivity
 			"probeTime":"C"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
@@ -75,8 +102,15 @@ Template.PROBEC.events
 			else
 				sys.flashStatus("save-project")
 	'click .save-data-size': (e,t)->
+		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		if planSummary?.estimatedTime != 0
+			plannedProductivity = parseInt(Template.instance().adjustedSize.get()/planSummary?.estimatedTime)
+		else
+			plannedProductivity = parseInt(planSummary?.productivityPlan)
+
 		data= {
 			"total.estimatedAddedSize" : parseInt(Template.instance().adjustedSize.get())
+			"total.productivityPlan" : plannedProductivity
 			"probeSize":"C"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->

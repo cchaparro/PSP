@@ -55,6 +55,7 @@ Template.registerTemplate.events
 					time: 0
 					injected: 0
 					removed: 0
+					size: 0
 		}
 
 		if sys.isEmail(email) and sys.isValidPassword(password)

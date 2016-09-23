@@ -83,6 +83,7 @@ if Meteor.isServer
 			total:
 				totalTime: 0
 				totalSize: 0
+				estimatedTotalSize: 0
 				estimatedTime: 0
 				estimatedBase: 0
 				actualBase: 0

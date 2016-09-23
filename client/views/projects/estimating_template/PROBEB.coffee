@@ -51,10 +51,6 @@ Template.PROBEB.helpers
 			Template.instance().Beta1Size.set(SizeLinearRegressionData.Beta1)
 			Template.instance().CorrelationSize.set(SizeLinearRegressionData.Correlation)
 
-			Template.instance().validProbeTime.set(true)
-			Template.instance().validProbeSize.set(true)
-
-
 	GetTimeEstimationValues:()->
 		return {"Beta0":Template.instance().Beta0Time.get().toFixed(3),"Beta1":Template.instance().Beta1Time.get().toFixed(3),"r":Template.instance().CorrelationTime.get().toFixed(2)}
 
@@ -110,8 +106,15 @@ Template.PROBEB.helpers
 
 Template.PROBEB.events
 	'click .save-data-time': (e,t)->
+		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		if Template.instance().validProbeTime.get()
+			planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+			plannedProductivity = parseInt(planSummary?.estimatedAddedSize/Template.instance().adjustedTime.get())
+		else
+			plannedProductivity = parseInt(planSummary?.productivityPlan)
 		data= {
-			"total.estimatedTime": sys.minutesToTime(Template.instance().adjustedTime.get())
+			"total.estimatedTime": sys.hoursToTime(Template.instance().adjustedTime.get())
+			"total.productivityPlan" : plannedProductivity
 			"probeTime":"B"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
@@ -121,8 +124,14 @@ Template.PROBEB.events
 			else
 				sys.flashStatus("save-project")
 	'click .save-data-size': (e,t)->
+		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		if planSummary?.estimatedTime != 0 and Template.instance().validProbeSize.get()
+			plannedProductivity = parseInt(Template.instance().adjustedSize.get()/planSummary?.estimatedTime)
+		else
+			plannedProductivity = parseInt(planSummary?.productivityPlan)
 		data= {
 			"total.estimatedAddedSize" : parseInt(Template.instance().adjustedSize.get())
+			"total.productivityPlan" : plannedProductivity
 			"probeSize":"B"
 		}
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->

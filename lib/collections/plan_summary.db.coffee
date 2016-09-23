@@ -197,6 +197,11 @@ schemas.totalValues = new SimpleSchema
 	"totalSize":
 		type: Number
 		label: "Plan Summary total size of the project"
+	
+	"estimatedTotalSize":
+		type: Number
+		label: "Plan Summary estimated total size of the project"
+
 	"estimatedTime":
 		type: Number
 		label: "Estimated time the user gave for the project completion"

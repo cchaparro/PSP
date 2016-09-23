@@ -26,6 +26,7 @@ Meteor.users.after.insert (userId, doc) ->
 			time: 0
 			injected: 0
 			removed: 0
+			size: 0
 		}
 
 	if doc.services?.google
@@ -39,6 +40,7 @@ Meteor.users.after.insert (userId, doc) ->
 			time: 0
 			injected: 0
 			removed: 0
+			size: 0
 		}
 
 

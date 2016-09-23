@@ -8,12 +8,15 @@ Template.PROBED.helpers
 
 Template.PROBED.events
 	'click .save-data-time': (e,t)->
-		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
-		estimatedHours = sys.minutesToTime($(".newTime").val())
+		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		estimatedHours = $(".newTime").val()
 		if estimatedHours != 0 
+			plannedProductivity = parseInt((planSummary.estimatedAddedSize/estimatedHours))
+			estimatedHours = sys.hoursToTime(estimatedHours)
 			data= {
 				"total.estimatedTime": estimatedHours
 				"probeTime":"D"
+				"total.productivityPlan" : plannedProductivity
 			}
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error
@@ -24,11 +27,19 @@ Template.PROBED.events
 		else
 			sys.flashStatus("summary-missing")
 	'click .save-data-size':(e,t)->
-		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
-		if psProject?.proxyEstimated != 0
+		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
+		if planSummary?.proxyEstimated != 0
+			totalEstimatedSize	= planSummary?.proxyEstimated - planSummary?.estimatedModified - planSummary?.estimatedDeleted + planSummary?.estimatedBase + planSummary?.estimatedReused
+			if planSummary?.estimatedTime != 0
+				plannedProductivity = parseInt((planSummary?.proxyEstimated/planSummary?.estimatedTime))
+			else
+				plannedProductivity = parseInt(planSummary?.productivityPlan)
+
 			data= {
-				"total.estimatedAddedSize" : psProject?.proxyEstimated
+				"total.estimatedAddedSize" : planSummary?.proxyEstimated
 				"probeSize":"D"
+				"total.productivityPlan" : plannedProductivity
+				"total.estimatedTotalSize" : totalEstimatedSize
 			}
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error

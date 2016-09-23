@@ -45,9 +45,12 @@ Meteor.methods
 		if finishStage
 			currentStage.finished = true
 
+		actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime+stage.time)/3600000))
+		
 		data = {
 			"timeEstimated": planSummary.timeEstimated
 			"total.totalTime": planSummary.total.totalTime + stage.time
+			"total.productivityActual": actualProductivity
 		}
 
 		if reset_timeStarted
@@ -77,7 +80,9 @@ Meteor.methods
 		totalEstimatedAdd		= 0
 		totalActualAdd			= 0
 		totalSize				= 0
+		totalEstimatedSize		= 0
 		proxySize				= 0
+		actualProductivity		= 0
 		_.each baseData, (baseOption)->
 			totalEstimatedBase		+= parseInt(baseOption.Estimated.base)
 			totalActualBase			+= parseInt(baseOption.Actual.base)
@@ -94,11 +99,22 @@ Meteor.methods
 		_.each addData, (addOption)->
 			totalEstimatedAdd	+= parseInt(addOption.Estimated.size)
 			totalActualAdd		+= parseInt(addOption.Actual.size)
+		
 		proxySize	= totalEstimatedAdd + totalEstimatedModified
-		totalNewSize	= totalActualAdd + totalActualBase - totalActualDeleted
+
+		totalNewSize	= totalActualAdd + totalActualBase - totalActualDeleted + planSummary.total.actualReused
+
+		totalEstimatedSize	= planSummary.total.estimatedAddedSize - totalEstimatedModified - totalEstimatedDeleted + totalEstimatedBase + planSummary.total.estimatedReused
+		
+		if planSummary.total.totalTime != 0
+			actualProductivity = parseInt((totalActualAdd + totalActualModified)/sys.timeToHours(planSummary.total.totalTime))
+		else
+			actualProductivity = planSummary.total.productivityActual
+		console.log actualProductivity
 		newtotal = {
 			totalTime:					planSummary.total.totalTime
 			totalSize:					totalNewSize
+			estimatedTotalSize:			totalEstimatedSize
 			estimatedTime:				planSummary.total.estimatedTime
 			estimatedBase:				totalEstimatedBase
 			actualBase:					totalActualBase
@@ -112,6 +128,8 @@ Meteor.methods
 			actualReused:				planSummary.total.actualReused
 			proxyEstimated:				proxySize
 			estimatedAddedSize:			planSummary.total.estimatedAddedSize
+			productivityPlan:			planSummary.total.productivityPlan
+			productivityActual:			actualProductivity
 		}
 
 		data = {
@@ -127,6 +145,8 @@ Meteor.methods
 		totalEstimatedAdd = 0
 		totalActualAdd = 0
 		totalEstimatedModified = 0
+		totalEstimatedSize = 0
+		totalNewSize = 0
 		_.each addData, (addOption) ->
 			totalEstimatedAdd += parseInt(addOption.Estimated.size)
 			totalActualAdd += parseInt(addOption.Actual.size)
@@ -137,7 +157,11 @@ Meteor.methods
 			totalActualAdd += parseInt(baseOption.Actual.add)
 			totalEstimatedModified += parseInt(baseOption.Estimated.modified)
 		proxySize	= totalEstimatedAdd + totalEstimatedModified
-		totalNewSize	= totalActualAdd + planSummary.total.actualBase - planSummary.total.actualDeleted
+		
+		totalNewSize	= totalActualAdd + planSummary.total.actualBase - planSummary.total.actualDeleted + planSummary.total.actualReused
+
+		totalEstimatedSize	= planSummary.estimatedAddedSize - totalEstimatedModified - planSummary.total.estimatedDeleted + planSummary.total.estimatedBase + planSummary.total.estimatedReused
+
 		data = {
 			"addLOC": addData
 			"total.estimatedAdd": totalEstimatedAdd
@@ -150,17 +174,26 @@ Meteor.methods
 
 
 	update_reused_size: (projectId, reusedData) ->
+		planSummary = db.plan_summary.findOne({ "projectId":projectId })
 		totalRuActual = 0
 		totalRuEstimated = 0
+		totalEstimatedSize = 0
+		totalNewSize = 0
 
 		_.each reusedData, (reusedOption) ->
 			totalRuActual 				+= parseInt(reusedOption.Actual.size)
 			totalRuEstimated 			+= parseInt(reusedOption.Estimated.size)
 
+		totalNewSize	= planSummary.total.actualAdd + planSummary.total.actualBase - planSummary.total.actualDeleted + totalRuActual
+		
+		totalEstimatedSize	= planSummary.total.estimatedAddedSize - planSummary.total.estimatedModified - planSummary.total.estimatedDeleted + planSummary.total.estimatedBase + totalRuEstimated
+
 		data = {
 			"reusedLOC": reusedData
 			"total.estimatedReused":totalRuEstimated
 			"total.actualReused":totalRuActual
+			"total.totalSize":totalNewSize
+			"total.estimatedTotalSize":totalEstimatedSize
 		}
 
 		db.plan_summary.update({ "projectId":projectId }, {$set: data })
