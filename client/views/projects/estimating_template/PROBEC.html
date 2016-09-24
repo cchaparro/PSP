@@ -25,7 +25,7 @@
 					<td>{{Beta1}}</td>
 				{{/with}}
 				<td>{{DescriptionTime}}</td>
-				<td><div class="pull-left btn primary-button save-data-time">Escoger</div></td>
+				<td><div class="{{#unless validTime}} hide {{/unless}}pull-left btn primary-button save-data-time">Escoger</div></td>
 			</tr>
 			<tr>
 				<td>Líneas añadidas y modificadas</td>
@@ -39,7 +39,7 @@
 					<td>{{Beta1}}</td>
 				{{/with}}
 				<td>{{DescriptionSize}}</td>
-				<td><div class="pull-left btn primary-button save-data-size">Escoger</div></td>
+				<td><div class="{{#unless validSize}} hide {{/unless}}pull-left btn primary-button save-data-size">Escoger</div></td>
 			</tr>
 		</tbody>
 	</table>

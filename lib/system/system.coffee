@@ -180,7 +180,10 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Las líneas modificadas no pueden ser mayores que las líneas base."
 			css = "danger"
-
+		when "size-missing"
+			title = "Error"
+			subject = "Debes ingresar los tamaños planeados en el Plan Summary"
+			css = "danger"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 2000

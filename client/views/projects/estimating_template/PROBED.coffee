@@ -48,4 +48,4 @@ Template.PROBED.events
 				else
 					sys.flashStatus("save-project")
 		else
-			sys.flashStatus("summary-missing")
+			sys.flashStatus("size-missing")

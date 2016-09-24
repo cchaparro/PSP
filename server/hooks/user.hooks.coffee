@@ -22,6 +22,13 @@ Meteor.users.after.insert (userId, doc) ->
 		data.profile["lname"] = doc.services?.facebook?.last_name
 		data.profile["profileImageUrl"] = "http://graph.facebook.com/"+doc.services?.facebook?.id+"/picture/?type=large"
 		data.profile["summaryAmount"] = Meteor.settings.public.userAmount
+		data.profile["sizeAmount"]={
+			base: 0
+			add: 0
+			modified: 0
+			deleted: 0
+			reused: 0
+		}
 		data.profile["total"] = {
 			time: 0
 			injected: 0
@@ -36,6 +43,13 @@ Meteor.users.after.insert (userId, doc) ->
 		data.profile["lname"] = doc.services?.google?.family_name
 		data.profile["profileImageUrl"] = doc.services?.google?.picture
 		data.profile["summaryAmount"] = Meteor.settings.public.userAmount
+		data.profile["sizeAmount"]={
+			base: 0
+			add: 0
+			modified: 0
+			deleted: 0
+			reused: 0
+		}
 		data.profile["total"] = {
 			time: 0
 			injected: 0

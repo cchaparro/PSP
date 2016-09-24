@@ -3,6 +3,9 @@ Template.sizeSummary.helpers
 	sizeData: () ->
 		return db.plan_summary.findOne({ "projectId": FlowRouter.getParam("id") })?.total
 
+	toDateData: ()->
+		return db.users.findOne({_id: Meteor.userId()})?.profile
+
 	addTwoValues: (v1,v2)->
 		return v1 + v2
 
@@ -27,5 +30,14 @@ Template.sizeSummary.helpers
 				return estimated
 			when "actual"
 				return actual
+	newReusableHistoric : ()->
+		historic = 0
+		projects = db.projects.find({"completed":true}).fetch()
+		_.each projects, (project)->
+			unless project._id == FlowRouter.getParam("id")
+				psProject = db.plan_summary.findOne({"projectId":project._id})?.addLOC
+				if addOption.Actual.nr
+					historic+=psProject.Actual.nr
+		return historic
 
 ##########################################

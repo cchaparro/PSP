@@ -22,7 +22,9 @@
 						<span>{{sizeData.actualBase}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.base}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -36,7 +38,9 @@
 						<span>{{sizeData.actualAdd}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.add}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -50,7 +54,9 @@
 						<span>{{sizeData.actualModified}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.modified}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -64,7 +70,9 @@
 						<span>{{sizeData.actualReused}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.reused}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -78,7 +86,9 @@
 						<span>{{sizeData.actualDeleted}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.deleted}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -92,7 +102,9 @@
 						<span>{{addTwoValues sizeData.actualAdd sizeData.actualModified}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{addTwoValues toDateData.sizeAmount.add toDateData.sizeAmount.modified}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -106,7 +118,9 @@
 						<span>{{addFourValues sizeData.actualBase sizeData.actualAdd  sizeData.actualReused sizeData.actualDeleted}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.total.size}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -120,7 +134,7 @@
 						<span>{{newReusableValue "actual"}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+						<span>{{newReusableHistoric}}</span>
 					</td>
 				</tr>
 				<tr>
@@ -134,7 +148,9 @@
 						<span>{{addTwoValues sizeData.actualAdd sizeData.actualModified}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+						{{#with toDateData}}
+						<span>{{addTwoValues toDateData.sizeAmount.add toDateData.sizeAmount.modified}}</span>
+					{{/with}}
 					</td>
 				</tr>
 			</tbody>

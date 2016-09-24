@@ -44,8 +44,9 @@ Meteor.methods
 
 		if finishStage
 			currentStage.finished = true
-
-		actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime+stage.time)/3600000))
+		actualProductivity = 0
+		if planSummary.total.totalTime + stage.time != 0
+			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime+stage.time)/3600000))
 		
 		data = {
 			"timeEstimated": planSummary.timeEstimated

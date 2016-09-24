@@ -24,7 +24,7 @@ Template.PROBEC.helpers
 		totalAddedModifiedActualLOC = 0
 		totalActualTime = 0
 		projects = db.projects.find({"completed":true}).fetch()
-		if projects.length >1
+		if projects.length>0
 			_.each projects, (project)->
 				unless project._id == FlowRouter.getParam("id")
 					psProject = db.plan_summary.findOne({"projectId":project._id})?.total
@@ -38,8 +38,6 @@ Template.PROBEC.helpers
 			newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy).toFixed(2)
 			Template.instance().Beta1Time.set(newBetaTime1)
 
-			Template.instance().validProbeTime.set(true)
-			Template.instance().validProbeSize.set(true)
 		
 	GetTimeEstimationValues:()->
 		return {"Beta0":Template.instance().Beta0Time.get(),"Beta1":Template.instance().Beta1Time.get()}
@@ -65,8 +63,15 @@ Template.PROBEC.helpers
 		
 	DescriptionTime:()->
 		projects = db.projects.find({"completed":true}).fetch()
-		if projects.length >1
-			Template.instance().descriptionTime.set("Faltan los betas")
+		if projects.length >0
+			b1 = Template.instance().Beta1Time.get()
+			user = db.users.findOne({_id: Meteor.userId()})
+			historicProductivity = (user.profile.sizeAmount.add+user.profile.sizeAmount.modified)/sys.timeToHours(user.profile.total.time)
+			if (1/b1)>=(historicProductivity*0.30) and (1/b1)<=(historicProductivity*1.30)
+				Template.instance().descriptionTime.set("PROBE C cumple con los requisitos necesarios, la pendiente de la linea se encuentra dentro de los límites")
+				Template.instance().validProbeTime.set(true)
+			else 
+				Template.instance().descriptionTime.set("El valor de 1/Beta1 debe ser cercano a tu productividad histórica, el valor de 1/Beta1 es: " + 1/b1 + " y tu productividad histórica es: " + historicProductivity.toFixed(2) + "LOC/Hrs")
 		else
 			Template.instance().descriptionTime.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionTime.get()
@@ -74,8 +79,14 @@ Template.PROBEC.helpers
 
 	DescriptionSize:()->
 		projects = db.projects.find({"completed":true}).fetch()
-		if projects.length >1
-			Template.instance().descriptionSize.set("Faltan los betas")
+		if projects.length >0
+			b1= Template.instance().Beta1Size.get()
+			if b1<=2 and b1>=0
+				Template.instance().descriptionSize.set("PROBE C cumple con los requisitos necesarios, la pendiente de la linea se encuentra dentro de los límites")
+				Template.instance().validProbeSize.set(true)
+			else
+				Template.instance().descriptionSize.set("El valor de Beta 1 debe estar cerca a cero")
+
 		else
 			Template.instance().descriptionSize.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionSize.get()

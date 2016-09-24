@@ -79,7 +79,19 @@ Template.PROBEA.helpers
 		if projects.length >2
 			r=Math.pow(Template.instance().CorrelationTime.get(),2)
 			if r > 0.5
-				Template.instance().descriptionTime.set("Faltan los betas")
+				b0 = Template.instance().Beta0Time.get()
+				p = Template.instance().AdjustedTime.get() * 0.25
+				if b0 < p 
+					b1 = Template.instance().Beta1Time.get()
+					user = db.users.findOne({_id: Meteor.userId()})
+					historicProductivity = (user.profile.sizeAmount.add+user.profile.sizeAmount.modified)/sys.timeToHours(user.profile.total.time) * 0.50
+					if 1/b1 <= (historicProductivity)
+						Template.instance().descriptionTime.set("PROBE A cumple con los requisitos necesarios, tus párametros de regresión estan dentro de los límites")
+						Template.instance().validProbeTime.set(true)
+					else
+						Template.instance().descriptionTime.set("El valor de Beta 1 debe estar entre el 50% de la 1/productividad histórica, el valor de Beta 1 es: " + b1 + " y la productividad histórica es: " + historicProductivityis)
+				else
+					Template.instance().descriptionTime.set("El valor de Beta 0 debe ser más pequeño que el 25% del tiempo estimado del proyecto, el valor de Beta 0 es: " + b0 + "y el valor del nuevo tiempo * 25% es: " + p)
 			else
 				Template.instance().descriptionTime.set("Los datos adquiridos no se correlacionan entre sí el valor de r al cuadrado debe ser > 0,5 y el valor actual es de "+r)
 		else

@@ -119,10 +119,13 @@ if Meteor.isServer
 			else
 				currentStage.time -= time
 				planSummary.total.totalTime -= time
-
+		actualProductivity = planSummary.total.productivityActual
+		if planSummary.total.totalTime!= 0
+			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime)/3600000))
 		data = {
 			"timeEstimated": timeEstimated
 			"total.totalTime": planSummary.total.totalTime
+			"total.productivityActual": actualProductivity
 		}
 
 		db.plan_summary.update({"projectId": projectId}, {$set: data})

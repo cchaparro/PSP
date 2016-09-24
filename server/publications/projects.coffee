@@ -14,5 +14,6 @@ Meteor.publish "estimatingView", (pid) ->
 	return [
 		db.projects.find({"projectOwner": @userId}),
 		db.plan_summary.find({"summaryOwner": @userId})
+		db.users.find({_id: @userId})
 	]
 ####################################
