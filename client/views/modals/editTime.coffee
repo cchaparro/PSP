@@ -20,7 +20,6 @@ Template.editTimeModal.helpers
 ###########################################
 Template.editTime.onCreated () ->
 	@selectedOption = new ReactiveVar(false)
-	@disableAddOption = new ReactiveVar(false)
 	timeData.set({})
 	@inputValues = new ReactiveVar({"hours": 0, "minutes": 0, "seconds": 0})
 
@@ -28,7 +27,6 @@ Template.editTime.onCreated () ->
 		timeData.set(@data)
 		Template.instance().inputValues.set({"hours": sys.timeToHours(@data.data.time), "minutes": sys.timeToMinutes(@data.data.time), "seconds": sys.timeToSeconds(@data.data.time)})
 		Template.instance().selectedOption.set('delete-time')
-		Template.instance().disableAddOption.set(true)
 	else
 		timeData.set(@data)
 		Template.instance().selectedOption.set('add-time')
@@ -58,9 +56,6 @@ Template.editTime.helpers
 			return sys.timeToSeconds(data.data.time)
 		else
 			return "0"
-
-	addDisabled: () ->
-		return Template.instance().disableAddOption.get()
 
 	currentStage: () ->
 		currentData = timeData.get()
@@ -110,9 +105,8 @@ Template.editTime.helpers
 Template.editTime.events
 	'click .time-option': (e,t) ->
 		data = timeData.get()
-		unless data?.type?
-			option = $(e.target).closest(".time-option").data('value')
-			t.selectedOption.set(option)
+		option = $(e.target).closest(".time-option").data('value')
+		t.selectedOption.set(option)
 
 	'click .fa-caret-up': (e,t) ->
 		value = $(e.target).data('value')
@@ -218,6 +212,9 @@ Template.editTime.events
 				if error
 					console.warn(error)
 				else
+					if data?.type
+						Meteor.call "disable_notification", data._id
+
 					sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
 
