@@ -8,7 +8,7 @@ Template.projectSettingsTemplate.helpers
 		user = db.users.findOne({_id: Meteor.userId()})
 		return [
 			{
-				title: "Método PROBE C. Cuando un proyecto utiliza el método PROBE C este propirciona en el plan summary un valor promedio de estimacion para el tiempo que toma cada etapa."
+				title: "Método PROBE C. Cuando un proyecto utiliza el método PROBE C este proporciona en el plan summary un valor promedio de estimacion para el tiempo que toma cada etapa."
 				value: user?.settings?.probeC
 			},
 			{
