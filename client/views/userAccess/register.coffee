@@ -51,10 +51,17 @@ Template.registerTemplate.events
 				lname: $('#lname').val()
 				profileImageUrl: null
 				summaryAmount: Meteor.settings.public.userAmount
+				sizeAmount:
+					base: 0
+					add: 0
+					modified: 0
+					deleted: 0
+					reused: 0
 				total:
 					time: 0
 					injected: 0
 					removed: 0
+					size: 0
 		}
 
 		if sys.isEmail(email) and sys.isValidPassword(password)

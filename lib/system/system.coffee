@@ -15,7 +15,7 @@ sys.isValidPassword = (password) ->
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts"
+	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
@@ -51,7 +51,7 @@ sys.displayShortTime = (time) ->
 	return IntegerTwoDigits(horas) + " : " + IntegerTwoDigits(minutos) + " : " + IntegerTwoDigits(segundos)
 
 sys.timeToHours = (time) ->
-	return Math.floor(time / 3600000)
+	return (time/3600000)
 
 sys.timeToMinutes = (time) ->
 	time %= 3600000
@@ -77,6 +77,9 @@ sys.secondsToTime = (time) ->
 # the hours
 sys.timeInOnlyMinutes = (time) ->
 	return Math.floor(time / 60000)
+
+sys.timeInOnlyHours = (time) ->
+	return Math.floor(time / 3600000)
 
 sys.planSummaryTime = (time) ->
 	minutos = Math.floor(time / 60000)
@@ -307,7 +310,10 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Las líneas modificadas no pueden ser mayores que las líneas base."
 			css = "danger"
-
+		when "size-missing"
+			title = "Error"
+			subject = "Debes ingresar los tamaños planeados en el Plan Summary"
+			css = "danger"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 3800
@@ -369,6 +375,8 @@ sys.getSessionRoute = (value) ->
 			return "Tipos de defecto"
 		when "help"
 			return "Ayuda"
+		when "estimatingTemplate"
+			return "Estimación"
 
 ##########################################
 ########- Project Color Selector -########
@@ -386,3 +394,57 @@ sys.selectColor = (last_color) ->
 # sys.runningTimeProject = new ReactiveVar(false)
 
 ##########################################
+
+#Data for Size linear Regression
+sys.regressionDataSize = (Data,PROBE,x,y)->
+	#Size Planned Added & Modified Size - Actual Added & Modified Size for PROBE B
+	#Estimated Proxy Size actual - Added and modified lines for PROBE A
+	n = Data.length
+	sumsquarex = 0
+	xavg = x/n
+	yavg = y/n
+	sumsquarey = 0 
+	sumxy = 0
+	switch PROBE
+		when "B"
+			_.each Data,(d)->
+				sumsquarex += Math.pow(d.EstimatedLOC,2)
+				sumsquarey += Math.pow(d.ActualAddedModified,2)
+				sumxy+= d.EstimatedLOC * d.ActualAddedModified
+		when "A"
+			_.each Data,(d)->
+				sumsquarex += Math.pow(d.ProxyE,2)
+				sumsquarey += Math.pow(d.ActualLOC,2)
+				sumxy+= d.ProxyE * d.ActualLOC
+	
+	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
+	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
+	b0 = yavg - (b1*xavg)
+	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
+
+sys.regressionDataTime = (Data,PROBE,x,y)->
+	#Size Planned Added & Modified Size - Actual Added & Modified Size for PROBE B
+	#Estimated Proxy Size actual - Added and modified lines for PROBE A
+	n = Data.length
+	sumsquarex = 0
+	xavg = x/n
+	yavg = y/n
+	sumsquarey = 0 
+	sumxy = 0
+	switch PROBE
+		when "B"
+			_.each Data,(d)->
+				sumsquarex += Math.pow(d.EstimatedLOC,2)
+				sumsquarey += Math.pow(d.ActualTime,2)
+				sumxy+= d.EstimatedLOC * d.ActualTime
+		when "A"
+			_.each Data,(d)->
+				sumsquarex += Math.pow(d.ProxyE,2)
+				sumsquarey += Math.pow(d.ActualTime,2)
+				sumxy+= d.ProxyE * d.ActualTime
+	
+	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
+	console.log "Avgx", xavg, "Avgy", yavg, PROBE
+	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
+	b0 = yavg - (b1*xavg)
+	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}

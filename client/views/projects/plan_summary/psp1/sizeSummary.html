@@ -22,7 +22,9 @@
 						<span>{{sizeData.actualBase}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.base}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -36,7 +38,9 @@
 						<span>{{sizeData.actualAdd}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.add}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -44,13 +48,15 @@
 						<span>Modificado (M)</span>
 					</td>
 					<td>
-						<span>{{sizeData.estimatedMod}}</span>
+						<span>{{sizeData.estimatedModified}}</span>
 					</td>
 					<td>
-						<span>{{sizeData.actualMod}}</span>
+						<span>{{sizeData.actualModified}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.modified}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -58,13 +64,15 @@
 						<span>Re Usado (R)</span>
 					</td>
 					<td>
-						<span>{{sizeData.estimatedRu}}</span>
+						<span>{{sizeData.estimatedReused}}</span>
 					</td>
 					<td>
-						<span>{{sizeData.actualRu}}</span>
+						<span>{{sizeData.actualReused}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.reused}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -72,13 +80,15 @@
 						<span>Eliminado (D)</span>
 					</td>
 					<td>
-						<span>{{sizeData.estimatedDel}}</span>
+						<span>{{sizeData.estimatedDeleted}}</span>
 					</td>
 					<td>
-						<span>{{sizeData.actualDel}}</span>
+						<span>{{sizeData.actualDeleted}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.sizeAmount.deleted}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -92,7 +102,9 @@
 						<span>{{addTwoValues sizeData.actualAdd sizeData.actualModified}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{addTwoValues toDateData.sizeAmount.add toDateData.sizeAmount.modified}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -100,13 +112,15 @@
 						<span>Tamaño Total (T)</span>
 					</td>
 					<td>
-						<span>{{addThreeValues sizeData.estimatedAdd sizeData.estimatedModified sizeData.estimatedReused}}</span>
+						<span>{{addFourValues sizeData.estimatedBase sizeData.estimatedAdd  sizeData.estimatedReused sizeData.estimatedDeleted}}</span>
 					</td>
 					<td>
-						<span>{{addThreeValues sizeData.actualAdd sizeData.actualModified sizeData.actualReused}}</span>
+						<span>{{addFourValues sizeData.actualBase sizeData.actualAdd  sizeData.actualReused sizeData.actualDeleted}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+					{{#with toDateData}}
+						<span>{{toDateData.total.size}}</span>
+					{{/with}}
 					</td>
 				</tr>
 				<tr>
@@ -120,7 +134,7 @@
 						<span>{{newReusableValue "actual"}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+						<span>{{newReusableHistoric}}</span>
 					</td>
 				</tr>
 				<tr>
@@ -128,13 +142,15 @@
 						<span><i>Proxy Size</i> (E)</span>
 					</td>
 					<td>
-						<span>{{addThreeValues sizeData.estimatedAdd sizeData.estimatedModified sizeData.estimatedBase}}</span>
+						<span>{{addTwoValues sizeData.estimatedAdd sizeData.estimatedModified}}</span>
 					</td>
 					<td>
-						<span>{{addThreeValues sizeData.actualAdd sizeData.actualModified sizeData.actualBase}}</span>
+						<span>{{addTwoValues sizeData.actualAdd sizeData.actualModified}}</span>
 					</td>
 					<td>
-						<span>A la fecha</span>
+						{{#with toDateData}}
+						<span>{{addTwoValues toDateData.sizeAmount.add toDateData.sizeAmount.modified}}</span>
+					{{/with}}
 					</td>
 				</tr>
 			</tbody>

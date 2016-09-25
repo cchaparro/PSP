@@ -50,7 +50,7 @@ Template.addSummary.events
 		section = dataField[0]
 		field = dataField[1]
 
-		if field == "items"
+		if field == "items" and section == "Estimated"
 			relSize = data[@position]["Estimated"]["relSize"]
 			if relSize != "Elegir"
 				switch relSize

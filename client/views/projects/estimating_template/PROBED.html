@@ -1,0 +1,39 @@
+<!-- ###################################### -->
+
+<template name="PROBED">
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Estimación</th>
+				<th>Descripción</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>		
+		{{#with PlanSummary}}
+			<tr>
+				<td>Tiempo(hrs)</td>
+				<td>
+					<div class="input-box" style="width:50%;">
+						<input type="text" class="newTime" value="{{timeInOnlyHours estimatedTime}}">
+					</div>
+				</td>
+				<td>Este método usa tu mejor suposición, usalo si crees que los ajustes realizados por los demás métodos no son acertados</td>
+				<td><div class="btn primary-button save-data-time">Escoger</div></td>
+			</tr>
+			<tr>
+				<td>Líneas añadidas y modificadas</td>
+				<td>
+					<div class="input-box" style="width:50%;">
+						<input type="text" class="newLOC" value="{{proxyEstimated}}">
+					</div>
+				</td>
+				<td>Este método usa tu mejor suposición para el estimado de las líneas añadidas y modificadas de este proyecto.</td>
+				<td><div class="btn primary-button save-data-size">Escoger</div></td>
+			</tr>
+		{{/with}}
+
+		</tbody>
+	</table>
+</template>

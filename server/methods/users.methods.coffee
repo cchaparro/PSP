@@ -16,12 +16,20 @@ Meteor.methods
 				time.injected += planInjected.injected
 				time.removed += planRemoved.removed
 				return time
-
+		finalSizeAmount = {
+			"base": user.sizeAmount.base + planSummary.total.actualBase
+			"add": user.sizeAmount.add + planSummary.total.actualAdd
+			"modified": user.sizeAmount.modified + planSummary.total.actualModified
+			"deleted": user.sizeAmount.deleted + planSummary.total.actualDeleted
+			"reused": user.sizeAmount.reused + planSummary.total.actualReused
+		}
 		data = {
 			"profile.total.time": user.total.time + planSummary.total.totalTime
 			"profile.total.injected": user.total.injected + amountDefects
 			"profile.total.removed": user.total.removed + amountDefects
+			"profile.total.size": user.total.size + planSummary.total.totalSize
 			"profile.summaryAmount": finalTime
+			"profile.sizeAmount": finalSizeAmount
 		}
 
 		db.users.update({_id: Meteor.userId()}, {$set: data})

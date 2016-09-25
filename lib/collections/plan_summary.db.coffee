@@ -194,6 +194,13 @@ schemas.totalValues = new SimpleSchema
 	"totalTime":
 		type: Number
 		label: "Plan Summary total time consumed"
+	"totalSize":
+		type: Number
+		label: "Plan Summary total size of the project"
+	
+	"estimatedTotalSize":
+		type: Number
+		label: "Plan Summary estimated total size of the project"
 
 	"estimatedTime":
 		type: Number
@@ -239,6 +246,20 @@ schemas.totalValues = new SimpleSchema
 		type: Number
 		label: "Actual reused LOC"
 
+	"estimatedAddedSize":
+		type: Number
+		label: "Estimated added and modified size using PROBE"
+
+	"proxyEstimated":
+		type: Number
+		label: "Estimated proxy size"
+	"productivityPlan": 
+		type: Number
+		label: "Planned productivity of the project (A&M/totalTime)*60"
+	"productivityActual":
+		type: Number
+		label: "Actual productivity of the project (A&M/totalTime)*60"
+
 ##########################################
 ############## Main Schema ###############
 
@@ -259,6 +280,18 @@ schemas.plan_summary = new SimpleSchema
 		type: String
 		optional: false
 		label: "Id of the Project owner"
+
+	"probeTime":
+		type: String
+		optional: false
+		defaultValue: "D"
+		label: "Probe used for time estimation"
+
+	"probeSize":
+		type: String
+		optional: false
+		defaultValue: "D"
+		label: "Probe used for time estimation"
 
 	"timeStarted":
 		type: String
