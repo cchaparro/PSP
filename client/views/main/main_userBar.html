@@ -62,7 +62,7 @@
 </template>
 <!-- ###################################### -->
 <template name="createDefectButton">
-	<div class="btn create-btn">
+	<div class="btn {{#if projectIsCompleted}} disabled-btn {{else}} create-btn {{/if}}">
 		<i class="fa fa-plus"></i>
 		<span>Crear Defecto</span>
 	</div>
@@ -81,7 +81,7 @@
 							<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-exclamation {{/if}}"></i>
 						</div>
 					</div>
-					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}}">
+					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}} {{#if notificationDisabled}} notification-content-disabled {{/if}}">
 						<h4>
 							<span class="notification-sender">{{userName title.sender}}</span>
 							{{title.main}}

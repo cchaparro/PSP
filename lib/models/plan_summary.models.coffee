@@ -76,18 +76,24 @@ if Meteor.isServer
 			reusedLOC: reusedSize
 			total:
 				totalTime: 0
-				estimatedTime: 0,
-				estimatedBase: 0,
-				actualBase: 0,
-				estimatedAdd: 0,
-				actualAdd: 0,
-				estimatedModified: 0,
-				actualModified: 0,
-				estimatedDeleted: 0,
-				actualDeleted: 0,
-				estimatedReused: 0,
+				totalSize: 0
+				estimatedTotalSize: 0
+				estimatedTime: 0
+				estimatedBase: 0
+				actualBase: 0
+				estimatedAdd: 0
+				actualAdd: 0
+				estimatedModified: 0
+				actualModified: 0
+				estimatedDeleted: 0
+				actualDeleted: 0
+				estimatedReused: 0
 				actualReused: 0
-		}
+				estimatedAddedSize: 0
+				proxyEstimated: 0
+				productivityPlan: 0
+				productivityActual: 0
+			}
 
 		db.plan_summary.insert(data)
 
@@ -107,10 +113,13 @@ if Meteor.isServer
 			else
 				currentStage.time -= time
 				planSummary.total.totalTime -= time
-
+		actualProductivity = planSummary.total.productivityActual
+		if planSummary.total.totalTime!= 0
+			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime)/3600000))
 		data = {
 			"timeEstimated": timeEstimated
 			"total.totalTime": planSummary.total.totalTime
+			"total.productivityActual": actualProductivity
 		}
 
 		db.plan_summary.update({"projectId": projectId}, {$set: data})

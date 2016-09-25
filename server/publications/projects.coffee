@@ -1,6 +1,9 @@
 ####################################
 Meteor.publish "allProjects", () ->
-	return db.projects.find({"projectOwner": @userId})
+	return [
+		db.projects.find({"projectOwner": @userId})
+		db.plan_summary.find({"summaryOwner": @userId})
+	]
 
 Meteor.publish "projectView", (pid) ->
 	return [
@@ -10,4 +13,18 @@ Meteor.publish "projectView", (pid) ->
 		db.plan_summary.find({"projectId": pid, "summaryOwner": @userId})
 		db.users.find({_id: @userId})
 	]
+
+Meteor.publish "estimatingView", (pid) ->
+	return [
+		db.projects.find({"projectOwner": @userId}),
+		db.plan_summary.find({"summaryOwner": @userId})
+		db.users.find({_id: @userId})
+	]
+
+Meteor.publish "chartStages", ()->
+	return [
+		db.projects.find({"projectOwner": @userId})
+		db.plan_summary.find({"summaryOwner": @userId})
+	]
+
 ####################################

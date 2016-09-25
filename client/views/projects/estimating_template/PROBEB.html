@@ -1,0 +1,48 @@
+<template name="PROBEB">
+	{{setData}}
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Estimación</th>
+				<th><i>Beta 0</i></th>
+				<th><i>Beta 1</i></th>
+				<th>Correlación (r)</th>
+				<th>Descripción</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Tiempo(hrs)</td>
+				<td>
+					<div class="input-box" style="width:50%;">
+						<span>{{AdjustedTime}}</span>
+					</div>
+				</td>
+				{{#with GetTimeEstimationValues}}
+					<td>{{Beta0}}</td>
+					<td>{{Beta1}}</td>
+					<td>{{r}}</td>
+				{{/with}}
+				<td>{{DescriptionTime}}</td>
+				<td><div class="{{#unless validTime}} hide {{/unless}}btn primary-button save-data-time">Escoger</div></td>
+			</tr>
+			<tr>
+				<td>Líneas añadidas y modificadas</td>
+				<td>
+					<div class="input-box" style="width:50%;">
+						<span>{{AdjustedSize}}</span>
+					</div>
+				</td>
+				{{#with GetSizeEstimationValues}}
+					<td>{{Beta0}}</td>
+					<td>{{Beta1}}</td>
+					<td>{{r}}</td>
+				{{/with}}
+				<td>{{DescriptionSize}}</td>
+				<td><div class="{{#unless validSize}} hide {{/unless}} btn primary-button save-data-size">Escoger</div></td>
+			</tr>
+		</tbody>
+	</table>
+</template>

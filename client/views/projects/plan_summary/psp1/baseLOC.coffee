@@ -46,6 +46,17 @@ Template.baseSummary.events
 		dataField = dataField.split(".")
 		section = dataField[0]
 		field = dataField[1]
+		if section == "Estimated" and field == "deleted"
+			baseField = data[@position]["Estimated"]["base"]
+			if parseInt(value) > parseInt(baseField)
+				$(e.target).val(0)
+				return sys.flashStatus("base-deleted-error")
+
+		if section == "Actual" and field == "modified"
+			baseField = data[@position]["Actual"]["base"]
+			if parseInt(value) > parseInt(baseField)
+				$(e.target).val(0)
+				return sys.flashStatus("base-modified-error")
 
 		data[@position][section][field] = value
 		t.baseData.set(data)
@@ -59,9 +70,9 @@ Template.baseSummary.events
 		Meteor.call "update_base_size", FlowRouter.getParam("id"), finalData, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-project")
+				sys.flashStatus("error-save-size-summary")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-size-summary")
 				t.deleteActive.set(false)
 
 	'click .base-active-delete': (e,t) ->

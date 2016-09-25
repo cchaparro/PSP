@@ -38,11 +38,20 @@
 			right: 12px;
 		}
 
+		svg {
+			width: 17px;
+			fill: $text;
+			position: absolute;
+			margin-top: 1px;
+			top: 10px;
+			right: 10px;
+		}
+
 		h3 {
 			font-size: 13pt;
 			margin-top: 10px;
 			margin-bottom: 0;
-			padding-right: 17px;
+			padding-right: 22px;
 			color: $primary-bg;
 			font-weight: bold;
 			display: block;
@@ -340,7 +349,7 @@
 			@include border-radius($default-border-radius * 2);
 		}
 
-		.disabled-button {
+		.primary-button, .disabled-button {
 			padding-top: 0;
 			margin-top: 0;
 		}
@@ -432,6 +441,7 @@
 	background-color: $disabled-button;
 	border: 1px solid $disabled-button;
 	color: $white;
+	cursor: default;
 }
 
 .time-status-pause {
@@ -443,13 +453,65 @@
 .time-completed {
 	width: 25px;
 	height: 25px;
-	margin: 0 AUTO;
+	margin: 0 auto;
 	@include border-radius($circle-border-radius);
 	background-color: $success;
 
 	i {
 		color: $background;
-		padding: 5px;
+		padding-top: 6px;
+	}
+}
+
+.time-stage-status {
+	@extend .time-completed;
+	border: 2px solid $success;
+	background-color: $background;
+	cursor: pointer;
+
+	i {
+		padding-top: 4px;
+	}
+
+	&.active {
+		background-color: $success;
+	}
+}
+
+.open-stage-box {
+	position: relative;
+	right: 0;
+
+	&.popup-active:hover {
+		.reopen-stage-popup {
+			display: inline;
+		}
+	}
+
+	.reopen-stage-popup {
+		width: 230px;
+		background: $menu-popup-bg;
+		position: absolute;
+		top: 54px;
+		right: 0px;
+		padding: 7px 7px 7px 12px;
+		font-size: 10pt;
+		color: $white;
+		border-radius: 5px;
+		cursor: default;
+		display: none;
+
+		i {
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			right: 10px;
+			top: -5px;
+			border-radius: 3px;
+			background: $menu-popup-bg;
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+		}
 	}
 }
 
@@ -473,6 +535,7 @@
 		padding-bottom: 20px;
 		color: $text-dark;
 		border-bottom: 1px solid $border;
+		cursor: default;
 	}
 
 	.prj-info-text {
@@ -481,6 +544,7 @@
 		font-size: 11pt;
 		color: $text;
 		margin-bottom: 10px;
+		cursor: default;
 	}
 
 	.prj-info-title {
@@ -494,10 +558,15 @@
 		border: 1px solid $border;
 		outline: none;
 
-
 		&:focus {
 			border: 1px solid $blue;
 		}
+	}
+
+	.prj-title-completed {
+		@extend .prj-info-title;
+		border: 0;
+		cursor: default;
 	}
 
 	.prj-info-description {
@@ -513,6 +582,12 @@
 		&:focus {
 			border: 1px solid $blue;
 		}
+	}
+
+	.prj-description-completed {
+		@extend .prj-info-description;
+		border: 0;
+		cursor: default;
 	}
 
 	.project-active {
@@ -547,6 +622,7 @@
 			padding-bottom: 20px;
 			color: $text-dark;
 			border-bottom: 1px solid $border;
+			cursor: default;
 		}
 
 		&:first-child {
@@ -883,10 +959,6 @@
 
 	.prj-information-box {
 		min-height: 250px;
-	}
-
-	.prj-general-chart-box {
-		width: 100%;
 	}
 
 	.prj-review-box {

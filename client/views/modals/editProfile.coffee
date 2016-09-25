@@ -94,7 +94,8 @@ Template.profileView.events
 		}
 		Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
 			if error
-				sys.flashStatus("profile-update-error")
+				console.warn(error)
+				sys.flashStatus("error-profile-update")
 			else
 				sys.flashStatus("profile-update")
 

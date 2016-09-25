@@ -50,6 +50,23 @@ Template.addSummary.events
 		section = dataField[0]
 		field = dataField[1]
 
+		if field == "items" and section == "Estimated"
+			relSize = data[@position]["Estimated"]["relSize"]
+			if relSize != "Elegir"
+				switch relSize
+					when "Muy pequeño"
+						sizeValue = value * 5
+					when "Pequeño"
+						sizeValue = value * 10
+					when "Mediano"
+						sizeValue = value * 20
+					when "Grande"
+						sizeValue = value * 30
+					when "Muy grande"
+						sizeValue = value * 40
+
+				data[@position]["Estimated"]["size"] = sizeValue
+
 		data[@position][section][field] = value
 		t.addData.set(data)
 
@@ -126,9 +143,9 @@ Template.addSummary.events
 		Meteor.call "update_add_size", FlowRouter.getParam("id"), finalData, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-project")
+				sys.flashStatus("error-save-size-summary")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-size-summary")
 				t.deleteActive.set(false)
 
 	'click .add-active-delete': (e,t) ->

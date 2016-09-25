@@ -1,0 +1,42 @@
+<!-- ###################################### -->
+<template name="estimatingTemplate">
+	{{> historicalData}}
+	<h3>PROBE A</h3>
+	{{> PROBEA}}
+	<h3>PROBE B</h3>
+	{{> PROBEB}}
+	<h3>PROBE C</h3>
+	{{> PROBEC}}
+	<h3>PROBE D</h3>
+	{{> PROBED}}
+</template>
+
+<template name="historicalData">
+	{{gethistoricalProjects}}
+	<h3>Datos históricos</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Proyecto</th>
+				<th><i>Proxy Estimated</i></th>
+				<th>Líneas añadidas y modificadas (Plan)</th>
+				<th>Líneas añadidas y modificadas (Actual)</th>
+				<th>Tiempo Estimado</th>
+				<th>Tiempo Actual</th>
+			</tr>
+		</thead>
+		<tbody>			
+			{{#each historicalProjects}}
+			<tr>
+				<td>{{Name}}</td>
+				<td>{{ProxyE}}</td>
+				<td>{{PlanLOC}}</td>
+				<td>{{ActualLOC}}</td>
+				<td>{{timeFormat EstimatedTime}}</td>
+				<td>{{timeFormat ActualTime}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	<!-- <div class="pull-left btn primary-button save-data">Guardar Cambios</div> -->
+</template>

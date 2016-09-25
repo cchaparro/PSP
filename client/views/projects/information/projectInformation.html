@@ -12,9 +12,17 @@
 				<i class="fa fa-circle"></i>
 			</div>
 			<span class="prj-info-text">Titulo del proyecto</span>
-			{{{contentEditable class='prj-info-title' value=title}}}
+			{{#if projectIsCompleted}}
+				<h4 class="prj-title-completed">{{title}}</h4>
+			{{else}}
+				{{{contentEditable class='prj-info-title' value=title}}}
+			{{/if}}
 			<span class="prj-info-text">Descripción del proyecto</span>
-			{{{contentEditable class='prj-info-description' value=description}}}
+			{{#if projectIsCompleted}}
+				<h4 class="prj-description-completed">{{title}}</h4>
+			{{else}}
+				{{{contentEditable class='prj-info-description' value=description}}}
+			{{/if}}
 		</div>
 		<br>
 

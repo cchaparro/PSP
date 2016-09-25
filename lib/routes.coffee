@@ -113,6 +113,15 @@ Projects.route '/:fid/:id/scripts',
 		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
 
 
+Projects.route '/:fid/:id/estimating-template',
+	name: 'estimatingtemplate'
+
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "estimatingView", params.id
+
+	action: () ->
+		Session.set "route", "estimatingTemplate"
+		BlazeLayout.render 'masterLayout', main: 'estimatingTemplate', menu: "projectViewMenu"
 
 
 Settings = FlowRouter.group(
@@ -142,6 +151,10 @@ Settings.route '/type-defects',
 
 FlowRouter.route '/overview',
 	name: 'overview'
+
+	subscriptions: (params, queryParams) ->
+		@register 'chartStages', Meteor.subscribe "chartStages"
+
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
 

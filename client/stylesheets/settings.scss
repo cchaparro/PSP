@@ -4,8 +4,8 @@
 .switch {
 	position: relative;
 	display: inline-block;
-	width: 46px;
-	height: 25px;
+	width: 44px;
+	height: 26px;
 }
 
 // Hide default HTML checkbox
@@ -20,7 +20,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: $text;
+	background-color: $danger;
 	-webkit-transition: .4s;
 	transition: .4s;
 
@@ -35,25 +35,25 @@
 	&:before {
 		position: absolute;
 		content: "";
-		height: 17px;
-		width: 17px;
-		left: 4px;
-		bottom: 4px;
+		height: 22px;
+		width: 22px;
+		left: 2px;
+		bottom: 2px;
 		background-color: $white;
 		@include transition(.4s);
 	}
 }
 
 input:checked + .switch-slider {
-	background-color: $blue;
+	background-color: $success;
 }
 
 input:focus + .switch-slider {
-	box-shadow: 0 0 1px $blue;
+	box-shadow: 0 0 1px $success;
 }
 
 input:checked + .switch-slider:before {
-	@include translateX(21px);
+	@include translateX(18px);
 }
 
 //--------------- Project Settings ---------------
@@ -108,6 +108,76 @@ input:checked + .switch-slider:before {
 
 	.project-setting-information {
 		width: calc(100% - 50px);
+	}
+}
+
+
+.settings-project-box {
+	border-top: 1px solid $border;
+	border-bottom: 1px solid $border;
+	padding: 10px 0;
+	font-size: 13pt;
+	cursor: pointer;
+
+	i {
+		color: $text-dark;
+	}
+
+	span {
+		color: $text-dark;
+	}
+
+	.fa-caret-down {
+		padding-top: 4.5px;
+		padding-right: 5px;
+	}
+}
+
+.settings-project-body {
+	padding: 20px;
+	font-size: 12pt;
+	color: $text;
+	margin-bottom: 10px;
+	font-weight: 300;
+	@include clearfix();
+
+	.project-settings-option {
+		padding-bottom: 12px;
+		@include clearfix();
+
+		.switch {
+			float: left;
+			margin-right: 10px;
+		}
+
+		span {
+			width: calc(100% - 60px);
+			display: inline-block;
+			float: right;
+		}
+	}
+
+	.settings-project-warning {
+		border: 1px solid $blue;
+		background-color: rgba($blue, 0.1);
+		@include border-radius($default-border-radius);
+		padding: 10px;
+		margin-top: 10px;
+		cursor: default;
+		@include clearfix();
+
+		i {
+			font-size: 13pt;
+			color: $text-dark;
+			padding-left: 6px;
+		}
+
+		span {
+			width: calc(100% - 35px);
+			display: inline-block;
+			float: right;
+		}
+
 	}
 }
 

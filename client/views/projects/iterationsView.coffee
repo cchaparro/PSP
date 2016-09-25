@@ -4,7 +4,12 @@ Template.iterationsViewTemplate.helpers
 		return db.projects.findOne({_id: FlowRouter.getParam("fid")})
 
 	projectIterations: () ->
-		return db.projects.find({parentId: FlowRouter.getParam("fid")}).fetch()
+		return db.projects.find({parentId: FlowRouter.getParam("fid")}, {sort: {createdAt: 1}}).fetch()
+
+	isRegistering: () ->
+		recordingProject = Session.get "statusTimeMessage"
+		return true if @_id == recordingProject?.iterationId
+		return false
 
 ##########################################
 Template.projectIterationBox.onCreated () ->
@@ -14,6 +19,11 @@ Template.projectIterationBox.onCreated () ->
 Template.projectIterationBox.helpers
 	isHovered: () ->
 		return Template.instance().hoveredIteration.get() == @_id
+
+	isRegistering: () ->
+		recordingProject = Session.get "statusTimeMessage"
+		return true if @_id == recordingProject?.iterationId
+		return false
 
 
 Template.projectIterationBox.events
@@ -35,9 +45,9 @@ Template.projectIterationBox.events
 	'click .confirm-delete': (e,t) ->
 		Meteor.call "delete_project", @_id, (error) ->
 			if error
-				console.log "Error deleting a iteration"
 				console.warn(error)
+				sys.flashStatus("error-iteration-delete")
 			else
-				sys.flashStatus("delete-project")
+				sys.flashStatus("iteration-delete")
 
 ##########################################

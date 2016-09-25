@@ -25,7 +25,7 @@ Template.main_userBar.helpers
 		FlowRouter.watchPathChange()
 		currentState = FlowRouter.current().route.name
 
-		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="projects"
+		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="projects" or currentState=="estimatingtemplate"
 			initialRoute = "projects"
 		else
 			initialRoute = currentState
@@ -72,6 +72,7 @@ Template.main_userBar.events
 			Session.set("display-user-box", true)
 
 	'click .notification-svg, click .notification-badge': (e,t) ->
+		Meteor.call "notificationsSeen"
 		if Session.get("display-notification-box")
 			Session.set("display-notification-box", false)
 			userNotifications = db.notifications.find({"notificationOwner": Meteor.userId()}, {sort: {"createdAt": -1}})
@@ -80,7 +81,6 @@ Template.main_userBar.events
 				userNotifications[notification._id] = notification.seen
 
 			notSeenNotifications.set(userNotifications)
-			Meteor.call("notificationsSeen")
 		else
 			Session.set("display-notification-box", true)
 
@@ -109,14 +109,23 @@ Template.userNotification.helpers
 	revertMessage: () ->
 		if @data?.reverted
 			return "(Modificado)"
+		else if @data?.disabled
+			return "(Proyecto Completado)"
 		else
 			return ""
+
+	notificationDisabled: () ->
+		if @data?.reverted or @data?.disabled
+			return true
+		else
+			return false
 
 
 Template.userNotification.events
 	'click .notification-item': (e,t) ->
-		unless @data?.reverted or @type != 'time-registered'
-				Modal.show('editTimeModal', @)
+		unless @data?.reverted or @data?.disabled or @type != 'time-registered'
+			Session.set("display-notification-box", false)
+			Modal.show('editTimeModal', @)
 
 ##################################################
 Template.userMenuDropdown.helpers
@@ -146,9 +155,16 @@ Template.createProjectButton.events
 		Modal.show('createProjectModal')
 
 ##################################################
+Template.createDefectButton.helpers
+	projectIsCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
+
 Template.createDefectButton.events
 	'click .create-btn': (e,t) ->
-		Modal.show('createDefectModal')
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+		unless project.completed
+			Modal.show('createDefectModal')
 
 ##################################################
 Template.createIterationButton.events
@@ -165,9 +181,9 @@ Template.createIterationButton.events
 
 		Meteor.call "create_project", data, (error) ->
 			if error
-				console.log "Error creating a new project iteration"
 				console.warn(error)
+				sys.flashStatus("error-create-iteration")
 			else
-				sys.flashStatus("create-project")
+				sys.flashStatus("create-iteration")
 
 ##################################################
