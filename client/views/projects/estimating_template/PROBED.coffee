@@ -1,6 +1,7 @@
 Template.PROBED.onCreated () ->
 	#New time and size after  estimation, in this case is the input value
 
+
 Template.PROBED.helpers
 	PlanSummary:()->
 		return db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total

@@ -20,6 +20,8 @@ Template.PROBEB.onCreated () ->
 
 	@validProbeTime = new ReactiveVar(false)
 	@validProbeSize = new ReactiveVar(false)
+
+
 Template.PROBEB.helpers
 	setData:()->
 		totalAddedModifiedActualLOC = 0
@@ -127,6 +129,7 @@ Template.PROBEB.helpers
 
 	validSize:()->
 		return Template.instance().validProbeSize.get()
+
 
 Template.PROBEB.events
 	'click .save-data-time': (e,t)->

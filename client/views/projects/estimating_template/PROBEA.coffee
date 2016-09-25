@@ -20,6 +20,8 @@ Template.PROBEA.onCreated () ->
 	
 	@validProbeTime = new ReactiveVar(false)
 	@validProbeSize = new ReactiveVar(false)
+
+
 Template.PROBEA.helpers
 	setData:()->
 		totalProxy = 0
@@ -128,6 +130,8 @@ Template.PROBEA.helpers
 
 	validSize:()->
 		return Template.instance().validProbeSize.get()
+
+
 Template.PROBEA.events
 	'click .save-data-time': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total

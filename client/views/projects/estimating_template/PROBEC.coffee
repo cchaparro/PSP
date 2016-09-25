@@ -18,6 +18,8 @@ Template.PROBEC.onCreated () ->
 
 	@validProbeTime = new ReactiveVar(false)
 	@validProbeSize = new ReactiveVar(false)
+
+
 Template.PROBEC.helpers
 	setData:()->
 		totalProxy = 0
@@ -96,6 +98,7 @@ Template.PROBEC.helpers
 
 	validSize:()->
 		return Template.instance().validProbeSize.get()
+
 
 Template.PROBEC.events
 	'click .save-data-time': (e,t)->
