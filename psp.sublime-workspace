@@ -351,6 +351,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "settings.json",
+			"settings":
+			{
+				"buffer_size": 3906,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/main.coffee",
+			"settings":
+			{
+				"buffer_size": 785,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/models/defect_types.coffee",
+			"settings":
+			{
+				"buffer_size": 528,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -434,30 +458,33 @@
 	[
 		"/Users/Juanpmd/Documents/PSP-Connect",
 		"/Users/Juanpmd/Documents/PSP-Connect/client",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/charts",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/filereader",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/uploader",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods"
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models",
+		"/Users/Juanpmd/Documents/PSP-Connect/server",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/restrictions"
 	],
 	"file_history":
 	[
+		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks/user.hooks.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/baseLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/addLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/reusedLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information/projectInformation.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editProfile.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.coffee",
@@ -478,7 +505,6 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/addLOC.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks/user.hooks.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.html",
@@ -736,8 +762,398 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "settings.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3906,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3901,
+								3809
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3900,
+										3901
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										3805,
+										3806
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3372.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lib/main.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 785,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								214,
+								214
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/models/defect_types.coffee",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 528,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -794,6 +1210,10 @@
 		"selected_items":
 		[
 			[
+				"hook",
+				"server/hooks/user.hooks.coffee"
+			],
+			[
 				"systemcoff",
 				"lib/system/system.coffee"
 			],
@@ -804,10 +1224,6 @@
 			[
 				"system",
 				"lib/system/system.coffee"
-			],
-			[
-				"hook",
-				"server/hooks/user.hooks.coffee"
 			],
 			[
 				"userhook",

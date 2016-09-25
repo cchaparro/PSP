@@ -200,6 +200,10 @@
 				"clientId": "208095322978-575nupdarp18aunohd62v49v8qjq9204.apps.googleusercontent.com",
 				"secret": "TL8PJb2v_LpNh7f_OwsZ_SSW"
 			}
+		},
+		"kadira": {
+			"appId": "fkuZzuFEWnSfAsfkn",
+			"appSecret": "7ebf8edc-6194-48db-873c-5a72cea4c28f"
 		}
 	}
 }
