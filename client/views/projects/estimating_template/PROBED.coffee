@@ -22,9 +22,9 @@ Template.PROBED.events
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error
 					console.warn(error)
-					sys.flashStatus("error-project")
+					sys.flashStatus("error-save-time-estimated")
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("save-summary-estimated")
 		else
 			sys.flashStatus("summary-missing")
 	'click .save-data-size':(e,t)->
@@ -46,8 +46,8 @@ Template.PROBED.events
 			Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 				if error
 					console.warn(error)
-					sys.flashStatus("error-project")
+					sys.flashStatus("error-save-size-estimated")
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("save-size-estimated")
 		else
 			sys.flashStatus("size-missing")

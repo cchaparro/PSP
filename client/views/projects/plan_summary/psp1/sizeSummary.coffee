@@ -36,6 +36,7 @@ Template.sizeSummary.helpers
 		_.each projects, (project)->
 			unless project._id == FlowRouter.getParam("id")
 				psProject = db.plan_summary.findOne({"projectId":project._id})?.addLOC
+				console.log psProject
 				if psProject.Actual.nr
 					historic+=psProject.Actual.nr
 		return historic
