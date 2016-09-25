@@ -51,7 +51,7 @@ sys.displayShortTime = (time) ->
 	return IntegerTwoDigits(horas) + " : " + IntegerTwoDigits(minutos) + " : " + IntegerTwoDigits(segundos)
 
 sys.timeToHours = (time) ->
-	return Math.floor(time / 3600000)
+	return (time/3600000)
 
 sys.timeToMinutes = (time) ->
 	time %= 3600000
@@ -278,16 +278,16 @@ sys.regressionDataSize = (Data,PROBE,x,y)->
 	switch PROBE
 		when "B"
 			_.each Data,(d)->
-				sumsquarex += Math.pow(d.PlanLOC,2)
-				sumsquarey += Math.pow(d.ActualLOC,2)
-				sumxy+= d.PlanLOC * d.ActualLOC
+				sumsquarex += Math.pow(d.EstimatedLOC,2)
+				sumsquarey += Math.pow(d.ActualAddedModified,2)
+				sumxy+= d.EstimatedLOC * d.ActualAddedModified
 		when "A"
 			_.each Data,(d)->
-				sumsquarey += Math.pow(d.ProxyE,2)
-				sumsquarex += Math.pow(d.ActualLOC,2)
+				sumsquarex += Math.pow(d.ProxyE,2)
+				sumsquarey += Math.pow(d.ActualLOC,2)
 				sumxy+= d.ProxyE * d.ActualLOC
 	
-	correlation = ((n*sumxy)-(sumsquarex*sumsquarey))/(Math.sqrt( ((n*sumsquarex)-Math.pow(sumsquarex,2))*((n*sumsquarey)-Math.pow(sumsquarey,2))))
+	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
@@ -304,16 +304,17 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 	switch PROBE
 		when "B"
 			_.each Data,(d)->
-				sumsquarex += Math.pow(d.PlanLOC,2)
-				sumsquarey += Math.pow(sys.timeToHours(d.ActualTime),2)
-				sumxy+= d.PlanLOC * sys.timeToHours(d.ActualTime)
+				sumsquarex += Math.pow(d.EstimatedLOC,2)
+				sumsquarey += Math.pow(d.ActualTime,2)
+				sumxy+= d.EstimatedLOC * d.ActualTime
 		when "A"
 			_.each Data,(d)->
-				sumsquarey += Math.pow(d.ProxyE,2)
-				sumsquarex += Math.pow(sys.timeToHours(d.ActualTime),2)
-				sumxy+= d.ProxyE * sys.timeToHours(d.ActualTime)
+				sumsquarex += Math.pow(d.ProxyE,2)
+				sumsquarey += Math.pow(d.ActualTime,2)
+				sumxy+= d.ProxyE * d.ActualTime
 	
-	correlation = ((n*sumxy)-(sumsquarex*sumsquarey))/(Math.sqrt( ((n*sumsquarex)-Math.pow(sumsquarex,2))*((n*sumsquarey)-Math.pow(sumsquarey,2))))
+	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
+	console.log "Avgx", xavg, "Avgy", yavg, PROBE
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}

@@ -36,9 +36,9 @@ Template.PROBEB.helpers
 					totalActualTime += sys.timeToHours(psProject?.totalTime)
 					data.push(
 						{
-							"ActualLOC": psProject?.actualAdd + psProject?.actualModified
-							"ActualTime":psProject?.totalTime
-							"PlanLOC":psProject?.estimatedAddedSize
+							"EstimatedLOC": psProject?.estimatedAddedSize
+							"ActualTime": sys.timeToHours(psProject?.totalTime)
+							"ActualAddedModified": psProject?.actualAdd + psProject?.actualModified
 						})
 			
 			TimeLinearRegressionData = sys.regressionDataTime(data,"B",totalPlanLOC,totalActualTime)
@@ -61,7 +61,7 @@ Template.PROBEB.helpers
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		B0=Template.instance().Beta0Size.get()
 		B1=Template.instance().Beta1Size.get()
-		newsize = (B0+B1)*psProject?.proxyEstimated
+		newsize = B0+(B1*parseInt(psProject?.proxyEstimated))
 		Template.instance().adjustedSize.set(newsize)
 		return newsize.toFixed(2)
 
@@ -69,7 +69,7 @@ Template.PROBEB.helpers
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		B0=Template.instance().Beta0Time.get()
 		B1=Template.instance().Beta1Time.get()
-		newTime = (B0+B1)*psProject?.proxyEstimated
+		newTime = (B0+(B1*parseInt(psProject?.proxyEstimated)))
 		Template.instance().adjustedTime.set(newTime)
 		return newTime.toFixed(2)
 
@@ -79,20 +79,21 @@ Template.PROBEB.helpers
 			r=Math.pow(Template.instance().CorrelationTime.get(),2)
 			if r > 0.5
 				b0 = Template.instance().Beta0Time.get()
-				p = Template.instance().AdjustedTime.get() * 0.25
+				p = Template.instance().adjustedTime.get() * 0.5
 				if b0 < p 
 					b1 = Template.instance().Beta1Time.get()
 					user = db.users.findOne({_id: Meteor.userId()})
 					historicProductivity = (user.profile.sizeAmount.add+user.profile.sizeAmount.modified)/sys.timeToHours(user.profile.total.time) * 0.50
-					if 1/b1 <= (historicProductivity)
+					console.log historicProductivity
+					if b1 <= 1/(historicProductivity)
 						Template.instance().descriptionTime.set("PROBE B cumple con los requisitos necesarios, tus párametros de regresión estan dentro de los límites")
 						Template.instance().validProbeTime.set(true)
 					else
-						Template.instance().descriptionTime.set("El valor de Beta 1 debe estar entre el 50% de la 1/productividad histórica, el valor de Beta 1 es: " + b1 + " y la productividad histórica es: " + historicProductivityis)
+						Template.instance().descriptionTime.set("El valor de Beta 1 debe estar entre el 50% de la 1/productividad histórica, el valor de Beta 1 es: " + b1.toFixed(2) + " y la 1/productividad histórica es: " + 1/historicProductivity.toFixed(2))
 				else
-					Template.instance().descriptionTime.set("El valor de Beta 0 debe ser más pequeño que el 25% del tiempo estimado del proyecto, el valor de Beta 0 es: " + b0 + "y el valor del nuevo tiempo * 25% es: " + p)
+					Template.instance().descriptionTime.set("El valor de Beta 0 debe ser más pequeño que el 25% del tiempo estimado del proyecto, el valor de Beta 0 es: " + b0.toFixed(2) + " y el valor del nuevo tiempo * 25% es: " + p.toFixed(2))
 			else
-				Template.instance().descriptionTime.set("Los datos adquiridos no se correlacionan entre sí el valor de r al cuadrado debe ser > 0,5 y el valor actual es de "+r)
+				Template.instance().descriptionTime.set("Los datos adquiridos no se correlacionan entre sí, el valor de r al cuadrado debe ser > 0,5 y el valor actual es de "+r.toFixed(2))
 		else
 			Template.instance().descriptionTime.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionTime.get()
@@ -109,14 +110,14 @@ Template.PROBEB.helpers
 				if b0 < p
 					b1= Template.instance().Beta1Size.get()
 					if b1<=2 and b1>=0
-						Template.instance().descriptionSize.set("PROBE B cumple con los requisitos necesarios, considera escoger este como tu nuevo tamaño estimado")
+						Template.instance().descriptionSize.set("PROBE B cumple con los requisitos necesarios, tus párametros de regresión estan dentro de los límites")
 						Template.instance().validProbeSize.set(true)
 					else
-						Template.instance().descriptionSize.set("El valor de Beta 1 debe estar entre 0 y 2, en este caso Beta 0 es: " + b1)
+						Template.instance().descriptionSize.set("El valor de Beta 1 debe estar entre 0 y 2, en este caso Beta 0 es: " + b1.toFixed(2))
 				else
-					Template.instance().descriptionSize.set("El valor de Beta 0 debe ser más pequeño que el 25% del nuevo tamaño del proyecto, el valor de Beta 0 es: " + b0 + "y el valor del nuevo tamaño * 25% es: " + p)
+					Template.instance().descriptionSize.set("El valor de Beta 0 debe ser más pequeño que el 25% del nuevo tamaño del proyecto, el valor de Beta 0 es: " + b0.toFixed(2) + " y el valor del nuevo tamaño * 25% es: " + p.toFixed(2))
 			else
-				Template.instance().descriptionSize.set("Los datos adquiridos no se correlacionan entre sí el valor de r al cuadrado debe ser > 0,5 y el valor actual es de "+r)
+				Template.instance().descriptionSize.set("Los datos adquiridos no se correlacionan entre sí el valor de r al cuadrado debe ser > 0,5 y el valor actual es de "+r.toFixed(2))
 		else
 			Template.instance().descriptionSize.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionSize.get()

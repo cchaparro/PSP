@@ -28,15 +28,16 @@ Template.PROBED.events
 			sys.flashStatus("summary-missing")
 	'click .save-data-size':(e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
-		if planSummary?.proxyEstimated != 0
+		estimatedLOC = $(".newLOC").val()
+		if planSummary?.proxyEstimated != 0 and estimatedLOC!=0
 			totalEstimatedSize	= planSummary?.proxyEstimated - planSummary?.estimatedModified - planSummary?.estimatedDeleted + planSummary?.estimatedBase + planSummary?.estimatedReused
 			if planSummary?.estimatedTime != 0
-				plannedProductivity = parseInt((planSummary?.proxyEstimated/planSummary?.estimatedTime))
+				plannedProductivity = parseInt((estimatedLOC/planSummary?.estimatedTime))
 			else
 				plannedProductivity = parseInt(planSummary?.productivityPlan)
 
 			data= {
-				"total.estimatedAddedSize" : planSummary?.proxyEstimated
+				"total.estimatedAddedSize" : estimatedLOC
 				"probeSize":"D"
 				"total.productivityPlan" : plannedProductivity
 				"total.estimatedTotalSize" : totalEstimatedSize
