@@ -4,7 +4,14 @@ Template.projectsTemplate.onCreated () ->
 
 Template.projectsTemplate.helpers
 	allProjects: () ->
-		return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {createdAt: 1}})
+		user = db.users.findOne({_id: Meteor.userId()})
+		switch user?.settings?.projectSort
+			when "date"
+				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {createdAt: 1}})
+			when "title"
+				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {title: 1}})
+			when "color"
+				return db.projects.find({"projectOwner": Meteor.userId(), "parentId": {$exists: false}}, {sort: {color: 1}})
 
 	isHovered: () ->
 		return Template.instance().hoveredProject.get() == @_id
@@ -21,8 +28,8 @@ Template.projectsTemplate.helpers
 
 	isRegistering: () ->
 		recordingProject = Session.get "statusTimeMessage"
-		return true if @_id == recordingProject.projectId
-		return true if @parentId? and @parentId == recordingProject.projectId
+		return true if @_id == recordingProject?.projectId
+		return true if @parentId? and @parentId == recordingProject?.projectId
 		return false
 
 
@@ -39,9 +46,9 @@ Template.projectsTemplate.events
 	'click .confirm-delete': (e,t) ->
 		Meteor.call "delete_project", @_id, true, (error) ->
 			if error
-				console.log "Error deleting a project (and his iterations)"
 				console.warn(error)
+				sys.flashStatus("error-project-delete")
 			else
-				sys.flashStatus("delete-project")
+				sys.flashStatus("project-delete")
 
 ##########################################

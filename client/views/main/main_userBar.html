@@ -81,7 +81,7 @@
 							<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-exclamation {{/if}}"></i>
 						</div>
 					</div>
-					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}}">
+					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}} {{#if notificationDisabled}} notification-content-disabled {{/if}}">
 						<h4>
 							<span class="notification-sender">{{userName title.sender}}</span>
 							{{title.main}}

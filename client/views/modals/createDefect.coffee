@@ -179,9 +179,8 @@ Template.createDefect.events
 			#console.log "Di cick a guardar a un proyecto que ya existia"
 			Meteor.call "update_defect", DefectId, data, true, true, (error) ->
 				if error
-					sys.flashStatus("error-defect")
-					console.log "Error updating a Defect"
 					console.warn(error)
+					sys.flashStatus("error-save-defect")
 				else
 					timeStarted.set(false)
 					Modal.hide('createDefectModal')
@@ -190,9 +189,8 @@ Template.createDefect.events
 			#console.log "Creando proyecto nuevo y la di guardar directo sin click en play/pause"
 			Meteor.call "create_defect", data, true, true, (error) ->
 				if error
-					sys.flashStatus("error-defect")
-					console.log "Error creating a new defect"
 					console.warn(error)
+					sys.flashStatus("error-create-defect")
 				else
 					Modal.hide('createDefectModal')
 					sys.flashStatus("create-defect")
@@ -227,7 +225,7 @@ Template.createDefect.events
 				#console.log "Cuando das play y pause cuando abriste un proyecto"
 				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
 					if error
-						sys.flashStatus("error-defect")
+						sys.flashStatus("error-save-defect")
 						console.log "Error updating a existing Defect"
 						console.warn(error)
 					else
@@ -237,7 +235,7 @@ Template.createDefect.events
 				#console.log "Nuevo defecto das click play y luego pause"
 				Meteor.call "create_defect", data, false, true, (error, result) ->
 					if error
-						sys.flashStatus("error-defect")
+						sys.flashStatus("error-save-defect")
 						console.log "Error creating a new defect"
 					else
 						timeStarted.set(false)
@@ -264,7 +262,7 @@ Template.createDefect.events
 			if DefectId!= ''
 				Meteor.call "update_defect", DefectId, data, false, true, (error) ->
 					if error
-						sys.flashStatus("error-defect")
+						sys.flashStatus("error-save-defect")
 						console.log "Error updating the son Defect"
 						console.warn(error)
 					else

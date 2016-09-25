@@ -151,6 +151,10 @@ Settings.route '/type-defects',
 
 FlowRouter.route '/overview',
 	name: 'overview'
+
+	subscriptions: (params, queryParams) ->
+		@register 'chartStages', Meteor.subscribe "chartStages"
+
 	action: ->
 		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
 

@@ -143,9 +143,9 @@ Template.addSummary.events
 		Meteor.call "update_add_size", FlowRouter.getParam("id"), finalData, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-project")
+				sys.flashStatus("error-save-size-summary")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-size-summary")
 				t.deleteActive.set(false)
 
 	'click .add-active-delete': (e,t) ->

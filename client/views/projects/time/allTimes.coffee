@@ -1,6 +1,9 @@
 ##########################################
+openStageStatus = new ReactiveVar(false)
+
+##########################################
 Template.timeTemplate.helpers
-	projectStages:() ->
+	projectStages: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
 ##########################################
@@ -40,6 +43,24 @@ Template.timesBar.helpers
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
+	openStageStatus: () ->
+		return openStageStatus.get()
+
+	availableOpenStage: () ->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectProbe = project?.projectProbe
+
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		currentStage = _.first projectStages
+
+		return false if project?.completed
+		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and projectProbe == "probeD" and project?.levelPSP == "PSP 0"
+		return true
+
 
 Template.timesBar.events
 	'click .fa-play': (e,t) ->
@@ -70,20 +91,17 @@ Template.timesBar.events
 
 			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, false, true, (error) ->
 				if error
-					sys.flashStatus("error-project")
-					console.log "Error updating project phase"
 					console.warn(error)
+					sys.flashStatus("error-new-time-project")
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("new-time-project")
 					sys.removeTimeMessage()
 
 
 	'click .time-submit': (e,t) ->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
-		currentStage = _.findWhere projectStages, {finished: false}
-
-		projectProbe = db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe
+		projectProbe = project?.projectProbe
 
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
@@ -106,16 +124,22 @@ Template.timesBar.events
 
 			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
 				if error
-					sys.flashStatus("error-project")
-					console.log "Error submitting phase time inside project"
 					console.warn(error)
+					sys.flashStatus("error-submit-stage-project")
 				else
-					sys.flashStatus("save-project")
+					sys.flashStatus("submit-stage-project")
 					sys.removeTimeMessage()
+
+	'click .reopen-stage': (e,t) ->
+		openStatus = openStageStatus.get()
+		openStageStatus.set(!openStatus)
+
 
 ##################################################
 Template.timeTableRow.helpers
 	editAvailable: () ->
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+		return false if project?.completed
 		return true if @finished
 
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
@@ -126,9 +150,22 @@ Template.timeTableRow.helpers
 		return true if @name == _.first(projectStages)?.name
 		return false
 
+	openStageStatus: () ->
+		return openStageStatus.get()
+
 
 Template.timeTableRow.events
 	'click .edit-time': (e,t) ->
 		Modal.show('editTimeModal', @)
+
+	'click .time-stage-status': (e,t) ->
+		currentStage = @
+		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("error-submit-stage-project")
+			else
+				sys.flashStatus("submit-stage-project")
+
 
 ##########################################

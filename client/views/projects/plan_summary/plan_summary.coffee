@@ -54,7 +54,7 @@ Template.summaryTimeRow.events
 			if error
 				console.warn(error)
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-summary-estimated")
 
 
 ##########################################
