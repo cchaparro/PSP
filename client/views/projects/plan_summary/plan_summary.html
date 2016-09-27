@@ -75,15 +75,13 @@
 		<tr>
 			<td><span>Total</span></td>
 			<td class="td-input-row hidden-xs">
-				{{#if $eq projectProbe 'probeD'}}
-					{{#if estimationEditable}}
-						<div class="input-box">
-							<input type="text" value="{{timeInOnlyMinutes estimatedTime}}">
-						</div>
-					{{else}}
-						<span>{{timeFormat estimatedTime}}</span>
-					{{/if}}
-				{{/if}}
+			{{#if estimationEditable}}
+				<div class="input-box">
+					<input type="text" value="{{timeInOnlyMinutes estimatedTime}}">
+				</div>
+			{{else}}
+				<span>{{timeFormat estimatedTime}}</span>
+			{{/if}}
 			</td>
 			<td><span>{{timeFormat totalTime}}</span></td>
 			<td class="hidden-xs"><span>{{timeFormat totalToDate}}</span></td>

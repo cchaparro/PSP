@@ -25,9 +25,6 @@ Template.summaryTimeRow.helpers
 	planSummaryTime: (time) ->
 		return sys.planSummaryTime(time)
 
-	projectProbe: () ->
-		return db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe
-
 	isTotalTimeEmpty: () ->
 		return @estimatedTime > 0
 
@@ -35,11 +32,22 @@ Template.summaryTimeRow.helpers
 		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
 		currentStage = _.findWhere projectStages, {finished: false}
 		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
-
+		levelPSP = db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP
 		return false if projectIsCompleted
-		return true if currentStage?.name == "Planeación"
+		return true if currentStage?.name == "Planeación" and levelPSP == "PSP 0"
 		return false
 
+	sizeForPSP0: ()->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		levelPSP = db.projects.findOne({_id: FlowRouter.getParam("id")})?.levelPSP
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+		currentStage = _.first projectStages
+
+		if currentStage.name == "Postmortem" and levelPSP == "PSP 0"
+			return true
+		else return false
 
 Template.summaryTimeRow.events
 	'blur .input-box input': (e,t) ->
