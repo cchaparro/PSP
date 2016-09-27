@@ -127,7 +127,17 @@ Template.timesBar.events
 					console.warn(error)
 					sys.flashStatus("error-submit-stage-project")
 				else
-					sys.flashStatus("submit-stage-project")
+					if currentStage.name == "Planeación"
+						Meteor.call "update_estimated", FlowRouter.getParam("id"), (error)->
+							if error
+								sys.flashStatus("error-submit-stage-project")
+								console.log "Error updating estimated time"
+								console.warn(error)
+							else
+								sys.flashStatus("submit-stage-project")
+					else
+						sys.flashStatus("submit-stage-project")
+
 					sys.removeTimeMessage()
 
 	'click .reopen-stage': (e,t) ->

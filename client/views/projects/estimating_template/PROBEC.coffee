@@ -112,9 +112,9 @@ Template.PROBEC.events
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-project")
+				sys.flashStatus("error-save-time-estimated")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-summary-estimated")
 	'click .save-data-size': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		if planSummary?.estimatedTime != 0
@@ -130,6 +130,6 @@ Template.PROBEC.events
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-project")
+				sys.flashStatus("error-save-size-estimated")
 			else
-				sys.flashStatus("save-project")
+				sys.flashStatus("save-size-estimated")

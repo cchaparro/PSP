@@ -310,9 +310,26 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Las líneas modificadas no pueden ser mayores que las líneas base."
 			css = "danger"
+
+		#Estimating template view
 		when "size-missing"
 			title = "Error"
-			subject = "Debes ingresar los tamaños planeados en el Plan Summary"
+			subject = "Debes ingresar los tamaños planeados en el Plan Summary."
+			css = "danger"
+
+		when "error-save-time-estimated"
+			title = "Error"
+			subject = "No hemos podido actualizar el tiempo estimado."
+			css = "danger"
+
+		when "save-size-estimated"
+			title = "Guardado"
+			subject = "Se ha cambiado el tamaño estimado del proyecto."
+			css = "success"
+
+		when "error-save-size-estimated"
+			title = "Error"
+			subject = "No hemos podido actualizar el tamaño estimado."
 			css = "danger"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
