@@ -214,8 +214,10 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
 		totalTime = planSummary.total.totalTime
 		stages = planSummary.timeEstimated
+
 		_.each stages, (stage)->
 			stage.percentage = ((stage.time*100)/totalTime).toFixed(2)
+
 		data = {
 			"timeEstimated":stages
 		}
@@ -226,18 +228,22 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
 		stages = planSummary.timeEstimated
 		lastFinishedProject = db.projects.findOne({"projectOwner": Meteor.userId(), "completed": true,"levelPSP":actualProject.levelPSP}, {sort: {createdAt: -1}})
+
 		if lastFinishedProject
 			planSummaryLastProject = db.plan_summary.findOne({"projectId":lastFinishedProject._id,"summaryOwner": Meteor.userId()})
+
 			totalTime = planSummary.total.estimatedTime
 			_.each stages,(stage)->
-				lastProjectStage = _.findWhere planSummaryLastProject.timeEstimated, {name:stage.name}
+				lastProjectStage = _.findWhere planSummaryLastProject.timeEstimated, {name: stage.name}
 				stage.estimated = (lastProjectStage.percentage/100) * totalTime
 		else
 			_.each stages,(stage)->
 				stage.estimated = 0
+
 		data = {
 				"timeEstimated": stages
 			}
-		db.plan_summary.update({ "projectId":projectId }, {$set: data })
+
+		db.plan_summary.update({ "projectId": projectId }, {$set: data })
 
 #######################################

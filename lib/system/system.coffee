@@ -461,7 +461,7 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 				sumxy+= d.ProxyE * d.ActualTime
 	
 	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
-	console.log "Avgx", xavg, "Avgy", yavg, PROBE
+	#console.log "Avgx", xavg, "Avgy", yavg, PROBE
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
