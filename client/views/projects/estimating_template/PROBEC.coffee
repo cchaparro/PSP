@@ -35,9 +35,14 @@ Template.PROBEC.helpers
 					totalActualTime += psProject?.totalTime
 					
 			newBetaSize1=(totalAddedModifiedActualLOC/totalProxy).toFixed(2)
-			Template.instance().Beta1Size.set(newBetaSize1)
+			if newBetaSize1 == "Infinity"
+				newBetaSize1 = 0
 
+			Template.instance().Beta1Size.set(newBetaSize1)
+			
 			newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy).toFixed(2)
+			if newBetaTime1 == "Infinity"
+				newBetaTime1 = 0
 			Template.instance().Beta1Time.set(newBetaTime1)
 
 		
@@ -73,7 +78,10 @@ Template.PROBEC.helpers
 				Template.instance().descriptionTime.set("PROBE C cumple con los requisitos necesarios, la pendiente de la linea se encuentra dentro de los límites")
 				Template.instance().validProbeTime.set(true)
 			else 
-				Template.instance().descriptionTime.set("El valor de 1/Beta1 debe ser cercano a tu productividad histórica, el valor de 1/Beta1 es: " + 1/b1 + " y tu productividad histórica es: " + historicProductivity.toFixed(2) + "LOC/Hrs")
+				if b1 == 0
+					Template.instance().descriptionTime.set("El valor de 1/Beta1 debe ser cercano a tu productividad histórica, el valor de 1/Beta1 es: " + 0 + " y tu productividad histórica es: " + historicProductivity.toFixed(2) + "LOC/Hrs")
+				else
+					Template.instance().descriptionTime.set("El valor de 1/Beta1 debe ser cercano a tu productividad histórica, el valor de 1/Beta1 es: " + 1/b1 + " y tu productividad histórica es: " + historicProductivity.toFixed(2) + "LOC/Hrs")
 		else
 			Template.instance().descriptionTime.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionTime.get()
