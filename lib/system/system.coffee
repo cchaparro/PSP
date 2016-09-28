@@ -187,6 +187,10 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido actualizar las etapa del proyecto."
 			css = "danger"
 
+		when "postmortem-psp0"
+			title = "Nuevos Campos"
+			subject = "Revisa el Plan Summary y los scripts para más información"
+			css = "warning"
 
 		# Defects log from the projects view and New defect modal
 		when "delete-defect"
@@ -282,6 +286,11 @@ sys.flashStatus = (type) ->
 
 		# Plan summary view
 		when "save-summary-estimated"
+			title = "Guardado"
+			subject = "Se ha cambiado el tiempo estimado para completar el proyecto."
+			css = "success"
+
+		when "error-save-summary-estimated"
 			title = "Guardado"
 			subject = "Se ha cambiado el tiempo estimado para completar el proyecto."
 			css = "success"

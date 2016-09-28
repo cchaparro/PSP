@@ -1,5 +1,21 @@
 <!-- ###################################### -->
 <template name="planSummaryTemplate">
+	<div class="{{#unless sizeForPSP0}} hide {{/unless}} plan-summary-content">
+		<h3>Tamaño del programa(Opcional)</h3>
+		<table class="table table-summary">
+			<thead>
+				<tr>
+					<th></th>
+					<th class="hidden-xs">Actual</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{> sizePSP0}}
+			</tbody>
+		</table>
+	</div>
+	<br>
+
 	{{#with userData }}
 		<div class="plan-summary-content">
 			<h3>Tiempo en Fase</h3>
@@ -132,3 +148,52 @@
 	{{/with}}
 </template>
 <!-- ###################################### -->
+<template name="sizePSP0">
+	{{#with sizeData}}
+	<tr>
+		<td>Líneas base</td>
+		<td>
+			<div class="input-box">
+				<input data-value="actualBase" value="{{actualBase}}" type="" name="">  
+			</div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>Líneas añadidas</td>
+		<td>
+			<div class="input-box">
+				<input data-value="actualAdd" value="{{actualAdd}}" type="" name="">
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Líneas modificadas</td>
+		<td>
+			<div class="input-box">
+				<input data-value="actualModified" value="{{actualModified}}" type="" name="">  
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Líneas eliminadas</td>
+		<td>
+			<div class="input-box">
+				<input data-value="actualDeleted" value="{{actualDeleted}}" type="" name="">  
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Líneas reusadas</td>
+		<td>
+			<div class="input-box">
+				<input data-value="actualReused" value="{{actualReused}}" type="" name="">  
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>Tamaño total</td>
+		<td><span>{{totalSize}}</span> </td>
+	</tr>
+	{{/with}}
+</template>

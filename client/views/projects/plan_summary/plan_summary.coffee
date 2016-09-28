@@ -6,6 +6,16 @@ Template.planSummaryTemplate.helpers
 	actualLevelPSP: () ->
 		return db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP
 
+	sizeForPSP0: ()->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		levelPSP = db.projects.findOne({_id: FlowRouter.getParam("id")})?.levelPSP
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+		currentStage = _.first projectStages
+		return true if currentStage?.name == "Postmortem" and levelPSP == "PSP 0"
+		return false
+
 ##########################################
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->
@@ -37,18 +47,6 @@ Template.summaryTimeRow.helpers
 		return true if currentStage?.name == "Planeación" and levelPSP == "PSP 0"
 		return false
 
-	sizeForPSP0: ()->
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		levelPSP = db.projects.findOne({_id: FlowRouter.getParam("id")})?.levelPSP
-		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
-			unless stage.finished
-				return stage
-		currentStage = _.first projectStages
-
-		if currentStage.name == "Postmortem" and levelPSP == "PSP 0"
-			return true
-		else return false
-
 Template.summaryTimeRow.events
 	'blur .input-box input': (e,t) ->
 		value = $(e.target).val()
@@ -61,6 +59,7 @@ Template.summaryTimeRow.events
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
 				console.warn(error)
+				sys.flashStatus("error-save-summary-estimated")
 			else
 				sys.flashStatus("save-summary-estimated")
 
@@ -94,3 +93,18 @@ Template.summaryRemovedRow.helpers
 		return final
 
 ##########################################
+
+Template.sizePSP0.helpers
+	sizeData: ()->
+		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
+
+Template.sizePSP0.events
+	'blur .input-box input': (e,t) ->
+		value = $(e.target).val()
+		dataField = $(e.target).data('value')
+		Meteor.call "update_plan_summary_size_psp0", FlowRouter.getParam("id"), dataField,value, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("error-save-size-summary")
+			else
+				sys.flashStatus("save-size-summary")

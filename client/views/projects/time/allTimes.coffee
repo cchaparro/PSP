@@ -58,7 +58,7 @@ Template.timesBar.helpers
 		currentStage = _.first projectStages
 
 		return false if project?.completed
-		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and projectProbe == "probeD" and project?.levelPSP == "PSP 0"
+		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and project?.levelPSP == "PSP 0"
 		return true
 
 
@@ -101,7 +101,7 @@ Template.timesBar.events
 	'click .time-submit': (e,t) ->
 		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		projectProbe = project?.projectProbe
+		projectPSP = project?.levelPSP
 
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
@@ -137,7 +137,8 @@ Template.timesBar.events
 								sys.flashStatus("submit-stage-project")
 					else
 						sys.flashStatus("submit-stage-project")
-
+					if projectStages[1].name =="Postmortem" and	projectPSP == "PSP 0"
+						sys.flashStatus("postmortem-psp0")
 					sys.removeTimeMessage()
 
 	'click .reopen-stage': (e,t) ->

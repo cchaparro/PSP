@@ -246,4 +246,40 @@ Meteor.methods
 
 		db.plan_summary.update({ "projectId": projectId }, {$set: data })
 
+	update_plan_summary_size_psp0: (projectId, field,value) ->
+		data = {}
+		value = parseInt(value)
+		total = 0
+		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})		
+		switch field
+			when "actualBase"
+				total = value + planSummary.total.actualAdd + planSummary.total.actualReused - planSummary.total.actualDeleted
+				data = {
+					"total.actualBase":value
+					"total.total.totalSize":total
+				}
+			when "actualAdd"
+				total = value + planSummary.total.actualBase + planSummary.total.actualReused - planSummary.total.actualDeleted
+				data = {
+					"total.actualAdd":value
+					"total.totalSize":total
+				}
+			when "actualDeleted"
+				total = planSummary.total.actualBase + planSummary.total.actualAdd + planSummary.total.actualReused - value
+				data = {
+					"total.actualDeleted":value
+					"total.totalSize":total
+				}
+			when "actualModified"
+				data = {
+					"total.actualModified":value
+				}
+			when "actualReused"
+				total = planSummary.total.actualBase + planSummary.total.actualAdd + planSummary.total.actualDeleted + value
+
+				data = {
+					"total.actualReused":value
+					"total.totalSize":total
+				}
+		db.plan_summary.update({"projectId": projectId, "summaryOwner": Meteor.userId()}, {$set: data})
 #######################################
