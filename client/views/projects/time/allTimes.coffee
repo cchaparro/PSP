@@ -94,8 +94,13 @@ Template.timesBar.events
 					console.warn(error)
 					sys.flashStatus("error-new-time-project")
 				else
-					sys.flashStatus("new-time-project")
-					sys.removeTimeMessage()
+					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
+						if error
+							console.warn(error)
+							sys.flashStatus("error-new-time-project")
+						else
+							sys.flashStatus("new-time-project")
+							sys.removeTimeMessage()
 
 
 	'click .time-submit': (e,t) ->
