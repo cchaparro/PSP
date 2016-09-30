@@ -8,12 +8,11 @@ Template.planSummaryTemplate.helpers
 
 	sizeForPSP0: ()->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		levelPSP = db.projects.findOne({_id: FlowRouter.getParam("id")})?.levelPSP
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
-		currentStage = _.first projectStages
-		return true if currentStage?.name == "Postmortem" and levelPSP == "PSP 0"
+		return true if project?.levelPSP == "PSP 0" and (projectStages.length < 2 or project?.completed)
 		return false
 
 ##########################################
@@ -97,6 +96,9 @@ Template.summaryRemovedRow.helpers
 Template.sizePSP0.helpers
 	sizeData: ()->
 		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
+	contentEditable: ()->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		return !(project?.completed)
 
 Template.sizePSP0.events
 	'blur .input-box input': (e,t) ->

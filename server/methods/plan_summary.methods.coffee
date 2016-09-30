@@ -26,7 +26,6 @@ Meteor.methods
 	#This is for completing a stage or updating the time of the current stage
 	update_time_stage: (projectId, stage, finishStage=false, reset_timeStarted=false) ->
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
-
 		# If the time saved is more than 3 minutes, send a notification to the user
 		if stage.time > 180000
 			notificationData = {

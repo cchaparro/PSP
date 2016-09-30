@@ -166,6 +166,11 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Debes ingresar un tiempo estimado en el Plan Summary para continuar."
 			css = "danger"
+		
+		when "actual-size-missing"
+			title = "Error"
+			subject = "Debes ingresar tamaño actual en el Plan Summary para continuar."
+			css = "danger"
 
 		when 'submit-stage-project'
 			title = "Guardado"

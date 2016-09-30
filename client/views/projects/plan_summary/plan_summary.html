@@ -153,42 +153,62 @@
 	<tr>
 		<td>Líneas base</td>
 		<td>
+		{{#if contentEditable}}
 			<div class="input-box">
 				<input data-value="actualBase" value="{{actualBase}}" type="" name="">  
 			</div>
+		{{else}}
+			<span>{{actualBase}}</span>
+		{{/if}}
 		</td>
 	</tr>
 
 	<tr>
 		<td>Líneas añadidas</td>
 		<td>
+		{{#if contentEditable}}
 			<div class="input-box">
 				<input data-value="actualAdd" value="{{actualAdd}}" type="" name="">
 			</div>
+		{{else}}
+			<span>{{actualAdd}}</span>
+		{{/if}}
 		</td>
 	</tr>
 	<tr>
 		<td>Líneas modificadas</td>
 		<td>
+		{{#if contentEditable}}
 			<div class="input-box">
 				<input data-value="actualModified" value="{{actualModified}}" type="" name="">  
 			</div>
+		{{else}}
+			<span>{{actualModified}}</span>
+		{{/if}}
 		</td>
 	</tr>
 	<tr>
 		<td>Líneas eliminadas</td>
 		<td>
+		{{#if contentEditable}}
 			<div class="input-box">
 				<input data-value="actualDeleted" value="{{actualDeleted}}" type="" name="">  
 			</div>
+		{{else}}
+			<span>{{actualDeleted}}</span>
+		{{/if}}
 		</td>
 	</tr>
 	<tr>
 		<td>Líneas reusadas</td>
 		<td>
+		{{#if contentEditable}}
 			<div class="input-box">
 				<input data-value="actualReused" value="{{actualReused}}" type="" name="">  
 			</div>
+		{{else}}
+			<span>{{actualReused}}</span>
+		{{/if}}
 		</td>
 	</tr>
 	<tr>
