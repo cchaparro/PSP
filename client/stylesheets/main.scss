@@ -5,149 +5,153 @@ html, body {
 	margin: 0px;
 	padding: 0px;
 	outline: none;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 //----------- Dynamic Master Template ------------
 .master-content {
-	width: calc(100% - 70px);
-	height: calc(100% - 60px);
+	width: 100%;
+	height: calc(100% - 65px);
 	position: absolute;
 	bottom: 0;
-	right: 0;
-	padding: 20px;
+	left: 0;
 	background-color: $background;
 	overflow-y: scroll;
-	z-index: 1;
+	padding: 20px;
 }
 
 //------------------- Main Menu ------------------
 .main-menu {
-	width: 70px;
-	height: 100%;
+	width: 100%;
+	height: 65px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	background-color: $primary-bg;
-	z-index: 100;
 
-	a {
-		position: absolute;
-		padding: 10px 10px 5px 10px;
-		margin: 10px;
-		border-radius: 5px;
-		cursor: pointer;
+	.main-menu-content {
+		height: 100%;
+		width: 97%;
+		max-width: 1250px;
+		margin-left: auto;
+		margin-right: auto;
 
-		svg {
+		.project-logo {
 			width: 30px;
+			height: 30px;
+			margin-top: 17.5px;
+			margin-right: 20px;
+			fill: $blue;
+			float: left;
+
+			&:hover {
+				fill: $blue-dark;
+			}
 		}
 
-		&:hover {
-			background-color: $primary-dark-bg;
-			span {
+		.main-menu-options {
+			display: inline-block;
+			float: left;
+			line-height: 65px;
+
+			a {
+				padding-right: 15px;
+				font-weight: 600;
+				font-size: 11pt;
+				color: $primary-light-bg;
+				text-decoration: none;
+				cursor: pointer;
+
+				&:hover {
+					color: $white;
+				}
+
+				&.active {
+					color: $white;
+				}
+			}
+		}
+
+		.main-menu-user {
+			float: right;
+			height: 100%;
+
+			.notification-option {
+				position: relative;
 				display: inline-block;
+				padding-right: 20px;
+
+				svg {
+					width: 22px;
+					height: 22px;
+					margin-top: 21.5px;
+					fill: $icon;
+					cursor: pointer;
+				}
+
+				.new-notification {
+					width: 13px;
+					height: 13px;
+					background-color: $danger;
+					border: 2px solid $primary-bg;
+					display: inline;
+					position: absolute;
+					right: 19px;
+					top: 18px;
+					cursor: pointer;
+					@include border-radius($circle-border-radius);
+				}
 			}
 		}
 
-		&:nth-child(2){
-			top: 55px;
-		}
-
-		&:nth-child(3){
-			bottom: 55px;
-		}
-
-		&:last-child {
-			bottom: 0;
-		}
-
-		span {
-			width: 100px;
-			height: 35px;
-			position: absolute;
-			top: 8px;
-			left: 70px;
-			padding: 7px 0;
-			display: none;
-			background: $menu-popup-bg;
-			font-size: 11pt;
-			text-align: center;
-			color: $white;
-			border-radius: 5px;
-
-			i {
-				width: 15px;
-				height: 15px;
-				position: absolute;
-				left: -5px;
-				top: 10px;
-				border-radius: 3px;
-				background: $menu-popup-bg;
-				transform: rotate(45deg);
-				-webkit-transform: rotate(45deg);
-			}
-		}
-	}
-
-}
-
-.menu-svg {
-	fill: $primary-light-bg;
-}
-
-.menu-svg-selected {
-	background-color: $primary-dark-bg;
-
-	.menu-svg {
-		fill: $white;
 	}
 }
 
 //---------------- Main User Menu ----------------
-.main-user {
-	width: 100%;
-	height: 60px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding-left: 70px;
-	background-color: $white;
-	z-index: 2;
-	border-bottom: 1px solid $border;
+// .main-user {
+// 	width: 100%;
+// 	height: 60px;
+// 	position: absolute;
+// 	top: 0;
+// 	right: 0;
+// 	padding-left: 70px;
+// 	background-color: $white;
+// 	z-index: 2;
+// 	border-bottom: 1px solid $border;
 
-	.user-route {
-		margin-top: 15px;
-		margin-bottom: 11px;
-		padding: 5px;
-		border-radius: 4px;
-		font-size: 11pt;
-		color: $text;
-		display: inline-block;
-		cursor: pointer;
-		text-decoration: none;
+// 	.user-route {
+// 		margin-top: 15px;
+// 		margin-bottom: 11px;
+// 		padding: 5px;
+// 		border-radius: 4px;
+// 		font-size: 11pt;
+// 		color: $text;
+// 		display: inline-block;
+// 		cursor: pointer;
+// 		text-decoration: none;
 
-		&:first-child {
-			margin-left: 20px;
-		}
+// 		&:first-child {
+// 			margin-left: 20px;
+// 		}
 
-		&:hover {
-			color: $text-dark;
-		}
-	}
+// 		&:hover {
+// 			color: $text-dark;
+// 		}
+// 	}
 
-	.last-user-route {
-		color: $blue;
+// 	.last-user-route {
+// 		color: $blue;
 
-		&:hover {
-			color: $blue-dark;
-		}
-	}
+// 		&:hover {
+// 			color: $blue-dark;
+// 		}
+// 	}
 
-	.breadcrumb-arrow {
-		width: 8px;
-		fill: $border;
-	}
-}
+// 	.breadcrumb-arrow {
+// 		width: 8px;
+// 		fill: $border;
+// 	}
+// }
 
 .create-btn {
 	position: absolute;
@@ -174,30 +178,18 @@ html, body {
 	}
 }
 
-.notification-svg {
-	width: 30px;
-	height: 30px;
-	fill: $icon;
-	position: absolute;
-	right: 75px;
-	top: 15px;
-	padding: 5px;
-	cursor: pointer;
-}
-
 .avatar-box {
-	width: 80px;
 	height: 100%;
-	position: absolute;
-	right: 0;
-	top: 0;
+	padding: 15px 0;
+	float: right;
+	position: relative;
+	display: inline-block;
 
 	.avatar {
 		width: 35px;
 		height: 35px;
 		display: inline-block;
 		float: right;
-		margin: 12px 20px;
 		border-radius: 50%;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -209,7 +201,7 @@ html, body {
 .user-dropdown {
 	width: 200px;
 	position: absolute;
-	right: 7.5px;
+	right: -2px;
 	top: 65px;
 	background-color: $white;
 	@include border-radius($default-border-radius);
@@ -217,17 +209,16 @@ html, body {
 	padding-left: 0;
 	z-index: 2;
 
-	.tail-user {
-		width: 20px;
-		height: 20px;
-		background-color: $white;
+	&:after, &:before {
 		position: absolute;
-		right: 20px;
-		top: -10px;
-		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-		border-top-left-radius: 5px;
-		@include box-shadow(-1px -1px 2px rgba(0,0,0,.1));
+		top: -7px;
+		right: 13px;
+		display: inline-block;
+		border-right: 7px solid transparent;
+		border-bottom: 7px solid $white;
+		border-left: 7px solid transparent;
+		color: $white;
+		content: '';
 	}
 
 	ul {
@@ -269,42 +260,29 @@ html, body {
 
 }
 
-.new-notification-badge {
-	width: 14px;
-	height: 14px;
-	background-color: $danger;
-	border: 2px solid $white;
-	position: absolute;
-	right: 77px;
-	top: 14px;
-	cursor: pointer;
-	z-index: 2;
-	@include border-radius($circle-border-radius);
-}
-
 .notification-box {
 	width: 350px;
 	height: 400px;
 	position: absolute;
-	right: 59px;
+	right: 11px;
 	top: 65px;
 	background-color: $white;
 	border: 1px solid $border;
+	z-index: 2;
 	@include border-radius($default-border-radius);
 	@include box-shadow($popup-box-shadow);
-	@include clearfix();
+	@include clearfix;
 
-	.tail-notification {
-		width: 20px;
-		height: 20px;
-		background-color: $white;
+	&:after, &:before {
 		position: absolute;
-		right: 20px;
-		top: -10px;
-		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-		border-top-left-radius: 5px;
-		@include box-shadow(-1px -1px 2px rgba(0,0,0,.1));
+		top: -7px;
+		right: 13px;
+		display: inline-block;
+		border-right: 7px solid transparent;
+		border-bottom: 7px solid $white;
+		border-left: 7px solid transparent;
+		color: $white;
+		content: '';
 	}
 
 	.notification-item {

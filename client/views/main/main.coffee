@@ -26,11 +26,12 @@ Template.masterLayout.events
 			Session.set("display-notification-box", false)
 			Session.set("display-user-box", false)
 
-		if checkItem($this, ".main-menu")
+		if checkItem($this, ".main-menu-content")
 			Session.set("display-notification-box", false)
-			Session.set("display-user-box", false)
+			unless checkItem($this, ".avatar-box")
+				Session.set("display-user-box", false)
 
-		if checkItem($this, ".main-user")
+		if checkItem($this, ".main-menu-user")
 			unless checkItem($this, ".notification-svg") or checkItem($this, ".notification-box")
 				Session.set("display-notification-box", false)
 			unless checkItem($this, ".avatar-box")

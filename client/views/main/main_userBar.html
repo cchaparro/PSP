@@ -1,6 +1,6 @@
 <!-- ###################################### -->
 <template name="main_userBar">
-	<div class="main-user">
+	<!--<div class="main-user">
 		<div class="mobile-menu">
 			<svg viewBox="0 0 100 100"><use xlink:href="/images/Menu.svg#menuLogo"></use></svg>
 		</div>
@@ -19,32 +19,7 @@
 		{{#if $eq template "projectDefectLog"}}
 			{{> createDefectButton}}
 		{{/if}}
-		<div class="new-notification-badge {{#unless showNotificationBadge}} hide {{/unless}}"></div>
-		<svg class="notification-svg hidden-xs" viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
-		{{> userNotification}}
-		{{#with userData}}
-			<div class="avatar-box">
-				<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');"></div>
-			</div>
-			{{> userMenuDropdown}}
-		{{/with}}
-	</div>
-</template>
-<!-- ###################################### -->
-<template name="userMenuDropdown">
-	<div class="user-dropdown {{#unless $.Session.get 'display-user-box'}} hide {{/unless}}">
-		<div class="tail-user"></div>
-		<ul>
-			<li class="edit-profile">
-				<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Settings.svg#settingsLogo"></use></svg>
-				<span>Ajustes de cuenta</span>
-			</li>
-			<li class="logout">
-				<svg class="menu-svg" viewBox="0 0 100 100"><use xlink:href="/images/Power.svg#powerLogo"></use></svg>
-				<span>Cerrar sesión</span>
-			</li>
-		</ul>
-	</div>
+	</div>-->
 </template>
 <!-- ###################################### -->
 <template name="createProjectButton">
@@ -65,34 +40,6 @@
 	<div class="btn {{#if projectIsCompleted}} disabled-btn {{else}} create-btn {{/if}}">
 		<i class="fa fa-plus"></i>
 		<span>Crear Defecto</span>
-	</div>
-</template>
-<!-- ###################################### -->
-<template name="userNotification">
-	<div class="notification-box {{#unless $.Session.get 'display-notification-box'}} hide {{/unless}}">
-		<div class="tail-notification"></div>
-		<h3>Notificaciones</h3>
-		<ul>
-			{{#each userNotifications}}
-				<li class="notification-item">
-					<div class="notification-header">
-						<div class="notification-avatar" style="background-image: url('{{getUserAvatarUrl title.sender}}');"></div>
-						<div class="notification-badge {{badgeStatus}}">
-							<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-exclamation {{/if}}"></i>
-						</div>
-					</div>
-					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}} {{#if notificationDisabled}} notification-content-disabled {{/if}}">
-						<h4>
-							<span class="notification-sender">{{userName title.sender}}</span>
-							{{title.main}}
-							<span class="notification-secondary">{{title.secondary}}</span>
-						</h4>
-						<span>{{subject}} <span class="notification-revert">{{revertMessage}}</span></span>
-						<p>{{momentToNow createdAt}}</p>
-					</div>
-				</li>
-			{{/each}}
-		</ul>
 	</div>
 </template>
 <!-- ###################################### -->
