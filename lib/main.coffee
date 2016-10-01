@@ -24,6 +24,10 @@ if Meteor.isServer
 
 
 		# This is used to change the message for the resetPassword email. This gives a different url from the default
+		Accounts.emailTemplates.siteName = "pspconnect.co"
+		Accounts.emailTemplates.from = "pspconnect.co <juan.mejia@javerianacali.edu.co>"
+
+
 		Accounts.emailTemplates.resetPassword.subject = (user) ->
 			return "Restablecer contraseña pspconnect"
 
