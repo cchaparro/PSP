@@ -50,7 +50,5 @@ Template.resetPasswordTemplate.events
 			Accounts.resetPassword token, password1, (error) ->
 				if error
 					console.warn(error)
-				else
-					console.log "Lo hice correctamente"
 
 ##################################################

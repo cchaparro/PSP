@@ -60,7 +60,6 @@ Template.loginTemplate.events
 		FlowRouter.go("/register")
 
 	'click .forgot-password': (e,t) ->
-		console.log "Aqui"
 		FlowRouter.go("/forgot")
 
 	'click .user-access-facebook': (e,t) ->
