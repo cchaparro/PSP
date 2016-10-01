@@ -51,7 +51,7 @@ sys.displayShortTime = (time) ->
 	return IntegerTwoDigits(horas) + " : " + IntegerTwoDigits(minutos) + " : " + IntegerTwoDigits(segundos)
 
 sys.timeToHours = (time) ->
-	return (time/3600000)
+	return Math.floor(time / 3600000)
 
 sys.timeToMinutes = (time) ->
 	time %= 3600000

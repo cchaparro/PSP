@@ -17,3 +17,8 @@ Template.projectViewMenu.helpers
 		return FlowRouter.current().route.name
 
 ##########################################
+Template.projectMessages.helpers
+	projectCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
+##########################################

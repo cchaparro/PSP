@@ -12,7 +12,7 @@ FlowRouter.triggers.enter([ (content, redirect) ->
 	unless Meteor.userId()
 		FlowRouter.go('login')
 ], except: [
-	'register'
+	'register', 'forgot', 'reset-password'
 ])
 
 ##########################################
@@ -31,6 +31,21 @@ FlowRouter.route '/register',
 			FlowRouter.go('projects')
 		BlazeLayout.render 'accessLayout', main: 'registerTemplate'
 
+
+FlowRouter.route '/forgot',
+	name: 'forgot'
+	action: ->
+		if Meteor.userId()
+			FlowRouter.go('projects')
+		BlazeLayout.render 'accessLayout', main: 'forgotPasswordTemplate'
+
+
+FlowRouter.route '/reset-password/:token',
+	name: 'reset-password'
+	action: ->
+		if Meteor.userId()
+			FlowRouter.go('projects')
+		BlazeLayout.render 'accessLayout', main: 'resetPasswordTemplate'
 
 
 # This group is created to structure all the route pages inside the '/projects'

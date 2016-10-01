@@ -186,6 +186,20 @@
 	}
 }
 
+//------------ General Project Messages -----------
+.project-message-bubble {
+	cursor: default;
+	margin-bottom: -10px;
+	border: 1px solid $blue;
+	background-color: rgba($blue, 0.1);
+	@include border-radius($default-border-radius);
+	padding: 10px;
+	text-align: left;
+	color: $blue;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+
 //-------------- General Project View ------------
 .project-view-menu {
 	width: 100px;

@@ -59,6 +59,9 @@ Template.loginTemplate.events
 	'click .access-selection-box': (e,t) ->
 		FlowRouter.go("/register")
 
+	'click .forgot-password': (e,t) ->
+		FlowRouter.go("/forgot")
+
 	'click .user-access-facebook': (e,t) ->
 		e.preventDefault()
 		Meteor.loginWithFacebook { requestPermissions: [ 'email' ] }, (error) ->

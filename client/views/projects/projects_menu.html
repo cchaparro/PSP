@@ -40,3 +40,9 @@
 	</ul>
 </template>
 <!-- ###################################### -->
+<template name="projectMessages">
+	{{#if projectCompleted}}
+		<p class="project-message-bubble">Este proyecto ya esta finalizado. Debido a esto no puedes modificar o registrar ningún dato dentro de esta sección.</p>
+	{{/if}}
+</template>
+<!-- ###################################### -->
