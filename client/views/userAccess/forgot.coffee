@@ -50,5 +50,7 @@ Template.resetPasswordTemplate.events
 			Accounts.resetPassword token, password1, (error) ->
 				if error
 					console.warn(error)
+				else
+					Meteor.call "createNotification", "password-reset", Meteor.userId()
 
 ##################################################

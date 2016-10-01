@@ -101,7 +101,7 @@ Template.userNotification.helpers
 	badgeStatus: () ->
 		type = @type
 		switch type
-			when "new-user"
+			when "new-user", "password-reset"
 				return "success"
 			when 'time-registered'
 				return "warning"

@@ -15,6 +15,14 @@ if Meteor.isServer
 				}
 				subject = "Gracias por registrarte a nuestra plataforma. esperamos que tengas una gran experiencia en ella."
 
+			when 'password-reset'
+				title = {
+					sender: sender
+					main: "Has cambiado tu contraseña de"
+					secondary: "pspconnect.co"
+				}
+				subject = "Realizaste un cambio en la contraseña utilizada para iniciar sesión."
+
 			when 'time-registered'
 				title = {
 					sender: sender
