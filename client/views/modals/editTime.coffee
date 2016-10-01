@@ -212,11 +212,13 @@ Template.editTime.events
 				if error
 					console.warn(error)
 				else
-					if data?.type
-						Meteor.call "disable_notification", data._id
-						Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
-							if error
-								console.warn(error)
+					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
+						if error
+							console.warn(error)
+							sys.flashStatus("error-submit-stage-project")
+						else
+							if data?.type
+								Meteor.call "disable_notification", data._id
 
 					sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
@@ -226,13 +228,14 @@ Template.editTime.events
 				if error
 					console.warn(error)
 				else
-					if data?.type
-						Meteor.call "disable_notification", data._id
-						Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
+					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
 						if error
 							console.warn(error)
-
-					sys.flashStatus("new-time-project")
+							sys.flashStatus("error-submit-stage-project")
+						else
+							if data?.type
+								Meteor.call "disable_notification", data._id
+								sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
 
 # ##########################################

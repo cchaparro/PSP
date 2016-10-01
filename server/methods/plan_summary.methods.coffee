@@ -215,7 +215,7 @@ Meteor.methods
 		stages = planSummary.timeEstimated
 
 		_.each stages, (stage)->
-			stage.percentage = parseInt(((stage.time*100)/totalTime).toFixed(2))
+			stage.percentage = parseInt(((stage.time*100)/totalTime))
 
 		data = {
 			"timeEstimated":stages
@@ -229,11 +229,10 @@ Meteor.methods
 		lastFinishedProject = db.projects.findOne({"projectOwner": Meteor.userId(), "completed": true,"levelPSP":actualProject.levelPSP}, {sort: {createdAt: -1}})
 		if lastFinishedProject
 			planSummaryLastProject = db.plan_summary.findOne({"projectId":lastFinishedProject._id,"summaryOwner": Meteor.userId()})
-
 			totalTime = planSummary.total.estimatedTime
 			_.each stages,(stage)->
 				lastProjectStage = _.findWhere planSummaryLastProject.timeEstimated, {name: stage.name}
-				stage.estimated = (lastProjectStage.percentage/100) * totalTime
+				stage.estimated = parseInt((lastProjectStage.percentage/100) * totalTime)
 		else
 			_.each stages,(stage)->
 				stage.estimated = 0
