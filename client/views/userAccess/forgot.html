@@ -1,0 +1,52 @@
+<!--#######################################-->
+<template name="forgotPasswordTemplate">
+	<form class="user-access-box">
+		<img class="user-access-logo" src="/Logo.png" alt="">
+		{{#if emailIsSent}}
+			<div>
+				<span>Te hemos enviado un mensaje de verificacion al correo electronico</span>
+			</div>
+		{{else}}
+			<div class="button-row combined-form">
+				<div>
+					<div class="input-box">
+						<input type="email" placeholder='Correo Electronico' id="email" value="">
+						<i class="fa fa-times"></i>
+					</div>
+				</div>
+			</div>
+			<span class="user-access-error-text">{{errorMessage}}</span>
+			<input type="submit" class="btn btn-primary user-access-submit" value='Solicitar nueva contraseña'>
+		{{/if}}
+		
+		<div class="access-selection-box">
+			<span>Regresar a Inicio de sesion</span>
+		</div>
+	</form>
+</template>
+
+<!--#######################################-->
+<template name="resetPasswordTemplate">
+	<form class="user-access-box">
+		<img class="user-access-logo" src="/Logo.png" alt="">
+			<div class="button-row combined-form">
+				<div>
+					<div class="input-box">
+						<input type="password" placeholder='Nueva contraseña' id="password1">
+					</div>
+					<div class="input-box">
+						<input type="password" placeholder='Confirmar contraseña' id="password2">
+					</div>
+				</div>
+			</div>
+			<input type="submit" class="btn btn-primary user-access-submit" value='Configurar nueva contraseña'>
+		
+		<div class="access-selection-box">
+			<span>Regresar a Inicio de sesion</span>
+		</div>
+	</form>
+</template>
+
+<!--#######################################-->
+
+

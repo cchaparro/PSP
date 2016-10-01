@@ -204,6 +204,10 @@
 		"kadira": {
 			"appId": "fkuZzuFEWnSfAsfkn",
 			"appSecret": "7ebf8edc-6194-48db-873c-5a72cea4c28f"
+		},
+		"mail": {
+			"login": "postmaster@sandbox7039804c42b4465aa103ff6ee644aab6.mailgun.org",
+			"password": "31ebb789612a13f267db1da62344139b"
 		}
 	}
 }
