@@ -15,7 +15,7 @@
 			<div class="main-menu-user">
 				<div class="notification-option">
 					<div class="new-notification {{#unless showNotificationBadge}} hidden {{/unless}}"></div>
-					<svg viewBox="0 0 100 100"><use xlink:href="/images/Notifications.svg#notificationsLogo"></use></svg>
+					<i class="material-icons notification">notifications</i>
 					{{>userNotification}}
 				</div>
 				<div class="avatar-box">
@@ -53,7 +53,11 @@
 					<div class="notification-header">
 						<div class="notification-avatar" style="background-image: url('{{getUserAvatarUrl title.sender}}');"></div>
 						<div class="notification-badge {{badgeStatus}}">
-							<i class="fa fa-fw {{#if $eq badgeStatus 'success'}} fa-check {{/if}} {{#if $eq badgeStatus 'warning'}} fa-exclamation {{/if}}"></i>
+							{{#if $eq badgeStatus 'success'}}
+								<i class="material-icons">check</i>
+							{{else}}
+								<i class="material-icons">warning</i>
+							{{/if}}
 						</div>
 					</div>
 					<div class="notification-content {{#unless notificationSeen}} unseen-badge {{/unless}} {{#if notificationDisabled}} notification-content-disabled {{/if}}">

@@ -51,4 +51,10 @@ Template.projectsTemplate.events
 			else
 				sys.flashStatus("project-delete")
 
+	'click .create-project': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		Modal.show('createProjectModal')
+		
+
 ##########################################

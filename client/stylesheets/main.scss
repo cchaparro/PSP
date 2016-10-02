@@ -8,6 +8,10 @@ html, body {
 	font-family: 'Raleway', sans-serif;
 }
 
+//----------- Variables for this file ------------
+$width-content: 97%;
+$max-width-content: 1250px;
+
 //----------- Dynamic Master Template ------------
 .master-content {
 	width: 100%;
@@ -17,7 +21,26 @@ html, body {
 	left: 0;
 	background-color: $background;
 	overflow-y: scroll;
-	padding: 20px;
+	padding-top: 20px;
+
+	.master-content-data {
+		height: 100%;
+		width: $width-content;
+		max-width: $max-width-content;
+		margin-left: auto;
+		margin-right: auto;
+
+		.general-header {
+			width: 100%;
+			height: 55px;
+			line-height: 55px;
+			border-bottom: 2px solid $box-border;
+			background-color: $white;
+			@include border-radius($default-border-radius);
+			margin-bottom: 20px;
+		}
+
+	}
 }
 
 //------------------- Main Menu ------------------
@@ -31,8 +54,8 @@ html, body {
 
 	.main-menu-content {
 		height: 100%;
-		width: 97%;
-		max-width: 1250px;
+		width: $width-content;
+		max-width: $max-width-content;
 		margin-left: auto;
 		margin-right: auto;
 
@@ -81,22 +104,23 @@ html, body {
 				display: inline-block;
 				padding-right: 20px;
 
-				svg {
-					width: 22px;
-					height: 22px;
-					margin-top: 21.5px;
-					fill: $icon;
+				i {
+					width: 20px;
+					height: 20px;
+					padding-top: 20px;
+					padding-bottom: 22.5px;
+					color: $primary-light-bg;
 					cursor: pointer;
 				}
 
 				.new-notification {
-					width: 13px;
-					height: 13px;
+					width: 12px;
+					height: 12px;
 					background-color: $danger;
 					border: 2px solid $primary-bg;
 					display: inline;
 					position: absolute;
-					right: 19px;
+					right: 16px;
 					top: 18px;
 					cursor: pointer;
 					@include border-radius($circle-border-radius);
@@ -153,20 +177,65 @@ html, body {
 // 	}
 // }
 
-.create-btn {
-	position: absolute;
-	background-color: $blue;
-	color: $white;
-	position: absolute;
-	top: 13px;
-	right: 130px;
-	padding: 6px 15px;
+.create-button {
+	color: $green;
+	float: right;
+	font-weight: 500;
+	font-size: 11pt;
+	padding-right: 20px;
+	cursor: pointer;
+
+	i {
+		float: left;
+		line-height: inherit;
+		font-size: 15pt;
+		padding-right: 2px;
+		font-weight: 500;
+	}
 
 	&:hover {
-		color: $white;
-		background-color: $blue-dark;
+		color: $gree-dark;
 	}
 }
+
+.menu-state {
+	color: $text-dark;
+	float: left;
+	font-weight: 500;
+	font-size: 11pt;
+	padding-left: 20px;
+	cursor: pointer;
+
+	i {
+		float: right;
+		padding-left: 5px;
+		font-size: 15pt;
+		font-weight: 600;
+		line-height: inherit;
+		color: $popup-bg;
+	}
+
+	&:hover i {
+		color: $text-dark;
+	}
+}
+// .create-btn {
+// 	//position: absolute;
+// 	background-color: $blue;
+// 	color: $white;
+// 	//position: absolute;
+// 	//top: 13px;
+// 	margin-top: 9px;
+// 	margin-right: 10px;
+// 	margin-bottom: 9px;
+// 	float: right;
+// 	padding: 9px 15px;
+
+// 	&:hover {
+// 		color: $white;
+// 		background-color: $blue-dark;
+// 	}
+// }
 
 .disabled-btn {
 	@extend .create-btn;
@@ -264,7 +333,7 @@ html, body {
 	width: 350px;
 	height: 400px;
 	position: absolute;
-	right: 11px;
+	right: 7px;
 	top: 65px;
 	background-color: $white;
 	border: 1px solid $border;
@@ -286,7 +355,7 @@ html, body {
 	}
 
 	.notification-item {
-		@include clearfix();
+		@include clearfix;
 	}
 
 	h3 {
@@ -330,17 +399,24 @@ html, body {
 			.notification-badge {
 				width: 20px;
 				height: 20px;
+				position: relative;
+				display: inline;
 				margin-top: 10px;
 				margin-left: -12px;
 				border: 2px solid $white;
 				display: inline-block;
 				@include border-radius($circle-border-radius);
-				line-height: 13px;
 
 				i {
+					position: absolute;
+					top: -17px;
+					right: -1.5px;
+					padding: 0;
 					font-size: 7pt;
 					width: 100%;
 					text-align: center;
+					font-weight: 700;
+					color: $white!important;
 				}
 			}
 		}

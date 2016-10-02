@@ -50,12 +50,6 @@ Template.main_userBar.helpers
 		return Routes
 
 ##################################################
-Template.createProjectButton.events
-	'click .create-btn': (e,t) ->
-		#FlowRouter.setQueryParams({action: "alerts"});
-		Modal.show('createProjectModal')
-
-##################################################
 Template.createDefectButton.helpers
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
@@ -66,25 +60,5 @@ Template.createDefectButton.events
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 		unless project.completed
 			Modal.show('createDefectModal')
-
-##################################################
-Template.createIterationButton.events
-	'click .create-btn': (e,t) ->
-		currentProject = db.projects.findOne({ _id: FlowRouter.getParam("fid") })
-
-		# The currentProject takes the parent projects levelPSP and gives it to the new interation
-		data = {
-			title: "Nueva iteración"
-			description: "Descripción de esta nueva iteración"
-			levelPSP: currentProject.levelPSP
-			parentId: FlowRouter.getParam("fid")
-		}
-
-		Meteor.call "create_project", data, (error) ->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-create-iteration")
-			else
-				sys.flashStatus("create-iteration")
 
 ##################################################

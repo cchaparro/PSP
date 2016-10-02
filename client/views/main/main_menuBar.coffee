@@ -31,12 +31,17 @@ Template.main_menuBar.helpers
 
 Template.main_menuBar.events
 	'click .avatar': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+
 		if Session.get("display-user-box")
 			Session.set("display-user-box", false)
 		else
 			Session.set("display-user-box", true)
 
-	'click .notification-option': (e,t) ->
+	'click .notification': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		Meteor.call "notificationsSeen"
 
 		if Session.get("display-notification-box")
@@ -53,10 +58,14 @@ Template.main_menuBar.events
 ##################################################
 Template.userMenuDropdown.events
 	'click .logout': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		Meteor.logout()
 		FlowRouter.go("/")
 
 	'click .edit-profile': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		Modal.show('editProfileModal')
 
 ##################################################
@@ -98,6 +107,9 @@ Template.userNotification.helpers
 
 Template.userNotification.events
 	'click .notification-item': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+
 		unless @data?.reverted or @data?.disabled or @type != 'time-registered'
 			Session.set("display-notification-box", false)
 			Modal.show('editTimeModal', @)
