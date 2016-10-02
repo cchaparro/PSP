@@ -1,20 +1,39 @@
 <!-- ###################################### -->
 <template name="communityTemplate">
 	{{>headerNavigation}}
-	<span>Comunidad</span>
-	<!--<div class="box-container">
-		<div class="help-containers">
-			<div>
-				<h4>Soporte al Cliente</h4>
-				<p>Abajo podras encontrar un foro para escribirle a la comunidad cualquier duda que tengas referente a la plataforma. Si necesitas ayuda con algo de lo que no hay ayuda abajo puedes escribirnos dando click al siguiente boton y nos comunicaremos contigo lo mas pronto posible.</p>
-				<span class="new-button">Contactar a Soporte</span>
-			</div>
-			<div>
-				<h4>Comunidad</h4>
-				<p>Aqui buscamos dar un lugar libre para los usuarios poder comunicarse entre si y resolver cualquier duda o inquietud que cada uno tenga. En la parte inferior puedes responder o hacer preguntas a la comunidad y de tal manera poder seguir con el desarrollo personal en la herramienta.</p>
-				<span class="new-button">Ingresar a la Comunidad</span>
+	<div class="box-container margin-bottom">
+		<div class="community-menu">
+			<div class="title">
+				<span>Recientes <i class="material-icons">keyboard_arrow_down</i></span>
 			</div>
 		</div>
-	</div>-->
+		<div class="community-content">
+			{{>question ownQuestion=true}}
+			{{>question ownQuestion=true}}
+			{{>question ownQuestion=true}}
+			{{>question ownQuestion=true}}
+			{{>question ownQuestion=true}}
+			{{>question}}
+			{{>question}}
+			{{>question}}
+			{{>question}}
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="question">
+	<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
+		{{#with userData}}
+			<div class="user-image" style="background-image: url('{{getUserAvatarUrl}}');"></div>
+		{{/with}}
+		<div class="user-content">
+			<h4> <span class="group"></span> Esto funciona como lo estamos viendo en este momento aqui?</h4>
+			<span>No entiendo muy bien que debo hacer para poder desarrollar el psp en el proyecto historico. Este texto es solo una prueba. No entiendo muy bien que debo hacer para poder desarrollar el psp en el proyecto historico. Este texto es solo una prueba. No entiendo muy bien que debo hacer para poder desarrollar el psp en el proyecto historico. Este texto es solo una prueba</span>
+			<div class="question-count">
+				<h2>12</h2>
+				<span>Respuestas</span>
+			</div>
+		</div>
+	</div>
 </template>
 <!-- ###################################### -->
