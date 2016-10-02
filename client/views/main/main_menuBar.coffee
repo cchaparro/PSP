@@ -196,7 +196,6 @@ Template.headerNavigation.events
 		currentState = Session.get("navigation-menu")
 		Session.set("navigation-menu", !currentState)
 
-
 	'click .create-project': (e,t) ->
 		e.preventDefault()
 		e.stopPropagation()
@@ -221,6 +220,11 @@ Template.headerNavigation.events
 				sys.flashStatus("error-create-iteration")
 			else
 				sys.flashStatus("create-iteration")
+
+	'click .create-question': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		Modal.show('createQuestionModal')
 
 	'click .project-order': (e,t) ->
 		e.preventDefault()

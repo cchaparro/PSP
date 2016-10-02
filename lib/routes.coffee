@@ -192,6 +192,9 @@ Help.route '/community',
 		Session.set "route", "community"
 		BlazeLayout.render 'masterLayout', main: 'communityTemplate'
 
+	subscriptions: (params, queryParams) ->
+		@register 'helpView', Meteor.subscribe "helpView"
+
 Help.route '/contact',
 	name: 'help-contact'
 	action: ->

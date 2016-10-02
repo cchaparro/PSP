@@ -8,29 +8,24 @@
 			</div>
 		</div>
 		<div class="community-content">
-			{{>question ownQuestion=true}}
-			{{>question ownQuestion=true}}
-			{{>question ownQuestion=true}}
-			{{>question ownQuestion=true}}
-			{{>question ownQuestion=true}}
-			{{>question}}
-			{{>question}}
-			{{>question}}
-			{{>question}}
+			{{#each userQuestions}}
+				{{>question ownQuestion=true question=this}}
+			{{/each}}
+			{{#each generalQuestions}}
+				{{>question question=this}}
+			{{/each}}
 		</div>
 	</div>
 </template>
 <!-- ###################################### -->
 <template name="question">
 	<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
-		{{#with userData}}
-			<div class="user-image" style="background-image: url('{{getUserAvatarUrl}}');"></div>
-		{{/with}}
+		<div class="user-image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
 		<div class="user-content">
-			<h4> <span class="group"></span> Esto funciona como lo estamos viendo en este momento aqui?</h4>
-			<span>No entiendo muy bien que debo hacer para poder desarrollar el psp en el proyecto historico. Este texto es solo una prueba. No entiendo muy bien que debo hacer para poder desarrollar el psp en el proyecto historico. Este texto es solo una prueba. No entiendo muy bien que debo hacer para poder desarrollar el psp en el proyecto historico. Este texto es solo una prueba</span>
+			<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{question.title}}</h4>
+			<span>{{question.description}}</span>
 			<div class="question-count">
-				<h2>12</h2>
+				<h2>{{question.amountAnswers}}</h2>
 				<span>Respuestas</span>
 			</div>
 		</div>

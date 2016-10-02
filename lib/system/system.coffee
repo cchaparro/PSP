@@ -348,6 +348,16 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido actualizar el tamaño estimado."
 			css = "danger"
 
+		when "create-question"
+			title = "Creado"
+			subject = "La pregunta se ha creado correctamente."
+			css = "success"
+
+		when "error-create-question"
+			title = "Error"
+			subject = "No hemos podido crear la nueva pregunta."
+			css = "danger"
+
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 3800
 
