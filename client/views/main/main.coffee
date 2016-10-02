@@ -25,12 +25,16 @@ Template.masterLayout.events
 		if checkItem($this, ".master-content")
 			Session.set("display-notification-box", false)
 			Session.set("display-user-box", false)
+			unless checkItem($this, ".navigation-option")
+				Session.set("navigation-menu", false)
 
 		if checkItem($this, ".main-menu-content")
 			unless checkItem($this, ".notification") or checkItem($this, ".notification-box")
 				Session.set("display-notification-box", false)
 			unless checkItem($this, ".avatar-box")
 				Session.set("display-user-box", false)
+
+			Session.set("navigation-menu", false)
 
 		if checkItem($this, ".main-menu-user")
 			unless checkItem($this, ".notification") or checkItem($this, ".notification-box")
