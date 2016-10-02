@@ -139,6 +139,7 @@ html, body {
 		display: inline-block;
 		margin-right: 10px;
 		float: left;
+		line-height: 53px;
 
 		.menu-state {
 			color: $text;
@@ -171,7 +172,7 @@ html, body {
 			display: inline-block;
 			float: left;
 			margin-left: 8px;
-			margin-top: 23.5px;
+			margin-top: 23px;
 			fill: $border;
 		}
 	}
@@ -229,6 +230,7 @@ html, body {
 	font-size: 11pt;
 	padding-right: 20px;
 	cursor: pointer;
+	line-height: 53px;
 
 	i {
 		float: left;
