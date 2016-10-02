@@ -137,13 +137,15 @@ Template.headerNavigation.helpers
 		else
 			displayMenu = false
 
-		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="projects" or currentState=="estimatingtemplate"
+		if currentState == "projects" or currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="estimatingtemplate"
 			initialRoute = "projects"
+		else if currentState == "community"
+			initialRoute = "help"
 		else
 			initialRoute = currentState
 
 		Routes = [{
-			title: sys.getPageName(currentState)
+			title: sys.getPageName(initialRoute)
 			route: initialRoute
 			fid: false
 			pid: false
@@ -173,6 +175,16 @@ Template.headerNavigation.helpers
 					lastValue: false
 					displayMenu: false
 				})
+
+		if currentState == "community"
+			Routes.push({
+				title: "Comunidad"
+				route: "community"
+				fid: false
+				pid: false
+				lastValue: true
+				displayMenu: false
+			})
 
 		_.last(Routes).lastValue = true
 

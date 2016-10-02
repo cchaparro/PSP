@@ -1,86 +1,63 @@
 @import '_variables.scss';
 
 //------------------ Help View -------------------
-.help-content {
-	background-color: $white;
-	padding: 20px;
-	cursor: default;
-
-	h3 {
-		font-size: 13pt;
-		margin-top: 30px;
-		margin-bottom: 10px;
-		text-align: center;
-		color: $text-dark;
-	}
-}
-
-.help-options {
+.box-container {
+	background-color: white;
 	width: 100%;
-	@include clearfix();
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
+}
 
-	.help-option-box {
-		width: 33%;
-		display: inline-block;
-		float: left;
-		padding: 40px;
-		//border: 1px solid $border;
+.help-containers {
+	@include clearfix;
 
-		&:hover {
-			.option-header {
-				border: 2px solid $blue;
-				
-				svg, span {
-					color: $blue;
-					fill: $blue;
-				}
-			}
+	div {
+		width: 50%;
+		padding-bottom: 20px;
+		cursor: default;
+
+		.new-button {
+			display: inline-block;
 		}
 
-		&:nth-child(1) {
-			padding-right: 10px;
-			padding-left: 70px;
+		h4 {
+			font-weight: 500;
+			font-size: 13pt;
+			color: $text-dark;
+			padding: 10px 15px 10px 0;
 		}
 
-		&:nth-child(3) {
-			padding-right: 70px;
-			padding-left: 10px;
+		p {
+			color: $text;
 		}
 
-		.option-header {
-			width: 100%;
-			border: 2px solid $text;
-			padding: 40px 0;
-			@include border-radius($default-border-radius * 4);
-			text-align: center;
-			cursor: pointer;
-
-			svg {
-				width: 60px;
-				fill: $text;
-			}		
-
-			span {
-				display: block;
-				color: $text;
-				font-size: 11pt;
-				font-weight: 600;
-			}
+		&:first-child {
+			float: left;
+			padding-right: 15px;
+			padding-left: 15px;
 		}
 
-		.option-content {
-			margin-top: 20px;
-			text-align: center;
-
-			span {
-				display: block;
-				font-size: 12pt;
-				color: $text;
-				font-weight: 300;
-				margin-bottom: 10px;
-			}
+		&:last-child {
+			float: right;
+			padding-left: 15px;
+			padding-right: 15px;
 		}
 	}
 }
 
+//------------------------------------------------
+
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+	.help-containers {
+		div {
+			width: 100%;
+		}
+	}
+}
 //------------------------------------------------

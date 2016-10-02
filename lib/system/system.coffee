@@ -23,6 +23,8 @@ sys.getPageName = (title) ->
 		return "Ajustes"
 	else if title == "help"
 		return "Ayuda"
+	else if title == "community"
+		return "Comunidad"
 	else
 		return "No Disponible"
 
@@ -408,6 +410,10 @@ sys.getSessionRoute = (value) ->
 			return "Ayuda"
 		when "estimatingTemplate"
 			return "Estimación"
+		when "community"
+			return "Comunidad"
+		when "help-contact"
+			return "Contacto"
 
 ##########################################
 ########- Project Color Selector -########

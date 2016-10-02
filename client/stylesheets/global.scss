@@ -49,6 +49,29 @@
 	}
 }
 
+.new-button {
+	padding: 10px 15px;
+	background-color: $green;
+	color: $white!important;
+	font-weight: 500;
+	font-size: 11pt;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+	outline: none!important;
+	@include border-radius($default-border-radius);
+
+	&:hover {
+		background-color: $green-dark;
+		color: $white;
+	}
+
+	&:focus {
+		background-color: $green;
+		color: $white;
+	}
+}
+
 .default-button {
 	@extend .primary-button;
 	color: $text-dark;

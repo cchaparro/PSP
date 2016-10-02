@@ -174,10 +174,28 @@ FlowRouter.route '/overview',
 		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
 
 
-FlowRouter.route '/help',
+
+
+Help = FlowRouter.group(
+	prefix: '/help'
+)
+
+Help.route '/',
 	name: 'help'
 	action: ->
 		Session.set "route", "help"
 		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
+
+Help.route '/community',
+	name: 'community'
+	action: ->
+		Session.set "route", "community"
+		BlazeLayout.render 'masterLayout', main: 'communityTemplate'
+
+Help.route '/contact',
+	name: 'help-contact'
+	action: ->
+		Session.set "route", "help-contact"
+		BlazeLayout.render 'masterLayout', main: 'contactTemplate'
 
 ##########################################
