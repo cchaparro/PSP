@@ -166,6 +166,11 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Debes ingresar un tiempo estimado en el Plan Summary para continuar."
 			css = "danger"
+		
+		when "actual-size-missing"
+			title = "Error"
+			subject = "Debes ingresar tamaño actual en el Plan Summary para continuar."
+			css = "danger"
 
 		when 'submit-stage-project'
 			title = "Guardado"
@@ -187,6 +192,10 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido actualizar las etapa del proyecto."
 			css = "danger"
 
+		when "postmortem-psp0"
+			title = "Nuevos Campos"
+			subject = "Revisa el Plan Summary y los scripts para más información"
+			css = "warning"
 
 		# Defects log from the projects view and New defect modal
 		when "delete-defect"
@@ -282,6 +291,11 @@ sys.flashStatus = (type) ->
 
 		# Plan summary view
 		when "save-summary-estimated"
+			title = "Guardado"
+			subject = "Se ha cambiado el tiempo estimado para completar el proyecto."
+			css = "success"
+
+		when "error-save-summary-estimated"
 			title = "Guardado"
 			subject = "Se ha cambiado el tiempo estimado para completar el proyecto."
 			css = "success"
@@ -435,7 +449,11 @@ sys.regressionDataSize = (Data,PROBE,x,y)->
 				sumxy+= d.ProxyE * d.ActualLOC
 	
 	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
+	if correlation == "Infinity"
+		correlation = 0
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
+	if b1 == "Infinity"
+		b1 = 0
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
 
@@ -461,7 +479,11 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 				sumxy+= d.ProxyE * d.ActualTime
 	
 	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
+	if correlation == "Infinity"
+		correlation = 0
 	#console.log "Avgx", xavg, "Avgy", yavg, PROBE
 	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
+	if b1 == "Infinity"
+		b1 = 0
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}

@@ -1,6 +1,22 @@
 <!-- ###################################### -->
 <template name="planSummaryTemplate">
 	{{>projectMessages}}
+	<div class="{{#unless sizeForPSP0}} hide {{/unless}} plan-summary-content">
+		<h3>Tamaño del programa(Opcional)</h3>
+		<table class="table table-summary">
+			<thead>
+				<tr>
+					<th></th>
+					<th class="hidden-xs">Actual</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{> sizePSP0}}
+			</tbody>
+		</table>
+	</div>
+	<br>
+
 	{{#with userData }}
 		<div class="plan-summary-content">
 			<h3>Tiempo en Fase</h3>
@@ -76,15 +92,13 @@
 		<tr>
 			<td><span>Total</span></td>
 			<td class="td-input-row hidden-xs">
-				{{#if $eq projectProbe 'probeD'}}
-					{{#if estimationEditable}}
-						<div class="input-box">
-							<input type="text" value="{{timeInOnlyMinutes estimatedTime}}">
-						</div>
-					{{else}}
-						<span>{{timeFormat estimatedTime}}</span>
-					{{/if}}
-				{{/if}}
+			{{#if estimationEditable}}
+				<div class="input-box">
+					<input type="text" value="{{timeInOnlyMinutes estimatedTime}}">
+				</div>
+			{{else}}
+				<span>{{timeFormat estimatedTime}}</span>
+			{{/if}}
 			</td>
 			<td><span>{{timeFormat totalTime}}</span></td>
 			<td class="hidden-xs"><span>{{timeFormat totalToDate}}</span></td>
@@ -135,3 +149,72 @@
 	{{/with}}
 </template>
 <!-- ###################################### -->
+<template name="sizePSP0">
+	{{#with sizeData}}
+	<tr>
+		<td>Líneas base</td>
+		<td>
+		{{#if contentEditable}}
+			<div class="input-box">
+				<input data-value="actualBase" value="{{actualBase}}" type="" name="">  
+			</div>
+		{{else}}
+			<span>{{actualBase}}</span>
+		{{/if}}
+		</td>
+	</tr>
+
+	<tr>
+		<td>Líneas añadidas</td>
+		<td>
+		{{#if contentEditable}}
+			<div class="input-box">
+				<input data-value="actualAdd" value="{{actualAdd}}" type="" name="">
+			</div>
+		{{else}}
+			<span>{{actualAdd}}</span>
+		{{/if}}
+		</td>
+	</tr>
+	<tr>
+		<td>Líneas modificadas</td>
+		<td>
+		{{#if contentEditable}}
+			<div class="input-box">
+				<input data-value="actualModified" value="{{actualModified}}" type="" name="">  
+			</div>
+		{{else}}
+			<span>{{actualModified}}</span>
+		{{/if}}
+		</td>
+	</tr>
+	<tr>
+		<td>Líneas eliminadas</td>
+		<td>
+		{{#if contentEditable}}
+			<div class="input-box">
+				<input data-value="actualDeleted" value="{{actualDeleted}}" type="" name="">  
+			</div>
+		{{else}}
+			<span>{{actualDeleted}}</span>
+		{{/if}}
+		</td>
+	</tr>
+	<tr>
+		<td>Líneas reusadas</td>
+		<td>
+		{{#if contentEditable}}
+			<div class="input-box">
+				<input data-value="actualReused" value="{{actualReused}}" type="" name="">  
+			</div>
+		{{else}}
+			<span>{{actualReused}}</span>
+		{{/if}}
+		</td>
+	</tr>
+	<tr>
+		<td>Tamaño total</td>
+		<td><span>{{totalSize}}</span> </td>
+	</tr>
+	{{/with}}
+</template>

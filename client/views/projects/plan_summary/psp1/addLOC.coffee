@@ -26,6 +26,21 @@ Template.addSummary.helpers
 		# Used to return to the input type="checked" if its checked or not
 		return "checked" or "" if checked
 
+	estimationEditable: () ->
+		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
+		currentStage = _.findWhere projectStages, {finished: false}
+		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed		
+		return false if projectIsCompleted
+		return true if currentStage?.name == "Planeación"
+		return false
+
+	actualEditable: () ->
+		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated		
+		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed		
+		currentStage = _.findWhere projectStages, {finished: false}
+		return true if currentStage?.length == 0
+		return false if projectIsCompleted
+		return true
 
 Template.addSummary.events
 	'click .add-row': (e,t) ->

@@ -26,7 +26,6 @@ Meteor.methods
 	#This is for completing a stage or updating the time of the current stage
 	update_time_stage: (projectId, stage, finishStage=false, reset_timeStarted=false) ->
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
-
 		# If the time saved is more than 3 minutes, send a notification to the user
 		if stage.time > 180000
 			notificationData = {
@@ -216,7 +215,7 @@ Meteor.methods
 		stages = planSummary.timeEstimated
 
 		_.each stages, (stage)->
-			stage.percentage = ((stage.time*100)/totalTime).toFixed(2)
+			stage.percentage = parseInt(((stage.time*100)/totalTime))
 
 		data = {
 			"timeEstimated":stages
@@ -228,14 +227,12 @@ Meteor.methods
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
 		stages = planSummary.timeEstimated
 		lastFinishedProject = db.projects.findOne({"projectOwner": Meteor.userId(), "completed": true,"levelPSP":actualProject.levelPSP}, {sort: {createdAt: -1}})
-
 		if lastFinishedProject
 			planSummaryLastProject = db.plan_summary.findOne({"projectId":lastFinishedProject._id,"summaryOwner": Meteor.userId()})
-
 			totalTime = planSummary.total.estimatedTime
 			_.each stages,(stage)->
 				lastProjectStage = _.findWhere planSummaryLastProject.timeEstimated, {name: stage.name}
-				stage.estimated = (lastProjectStage.percentage/100) * totalTime
+				stage.estimated = parseInt((lastProjectStage.percentage/100) * totalTime)
 		else
 			_.each stages,(stage)->
 				stage.estimated = 0
@@ -243,7 +240,42 @@ Meteor.methods
 		data = {
 				"timeEstimated": stages
 			}
-
 		db.plan_summary.update({ "projectId": projectId }, {$set: data })
 
+	update_plan_summary_size_psp0: (projectId, field,value) ->
+		data = {}
+		value = parseInt(value)
+		total = 0
+		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})		
+		switch field
+			when "actualBase"
+				total = value + planSummary.total.actualAdd + planSummary.total.actualReused - planSummary.total.actualDeleted
+				data = {
+					"total.actualBase":value
+					"total.total.totalSize":total
+				}
+			when "actualAdd"
+				total = value + planSummary.total.actualBase + planSummary.total.actualReused - planSummary.total.actualDeleted
+				data = {
+					"total.actualAdd":value
+					"total.totalSize":total
+				}
+			when "actualDeleted"
+				total = planSummary.total.actualBase + planSummary.total.actualAdd + planSummary.total.actualReused - value
+				data = {
+					"total.actualDeleted":value
+					"total.totalSize":total
+				}
+			when "actualModified"
+				data = {
+					"total.actualModified":value
+				}
+			when "actualReused"
+				total = planSummary.total.actualBase + planSummary.total.actualAdd + planSummary.total.actualDeleted + value
+
+				data = {
+					"total.actualReused":value
+					"total.totalSize":total
+				}
+		db.plan_summary.update({"projectId": projectId, "summaryOwner": Meteor.userId()}, {$set: data})
 #######################################

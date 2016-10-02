@@ -20,58 +20,114 @@
 			{{#each baseData}}
 				<tr>
 					<td>
+					{{#if estimationEditable}}
 						<div class="input-box">
 							<input type="text" class="size-base-title" value="{{Estimated.name}}" data-value="Estimated.name" placeholder="Ingresar nombre...">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.name}}</span>
+						</div>
+					{{/if}}
 					</td>
+
 					<td>
+					{{#if estimationEditable}}
 						<div class="input-box">
 							<input type="text" value="{{Estimated.base}}" data-value="Estimated.base">
 						</div>
-					</td>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.base}}</span>
+						</div>
+					{{/if}}
+					</td>					
 					<td>
+					{{#if estimationEditable}}
 						<div class="input-box">
 							<input type="text" value="{{Estimated.add}}" data-value="Estimated.add">
 						</div>
-					</td>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.add}}</span>
+						</div>
+					{{/if}}
+					</td>					
 					<td>
+					{{#if estimationEditable}}
 						<div class="input-box">
 							<input type="text" value="{{Estimated.modified}}" data-value="Estimated.modified">
 						</div>
-					</td>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.modified}}</span>
+						</div>
+					{{/if}}
+					</td>					
 					<td>
+					{{#if estimationEditable}}
 						<div class="input-box base-field-last">
 							<input type="text" value="{{Estimated.deleted}}" data-value="Estimated.deleted">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.deleted}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="base-actual">
+					{{#if actualEditable}}
 						<div class="input-box">
 							<input type="text" value="{{Actual.base}}" data-value="Actual.base" placeholder="Ingresar nombre...">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Actual.base}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="base-actual">
+					{{#if actualEditable}}
 						<div class="input-box">
 							<input type="text" value="{{Actual.add}}" data-value="Actual.add">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Actual.add}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="base-actual">
+					{{#if actualEditable}}
 						<div class="input-box base-actual">
 							<input type="text" value="{{Actual.modified}}" data-value="Actual.modified">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Actual.modified}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="base-actual">
+					{{#if actualEditable}}
 						<div class="input-box base-actual-last">
 							<input type="text" value="{{Actual.deleted}}" data-value="Actual.deleted">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Actual.deleted}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="{{#unless activeDelete}} hide {{/unless}}">
 						<i class="fa fa-times base-delete-row"></i>
-					</td>
+					</td>					
 				</tr>
 			{{/each}}
 		</tbody>
 	</table>
 
+	{{#if $or estimationEditable actualEditable}}
 	<div class="base-option-bar">
 		<div class="pull-left btn primary-button base-add-row">Nueva Fila</div>
 		<div class="pull-left btn primary-button base-active-delete">
@@ -83,5 +139,6 @@
 		</div>
 		<div class="pull-right btn primary-button base-save-data">Guardar Cambios</div>
 	</div>
+	{{/if}}
 </template>
 <!-- ###################################### -->

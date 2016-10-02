@@ -1,6 +1,6 @@
 Template.historicalData.onCreated () ->
 	@historicalProjectsData = new ReactiveVar([])
-
+	
 Template.historicalData.helpers
 	gethistoricalProjects:()->
 
@@ -22,4 +22,4 @@ Template.historicalData.helpers
 		Template.instance().historicalProjectsData.set(data)
 
 	historicalProjects:()->
-		return Template.instance().historicalProjectsData.get()
+		return Template.instance().historicalProjectsData.get()		

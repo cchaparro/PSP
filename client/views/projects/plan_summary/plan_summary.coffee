@@ -6,6 +6,15 @@ Template.planSummaryTemplate.helpers
 	actualLevelPSP: () ->
 		return db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP
 
+	sizeForPSP0: ()->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+		return true if project?.levelPSP == "PSP 0" and (projectStages.length < 2 or project?.completed)
+		return false
+
 ##########################################
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->
@@ -25,9 +34,6 @@ Template.summaryTimeRow.helpers
 	planSummaryTime: (time) ->
 		return sys.planSummaryTime(time)
 
-	projectProbe: () ->
-		return db.projects.findOne({_id: FlowRouter.getParam("id")})?.projectProbe
-
 	isTotalTimeEmpty: () ->
 		return @estimatedTime > 0
 
@@ -35,11 +41,10 @@ Template.summaryTimeRow.helpers
 		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
 		currentStage = _.findWhere projectStages, {finished: false}
 		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
-
+		levelPSP = db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP
 		return false if projectIsCompleted
-		return true if currentStage?.name == "Planeación"
+		return true if currentStage?.name == "Planeación" and levelPSP == "PSP 0"
 		return false
-
 
 Template.summaryTimeRow.events
 	'blur .input-box input': (e,t) ->
@@ -53,6 +58,7 @@ Template.summaryTimeRow.events
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
 				console.warn(error)
+				sys.flashStatus("error-save-summary-estimated")
 			else
 				sys.flashStatus("save-summary-estimated")
 
@@ -86,3 +92,21 @@ Template.summaryRemovedRow.helpers
 		return final
 
 ##########################################
+
+Template.sizePSP0.helpers
+	sizeData: ()->
+		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
+	contentEditable: ()->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		return !(project?.completed)
+
+Template.sizePSP0.events
+	'blur .input-box input': (e,t) ->
+		value = $(e.target).val()
+		dataField = $(e.target).data('value')
+		Meteor.call "update_plan_summary_size_psp0", FlowRouter.getParam("id"), dataField,value, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("error-save-size-summary")
+			else
+				sys.flashStatus("save-size-summary")
