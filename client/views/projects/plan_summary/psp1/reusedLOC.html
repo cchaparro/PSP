@@ -11,20 +11,38 @@
 		<tbody>
 			{{#each reusedData}}
 				<tr>
+					{{#if estimationEditable}}
 					<td class="size-reused-title">
 						<div class="input-box">
 							<input type="text" value="{{Estimated.name}}" data-value="Estimated.name" placeholder="Ingresar nombre...">
 						</div>
 					</td>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.name}}</span>
+						</div>
+					{{/if}}
 					<td>
+					{{#if estimationEditable}}
 						<div class="input-box reused-field-last">
 							<input type="text" value="{{Estimated.size}}" data-value="Estimated.size">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Estimated.size}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="reused-actual">
+					{{#if actualEditable}}
 						<div class="input-box reused-actual-last">
 							<input type="text" value="{{Actual.size}}" data-value="Actual.size">
 						</div>
+					{{else}}
+						<div class="input-box">
+							<span>{{Actual.size}}</span>
+						</div>
+					{{/if}}
 					</td>
 					<td class="{{#unless activeDelete}} hide {{/unless}}">
 						<i class="fa fa-times reused-delete-row"></i>
@@ -34,15 +52,17 @@
 		</tbody>
 	</table>
 
-	<div class="reused-option-bar">
-		<div class="pull-left btn primary-button reused-add-row">Nueva Fila</div>
-		<div class="pull-left btn primary-button reused-active-delete">
-			{{#if activeDelete}}
-				Deshabilitar Eliminar
-			{{else}}
-				Habilitar Eliminar
-			{{/if}}
+	{{#if estimationEditable}}
+		<div class="reused-option-bar">
+			<div class="pull-left btn primary-button reused-add-row">Nueva Fila</div>
+			<div class="pull-left btn primary-button reused-active-delete">
+				{{#if activeDelete}}
+					Deshabilitar Eliminar
+				{{else}}
+					Habilitar Eliminar
+				{{/if}}
+			</div>
+			<div id="juan" class="pull-right btn primary-button reused-save-data">Guardar Cambios</div>
 		</div>
-		<div id="juan" class="pull-right btn primary-button reused-save-data">Guardar Cambios</div>
-	</div>
+	{{/if}}
 </template>

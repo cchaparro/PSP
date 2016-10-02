@@ -58,7 +58,7 @@ Template.timesBar.helpers
 		currentStage = _.first projectStages
 
 		return false if project?.completed
-		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and projectProbe == "probeD" and project?.levelPSP == "PSP 0"
+		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0 and project?.levelPSP == "PSP 0"
 		return true
 
 
@@ -94,14 +94,19 @@ Template.timesBar.events
 					console.warn(error)
 					sys.flashStatus("error-new-time-project")
 				else
-					sys.flashStatus("new-time-project")
-					sys.removeTimeMessage()
+					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
+						if error
+							console.warn(error)
+							sys.flashStatus("error-new-time-project")
+						else
+							sys.flashStatus("new-time-project")
+							sys.removeTimeMessage()
 
 
 	'click .time-submit': (e,t) ->
 		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		projectProbe = project?.projectProbe
+		projectPSP = project?.levelPSP
 
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
@@ -113,32 +118,44 @@ Template.timesBar.events
 		# This will give it a error and not let the user finish the stage "Planeación"
 		if currentStage.name == "Planeación" and @total.estimatedTime == 0
 			sys.flashStatus("summary-missing")
-
 		else
-			if @timeStarted != "false"
-				totalTime = new Date() - new Date(@timeStarted)
-			else
-				totalTime = 0
+			if currentStage.name == "Planeación" and projectPSP !="PSP 0" and (planSummary?.total?.estimatedTime == 0 or planSummary?.total?.estimatedTotalSize == 0)
+				if planSummary?.total?.estimatedTime == 0
+					sys.flashStatus("summary-missing")
+				else 
+					if planSummary?.total?.estimatedTotalSize == 0
+						sys.flashStatus("size-missing")
+			else 
+				if currentStage.name == "Postmortem" and projectPSP !="PSP 0" and  planSummary?.total?.totalSize == 0
+					sys.flashStatus("actual-size-missing")
 
-			currentStage.time = parseInt(totalTime)
-
-			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
-				if error
-					console.warn(error)
-					sys.flashStatus("error-submit-stage-project")
 				else
-					if currentStage.name == "Planeación"
-						Meteor.call "update_estimated", FlowRouter.getParam("id"), (error)->
-							if error
-								sys.flashStatus("error-submit-stage-project")
-								console.log "Error updating estimated time"
-								console.warn(error)
+					if @timeStarted != "false"
+						totalTime = new Date() - new Date(@timeStarted)
+					else
+						totalTime = 0
+
+					currentStage.time = parseInt(totalTime)
+
+					Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, true, true, (error) ->
+						if error
+							console.warn(error)
+							sys.flashStatus("error-submit-stage-project")
+						else
+							if currentStage.name == "Planeación"
+								Meteor.call "update_estimated", FlowRouter.getParam("id"), (error)->
+									if error
+										sys.flashStatus("error-submit-stage-project")
+										console.log "Error updating estimated time"
+										console.warn(error)
+									else
+										sys.flashStatus("submit-stage-project")
 							else
 								sys.flashStatus("submit-stage-project")
-					else
-						sys.flashStatus("submit-stage-project")
-
-					sys.removeTimeMessage()
+							if projectStages.length > 1
+								if projectStages[1].name =="Postmortem" and	projectPSP == "PSP 0"
+									sys.flashStatus("postmortem-psp0")
+							sys.removeTimeMessage()
 
 	'click .reopen-stage': (e,t) ->
 		openStatus = openStageStatus.get()

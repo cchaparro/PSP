@@ -53,7 +53,7 @@
 				<h3>Scripts Generales</h3>
 			</li>
 		</a>
-		<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}">
+		<a class="{{#unless actualLevelPSP}} hide {{/unless}}" href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}">
 			<li class="{{#if $eq template 'estimatingtemplate'}} project-menu-selected {{/if}}">
 				<svg viewBox="0 0 100 100"><use xlink:href="/images/Summary.svg#summaryLogo"></use></svg>
 				<h3>Estimating template</h3>
