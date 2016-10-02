@@ -75,3 +75,39 @@
 	</div>
 </template>
 <!-- ###################################### -->
+<template name="headerNavigation">
+	<div class="general-header">
+		<div class="navigation">
+			{{#each navigationState}}
+				<div class="navigation-option">
+					<a href="{{pathFor route fid=fid id=pid}}">
+						<span class="menu-state {{#if lastValue}} active {{/if}} {{#if displayMenu}} state-menu {{/if}}">{{title}} <i class="material-icons {{#unless displayMenu}} hidden {{/unless}}">keyboard_arrow_down</i></span>
+					</a>
+					<span class="{{#if lastValue}} hide {{/if}} hidden-xs">
+						<svg class="breadcrumb-arrow" viewBox="0 0 100 100"><use xlink:href="/images/ArrowBreadcrumb.svg#arrowsBreadCrumb"></use></svg>
+					</span>
+					{{#if displayMenu}}
+						<div class="navigation-menu {{#unless $.Session.get 'navigation-menu'}} hidden {{/unless}}">
+							<ul>
+								<li class="project-order {{#if $eq ordenProyectos 'date'}} active {{/if}}" data-value="date"><i class="material-icons">check</i> Reciente</li>
+								<li class="project-order {{#if $eq ordenProyectos 'title'}} active {{/if}}" data-value="title"><i class="material-icons">check</i> Titulo</li>
+								<li class="project-order {{#if $eq ordenProyectos 'color'}} active {{/if}}" data-value="color"><i class="material-icons">check</i> Color</li>
+							</ul>
+						</div>
+					{{/if}}
+				</div>
+			{{/each}}
+		</div>
+
+		{{#if $eq template "projects"}}
+			<span class="create-button create-project"><i class="material-icons">add</i> Crear Proyecto</span>
+		{{/if}}
+		{{#if $eq template "iterations"}}
+			<span class="create-button create-iteration"><i class="material-icons">add</i> Crear Iteración</span>
+		{{/if}}
+		{{#if $eq template "projectDefectLog"}}
+			<span class="create-button create-defect"><i class="material-icons">add</i> Crear Defecto</span>
+		{{/if}}
+	</div>
+</template>
+<!-- ###################################### -->

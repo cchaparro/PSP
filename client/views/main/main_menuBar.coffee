@@ -115,3 +115,107 @@ Template.userNotification.events
 			Modal.show('editTimeModal', @)
 
 ##################################################
+Template.headerNavigation.onCreated () ->
+	Session.set("navigation-menu", false)
+
+
+Template.headerNavigation.helpers
+	template: () ->
+		FlowRouter.watchPathChange()
+		return FlowRouter.current().route.name
+
+	ordenProyectos: () ->
+		user = db.users.findOne({_id: Meteor.userId()})
+		return user?.settings?.projectSort
+
+	navigationState: () ->
+		FlowRouter.watchPathChange()
+		currentState = FlowRouter.current().route.name
+
+		if currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="projects" or currentState=="estimatingtemplate"
+			initialRoute = "projects"
+			displayMenu = true
+		else
+			initialRoute = currentState
+			displayMenu = false
+
+		Routes = [{
+			title: sys.getPageName(currentState)
+			route: initialRoute
+			fid: false
+			pid: false
+			lastValue: false
+			displayMenu: displayMenu
+		}]
+
+		if FlowRouter.getParam("fid")
+			Routes.push({
+				title: "Iteraciones"
+				route: "iterations"
+				fid: FlowRouter.getParam("fid")
+				pid: false
+				lastValue: false
+				displayMenu: false
+			})
+
+		if FlowRouter.getParam("id")
+			Project = db.projects.findOne({_id: FlowRouter.getParam("id"), "projectOwner": Meteor.userId()})
+
+			if Project
+				Routes.push({
+					title: Project.title
+					route: "projectGeneral"
+					fid: FlowRouter.getParam("fid")
+					pid: FlowRouter.getParam("id")
+					lastValue: false
+					displayMenu: false
+				})
+
+		_.last(Routes).lastValue = true
+
+		return Routes
+
+
+Template.headerNavigation.events
+	'click .state-menu': (e,t) ->
+		currentState = Session.get("navigation-menu")
+		Session.set("navigation-menu", !currentState)
+
+
+	'click .create-project': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		Modal.show('createProjectModal')
+
+	'click .create-iteration': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		currentProject = db.projects.findOne({ _id: FlowRouter.getParam("fid") })
+
+		# The currentProject takes the parent projects levelPSP and gives it to the new interation
+		data = {
+			title: "Nueva iteración"
+			description: "Descripción de esta nueva iteración"
+			levelPSP: currentProject.levelPSP
+			parentId: FlowRouter.getParam("fid")
+		}
+
+		Meteor.call "create_project", data, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("error-create-iteration")
+			else
+				sys.flashStatus("create-iteration")
+
+	'click .project-order': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		value = $(e.target).closest(".project-order").data('value')
+
+		Meteor.call "change_project_sorting_settings", value, (error) ->
+			if error
+				console.warn(error)
+			else
+				sys.flashStatus("change-project-sorting")
+
+##################################################
