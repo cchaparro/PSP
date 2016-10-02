@@ -8,10 +8,6 @@ html, body {
 	font-family: 'Raleway', sans-serif;
 }
 
-//----------- Variables for this file ------------
-$width-content: 97%;
-$max-width-content: 1250px;
-
 //----------- Dynamic Master Template ------------
 .master-content {
 	width: 100%;
@@ -141,14 +137,14 @@ $max-width-content: 1250px;
 	.navigation-option {
 		position: relative;
 		display: inline-block;
-		margin-right: 5px;
+		margin-right: 10px;
+		float: left;
 
 		.menu-state {
 			color: $text;
 			float: left;
 			font-weight: 500;
 			font-size: 11pt;
-			//padding-left: 20px;
 			cursor: pointer;
 
 			i {
@@ -247,15 +243,15 @@ $max-width-content: 1250px;
 	}
 }
 
-.disabled-btn {
-	@extend .create-btn;
-	background-color: $disabled-button;
+// .disabled-btn {
+// 	@extend .create-btn;
+// 	background-color: $disabled-button;
 
-	&:hover {
-		color: $white;
-		background-color: $disabled-button;
-	}
-}
+// 	&:hover {
+// 		color: $white;
+// 		background-color: $disabled-button;
+// 	}
+// }
 
 .avatar-box {
 	height: 100%;
@@ -487,21 +483,21 @@ $max-width-content: 1250px;
 
 }
 
-.mobile-menu {
-	width: 30px;
-	height: 100%;
-	display: inline;
-	padding-right: 20px;
+// .mobile-menu {
+// 	width: 30px;
+// 	height: 100%;
+// 	display: inline;
+// 	padding-right: 20px;
 
-	svg {
-		width: 22px;
-		height: 25px;
-		fill: $primary-light-bg;
-		position: absolute;
-		left: 17.5px;
-		top: 17.5px;
-	}
-}
+// 	svg {
+// 		width: 22px;
+// 		height: 25px;
+// 		fill: $primary-light-bg;
+// 		position: absolute;
+// 		left: 17.5px;
+// 		top: 17.5px;
+// 	}
+// }
 //------------------------------------------------
 // Portrait tablets and small desktops
 @media (min-width: 768px) and (max-width: 991px) {
@@ -510,31 +506,31 @@ $max-width-content: 1250px;
 
 // Landscape phones and portrait tablets
 @media (max-width: 767px) {
-	.master-content {
-		width: 100%;
+	// .master-content {
+	// 	width: 100%;
 
-		.allprojects-container {
-			width: 100%;
-			margin: 0;
-		}
+	// 	.allprojects-container {
+	// 		width: 100%;
+	// 		margin: 0;
+	// 	}
 
-		.project-box {
-			width: 100%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-	}
+	// 	.project-box {
+	// 		width: 100%;
+	// 		margin-left: 0;
+	// 		margin-right: 0;
+	// 	}
+	// }
 
-	.create-btn {
-		right: 75px;
-	}
+	// .create-btn {
+	// 	right: 75px;
+	// }
 
-	.main-user {
-		background-color: $primary-bg;
+	// .main-user {
+	// 	background-color: $primary-bg;
 
-		.avatar {
-			border: 2px solid $primary-light-bg;
-		}
-	}
+	// 	.avatar {
+	// 		border: 2px solid $primary-light-bg;
+	// 	}
+	// }
 
 }

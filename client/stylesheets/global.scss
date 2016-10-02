@@ -315,16 +315,16 @@
 
 //----------------- Box with Menu ----------------
 .content-menu-box {
-	width: calc(100% - 60px);
-	height: calc(100% + 20px);
-	display: inline;
-	margin-top: -20px;
-	margin-right: -20px;
-	padding-top: 20px;
-	padding-right: 20px;
-	padding-left: 20px;
-	float: right;
-	overflow-y: scroll;
+	width: calc(100% - 230px - 20px);
+	height: 100%;
+	float: left;
+	// display: inline;
+	// margin-top: -20px;
+	// margin-right: -20px;
+	// padding-top: 20px;
+	// padding-right: 20px;
+	// padding-left: 20px;
+	// overflow-y: scroll;
 }
 
 

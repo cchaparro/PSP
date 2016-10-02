@@ -15,6 +15,11 @@ $popup-box-shadow:						0px 3px 10px rgba($black, .2);
 $modal-width:								500px;
 $profile-modal-width:					400px;
 
+//--------- Variables for General Grid -----------
+
+$width-content: 97%;
+$max-width-content: 1250px;
+
 //------------- SCSS for all Browsers ------------
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;
