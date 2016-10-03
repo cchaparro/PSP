@@ -17,7 +17,7 @@
 			<a href="{{pathFor 'projectScripts' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectScripts'}} active {{/if}}">
 				<li>Scripts Generales</li>
 			</a>
-			<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'estimatingtemplate'}} active {{/if}}">
+			<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'estimatingtemplate'}} active {{/if}} {{#unless actualLevelPSP}} hidden {{/unless}}">
 				<li>Estimación</li>
 			</a>
 		</ul>
