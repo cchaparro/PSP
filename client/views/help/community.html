@@ -23,7 +23,7 @@
 		<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
 			<div class="user-image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
 			<div class="user-content">
-				<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{question.title}}</h4>
+				<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{questionTitle}}</h4>
 				<span>{{questionDescription}}</span>
 				<div class="question-count">
 					<h2>{{question.amountAnswers}}</h2>

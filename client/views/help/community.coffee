@@ -1,10 +1,10 @@
 ##########################################
 Template.communityTemplate.helpers
 	generalQuestions: () ->
-		return db.questions.find({questionOwner: {$ne: Meteor.userId()}})
+		return db.questions.find({questionOwner: {$ne: Meteor.userId()}, parentId: null})
 
 	userQuestions: () ->
-		return db.questions.find({questionOwner: Meteor.userId()})
+		return db.questions.find({questionOwner: Meteor.userId(), parentId: null})
 
 ##########################################
 Template.question.helpers
@@ -16,6 +16,9 @@ Template.question.helpers
 				return "#ff8052"
 			when "psp"
 				return "#ffb427"
+
+	questionTitle: () ->
+		return sys.cutText(@question.title, 70, " ...") or "" if @question.title
 
 	questionDescription: () ->
 		return sys.cutText(@question.description, 220, " ...") or "" if @question.description
