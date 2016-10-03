@@ -25,6 +25,8 @@ sys.getPageName = (title) ->
 		return "Ayuda"
 	else if title == "community"
 		return "Comunidad"
+	else if title == "community-question"
+		return "Pregunta Comunidad"
 	else
 		return "No Disponible"
 
@@ -422,6 +424,8 @@ sys.getSessionRoute = (value) ->
 			return "Estimación"
 		when "community"
 			return "Comunidad"
+		when "community-question"
+			return "Pregunta Comunidad"
 		when "help-contact"
 			return "Contacto"
 

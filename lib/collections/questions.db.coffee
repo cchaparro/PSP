@@ -5,6 +5,7 @@ db.questions = new Meteor.Collection "Questions"
 schemas.questions = new SimpleSchema
 	"title":
 		type: String
+		optional: true
 		label: "Title of the question"
 
 	"description":

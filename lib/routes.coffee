@@ -195,6 +195,15 @@ Help.route '/community',
 	subscriptions: (params, queryParams) ->
 		@register 'helpView', Meteor.subscribe "helpView"
 
+Help.route '/community/:question',
+	name: 'community-question'
+	action: ->
+		Session.set "route", "community"
+		BlazeLayout.render 'masterLayout', main: 'questionTemplate'
+
+	subscriptions: (params, queryParams) ->
+		@register 'helpView', Meteor.subscribe "helpView"
+
 Help.route '/contact',
 	name: 'help-contact'
 	action: ->

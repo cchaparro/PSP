@@ -19,16 +19,76 @@
 </template>
 <!-- ###################################### -->
 <template name="question">
-	<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
-		<div class="user-image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
-		<div class="user-content">
-			<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{question.title}}</h4>
-			<span>{{question.description}}</span>
-			<div class="question-count">
-				<h2>{{question.amountAnswers}}</h2>
-				<span>Respuestas</span>
+	<a href="{{pathFor 'community-question' question=question._id}}">
+		<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
+			<div class="user-image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
+			<div class="user-content">
+				<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{question.title}}</h4>
+				<span>{{questionDescription}}</span>
+				<div class="question-count">
+					<h2>{{question.amountAnswers}}</h2>
+					<span>Respuestas</span>
+				</div>
 			</div>
+		</div>
+	</a>
+</template>
+<!-- ###################################### -->
+<template name="questionTemplate">
+	{{>headerNavigation}}
+	<div class="box-container margin-bottom">
+		<div class="community-menu">
+			<div class="title">
+				<span>Recientes <i class="material-icons">keyboard_arrow_down</i></span>
+			</div>
+		</div>
+		<div class="community-content">
+			{{#with questionView}}
+				{{>generalQuestion}}
+			{{/with}}
+			{{#each questionAnswers}}
+				{{>questionAnswer answer=this}}
+			{{/each}}
+			{{>addQuestionAnswer}}
 		</div>
 	</div>
 </template>
 <!-- ###################################### -->
+<template name="generalQuestion">
+	<div class="general-question">
+		<div class="image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
+		<div class="content">
+			<span class="information"><strong>{{momentToNow createdAt}}</strong> de <strong>{{userName questionOwner}}</strong></span>
+			<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{title}}</h4>
+			<span class="description">{{description}}</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="questionAnswer">
+	<div class="question-answer">
+		<div class="image" style="background-image: url('{{getUserAvatarUrl answer.questionOwner}}');"></div>
+		<div class="content">
+			<span class="information"><strong>{{momentToNow answer.createdAt}}</strong> de <strong class="name">{{userName answer.questionOwner}}</strong></span>
+			<h4>{{answer.title}}</h4>
+			<span class="description">{{answer.description}}</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="addQuestionAnswer">
+	<div class="general-question">
+		<div class="image" style="background-image: url('{{getUserAvatarUrl $.Meteor.userId}}');"></div>
+		<div class="content">
+			<div class="textarea-box">
+				<textarea class="answer-text" placeholder="Ingresar respuesta aqui..."></textarea>
+			</div>
+			<span class="new-button add-answer">Crear Respuesta</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+
+
+
+

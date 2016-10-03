@@ -159,6 +159,145 @@
 	}
 }
 
+.general-question {
+	min-height: 100px;
+	width: 100%;
+	position: relative;
+	background-color: $white;
+	border-bottom: 1px solid $border;
+	padding: 20px;
+	cursor: pointer;
+	@include clearfix;
+
+	.image {
+		width: 55px;
+		height: 55px;
+		display: inline-block;
+		margin-left: 5px;
+		border-radius: 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		border: 2px solid $text;
+		cursor: pointer;
+		padding: 15px;
+	}
+
+	.content {
+		display: inline-block;
+		width: calc(100% - 80px);
+		padding-right: 100px;
+		float: right;
+		top: 40px;
+		left: 80px;
+
+		.information {
+			font-weight: 400;
+			padding-left: 15px;
+
+			strong {
+				font-weight: 500;
+			}
+		}
+
+		.group {
+			width: 10px;
+			height: 10px;
+			float: left;
+			display: inline-block;
+			margin-top: 4px;
+			margin-right: 5px;
+			@include border-radius($circle-border-radius);
+		}
+
+		h4 {
+			font-weight: 600;
+			color: $text-dark;
+			font-size: 15pt;
+			cursor: pointer;
+			margin-top: 0;
+		}
+
+		span {
+			color: $text;
+			font-weight: 400;
+			cursor: pointer;
+		}
+
+		.description {
+			padding-left: 15px;
+			display: block;
+		}
+	}
+}
+
+.question-answer {
+	min-height: 100px;
+	width: 100%;
+	position: relative;
+	background-color: #fafafa;
+	border-bottom: 1px solid $border;
+	padding: 20px;
+	cursor: pointer;
+	@include clearfix;
+
+	.image {
+		width: 55px;
+		height: 55px;
+		display: inline-block;
+		margin-left: 5px;
+		border-radius: 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		border: 2px solid $text;
+		cursor: pointer;
+		padding: 15px;
+	}
+
+	.content {
+		display: inline-block;
+		width: calc(100% - 80px);
+		padding-right: 100px;
+		float: right;
+		top: 40px;
+		left: 80px;
+
+		.information {
+			font-weight: 400;
+			padding-left: 15px;
+
+			strong {
+				font-weight: 500;
+			}
+
+			.name {
+				color: $text-dark;
+				font-weight: 600;
+			}
+		}
+
+		h4 {
+			font-weight: 600;
+			color: $text-dark;
+			font-size: 15pt;
+			cursor: pointer;
+			margin-top: 0;
+		}
+
+		span {
+			color: $text;
+			font-weight: 400;
+			cursor: pointer;
+		}
+
+		.description {
+			padding-left: 15px;
+			display: block;
+		}
+	}
+}
+
 //------------------------------------------------
 
 // Portrait tablets and small desktops

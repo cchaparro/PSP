@@ -80,7 +80,7 @@
 		<div class="navigation">
 			{{#each navigationState}}
 				<div class="navigation-option">
-					<a href="{{pathFor route fid=fid id=pid}}">
+					<a href="{{pathFor route fid=fid id=pid question=question}}">
 						<span class="menu-state {{#if lastValue}} active {{/if}} {{#if displayMenu}} state-menu {{/if}}">{{title}} <i class="material-icons {{#unless displayMenu}} hidden {{/unless}}">keyboard_arrow_down</i></span>
 					</a>
 					<span class="{{#if lastValue}} hide {{/if}} hidden-xs">

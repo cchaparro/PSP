@@ -1,7 +1,7 @@
 ##########################################
 Meteor.methods
-	create_question: (data) ->
-		syssrv.createQuestion(data)
+	create_question: (data, isAnswer=false) ->
+		syssrv.createQuestion(data, isAnswer)
 
 	delete_question: (projectId, delete_iterations=false) ->
 		# if delete_iterations

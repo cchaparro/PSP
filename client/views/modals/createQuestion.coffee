@@ -46,7 +46,7 @@ Template.createQuestion.events
 			title: title
 			description: description
 			category: questionCategory
-			parendId: null
+			parentId: null
 			amountAnswers: 0
 			completed: false
 		}

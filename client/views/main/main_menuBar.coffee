@@ -139,7 +139,7 @@ Template.headerNavigation.helpers
 
 		if currentState == "projects" or currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="estimatingtemplate"
 			initialRoute = "projects"
-		else if currentState == "community"
+		else if currentState == "community" or currentState == "community-question"
 			initialRoute = "help"
 		else
 			initialRoute = currentState
@@ -149,6 +149,7 @@ Template.headerNavigation.helpers
 			route: initialRoute
 			fid: false
 			pid: false
+			question: false
 			lastValue: false
 			displayMenu: displayMenu
 		}]
@@ -159,6 +160,7 @@ Template.headerNavigation.helpers
 				route: "iterations"
 				fid: FlowRouter.getParam("fid")
 				pid: false
+				question: false
 				lastValue: false
 				displayMenu: false
 			})
@@ -182,6 +184,28 @@ Template.headerNavigation.helpers
 				route: "community"
 				fid: false
 				pid: false
+				question: false
+				lastValue: true
+				displayMenu: false
+			})
+
+		if FlowRouter.getParam("question")
+			Routes.push({
+				title: "Comunidad"
+				route: "community"
+				fid: false
+				pid: false
+				question: false
+				lastValue: false
+				displayMenu: false
+			})
+
+			Routes.push({
+				title: "Pregunta en Comunidad"
+				route: "community-question"
+				fid: FlowRouter.getParam("fid")
+				pid: FlowRouter.getParam("id")
+				question: FlowRouter.getParam("question")
 				lastValue: true
 				displayMenu: false
 			})
