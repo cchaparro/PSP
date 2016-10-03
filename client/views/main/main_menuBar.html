@@ -2,7 +2,7 @@
 <template name="main_menuBar">
 	<div class="main-menu">
 		<div class="main-menu-content">
-			<div>
+			<div class="hidden-xs">
 				<a href="{{pathFor 'projects'}}"><svg class="project-logo" viewBox="0 0 100 100"><use xlink:href="/static/Logo.svg#Logo"></use></svg></a>
 				<div class="main-menu-options">
 					<a href="{{pathFor 'projects'}}" class="{{#if isProjectView}} active {{/if}}"><span>Proyectos</span></a>
@@ -11,6 +11,16 @@
 					<a href="{{pathFor 'help'}}" class="{{#if $eq template 'help'}} active {{/if}}"><span>Ayuda</span></a>
 				</div>
 			</div>
+
+			<i class="material-icons visible-xs mobile-menu">menu</i>
+			<!--<div class="mobile-menu-options">
+				<ul>
+					<li>Proyectos</li>
+					<li>Resumen</li>
+					<li>Configuración</li>
+					<li>Ayuda</li>
+				</ul>
+			</div>-->
 
 			<div class="main-menu-user">
 				<div class="notification-option">

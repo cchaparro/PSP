@@ -92,6 +92,18 @@ html, body {
 			}
 		}
 
+		.mobile-menu {
+			position: absolute;
+			color: $primary-light-bg;
+			font-size: 23pt;
+			margin-top: 17.5px;
+			cursor: pointer;
+
+			&:hover {
+				color: $white;
+			}
+		}
+
 		.main-menu-user {
 			float: right;
 			height: 100%;

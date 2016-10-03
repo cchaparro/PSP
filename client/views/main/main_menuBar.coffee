@@ -55,6 +55,11 @@ Template.main_menuBar.events
 		else
 			Session.set("display-notification-box", true)
 
+	'click .mobile-menu': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		console.log "Im mobile menu"
+
 ##################################################
 Template.userMenuDropdown.events
 	'click .logout': (e,t) ->
