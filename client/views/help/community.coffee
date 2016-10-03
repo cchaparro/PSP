@@ -33,6 +33,20 @@ Template.questionTemplate.helpers
 		questionId = FlowRouter.getParam("question")
 		return db.questions.find({parentId: questionId})
 
+	isFinished:() ->
+		questionId = FlowRouter.getParam("question")
+		return db.questions.findOne({_id: questionId})?.completed
+
+
+Template.questionTemplate.events
+	'click .close-question': (e,t) ->
+		questionId = FlowRouter.getParam("question")
+		Meteor.call "cumplete_question", questionId, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("error-finish-question")
+			else
+				sys.flashStatus("finish-question")
 
 ##########################################
 Template.generalQuestion.helpers

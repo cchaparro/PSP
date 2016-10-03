@@ -69,6 +69,10 @@ Template.userMenuDropdown.events
 		Modal.show('editProfileModal')
 
 ##################################################
+Template.userNotification.onCreated () ->
+	Meteor.subscribe "helpView"
+
+
 Template.userNotification.helpers
 	notificationSeen: () ->
 		userNotifications = notSeenNotifications.get()
@@ -85,7 +89,7 @@ Template.userNotification.helpers
 	badgeStatus: () ->
 		type = @type
 		switch type
-			when "new-user", "password-reset"
+			when "new-user", "password-reset", "question-response"
 				return "success"
 			when 'time-registered'
 				return "warning"
@@ -109,6 +113,11 @@ Template.userNotification.events
 	'click .notification-item': (e,t) ->
 		e.preventDefault()
 		e.stopPropagation()
+
+		if @type == 'question-response'
+			questionId = @data.questionId
+			FlowRouter.go("community-question", {"question": questionId})
+			Session.set("display-notification-box", false)
 
 		unless @data?.reverted or @data?.disabled or @type != 'time-registered'
 			Session.set("display-notification-box", false)

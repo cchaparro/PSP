@@ -21,7 +21,7 @@ Template.registerHelper "getUserAvatarUrl", (userId=false) ->
 Template.registerHelper "userName", (userId) ->
 	user = db.users.findOne({_id: userId})?.profile
 
-	return user.fname + " " + user.lname
+	return user?.fname + " " + user?.lname
 
 
 # This is a helper to show the data that passes through

@@ -149,12 +149,23 @@
 			font-size: 25pt;
 			margin-bottom: 0;
 			margin-top: 0;
+
+			i {
+				font-weight: 600;
+				margin-right: -5px;
+			}
 		}
 
 		span {
 			color: $text;
 			font-size: 11pt;
 			font-weight: 400;
+		}
+
+		&.completed {
+			h2, span {
+				color: $green;
+			}
 		}
 	}
 }

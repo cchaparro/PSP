@@ -243,6 +243,10 @@ html, body {
 	&:hover {
 		color: $green-dark;
 	}
+
+	&.closed:hover {
+		color: $green;
+	}
 }
 
 // .disabled-btn {

@@ -25,8 +25,10 @@
 			<div class="user-content">
 				<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{questionTitle}}</h4>
 				<span>{{questionDescription}}</span>
-				<div class="question-count">
-					<h2>{{question.amountAnswers}}</h2>
+				<div class="question-count {{#if question.completed}} completed {{/if}}">
+					<h2>
+						<i class="material-icons {{#unless question.completed}} hidden {{/unless}}">check</i>
+						{{question.amountAnswers}}</h2>
 					<span>Respuestas</span>
 				</div>
 			</div>
@@ -39,8 +41,13 @@
 	<div class="box-container margin-bottom">
 		<div class="community-menu">
 			<div class="title">
-				<span>Recientes <i class="material-icons">keyboard_arrow_down</i></span>
+				<span>Pregunta</span>
 			</div>
+			{{#if isFinished}}
+				<span class="create-button closed">Pregunta cerrada</span>
+			{{else}}
+				<span class="create-button close-question"><i class="material-icons">done_all</i>Cerrar Pregunta</span>
+			{{/if}}
 		</div>
 		<div class="community-content">
 			{{#with questionView}}
@@ -49,7 +56,9 @@
 			{{#each questionAnswers}}
 				{{>questionAnswer answer=this}}
 			{{/each}}
-			{{>addQuestionAnswer}}
+			{{#unless isFinished}}
+				{{>addQuestionAnswer}}
+			{{/unless}}
 		</div>
 	</div>
 </template>

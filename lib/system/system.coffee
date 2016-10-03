@@ -360,6 +360,17 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido crear la nueva pregunta."
 			css = "danger"
 
+		#Help template view
+		when "finish-question"
+			title = "Exito"
+			subject = "La pregunta se ha cerrado correctamente."
+			css = "success"
+
+		when "error-finish-question"
+			title = "Error"
+			subject = "No hemos podido cerrar la pregunta."
+			css = "danger"
+
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 3800
 
