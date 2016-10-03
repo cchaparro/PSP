@@ -323,5 +323,87 @@
 			width: 100%;
 		}
 	}
+
+	.question {
+		padding-left: 0;
+		padding-right: 0;
+
+		.user-image {
+			width: 35px;
+			height: 35px;
+			margin-left: 10px;
+		}
+
+		.user-content {
+			width: calc(100% - 55px);
+			padding-right: 10px;
+			padding-top: 10px;
+		}
+
+		.question-count {
+			position: absolute;
+			right: 15px;
+			top: 10px;
+			text-align: center;
+
+			h2 {
+				font-size: 15pt;
+				display: inline-block;
+
+				i {
+					font-size: 15pt;
+				}
+			}
+		}
+	}
+
+	.question-answer {
+		padding-left: 0;
+		padding-right: 0;
+
+		.image {
+			width: 35px;
+			height: 35px;
+			margin-left: 10px;
+		}
+
+		.content {
+			width: calc(100% - 45px);
+			padding-right: 10px;
+
+			.information {
+				display: block;
+			}
+		}
+	}
+
+	.general-question {
+		padding-left: 0;
+		padding-right: 0;
+
+		.image {
+			width: 35px;
+			height: 35px;
+			margin-left: 10px;
+		}
+
+		.content {
+			width: calc(100% - 45px);
+			padding-right: 10px;
+			word-wrap: break-word;
+
+			h4 {
+				padding-left: 15px;
+			}
+
+			.textarea-box {
+				padding-left: 10px;
+			}
+
+			.new-button {
+				margin-left: 10px;
+			}
+		}
+	}
 }
 //------------------------------------------------
