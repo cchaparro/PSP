@@ -56,7 +56,7 @@
 <!-- ###################################### -->
 <template name="generalQuestion">
 	<div class="general-question">
-		<div class="image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
+		<div class="image" style="background-image: url('{{getUserAvatarUrl questionOwner}}');"></div>
 		<div class="content">
 			<span class="information"><strong>{{momentToNow createdAt}}</strong> de <strong>{{userName questionOwner}}</strong></span>
 			<h4> <span class="group" style="background-color: {{categoryColor}}"></span>{{title}}</h4>
