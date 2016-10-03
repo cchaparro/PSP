@@ -1,7 +1,7 @@
 ##########################################
 db.Images = new (Meteor.Files)(
 	collectionName: 'Images'
-	storagePath: '~/',
+	storagePath: '~/data',
 	allowClientCode: false
 	onBeforeUpload: (file) ->
 		# Allow upload files under 5MB, and only in png/jpg/jpeg formats
