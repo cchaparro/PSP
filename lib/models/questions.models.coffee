@@ -12,7 +12,7 @@ if Meteor.isServer
 			unless answeredQuestion?.questionOwner == Meteor.userId()
 				name = "#{Meteor.user().profile.fname} #{Meteor.user().profile.lname}" 
 				notification = {
-					title: "Probando aqui funciona bien todo esto y deberia demostrar"
+					title: answeredQuestion.title
 					sender: Meteor.userId()
 					senderName: name
 					questionId: data.parentId
