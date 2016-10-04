@@ -141,6 +141,65 @@ html, body {
 }
 
 //---------------- Main User Menu ----------------
+.mobile-natigation {
+	display: inline-block;
+	float: left;
+	position: relative;
+
+	button {
+		outline: none;
+		line-height: 50px;
+		font-weight: 500;
+		padding: 0;
+		color: $text-dark;
+
+		i {
+			float: right;
+			line-height: 55px;
+			color: $text;
+		}
+	}
+
+	.dropdown-menu {
+		top: 55px;
+		left: -20px;
+		border: 1px solid $border;
+
+		a {
+			text-decoration: none;
+		}
+
+		li {
+			padding: 10px 10px 10px 10px;
+			line-height: 10px;
+			color: $text-dark;
+			cursor: pointer;
+
+			i {
+				font-size: 11pt;
+				font-weight: 600;
+				color: $white;
+			}
+
+			&:hover i {
+				color: $text;
+			}
+
+			&.active {
+				color: $green;
+				font-weight: 600;
+
+				i {
+					color: $green;
+				}
+
+				&:hover {
+					color: $green;
+				}
+			}
+		}
+	}
+}
 .navigation {
 	height: 100%;
 	position: relative;
