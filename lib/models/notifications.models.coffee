@@ -33,7 +33,7 @@ if Meteor.isServer
 				extraData = {
 					questionId: data.questionId
 				}
-				subject = "#{data.senderName} respondio a la pregunta que publicaste."
+				subject = "#{data.senderName} respondió a la pregunta que publicaste."
 
 			when 'time-registered'
 				title = {
