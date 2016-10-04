@@ -43,10 +43,12 @@
 			<div class="title">
 				<span>Pregunta</span>
 			</div>
-			{{#if isFinished}}
-				<span class="create-button closed">Pregunta cerrada</span>
-			{{else}}
-				<span class="create-button close-question"><i class="material-icons">done_all</i>Cerrar Pregunta</span>
+			{{#if isOwner}}
+				{{#if isFinished}}
+					<span class="create-button closed">Pregunta cerrada</span>
+				{{else}}
+					<span class="create-button close-question"><i class="material-icons">done_all</i>Cerrar Pregunta</span>
+				{{/if}}
 			{{/if}}
 		</div>
 		<div class="community-content">

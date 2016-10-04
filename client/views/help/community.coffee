@@ -37,6 +37,10 @@ Template.questionTemplate.helpers
 		questionId = FlowRouter.getParam("question")
 		return db.questions.findOne({_id: questionId})?.completed
 
+	isOwner: () ->
+		questionId = FlowRouter.getParam("question")
+		return db.questions.findOne({_id: questionId})?.questionOwner == Meteor.userId()
+
 
 Template.questionTemplate.events
 	'click .close-question': (e,t) ->
