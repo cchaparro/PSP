@@ -90,10 +90,10 @@
 <!-- ###################################### -->
 <template name="headerNavigation">
 	<div class="general-header">
-		<div class="mobile-natigation visible-xs">
-			<button type="button" data-toggle="dropdown">
+		<div class="mobile-natigation visible-xs visible-sm">
+			<span data-toggle="dropdown">
 				Current <i class="material-icons">keyboard_arrow_down</i>
-				</button>
+				</span>
 			<ul class="dropdown-menu defect-type-dropdown">
 				{{#each navigationState}}
 					<a href="{{pathFor route fid=fid id=pid question=question}}">
@@ -105,7 +105,7 @@
 				{{/each}}
 			</ul>
 		</div>
-		<div class="navigation hidden-xs">
+		<div class="navigation hidden-xs hidden-sm">
 			{{#each navigationState}}
 				<div class="navigation-option">
 					<a href="{{pathFor route fid=fid id=pid question=question}}">

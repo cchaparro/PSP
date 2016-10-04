@@ -1098,126 +1098,26 @@
 }
 
 //--------- Mobile View for Defect-box ----------
-@media (min-width: 1820px) and (max-width: 3000px) {
-	.content-menu-box {
-
-		.defect-box {
-			width: calc(14.28% - 17.5px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(7n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(7n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1535px) and (max-width: 1819px) {
-	.content-menu-box {
-
-		.defect-box {
-			width: calc(16.667% - 17px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(6n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(6n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1351px) and (max-width: 1534px) {
-	.content-menu-box {
-		.defect-box {
-			width: calc(20% - 16px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(5n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(5n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1150px) and (max-width: 1350px) {
-	.content-menu-box {
-		max-width: 1205px;
-
-		.defect-box {
-			width: calc(25% - 15px)!important;
-			margin-left: 0;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(4n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(4n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 850px) and (max-width: 1149px){
+@media (min-width: 1001px){
 	.content-menu-box {
 		.defect-box {
 			width: calc(33.333% - 14px)!important;
-			margin-left: 0;
 			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
+			margin-left: 0;
 
 			&:nth-child(3n) {
-				margin-right: 0;
+				margin-left: 20px;
 			}
 
 			&:nth-child(3n+1) {
-				margin-left: 0;
+				margin-left: 20px;
 			}
 		}
 	}
 }
 
-@media (min-width: 481px) and (max-width: 849px) {
+@media (min-width: 481px) and (max-width: 1000px) {
 	.content-menu-box {
-		//max-width: 723px;
-
 		.defect-box {
 			width: calc(50% - 10px)!important;
 
@@ -1226,8 +1126,8 @@
 			}
 
 			&:nth-child(2n) {
-				margin-left: 20px;
-				margin-right: 0;
+				margin-left: 0px;
+				margin-right: 20px;
 			}
 		}
 	}
@@ -1235,8 +1135,6 @@
 
 @media (max-width: 480px) {
 	.content-menu-box {
-		//max-width: 445px;
-
 		.defect-box {
 			width: 100%;
 			margin-left: 0;

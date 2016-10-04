@@ -146,12 +146,13 @@ html, body {
 	float: left;
 	position: relative;
 
-	button {
+	span {
 		outline: none;
 		line-height: 50px;
 		font-weight: 500;
 		padding: 0;
 		color: $text-dark;
+		cursor: pointer;
 
 		i {
 			float: right;

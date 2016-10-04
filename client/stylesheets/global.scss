@@ -343,6 +343,7 @@
 	height: 100%;
 	float: left;
 	overflow-y: scroll;
+	overflow-x: hidden;
 
 	&::-webkit-scrollbar {
 		width: 0px;
