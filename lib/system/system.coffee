@@ -23,6 +23,10 @@ sys.getPageName = (title) ->
 		return "Ajustes"
 	else if title == "help"
 		return "Ayuda"
+	else if title == "community"
+		return "Comunidad"
+	else if title == "community-question"
+		return "Pregunta Comunidad"
 	else
 		return "No Disponible"
 
@@ -346,6 +350,27 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido actualizar el tamaño estimado."
 			css = "danger"
 
+		when "create-question"
+			title = "Creado"
+			subject = "La pregunta se ha creado correctamente."
+			css = "success"
+
+		when "error-create-question"
+			title = "Error"
+			subject = "No hemos podido crear la nueva pregunta."
+			css = "danger"
+
+		#Help template view
+		when "finish-question"
+			title = "Exito"
+			subject = "La pregunta se ha cerrado correctamente."
+			css = "success"
+
+		when "error-finish-question"
+			title = "Error"
+			subject = "No hemos podido cerrar la pregunta."
+			css = "danger"
+
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
 	window.setTimeout sys.removeMessage, 3800
 
@@ -408,6 +433,12 @@ sys.getSessionRoute = (value) ->
 			return "Ayuda"
 		when "estimatingTemplate"
 			return "Estimación"
+		when "community"
+			return "Comunidad"
+		when "community-question"
+			return "Pregunta Comunidad"
+		when "help-contact"
+			return "Contacto"
 
 ##########################################
 ########- Project Color Selector -########

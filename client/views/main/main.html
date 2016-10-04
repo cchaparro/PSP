@@ -4,20 +4,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="icon" type="image/png" href="/favicon/favicon.png" sizes="32x32" />
   <link href="/favicon/apple-favicon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <!-- ###################################### -->
 <template name="masterLayout">
 	{{> main_menuBar}}
 	{{> main_userBar}}
 	<div class="master-content">
-		{{#if menu}}
-			{{> Template.dynamic template=menu}}
-			<div class="content-menu-box">
+		<div class="master-content-data">
+			{{#if menu}}
+				{{> Template.dynamic template=menu}}
+				<div class="content-menu-box">
+					{{> Template.dynamic template=main}}
+				</div>
+			{{else}}
 				{{> Template.dynamic template=main}}
-			</div>
-		{{else}}
-			{{> Template.dynamic template=main}}
-		{{/if}}
+			{{/if}}
+		</div>
 	</div>
 	<div class="status-box">
 		{{#unless $.Meteor.status.connected}}

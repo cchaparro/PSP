@@ -8,7 +8,7 @@ Meteor.methods
 				title: title
 				description: "Esta es la descripción para un proyecto que nadie va a leer. Solo son datos fantasmas y nadie quiere ver lo que esto dice."
 				levelPSP: "PSP 0"
-				parendId: null
+				parentId: null
 			}
 			syssrv.createProject(data)
 
@@ -19,7 +19,7 @@ Meteor.methods
 				title: title
 				description: "Estos proyectos usan personal software process 1. Aqui voy a probar nuevos datos en la plataforma."
 				levelPSP: "PSP 1"
-				parendId: null
+				parentId: null
 			}
 			syssrv.createProject(data)
 

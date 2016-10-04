@@ -23,6 +23,18 @@ if Meteor.isServer
 				}
 				subject = "Realizaste un cambio en la contraseña utilizada para iniciar sesión."
 
+			when 'question-response'
+				title = {
+					sender: sender
+					main: "respondió a tu pregunta"
+					secondary: sys.cutText(data.title, 30, " ...")
+				}
+
+				extraData = {
+					questionId: data.questionId
+				}
+				subject = "#{data.senderName} respondio a la pregunta que publicaste."
+
 			when 'time-registered'
 				title = {
 					sender: sender

@@ -174,10 +174,40 @@ FlowRouter.route '/overview',
 		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
 
 
-FlowRouter.route '/help',
+
+
+Help = FlowRouter.group(
+	prefix: '/help'
+)
+
+Help.route '/',
 	name: 'help'
 	action: ->
 		Session.set "route", "help"
 		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
+
+Help.route '/community',
+	name: 'community'
+	action: ->
+		Session.set "route", "community"
+		BlazeLayout.render 'masterLayout', main: 'communityTemplate'
+
+	subscriptions: (params, queryParams) ->
+		@register 'helpView', Meteor.subscribe "helpView"
+
+Help.route '/community/:question',
+	name: 'community-question'
+	action: ->
+		Session.set "route", "community"
+		BlazeLayout.render 'masterLayout', main: 'questionTemplate'
+
+	subscriptions: (params, queryParams) ->
+		@register 'helpView', Meteor.subscribe "helpView"
+
+Help.route '/contact',
+	name: 'help-contact'
+	action: ->
+		Session.set "route", "help-contact"
+		BlazeLayout.render 'masterLayout', main: 'contactTemplate'
 
 ##########################################

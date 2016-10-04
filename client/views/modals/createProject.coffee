@@ -57,7 +57,7 @@ Template.createProject.events
 			title: title
 			description: description
 			levelPSP: levelPSP
-			parendId: null
+			parentId: null
 			color: t.selectedColor.get()
 		}
 

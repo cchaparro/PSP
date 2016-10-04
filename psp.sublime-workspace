@@ -4,24 +4,80 @@
 		"selected_items":
 		[
 			[
+				"margin",
+				"margin-top"
+			],
+			[
 				"padd",
 				"padding-left"
 			],
 			[
+				"font",
+				"font-size"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"border-bott",
+				"border-bottom-left-radius"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"def",
+				"default-border-radius	 projects.scss"
+			],
+			[
 				"in",
-				"inline"
+				"inline-block"
+			],
+			[
+				"margn",
+				"margin-right"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"even",
+				"events	Meteor: Template.myTemplate.events(eventMap)"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"avatar",
+				"avatar-box	 main.scss"
+			],
+			[
+				"blue",
+				"blue-dark	 main.scss"
+			],
+			[
+				"prima",
+				"primary-bg	 userAccess.scss"
+			],
+			[
+				"eve",
+				"events	Meteor: Template.myTemplate.events(eventMap)"
 			],
 			[
 				"plan",
 				"planSummary"
-			],
-			[
-				"font",
-				"font-weight"
-			],
-			[
-				"margin",
-				"margin-top"
 			],
 			[
 				"text",
@@ -30,10 +86,6 @@
 			[
 				"de",
 				"default-border-radius	 main.scss"
-			],
-			[
-				"border",
-				"border-bottom"
 			],
 			[
 				"edit-tm",
@@ -64,14 +116,6 @@
 				"projects"
 			],
 			[
-				"tex",
-				"text-dark	 settings.scss"
-			],
-			[
-				"pad",
-				"padding-bottom"
-			],
-			[
 				"proje",
 				"projectId"
 			],
@@ -88,20 +132,12 @@
 				"defect-log-time	 defect.scss"
 			],
 			[
-				"bord",
-				"border-bottom"
-			],
-			[
 				"marg",
 				"margin-bottom"
 			],
 			[
 				"centere",
 				"centered-outer	 global.scss"
-			],
-			[
-				"inl",
-				"inline-block"
 			],
 			[
 				"file",
@@ -134,10 +170,6 @@
 			[
 				"prj-info",
 				"prj-info-title	 projects.scss"
-			],
-			[
-				"blue",
-				"blue-dark	 userAccess.scss"
 			],
 			[
 				"max",
@@ -174,10 +206,6 @@
 			[
 				"curren",
 				"currentStage"
-			],
-			[
-				"prima",
-				"primary-dark-bg	 main.scss"
 			],
 			[
 				"prim",
@@ -242,10 +270,6 @@
 			[
 				"margi",
 				"margin"
-			],
-			[
-				"border-bott",
-				"border-bottom"
 			],
 			[
 				"default-",
@@ -352,34 +376,26 @@
 	"buffers":
 	[
 		{
-			"file": "lib/system/system.coffee",
+			"file": "client/views/main/main_menuBar.html",
 			"settings":
 			{
-				"buffer_size": 13251,
+				"buffer_size": 5370,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/views/main/main.html",
+			"file": "client/stylesheets/main.scss",
 			"settings":
 			{
-				"buffer_size": 2070,
+				"buffer_size": 8890,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "lib/main.coffee",
+			"file": "client/stylesheets/projects.scss",
 			"settings":
 			{
-				"buffer_size": 785,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/stylesheets/_variables.scss",
-			"settings":
-			{
-				"buffer_size": 1807,
+				"buffer_size": 18793,
 				"line_ending": "Unix"
 			}
 		}
@@ -392,7 +408,7 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "",
+		"last_filter": "rein",
 		"selected_items":
 		[
 			[
@@ -444,7 +460,7 @@
 				"Package Control: Remove Package"
 			]
 		],
-		"width": 503.0
+		"width": 692.0
 	},
 	"console":
 	{
@@ -469,62 +485,92 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models",
-		"/Users/Juanpmd/Documents/PSP-Connect/server",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/restrictions"
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects"
 	],
 	"file_history":
 	[
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information/projectInformation.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information/projectInformation.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/plan_summary.methods.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/settings.json",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/main.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks/user.hooks.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/questions.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/help.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/questions.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/defect_types.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/questions.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/help.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/projects.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/projects.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/static_values.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createQuestion.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/help_menu.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createQuestion.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/projects.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/global.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/contact.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_variables.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_defaults.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/settings_menu.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/scripts.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information/projectInformation.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/main.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/public/static/Logo.svg",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/userAccess.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/forgot.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/forgot.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/plan_summary.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/plan_summary.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/notifications.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/plan_summary.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/settings.json",
+		"/Users/Juanpmd/Documents/PSP-Connect/psp.sublime-project",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information/projectInformation.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks/user.hooks.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/baseLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/addLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/reusedLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editProfile.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/modal.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_defaults.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/notifications.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/users.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/defects.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/projects.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/addLOC.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/settings.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/help_menu.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/help.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/settings_menu.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/user.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/charts/removedCharts.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/overview.html",
@@ -535,16 +581,11 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/charts/injectedDefectsChart.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/charts/stageTimeChart.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/overview.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/projects.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editProfile.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/helpForum.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/helpMail.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/helpFAQ.svg",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/global.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/developmentScript.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/scripts.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/scripts.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/planningScript.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/postMortemScript.html",
@@ -555,59 +596,29 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP0/developmentScript.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/script.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/processScript.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/projects.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Color.svg",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/static_values.methods.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/baseLOC.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/sizeSummary.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/sizeSummary.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/plan_summary.models.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/plan_summary.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/reusedLOC.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/psp1.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects_psp1.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/timeStop.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/timePlay.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/defect_type_settings/defect_types_settings.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_variables.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/sizeParts/addParts.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/summary_psp1.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1_ps.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1summary.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/account_settings/account_settings.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/defects.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Upload.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/psp.sublime-project",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/account_settings/account_settings.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/uploader/uploader.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/restrictions/files.restrict.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/uploader/uploader.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/.meteor/packages",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/userAccess.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/defect_types.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/defects.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/main.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/main.js",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/global_events.coffee",
-		"/Users/Juanpmd/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/Juanpmd/Documents/PSP-Connect/psp.sublime-workspace",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/defect_type_settings/defect_types_settings.coffee",
-		"/Users/Juanpmd/.bash_profile",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/projects.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projectsView.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projectsView.coffee"
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/uploader/uploader.coffee"
 	],
 	"find":
 	{
@@ -626,6 +637,79 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"userName",
+			"\"Aqui\"",
+			"Aqui",
+			"{$exists: false}",
+			"syssrv.createProject",
+			"create_static",
+			"cuttext",
+			"parendId",
+			"textarea-box",
+			"moment",
+			"fid",
+			"params",
+			"pathfor",
+			"Router.go",
+			"moda",
+			".group",
+			"project",
+			"input-",
+			"input-info-error-box",
+			"pry-new",
+			"createProject",
+			"dropdow",
+			"create-",
+			"create",
+			"modal(",
+			"content-menu",
+			"generalQuestion",
+			"userQuestion",
+			"userData",
+			"console",
+			"sys.getPageName",
+			"Session.get(\"route\"",
+			"Session.get \"route\"",
+			"pathfor",
+			"2px",
+			"settingsMenu",
+			"menu",
+			"project-menu-selected",
+			"$box-border",
+			"content-menu-box",
+			"create-btn",
+			"-menu",
+			"box-hover",
+			"iteration",
+			"create",
+			"create-btn",
+			"notification-header",
+			"aqui",
+			"main-menu",
+			"notificationIcon",
+			"userNotifications",
+			"notSeenNotifications",
+			"showNotificationBadge",
+			"userNotification",
+			"hide",
+			"display-user-box",
+			"userMenuDropdown",
+			"display-user-box",
+			"avatar-box",
+			"margin",
+			"syssrv.newNotification",
+			"syssrv.modifyTime",
+			"add_time_stage",
+			"update_stages_percentage",
+			"update_time",
+			"modal",
+			"createModal",
+			"update_estimated",
+			"update_stages_percentage",
+			"<<",
+			"disable_notification",
+			"aqui",
+			"<!DOCTYPE html><html><head><title>Blink.it</title><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><style type=\"text/css\">body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table,td{mso-table-lspace:0pt;mso-table-rspace:0pt}img{-ms-interpolation-mode:bicubic}img{border:0;height:auto;line-height:100%;outline:none;text-decoration:none}table{border-collapse:collapse !important}body{height:100% !important;margin:0 !important;padding:0 !important;width:100% !important}a[x-apple-data-detectors]{color:inherit !important;text-decoration:none !important;font-size:inherit !important;font-family:inherit !important;font-weight:inherit !important;line-height:inherit !important}@media screen and (max-width: 525px){.wrapper{width:100% !important;max-width:100% !important}.logo img{margin:0 auto !important}.mobile-hide{display:none !important}.img-max{max-width:100% !important;width:100% !important;height:auto !important}.responsive-table{width:100% !important}.padding{padding:10px 5% 15px 5% !important}.padding-meta{padding:30px 5% 0px 5% !important;text-align:center}.no-padding{padding:0 !important}.section-padding{padding:50px 15px 50px 15px !important}.mobile-button-container{margin:0 auto;width:100% !important}.mobile-button{padding:15px !important;border:0 !important;font-size:16px !important;display:block !important}}div[style*=\"margin: 16px 0;\"]{margin:0 !important}</style></head><body style=\"margin: 0 !important; padding: 0 !important;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#\" class=\"100p\"><tr><td bgcolor=\"#ffffff\" align=\"center\" style=\"border-bottom: 2px solid #A9B2B5;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 500px;\" class=\"wrapper\"><tr><td align=\"center\" valign=\"top\" style=\"padding: 20px 0;\" class=\"logo\"> <a href=\"http://pspconnect.co\" target=\"_blank\"> <img alt=\"Logo\" src=\"Logo.png\" width=\"150\" height=\"60\" style=\"display: block; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;\" border=\"0\"> </a></td></tr></table></td></tr><tr><td bgcolor=\"#f5f7fa\" align=\"center\" style=\"padding: 70px 15px 70px 15px;\" class=\"section-padding\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 500px;\" class=\"responsive-table\"><tr><td><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td align=\"center\" style=\"font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;\" class=\"padding\">Welcome to Strong4Life</td></tr><tr><td align=\"center\" style=\"padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;\" class=\"padding\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius, leo a ullamcorper feugiat, ante purus sodales justo, a faucibus libero lacus a est. Aenean at mollis ipsum.</td></tr></table></td></tr><tr><td align=\"center\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td align=\"center\" style=\"padding-top: 25px;\" class=\"padding\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"mobile-button-container\"><tr><td align=\"center\" style=\"border-radius: 3px;\" bgcolor=\"#04A3FC\"><a href=\"\" target=\"_blank\" style=\"font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff ; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #04A3FC ; display: inline-block;\" class=\"mobile-button\">Go to pspconnect</a></td></tr></table></td></tr></table></td></tr></table></td></tr></table></td></tr><tr><td bgcolor=\"#ffffff\" align=\"center\" style=\"padding: 20px 0px; border-top: 2px solid #A9B2B5 ;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"max-width: 500px;\" class=\"responsive-table\"><tr><td align=\"center\" style=\"font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;\"> Copyright pspconnect - Tesis Universidad Javeriana <br></td></tr></table></td></tr></table></body></html>",
 			"placehol",
 			"time-stage-status",
 			"update_estimated",
@@ -680,80 +764,7 @@
 			"update_time_stage",
 			"time-submit",
 			"change_project_settings",
-			"rgba($blue",
-			"$rgba($blue",
-			"notificationsSeen",
-			"showNotificationBadge",
-			"UserMenu",
-			"recordingProject",
-			"isRegistering",
-			"statusTimeMessage",
-			"isRegistering",
-			"ReplanChart",
-			"c3",
-			"itQuery",
-			"invAverage",
-			"prj-general-chart-box",
-			"c2",
-			"datasetCtr",
-			"canvas",
-			"itQuery",
-			"f",
-			"script-content",
-			"prj-general-chart-box",
-			"chartStages",
-			"profile-slide",
-			"uploader",
-			"data(",
-			"plan_summ",
-			"syssrv.newNotification",
-			"createNotification",
-			"syssrv.newNotification",
-			"console.log",
-			"currentData.time",
-			"data",
-			"edit-time-options",
-			"status-message",
-			"dropdown-box",
-			"defect-input-field",
-			"main-menu",
-			"syssrv.createProject",
-			"6",
-			"sys.selectColor",
-			"create_project",
-			"sys.selectColor",
-			"timeInMinutes",
-			"sys.timeToMinutes",
-			"sys.timeToSeconds",
-			"sys.minutesToTime",
-			"sys.minutesToTime(",
-			"in",
-			"input-box",
-			"prj-info-title",
-			"projectInformationTemplate",
-			"create-btn",
-			"createDefectButton",
-			"sys.selectColor",
-			"color_",
-			"itemValue",
-			"sys.flashTime",
-			"sys.flashTime ",
-			"project-content",
-			"status-message",
-			"add_time_stage",
-			"nrVal",
-			"add3Val",
-			"add3",
-			"addVal",
-			"actualMod",
-			"add",
-			"pid",
-			"order:",
-			"sys.flashTime",
-			"persis",
-			"perssis",
-			"pers",
-			"-hover"
+			"rgba($blue"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -776,19 +787,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "lib/system/system.coffee",
+					"file": "client/views/help/community.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13251,
+						"buffer_size": 3266,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9147,
-								9147
+								1690,
+								1690
 							]
 						],
 						"settings":
@@ -797,14 +808,6 @@
 							[
 								{
 									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
 									"selector": "text.html"
 								},
 								{
@@ -819,15 +822,15 @@
 								{
 									"1":
 									[
-										9156,
-										9157
+										1686,
+										1689
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
+										"Packages/BracketHighlighter/icons/tag.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -835,8 +838,8 @@
 								{
 									"1":
 									[
-										9142,
-										9143
+										1483,
+										1486
 									]
 								},
 								"unmatched":
@@ -845,439 +848,70 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5931.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "client/views/main/main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2070,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 598.0,
+						"translation.y": 894.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "lib/main.coffee",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 785,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								98,
-								98
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "client/stylesheets/_variables.scss",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1807,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1164,
-								1164
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1222,
-										1223
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1097,
-										1098
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/SCSS/SCSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 731.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1336,8 +970,96 @@
 		"selected_items":
 		[
 			[
+				"communi",
+				"client/views/help/community.coffee"
+			],
+			[
+				"projecdb",
+				"lib/collections/projects.db.coffee"
+			],
+			[
+				"questiondb",
+				"lib/collections/questions.db.coffee"
+			],
+			[
+				"syste",
+				"lib/system/system.coffee"
+			],
+			[
+				"help",
+				"client/helpers.coffee"
+			],
+			[
+				"route",
+				"lib/routes.coffee"
+			],
+			[
+				"sys",
+				"lib/system/system.coffee"
+			],
+			[
+				"hel",
+				"client/helpers.coffee"
+			],
+			[
+				"syst",
+				"lib/system/system.coffee"
+			],
+			[
+				"plansumm",
+				"client/views/projects/plan_summary/plan_summary.html"
+			],
+			[
+				"def",
+				"client/stylesheets/_defaults.scss"
+			],
+			[
 				"main",
-				"client/views/main/main.html"
+				"lib/main.coffee"
+			],
+			[
+				"files",
+				"lib/collections/files.db.coffee"
+			],
+			[
+				"defaul",
+				"client/stylesheets/_defaults.scss"
+			],
+			[
+				"forgot",
+				"client/views/userAccess/forgot.html"
+			],
+			[
+				"plansummme",
+				"server/methods/plan_summary.methods.coffee"
+			],
+			[
+				"summdb",
+				"lib/collections/plan_summary.db.coffee"
+			],
+			[
+				"time",
+				"client/views/projects/time/allTimes.coffee"
+			],
+			[
+				"maincoff",
+				"lib/main.coffee"
+			],
+			[
+				"edittime",
+				"client/views/modals/editTime.coffee"
+			],
+			[
+				"login",
+				"client/views/userAccess/login.coffee"
+			],
+			[
+				"mainco",
+				"lib/main.coffee"
+			],
+			[
+				"settin",
+				"settings.json"
 			],
 			[
 				"system",
@@ -1376,28 +1098,12 @@
 				"lib/routes.coffee"
 			],
 			[
-				"syste",
-				"lib/system/system.coffee"
-			],
-			[
-				"sys",
-				"lib/system/system.coffee"
-			],
-			[
 				"helpe",
-				"client/helpers.coffee"
-			],
-			[
-				"help",
 				"client/helpers.coffee"
 			],
 			[
 				"projemod",
 				"lib/models/projects.models.coffee"
-			],
-			[
-				"syst",
-				"lib/system/system.coffee"
 			],
 			[
 				"summarymeth",
@@ -1444,10 +1150,6 @@
 				"lib/system/system.coffee"
 			],
 			[
-				"defaul",
-				"client/stylesheets/_defaults.scss"
-			],
-			[
 				"summarydb",
 				"lib/collections/plan_summary.db.coffee"
 			],
@@ -1458,10 +1160,6 @@
 			[
 				"sysco",
 				"lib/system/system.coffee"
-			],
-			[
-				"route",
-				"lib/routes.coffee"
 			],
 			[
 				"settingsj",
@@ -1518,10 +1216,6 @@
 			[
 				"editin",
 				"app/client/stylesheets/20_parts/editing.scss"
-			],
-			[
-				"login",
-				"app/client/stylesheets/20_parts/login.scss"
 			],
 			[
 				"modals",
@@ -1676,10 +1370,6 @@
 				"app/client/views/03_course/course.coffee"
 			],
 			[
-				"maincoff",
-				"app/client/main.coffee"
-			],
-			[
 				"globalevent",
 				"app/client/views/global_events.coffee"
 			],
@@ -1790,62 +1480,6 @@
 			[
 				"blinkhtml",
 				"app/client/views/04_blink/blink.html"
-			],
-			[
-				"coursemodel",
-				"app/lib/models/course.model.coffee"
-			],
-			[
-				"coursediti",
-				"app/client/views/03_course/course-editing.coffee"
-			],
-			[
-				"blink-box",
-				"app/client/views/03_course/blink-box.html"
-			],
-			[
-				"04blink",
-				"app/client/views/04_blink/blink.html"
-			],
-			[
-				"quizexpo",
-				"app/server/api/quiz-export.coffee"
-			],
-			[
-				"quizmodel",
-				"app/lib/models/quiz.model.coffee"
-			],
-			[
-				"search.html",
-				"app/client/views/02_search/search.html"
-			],
-			[
-				"thumbnail",
-				"app/client/stylesheets/10_bootstrap/_thumbnails.scss"
-			],
-			[
-				"quizmode",
-				"app/lib/models/quiz.model.coffee"
-			],
-			[
-				"widgeus",
-				"app/client/views/_widgets/userprofile/widget-userprofile.coffee"
-			],
-			[
-				"comment",
-				"app/client/views/04_blink/comment.html"
-			],
-			[
-				"userwidht",
-				"app/client/views/_widgets/signInUp/userWidget.html"
-			],
-			[
-				"quizexp",
-				"app/server/api/quiz-export.coffee"
-			],
-			[
-				"quiz-xp",
-				"app/server/api/quiz-export.coffee"
 			]
 		],
 		"width": 0.0

@@ -1,6 +1,7 @@
 <!-- ###################################### -->
 <template name="planSummaryTemplate">
 	{{>projectMessages}}
+	{{>headerNavigation}}
 	<div class="{{#unless sizeForPSP0}} hide {{/unless}} plan-summary-content">
 		<h3>Tamaño del programa(Opcional)</h3>
 		<table class="table table-summary">
@@ -16,7 +17,6 @@
 		</table>
 	</div>
 	<br>
-
 	{{#with userData }}
 		<div class="plan-summary-content">
 			<h3>Tiempo en Fase</h3>

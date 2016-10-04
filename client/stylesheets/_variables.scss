@@ -1,8 +1,8 @@
 @import '_defaults.scss';
 
 //--------------------- Fonts --------------------
-//@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+//@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
 
 //---------------- General Values ----------------
 $default-padding:							25px;
@@ -14,6 +14,11 @@ $popup-box-shadow:						0px 3px 10px rgba($black, .2);
 
 $modal-width:								500px;
 $profile-modal-width:					400px;
+
+//--------- Variables for General Grid -----------
+
+$width-content: 90%; //97
+$max-width-content: 1250px;
 
 //------------- SCSS for all Browsers ------------
 @mixin border-radius($radius) {

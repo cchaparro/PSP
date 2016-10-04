@@ -1,41 +1,18 @@
 <!-- ###################################### -->
 <template name="helpTemplate">
-	<div class="help-content">
-		<h3>Opciones de ayuda para la plataforma pspconnect.co</h3>
-		<div class="help-options">
-			<div class="help-option-box">
-				<div class="option-header">
-					<svg viewBox="0 0 100 100"><use xlink:href="/images/helpFAQ.svg#helpFAQLogo"></use></svg>
-					<span>FAQ</span>
-				</div>
-				<div class="option-content">
-					<span>Aquí vas a conseguir información general sobre como funciona la plataforma. Están los puntos claves para moverse por la pagina.</span>
-					<div class="primary-button">Leer FAQ</div>
-				</div>
+	{{>headerNavigation}}
+	<div class="box-container">
+		<div class="help-containers">
+			<div>
+				<h4>Soporte al Cliente</h4>
+				<p>Abajo podras encontrar un foro para escribirle a la comunidad cualquier duda que tengas referente a la plataforma. Si necesitas ayuda con algo de lo que no hay ayuda abajo puedes escribirnos dando click al siguiente boton y nos comunicaremos contigo lo mas pronto posible.</p>
+				<a href="{{pathFor 'help-contact'}}"><span class="new-button">Contactar a Soporte</span></a>
 			</div>
-
-			<div class="help-option-box">
-				<div class="option-header">
-					<svg viewBox="0 0 100 100"><use xlink:href="/images/helpForum.svg#helpForumLogo"></use></svg>
-					<span>FORO</span>
-				</div>
-				<div class="option-content">
-					<span>Aquí puedes hacer una pregunta al publico y recibir respuestas de todos los usuarios de la plataforma que tengan la solucion.</span>
-					<div class="primary-button">Ingresar al foro</div>
-				</div>
+			<div>
+				<h4>Comunidad</h4>
+				<p>Aqui buscamos dar un lugar libre para los usuarios poder comunicarse entre si y resolver cualquier duda o inquietud que cada uno tenga. En la parte inferior puedes responder o hacer preguntas a la comunidad y de tal manera poder seguir con el desarrollo personal en la herramienta.</p>
+				<a href="{{pathFor 'community'}}"><span class="new-button">Ingresar a la Comunidad</span></a>
 			</div>
-
-			<div class="help-option-box">
-				<div class="option-header">
-					<svg viewBox="0 0 100 100"><use xlink:href="/images/helpMail.svg#helpMailLogo"></use></svg>
-					<span>CORREO</span>
-				</div>
-				<div class="option-content">
-					<span>Si no consigues en preguntas al publico una solución a tu problema, nos puedes escribir aquí y nos contactaremos contigo lo mas rápido posible.</span>
-					<div class="primary-button">Enviar mensaje</div>
-				</div>
-			</div>
-
 		</div>
 	</div>
 </template>

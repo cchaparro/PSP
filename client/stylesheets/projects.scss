@@ -201,56 +201,46 @@
 }
 
 //-------------- General Project View ------------
-.project-view-menu {
-	width: 100px;
-	height: calc(100% + 40px);
-	float: left;
-	background-color: $white;
-	margin-left: -20px;
-	margin-top: -20px;
-	margin-bottom: -20px;
-	padding-left: 0;
-	list-style: none;
+.project-menu {
+	background-color: white;
+	width: 230px;
+	float: right;
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
 
-	a {
-		text-align: center;
-		text-decoration: none;
+	ul {
+		padding: 0;
+		margin-bottom: 0;
 
-		li {
-			margin: 0 15px;
-			padding: 15px 0;
-			border-bottom: 1px solid $border;
+		a {
+			list-style: none;
+			text-decoration: none;
+			display: block;
+			border-left: 3px solid $white;
+			@include clearfix;
 
-			svg {
-				width: 25px;
-				fill: $text;
-			}
-
-			h3 {
-				font-size: 11pt;
-				margin: 0;
+			li {
 				color: $text;
+				padding-top: 9px;
+				padding-bottom: 9px;
+				padding-left: 15px;
+				border-bottom: 1px solid $background;
 			}
 
-			&:hover {
-				h3 {
-					color: $black;
-				}
+			&.active {
+				border-left: 3px solid $text;
 
-				svg {
-					fill: $black;
+				li {
+					color: $text-dark;
+					font-weight: 500;
 				}
 			}
-		}
-	}
 
-	.project-menu-selected {
-		h3 {
-			color: $black;
-		}
+			&:last-child {
+				border-bottom-left-radius: $default-border-radius;
+				border-bottom-right-radius: $default-border-radius;
+			}
 
-		svg {
-			fill: $black;
 		}
 	}
 }
@@ -987,58 +977,22 @@
 		width: 100%;
 	}
 
+
+	.project-menu {
+		width: 100%;
+		float: right;
+		display: block;
+	}
+
+	.content-menu-box {
+		width: 100%;
+		overflow: hidden;
+	}
+
 }
 
 //--------- Mobile View for Project-box ----------
-@media (min-width: 1820px) and (max-width: 3000px) {
-	.allprojects-container {
-		max-width: 2965px;
-
-		.project-box {
-			width: calc(14.28% - 17.5px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(7n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(7n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1535px) and (max-width: 1819px) {
-	.allprojects-container {
-		max-width: 1774px;
-
-		.project-box {
-			width: calc(16.667% - 17px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(6n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(6n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1301px) and (max-width: 1534px) {
+@media (min-width: 1301px) {
 	.allprojects-container {
 		max-width: 1489px;
 
