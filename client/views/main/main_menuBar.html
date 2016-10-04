@@ -1,5 +1,16 @@
 <!-- ###################################### -->
 <template name="main_menuBar">
+	<div class="mobile-menu-options {{#unless showMobileView}} hidden {{/unless}}">
+		<div class="close-menu-box">
+			<i class="material-icons close-mobile-menu">close</i>
+		</div>
+		<ul>
+			<li class="option-menu-mobile {{#if isProjectView}} active {{/if}}" data-value="projects">Proyectos</li>
+			<li class="option-menu-mobile {{#if $eq template 'overview'}} active {{/if}}" data-value="overview">Resumen</li>
+			<li class="option-menu-mobile {{#if isSettingsView}} active {{/if}}" data-value="projectSettings">Configuración</li>
+			<li class="option-menu-mobile {{#if $eq template 'help'}} active {{/if}}" data-value="help">Ayuda</li>
+		</ul>
+	</div>
 	<div class="main-menu">
 		<div class="main-menu-content">
 			<div class="hidden-xs">
@@ -13,14 +24,6 @@
 			</div>
 
 			<i class="material-icons visible-xs mobile-menu">menu</i>
-			<!--<div class="mobile-menu-options">
-				<ul>
-					<li>Proyectos</li>
-					<li>Resumen</li>
-					<li>Configuración</li>
-					<li>Ayuda</li>
-				</ul>
-			</div>-->
 
 			<div class="main-menu-user">
 				<div class="notification-option">

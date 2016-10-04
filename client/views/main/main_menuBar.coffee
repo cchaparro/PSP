@@ -5,6 +5,7 @@ Template.main_menuBar.onCreated () ->
 	Meteor.subscribe "UserMenu"
 	Session.set("display-user-box", false)
 	Session.set("display-notification-box", false)
+	@displayMobileMenu = new ReactiveVar(false)
 
 Template.main_menuBar.helpers
 	template: () ->
@@ -27,6 +28,9 @@ Template.main_menuBar.helpers
 
 	showNotificationBadge: () ->
 		return db.notifications.find({"notificationOwner": Meteor.userId(), "seen": false}).count() > 0
+
+	showMobileView: () ->
+		return Template.instance().displayMobileMenu.get()
 
 
 Template.main_menuBar.events
@@ -58,7 +62,19 @@ Template.main_menuBar.events
 	'click .mobile-menu': (e,t) ->
 		e.preventDefault()
 		e.stopPropagation()
-		console.log "Im mobile menu"
+		t.displayMobileMenu.set(true)
+
+	"click .close-mobile-menu": (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		t.displayMobileMenu.set(false)
+
+	'click .option-menu-mobile': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		value = $(e.target).data('value')
+		FlowRouter.go(value)
+		t.displayMobileMenu.set(false)
 
 ##################################################
 Template.userMenuDropdown.events
