@@ -259,6 +259,11 @@ Template.headerNavigation.events
 			else
 				sys.flashStatus("create-iteration")
 
+	'click .create-defect': (e,t) ->
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+		unless project.completed
+			Modal.show('createDefectModal')
+
 	'click .create-question': (e,t) ->
 		e.preventDefault()
 		e.stopPropagation()

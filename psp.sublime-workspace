@@ -4,16 +4,16 @@
 		"selected_items":
 		[
 			[
-				"font",
-				"font-weight"
+				"margin",
+				"margin-top"
 			],
 			[
 				"padd",
 				"padding-left"
 			],
 			[
-				"margin",
-				"margin-bottom"
+				"font",
+				"font-size"
 			],
 			[
 				"fon",
@@ -376,10 +376,26 @@
 	"buffers":
 	[
 		{
-			"file": "client/views/help/community.html",
+			"file": "client/views/main/main_menuBar.html",
 			"settings":
 			{
-				"buffer_size": 3266,
+				"buffer_size": 5370,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/stylesheets/main.scss",
+			"settings":
+			{
+				"buffer_size": 8890,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/stylesheets/projects.scss",
+			"settings":
+			{
+				"buffer_size": 18793,
 				"line_ending": "Unix"
 			}
 		}
@@ -468,50 +484,48 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models",
-		"/Users/Juanpmd/Documents/PSP-Connect/server",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/publications"
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects"
 	],
 	"file_history":
 	[
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/questions.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/help.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/questions.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/defect_types.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/questions.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/help.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/questions.methods.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/questions.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/defects/allDefects.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/projects.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/projects.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/static_values.methods.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/help.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createQuestion.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/questions.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/help_menu.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createQuestion.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/projects.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/global.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/contact.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_variables.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/_defaults.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/plan_summary.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/allProjects.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/settings_menu.html",
@@ -524,12 +538,10 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_userBar.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/main.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/static/Logo.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/userAccess.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/forgot.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/forgot.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/plan_summary.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/plan_summary.db.coffee",

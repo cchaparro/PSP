@@ -980,55 +980,7 @@
 }
 
 //--------- Mobile View for Project-box ----------
-@media (min-width: 1820px) and (max-width: 3000px) {
-	.allprojects-container {
-		max-width: 2965px;
-
-		.project-box {
-			width: calc(14.28% - 17.5px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(7n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(7n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1535px) and (max-width: 1819px) {
-	.allprojects-container {
-		max-width: 1774px;
-
-		.project-box {
-			width: calc(16.667% - 17px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(6n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(6n+1) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (min-width: 1301px) and (max-width: 1534px) {
+@media (min-width: 1301px) {
 	.allprojects-container {
 		max-width: 1489px;
 
