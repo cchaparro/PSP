@@ -333,91 +333,224 @@
 
 //------------------- Time View ------------------
 .time-content {
-	background-color: $white;
-	padding: 20px;
+	width: 100%;
 
 	.time-menu {
+		display: block;
 		width: 100%;
-		margin-bottom: 10px;
-		padding-bottom: 15px;
-		border-bottom: 1px solid $border;
-		@include clearfix();
+		@include clearfix;
 
-		div {
+		i {
+			padding: 15px 3px 15px 0px;
+			font-size: 26pt;
+			cursor: pointer;
+			color: $text;
 			float: left;
+
+			&:first-child {
+				padding-left: 15px;
+			}
+
+			&.active {
+				color: $success;
+			}
 		}
 
-		.time-btn {
-			margin-top: 2px;
-			padding: 15px 15px 13px 15px;
-			@include border-radius($default-border-radius * 2);
-		}
-
-		.primary-button, .disabled-button {
-			padding-top: 0;
-			margin-top: 0;
+		.new-button {
+			float: left;
+			margin: 12px;
 		}
 	}
+	
+	.time-box {
+		background-color: $background-dark;
+		border-top: 1px solid $border;
 
-	.time-submit {
-		margin-top: 0;
-		padding-top: 0;
-	}
+		.stage-row {
+			width: 100%;
+			height: 65px;
+			display: block;
+			border-bottom: 1px solid $border;
+			line-height: 65px;
 
-	.time-submit-disabled {
-		@extend .time-submit;
-		background-color: $popup-bg;
-		cursor: default;
-	}
+			&:hover {
+				background-color: $white;
+			}
 
-	.time-table {
-		background-color: $white;
-
-		thead {
-			& > tr > th{
-				padding-bottom: 15px;
-				text-align: center;
-				border-bottom: 0px;
+			.stage-icon {
+				float: left;
 				color: $text;
-				font-weight: 300;
+				line-height: 10px;
+
+				i {
+					padding-left: 15px;
+					padding-top: 20.5px;
+					padding-bottom: 20.5px;
+					cursor: default;
+				}
+
+				.completed {
+					color: $success;
+				}
+
+				.current {
+					color: $text-dark;
+				}
+			}
+
+			.stage-information {
+				display: inline-block;
+				vertical-align: middle;
+				line-height: 20px;
+				padding-left: 10px;
 				cursor: default;
-			}
-		}
 
-		tbody > tr {
-			background-color: $background;
-			cursor: default;
-
-			& > td {
-				padding: 20px 20px;
-				border: none;
-				border-bottom: 6px solid $white;
-				color: $text;
-
-				&:nth-child(2) {
-					text-align: center;
+				.time-lapse {
+					float: right;
+					font-size: 12pt;
+					line-height: inherit;
+					padding-left: 3px;
+					cursor: pointer;
 				}
 
-				&:nth-child(3) {
-					text-align: center;
-					padding-top: 18px;
-					padding-bottom: 14px;
+				h4 {
 					margin: 0;
+					font-size: 12pt;
+					color: $text;
+
+					&.title-finished {
+						color: $text-dark;
+					}
 				}
 
-				&:last-child {
-					text-align: center;
-					width: 110px;
+				span {
+					font-size: 10pt;
+					color: $text; 
 				}
 			}
 
-			&:last-child {
-				border-bottom: none;
+			.edit-stage {
+				float: right;
+				display: inline-block;
+				color: $text;
+				padding: 10px;
+				font-size: 17pt;
+				margin-right: 5px;
+				margin-top: 11px;
+				margin-bottom: 11px;
+				cursor: pointer;
+
+				&:hover {
+					color: $text-dark;
+				}
 			}
 		}
 	}
 
+	.time-edit-box {
+		width: 100%;
+		display: block;
+		@include clearfix;
+
+		.new-button {
+			float: left;
+			margin: 7px;
+			margin-left: 49px;
+			background-color: $blue;
+		}
+
+		.information {
+			line-height: 54px;
+			color: $text;
+		}
+	}
 }
+// .time-content {
+// 	background-color: $white;
+// 	padding: 20px;
+
+// 	.time-menu {
+// 		width: 100%;
+// 		margin-bottom: 10px;
+// 		padding-bottom: 15px;
+// 		border-bottom: 1px solid $border;
+// 		@include clearfix();
+
+// 		div {
+// 			float: left;
+// 		}
+
+// 		.time-btn {
+// 			margin-top: 2px;
+// 			padding: 15px 15px 13px 15px;
+// 			@include border-radius($default-border-radius * 2);
+// 		}
+
+// 		.primary-button, .disabled-button {
+// 			padding-top: 0;
+// 			margin-top: 0;
+// 		}
+// 	}
+
+// 	.time-submit {
+// 		margin-top: 0;
+// 		padding-top: 0;
+// 	}
+
+// 	.time-submit-disabled {
+// 		@extend .time-submit;
+// 		background-color: $popup-bg;
+// 		cursor: default;
+// 	}
+
+// 	.time-table {
+// 		background-color: $white;
+
+// 		thead {
+// 			& > tr > th{
+// 				padding-bottom: 15px;
+// 				text-align: center;
+// 				border-bottom: 0px;
+// 				color: $text;
+// 				font-weight: 300;
+// 				cursor: default;
+// 			}
+// 		}
+
+// 		tbody > tr {
+// 			background-color: $background;
+// 			cursor: default;
+
+// 			& > td {
+// 				padding: 20px 20px;
+// 				border: none;
+// 				border-bottom: 6px solid $white;
+// 				color: $text;
+
+// 				&:nth-child(2) {
+// 					text-align: center;
+// 				}
+
+// 				&:nth-child(3) {
+// 					text-align: center;
+// 					padding-top: 18px;
+// 					padding-bottom: 14px;
+// 					margin: 0;
+// 				}
+
+// 				&:last-child {
+// 					text-align: center;
+// 					width: 110px;
+// 				}
+// 			}
+
+// 			&:last-child {
+// 				border-bottom: none;
+// 			}
+// 		}
+// 	}
+
+// }
 
 .time-btn {
 	float: left;
@@ -939,6 +1072,20 @@
 					font-size: 9pt;
 					word-break: break-all;
 				}
+			}
+		}
+	}
+
+	.time-content {
+		.time-menu {
+			.time-play {
+				padding-left: 7px;
+			}
+
+			.new-button {
+				margin-left: 0;
+				margin-right: 7px;
+				float: right;
 			}
 		}
 	}

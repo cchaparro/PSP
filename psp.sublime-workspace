@@ -4,16 +4,24 @@
 		"selected_items":
 		[
 			[
-				"margin",
-				"margin-top"
-			],
-			[
 				"padd",
 				"padding-left"
 			],
 			[
+				"over",
+				"overflow"
+			],
+			[
 				"font",
-				"font-size"
+				"font-weight"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"margin",
+				"margin-top"
 			],
 			[
 				"fon",
@@ -78,10 +86,6 @@
 			[
 				"plan",
 				"planSummary"
-			],
-			[
-				"text",
-				"text-align"
 			],
 			[
 				"de",

@@ -7,6 +7,45 @@ Template.timeTemplate.helpers
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
 ##########################################
+Template.timeStageRow.helpers
+	editAvailable: () ->
+		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+		return false if project?.completed
+		return true if @finished
+
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		return true if @name == _.first(projectStages)?.name
+		return false
+
+	currentStage: () ->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		return @name == _.first(projectStages)?.name
+
+
+	openStageStatus: () ->
+		return openStageStatus.get()
+
+
+Template.timeStageRow.events
+	'click .edit-stage': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+		console.log @
+		Modal.show('editTimeModal', @)
+
+
+##########################################
+
+
+
 Template.timesBar.onCreated () ->
 	@disablePlayButton = new ReactiveVar(false)
 
@@ -64,7 +103,7 @@ Template.timesBar.helpers
 
 
 Template.timesBar.events
-	'click .fa-play': (e,t) ->
+	'click .time-play': (e,t) ->
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 
 		unless t.disablePlayButton.get() or project?.completed
@@ -79,7 +118,7 @@ Template.timesBar.events
 					sys.flashTime(project.title, projectId, iterationId)
 
 
-	'click .fa-pause': (e,t) ->
+	'click .time-pause': (e,t) ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
@@ -164,36 +203,36 @@ Template.timesBar.events
 
 
 ##################################################
-Template.timeTableRow.helpers
-	editAvailable: () ->
-		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
-		return false if project?.completed
-		return true if @finished
+#Template.timeTableRow.helpers
+#	editAvailable: () ->
+	# 	project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
+	# 	return false if project?.completed
+	# 	return true if @finished
 
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
-			unless stage.finished
-				return stage
+	# 	planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+	# 	projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+	# 		unless stage.finished
+	# 			return stage
 
-		return true if @name == _.first(projectStages)?.name
-		return false
+	# 	return true if @name == _.first(projectStages)?.name
+	# 	return false
 
-	openStageStatus: () ->
-		return openStageStatus.get()
+	# openStageStatus: () ->
+	# 	return openStageStatus.get()
 
 
-Template.timeTableRow.events
-	'click .edit-time': (e,t) ->
-		Modal.show('editTimeModal', @)
+# Template.timeTableRow.events
+# 	'click .edit-time': (e,t) ->
+# 		Modal.show('editTimeModal', @)
 
-	'click .time-stage-status': (e,t) ->
-		currentStage = @
-		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-submit-stage-project")
-			else
-				sys.flashStatus("submit-stage-project")
+# 	'click .time-stage-status': (e,t) ->
+# 		currentStage = @
+# 		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
+# 			if error
+# 				console.warn(error)
+# 				sys.flashStatus("error-submit-stage-project")
+# 			else
+# 				sys.flashStatus("submit-stage-project")
 
 
 ##########################################
