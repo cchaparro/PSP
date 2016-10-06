@@ -469,23 +469,22 @@
 	.time-edit-box {
 		width: 100%;
 		height: 64px;
-		display: block;
+		display: table;
 		padding-right: 10px;
 		@include clearfix;
 
-		.primary-button {
+		.btn {
 			float: left;
 			padding-top: 0;
+			margin-left: 10px;
 			margin-right: 10px;
 		}
 
-		.status-space-left {
-			margin-left: 49px;
-		}
-
 		.information {
-			line-height: 64px;
 			color: $text;
+			display: table-cell;
+			vertical-align: middle;
+			cursor: default;
 		}
 
 		.check-status {
@@ -495,6 +494,16 @@
 			@include border-radius($circle-border-radius);
 			border: 2px solid $success;
 			float: left;
+			cursor: pointer;
+		}
+
+		.uncheck-status {
+			float: left;
+			color: $success;
+			padding-left: 15px;
+			padding-right: 10px;
+			padding-top: 20px;
+			padding-bottom: 20.5px;
 			cursor: pointer;
 		}
 	}

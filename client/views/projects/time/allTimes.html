@@ -41,24 +41,6 @@
 			{{/if}}
 		</div>
 	{{/with}}
-	<!--{{#with planSummary}}
-		<div class="time-menu">
-			<div>
-				<i class="fa time-btn fa-play {{#if isRecordingTime}} time-btn-play {{/if}}"></i>
-				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} {{#if disabledPlayButton}} time-btn-disabled {{else}} time-status-pause {{/if}} {{/unless}} "></i>
-			</div>
-			<div class="open-stage-box pull-right {{#unless availableOpenStage}} popup-active {{/unless}}">
-				<div class="btn pull-right {{#if availableOpenStage}} reopen-stage primary-button {{else}} disabled-button {{/if}}">
-					{{#if openStageStatus}}
-						<span>Finalizar Editar Etapas</span>
-					{{else}}
-						<span>Editar Estado Etapas</span>
-					{{/if}}
-				</div>
-				<span class="reopen-stage-popup {{#if projectIsCompleted}} hide {{/if}}"><i></i>Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
-			</div>
-		</div>
-	{{/with}}-->
 </template>
 <!-- ###################################### -->
 <template name="timeStageRow">
@@ -98,12 +80,15 @@
 <template name="timesFooter">
 	<div class="time-edit-box">
 		{{#if openStageStatus}}
-			<span class="check-status"></span>
 			<span class="btn primary-button status-time">Guardar Cambios</span>
-			<span class="information hidden-xs">Al dar click en guardar, los cambios que realizaste serán permanentes</span>
+			<span class="information hidden-xs">Al dar click aqui, los cambios que acabaste de realizar serán permanentes</span>
 		{{else}}
-			<span class="btn primary-button status-space-left status-time">Editar Etapas</span>
-			<span class="information hidden-xs">Este botón te permite reabrir etapas completadas o cerrar etapas abiertas</span>
+			<span class="btn {{#if availableOpenStage}} primary-button status-time {{else}} disabled-button {{/if}} status-space-left">Editar Etapas</span>
+			{{#if availableOpenStage}}
+				<span class="information hidden-xs">Este botón te permitirá reabrir etapas completadas o cerrar etapas abiertas</span>
+			{{else}}
+				<span class="information hidden-xs">Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
+			{{/if}}
 		{{/if}}
 	</div>
 </template>

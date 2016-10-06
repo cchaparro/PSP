@@ -24,43 +24,17 @@ Template.timesBar.helpers
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
-
 		currentPos = _.first(projectStages)?.name
 
 		unless currentPos
 			Template.instance().disablePlayButton.set(true)
-
 		return currentPos
-
-	# disabledPlayButton: () ->
-	# 	projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
-	# 	disableRecording = Template.instance().disablePlayButton.get()
-
-	# 	return true if projectIsCompleted
-	# 	return true if disableRecording
-	# 	return false
 
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
 	openStageStatus: () ->
 		return openStageStatus.get()
-
-	# availableOpenStage: () ->
-	# 	project = db.projects.findOne({_id: FlowRouter.getParam("id")})
-	# 	planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-	# 	projectProbe = project?.projectProbe
-
-	# 	projectStages = _.filter planSummary?.timeEstimated, (stage) ->
-	# 		unless stage.finished
-	# 			return stage
-
-	# 	currentStage = _.first projectStages
-
-	# 	return false if project?.completed
-	# 	return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0
-	# 	return false if @total.estimatedTotalSize == 0
-	# 	return true
 
 
 Template.timesBar.events
@@ -202,26 +176,30 @@ Template.timeStageRow.events
 				sys.flashStatus("submit-stage-project")
 
 ##########################################
-Template.timesFooter.onCreated () ->
-	@bulkState = new ReactiveVar(false)
-
-
 Template.timesFooter.helpers
 	openStageStatus: () ->
 		return openStageStatus.get()
+
+	availableOpenStage: () ->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectProbe = project?.projectProbe
+
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		currentStage = _.first projectStages
+
+		return false if project?.completed
+		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0
+		return false if @total.estimatedTotalSize == 0
+		return true
 
 
 Template.timesFooter.events
 	'click .status-time': (e,t) ->
 		openStatus = openStageStatus.get()
 		openStageStatus.set(!openStatus)
-
-	'click .check-status': (e,t) ->
-		bulkState = t.bulkState.get()
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
-			Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), stage, true, !bulkState
-
-		t.bulkState.set(!bulkState)
 
 ##########################################
