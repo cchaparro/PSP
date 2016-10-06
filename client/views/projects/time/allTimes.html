@@ -78,18 +78,20 @@
 </template> -->
 <!-- ###################################### -->
 <template name="timesFooter">
-	<div class="time-edit-box">
-		{{#if openStageStatus}}
-			<span class="btn primary-button status-time">Guardar Cambios</span>
-			<span class="information hidden-xs">Al dar click aqui, los cambios que acabaste de realizar serán permanentes</span>
-		{{else}}
-			<span class="btn {{#if availableOpenStage}} primary-button status-time {{else}} disabled-button {{/if}} status-space-left">Editar Etapas</span>
-			{{#if availableOpenStage}}
-				<span class="information hidden-xs">Este botón te permitirá reabrir etapas completadas o cerrar etapas abiertas</span>
+	{{#unless projectIsCompleted}}
+		<div class="time-edit-box">
+			{{#if openStageStatus}}
+				<span class="btn primary-button status-time">Guardar Cambios</span>
+				<span class="information hidden-xs">Al dar click aqui, los cambios que acabaste de realizar serán permanentes</span>
 			{{else}}
-				<span class="information hidden-xs">Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
+				<span class="btn {{#if availableOpenStage}} primary-button status-time {{else}} disabled-button {{/if}} status-space-left">Editar Etapas</span>
+				{{#if availableOpenStage}}
+					<span class="information hidden-xs">Este botón te permitirá reabrir etapas completadas o cerrar etapas abiertas</span>
+				{{else}}
+					<span class="information hidden-xs">Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
+				{{/if}}
 			{{/if}}
-		{{/if}}
-	</div>
+		</div>
+	{{/unless}}
 </template>
 <!-- ###################################### -->

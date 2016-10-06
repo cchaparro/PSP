@@ -193,8 +193,11 @@ Template.timesFooter.helpers
 
 		return false if project?.completed
 		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0
-		return false if @total.estimatedTotalSize == 0
+		return false if @total?.estimatedTotalSize == 0
 		return true
+
+	projectIsCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
 
 Template.timesFooter.events
