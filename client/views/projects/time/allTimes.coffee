@@ -24,21 +24,11 @@ Template.timesBar.helpers
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
-
 		currentPos = _.first(projectStages)?.name
 
 		unless currentPos
 			Template.instance().disablePlayButton.set(true)
-
 		return currentPos
-
-	disabledPlayButton: () ->
-		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
-		disableRecording = Template.instance().disablePlayButton.get()
-
-		return true if projectIsCompleted
-		return true if disableRecording
-		return false
 
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
@@ -46,25 +36,9 @@ Template.timesBar.helpers
 	openStageStatus: () ->
 		return openStageStatus.get()
 
-	availableOpenStage: () ->
-		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		projectProbe = project?.projectProbe
-
-		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
-			unless stage.finished
-				return stage
-
-		currentStage = _.first projectStages
-
-		return false if project?.completed
-		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0
-		return false if @total.estimatedTotalSize == 0
-		return true
-
 
 Template.timesBar.events
-	'click .fa-play': (e,t) ->
+	'click .time-play': (e,t) ->
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 
 		unless t.disablePlayButton.get() or project?.completed
@@ -79,7 +53,7 @@ Template.timesBar.events
 					sys.flashTime(project.title, projectId, iterationId)
 
 
-	'click .fa-pause': (e,t) ->
+	'click .time-pause': (e,t) ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
@@ -158,13 +132,8 @@ Template.timesBar.events
 									sys.flashStatus("postmortem-psp0")
 							sys.removeTimeMessage()
 
-	'click .reopen-stage': (e,t) ->
-		openStatus = openStageStatus.get()
-		openStageStatus.set(!openStatus)
-
-
 ##################################################
-Template.timeTableRow.helpers
+Template.timeStageRow.helpers
 	editAvailable: () ->
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 		return false if project?.completed
@@ -178,15 +147,26 @@ Template.timeTableRow.helpers
 		return true if @name == _.first(projectStages)?.name
 		return false
 
+	currentStage: () ->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		return @name == _.first(projectStages)?.name
+
+
 	openStageStatus: () ->
 		return openStageStatus.get()
 
 
-Template.timeTableRow.events
-	'click .edit-time': (e,t) ->
+Template.timeStageRow.events
+	'click .edit-stage': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
 		Modal.show('editTimeModal', @)
 
-	'click .time-stage-status': (e,t) ->
+	'click .check-status, click .check-enabled': (e,t) ->
 		currentStage = @
 		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
 			if error
@@ -195,5 +175,31 @@ Template.timeTableRow.events
 			else
 				sys.flashStatus("submit-stage-project")
 
+##########################################
+Template.timesFooter.helpers
+	openStageStatus: () ->
+		return openStageStatus.get()
+
+	availableOpenStage: () ->
+		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectProbe = project?.projectProbe
+
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+
+		currentStage = _.first projectStages
+
+		return false if project?.completed
+		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0
+		return false if @total.estimatedTotalSize == 0
+		return true
+
+
+Template.timesFooter.events
+	'click .status-time': (e,t) ->
+		openStatus = openStageStatus.get()
+		openStageStatus.set(!openStatus)
 
 ##########################################

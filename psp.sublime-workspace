@@ -4,16 +4,24 @@
 		"selected_items":
 		[
 			[
-				"margin",
-				"margin-top"
-			],
-			[
 				"padd",
 				"padding-left"
 			],
 			[
+				"over",
+				"overflow"
+			],
+			[
 				"font",
-				"font-size"
+				"font-weight"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"margin",
+				"margin-top"
 			],
 			[
 				"fon",
@@ -78,10 +86,6 @@
 			[
 				"plan",
 				"planSummary"
-			],
-			[
-				"text",
-				"text-align"
 			],
 			[
 				"de",
@@ -376,26 +380,42 @@
 	"buffers":
 	[
 		{
-			"file": "client/views/main/main_menuBar.html",
+			"file": "lib/system/system.coffee",
 			"settings":
 			{
-				"buffer_size": 5370,
+				"buffer_size": 14638,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/stylesheets/main.scss",
+			"file": "client/views/projects/time/allTimes.html",
 			"settings":
 			{
-				"buffer_size": 8890,
+				"buffer_size": 2615,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/stylesheets/projects.scss",
+			"file": "client/views/projects/time/allTimes.coffee",
 			"settings":
 			{
-				"buffer_size": 18793,
+				"buffer_size": 6603,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/views/help/community.html",
+			"settings":
+			{
+				"buffer_size": 3652,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/views/help/community.coffee",
+			"settings":
+			{
+				"buffer_size": 2738,
 				"line_ending": "Unix"
 			}
 		}
@@ -485,26 +505,30 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects"
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time"
 	],
 	"file_history":
 	[
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/questions.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/global.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/help.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/questions.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/defect_types.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/questions.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.coffee",

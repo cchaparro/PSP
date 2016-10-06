@@ -147,6 +147,7 @@ Template.userNotification.events
 ##################################################
 Template.headerNavigation.onCreated () ->
 	Session.set("navigation-menu", false)
+	@lastRouteName = new ReactiveVar("")
 
 
 Template.headerNavigation.helpers
@@ -157,6 +158,9 @@ Template.headerNavigation.helpers
 	ordenProyectos: () ->
 		user = db.users.findOne({_id: Meteor.userId()})
 		return user?.settings?.projectSort
+
+	lastRouteName: () ->
+		return Template.instance().lastRouteName.get()
 
 	navigationState: () ->
 		FlowRouter.watchPathChange()
@@ -241,6 +245,8 @@ Template.headerNavigation.helpers
 			})
 
 		_.last(Routes).lastValue = true
+		lastRouteName = _.last(Routes).title
+		Template.instance().lastRouteName.set(lastRouteName)
 
 		return Routes
 

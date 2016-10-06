@@ -2,84 +2,94 @@
 <template name="timeTemplate">
 	{{>projectMessages}}
 	{{>headerNavigation}}
-	<div class="time-content">
-		{{> timesBar}}
-		<table class="table time-table">
-			<thead>
-				<tr>
-					<th>Etapa</th>
-					<th>Estimado</th>
-					<th class="hidden-xs">Tiempo registrado</th>
-					<th>Completado</th>
-					<th class="hidden-xs">Edición</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each projectStages}}
-					{{> timeTableRow}}
-				{{/each}}
-			</tbody>
-		</table>
+	<div class="box-content time-content">
+		{{>timesBar}}
+		<div class="time-box">
+			{{#each projectStages}}
+				{{>timeStageRow}}
+			{{/each}}
+		</div>
+		{{>timesFooter}}
 	</div>
 </template>
-<!-- ###################################### -->
-<template name="timeTableRow">
-	<tr>
-		<td><span>{{name}}</span></td>
-		<td class="hidden-xs">{{timeFormat estimated}}</td>
-		<td class="hidden-xs">{{timeFormat time}}</td>
-		<td>
-			{{#if openStageStatus}}
-				<div class="time-stage-status {{#if finished}} active {{/if}}"><i class="fa fa-fw fa-check"></i></div>
-			{{else}}
-				<div class="time-completed {{#unless finished}} hide {{/unless}}"><i class="fa fa-fw fa-check"></i></div>
-			{{/if}}
-		</td>
-		<td class="hidden-xs">
-			{{#if editAvailable}}
-				<span class="edit-time">Editar</span>
-			{{else}}
-				<span> - </span>
-			{{/if}}
-		</td>
-	</tr>
-</template>
-
 <!-- ###################################### -->
 <template name="timesBar">
 	{{#with planSummary}}
 		<div class="time-menu">
-			<div>
-				<i class="fa time-btn fa-play {{#if isRecordingTime}} time-btn-play {{/if}}"></i>
-				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} {{#if disabledPlayButton}} time-btn-disabled {{else}} time-status-pause {{/if}} {{/unless}} "></i>
-			</div>
-			{{#if currentStage}}
-				{{#if projectIsCompleted}}
-					<div class="btn disabled-button">
-						<span>Proyecto Finaliado</span>
-					</div>
-				{{else}}
+			{{#if isRecordingTime}}
+				<i class="material-icons time-play active">play_circle_filled</i>
+				<i class="material-icons time-pause">pause</i>
+			{{else}}
+				<i class="material-icons time-play {{#if projectIsCompleted}} disabled {{/if}}">play_arrow</i>
+				<i class="material-icons time-pause {{#if projectIsCompleted}} disabled {{/if}}">pause_circle_filled</i>
+			{{/if}}
+
+			{{#if projectIsCompleted}}
+				<div class="btn disabled-button">
+					<span>Proyecto Finaliado</span>
+				</div>
+			{{else}}
+				{{#if currentStage}}
 					<div class="btn primary-button time-submit">
 						<span>Finalizar {{currentStage}}</span>
 					</div>
+				{{else}}
+					<div class="btn disabled-button">
+						<span>Etapas Completadas</span>
+					</div>
 				{{/if}}
-			{{else}}
-				<div class="btn disabled-button">
-					<span>Etapas Completadas</span>
-				</div>
 			{{/if}}
-			<div class="open-stage-box pull-right {{#unless availableOpenStage}} popup-active {{/unless}}">
-				<div class="btn pull-right {{#if availableOpenStage}} reopen-stage primary-button {{else}} disabled-button {{/if}}">
-					{{#if openStageStatus}}
-						<span>Finalizar Editar Etapas</span>
-					{{else}}
-						<span>Editar Estado Etapas</span>
-					{{/if}}
-				</div>
-				<span class="reopen-stage-popup {{#if projectIsCompleted}} hide {{/if}}"><i></i>Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
-			</div>
 		</div>
 	{{/with}}
 </template>
-
+<!-- ###################################### -->
+<template name="timeStageRow">
+	<div class="stage-row">
+		<div class="stage-icon">
+			{{#if finished}}
+				<i class="material-icons completed {{#if openStageStatus}} check-enabled {{/if}}">check_circle</i>
+			{{else}}
+				{{#if openStageStatus}}
+					<span class="check-status"></span>
+				{{else}}
+					<i class="material-icons {{#if currentStage}} current {{/if}}">play_circle_outline</i>
+				{{/if}}
+			{{/if}}
+		</div>
+		<div class="stage-information">
+			<h4 class="{{#if $or finished currentStage}} title-finished {{/if}}">Etapa de {{name}}</h4>
+			<span class="hidden-xs">
+				Tiempo Registrado: <strong>{{timeFormat time}}</strong>
+				<!--<i class="material-icons time-lapse">timelapse</i>-->
+			</span>
+			<span class="visible-xs"><strong>{{timeFormat time}}</strong></span>
+		</div>
+		{{#if editAvailable}}
+			<i class="material-icons edit-stage">mode_edit</i>
+		{{/if}}
+	</div>
+</template>
+<!-- <template name="timeTableRow">
+	<tr>
+		<td><span>{{name}}</span></td>
+		<td class="hidden-xs">{{timeFormat estimated}}</td>
+		<td class="hidden-xs">{{timeFormat time}}</td>
+	</tr>
+</template> -->
+<!-- ###################################### -->
+<template name="timesFooter">
+	<div class="time-edit-box">
+		{{#if openStageStatus}}
+			<span class="btn primary-button status-time">Guardar Cambios</span>
+			<span class="information hidden-xs">Al dar click aqui, los cambios que acabaste de realizar serán permanentes</span>
+		{{else}}
+			<span class="btn {{#if availableOpenStage}} primary-button status-time {{else}} disabled-button {{/if}} status-space-left">Editar Etapas</span>
+			{{#if availableOpenStage}}
+				<span class="information hidden-xs">Este botón te permitirá reabrir etapas completadas o cerrar etapas abiertas</span>
+			{{else}}
+				<span class="information hidden-xs">Debes ingresar un tiempo estimado en el Plan Summary para poder editar el estado de las etapas.</span>
+			{{/if}}
+		{{/if}}
+	</div>
+</template>
 <!-- ###################################### -->

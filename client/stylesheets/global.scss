@@ -51,7 +51,7 @@
 
 .new-button {
 	padding: 10px 15px;
-	background-color: $green;
+	background-color: $blue;
 	color: $white!important;
 	font-weight: 500;
 	font-size: 11pt;
@@ -62,7 +62,7 @@
 	@include border-radius($default-border-radius);
 
 	&:hover {
-		background-color: $green-dark;
+		background-color: $blue-dark;
 		color: $white;
 	}
 
@@ -550,6 +550,8 @@ input:-webkit-autofill {
 	.content-menu-box {
 		width: calc(100% + 40px);
 		margin-top: 20px;
+		overflow: hidden;
+		height: initial;
 	}
 }
 
