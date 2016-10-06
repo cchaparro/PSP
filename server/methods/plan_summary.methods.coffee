@@ -59,12 +59,15 @@ Meteor.methods
 
 
 	# This is used to change the finished field of a projects stage between true/false
-	update_stage_completed_value: (projectId, stage) ->
+	update_stage_completed_value: (projectId, stage, bulk=false, bulkstate=false) ->
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
 		projectStages = planSummary?.timeEstimated
 
 		currentStage = _.findWhere projectStages, {name: stage.name}
-		currentStage.finished = !stage.finished
+		if bulk
+			currentStage.finished = bulkstate
+		else
+			currentStage.finished = !stage.finished
 
 		db.plan_summary.update({"projectId": projectId}, {$set: { "timeEstimated": projectStages }})
 

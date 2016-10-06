@@ -389,9 +389,19 @@
 
 				i {
 					padding-left: 15px;
-					padding-top: 20.5px;
+					padding-top: 20px;
 					padding-bottom: 20.5px;
 					cursor: default;
+				}
+
+				.check-status {
+					width: 20px;
+					height: 20px;
+					margin: 22px 2px 21px 17px;
+					@include border-radius($circle-border-radius);
+					border: 2px solid $success;
+					float: left;
+					cursor: pointer;
 				}
 
 				.completed {
@@ -400,6 +410,10 @@
 
 				.current {
 					color: $text-dark;
+				}
+
+				.check-enabled {
+					cursor: pointer;
 				}
 			}
 
@@ -463,6 +477,9 @@
 			float: left;
 			padding-top: 0;
 			margin-right: 10px;
+		}
+
+		.status-space-left {
 			margin-left: 49px;
 		}
 
@@ -470,98 +487,21 @@
 			line-height: 64px;
 			color: $text;
 		}
+
+		.check-status {
+			width: 20px;
+			height: 20px;
+			margin: 21px 12px 21px 17px;
+			@include border-radius($circle-border-radius);
+			border: 2px solid $success;
+			float: left;
+			cursor: pointer;
+		}
 	}
 }
-// .time-content {
-// 	background-color: $white;
-// 	padding: 20px;
-
-// 	.time-menu {
-// 		width: 100%;
-// 		margin-bottom: 10px;
-// 		padding-bottom: 15px;
-// 		border-bottom: 1px solid $border;
-// 		@include clearfix();
-
-// 		div {
-// 			float: left;
-// 		}
-
-// 		.time-btn {
-// 			margin-top: 2px;
-// 			padding: 15px 15px 13px 15px;
-// 			@include border-radius($default-border-radius * 2);
-// 		}
-
-// 		.primary-button, .disabled-button {
-// 			padding-top: 0;
-// 			margin-top: 0;
-// 		}
-// 	}
-
-// 	.time-submit {
-// 		margin-top: 0;
-// 		padding-top: 0;
-// 	}
-
-// 	.time-submit-disabled {
-// 		@extend .time-submit;
-// 		background-color: $popup-bg;
-// 		cursor: default;
-// 	}
-
-// 	.time-table {
-// 		background-color: $white;
-
-// 		thead {
-// 			& > tr > th{
-// 				padding-bottom: 15px;
-// 				text-align: center;
-// 				border-bottom: 0px;
-// 				color: $text;
-// 				font-weight: 300;
-// 				cursor: default;
-// 			}
-// 		}
-
-// 		tbody > tr {
-// 			background-color: $background;
-// 			cursor: default;
-
-// 			& > td {
-// 				padding: 20px 20px;
-// 				border: none;
-// 				border-bottom: 6px solid $white;
-// 				color: $text;
-
-// 				&:nth-child(2) {
-// 					text-align: center;
-// 				}
-
-// 				&:nth-child(3) {
-// 					text-align: center;
-// 					padding-top: 18px;
-// 					padding-bottom: 14px;
-// 					margin: 0;
-// 				}
-
-// 				&:last-child {
-// 					text-align: center;
-// 					width: 110px;
-// 				}
-// 			}
-
-// 			&:last-child {
-// 				border-bottom: none;
-// 			}
-// 		}
-// 	}
-
-// }
 
 .time-btn {
 	float: left;
-	//margin-top: 9px;
 	margin-right: 10px;
 	padding: 12px 12px 10px 12px;
 	@include border-radius($default-border-radius);
