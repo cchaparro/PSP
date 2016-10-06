@@ -380,26 +380,42 @@
 	"buffers":
 	[
 		{
-			"file": "client/views/main/main_menuBar.html",
+			"file": "lib/system/system.coffee",
 			"settings":
 			{
-				"buffer_size": 5370,
+				"buffer_size": 14638,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/stylesheets/main.scss",
+			"file": "client/views/projects/time/allTimes.html",
 			"settings":
 			{
-				"buffer_size": 8890,
+				"buffer_size": 2615,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/stylesheets/projects.scss",
+			"file": "client/views/projects/time/allTimes.coffee",
 			"settings":
 			{
-				"buffer_size": 18793,
+				"buffer_size": 6603,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/views/help/community.html",
+			"settings":
+			{
+				"buffer_size": 3652,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/views/help/community.coffee",
+			"settings":
+			{
+				"buffer_size": 2738,
 				"line_ending": "Unix"
 			}
 		}

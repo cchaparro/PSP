@@ -356,9 +356,14 @@
 			}
 		}
 
-		.new-button {
+		.disabled {
+			color: $popup-bg;
+		}
+
+		.btn {
 			float: left;
-			margin: 12px;
+			padding-top: 0;
+			margin-left: 15px;
 		}
 	}
 	
@@ -449,18 +454,20 @@
 
 	.time-edit-box {
 		width: 100%;
+		height: 64px;
 		display: block;
+		padding-right: 10px;
 		@include clearfix;
 
-		.new-button {
+		.primary-button {
 			float: left;
-			margin: 7px;
+			padding-top: 0;
+			margin-right: 10px;
 			margin-left: 49px;
-			background-color: $blue;
 		}
 
 		.information {
-			line-height: 54px;
+			line-height: 64px;
 			color: $text;
 		}
 	}
@@ -1082,7 +1089,7 @@
 				padding-left: 7px;
 			}
 
-			.new-button {
+			.primary-button {
 				margin-left: 0;
 				margin-right: 7px;
 				float: right;

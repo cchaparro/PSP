@@ -9,7 +9,7 @@
 				{{>timeStageRow}}
 			{{/each}}
 		</div>
-		<!--{{>timesFooter}}-->
+		{{>timesFooter}}
 	</div>
 </template>
 <!-- ###################################### -->
@@ -40,27 +40,13 @@
 		<td><span>{{name}}</span></td>
 		<td class="hidden-xs">{{timeFormat estimated}}</td>
 		<td class="hidden-xs">{{timeFormat time}}</td>
-		<td>
-			{{#if openStageStatus}}
-				<div class="time-stage-status {{#if finished}} active {{/if}}"><i class="fa fa-fw fa-check"></i></div>
-			{{else}}
-				<div class="time-completed {{#unless finished}} hide {{/unless}}"><i class="fa fa-fw fa-check"></i></div>
-			{{/if}}
-		</td>
-		<td class="hidden-xs">
-			{{#if editAvailable}}
-				<span class="edit-time">Editar</span>
-			{{else}}
-				<span> - </span>
-			{{/if}}
-		</td>
 	</tr>
 </template> -->
 <!-- ###################################### -->
 <template name="timesFooter">
 	<div class="time-edit-box">
-		<span class="btn new-button time-submit">Editar Etapas</span>
-		<span class="information">Este botón te permite abrir etapas completadas.</span>
+		<span class="btn primary-button time-submit">Editar Etapas</span>
+		<span class="information hidden-xs">Este botón te permite reabrir etapas completadas o cerrar etapas abiertas</span>
 	</div>
 </template>
 <!-- ###################################### -->
@@ -71,10 +57,25 @@
 				<i class="material-icons time-play active">play_circle_filled</i>
 				<i class="material-icons time-pause">pause</i>
 			{{else}}
-				<i class="material-icons time-play">play_arrow</i>
-				<i class="material-icons time-pause">pause_circle_filled</i>
+				<i class="material-icons time-play {{#if projectIsCompleted}} disabled {{/if}}">play_arrow</i>
+				<i class="material-icons time-pause {{#if projectIsCompleted}} disabled {{/if}}">pause_circle_filled</i>
 			{{/if}}
-			<span class="btn new-button time-submit">Finalizar {{currentStage}}</span>
+
+			{{#if projectIsCompleted}}
+				<div class="btn disabled-button">
+					<span>Proyecto Finaliado</span>
+				</div>
+			{{else}}
+				{{#if currentStage}}
+					<div class="btn primary-button time-submit">
+						<span>Finalizar {{currentStage}}</span>
+					</div>
+				{{else}}
+					<div class="btn disabled-button">
+						<span>Etapas Completadas</span>
+					</div>
+				{{/if}}
+			{{/if}}
 		</div>
 	{{/with}}
 	<!--{{#with planSummary}}
@@ -83,21 +84,6 @@
 				<i class="fa time-btn fa-play {{#if isRecordingTime}} time-btn-play {{/if}}"></i>
 				<i class="fa time-btn fa-pause {{#unless isRecordingTime}} {{#if disabledPlayButton}} time-btn-disabled {{else}} time-status-pause {{/if}} {{/unless}} "></i>
 			</div>
-			{{#if currentStage}}
-				{{#if projectIsCompleted}}
-					<div class="btn disabled-button">
-						<span>Proyecto Finaliado</span>
-					</div>
-				{{else}}
-					<div class="btn primary-button time-submit">
-						<span>Finalizar {{currentStage}}</span>
-					</div>
-				{{/if}}
-			{{else}}
-				<div class="btn disabled-button">
-					<span>Etapas Completadas</span>
-				</div>
-			{{/if}}
 			<div class="open-stage-box pull-right {{#unless availableOpenStage}} popup-active {{/unless}}">
 				<div class="btn pull-right {{#if availableOpenStage}} reopen-stage primary-button {{else}} disabled-button {{/if}}">
 					{{#if openStageStatus}}
