@@ -92,7 +92,7 @@ Projects.route '/:fid/:id/time-log',
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'timeTemplate', menu: "projectViewMenu"
+		BlazeLayout.render 'masterLayout', main: 'timeTemplate', menu: "projectViewMenu", information: "timeLogInformation"
 
 
 Projects.route '/:fid/:id/defect-log',

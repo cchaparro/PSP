@@ -155,9 +155,13 @@ Template.timeStageRow.helpers
 
 		return @name == _.first(projectStages)?.name
 
-
 	openStageStatus: () ->
 		return openStageStatus.get()
+
+	estimatedPercentage: () ->
+		return 0 if @estimated == 0
+		return 100 if ((@time / @estimated) * 100) > 100
+		return (@time / @estimated) * 100
 
 
 Template.timeStageRow.events

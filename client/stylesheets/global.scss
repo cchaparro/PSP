@@ -354,6 +354,12 @@
 	}
 }
 
+.content-menu-extra {
+	width: 230px;
+	float: right;
+	overflow: hidden;
+}
+
 
 //----------------- Status Messages --------------
 .status-box {
@@ -552,6 +558,12 @@ input:-webkit-autofill {
 		margin-top: 20px;
 		overflow: hidden;
 		height: initial;
+	}
+
+	.content-menu-extra {
+		width: 100%;
+		float: right;
+		display: block;
 	}
 }
 

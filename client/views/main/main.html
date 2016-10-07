@@ -13,7 +13,10 @@
 	<div class="master-content">
 		<div class="master-content-data">
 			{{#if menu}}
-				{{> Template.dynamic template=menu}}
+				<div class="content-menu-extra">
+					{{> Template.dynamic template=menu}}
+					{{> Template.dynamic template=information}}
+				</div>
 				<div class="content-menu-box">
 					{{> Template.dynamic template=main}}
 				</div>

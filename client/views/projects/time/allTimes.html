@@ -60,22 +60,18 @@
 			<h4 class="{{#if $or finished currentStage}} title-finished {{/if}}">Etapa de {{name}}</h4>
 			<span class="hidden-xs">
 				Tiempo Registrado: <strong>{{timeFormat time}}</strong>
-				<!--<i class="material-icons time-lapse">timelapse</i>-->
+				<!--Tiempo Registrado: <strong>{{timeFormat estimated}}</strong>-->
 			</span>
 			<span class="visible-xs"><strong>{{timeFormat time}}</strong></span>
 		</div>
 		{{#if editAvailable}}
 			<i class="material-icons edit-stage">mode_edit</i>
 		{{/if}}
+		<div class="stage-progress">
+			<div class="{{#if overTime}} extra-progress {{/if}}" style="width: {{estimatedPercentage}}%;"></div>
+		</div>
 	</div>
 </template>
-<!-- <template name="timeTableRow">
-	<tr>
-		<td><span>{{name}}</span></td>
-		<td class="hidden-xs">{{timeFormat estimated}}</td>
-		<td class="hidden-xs">{{timeFormat time}}</td>
-	</tr>
-</template> -->
 <!-- ###################################### -->
 <template name="timesFooter">
 	{{#unless projectIsCompleted}}
@@ -93,5 +89,13 @@
 			{{/if}}
 		</div>
 	{{/unless}}
+</template>
+<!-- ###################################### -->
+<template name="timeLogInformation">
+	<div class="information-menu hidden-xs">
+		<h4>Información Extra</h4>
+		<span>&bull; La línea azul debajo de cada etapa representa el progreso sobre el tiempo estimado.</span>
+		<span>&bull; Cuando esta línea se completa significa que has consumido todo el tiempo que deberías utilizar en la etapa.</span>
+	</div>
 </template>
 <!-- ###################################### -->
