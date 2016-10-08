@@ -872,6 +872,10 @@
 			}
 		}
 
+		&.has-warning {
+			height: 130px;
+		}
+
 		&:hover {
 			background-color: $background-dark;
 		}
@@ -970,6 +974,26 @@
 				}
 			}
 		}
+	}
+}
+
+.summary-information {
+	color: $warning-dark;
+	cursor: default;
+	display: block;
+	@include clearfix;
+
+	float: left;
+	padding: 10px;
+	padding-left: 15px;
+
+	i, span {
+		float: left;
+	}
+
+	span {
+		padding-left: 10px;
+		line-height: 25px;
 	}
 }
 
@@ -1172,7 +1196,11 @@
 	}
 
 	.summary-row.mobile-time-total {
-		height: 140px;
+		height: 150px;
+
+		&.has-warning {
+			height: 250px;
+		}
 
 		.percentage-stage {
 			padding-top: 20px;
@@ -1200,9 +1228,31 @@
 					padding-top: 6px;
 					float: right;
 					margin-bottom: 5px;
+					padding-left: 0;
 					display: inline-block;
 				}
 			}
+		}
+	}
+
+	.summary-information {
+		color: $warning-dark;
+		cursor: default;
+		@include clearfix;
+
+		float: left;
+		padding: 10px;
+		padding-left: 15px;
+
+		i {
+			line-height: 1px;
+		}
+
+		span {
+			margin-left: 35px;
+			padding-left: 0;
+			margin-top: -10px;
+			margin-bottom: 20px;
 		}
 	}
 

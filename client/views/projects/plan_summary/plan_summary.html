@@ -16,8 +16,6 @@
 			</tbody>
 		</table>
 	</div> -->
-
-
 	<div class="plan-summary-content">
 		{{#with userData}}
 			<h4>Tiempo en Fase</h4>
@@ -64,7 +62,7 @@
 		</div>
 	{{/each}}
 	{{#with totalValues}}
-		<div class="summary-row total mobile-time-total">
+		<div class="summary-row total mobile-time-total {{#if $and estimationEditable totalTimeEmpty}} has-warning {{/if}}">
 			<div class="summary-icon">
 				<i class="material-icons">insert_chart</i>
 			</div>
@@ -86,22 +84,13 @@
 					<span>Estimado Total</span>
 				{{/if}}
 			</div>
-		</div>
-		<!--<tr>
-			<td><span>Total</span></td>
-			<td class="td-input-row hidden-xs">
-			{{#if estimationEditable}}
-				<div class="input-box">
-					<input type="text" value="{{timeInOnlyMinutes estimatedTime}}">
+			{{#if $and estimationEditable totalTimeEmpty}}
+				<div class="summary-information">
+					<i class="material-icons">report_problem</i>
+					<span>Debes ingresar el tiempo que estimas que te tomara realizar el proyecto.</span>
 				</div>
-			{{else}}
-				<span>{{timeFormat estimatedTime}}</span>
 			{{/if}}
-			</td>
-			<td><span>{{timeFormat totalTime}}</span></td>
-			<td class="hidden-xs"><span>{{timeFormat totalToDate}}</span></td>
-			<td class="hidden-xs"></td>
-		</tr>-->
+		</div>
 	{{/with}}
 </template>
 <!-- ###################################### -->

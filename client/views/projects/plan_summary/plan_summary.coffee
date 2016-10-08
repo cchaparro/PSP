@@ -31,11 +31,8 @@ Template.summaryTimeRow.helpers
 			probeD: @?.settings?.probeD
 		}
 
-	planSummaryTime: (time) ->
-		return sys.planSummaryTime(time)
-
-	isTotalTimeEmpty: () ->
-		return @estimatedTime > 0
+	totalTimeEmpty: () ->
+		return !(@estimatedTime > 0)
 
 	estimationEditable: () ->
 		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
