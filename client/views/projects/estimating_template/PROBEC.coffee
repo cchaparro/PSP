@@ -44,17 +44,16 @@ Template.PROBEC.helpers
 				newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy)
 
 			Template.instance().Beta1Time.set(newBetaTime1)
-
 		
 	GetTimeEstimationValues:()->
-		beta0 = Template.instance().Beta0Time.get()
-		beta1 = Template.instance().Beta1Time.get()
-		return {"Beta0": beta0.toFixed(2), "Beta1": beta1.toFixed(2)}
+		beta0 = Template.instance().Beta0Time.get().toFixed(2)
+		beta1 = Template.instance().Beta1Time.get().toFixed(2)
+		return {"Beta0": beta0, "Beta1": beta1}
 
 	GetSizeEstimationValues:()->
-		beta0 = Template.instance().Beta0Size.get()
-		beta1 = Template.instance().Beta1Size.get()
-		return {"Beta0": beta0.toFixed(2), "Beta1": beta1.toFixed(2)}
+		beta0 = Template.instance().Beta0Size.get().toFixed(2)
+		beta1 = Template.instance().Beta1Size.get().toFixed(2)
+		return {"Beta0": beta0, "Beta1": beta1}
 
 	AdjustedSize:()->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
@@ -62,7 +61,7 @@ Template.PROBEC.helpers
 		B1=Template.instance().Beta1Size.get()
 		newsize = (B0+B1)*psProject?.proxyEstimated
 		Template.instance().adjustedSize.set(newsize)
-		return newsize
+		return newsize.toFixed(2)
 
 	AdjustedTime:()->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
@@ -70,7 +69,7 @@ Template.PROBEC.helpers
 		B1=Template.instance().Beta1Time.get()
 		newTime = (B0+B1)*psProject?.proxyEstimated
 		Template.instance().adjustedTime.set(newTime)
-		return newTime
+		return newTime.toFixed(2)
 		
 	DescriptionTime:()->
 		projects = db.projects.find({"completed":true}).fetch()
@@ -107,6 +106,7 @@ Template.PROBEC.helpers
 
 
 Template.PROBEC.events
+
 	'click .save-data-time': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		plannedProductivity = parseInt(planSummary?.estimatedAddedSize/Template.instance().adjustedTime.get())

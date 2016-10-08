@@ -55,10 +55,16 @@ Template.PROBEA.helpers
 
 
 	GetTimeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Time.get().toFixed(2),"Beta1":Template.instance().Beta1Time.get().toFixed(2),"r":Template.instance().CorrelationTime.get().toFixed(2)}
+		beta0 = Template.instance().Beta0Time.get().toFixed(2)
+		beta1 = Template.instance().Beta1Time.get().toFixed(2)		
+		correlation = Template.instance().CorrelationTime.get().toFixed(2)
+		return {"Beta0":beta0,"Beta1":beta1,"r":correlation}
 
 	GetSizeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Size.get().toFixed(2),"Beta1":Template.instance().Beta1Size.get().toFixed(2),"r":Template.instance().CorrelationSize.get().toFixed(2)}
+		beta0 = Template.instance().Beta0Size.get().toFixed(2)
+		beta1 = Template.instance().Beta1Size.get().toFixed(2)		
+		correlation = Template.instance().CorrelationSize.get().toFixed(2)
+		return {"Beta0":beta0,"Beta1":beta1,"r":correlation}
 
 	AdjustedSize:()->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
@@ -100,7 +106,6 @@ Template.PROBEA.helpers
 			Template.instance().descriptionTime.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionTime.get()
 
-
 	DescriptionSize:()->
 		projects = db.projects.find({"completed":true}).fetch()
 		if projects.length >2
@@ -124,7 +129,6 @@ Template.PROBEA.helpers
 			Template.instance().descriptionSize.set("No hay suficientes datos históricos")
 		return Template.instance().descriptionSize.get()
 
-
 	validTime:()->
 		return Template.instance().validProbeTime.get()
 
@@ -133,6 +137,7 @@ Template.PROBEA.helpers
 
 
 Template.PROBEA.events
+
 	'click .save-data-time': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		if Template.instance().validProbeTime.get()
@@ -152,6 +157,7 @@ Template.PROBEA.events
 				sys.flashStatus("error-save-time-estimated")
 			else
 				sys.flashStatus("save-summary-estimated")
+
 	'click .save-data-size': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		if planSummary?.estimatedTime != 0 and Template.instance().validProbeSize.get()
