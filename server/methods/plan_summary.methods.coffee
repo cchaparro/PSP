@@ -120,34 +120,27 @@ Meteor.methods
 
 		if projectTotalTime >= 1
 			actualProductivity = parseInt((totalActualAdd + totalActualModified) / projectTotalTime)
-
-		# if planSummary.total.totalTime != 0
-		# 	if sys.timeToHours(planSummary.total.totalTime) == 0
-		# 		actualProductivity = 0
-		# 	else
-		# 		actualProductivity = parseInt((totalActualAdd + totalActualModified)/sys.timeToHours(planSummary.total.totalTime))
 		else
 			actualProductivity = planSummary.total.productivityActual
 
-		console.log "------------------>>>"
-		console.log typeof actualProductivity
+		console.log actualProductivity
 		newtotal = {
 			totalTime:					planSummary.total.totalTime
 			totalSize:					totalNewSize
-			estimatedTotalSize:			totalEstimatedSize
+			estimatedTotalSize:		totalEstimatedSize
 			estimatedTime:				planSummary.total.estimatedTime
 			estimatedBase:				totalEstimatedBase
 			actualBase:					totalActualBase
 			estimatedAdd:				totalEstimatedAdd
 			actualAdd:					totalActualAdd
-			estimatedModified:			totalEstimatedModified
-			actualModified:				totalActualModified
+			estimatedModified:		totalEstimatedModified
+			actualModified:			totalActualModified
 			estimatedDeleted:			totalEstimatedDeleted
 			actualDeleted:				totalActualDeleted
 			estimatedReused:			planSummary.total.estimatedReused
 			actualReused:				planSummary.total.actualReused
-			proxyEstimated:				proxySize
-			estimatedAddedSize:			planSummary.total.estimatedAddedSize
+			proxyEstimated:			proxySize
+			estimatedAddedSize:		planSummary.total.estimatedAddedSize
 			productivityPlan:			planSummary.total.productivityPlan
 			productivityActual:			actualProductivity
 		}
@@ -182,12 +175,21 @@ Meteor.methods
 
 		totalEstimatedSize	= planSummary.estimatedAddedSize - totalEstimatedModified - planSummary.total.estimatedDeleted + planSummary.total.estimatedBase + planSummary.total.estimatedReused
 
+		totalActualModified = planSummary.total.actualModified
+		timeHours = sys.timeToHours(planSummary.total.totalTime)
+
+		if timeHours >= 1
+			actualProductivity = parseInt((totalActualAdd + totalActualModified)/timeHours)
+		else
+			actualProductivity = planSummary.total.productivityActual
+
 		data = {
 			"addLOC": addData
 			"total.estimatedAdd": totalEstimatedAdd
 			"total.actualAdd": totalActualAdd
 			"total.proxyEstimated": proxySize
-			"total.totalSize":totalNewSize
+			"total.totalSize": totalNewSize
+			"total.productivityActual": actualProductivity
 		}
 
 		db.plan_summary.update({ "projectId":projectId }, { $set: data })
