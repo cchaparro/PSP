@@ -6,8 +6,17 @@ Template.PROBED.helpers
 	PlanSummary:()->
 		return db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 
+	probeEditable: () ->
+		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
+		currentStage = _.findWhere projectStages, {finished: false}
+		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed		
+		return false if projectIsCompleted
+		return true if currentStage?.name == "Planeación"
+		return false
+
 
 Template.PROBED.events
+
 	'click .save-data-time': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		estimatedHours = $(".newTime").val()

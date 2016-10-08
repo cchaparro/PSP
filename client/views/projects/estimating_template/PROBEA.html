@@ -41,7 +41,7 @@
 					<td>{{r}}</td>
 				{{/with}}
 				<td>{{DescriptionSize}}</td>
-				<td><div class="{{#unless validSize}} hide {{/unless}} btn primary-button save-data-size">Escoger</div></td>
+				<td><div class="{{#unless $and validSize probeEditable}} hide {{/unless}} btn primary-button save-data-size">Escoger</div></td>
 			</tr>
 		</tbody>
 	</table>
