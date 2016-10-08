@@ -2,7 +2,7 @@
 <template name="planSummaryTemplate">
 	{{>projectMessages}}
 	{{>headerNavigation}}
-	<div class="{{#unless sizeForPSP0}} hide {{/unless}} plan-summary-content">
+	<!-- <div class="{{#unless sizeForPSP0}} hide {{/unless}} plan-summary-content">
 		<h3>Tamaño del programa(Opcional)</h3>
 		<table class="table table-summary">
 			<thead>
@@ -15,81 +15,79 @@
 			{{> sizePSP0}}
 			</tbody>
 		</table>
+	</div> -->
+
+
+	<div class="plan-summary-content">
+		{{#with userData}}
+			<h4>Tiempo en Fase</h4>
+			<div class="summary-time">
+				{{>summaryTimeRow}}
+			</div>
+
+			<h4 class="inside-element">Defectos Inyectados</h4>
+			<div class="summary-time">
+				{{>summaryInjectedRow}}
+			</div>
+
+			<h4 class="inside-element">Defectos Removidos</h4>
+			<div class="summary-time">
+				{{>summaryRemovedRow}}
+			</div>
+		{{/with}}
 	</div>
-	<br>
-	{{#with userData }}
-		<div class="plan-summary-content">
-			<h3>Tiempo en Fase</h3>
-			<table class="table table-summary">
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th class="hidden-xs">Plan</th>
-						<th>Actual</th>
-						<th class="hidden-xs">A la fecha</th>
-						<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{> summaryTimeRow}}
-				</tbody>
-			</table>
-		</div>
-		<br>
-		<div class="plan-summary-content">
-			<h3>Defectos Inyectados</h3>
-			<table class="table table-summary">
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th class="hidden-xs"></th>
-						<th>Actual</th>
-						<th class="hidden-xs">A la fecha</th>
-						<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
-					</tr>
-				</thead>
-				<tbody>
-					 {{> summaryInjectedRow}}
-				</tbody>
-			</table>
-		</div>
-		<br>
-		<div class="plan-summary-content">
-			<h3>Defectos Removidos</h3>
-			<table class="table table-summary">
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th class="hidden-xs"></th>
-						<th>Actual</th>
-						<th class="hidden-xs">A la fecha</th>
-						<th style="width: 100px;" class="hidden-xs">Porcentaje</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{> summaryRemovedRow}}
-				</tbody>
-			</table>
-		</div>
+	<!--{{#with userData}}
 		{{#if $eq actualLevelPSP "PSP 1"}}
 			{{> pspOneTemplate}}
 		{{/if}}
-	{{/with}}
+	{{/with}}-->
 </template>
 <!-- ###################################### -->
 <template name="summaryTimeRow">
 	{{#each timeEstimatedStages}}
-		<tr>
-			<td>{{name}}</td>
-			<td class="hidden-xs">
-			</td>
-			<td>{{timeFormat time}}</td>
-			<td class="hidden-xs">{{timeFormat toDate}}</td>
-			<td class="hidden-xs">{{percentage}}%</td>
-		</tr>
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons">play_circle_outline</i>
+			</div>
+			<div class="stage-information">
+				<h4 class="hidden-xs">Etapa de {{name}}</h4>
+				<h4 class="visible-xs">{{name}}</h4>
+				<span class="hidden-xs">Tiempo Actual: <strong>{{timeFormat time}}</strong></span>
+				<span class="hidden-xs">Tiempo a la Fecha: <strong>{{timeFormat toDate}}</strong></span>
+				<span class="visible-xs">A: <strong>{{timeFormat time}}</strong></span>
+				<span class="visible-xs">F: <strong>{{timeFormat toDate}}</strong></span>
+			</div>
+			<div class="percentage-stage">
+				<h4>{{percentage}}%</h4>
+				<span>Porcentaje</span>
+			</div>
+		</div>
 	{{/each}}
 	{{#with totalValues}}
-		<tr>
+		<div class="summary-row total mobile-time-total">
+			<div class="summary-icon">
+				<i class="material-icons">insert_chart</i>
+			</div>
+			<div class="stage-information">
+				<h4>Total</h4>
+				<span class="hidden-xs">Total Actual: <strong>{{timeFormat totalTime}}</strong></span>
+				<span class="hidden-xs">Total a la Fecha: <strong>{{timeFormat totalToDate}}</strong></span>
+				<span class="visible-xs">A: <strong>{{timeFormat totalTime}}</strong></span>
+				<span class="visible-xs">F: <strong>{{timeFormat totalToDate}}</strong></span>
+			</div>
+			<div class="percentage-stage {{#if estimationEditable}} stage-input {{/if}}">
+				{{#if estimationEditable}}
+					<div>
+						<input class="user-estimated" type="text" value="{{timeInOnlyMinutes estimatedTime}}">
+					</div>
+					<span class="label">Estimado Total (mins)</span>
+				{{else}}
+					<h4>{{timeFormat estimatedTime}}</h4>
+					<span>Estimado Total</span>
+				{{/if}}
+			</div>
+		</div>
+		<!--<tr>
 			<td><span>Total</span></td>
 			<td class="td-input-row hidden-xs">
 			{{#if estimationEditable}}
@@ -103,49 +101,79 @@
 			<td><span>{{timeFormat totalTime}}</span></td>
 			<td class="hidden-xs"><span>{{timeFormat totalToDate}}</span></td>
 			<td class="hidden-xs"></td>
-		</tr>
+		</tr>-->
 	{{/with}}
 </template>
 <!-- ###################################### -->
 <template name="summaryInjectedRow">
 	{{#each injectedDefects}}
-		<tr>
-			<td>{{name}}</td>
-			<td class="hidden-xs"></td>
-			<td>{{injected}}</td>
-			<td class="hidden-xs">{{toDate}}</td>
-			<td class="hidden-xs">{{percentage}}%</td>
-		</tr>
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons">play_circle_outline</i>
+			</div>
+			<div class="stage-information">
+				<h4 class="hidden-xs">Etapa de {{name}}</h4>
+				<h4 class="visible-xs">{{name}}</h4>
+				<span>
+					Defectos Actuales: <strong>{{injected}}</strong>
+				</span>
+				<span>
+					Defectos a la Fecha: <strong>{{toDate}}</strong>
+				</span>
+			</div>
+			<div class="percentage-stage">
+				<h4>{{percentage}}%</h4>
+				<span>Porcentaje</span>
+			</div>
+		</div>
 	{{/each}}
 	{{#with totalInjectedValues}}
-		<tr>
-			<td><span>Total</span></td>
-			<td class="hidden-xs"></td>
-			<td><span>{{totalInjected}}</span></td>
-			<td class="hidden-xs"><span>{{totalInjectedToDate}}</span></td>
-			<td class="hidden-xs"></td>
-		</tr>
+		<div class="summary-row total">
+			<div class="summary-icon">
+				<i class="material-icons">insert_chart</i>
+			</div>
+			<div class="stage-information">
+				<h4>Total</h4>
+				<span>Total Actual: <strong>{{totalInjected}}</strong></span>
+				<span>Total a la Fecha: <strong>{{totalInjectedToDate}}</strong></span>
+			</div>
+		</div>
 	{{/with}}
 </template>
 <!-- ###################################### -->
 <template name="summaryRemovedRow">
 	{{#each removedDefects}}
-		<tr>
-			<td>{{name}}</td>
-			<td class="hidden-xs"></td>
-			<td>{{removed}}</td>
-			<td class="hidden-xs">{{toDate}}</td>
-			<td class="hidden-xs">{{percentage}}%</td>
-		</tr>
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons {{#if currentStage}} current {{/if}}">play_circle_outline</i>
+			</div>
+			<div class="stage-information">
+				<h4 class="hidden-xs">Etapa de {{name}}</h4>
+				<h4 class="visible-xs">{{name}}</h4>
+				<span>
+					Defectos Actuales: <strong>{{removed}}</strong>
+				</span>
+				<span>
+					Defectos a la Fecha: <strong>{{toDate}}</strong>
+				</span>
+			</div>
+			<div class="percentage-stage">
+				<h4>{{percentage}}%</h4>
+				<span>Porcentaje</span>
+			</div>
+		</div>
 	{{/each}}
 	{{#with totalRemovedValues}}
-		<tr>
-			<td><span>Total</span></td>
-			<td class="hidden-xs"></td>
-			<td><span>{{totalRemoved}}</span></td>
-			<td class="hidden-xs"><span>{{totalRemovedToDate}}</span></td>
-			<td class="hidden-xs"></td>
-		</tr>
+		<div class="summary-row total">
+			<div class="summary-icon">
+				<i class="material-icons">insert_chart</i>
+			</div>
+			<div class="stage-information">
+				<h4>Total</h4>
+				<span>Total Actual: <strong>{{totalRemoved}}</strong></span>
+				<span>Total a la Fecha: <strong>{{totalRemovedToDate}}</strong></span>
+			</div>
+		</div>
 	{{/with}}
 </template>
 <!-- ###################################### -->

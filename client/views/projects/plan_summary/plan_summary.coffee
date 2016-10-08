@@ -47,7 +47,7 @@ Template.summaryTimeRow.helpers
 		return false
 
 Template.summaryTimeRow.events
-	'blur .input-box input': (e,t) ->
+	'blur .user-estimated': (e,t) ->
 		value = $(e.target).val()
 
 		data = {

@@ -830,95 +830,146 @@
 
 //----------- Project Plan Summary View ----------
 .plan-summary-content {
-	background-color: $white;
-	padding: 20px;
-
-	h3 {
-		font-size: 13pt;
-		margin-top: 5px;
-		padding-bottom: 20px;
-		color: $text-dark;
-		border-bottom: 1px solid $border;
-	}
+	background-color: white;
+	width: 100%;
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
+	margin-bottom: 20px;
+	@include clearfix;
 
 	h4 {
-		font-size: 13pt;
-		padding-top: 10px;
-		color: $text;
-		margin-bottom: 0;
-		padding-bottom: 5px;
+		color: $text-dark;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		margin-left: 15px;
 		cursor: default;
-
-		span {
-			color: $text-dark;
-		}
 	}
 
-	.table-summary {
-		background-color: $white;
-		margin-bottom: 0;
+	.inside-element {
+		padding-top: 60px;
+	}
 
-		thead {
-			& > tr > th{
-				padding-bottom: 15px;
-				text-align: center;
-				border-bottom: 0px;
-				color: $text;
-				font-weight: 300;
+	.summary-time {
+		border-top: 1px solid $border;
+	}
+
+	.summary-row {
+		width: 100%;
+		height: 75px;
+		display: block;
+		border-bottom: 1px solid $border;
+		line-height: 72.5px;
+
+		&.total {
+			background-color: $background-dark;
+
+			.percentage-stage {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				h4 {
+					font-size: 12pt;
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $background-dark;
+		}
+
+		.summary-icon {
+			float: left;
+			color: $text;
+			line-height: 10px;
+
+			i {
+				padding-left: 15px;
+				padding-top: 25px;
+				padding-bottom: 25px;
 				cursor: default;
 			}
 		}
 
-		tbody > tr {
-			background-color: $background;
+		.stage-information {
+			display: inline-block;
+			vertical-align: middle;
+			line-height: 20px;
+			padding-left: 10px;
 			cursor: default;
 
-			& > td {
-				padding: 20px 20px;
-				border: none;
-				border-bottom: 6px solid $white;
-				color: $text;
+			.time-lapse {
+				float: right;
+				font-size: 12pt;
+				line-height: inherit;
+				padding-left: 3px;
+				cursor: pointer;
+			}
 
-				input {
-					margin-top: 9px;
-					text-align: center;
-				}
+			h4 {
+				margin: 0;
+				font-size: 12pt;
+				color: $text-dark;
 
-				&:first-child {
-					width: 200px;
-				}
-
-				&:nth-child(2) {
-					text-align: center;
-					width: 180px;
-				}
-
-				&:nth-child(3) {
-					text-align: center;
-					padding-top: 18px;
-					padding-bottom: 14px;
-					margin: 0;
-				}
-
-				&:nth-child(4) {
-					text-align: center;
-					padding-top: 18px;
-					padding-bottom: 14px;
-					margin: 0;
-				}
-
-				&:last-child {
-					text-align: center;
-					width: 110px;
+				&.title-finished {
+					color: $text-dark;
 				}
 			}
 
-			&:last-child {
-				border-bottom: none;
-				background-color: $white;
+			span {
+				font-size: 10pt;
+				color: $text;
+				display: block;
 			}
 		}
 
+		.percentage-stage {
+			float: right;
+			color: $text;
+			text-align: center;
+			display: inline-block;
+			line-height: 20px;
+			padding-right: 10px;
+			padding-top: 18px;
+			padding-bottom: 18px;
+			cursor: default;
+
+			h4 {
+				font-size: 15pt;
+				margin: 0;
+			}
+
+			span {
+				display: block;
+				font-size: 10pt;
+				margin-top: -3px;
+			}
+
+			&.stage-input {
+				padding-top: 8px;
+				padding-bottom: 8px;
+
+				input {
+					outline: none;
+					padding: 7px;
+					width: 100px;
+					text-align: center;
+					color: $text-dark;
+					font-size: 11pt;
+					@include border-radius($default-border-radius);
+					@include placeholder-color($text, 200);
+					border: 1px solid $border-input;
+
+					&:focus {
+						border: 1px solid $blue;
+					}
+				}
+
+				.label {
+					margin-top: 5px;
+					color: $text;
+					font-weight: 400;
+				}
+			}
+		}
 	}
 }
 
@@ -1118,6 +1169,41 @@
 
 	.content-menu-box {
 		width: 100%;
+	}
+
+	.summary-row.mobile-time-total {
+		height: 140px;
+
+		.percentage-stage {
+			padding-top: 20px;
+			padding-bottom: 20px;
+			float: left;
+
+			h4 {
+				font-size: 12pt;
+			}
+
+			span {
+				float: left;
+			}
+
+			&.stage-input {
+				text-align: left;
+				margin-left: 10px;
+
+				input {
+					display: inline-block;
+					float: left;
+				}
+
+				.label {
+					padding-top: 6px;
+					float: right;
+					margin-bottom: 5px;
+					display: inline-block;
+				}
+			}
+		}
 	}
 
 }
