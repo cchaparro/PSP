@@ -655,108 +655,137 @@
 
 //---------- General Project Information ---------
 .prj-information-content {
-	background-color: $white;
-	padding: 20px;
-	position: relative;
+	background-color: white;
+	width: 100%;
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
+	margin-bottom: 20px;
+	@include clearfix;
 
-	h3 {
-		font-size: 13pt;
-		margin-top: 5px;
-		padding-bottom: 20px;
+	h4 {
 		color: $text-dark;
-		border-bottom: 1px solid $border;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		margin-left: 15px;
 		cursor: default;
+		display: inline-block;
+
+		span {
+			width: 12px;
+			height: 12px;
+			display: inline-block;
+			line-height: 10px;
+			margin-left: 2px;
+			@include border-radius($circle-border-radius);
+			background-color: $success;
+
+			&.completed {
+				background-color: $text;
+			}
+		}
 	}
 
-	.prj-info-text {
-		padding-top: 10px;
-		display: block;
+	.close-project {
+		color: $green;
+		float: right;
+		font-weight: 500;
 		font-size: 11pt;
-		color: $text;
-		margin-bottom: 10px;
-		cursor: default;
-	}
-
-	.prj-info-title {
-		margin: 0;
-		margin-bottom: 3px;
-		padding: 5px 10px;
-		font-weight: 700;
-		font-size: 17pt;
-		color: $black;
-		@include border-radius($default-border-radius);
-		border: 1px solid $border;
-		outline: none;
-
-		&:focus {
-			border: 1px solid $blue;
-		}
-	}
-
-	.prj-title-completed {
-		@extend .prj-info-title;
-		border: 0;
-		cursor: default;
-	}
-
-	.prj-info-description {
-		margin: 0;
-		font-size: 12pt;
-		padding: 5px 10px;
-		color: $black;
-		@include border-radius($default-border-radius);
-		border: 1px solid $border;
-		outline: none;
-		margin-bottom: 20px;
-
-		&:focus {
-			border: 1px solid $blue;
-		}
-	}
-
-	.prj-description-completed {
-		@extend .prj-info-description;
-		border: 0;
-		cursor: default;
-	}
-
-	.project-active {
-		position: absolute;
-		display: inline;
-		right: 20px;
-		top: 11px;
-		padding: 10px 15px;
-		border: 1px solid $border;
-		@include border-radius($default-border-radius);
+		padding-right: 20px;
 		cursor: pointer;
-		color: $success;
+		line-height: 53px;
+
+		i {
+			float: left;
+			line-height: inherit;
+			font-size: 15pt;
+			padding-right: 2px;
+			font-weight: 500;
+		}
+
+		&:hover {
+			color: $green-dark;
+		}
 	}
 
 	.project-completed {
-		@extend .project-active;
 		color: $danger;
-		border: 0;
+		float: right;
+		font-weight: 500;
+		font-size: 11pt;
 		cursor: default;
+		line-height: 53px;
+		padding-right: 20px;
+	}
+
+	.information-row {
+		width: 100%;
+		padding-bottom: 15px;
+		padding-right: 15px;
+		display: block;
+		//border-bottom: 1px solid $border;
+		border-top: 1px solid $border;
+		position: relative;
+
+		h4 {
+			font-size: 12pt;
+			color: $text;
+		}
+
+		.project-title, .project-description {
+			margin: 15px 15px 3px 15px;
+			background-color: $background-dark;
+			padding: 5px 10px;
+			font-weight: 700;
+			font-size: 13pt;
+			color: $text-dark;
+			@include border-radius($default-border-radius);
+			border: 1px solid $border;
+			outline: none;
+
+			&:focus {
+				border: 1px solid $blue;
+			}
+		}
+
+		.project-description {
+			font-weight: 400;
+			font-size: 11pt;
+		}
+
+		.project-completed-title, .project-completed-description {
+			display: block;
+			padding-left: 15px;
+			font-weight: 700;
+			font-size: 13pt;
+			cursor: default;
+		}
+
+		.project-completed-description {
+			font-weight: 400;
+			font-size: 11pt;
+		}
 	}
 }
 
 .prj-information-values-box {
-	div {
-		background-color: $white;
-		padding: 20px;
-		position: relative;
+	.information-box {
+		background-color: white;
+		@include border-radius($default-border-radius);
+		border-bottom: 2px solid $box-border;
+		margin-bottom: 20px;
+		@include clearfix;
 
-		h3 {
-			font-size: 13pt;
-			margin-top: 5px;
-			padding-bottom: 20px;
+		h4 {
 			color: $text-dark;
-			border-bottom: 1px solid $border;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			margin-left: 15px;
 			cursor: default;
+			display: block;
 		}
 
-		&:first-child {
-			width: calc(100% - 320px);
+		&.charts {
+			width: calc(100% - 255px);
 			height: 300px;
 			float: left;
 
@@ -769,6 +798,7 @@
 
 				canvas {
 					margin-top: 7.7px;
+					margin-left: 15px;
 					cursor: default;
 				}
 			}
@@ -779,6 +809,7 @@
 				display: inline-block;
 				list-style: none;
 				padding-top: 35px;
+				padding-left: 30px;
 				cursor: default;
 
 				li {
@@ -798,13 +829,16 @@
 	}
 
 	.prj-registered-values {
-		width: 300px;
+		width: 230px;
 		height: 300px;
 		margin-left: 20px;
 		float: right;
 		cursor: default;
 
 		div {
+			padding-left: 15px;
+			padding-bottom: 15px;
+
 			svg {
 				width: 30px;
 				float: left;
@@ -1107,7 +1141,31 @@
 
 // Portrait tablets and small desktops
 @media (min-width: 768px) and (max-width: 991px) {
+	.prj-information-values-box {
+		.information-box {
+			&.charts {
+				width: 100%;
 
+				.prj-information-chart {
+					canvas {
+						margin-left: 50px;
+					}
+				}
+			}
+		}
+
+		.prj-registered-values {
+			width: 100%;
+			height: 120px;
+
+			div {
+				padding-left: 15px;
+				padding-bottom: 15px;
+				display: inline-block;
+				width: 49%;
+			}
+		}
+	}
 }
 
 // Landscape phones and portrait tablets
@@ -1159,18 +1217,42 @@
 		margin-bottom: 10px;
 	}
 
-	.project-view-content {
-		width: calc(100% + 40px);
-		margin-top: 20px;
+	.prj-information-content {
+		.close-project {
+			float: left;
+			padding-left: 15px;
+			line-height: 30px;
+		}
 
-		.prj-information-values-box {
-			div {
+		.information-row {
+			margin-top: 40px;
+			.project-title, .project-description {
+				margin-right: 0;
+				margin-top: 0;
+			}
+		}
+	}
+
+	.prj-information-values-box {
+		.information-box {
+			&.charts {
 				width: 100%;
-			}
+				height: 470px;
 
-			.prj-registered-values {
-				margin-top: 30px;
+				.prj-information-chart canvas {
+					margin-left: 40px;
+				}
+
+				.prj-information-chart-values {
+					display: block;
+					width: 100%;
+				}
 			}
+		}
+
+		.prj-registered-values {
+			width: 100%;
+			height: 180px;
 		}
 	}
 

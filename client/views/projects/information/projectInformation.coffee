@@ -44,7 +44,6 @@ Template.projectInformationChart.helpers
 
 ##########################################
 Template.projectInformationTemplate.onCreated () ->
-	@informationState = new ReactiveVar(false)
 	Meteor.subscribe "projectView", FlowRouter.getParam("id")
 
 
@@ -64,17 +63,14 @@ Template.projectInformationTemplate.helpers
 	dateDisplay:(date) ->
 		return sys.dateDisplay(date)
 
-	displayInformation: () ->
-		return Template.instance().informationState.get()
-
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
 
 Template.projectInformationTemplate.events
-	'blur .prj-info-title': (e,t) ->
+	'blur .project-title': (e,t) ->
 		data = {
-			"title": $('.prj-info-title').text()
+			"title": $('.project-title').text()
 		}
 
 		Meteor.call "update_project", FlowRouter.getParam("id"), data, (error)->
@@ -84,9 +80,9 @@ Template.projectInformationTemplate.events
 			else
 				sys.flashStatus("save-title-project")
 
-	'blur .prj-info-description': (e,t) ->
+	'blur .project-description': (e,t) ->
 		set = {
-			"description": $('.prj-info-description').text()
+			"description": $('.project-description').text()
 		}
 
 		Meteor.call "update_project", FlowRouter.getParam("id"), set, (error)->
@@ -96,7 +92,7 @@ Template.projectInformationTemplate.events
 			else
 				sys.flashStatus("save-description-project")
 
-	'click .project-active': (e,t) ->
+	'click .close-project': (e,t) ->
 		Meteor.call "update_project", @_id, { completed: !@completed }, (error) ->
 			if error
 				console.warn(error)
@@ -107,11 +103,5 @@ Template.projectInformationTemplate.events
 						console.warn(error)
 					else
 						sys.flashStatus("finish-project")
-
-	'click svg': (e,t) ->
-		t.informationState.set(!t.informationState.get())
-
-	'click .information-box-header span': (e,t) ->
-		t.informationState.set(false)
 
 ##########################################
