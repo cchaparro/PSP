@@ -88,17 +88,17 @@ Meteor.methods
 		totalActualDeleted		= 0
 		totalEstimatedModified	= 0
 		totalActualModified		= 0
-		totalEstimatedAdd		= 0
-		totalActualAdd			= 0
-		totalSize				= 0
+		totalEstimatedAdd			= 0
+		totalActualAdd				= 0
+		totalSize					= 0
 		totalEstimatedSize		= 0
-		proxySize				= 0
+		proxySize					= 0
 		actualProductivity		= 0
 		_.each baseData, (baseOption)->
 			totalEstimatedBase		+= parseInt(baseOption.Estimated.base)
 			totalActualBase			+= parseInt(baseOption.Actual.base)
-			totalEstimatedAdd		+= parseInt(baseOption.Estimated.add)
-			totalActualAdd			+= parseInt(baseOption.Actual.add)
+			totalEstimatedAdd			+= parseInt(baseOption.Estimated.add)
+			totalActualAdd				+= parseInt(baseOption.Actual.add)
 			totalEstimatedModified	+= parseInt(baseOption.Estimated.modified)
 			totalActualModified		+= parseInt(baseOption.Actual.modified)
 
@@ -111,17 +111,26 @@ Meteor.methods
 			totalEstimatedAdd	+= parseInt(addOption.Estimated.size)
 			totalActualAdd		+= parseInt(addOption.Actual.size)
 		
-		proxySize	= totalEstimatedAdd + totalEstimatedModified
+		proxySize = totalEstimatedAdd + totalEstimatedModified
+		totalNewSize = totalActualAdd + totalActualBase - totalActualDeleted + planSummary.total.actualReused
 
-		totalNewSize	= totalActualAdd + totalActualBase - totalActualDeleted + planSummary.total.actualReused
-
-		totalEstimatedSize	= planSummary.total.estimatedAddedSize - totalEstimatedModified - totalEstimatedDeleted + totalEstimatedBase + planSummary.total.estimatedReused
+		totalEstimatedSize = planSummary.total.estimatedAddedSize - totalEstimatedModified - totalEstimatedDeleted + totalEstimatedBase + planSummary.total.estimatedReused
 		
-		if planSummary.total.totalTime != 0
-			actualProductivity = parseInt((totalActualAdd + totalActualModified)/sys.timeToHours(planSummary.total.totalTime))
+		projectTotalTime = sys.timeToHours(planSummary.total.totalTime)
+
+		if projectTotalTime >= 1
+			actualProductivity = parseInt((totalActualAdd + totalActualModified) / projectTotalTime)
+
+		# if planSummary.total.totalTime != 0
+		# 	if sys.timeToHours(planSummary.total.totalTime) == 0
+		# 		actualProductivity = 0
+		# 	else
+		# 		actualProductivity = parseInt((totalActualAdd + totalActualModified)/sys.timeToHours(planSummary.total.totalTime))
 		else
 			actualProductivity = planSummary.total.productivityActual
-		console.log actualProductivity
+
+		console.log "------------------>>>"
+		console.log typeof actualProductivity
 		newtotal = {
 			totalTime:					planSummary.total.totalTime
 			totalSize:					totalNewSize

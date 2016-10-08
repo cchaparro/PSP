@@ -162,6 +162,9 @@ Template.headerNavigation.helpers
 	lastRouteName: () ->
 		return Template.instance().lastRouteName.get()
 
+	projectCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
 	navigationState: () ->
 		FlowRouter.watchPathChange()
 		currentState = FlowRouter.current().route.name

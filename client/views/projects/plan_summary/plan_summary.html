@@ -2,7 +2,7 @@
 <template name="planSummaryTemplate">
 	{{>projectMessages}}
 	{{>headerNavigation}}
-	<!-- <div class="{{#unless sizeForPSP0}} hide {{/unless}} plan-summary-content">
+	<div class="{{#unless sizeForPSP0}} hidden {{/unless}} plan-summary-content">
 		<h3>Tamaño del programa(Opcional)</h3>
 		<table class="table table-summary">
 			<thead>
@@ -15,7 +15,7 @@
 			{{> sizePSP0}}
 			</tbody>
 		</table>
-	</div> -->
+	</div>
 	<div class="plan-summary-content">
 		{{#with userData}}
 			<h4>Tiempo en Fase</h4>
@@ -34,11 +34,11 @@
 			</div>
 		{{/with}}
 	</div>
-	<!--{{#with userData}}
+	{{#with userData}}
 		{{#if $eq actualLevelPSP "PSP 1"}}
 			{{> pspOneTemplate}}
 		{{/if}}
-	{{/with}}-->
+	{{/with}}
 </template>
 <!-- ###################################### -->
 <template name="summaryTimeRow">

@@ -91,7 +91,7 @@ Template.timesBar.events
 
 		# If the user has the probeD option and has not entered a value in the Plan Summary estimation,
 		# This will give it a error and not let the user finish the stage "Planeación"
-		if currentStage.name == "Planeación" and @total.estimatedTime == 0
+		if currentStage.name == "Planeación" and @total?.estimatedTime == 0
 			sys.flashStatus("summary-missing")
 		else
 			if currentStage.name == "Planeación" and projectPSP !="PSP 0" and (planSummary?.total?.estimatedTime == 0 or planSummary?.total?.estimatedTotalSize == 0)
@@ -196,7 +196,7 @@ Template.timesFooter.helpers
 		currentStage = _.first projectStages
 
 		return false if project?.completed
-		return false if currentStage?.name == "Planeación" and @total.estimatedTime == 0
+		return false if currentStage?.name == "Planeación" and @total?.estimatedTime == 0
 		return false if @total?.estimatedTotalSize == 0
 		return true
 

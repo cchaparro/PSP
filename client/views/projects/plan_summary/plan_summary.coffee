@@ -12,6 +12,7 @@ Template.planSummaryTemplate.helpers
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
+
 		return true if project?.levelPSP == "PSP 0" and (projectStages.length < 2 or project?.completed)
 		return false
 

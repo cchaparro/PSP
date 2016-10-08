@@ -11,6 +11,8 @@ Template.PROBED.events
 	'click .save-data-time': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		estimatedHours = $(".newTime").val()
+		estimatedHours = parseInt(estimatedHours)
+
 		if estimatedHours != 0 
 			plannedProductivity = parseInt((planSummary.estimatedAddedSize/estimatedHours))
 			estimatedHours = sys.hoursToTime(estimatedHours)
@@ -27,9 +29,12 @@ Template.PROBED.events
 					sys.flashStatus("save-summary-estimated")
 		else
 			sys.flashStatus("summary-missing")
+
 	'click .save-data-size':(e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		estimatedLOC = $(".newLOC").val()
+		estimatedLOC = parseInt(estimatedLOC)
+
 		if planSummary?.proxyEstimated != 0 and estimatedLOC!=0
 			totalEstimatedSize	= planSummary?.proxyEstimated - planSummary?.estimatedModified - planSummary?.estimatedDeleted + planSummary?.estimatedBase + planSummary?.estimatedReused
 			if planSummary?.estimatedTime != 0

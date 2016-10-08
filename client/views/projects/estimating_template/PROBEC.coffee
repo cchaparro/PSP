@@ -34,23 +34,27 @@ Template.PROBEC.helpers
 					totalAddedModifiedActualLOC += (psProject?.actualAdd + psProject?.actualModified)
 					totalActualTime += psProject?.totalTime
 					
-			newBetaSize1=(totalAddedModifiedActualLOC/totalProxy).toFixed(2)
-			if newBetaSize1 == "Infinity"
-				newBetaSize1 = 0
-
+			newBetaSize1=0
+			if totalProxy != 0 
+				newBetaSize1=(totalAddedModifiedActualLOC/totalProxy)
 			Template.instance().Beta1Size.set(newBetaSize1)
 			
-			newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy).toFixed(2)
-			if newBetaTime1 == "Infinity"
-				newBetaTime1 = 0
+			newBetaTime1 = 0
+			if totalProxy !=0				
+				newBetaTime1=(sys.timeToHours(totalActualTime)/totalProxy)
+
 			Template.instance().Beta1Time.set(newBetaTime1)
 
 		
 	GetTimeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Time.get(),"Beta1":Template.instance().Beta1Time.get()}
+		beta0 = Template.instance().Beta0Time.get()
+		beta1 = Template.instance().Beta1Time.get()
+		return {"Beta0": beta0.toFixed(2), "Beta1": beta1.toFixed(2)}
 
 	GetSizeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Size.get(),"Beta1":Template.instance().Beta1Size.get()}
+		beta0 = Template.instance().Beta0Size.get()
+		beta1 = Template.instance().Beta1Size.get()
+		return {"Beta0": beta0.toFixed(2), "Beta1": beta1.toFixed(2)}
 
 	AdjustedSize:()->
 		psProject = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
@@ -117,6 +121,7 @@ Template.PROBEC.events
 				sys.flashStatus("error-save-time-estimated")
 			else
 				sys.flashStatus("save-summary-estimated")
+
 	'click .save-data-size': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		if planSummary?.estimatedTime != 0
@@ -129,6 +134,7 @@ Template.PROBEC.events
 			"total.productivityPlan" : plannedProductivity
 			"probeSize":"C"
 		}
+
 		Meteor.call "update_plan_summary", FlowRouter.getParam("id"), data, (error) ->
 			if error
 				console.warn(error)
