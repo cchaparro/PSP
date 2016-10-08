@@ -16,6 +16,12 @@
 			{{/each}}
 		</div>
 	</div>
+	{{#if noQuestions}}
+		<div class="empty-data-box">
+			<h3>No hay preguntas en la comunidad</h3>
+			<span>Para crear una nueva pregunta, debes dar click en el botón verde superior.</span>
+		</div>
+	{{/if}}
 </template>
 <!-- ###################################### -->
 <template name="question">
