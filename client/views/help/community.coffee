@@ -6,6 +6,9 @@ Template.communityTemplate.helpers
 	userQuestions: () ->
 		return db.questions.find({questionOwner: Meteor.userId(), parentId: null})
 
+	noQuestions: () ->
+		return db.questions.find({questionOwner: Meteor.userId(), parentId: null}).count() == 0
+
 ##########################################
 Template.question.helpers
 	categoryColor: () ->
