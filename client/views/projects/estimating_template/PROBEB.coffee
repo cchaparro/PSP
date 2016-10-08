@@ -54,7 +54,7 @@ Template.PROBEB.helpers
 			Template.instance().CorrelationSize.set(SizeLinearRegressionData.Correlation)
 
 	GetTimeEstimationValues:()->
-		return {"Beta0":Template.instance().Beta0Time.get().toFixed(3),"Beta1":Template.instance().Beta1Time.get().toFixed(3),"r":Template.instance().CorrelationTime.get().toFixed(2)}
+		return {"Beta0":Template.instance().Beta0Time.get().toFixed(2),"Beta1":Template.instance().Beta1Time.get().toFixed(2),"r":Template.instance().CorrelationTime.get().toFixed(2)}
 
 	GetSizeEstimationValues:()->
 		return {"Beta0":Template.instance().Beta0Size.get().toFixed(2),"Beta1":Template.instance().Beta1Size.get().toFixed(2),"r":Template.instance().CorrelationSize.get().toFixed(2)}
