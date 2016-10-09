@@ -105,3 +105,17 @@ Template.projectInformationTemplate.events
 						sys.flashStatus("finish-project")
 
 ##########################################
+Template.projectInformation.helpers
+	isPostmortem: () ->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+		currentPos = _.first(projectStages)?.name
+
+		return currentPos == "Postmortem" or projectStages.length == 0
+
+	isPSP0: () ->
+		return db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP == "PSP 0"
+
+##########################################

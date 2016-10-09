@@ -16,6 +16,15 @@ Template.projectViewMenu.helpers
 		FlowRouter.watchPathChange()
 		return FlowRouter.current().route.name
 
+	isPostmortem: () ->
+		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+			unless stage.finished
+				return stage
+		currentPos = _.first(projectStages)?.name
+
+		return currentPos == "Postmortem" or projectStages.length == 0
+
 ##########################################
 Template.projectMessages.helpers
 	projectCompleted: () ->

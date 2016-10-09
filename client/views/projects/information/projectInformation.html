@@ -60,3 +60,12 @@
 	</ul>
 </template>
 <!-- ###################################### -->
+<template name="projectInformation">
+	{{#unless $or isPostmortem isPSP0}}
+		<div class="information-menu hidden-xs">
+			<h4>Información Extra</h4>
+			<span>&bull; Los formularios se habilitan cuando estés en la etapa postmortem.</span>
+		</div>
+	{{/unless}}
+</template>
+<!-- ###################################### -->

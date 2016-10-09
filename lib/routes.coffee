@@ -81,7 +81,7 @@ Projects.route '/:fid/:id',
 
 	action: () ->
 		Session.set "route", "general"
-		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate', menu: "projectViewMenu"
+		BlazeLayout.render 'masterLayout', main: 'projectInformationTemplate', menu: "projectViewMenu", information: "projectInformation"
 
 
 Projects.route '/:fid/:id/time-log',
@@ -103,7 +103,7 @@ Projects.route '/:fid/:id/defect-log',
 
 	action: () ->
 		Session.set "route", "defectLog"
-		BlazeLayout.render 'masterLayout', main: 'defectsTemplate', menu: "projectViewMenu"
+		BlazeLayout.render 'masterLayout', main: 'defectsTemplate', menu: "projectViewMenu", information: "projectInformation"
 
 
 Projects.route '/:fid/:id/plan-summary',
@@ -114,7 +114,7 @@ Projects.route '/:fid/:id/plan-summary',
 
 	action: () ->
 		Session.set "route", "planSummary"
-		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate', menu: "projectViewMenu"
+		BlazeLayout.render 'masterLayout', main: 'planSummaryTemplate', menu: "projectViewMenu", information: "projectInformation"
 
 
 Projects.route '/:fid/:id/scripts',
@@ -125,7 +125,7 @@ Projects.route '/:fid/:id/scripts',
 
 	action: () ->
 		Session.set "route", "scripts"
-		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
+		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu", information: "projectInformation"
 
 
 Projects.route '/:fid/:id/form',
