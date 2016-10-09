@@ -98,7 +98,8 @@ Template.summaryRemovedRow.helpers
 Template.sizePSP0.helpers
 	sizeData: ()->
 		return db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
-	contentEditable: ()->
+
+	contentEditable: () ->
 		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		return !(project?.completed)
 

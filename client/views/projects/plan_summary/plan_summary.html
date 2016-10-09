@@ -3,19 +3,10 @@
 	{{>projectMessages}}
 	{{>headerNavigation}}
 	<div class="{{#unless sizeForPSP0}} hidden {{/unless}} plan-summary-content">
-		<h3>Tamaño del programa(Opcional)</h3>
-		<table class="table table-summary">
-			<thead>
-				<tr>
-					<th></th>
-					<th class="hidden-xs">Actual</th>
-				</tr>
-			</thead>
-			<tbody>
-			{{> sizePSP0}}
-			</tbody>
-		</table>
+		<h4>Tamaño del programa (Opcional)</h4>
+		{{> sizePSP0}}
 	</div>
+
 	<div class="plan-summary-content">
 		{{#with userData}}
 			<h4>Tiempo en Fase</h4>
@@ -168,70 +159,106 @@
 <!-- ###################################### -->
 <template name="sizePSP0">
 	{{#with sizeData}}
-	<tr>
-		<td>Líneas base</td>
-		<td>
-		{{#if contentEditable}}
-			<div class="input-box">
-				<input data-value="actualBase" value="{{actualBase}}" type="" name="">  
+		<div class="summary-row first">
+			<div class="summary-icon">
+				<i class="material-icons">code</i>
 			</div>
-		{{else}}
-			<span>{{actualBase}}</span>
-		{{/if}}
-		</td>
-	</tr>
+			<div class="stage-information">
+				<h4>Líneas base</h4>
+			</div>
+			<div class="percentage-stage size-input">
+				{{#if contentEditable}}
+					<div class="input-box">
+						<input data-value="actualBase" value="{{actualBase}}">  
+					</div>
+				{{else}}
+					<span>{{actualBase}}</span>
+				{{/if}}
+			</div>
+		</div>
 
-	<tr>
-		<td>Líneas añadidas</td>
-		<td>
-		{{#if contentEditable}}
-			<div class="input-box">
-				<input data-value="actualAdd" value="{{actualAdd}}" type="" name="">
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons">code</i>
 			</div>
-		{{else}}
-			<span>{{actualAdd}}</span>
-		{{/if}}
-		</td>
-	</tr>
-	<tr>
-		<td>Líneas modificadas</td>
-		<td>
-		{{#if contentEditable}}
-			<div class="input-box">
-				<input data-value="actualModified" value="{{actualModified}}" type="" name="">  
+			<div class="stage-information">
+				<h4>Líneas añadidas</h4>
 			</div>
-		{{else}}
-			<span>{{actualModified}}</span>
-		{{/if}}
-		</td>
-	</tr>
-	<tr>
-		<td>Líneas eliminadas</td>
-		<td>
-		{{#if contentEditable}}
-			<div class="input-box">
-				<input data-value="actualDeleted" value="{{actualDeleted}}" type="" name="">  
+			<div class="percentage-stage size-input">
+				{{#if contentEditable}}
+					<div class="input-box">
+						<input data-value="actualAdd" value="{{actualAdd}}">  
+					</div>
+				{{else}}
+					<span>{{actualAdd}}</span>
+				{{/if}}
 			</div>
-		{{else}}
-			<span>{{actualDeleted}}</span>
-		{{/if}}
-		</td>
-	</tr>
-	<tr>
-		<td>Líneas reusadas</td>
-		<td>
-		{{#if contentEditable}}
-			<div class="input-box">
-				<input data-value="actualReused" value="{{actualReused}}" type="" name="">  
+		</div>
+
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons">code</i>
 			</div>
-		{{else}}
-			<span>{{actualReused}}</span>
-		{{/if}}
-		</td>
-	</tr>
-	<tr>
-		<td>Tamaño total</td>
-		<td><span>{{totalSize}}</span> </td>
-	</tr>
+			<div class="stage-information">
+				<h4>Líneas modificadas</h4>
+			</div>
+			<div class="percentage-stage size-input">
+				{{#if contentEditable}}
+					<div class="input-box">
+						<input data-value="actualModified" value="{{actualModified}}">  
+					</div>
+				{{else}}
+					<span>{{actualModified}}</span>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons">code</i>
+			</div>
+			<div class="stage-information">
+				<h4>Líneas eliminadas</h4>
+			</div>
+			<div class="percentage-stage size-input">
+				{{#if contentEditable}}
+					<div class="input-box">
+						<input data-value="actualDeleted" value="{{actualDeleted}}">  
+					</div>
+				{{else}}
+					<span>{{actualDeleted}}</span>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class="summary-row">
+			<div class="summary-icon">
+				<i class="material-icons">code</i>
+			</div>
+			<div class="stage-information">
+				<h4>Líneas reusadas</h4>
+			</div>
+			<div class="percentage-stage size-input">
+				{{#if contentEditable}}
+					<div class="input-box">
+						<input data-value="actualReused" value="{{actualReused}}">  
+					</div>
+				{{else}}
+					<span>{{actualReused}}</span>
+				{{/if}}
+			</div>
+		</div>
+
+		<div class="summary-row total">
+			<div class="summary-icon">
+				<i class="material-icons">insert_chart</i>
+			</div>
+			<div class="stage-information">
+				<h4>Tamaño total</h4>
+			</div>
+			<div class="percentage-stage size-input">
+				<span>{{totalSize}}</span>
+			</div>
+		</div>
 	{{/with}}
 </template>

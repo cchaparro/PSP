@@ -909,6 +909,10 @@
 		border-bottom: 1px solid $border;
 		line-height: 72.5px;
 
+		&.first {
+			border-top: 1px solid $border;
+		}
+
 		&.total {
 			background-color: $background-dark;
 
@@ -1020,6 +1024,23 @@
 					margin-top: 5px;
 					color: $text;
 					font-weight: 400;
+				}
+			}
+
+			&.size-input {
+				padding-top: 14px;
+				padding-bottom: 14px;
+
+				input {
+					padding-left: 20px;
+					padding-right: 20px;
+					text-align: center;
+					margin-bottom: 0;
+				}
+
+				span {
+					font-size: 13pt;
+					padding: 14.5px;
 				}
 			}
 		}
