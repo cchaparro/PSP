@@ -278,8 +278,11 @@
 	}
 }
 //----------------- All Defects View --------------
+.defects {
+	@include clearfix;
+}
+
 .defect-box {
-	@include clearfix();
 	height: 160px;
 	float: left;
 	position: relative;
@@ -1468,7 +1471,7 @@
 				margin-left: 20px;
 			}
 
-			&:nth-child(3n+1) {
+			&:nth-child(3n+2) {
 				margin-left: 20px;
 			}
 		}
@@ -1485,8 +1488,8 @@
 			}
 
 			&:nth-child(2n) {
-				margin-left: 0px;
-				margin-right: 20px;
+				margin-left: 20px;
+				margin-right: 0;
 			}
 		}
 	}
