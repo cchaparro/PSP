@@ -31,6 +31,9 @@ Template.registerHelper "printthis", () ->
 	return ''
 
 
+Template.registerHelper "cutText", (text, amount) ->
+	return sys.cutText(text, amount, " ...")
+
 # This helper is used to display the time format used
 # in the platform
 Template.registerHelper "timeFormat", (time) ->

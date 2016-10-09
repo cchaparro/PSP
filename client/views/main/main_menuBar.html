@@ -92,7 +92,7 @@
 	<div class="general-header">
 		<div class="mobile-natigation visible-xs visible-sm">
 			<span data-toggle="dropdown">
-				{{lastRouteName}} <i class="material-icons">keyboard_arrow_down</i>
+				{{cutText lastRouteName 25}} <i class="material-icons">keyboard_arrow_down</i>
 				</span>
 			<ul class="dropdown-menu defect-type-dropdown">
 				{{#each navigationState}}
@@ -109,7 +109,7 @@
 			{{#each navigationState}}
 				<div class="navigation-option">
 					<a href="{{pathFor route fid=fid id=pid question=question}}">
-						<span class="menu-state {{#if lastValue}} active {{/if}} {{#if displayMenu}} state-menu {{/if}}">{{title}} <i class="material-icons {{#unless displayMenu}} hidden {{/unless}}">keyboard_arrow_down</i></span>
+						<span class="menu-state {{#if lastValue}} active {{/if}} {{#if displayMenu}} state-menu {{/if}}">{{cutText title 25}} <i class="material-icons {{#unless displayMenu}} hidden {{/unless}}">keyboard_arrow_down</i></span>
 					</a>
 					<span class="{{#if lastValue}} hide {{/if}} hidden-xs">
 						<svg class="breadcrumb-arrow" viewBox="0 0 100 100"><use xlink:href="/images/ArrowBreadcrumb.svg#arrowsBreadCrumb"></use></svg>
