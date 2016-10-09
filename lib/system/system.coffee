@@ -12,6 +12,10 @@ sys.isValidPassword = (password) ->
 		return false
 	return true
 
+sys.isNumber = (number) ->
+	filter = /^\d*(?:\.\d{1,2})?$/
+	return filter.test(number)
+
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->

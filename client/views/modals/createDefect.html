@@ -98,7 +98,7 @@
 		{{#if ifLoadsData}}
 			<span class="pry-modal-create primary-button pull-right">Crear Defecto</span>
 		{{else}}
-			<span class="psp-btn pry-modal-create primary-button pull-right">Guardar Cambios</span>
+			<span class="psp-btn pry-modal-create primary-button pull-right {{#if projectCompleted}} hidden {{/if}}">Guardar Cambios</span>
 		{{/if}}
 		<span class="pull-left default-button" data-dismiss="modal">Cerrar</span>
 	</div>
