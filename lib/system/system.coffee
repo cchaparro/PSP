@@ -19,7 +19,7 @@ sys.getPageName = (title) ->
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
-	else if title == "projectSettings" or title == "accountSettings" or title == "defectTypeSettings"
+	else if title == "defectTypeSettings"
 		return "Ajustes"
 	else if title == "help"
 		return "Ayuda"

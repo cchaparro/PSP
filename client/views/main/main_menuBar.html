@@ -7,7 +7,7 @@
 		<ul>
 			<li class="option-menu-mobile {{#if isProjectView}} active {{/if}}" data-value="projects">Proyectos</li>
 			<li class="option-menu-mobile {{#if $eq template 'overview'}} active {{/if}}" data-value="overview">Resumen</li>
-			<li class="option-menu-mobile {{#if isSettingsView}} active {{/if}}" data-value="projectSettings">Configuración</li>
+			<li class="option-menu-mobile {{#if isSettingsView}} active {{/if}}" data-value="defectTypeSettings">Configuración</li>
 			<li class="option-menu-mobile {{#if $eq template 'help'}} active {{/if}}" data-value="help">Ayuda</li>
 		</ul>
 	</div>
@@ -18,7 +18,7 @@
 				<div class="main-menu-options">
 					<a href="{{pathFor 'projects'}}" class="{{#if isProjectView}} active {{/if}}"><span>Proyectos</span></a>
 					<a href="{{pathFor 'overview'}}" class="{{#if $eq template 'overview'}} active {{/if}}"><span>Resumen</span></a>
-					<a href="{{pathFor 'projectSettings'}}" class="{{#if isSettingsView}} active {{/if}}"><span>Configuración</span></a>
+					<a href="{{pathFor 'defectTypeSettings'}}" class="{{#if isSettingsView}} active {{/if}}"><span>Configuración</span></a>
 					<a href="{{pathFor 'help'}}" class="{{#if $eq template 'help'}} active {{/if}}"><span>Ayuda</span></a>
 				</div>
 			</div>

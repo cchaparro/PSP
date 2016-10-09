@@ -143,17 +143,6 @@ Settings = FlowRouter.group(
 	prefix: '/settings'
 )
 
-Settings.route '/project',
-	name: 'projectSettings'
-	subscriptions: (params, queryParams) ->
-		@register 'projectSettings', Meteor.subscribe "projectSettings"
-
-	action: ->
-		Session.set "route", "settings"
-		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate', menu: "settingsMenu"
-
-
-
 Settings.route '/type-defects',
 	name: 'defectTypeSettings'
 	subscriptions: (params, queryParams) ->

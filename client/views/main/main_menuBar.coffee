@@ -20,7 +20,7 @@ Template.main_menuBar.helpers
 	isSettingsView: () ->
 		FlowRouter.watchPathChange()
 		route = FlowRouter.current().route.name
-		return (route == 'projectSettings') or (route == 'accountSettings') or (route == 'defectTypeSettings')
+		return (route == 'accountSettings') or (route == 'defectTypeSettings')
 
 	userData: () ->
 		user = Meteor.users.findOne({_id: Meteor.userId()})
