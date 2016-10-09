@@ -1,0 +1,51 @@
+<!-- ###################################### -->
+<template name="createPipModal">
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog general-modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>{{displayTitle}}</h3>
+					<span data-dismiss="modal"><i class="fa fa-times close"></i></span>
+				</div>
+				{{> createPip}}
+			</div>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="createPip">
+	<div class="modal-body">
+		<div class="pip-row">
+			<div class="{{#if titleError}} input-error-title-box {{else}} input-box {{/if}}">
+				<span>Titulo PIP</span>
+				<input class="pip-new-title" type="text" placeholder="Ingresar titulo" value="{{pipData.title}}">
+				<i class="fa fa-times"></i>
+			</div>
+			
+			<div class="{{#if problemError}} textarea-error-title-box {{else}} textarea-box {{/if}}">		
+				<span>Descripción del Problema</span>
+				<textarea type="text" class="problem-pip defect-input-field" data-field="description" placeholder="Descripción del Problema" value="{{pipData.problemDescription}}"></textarea>
+				<i class="fa fa-times"></i>
+			</div>
+
+			<div class="{{#if solutionError}} textarea-error-title-box {{else}} textarea-box {{/if}}">
+				<span>Solución propuesta</span>			
+				<textarea type="text" class="solution-pip defect-input-field" data-field="description" placeholder="Solución propuesta" value="{{pipData.proposalDescription}}"></textarea>
+				<i class="fa fa-times"></i>
+			</div>
+
+		</div>
+		<br>
+		<div class="modal-footer">
+			{{#unless projectIsCompleted}}
+				{{#if ifLoadsData}}
+					<span class="pry-modal-create primary-button pull-right">Crear PIP</span>
+				{{else}}
+					<span class="psp-btn pry-modal-create primary-button pull-right">Guardar Cambios</span>
+				{{/if}}
+			{{/unless}}
+				<span class="pull-left default-button" data-dismiss="modal">Cancelar</span>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->

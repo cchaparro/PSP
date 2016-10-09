@@ -17,8 +17,11 @@
 			<a href="{{pathFor 'projectScripts' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectScripts'}} active {{/if}}">
 				<li>Scripts Generales</li>
 			</a>
-			<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'estimatingtemplate'}} active {{/if}} {{#unless actualLevelPSP}} hidden {{/unless}}">
+			<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'estimatingtemplate'}} active {{/if}} {{#unless notPSP0}} hidden {{/unless}}">
 				<li>Estimación</li>
+			</a>
+			<a href="{{pathFor 'forms' fid=routeFid id=routeId}}" class="{{#if $eq template 'forms'}} active {{/if}} {{#unless notPSP0}} hidden {{/unless}}">
+				<li>Formularios</li>
 			</a>
 		</ul>
 	</div>

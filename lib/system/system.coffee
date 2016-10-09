@@ -19,7 +19,7 @@ sys.isNumber = (number) ->
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate"
+	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate" or title == "forms"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
@@ -443,6 +443,8 @@ sys.getSessionRoute = (value) ->
 			return "Pregunta Comunidad"
 		when "help-contact"
 			return "Contacto"
+		when "formTemplate"
+			return "Formularios"
 
 ##########################################
 ########- Project Color Selector -########

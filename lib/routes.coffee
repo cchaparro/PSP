@@ -128,6 +128,17 @@ Projects.route '/:fid/:id/scripts',
 		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
 
 
+Projects.route '/:fid/:id/form',
+	name: 'forms'
+
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "pspForms", params.id
+
+	action: () ->
+		Session.set "route", "formTemplate"
+		BlazeLayout.render 'masterLayout', main: 'formTemplate', menu: "projectViewMenu"
+
+
 Projects.route '/:fid/:id/estimating-template',
 	name: 'estimatingtemplate'
 
