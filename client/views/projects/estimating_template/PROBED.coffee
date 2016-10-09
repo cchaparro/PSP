@@ -6,12 +6,21 @@ Template.PROBED.helpers
 	PlanSummary:()->
 		return db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 
+	probeEditable: () ->
+		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
+		currentStage = _.findWhere projectStages, {finished: false}
+		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed		
+		return false if projectIsCompleted
+		return true if currentStage?.name == "Planeación"
+		return false
+
 
 Template.PROBED.events
+
 	'click .save-data-time': (e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		estimatedHours = $(".newTime").val()
-		estimatedHours = parseInt(estimatedHours)
+		estimatedHours = parseFloat(estimatedHours)
 
 		if estimatedHours != 0 
 			plannedProductivity = parseInt((planSummary.estimatedAddedSize/estimatedHours))
@@ -28,7 +37,7 @@ Template.PROBED.events
 				else
 					sys.flashStatus("save-summary-estimated")
 		else
-			sys.flashStatus("summary-missing")
+			sys.flashStatus("time-missing")
 
 	'click .save-data-size':(e,t)->
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total

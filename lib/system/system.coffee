@@ -354,6 +354,11 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido actualizar el tamaño estimado."
 			css = "danger"
 
+		when "time-missing"
+			title = "Error"
+			subject = "El tiempo estimado no puede ser 0"
+			css = "danger"
+
 		when "create-question"
 			title = "Creado"
 			subject = "La pregunta se ha creado correctamente."
@@ -485,12 +490,17 @@ sys.regressionDataSize = (Data,PROBE,x,y)->
 				sumsquarey += Math.pow(d.ActualLOC,2)
 				sumxy+= d.ProxyE * d.ActualLOC
 	
-	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
-	if correlation == "Infinity"
-		correlation = 0
-	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
-	if b1 == "Infinity"
-		b1 = 0
+	correlationNumerator = (n*sumxy)-(x*y)
+	correlationDenominator = Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2)))
+	correlation = 0
+	if correlationDenominator != 0
+		correlation = correlationNumerator/correlationDenominator
+	#console.log "Avgx", xavg, "Avgy", yavg, PROBE
+	betaNumerator = sumxy-(n*xavg*yavg)
+	betaDenominator = sumsquarex-(n*Math.pow(xavg,2))
+	b1 = 0
+	if betaDenominator != 0
+		b1 = betaNumerator/betaDenominator	
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
 
@@ -515,12 +525,16 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 				sumsquarey += Math.pow(d.ActualTime,2)
 				sumxy+= d.ProxyE * d.ActualTime
 	
-	correlation = ((n*sumxy)-(x*y))/(Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2))))
-	if correlation == "Infinity"
-		correlation = 0
+	correlationNumerator = (n*sumxy)-(x*y)
+	correlationDenominator = Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2)))
+	correlation = 0
+	if correlationDenominator != 0
+		correlation = correlationNumerator/correlationDenominator
 	#console.log "Avgx", xavg, "Avgy", yavg, PROBE
-	b1 = (sumxy-(n*xavg*yavg))/(sumsquarex-(n*Math.pow(xavg,2)))
-	if b1 == "Infinity"
-		b1 = 0
+	betaNumerator = sumxy-(n*xavg*yavg)
+	betaDenominator = sumsquarex-(n*Math.pow(xavg,2))
+	b1 = 0
+	if betaDenominator != 0
+		b1 = betaNumerator/betaDenominator	
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}
