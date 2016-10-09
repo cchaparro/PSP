@@ -101,6 +101,9 @@ Template.createDefect.helpers
 				state = true
 		return validStages
 
+	projectCompleted: () ->
+		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
 
 	errorState: () ->
 		return Template.instance().errorState.get()

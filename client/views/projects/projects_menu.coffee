@@ -3,7 +3,7 @@ Template.projectViewMenu.helpers
 	projectViewSelector: () ->
 		return projectViewSelector.get()
 
-	actualLevelPSP: () ->
+	notPSP0: () ->
 		return !(db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP=="PSP 0")
 
 	routeFid: () ->

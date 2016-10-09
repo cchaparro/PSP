@@ -128,6 +128,17 @@ Projects.route '/:fid/:id/scripts',
 		BlazeLayout.render 'masterLayout', main: 'scriptsTemplate', menu: "projectViewMenu"
 
 
+Projects.route '/:fid/:id/form',
+	name: 'forms'
+
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "pspForms", params.id
+
+	action: () ->
+		Session.set "route", "formTemplate"
+		BlazeLayout.render 'masterLayout', main: 'formTemplate', menu: "projectViewMenu"
+
+
 Projects.route '/:fid/:id/estimating-template',
 	name: 'estimatingtemplate'
 
@@ -142,17 +153,6 @@ Projects.route '/:fid/:id/estimating-template',
 Settings = FlowRouter.group(
 	prefix: '/settings'
 )
-
-Settings.route '/project',
-	name: 'projectSettings'
-	subscriptions: (params, queryParams) ->
-		@register 'projectSettings', Meteor.subscribe "projectSettings"
-
-	action: ->
-		Session.set "route", "settings"
-		BlazeLayout.render 'masterLayout', main: 'projectSettingsTemplate', menu: "settingsMenu"
-
-
 
 Settings.route '/type-defects',
 	name: 'defectTypeSettings'

@@ -1,0 +1,23 @@
+<!-- ###################################### -->
+<template name="testTemplate">
+	{{#each userTests}}
+		<div class="form-row">
+			<div class="information">
+				<h4 class="hidden-xs">{{cutText purpose 40}}</h4>
+				<span class="hidden-xs">{{cutText expectedResults 90}}</span>
+				<h4 class="visible-xs">{{cutText purpose 20}}</h4>
+				<span class="visible-xs">{{cutText expectedResults 50}}</span>
+			</div>
+				<div class="actions">
+					{{#unless projectIsCompleted}}
+						<i class="material-icons edit-test">mode_edit</i>
+						<i class="material-icons delete-test">delete</i>
+					{{else}}
+						<i class="material-icons edit-test">remove_red_eye</i>
+					{{/unless}}
+				</div>
+		</div>
+	{{/each}}
+	
+</template>
+<!-- ###################################### -->

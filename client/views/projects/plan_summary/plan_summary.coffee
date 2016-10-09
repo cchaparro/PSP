@@ -48,6 +48,10 @@ Template.summaryTimeRow.events
 	'blur .user-estimated': (e,t) ->
 		value = $(e.target).val()
 
+		if !sys.isNumber(value)
+			value = 0
+			$(e.target).val(0)
+
 		data = {
 			"total.estimatedTime": sys.minutesToTime(value)
 		}

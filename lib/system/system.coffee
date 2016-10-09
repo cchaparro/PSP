@@ -12,14 +12,18 @@ sys.isValidPassword = (password) ->
 		return false
 	return true
 
+sys.isNumber = (number) ->
+	filter = /^\d*(?:\.\d{1,2})?$/
+	return filter.test(number)
+
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate"
+	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate" or title == "forms"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
-	else if title == "projectSettings" or title == "accountSettings" or title == "defectTypeSettings"
+	else if title == "defectTypeSettings"
 		return "Ajustes"
 	else if title == "help"
 		return "Ayuda"
@@ -439,6 +443,8 @@ sys.getSessionRoute = (value) ->
 			return "Pregunta Comunidad"
 		when "help-contact"
 			return "Contacto"
+		when "formTemplate"
+			return "Formularios"
 
 ##########################################
 ########- Project Color Selector -########

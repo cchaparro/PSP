@@ -4,37 +4,36 @@
 	{{>headerNavigation}}
 	{{#with projectInfo}}
 		<div class="prj-information-content">
-			<h3>Informacion General</h3>
-			<div class="{{#if completed}} project-completed {{else}} project-active {{/if}}">
-				{{#if completed}}
-					<span>Terminado</span>
+			<h4>Informacion General <span class="{{#if completed}} completed {{/if}}"></span></h4>
+			{{#if completed}}
+				<span class="project-completed">Terminado</span>
+			{{else}}
+				<span class="close-project"><i class="material-icons">done_all</i> Finalizar Proyecto</span>
+			{{/if}}
+
+			<div class="information-row">
+				<h4>Titulo del Proyecto</h4>
+				{{#if projectIsCompleted}}
+					<span class="project-completed-title">{{title}}</span>
 				{{else}}
-					<span>Activo</span>
+					{{{contentEditable class='project-title' value=title}}}
 				{{/if}}
-				<i class="fa fa-circle"></i>
+				<h4>Descripción del Proyecto</h4>
+				{{#if projectIsCompleted}}
+					<span class="project-completed-description">{{description}}</span>
+				{{else}}
+					{{{contentEditable class='project-description' value=description}}}
+				{{/if}}
 			</div>
-			<span class="prj-info-text">Titulo del proyecto</span>
-			{{#if projectIsCompleted}}
-				<h4 class="prj-title-completed">{{title}}</h4>
-			{{else}}
-				{{{contentEditable class='prj-info-title' value=title}}}
-			{{/if}}
-			<span class="prj-info-text">Descripción del proyecto</span>
-			{{#if projectIsCompleted}}
-				<h4 class="prj-description-completed">{{description}}</h4>
-			{{else}}
-				{{{contentEditable class='prj-info-description' value=description}}}
-			{{/if}}
 		</div>
-		<br>
 
 		<div class="prj-information-values-box">
-			<div>
-				<h3>Tiempo registrado</h3>
+			<div class="information-box charts">
+				<h4>Tiempo registrado</h4>
 				{{> projectInformationChart}}
 			</div>
-			<div class="prj-registered-values">
-				<h3>Datos registrados</h3>
+			<div class="information-box prj-registered-values">
+				<h4>Datos registrados</h4>
 				<div>
 					<svg viewBox="0 0 100 100"><use xlink:href="/images/TimeLog.svg#timeLogLogo"></use></svg>
 					<span>Tiempo total</span>

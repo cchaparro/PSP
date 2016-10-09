@@ -15,12 +15,12 @@ Template.main_menuBar.helpers
 	isProjectView: () ->
 		FlowRouter.watchPathChange()
 		route = FlowRouter.current().route.name
-		return (route == 'projects') or (route == 'iterations') or (route == 'projectView') or (route == "projectGeneral") or (route == "projectTimeLog") or (route == "projectDefectLog") or (route == "projectSummary") or (route == "projectScripts") or (route == "estimatingtemplate")
+		return (route == 'projects') or (route == 'iterations') or (route == 'projectView') or (route == "projectGeneral") or (route == "projectTimeLog") or (route == "projectDefectLog") or (route == "projectSummary") or (route == "projectScripts") or (route == "estimatingtemplate") or (route == "forms")
 
 	isSettingsView: () ->
 		FlowRouter.watchPathChange()
 		route = FlowRouter.current().route.name
-		return (route == 'projectSettings') or (route == 'accountSettings') or (route == 'defectTypeSettings')
+		return (route == 'accountSettings') or (route == 'defectTypeSettings')
 
 	userData: () ->
 		user = Meteor.users.findOne({_id: Meteor.userId()})
@@ -174,7 +174,7 @@ Template.headerNavigation.helpers
 		else
 			displayMenu = false
 
-		if currentState == "projects" or currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="estimatingtemplate"
+		if currentState == "projects" or currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="estimatingtemplate" or currentState=="forms"
 			initialRoute = "projects"
 		else if currentState == "community" or currentState == "community-question"
 			initialRoute = "help"

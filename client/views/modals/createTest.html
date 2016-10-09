@@ -1,0 +1,48 @@
+<!-- ###################################### -->
+<template name="createTestModal">
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog general-modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>{{displayTitle}}</h3>
+					<span data-dismiss="modal"><i class="fa fa-times close"></i></span>
+				</div>
+				{{> createTest}}
+			</div>
+		</div>
+	</div>
+</template>
+<!-- ###################################### -->
+<template name="createTest">
+	<div class="modal-body">
+		<div class="pip-row">
+			<div class="{{#if titleError}} input-error-title-box {{else}} input-box {{/if}}">
+				<span>Propósito de la Prueba</span>
+				<input class="test-new-title" type="text" placeholder="Propósito de la prueba" value="{{testData.purpose}}">
+				<i class="fa fa-times"></i>
+			</div>
+
+			<div class="{{#if expectedError}} textarea-error-title-box {{else}} textarea-box {{/if}}">
+				<span>Resultados Esperados</span>	
+				<textarea type="text" class="expected-test defect-input-field" placeholder="Ingresar resultados esperados..." value="{{testData.expectedResults}}"></textarea>
+				<i class="fa fa-times"></i>
+			</div>
+
+			<div class="{{#if actualError}} textarea-error-title-box {{else}} textarea-box {{/if}}">
+				<span>Resultados Obtenidos</span>	
+				<textarea type="text" class="actual-test defect-input-field" placeholder="Ingresar resultados obtenidos..." value="{{testData.actualResults}}"></textarea>
+				<i class="fa fa-times"></i>
+			</div>
+		</div>
+		<div class="modal-footer">
+			{{#unless projectIsCompleted}}
+				{{#if ifLoadsData}}
+					<span class="pry-modal-create primary-button pull-right">Crear Reporte</span>
+				{{else}}
+					<span class="psp-btn pry-modal-create primary-button pull-right">Guardar Cambios</span>
+				{{/if}}
+			{{/unless}}
+			<span class="pull-left default-button" data-dismiss="modal">Cancelar</span>
+		</div>
+	</div>
+</template>
