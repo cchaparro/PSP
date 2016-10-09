@@ -280,6 +280,11 @@ sys.flashStatus = (type) ->
 			subject = "Se han actualizado los tipos de defectos correctamente."
 			css = "success"
 
+		when "add-defect-dype"
+			title = "Exito"
+			subject = "El nuevo tipo de defecto se agregó al final de la lista."
+			css = "success"
+
 		#User profile modal
 		when "update-profile-image"
 			title = "Guardado"

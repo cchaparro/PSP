@@ -56,213 +56,132 @@ input:checked + .switch-slider:before {
 	@include translateX(18px);
 }
 
-//--------------- Project Settings ---------------
-.prj-settings-content {
-	background-color: $white;
-	padding: 20px;
-
-	h3 {
-		font-size: 15pt;
-		color: $text-dark;
-		margin: 0;
-		padding-bottom: 15px;
-		margin-bottom: 15px;
-		border-bottom: 1px solid $border;
-	}
-}
-
-.project-settings-box {
-	display: block;
-	width: 100%;
-	float: left;
-	padding-bottom: 20px;
-	padding-left: 20px;
-
-	div {
-		display: inline-block;
-		float: left;
-		padding-bottom: 10px;
-
-		&:last-child {
-			padding-left: 10px;
-		}
-
-		p {
-			margin-top: -2px;
-			margin-bottom: 0;
-			padding-bottom: 7px;
-			font-size: 15pt;
-			font-weight: bold;
-			color: $black;
-		}
-
-		span {
-			font-size: 11pt;
-			color: $text;
-		}
-
-		&:first-child {
-			width: 50px;
-		}
-	}
-
-	.project-setting-information {
-		width: calc(100% - 50px);
-	}
-}
-
-
-.settings-project-box {
-	border-top: 1px solid $border;
-	border-bottom: 1px solid $border;
-	padding: 10px 0;
-	font-size: 13pt;
-	cursor: pointer;
-
-	i {
-		color: $text-dark;
-	}
-
-	span {
-		color: $text-dark;
-	}
-
-	.fa-caret-down {
-		padding-top: 4.5px;
-		padding-right: 5px;
-	}
-}
-
-.settings-project-body {
-	padding: 20px;
-	font-size: 12pt;
-	color: $text;
-	margin-bottom: 10px;
-	font-weight: 300;
-	@include clearfix();
-
-	.project-settings-option {
-		padding-bottom: 12px;
-		@include clearfix();
-
-		.switch {
-			float: left;
-			margin-right: 10px;
-		}
-
-		span {
-			width: calc(100% - 60px);
-			display: inline-block;
-			float: right;
-		}
-	}
-
-	.settings-project-warning {
-		border: 1px solid $blue;
-		background-color: rgba($blue, 0.1);
-		@include border-radius($default-border-radius);
-		padding: 10px;
-		margin-top: 10px;
-		cursor: default;
-		@include clearfix();
-
-		i {
-			font-size: 13pt;
-			color: $text-dark;
-			padding-left: 6px;
-		}
-
-		span {
-			width: calc(100% - 35px);
-			display: inline-block;
-			float: right;
-		}
-
-	}
-}
-
 //------------- Defect Types Settings ------------
 .defect-type-settings-content {
-	background-color: $white;
-	padding: 20px;
+	background-color: white;
+	width: 100%;
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
+	margin-bottom: 20px;
+	@include clearfix;
 
-	h3 {
-		font-size: 15pt;
+	h4 {
 		color: $text-dark;
-		margin: 0;
-		padding-bottom: 15px;
+		margin-top: 15px;
 		margin-bottom: 15px;
+		margin-left: 15px;
+		cursor: default;
+		display: inline-block;
+	}
+
+	.defect-type-box {
 		border-bottom: 1px solid $border;
+		min-height: 70px;
+		display: block;
+		@include clearfix;
+
+		.information {
+			display: inline-block;
+			width: calc(100% - 60px);
+			float: left;
+			padding-top: 10px;
+			padding-left: 10px;
+			padding-bottom: 15px;
+			font-size: 12pt;
+
+			.defect-type-title {
+				color: $text-dark;
+				padding: 5px;
+				cursor: text;
+				outline: none;
+				@include border-radius($default-border-radius);
+
+				&:hover, &:focus {
+					background-color: $background-dark;
+				}
+			}
+
+			.defect-type-description {
+				color: $text;
+				padding-left: 5px;
+				padding-right: 5px;
+				font-size: 11pt;
+				outline: none;
+				@include border-radius($default-border-radius);
+
+				&:hover, &:focus {
+					background-color: $background-dark;
+				}
+			}
+		}
+
+		.delete-box {
+			color: $text;
+			float: right;
+			display: inline-block;
+			padding: 15px;
+			margin-top: 12px;
+			cursor: pointer;
+
+			&:hover {
+				color: $text-dark;
+			}
+		}
 	}
-}
 
-.defect-type-box {
-	width: 100%;
-	border: 1px solid $border;
-	@include border-radius($default-border-radius);
-	box-shadow: 0 1px 1px rgba(95,108,128,0.3);
-	margin-bottom: 30px;
-	@include clearfix();
+	.defect-type-save-nav {
+		@include clearfix();
+		padding: 15px;
 
-	.defect-type-title-box {
-		margin: 20px;
+		button {
+			padding-top: 0;
+		}
+	}
+
+	.defect-type-error-box {
+		color: $warning-dark;
+		cursor: default;
+		display: block;
+		@include clearfix;
+
+		float: left;
 		padding: 10px;
-		@include border-radius($default-border-radius);
-		border: 1px solid $border;
-		font-size: 11pt;
-		color: $text-dark;
-	}
+		padding-left: 15px;
 
-	.defect-type-data-box {
-		margin: 20px;
-		font-size: 11pt;
-		color: $text-dark;
-	}
+		i {
+			float: left;
+		}
 
-	.defect-type-title,
-	.defect-type-description {
-		outline: none
-	}
+		span {
+			width: calc(100% - 40px);
+			line-height: 25px;
+			float: right;
+		}
 
-	.delete-defect-type {
-		float: right;
-		display: inline;
-		color: $text-dark;
-		cursor: pointer;
-		font-size: 12pt;
-		padding-top: 3px;
-	}
-
-}
-
-.defect-type-selected {
-	border: 1px solid $blue;
-}
-
-
-.defect-type-error-box {
-	padding: 0 15px;
-	margin-bottom: 20px;
-}
-
-.add-defect-type {
-	width: 100%;
-	background-color: $white;
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid $border;
-	@include border-radius($default-border-radius);
-	cursor: pointer;
-}
-
-.defect-type-save-nav {
-	border-top: 1px solid $border;
-	padding: 0 15px;
-	padding-top: 20px;
-
-	button {
-		padding-top: 0;
 	}
 }
 
+.line-fix {
+	border-bottom: 1px solid $border;
+}
+
+//------------------------------------------------
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+	.defect-type-settings-content {
+		.line-fix {
+			margin-top: 50px;
+		}
+
+		.create-type {
+			float: left;
+			padding-left: 15px;
+		}
+	}
+}
 //------------------------------------------------
