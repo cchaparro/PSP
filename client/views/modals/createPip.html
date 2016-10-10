@@ -15,6 +15,7 @@
 <!-- ###################################### -->
 <template name="createPip">
 	<div class="modal-body">
+	
 		<div class="pip-row">
 			<div class="{{#if titleError}} input-error-title-box {{else}} input-box {{/if}}">
 				<span>Titulo PIP</span>
@@ -34,6 +35,16 @@
 				<i class="fa fa-times"></i>
 			</div>
 
+			<div class="input-box">
+				<p class="title-pip">Defectos solucionados</p>
+				<ul>
+				{{#each userDefects}}
+					<li class="pip-checkbox-row">
+						<label><input type="checkbox" class="add-checkbox" {{isChecked selected}}> {{type}}</label>
+					</li>
+				{{/each}}
+				</ul>
+			</div>
 		</div>
 		<br>
 		<div class="modal-footer">
@@ -41,7 +52,7 @@
 				{{#if ifLoadsData}}
 					<span class="pry-modal-create primary-button pull-right">Crear PIP</span>
 				{{else}}
-					<span class="psp-btn pry-modal-create primary-button pull-right">Guardar Cambios</span>
+					<span class="psp-btn pry-modal-create primary-button pull-right">Guardar</span>
 				{{/if}}
 			{{/unless}}
 				<span class="pull-left default-button" data-dismiss="modal">Cancelar</span>

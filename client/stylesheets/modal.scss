@@ -540,6 +540,25 @@
 	}
 }
 
+.title-pip{
+	color:#95a6b9;
+}
+.pip-checkbox-row{
+	width: 50%;
+	display: block;
+	float: left;
+
+	label{
+		display: flex;
+		font-weight: normal;
+		color: #5f6c80;
+
+	}
+	input{
+		width: 10%;
+	}
+}
+
 
 //------------------------------------------------
 

@@ -2,8 +2,8 @@
 # titleStatus true is Create title and false is Modify title
 titleStatus = new ReactiveVar(true)
 pipData = new ReactiveVar({})
+pipDefects = new ReactiveVar([])
 pipId = new ReactiveVar('')
-
 ###########################################
 Template.createPipModal.helpers
 	displayTitle: () ->
@@ -27,6 +27,14 @@ Template.createPip.onCreated () ->
 		pipId.set(@data._id)
 		pipData.set(@data)
 		titleStatus.set(false)
+		data = @data.defectsSolved
+		defectTypes = []
+		_.each data, (value,index) ->
+			defectTypes.push({
+				"position":index,
+				"type":value.DefectType,
+				"selected": value.Solved})
+		pipDefects.set(defectTypes)
 	else
 		pipData.set({
 			"title":""
@@ -54,20 +62,36 @@ Template.createPip.helpers
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
+	isChecked: (checked) ->
+		# Used to return to the input type="checked" if its checked or not
+		return "checked" or "" if checked
+
 	userDefects:()->
-		#Users Type of defects
-		#userDefects=db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})?.defects
+		edit = titleStatus.get()
 		defectTypes = []
-		#_.each userDefects,(defect)->
-		#	defectTypes.push(defect?.name)
-		#################################################################################
-		#Types of the created defects in this project
-		projectDefects=db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")}).fetch()		
-		_.each projectDefects,(defect) ->
-			defectTypes.push(defect?.typeDefect)
-		return defectTypes
+		if edit
+			#Users Type of defects
+			#userDefects=db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})?.defects
+			#_.each userDefects,(defect)->
+			#	defectTypes.push(defect?.name)
+			#################################################################################
+			#Types of the created defects in this project
+			projectDefects=db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")}).fetch()		
+			_.each projectDefects,(defect,index) ->
+				if _.findWhere(defectTypes, {"type":defect?.typeDefect}) == undefined
+					defectTypes.push({
+						"position":index,
+						"type":defect?.typeDefect,
+						"selected":false
+						})		
+			pipDefects.set(defectTypes)
+			return defectTypes
+		else
+			return pipDefects.get()
+
 
 Template.createPip.events
+
 	'keypress .problem-pip': (e,t) ->
 		if $(e.target).val().length > 0
 			t.problemError.set(false)
@@ -80,6 +104,12 @@ Template.createPip.events
 	'keypress .pip-new-title': (e,t) ->
 		if $(e.target).val().length > 0
 			t.titleError.set(false)
+
+	'click .add-checkbox':(e,t)->
+		data = pipDefects.get()
+		value = $(e.target).is(":checked")		
+		data[@position].selected = value
+		pipDefects.set(data)		
 		
 	'click .pry-modal-create': (e,t) ->
 		PipId = pipId.get()
@@ -87,11 +117,15 @@ Template.createPip.events
 		PipModalData.title = $('.pip-new-title').val()
 		PipModalData.problemDescription = $('.problem-pip').val()
 		PipModalData.proposalDescription = $('.solution-pip').val()
-
+		defectTypes = pipDefects.get()
+		console.log defectTypes
+		finalDefects = _.map defectTypes, (value) ->
+			return {"DefectType": value.type, "Solved": value.selected}
 		data = {
 			"pipOwner": Meteor.userId()
 			"projectId": FlowRouter.getParam("id")
 			"createdAt": new Date()
+			"defectsSolved": finalDefects
 		}
 		data = _.extend PipModalData, data
 
