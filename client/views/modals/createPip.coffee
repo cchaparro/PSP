@@ -1,4 +1,4 @@
-###########################################
+##################################
 # titleStatus true is Create title and false is Modify title
 titleStatus = new ReactiveVar(true)
 pipData = new ReactiveVar({})
@@ -54,6 +54,19 @@ Template.createPip.helpers
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
+	userDefects:()->
+		#Users Type of defects
+		#userDefects=db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})?.defects
+		defectTypes = []
+		#_.each userDefects,(defect)->
+		#	defectTypes.push(defect?.name)
+		#################################################################################
+		#Types of the created defects in this project
+		projectDefects=db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")}).fetch()		
+		_.each projectDefects,(defect) ->
+			defectTypes.push(defect?.typeDefect)
+		return defectTypes
+
 Template.createPip.events
 	'keypress .problem-pip': (e,t) ->
 		if $(e.target).val().length > 0
@@ -98,4 +111,4 @@ Template.createPip.events
 			Template.instance().solutionError.set(data.proposalDescription.trim().length == 0)
 			Template.instance().problemError.set(data.problemDescription.trim().length == 0)
 			Template.instance().titleError.set(data.title.trim().length == 0)
-# ##########################################
+# #################################
