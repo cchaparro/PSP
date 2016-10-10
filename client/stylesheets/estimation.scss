@@ -1,0 +1,88 @@
+@import '_variables.scss';
+
+//---------------- Estimation view ---------------
+.estimation-content {
+	background-color: white;
+	width: 100%;
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
+	margin-bottom: 20px;
+	@include clearfix;
+
+	h4 {
+		color: $text-dark;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		margin-left: 15px;
+		cursor: default;
+	}
+
+	// .probeD-estimation-row {
+	// 	width: 100%;
+	// 	//height: 75px;
+	// 	display: block;
+	// 	border-bottom: 1px solid $border;
+	// 	@include clearfix;
+	// 	padding: 15px;
+	// 	//line-height: 72.5px;
+
+	// 	.title {
+	// 		float: left;
+	// 		width: 100%;
+	// 		display: inline-block;
+	// 		color: $text-dark;
+			
+	// 		h4 {
+	// 			margin: 0;
+	// 			padding-bottom: 5px;
+	// 		}
+	// 	}
+
+	// 	.description {
+	// 		float: right;
+	// 		display: inline-block;
+	// 		width: 100%;
+
+	// 		span {
+	// 			display: block;
+	// 			line-height: 20px;
+	// 			color: $text;
+	// 		}
+
+	// 		div {
+	// 			display: inline-block;
+	// 		}
+	// 	}
+	// }
+}
+
+.input-estimation {
+	.input-box {
+		width: 100%!important;
+		
+		input {
+			text-align: center;
+			padding-right: 12px;
+		}
+	}
+}
+
+.estimation {
+	.primary-button {
+		padding-top: 0;
+	}
+}
+
+//------------------------------------------------
+
+// Portrait tablets and small desktops
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+// Landscape phones and portrait tablets
+@media (max-width: 767px) {
+
+}
+
+//------------------------------------------------

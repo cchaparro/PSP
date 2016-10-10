@@ -1,7 +1,23 @@
 <!-- ###################################### -->
 
 <template name="PROBED">
-	<table class="table">
+	<!-- {{#with PlanSummary}}
+		<div class="probeD-estimation-row">
+			<div class="title">
+				<h4>Estimacion Tiempo(hrs)</h4>
+				{{#if probeEditable}}
+					<input type="text" class="newTime" value="{{timeInOnlyHours estimatedTime}}">
+				{{else}}
+					<span>{{timeInOnlyHours estimatedTime}}</span>
+				{{/if}}
+			</div>
+			<div class="description">
+				<span>Este método usa tu mejor suposición, usalo si crees que los ajustes realizados por los demás métodos no son acertados</span>
+				<div class="{{#unless probeEditable}} hide {{/unless}}btn primary-button save-data-time">Escoger</div>
+			</div>
+		</div>
+	{{/with}} -->
+	<table class="table estimation">
 		<thead>
 			<tr>
 				<th></th>
@@ -14,9 +30,9 @@
 		{{#with PlanSummary}}
 			<tr>
 				<td>Tiempo(hrs)</td>
-				<td>
+				<td class="input-estimation">
 					<div class="input-box" style="width:50%;">
-					{{#if probeEditable}}}
+					{{#if probeEditable}}
 						<input type="text" class="newTime" value="{{timeInOnlyHours estimatedTime}}">
 					{{else}}
 						<span>{{timeInOnlyHours estimatedTime}}</span>
@@ -24,13 +40,13 @@
 					</div>
 				</td>
 				<td>Este método usa tu mejor suposición, usalo si crees que los ajustes realizados por los demás métodos no son acertados</td>
-				<td><div class="{{#unless probeEditable}} hide {{/unless}}btn primary-button save-data-time">Escoger</div></td>
+				<td><div class="{{#unless probeEditable}} hide {{/unless}} btn primary-button save-data-time">Escoger</div></td>
 			</tr>
 			<tr>
 				<td>Líneas añadidas y modificadas</td>
-				<td>
+				<td class="input-estimation">
 					<div class="input-box" style="width:50%;">
-					{{#if probeEditable}}}
+					{{#if probeEditable}}
 						<input type="text" class="newLOC" value="{{proxyEstimated}}">
 					{{else}}
 						<span>{{proxyEstimated}}</span>
