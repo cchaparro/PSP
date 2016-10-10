@@ -37,6 +37,7 @@
 
 			<div class="input-box">
 				<p class="title-pip">Defectos solucionados</p>
+				{{#if hasDefects}}
 				<ul>
 				{{#each userDefects}}
 					<li class="pip-checkbox-row">
@@ -44,6 +45,9 @@
 					</li>
 				{{/each}}
 				</ul>
+				{{else}}
+				<p class="title-pip">No has registrado defectos en este proyecto.</p>
+				{{/if}}
 			</div>
 		</div>
 		<br>

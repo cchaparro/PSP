@@ -66,6 +66,10 @@ Template.createPip.helpers
 		# Used to return to the input type="checked" if its checked or not
 		return "checked" or "" if checked
 
+	hasDefects: ()->
+		defects = pipDefects.get()
+		return defects.length>0
+
 	userDefects:()->
 		edit = titleStatus.get()
 		defectTypes = []
