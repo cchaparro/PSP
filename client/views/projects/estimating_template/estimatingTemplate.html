@@ -1,19 +1,22 @@
 <!-- ###################################### -->
 <template name="estimatingTemplate">
-	{{> historicalData}}
-	<h3>PROBE A</h3>
-	{{> PROBEA}}
-	<h3>PROBE B</h3>
-	{{> PROBEB}}
-	<h3>PROBE C</h3>
-	{{> PROBEC}}
-	<h3>PROBE D</h3>
-	{{> PROBED}}
+	{{>headerNavigation}}
+	<div class="estimation-content">
+		{{> historicalData}}
+		<h4>PROBE A</h4>
+		{{> PROBEA}}
+		<h4>PROBE B</h4>
+		{{> PROBEB}}
+		<h4>PROBE C</h4>
+		{{> PROBEC}}
+		<h4>PROBE D</h4>
+		{{> PROBED}}
+	</div>
 </template>
 
 <template name="historicalData">
 	{{gethistoricalProjects}}
-	<h3>Datos históricos</h3>
+	<h4>Datos históricos</h4>
 	<table class="table">
 		<thead>
 			<tr>

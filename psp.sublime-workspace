@@ -8,28 +8,56 @@
 				"padding-left"
 			],
 			[
-				"over",
-				"overflow"
+				"pad",
+				"padding-top"
 			],
 			[
-				"font",
-				"font-weight"
-			],
-			[
-				"text",
-				"text-decoration"
+				"fot",
+				"font-size"
 			],
 			[
 				"margin",
 				"margin-top"
 			],
 			[
-				"fon",
-				"font-weight"
+				"font",
+				"font-size"
 			],
 			[
 				"tex",
 				"text-align"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"border-bo",
+				"border-bottom"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"te",
+				"text-dark	 settings.scss"
+			],
+			[
+				"over",
+				"overflow"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"fon",
+				"font-weight"
 			],
 			[
 				"border",
@@ -38,10 +66,6 @@
 			[
 				"border-bott",
 				"border-bottom-left-radius"
-			],
-			[
-				"pad",
-				"padding-top"
 			],
 			[
 				"def",
@@ -128,16 +152,8 @@
 				"clearfix()	 _variables.scss"
 			],
 			[
-				"mar",
-				"margin-left"
-			],
-			[
 				"defect-log-",
 				"defect-log-time	 defect.scss"
-			],
-			[
-				"marg",
-				"margin-bottom"
 			],
 			[
 				"centere",
