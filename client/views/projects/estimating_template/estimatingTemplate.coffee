@@ -15,7 +15,7 @@ Template.historicalData.helpers
 				data.push(
 					{
 						"Name":project.title
-						"ProxyE":psProject.proxyEstimated
+						"ProxyE":psProject?.proxyEstimated
 						"ActualLOC": psProject.actualAdd + psProject.actualModified
 						"EstimatedTime":psProject.estimatedTime
 						"ActualTime":psProject.totalTime
