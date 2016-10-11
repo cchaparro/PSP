@@ -1,4 +1,4 @@
-###############################
+#########################
 # titleStatus true is Create title and false is Modify title
 titleStatus = new ReactiveVar(true)
 pipData = new ReactiveVar({})
@@ -38,18 +38,15 @@ Template.createPip.onCreated () ->
 		pipDefects.set(defectTypes)
 	#New PIP
 	else
-		defectTypes = []
-		#userDefects=db.defect_types.findOne({"defectTypeOwner": Meteor.userId()})?.defects
-			#if _.findWhere(defectTypes, {"type":defect?.name}) == undefined
-			#_.each userDefects,(defect)->
-			#	defectTypes.push(defect?.name)
-		projectDefects=db.defects.find({"defectOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")}).fetch()
+		defectTypes = []		
+		actualProjectDefects = db.projects.findOne({_id:FlowRouter.getParam("id")})?.defectTypesId
+		projectDefects=db.defect_types.findOne({_id:actualProjectDefects,"defectTypeOwner": Meteor.userId()})?.defects
 		index = 0
 		_.each projectDefects,(defect) ->
-			if _.findWhere(defectTypes, {"type":defect?.typeDefect}) == undefined
+			if _.findWhere(defectTypes, {"type":defect?.name}) == undefined
 				defectTypes.push({
 					"position":index,
-					"type":defect?.typeDefect,
+					"type":defect?.name,
 					"selected":false
 					})
 				index+=1
