@@ -1051,6 +1051,7 @@
 	color: $warning-dark;
 	cursor: default;
 	display: block;
+	width: 100%;
 	@include clearfix;
 
 	float: left;
