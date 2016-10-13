@@ -8,56 +8,28 @@
 				"padding-left"
 			],
 			[
-				"pad",
-				"padding-top"
-			],
-			[
-				"fot",
-				"font-size"
-			],
-			[
-				"margin",
-				"margin-top"
+				"over",
+				"overflow"
 			],
 			[
 				"font",
-				"font-size"
-			],
-			[
-				"tex",
-				"text-align"
-			],
-			[
-				"min",
-				"min-height"
-			],
-			[
-				"border-bo",
-				"border-bottom"
-			],
-			[
-				"mar",
-				"margin-bottom"
-			],
-			[
-				"marg",
-				"margin-left"
-			],
-			[
-				"te",
-				"text-dark	 settings.scss"
-			],
-			[
-				"over",
-				"overflow"
+				"font-weight"
 			],
 			[
 				"text",
 				"text-decoration"
 			],
 			[
+				"margin",
+				"margin-top"
+			],
+			[
 				"fon",
 				"font-weight"
+			],
+			[
+				"tex",
+				"text-align"
 			],
 			[
 				"border",

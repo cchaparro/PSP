@@ -57,7 +57,9 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<p class="time-footer-description">Tu tiempo actual en la etapa "{{currentStage}}" es {{currentTime}} y el nuevo valor será {{newTime}}.</p>
+		<div class="time-footer-description">
+			<span>Tu tiempo actual en la etapa "{{currentStage}}" es {{currentTime}} y el nuevo valor será {{newTime}}.</span>
+		</div>
 		{{#if selectedOption}}
 			<span class="pull-right primary-button finish-edit-time">Asignar Tiempo</span>
 			<span class="pull-left default-button" data-dismiss="modal">Cancelar</span>
