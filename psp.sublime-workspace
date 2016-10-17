@@ -40,6 +40,10 @@
 				"border-bottom-left-radius"
 			],
 			[
+				"pad",
+				"padding-top"
+			],
+			[
 				"def",
 				"default-border-radius	 projects.scss"
 			],
@@ -124,8 +128,16 @@
 				"clearfix()	 _variables.scss"
 			],
 			[
+				"mar",
+				"margin-left"
+			],
+			[
 				"defect-log-",
 				"defect-log-time	 defect.scss"
+			],
+			[
+				"marg",
+				"margin-bottom"
 			],
 			[
 				"centere",

@@ -13,6 +13,11 @@
 			color: $text;
 			font-weight: 300;
 			cursor: default;
+
+			&.compress {
+				max-width: 50px;
+				word-wrap: break-word;
+			}
 		}
 	}
 
@@ -29,7 +34,7 @@
 
 			input {
 				margin-top: 9px;
-				padding: 12px;
+				padding: 12px 3px;
 				text-align: center;
 			}
 
