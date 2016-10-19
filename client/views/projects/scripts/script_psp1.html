@@ -1,8 +1,16 @@
 <!-- ###################################### -->
 <template name="scriptPSP1">
 	<h4>Script del Proceso</h4>
-	<span class="description">El propósito de este es script es indicar que debe hacer en cada etapa del proceso. No te olvides de registrar el tiempo en cada etapa.</span>
+	<span class="description">El propósito de este es script es indicar que debe hacer en cada etapa del proceso. Antes de iniciar el proceso debe cumplir con los requisitos y no te olvides de registrar el tiempo en cada etapa.</span>
+
 	<div class="script-row first">
+		<h4>Requisitos</h4>
+		<ul>
+			<li>Obtener una descripción del problema.</li>
+		</ul>
+	</div>
+
+	<div class="script-row">
 		<h4><a href="#script1_planning">Actividad Planeación</a></h4>
 		<ul>
 			<li>Hacer o revisar el documento de requerimientos.</li>
@@ -28,7 +36,16 @@
 			<li>Completa el <i>PIP form</i>.</li>
 		</ul>
 	</div>
-
+	<div class="script-row">
+		<h4>Resultado</h4>
+		<ul>
+			<li>Programa completamente probado.</li>
+			<li>Plan Summary con datos estimados y actuales.</li>
+			<li>Registro de tiempos y defectos.</li>
+			<li>Reporte de pruebas.</li>
+			<li>Plan de mejora.</li>
+		</ul>
+	</div>
 	<h4 class="in-list" id="script1_planning">Script de Planeación</h4>
 	<span class="description">El propósito de este script es guiarlo durante la etapa de planeación de su proyecto.</span>
 	<div class="script-row first">
@@ -44,9 +61,9 @@
 	</div>
 
 	<h4 class="in-list" id="script1_developement">Script de Desarrollo</h4>
-	<span class="description">El propósito de este script es guíarte en el transcurso del proceso. Antes de iniciar debes cumplir con los siguientes criterios, la herramienta te ayudará con alguno de estos así que no deberás preocuparte por todos. A continuación se muestran las activdades y los propósitos de cada etapa.</span>
+	<span class="description">El propósito de este script es guíarte en las etapas que hacen parte de la actividad de desarrollo.</span>
 	<div class="script-row first">
-		<h4>Actividad Diseño</h4>
+		<h4>Etapa de Diseño</h4>
 		<ul>
 			<li>Diseña una solución de acuerdo a la especificación de requermientos.</li>
 			<li>Si encuentras algún error en los requerimientos registralo como un defecto.</li>
@@ -54,7 +71,7 @@
 		</ul>
 	</div>
 	<div class="script-row">
-		<h4>Actividad Codificación</h4>
+		<h4>Etapa de Codificación</h4>
 		<ul>
 			<li>Implementa el programa de acuerdo al diseño.</li>
 			<li>Si encuentras algún error en el diseño registralo como un defecto.</li>
@@ -63,7 +80,7 @@
 		</ul>
 	</div>
 	<div class="script-row">
-		<h4>Actividad Compilación</h4>
+		<h4>Etapa de Compilación</h4>
 		<ul>
 			<li>Compila el programa, si aplica, hasta que no hayan errores.</li>
 			<li>Registra y corrige cada error que aparezca.</li>
@@ -71,7 +88,7 @@
 		</ul>
 	</div>
 	<div class="script-row">
-		<h4>Actividad Pruebas</h4>
+		<h4>Etapa de Pruebas</h4>
 		<ul>
 			<li>Prueba el programa, corrige y registra todos los defectos encontrados.</li>
 			<li>Completa la plantilla de registro de pruebas, indicando las pruebas realizadas obtenidos.</li>
