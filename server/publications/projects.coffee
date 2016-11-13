@@ -30,6 +30,7 @@ Meteor.publish "chartStages", ()->
 Meteor.publish "pspForms", (pid) ->
 	return [
 		db.projects.find({_id: pid}),
+		db.defect_types.find({"defectTypeOwner": @userId})
 		db.users.find({_id: @userId})
 		db.pips.find({"projectId": pid,"pipOwner": @userId})
 		db.testReports.find({"TestOwner": @userId})
