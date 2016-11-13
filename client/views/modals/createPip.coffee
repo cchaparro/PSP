@@ -28,28 +28,32 @@ Template.createPip.onCreated () ->
 		pipId.set(@data._id)
 		pipData.set(@data)
 		titleStatus.set(false)
-		data = @data.defectsSolved
+		defectsSolved = @data.defectsSolved
 		defectTypes = []
-		_.each data, (value,index) ->
+
+		_.each defectsSolved, (value, index) ->
 			defectTypes.push({
 				"position":index,
 				"type":value.DefectType,
-				"selected": value.Solved})
+				"selected": value.Solved
+			})
+
 		pipDefects.set(defectTypes)
+
 	#New PIP
 	else
 		defectTypes = []		
 		actualProjectDefects = db.projects.findOne({_id:FlowRouter.getParam("id")})?.defectTypesId
-		projectDefects=db.defect_types.findOne({_id:actualProjectDefects,"defectTypeOwner": Meteor.userId()})?.defects
-		index = 0
-		_.each projectDefects,(defect) ->
+		projectDefects = db.defect_types.findOne({_id: actualProjectDefects, "defectTypeOwner": Meteor.userId()})?.defects
+
+		_.each projectDefects,(defect, index) ->
 			if _.findWhere(defectTypes, {"type":defect?.name}) == undefined
 				defectTypes.push({
 					"position":index,
 					"type":defect?.name,
 					"selected":false
-					})
-				index+=1
+				})
+
 		pipDefects.set(defectTypes)
 		pipData.set({
 			"title":""
@@ -90,7 +94,6 @@ Template.createPip.helpers
 
 
 Template.createPip.events
-
 	'keypress .problem-pip': (e,t) ->
 		if $(e.target).val().length > 0
 			t.problemError.set(false)
@@ -116,9 +119,11 @@ Template.createPip.events
 		PipModalData.title = $('.pip-new-title').val()
 		PipModalData.problemDescription = $('.problem-pip').val()
 		PipModalData.proposalDescription = $('.solution-pip').val()
+
 		defectTypes = pipDefects.get()
 		finalDefects = _.map defectTypes, (value) ->
 			return {"DefectType": value.type, "Solved": value.selected}
+
 		data = {
 			"pipOwner": Meteor.userId()
 			"projectId": FlowRouter.getParam("id")
@@ -143,4 +148,5 @@ Template.createPip.events
 			Template.instance().solutionError.set(data.proposalDescription.trim().length == 0)
 			Template.instance().problemError.set(data.problemDescription.trim().length == 0)
 			Template.instance().titleError.set(data.title.trim().length == 0)
-# ##############################
+
+##########################################
