@@ -1,40 +1,14 @@
 ##########################################
 if Meteor.isServer
 	syssrv.createPlanSummary = (userId, projectId, levelPSP) ->
-		timePlanSummary = Meteor.settings.public.timeEstimated
-		Injected = Meteor.settings.public.InjectedEstimated
-		Removed = Meteor.settings.public.RemovedEstimated
-
-		# Definition of a empty baseLOC data for a new project
-		baseSize = [{
-			"Estimated": { name: "", base: 0, add: 0, modified: 0, deleted: 0 }
-			"Actual": { base: 0, add: 0, modified: 0, deleted: 0 }
-		}]
-		addSize = [{
-			"Estimated": { name: "", type: "Elegir", items: 0, relSize: "Elegir", size: 0, nr: false }
-			"Actual": { items: 0, size: 0, nr: false }
-		}]
-		reusedSize = [{
-			"Estimated": { name: "", size: 0 }
-			"Actual": { size: 0 }
-		}]
-
-		#If the project is PSP 2 it will add the 2 missing stages
-		if levelPSP == 'PSP 2'
-			timePlanSummary.splice(2, 0, {"name":"Revisión Diseño", "finished":false, "time":0})
-			timePlanSummary.splice(4, 0, {"name":"Revisión Código", "finished":false, "time":0})
-
-			Injected.splice(2, 0, {"name":"Revisión Diseño", "injected":0, "estimated": 0})
-			Injected.splice(4, 0, {"name":"Revisión Código", "injected":0, "estimated": 0})
-
-			Removed.splice(2, 0, {"name":"Revisión Diseño", "removed":0, "estimated": 0})
-			Removed.splice(4, 0, {"name":"Revisión Código", "removed":0, "estimated": 0})
+		#This takes the basic stages data for the time, injected and removed information of a project
+		timePlanSummary = Meteor.settings.public.timeEstimated[levelPSP]
+		Injected = Meteor.settings.public.InjectedEstimated[levelPSP]
+		Removed = Meteor.settings.public.RemovedEstimated[levelPSP]
 
 		user = db.users.findOne({_id: Meteor.userId()}).profile
-		historyTotalTime = user.total.time
 		historyTotalInjected = user.total.injected
 		historyTotalRemoved = user.total.removed
-		finishedProjects = db.projects.find({"projectOwner": Meteor.userId()}, "completed": true).count()
 
 		# This will add to the time the toDate and toDate% fields for the Plan Summary
 		finalTime = _.filter timePlanSummary, (time) ->
@@ -43,7 +17,6 @@ if Meteor.isServer
 			time.percentage = 0
 			time.estimated = 0
 			return time
-		#console.log finalTime
 
 		finalInjected = _.filter Injected, (injected) ->
 			onDate = _.findWhere user.summaryAmount, {name: injected.name}
@@ -71,9 +44,9 @@ if Meteor.isServer
 			timeEstimated: finalTime
 			injectedEstimated: finalInjected
 			removedEstimated: finalRemoved
-			baseLOC: baseSize
-			addLOC: addSize
-			reusedLOC: reusedSize
+			baseLOC: Meteor.settings.public.initialUserBaseLOC.baseSize
+			addLOC: Meteor.settings.public.initialUserBaseLOC.addSize
+			reusedLOC: Meteor.settings.public.initialUserBaseLOC.reusedSize
 			total:
 				totalTime: 0
 				totalSize: 0

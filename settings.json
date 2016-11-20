@@ -4,139 +4,119 @@
 			"default_method": "persistent"
 		},
 		"userAmount": [
-			{
-				"name" : "Planeación",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Diseño",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Revisión Diseño",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Código",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Revisión Código",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Compilación",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Pruebas",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			},
-			{
-				"name" : "Postmortem",
-				"time" : 0,
-				"injected": 0,
-				"removed": 0
-			}
+			{ "name" : "Planeación", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Diseño", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Revisión Diseño", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Código", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Revisión Código", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Compilación", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Pruebas", "time" : 0, "injected": 0, "removed": 0 },
+			{ "name" : "Postmortem", "time" : 0, "injected": 0, "removed": 0 }
 		],
-		"timeEstimated": [
-			{
-				"name" : "Planeación",
-				"finished" : false,
-				"time" : 0
-			},
-			{
-				"name" : "Diseño",
-				"finished" : false,
-				"time" : 0
-			},
-			{
-				"name" : "Código",
-				"finished" : false,
-				"time" : 0
-			},
-			{
-				"name" : "Compilación",
-				"finished" : false,
-				"time" : 0
-			},
-			{
-				"name" : "Pruebas",
-				"finished" : false,
-				"time" : 0
-			},
-			{
-				"name" : "Postmortem",
-				"finished" : false,
-				"time" : 0
-			}
-		],
-		"InjectedEstimated": [
-			{
-				"name" : "Planeación",
-				"injected" : 0
-			},
-			{
-				"name" : "Diseño",
-				"injected" : 0
-			},
-			{
-				"name" : "Código",
-				"injected" : 0
-			},
-			{
-				"name" : "Compilación",
-				"injected" : 0
-			},
-			{
-				"name" : "Pruebas",
-				"injected" : 0
-			},
-			{
-				"name" : "Postmortem",
-				"injected" : 0
-			}
-		],
-		"RemovedEstimated": [
-			{
-				"name" : "Planeación",
-				"removed" : 0
-			},
-			{
-				"name" : "Diseño",
-				"removed" : 0
-			},
-			{
-				"name" : "Código",
-				"removed" : 0
-			},
-			{
-				"name" : "Compilación",
-				"removed" : 0
-			},
-			{
-				"name" : "Pruebas",
-				"removed" : 0
-			},
-			{
-				"name" : "Postmortem",
-				"removed" : 0
-			}
-		],
+		"timeEstimated": {
+			"PSP 0": [
+				{ "name" : "Planeación", "finished" : false, "time" : 0 },
+				{ "name" : "Diseño", "finished" : false, "time" : 0 },
+				{ "name" : "Código", "finished" : false, "time" : 0 },
+				{ "name" : "Compilación", "finished" : false, "time" : 0 },
+				{ "name" : "Pruebas", "finished" : false, "time" : 0 },
+				{ "name" : "Postmortem", "finished" : false, "time" : 0 }
+			],
+			"PSP 1": [
+				{ "name" : "Planeación", "finished" : false, "time" : 0 },
+				{ "name" : "Diseño", "finished" : false, "time" : 0 },
+				{ "name" : "Código", "finished" : false, "time" : 0 },
+				{ "name" : "Compilación", "finished" : false, "time" : 0 },
+				{ "name" : "Pruebas", "finished" : false, "time" : 0 },
+				{ "name" : "Postmortem", "finished" : false, "time" : 0 }
+			],
+			"PSP 2": [
+				{ "name" : "Planeación", "finished" : false, "time" : 0 },
+				{ "name" : "Diseño", "finished" : false, "time" : 0 },
+				{ "name":"Revisión Diseño", "finished": false, "time": 0 },
+				{ "name" : "Código", "finished" : false, "time" : 0 },
+				{ "name": "Revisión Código", "finished": false, "time": 0 },
+				{ "name" : "Compilación", "finished" : false, "time" : 0 },
+				{ "name" : "Pruebas", "finished" : false, "time" : 0 },
+				{ "name" : "Postmortem", "finished" : false, "time" : 0 }
+			]
+		},
+		"InjectedEstimated": {
+			"PSP 0": [
+				{ "name" : "Planeación", "injected" : 0 },
+				{ "name" : "Diseño", "injected" : 0 },
+				{ "name" : "Código", "injected" : 0 },
+				{ "name" : "Compilación", "injected" : 0 },
+				{ "name" : "Pruebas", "injected" : 0 },
+				{ "name" : "Postmortem", "injected" : 0 }
+			],
+			"PSP 1": [
+				{ "name" : "Planeación", "injected" : 0 },
+				{ "name" : "Diseño", "injected" : 0 },
+				{ "name" : "Código", "injected" : 0 },
+				{ "name" : "Compilación", "injected" : 0 },
+				{ "name" : "Pruebas", "injected" : 0 },
+				{ "name" : "Postmortem", "injected" : 0 }
+			],
+			"PSP 2": [
+				{ "name" : "Planeación", "injected" : 0 },
+				{ "name" : "Diseño", "injected" : 0 },
+				{ "name": "Revisión Diseño", "injected": 0, "estimated": 0 },
+				{ "name" : "Código", "injected" : 0 },
+				{ "name": "Revisión Código", "injected": 0, "estimated": 0 },
+				{ "name" : "Compilación", "injected" : 0 },
+				{ "name" : "Pruebas", "injected" : 0 },
+				{ "name" : "Postmortem", "injected" : 0 }
+			]
+		},
+		"RemovedEstimated": {
+			"PSP 0": [
+				{ "name" : "Planeación", "removed" : 0 },
+				{ "name" : "Diseño", "removed" : 0 },
+				{ "name" : "Código", "removed" : 0 },
+				{ "name" : "Compilación", "removed" : 0 },
+				{ "name" : "Pruebas", "removed" : 0 },
+				{ "name" : "Postmortem", "removed" : 0 }
+			],
+			"PSP 1": [
+				{ "name" : "Planeación", "removed" : 0 },
+				{ "name" : "Diseño", "removed" : 0 },
+				{ "name" : "Código", "removed" : 0 },
+				{ "name" : "Compilación", "removed" : 0 },
+				{ "name" : "Pruebas", "removed" : 0 },
+				{ "name" : "Postmortem", "removed" : 0 }
+			],
+			"PSP 2": [
+				{ "name" : "Planeación", "removed" : 0 },
+				{ "name" : "Diseño", "removed" : 0 },
+				{ "name": "Revisión Diseño", "removed": 0, "estimated": 0},
+				{ "name" : "Código", "removed" : 0 },
+				{ "name": "Revisión Código", "removed": 0, "estimated": 0},
+				{ "name" : "Compilación", "removed" : 0 },
+				{ "name" : "Pruebas", "removed" : 0 },
+				{ "name" : "Postmortem", "removed" : 0 }
+			]
+		},
+		"initialUserBaseLOC": {
+			"baseSize": [
+				{
+					"Estimated": { "name": "", "base": 0, "add": 0, "modified": 0, "deleted": 0 },
+					"Actual": { "base": 0, "add": 0, "modified": 0, "deleted": 0 }
+				}
+			],
+			"addSize": [
+				{
+					"Estimated": { "name": "", "type": "Elegir", "items": 0, "relSize": "Elegir", "size": 0, "nr": false },
+					"Actual": { "items": 0, "size": 0, "nr": false }
+				}
+			],
+			"reusedSize": [
+				{
+					"Estimated": { "name": "", "size": 0 },
+					"Actual": { "size": 0 }
+				}
+			]
+		},
 		"defectTypeValues": [
 			{
 				"name": "Documentación",
