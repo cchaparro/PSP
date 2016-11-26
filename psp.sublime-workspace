@@ -45,7 +45,7 @@
 			],
 			[
 				"def",
-				"default-border-radius	 projects.scss"
+				"default-border-radius\t projects.scss"
 			],
 			[
 				"in",
@@ -61,7 +61,7 @@
 			],
 			[
 				"even",
-				"events	Meteor: Template.myTemplate.events(eventMap)"
+				"events\tMeteor: Template.myTemplate.events(eventMap)"
 			],
 			[
 				"bord",
@@ -69,19 +69,19 @@
 			],
 			[
 				"avatar",
-				"avatar-box	 main.scss"
+				"avatar-box\t main.scss"
 			],
 			[
 				"blue",
-				"blue-dark	 main.scss"
+				"blue-dark\t main.scss"
 			],
 			[
 				"prima",
-				"primary-bg	 userAccess.scss"
+				"primary-bg\t userAccess.scss"
 			],
 			[
 				"eve",
-				"events	Meteor: Template.myTemplate.events(eventMap)"
+				"events\tMeteor: Template.myTemplate.events(eventMap)"
 			],
 			[
 				"plan",
@@ -89,15 +89,15 @@
 			],
 			[
 				"de",
-				"default-border-radius	 main.scss"
+				"default-border-radius\t main.scss"
 			],
 			[
 				"edit-tm",
-				"edit-time-options	 modal.scss"
+				"edit-time-options\t modal.scss"
 			],
 			[
 				"tetx",
-				"text-dark	 settings.scss"
+				"text-dark\t settings.scss"
 			],
 			[
 				"mari",
@@ -113,7 +113,7 @@
 			],
 			[
 				"defa",
-				"default-box-shadow	 projects.scss"
+				"default-box-shadow\t projects.scss"
 			],
 			[
 				"projec",
@@ -125,7 +125,7 @@
 			],
 			[
 				"cl",
-				"clearfix()	 _variables.scss"
+				"clearfix()\t _variables.scss"
 			],
 			[
 				"mar",
@@ -133,7 +133,7 @@
 			],
 			[
 				"defect-log-",
-				"defect-log-time	 defect.scss"
+				"defect-log-time\t defect.scss"
 			],
 			[
 				"marg",
@@ -141,7 +141,7 @@
 			],
 			[
 				"centere",
-				"centered-outer	 global.scss"
+				"centered-outer\t global.scss"
 			],
 			[
 				"file",
@@ -149,7 +149,7 @@
 			],
 			[
 				"primary",
-				"primary-bg	 global.scss"
+				"primary-bg\t global.scss"
 			],
 			[
 				"noti",
@@ -157,7 +157,7 @@
 			],
 			[
 				"status",
-				"status-warning	 global.scss"
+				"status-warning\t global.scss"
 			],
 			[
 				"box",
@@ -165,7 +165,7 @@
 			],
 			[
 				"input",
-				"input-bg	 settings.scss"
+				"input-bg\t settings.scss"
 			],
 			[
 				"mrg",
@@ -173,7 +173,7 @@
 			],
 			[
 				"prj-info",
-				"prj-info-title	 projects.scss"
+				"prj-info-title\t projects.scss"
 			],
 			[
 				"max",
@@ -181,7 +181,7 @@
 			],
 			[
 				"primar",
-				"primary-light-bg	 main.scss"
+				"primary-light-bg\t main.scss"
 			],
 			[
 				"MAR",
@@ -197,7 +197,7 @@
 			],
 			[
 				"main",
-				"main-text-color	 projects.scss"
+				"main-text-color\t projects.scss"
 			],
 			[
 				"z-",
@@ -205,7 +205,7 @@
 			],
 			[
 				"input-",
-				"input-text	 projects.scss"
+				"input-text\t projects.scss"
 			],
 			[
 				"curren",
@@ -213,11 +213,11 @@
 			],
 			[
 				"prim",
-				"primary-light-bg	 userAccess.scss"
+				"primary-light-bg\t userAccess.scss"
 			],
 			[
 				"default",
-				"default-border-radius	 global.scss"
+				"default-border-radius\t global.scss"
 			],
 			[
 				"box-",
@@ -225,7 +225,7 @@
 			],
 			[
 				"defaul",
-				"default-border-radius	 projects.scss"
+				"default-border-radius\t projects.scss"
 			],
 			[
 				"list-s",
@@ -237,11 +237,11 @@
 			],
 			[
 				"pro",
-				"project-box	 projects.scss"
+				"project-box\t projects.scss"
 			],
 			[
 				"defult",
-				"default-border-radius	 projects.scss"
+				"default-border-radius\t projects.scss"
 			],
 			[
 				"bor",
@@ -277,7 +277,7 @@
 			],
 			[
 				"default-",
-				"default-border-radius	 main.scss"
+				"default-border-radius\t main.scss"
 			],
 			[
 				"min",
@@ -309,7 +309,7 @@
 			],
 			[
 				"dropdown",
-				"dropdown-toggle	 02_brand-settings.scss"
+				"dropdown-toggle\t 02_brand-settings.scss"
 			],
 			[
 				"fiel",
@@ -380,42 +380,46 @@
 	"buffers":
 	[
 		{
-			"file": "lib/system/system.coffee",
+			"file": "lib/models/plan_summary.models.coffee",
 			"settings":
 			{
-				"buffer_size": 14638,
+				"buffer_size": 3367,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/views/projects/time/allTimes.html",
+			"contents": "Searching 163 files for \"yield\"\n\n0 matches\n\nSearching 163 files for \"yield\"\n\n0 matches\n\nSearching 163 files for \"{{>yield\"\n\n0 matches\n\nSearching 163 files for \"{{> yield\"\n\n0 matches",
 			"settings":
 			{
-				"buffer_size": 2615,
+				"buffer_size": 181,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "client/views/main/main.html",
+			"settings":
+			{
+				"buffer_size": 2290,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/views/projects/time/allTimes.coffee",
+			"file": "settings.json",
 			"settings":
 			{
-				"buffer_size": 6603,
+				"buffer_size": 6589,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/views/help/community.html",
+			"file": "lib/models/projects.models.coffee",
 			"settings":
 			{
-				"buffer_size": 3652,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/views/help/community.coffee",
-			"settings":
-			{
-				"buffer_size": 2738,
+				"buffer_size": 2706,
 				"line_ending": "Unix"
 			}
 		}
@@ -428,7 +432,7 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "rein",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -502,35 +506,49 @@
 	[
 		"/Users/Juanpmd/Documents/PSP-Connect",
 		"/Users/Juanpmd/Documents/PSP-Connect/client",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time"
+		"/Users/Juanpmd/Documents/PSP-Connect/lib",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models",
+		"/Users/Juanpmd/Documents/PSP-Connect/server",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods"
 	],
 	"file_history":
 	[
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/questions.models.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/helpers.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/notifications.models.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/modal.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/plan_summary.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/users.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks/user.hooks.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/projects.methods.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createPip.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createPip.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/plan_summary.models.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/users.db.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/baseLOC.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects_psp1.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects.scss",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/estimating_template/estimatingTemplate.html",
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/estimating_template/estimatingTemplate.coffee",
+		"/Users/Juanpmd/Documents/PSP-Connect/lib/system/system.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/global.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/main.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/main/main_menuBar.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/files.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/help.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/help/community.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/routes.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/questions.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/defect_types.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/questions.db.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/projects_menu.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/iterationsView.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/help.coffee",
@@ -567,18 +585,15 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/forgot.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/forgot.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/plan_summary.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/plan_summary.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/time/allTimes.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/notifications.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/plan_summary.models.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/login.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/settings.json",
 		"/Users/Juanpmd/Documents/PSP-Connect/psp.sublime-project",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/information/projectInformation.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/hooks/user.hooks.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/baseLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/addLOC.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/reusedLOC.coffee",
@@ -586,15 +601,11 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editProfile.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createDefect.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/modal.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/users.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/models/defects.models.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/projects.methods.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/lib/collections/notification.db.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/addLOC.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/project_settings/project_settings.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/settings.scss",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/editTime.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/server/publications/user.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/charts/removedCharts.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/overview/overview.html",
@@ -620,14 +631,11 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP0/developmentScript.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/script.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/scripts/PSP1/processScript.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/modals/createProject.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Color.svg",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/baseLOC.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/sizeSummary.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/sizeSummary.coffee",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/reusedLOC.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1/psp1.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/stylesheets/projects_psp1.scss",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/timeStop.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/public/images/timePlay.svg",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/defect_type_settings/defect_types_settings.html",
@@ -635,14 +643,7 @@
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/summary_psp1.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1_ps.html",
 		"/Users/Juanpmd/Documents/PSP-Connect/client/views/projects/plan_summary/psp1summary.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/account_settings/account_settings.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/methods/defects.methods.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/public/images/Upload.svg",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/userAccess/register.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/account_settings/account_settings.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/uploader/uploader.html",
-		"/Users/Juanpmd/Documents/PSP-Connect/server/restrictions/files.restrict.coffee",
-		"/Users/Juanpmd/Documents/PSP-Connect/client/views/widgets/uploader/uploader.coffee"
+		"/Users/Juanpmd/Documents/PSP-Connect/client/views/settings/account_settings/account_settings.html"
 	],
 	"find":
 	{
@@ -661,6 +662,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"{{> yield",
+			"{{>yield",
+			"yield",
+			"finishedProjects",
+			"historyTotalTime",
+			"historyTotalRemoved",
+			"historyTotalInjected",
+			"historyTotalTime",
+			"finishedProjects",
+			"userAmount",
+			"index",
+			"defects",
+			"PSP 2",
+			"green",
+			"defect-header-descr",
+			"time-footer-description",
+			"project-message-bubble",
+			"projectMessages",
+			"summary-information",
+			"proxyEstimated",
 			"userName",
 			"\"Aqui\"",
 			"Aqui",
@@ -768,27 +789,7 @@
 			"project",
 			"create-project",
 			"error-project",
-			"warning",
-			"danger",
-			"flashS",
-			"delete-project",
-			"flash",
-			"error-project",
-			"defect-select",
-			"update_time_stage",
-			"notification-content",
-			".notifi",
-			"multi",
-			"update_user_plan_summary",
-			"update_project",
-			"project-active",
-			"disable_notification",
-			"db.notifications.",
-			"syssrv.newNotification",
-			"update_time_stage",
-			"time-submit",
-			"change_project_settings",
-			"rgba($blue"
+			"warning"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -806,24 +807,267 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "client/views/help/community.html",
+					"file": "lib/models/plan_summary.models.coffee",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3266,
+						"buffer_size": 3367,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1690,
-								1690
+								781,
+								781
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 33.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								135,
+								135
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										114,
+										115
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 231.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/views/main/main.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2290,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -844,27 +1088,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										1686,
-										1689
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/tag.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										1483,
-										1486
-									]
 								},
 								"unmatched":
 								{
@@ -872,70 +1101,323 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 894.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "settings.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4029,
+								4029
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										6042,
+										6043
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1884.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "lib/models/projects.models.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2266,
+								2266
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -993,6 +1475,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"creatpi",
+				"client/views/modals/createPip.coffee"
+			],
+			[
+				"createpip",
+				"client/views/modals/createPip.html"
+			],
+			[
+				"modals",
+				"client/stylesheets/modal.scss"
+			],
+			[
+				"edittime",
+				"client/views/modals/editTime.html"
+			],
 			[
 				"communi",
 				"client/views/help/community.coffee"
@@ -1068,10 +1566,6 @@
 			[
 				"maincoff",
 				"lib/main.coffee"
-			],
-			[
-				"edittime",
-				"client/views/modals/editTime.coffee"
 			],
 			[
 				"login",
@@ -1240,10 +1734,6 @@
 			[
 				"editin",
 				"app/client/stylesheets/20_parts/editing.scss"
-			],
-			[
-				"modals",
-				"app/client/stylesheets/20_parts/modals.scss"
 			],
 			[
 				"signin",
@@ -1496,14 +1986,6 @@
 			[
 				"search",
 				"app/client/views/02_search/search.html"
-			],
-			[
-				"blinkcontquiz",
-				"app/client/views/04_blink/blink_types/quiz/blink_content_quiz.coffee"
-			],
-			[
-				"blinkhtml",
-				"app/client/views/04_blink/blink.html"
 			]
 		],
 		"width": 0.0

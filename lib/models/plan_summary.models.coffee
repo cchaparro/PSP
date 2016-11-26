@@ -1,7 +1,12 @@
 ##########################################
 if Meteor.isServer
 	syssrv.createPlanSummary = (userId, projectId, levelPSP) ->
-		#This takes the basic stages data for the time, injected and removed information of a project
+		#Check if input parameters are the correct data type
+		check(userId, String)
+		check(projectId, String)
+		check(levelPSP, String)
+
+		#Bring initial default values for a new PlanSummary element
 		timePlanSummary = Meteor.settings.public.timeEstimated[levelPSP]
 		Injected = Meteor.settings.public.InjectedEstimated[levelPSP]
 		Removed = Meteor.settings.public.RemovedEstimated[levelPSP]
@@ -40,33 +45,13 @@ if Meteor.isServer
 		data = {
 			summaryOwner: userId
 			projectId: projectId
-			createdAt: new Date()
 			timeEstimated: finalTime
 			injectedEstimated: finalInjected
 			removedEstimated: finalRemoved
 			baseLOC: Meteor.settings.public.initialUserBaseLOC.baseSize
 			addLOC: Meteor.settings.public.initialUserBaseLOC.addSize
 			reusedLOC: Meteor.settings.public.initialUserBaseLOC.reusedSize
-			total:
-				totalTime: 0
-				totalSize: 0
-				estimatedTotalSize: 0
-				estimatedTime: 0
-				estimatedBase: 0
-				actualBase: 0
-				estimatedAdd: 0
-				actualAdd: 0
-				estimatedModified: 0
-				actualModified: 0
-				estimatedDeleted: 0
-				actualDeleted: 0
-				estimatedReused: 0
-				actualReused: 0
-				estimatedAddedSize: 0
-				proxyEstimated: 0
-				productivityPlan: 0
-				productivityActual: 0
-			}
+		}
 
 		db.plan_summary.insert(data)
 
