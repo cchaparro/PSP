@@ -1,9 +1,13 @@
 ##########################################
 Meteor.methods
 	create_project: (data) ->
+		check(userId, Object)
 		syssrv.createProject(data)
 
 	delete_project: (projectId, delete_iterations=false) ->
+		check(projectId, String)
+		check(delete_iterations, Boolean)
+
 		if delete_iterations
 			projectIterations = db.projects.find({"parentId": projectId})
 

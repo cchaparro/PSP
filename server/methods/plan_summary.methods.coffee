@@ -25,7 +25,10 @@ Meteor.methods
 
 	#This is for completing a stage or updating the time of the current stage
 	update_time_stage: (projectId, stage, finishStage=false, reset_timeStarted=false) ->
+		check(projectId, String)
+
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
+
 		# If the time saved is more than 3 minutes, send a notification to the user
 		if stage.time > 180000
 			notificationData = {
@@ -69,12 +72,13 @@ Meteor.methods
 		db.plan_summary.update({"projectId": projectId}, {$set: { "timeEstimated": projectStages }})
 
 
-
 	update_timeStarted: (projectId, timeStarted) ->
 		db.plan_summary.update({"projectId": projectId}, {$set: {"timeStarted": timeStarted}})
 
+
 	add_time_stage: (projectId, stage_name, time) ->
 		syssrv.modifyTime(projectId, stage_name, time, true)
+
 
 	delete_time_stage: (projectId, stage_name, time) ->
 		syssrv.modifyTime(projectId, stage_name, time, false)
@@ -123,7 +127,6 @@ Meteor.methods
 		else
 			actualProductivity = planSummary.total.productivityActual
 
-		console.log actualProductivity
 		newtotal = {
 			totalTime:					planSummary.total.totalTime
 			totalSize:					totalNewSize
@@ -220,7 +223,10 @@ Meteor.methods
 
 		db.plan_summary.update({ "projectId":projectId }, {$set: data })
 
+
 	update_stages_percentage: (projectId)->
+		check(projectId, String)
+
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
 		totalTime = planSummary.total.totalTime
 		stages = planSummary.timeEstimated
@@ -232,7 +238,8 @@ Meteor.methods
 			"timeEstimated":stages
 		}
 		db.plan_summary.update({ "projectId":projectId }, {$set: data })
-	
+
+
 	update_estimated: (projectId)->
 		actualProject = db.projects.findOne({_id:projectId})
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
@@ -252,6 +259,7 @@ Meteor.methods
 				"timeEstimated": stages
 			}
 		db.plan_summary.update({ "projectId": projectId }, {$set: data })
+
 
 	update_plan_summary_size_psp0: (projectId, field,value) ->
 		data = {}
