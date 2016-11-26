@@ -241,7 +241,7 @@ Meteor.methods
 		data = {}
 		value = parseInt(value)
 		total = 0
-		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})	
+		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
 
 		switch field
 			when "actualBase"

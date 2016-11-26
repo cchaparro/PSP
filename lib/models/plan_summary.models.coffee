@@ -1,53 +1,42 @@
+summaryValues = (element, data) ->
+	# This will add to the time the toDate and toDate% fields for the Plan Summary
+	user = db.users.findOne({_id: Meteor.userId()}).profile
+
+	result = _.filter data, (field) ->
+		currentStage = _.findWhere user.summaryAmount, {name: field.name}
+		field.toDate = currentStage[element]
+
+		#This can be totalInjected or totalRemoved
+		historyTotal = user.total[element]
+
+		switch element
+			when "time"
+				field.percentage = 0
+				field.estimated = 0
+			when "injected", "removed"
+				if (currentStage[element] == 0) or (historyTotal == 0)
+					field.percentage = 0
+				else
+					percentageValue = (currentStage[element] * 100) / historyTotal
+					field.percentage = percentageValue.toFixed(2)
+		return field
+
+	return result
+
 ##########################################
 if Meteor.isServer
 	syssrv.createPlanSummary = (userId, projectId, levelPSP) ->
-		#Check if input parameters are the correct data type
-		check(userId, String)
-		check(projectId, String)
-		check(levelPSP, String)
-
 		#Bring initial default values for a new PlanSummary element
-		timePlanSummary = Meteor.settings.public.timeEstimated[levelPSP]
+		Time = Meteor.settings.public.timeEstimated[levelPSP]
 		Injected = Meteor.settings.public.InjectedEstimated[levelPSP]
 		Removed = Meteor.settings.public.RemovedEstimated[levelPSP]
-
-		user = db.users.findOne({_id: Meteor.userId()}).profile
-		historyTotalInjected = user.total.injected
-		historyTotalRemoved = user.total.removed
-
-		# This will add to the time the toDate and toDate% fields for the Plan Summary
-		finalTime = _.filter timePlanSummary, (time) ->
-			onDate = _.findWhere user.summaryAmount, {name: time.name}
-			time.toDate = onDate.time
-			time.percentage = 0
-			time.estimated = 0
-			return time
-
-		finalInjected = _.filter Injected, (injected) ->
-			onDate = _.findWhere user.summaryAmount, {name: injected.name}
-			injected.toDate = onDate.injected
-			if (onDate.injected == 0) or (historyTotalInjected == 0)
-				injected.percentage = 0
-			else
-				injected.percentage = ((onDate.injected * 100) / historyTotalInjected).toFixed(2)
-			return injected
-
-		finalRemoved = _.filter Removed, (removed) ->
-			onDate = _.findWhere user.summaryAmount, {name: removed.name}
-			removed.toDate = onDate.removed
-			if (onDate.removed == 0) or (historyTotalRemoved == 0)
-				removed.percentage = 0
-			else
-				removed.percentage = ((onDate.removed * 100) / historyTotalRemoved).toFixed(2)
-			return removed
-
 
 		data = {
 			summaryOwner: userId
 			projectId: projectId
-			timeEstimated: finalTime
-			injectedEstimated: finalInjected
-			removedEstimated: finalRemoved
+			timeEstimated: summaryValues("time", Time)
+			injectedEstimated: summaryValues("injected", Injected)
+			removedEstimated: summaryValues("removed", Removed)
 			baseLOC: Meteor.settings.public.initialUserBaseLOC.baseSize
 			addLOC: Meteor.settings.public.initialUserBaseLOC.addSize
 			reusedLOC: Meteor.settings.public.initialUserBaseLOC.reusedSize
@@ -82,6 +71,7 @@ if Meteor.isServer
 
 		db.plan_summary.update({"projectId": projectId}, {$set: data})
 
+
 	#This is used to update the time registered in a stage of a project
 	syssrv.updateTimeStage = (projectId, stage, finishStage, reset_timeStarted) ->
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
@@ -104,6 +94,7 @@ if Meteor.isServer
 
 		if finishStage
 			currentStage.finished = true
+
 		if planSummary.total.totalTime + stage.time != 0
 			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime + stage.time)/3600000))
 
@@ -120,7 +111,7 @@ if Meteor.isServer
 
 
 	#Used to update each stage of a projects porcentage (which is displayed in the planSummary)
-	syssrv.updateStagesPercentage = (projectId)->
+	syssrv.updateStagesPercentage = (projectId) ->
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
 		totalTime = planSummary.total.totalTime
 		stages = planSummary.timeEstimated

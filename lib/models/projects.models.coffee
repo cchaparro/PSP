@@ -19,6 +19,7 @@ if Meteor.isServer
 				time.injected -= planInjected.injected
 				time.removed -= planRemoved.removed
 				return time
+
 			finalSizeAmount = {
 				"base": user.sizeAmount.base - planSummary.total.actualBase
 				"add": user.sizeAmount.add - planSummary.total.actualAdd
@@ -26,6 +27,7 @@ if Meteor.isServer
 				"deleted": user.sizeAmount.deleted - planSummary.total.actualDeleted
 				"reused": user.sizeAmount.reused - planSummary.total.actualReused
 			}
+
 			data = {
 				"profile.total.time": user.total.time - planSummary.total.totalTime
 				"profile.total.size": user.total.size - planSummary.total.totalSize
