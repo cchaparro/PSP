@@ -30,41 +30,9 @@ Meteor.methods
 		check(finishStage, Boolean)
 		check(reset_timeStarted, Boolean)
 
-		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
-
-		# If the time saved is more than 3 minutes, send a notification to the user
-		if stage.time > 180000
-			notificationData = {
-				title: db.projects.findOne({_id: projectId}).title
-				time: stage.time
-				stage: stage.name
-				id: planSummary._id
-			}
-			syssrv.newNotification("time-registered", Meteor.userId(), notificationData)
-
-		# the input stage is the stage that just had a new amount of time registered
-		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}
-		currentStage.time = stage.time + currentStage.time
-
-		actualProductivity = 0
-
-		if finishStage
-			currentStage.finished = true
-		if planSummary.total.totalTime + stage.time != 0
-			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime + stage.time)/3600000))
-		
-		data = {
-			"timeEstimated": planSummary.timeEstimated
-			"total.totalTime": planSummary.total.totalTime + stage.time
-			"total.productivityActual": actualProductivity
-		}
-
-		if reset_timeStarted
-			data.timeStarted = "false"
-
+		syssrv.updateTimeStage(projectId, stage, finishStage, reset_timeStarted)
 		#This updates all the project stages percentages
-		syssrv.update_stages_percentage(projectId)
-		db.plan_summary.update({"projectId": projectId}, {$set: data})
+		syssrv.updateStagesPercentage(projectId)
 
 
 	# This is used to change the finished field of a projects stage between true/false
@@ -82,12 +50,26 @@ Meteor.methods
 		db.plan_summary.update({"projectId": projectId}, {$set: {"timeStarted": timeStarted}})
 
 
+	#This is used in the editTime modal to add time to a stage of a project
 	add_time_stage: (projectId, stage_name, time) ->
+		check(projectId, String)
+		check(stage_name, String)
+		check(time, Number)
+
 		syssrv.modifyTime(projectId, stage_name, time, true)
+		#This updates all the project stages percentages
+		syssrv.updateStagesPercentage(projectId)
 
 
+	#This is used in the editTime modal to delete time from a stage of a project
 	delete_time_stage: (projectId, stage_name, time) ->
+		check(projectId, String)
+		check(stage_name, String)
+		check(time, Number)
+
 		syssrv.modifyTime(projectId, stage_name, time, false)
+		#This updates all the project stages percentages
+		syssrv.updateStagesPercentage(projectId)
 
 
 	update_base_size: (projectId, baseData) ->
@@ -230,27 +212,17 @@ Meteor.methods
 		db.plan_summary.update({ "projectId":projectId }, {$set: data })
 
 
-	update_stages_percentage: (projectId)->
-		check(projectId, String)
-
-		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
-		totalTime = planSummary.total.totalTime
-		stages = planSummary.timeEstimated
-
-		_.each stages, (stage)->
-			stage.percentage = parseInt((stage.time*100)/totalTime)
-
-		db.plan_summary.update({ "projectId":projectId }, {$set: "timeEstimated": stages })
-
-
 	update_estimated: (projectId)->
 		actualProject = db.projects.findOne({_id:projectId})
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
 		stages = planSummary.timeEstimated
-		lastFinishedProject = db.projects.findOne({"projectOwner": Meteor.userId(), "completed": true,"levelPSP":actualProject.levelPSP}, {sort: {createdAt: -1}})
+
+		lastFinishedProject = db.projects.findOne({"projectOwner": Meteor.userId(), "completed": true, "levelPSP":actualProject.levelPSP}, {sort: {createdAt: -1}})
+
 		if lastFinishedProject
 			planSummaryLastProject = db.plan_summary.findOne({"projectId":lastFinishedProject._id,"summaryOwner": Meteor.userId()})
 			totalTime = planSummary.total.estimatedTime
+
 			_.each stages,(stage)->
 				lastProjectStage = _.findWhere planSummaryLastProject.timeEstimated, {name: stage.name}
 				stage.estimated = parseInt((lastProjectStage.percentage/100) * totalTime)
@@ -259,8 +231,9 @@ Meteor.methods
 				stage.estimated = 0
 
 		data = {
-				"timeEstimated": stages
-			}
+			"timeEstimated": stages
+		}
+
 		db.plan_summary.update({ "projectId": projectId }, {$set: data })
 
 
@@ -268,7 +241,8 @@ Meteor.methods
 		data = {}
 		value = parseInt(value)
 		total = 0
-		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})		
+		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})	
+
 		switch field
 			when "actualBase"
 				total = value + planSummary.total.actualAdd + planSummary.total.actualReused - planSummary.total.actualDeleted
@@ -299,5 +273,7 @@ Meteor.methods
 					"total.actualReused":value
 					"total.totalSize":total
 				}
+
 		db.plan_summary.update({"projectId": projectId, "summaryOwner": Meteor.userId()}, {$set: data})
+
 #######################################

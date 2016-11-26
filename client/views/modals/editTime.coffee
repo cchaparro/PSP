@@ -193,12 +193,17 @@ Template.editTime.events
 			t.inputValues.set(data)
 
 	'click .finish-edit-time': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+		projectId = FlowRouter.getParam("id")
+
 		hours = $(".edit-time-hours").val()
 		minutes = $(".edit-time-minutes").val()
 		seconds = $(".edit-time-seconds").val()
 		totalTime = (hours*3600000) + (minutes*60000) + (seconds*1000)
 
 		data = timeData.get()
+
 		if data?.type
 			stageName = data.data.stage
 		else
@@ -208,34 +213,24 @@ Template.editTime.events
 			Modal.hide('editTimeModal')
 
 		else if t.selectedOption.get() == "add-time"
-			Meteor.call "add_time_stage", FlowRouter.getParam("id"), stageName, totalTime, (error) ->
+			Meteor.call "add_time_stage", projectId, stageName, totalTime, (error) ->
 				if error
 					console.warn(error)
+					sys.flashStatus("error-change-stage-time")
 				else
-					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
-						if error
-							console.warn(error)
-							sys.flashStatus("error-submit-stage-project")
-						else
-							if data?.type
-								Meteor.call "disable_notification", data._id
-
+					if data?.type
+						Meteor.call "disable_notification", data._id
 					sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
 
 		else
-			Meteor.call "delete_time_stage", FlowRouter.getParam("id"), stageName, totalTime, (error) ->
+			Meteor.call "delete_time_stage", projectId, stageName, totalTime, (error) ->
 				if error
 					console.warn(error)
 				else
-					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
-						if error
-							console.warn(error)
-							sys.flashStatus("error-submit-stage-project")
-						else
-							if data?.type
-								Meteor.call "disable_notification", data._id
-								sys.flashStatus("new-time-project")
+					if data?.type
+						Meteor.call "disable_notification", data._id
+					sys.flashStatus("new-time-project")
 					Modal.hide('editTimeModal')
 
 # ##########################################

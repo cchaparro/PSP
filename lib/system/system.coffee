@@ -195,7 +195,7 @@ sys.flashStatus = (type) ->
 			subject = "Has actualizado las etapas del proyecto correctamente."
 			css = "success"
 
-		when 'error-submit-stage-project'
+		when 'error-change-stage-time'
 			title = "Error"
 			subject = "No hemos podido actualizar las etapa del proyecto."
 			css = "danger"

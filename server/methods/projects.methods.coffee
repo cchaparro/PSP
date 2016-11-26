@@ -1,7 +1,7 @@
 ##########################################
 Meteor.methods
 	create_project: (data) ->
-		check(userId, Object)
+		check(data, Object)
 		syssrv.createProject(data)
 
 	delete_project: (projectId, delete_iterations=false) ->

@@ -82,11 +82,45 @@ if Meteor.isServer
 
 		db.plan_summary.update({"projectId": projectId}, {$set: data})
 
+	#This is used to update the time registered in a stage of a project
+	syssrv.updateTimeStage = (projectId, stage, finishStage, reset_timeStarted) ->
+		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
+
+		# If the time saved is more than 3 minutes, send a notification to the user
+		if stage.time > 180000
+			notificationData = {
+				title: db.projects.findOne({_id: projectId}).title
+				time: stage.time
+				stage: stage.name
+				id: planSummary._id
+			}
+			syssrv.newNotification("time-registered", Meteor.userId(), notificationData)
+
+		# the input stage is the stage that just had a new amount of time registered
+		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}
+		currentStage.time = stage.time + currentStage.time
+
+		actualProductivity = 0
+
+		if finishStage
+			currentStage.finished = true
+		if planSummary.total.totalTime + stage.time != 0
+			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime + stage.time)/3600000))
+
+		data = {
+			"timeEstimated": planSummary.timeEstimated
+			"total.totalTime": planSummary.total.totalTime + stage.time
+			"total.productivityActual": actualProductivity
+		}
+
+		if reset_timeStarted
+			data.timeStarted = "false"
+
+		db.plan_summary.update({"projectId": projectId}, {$set: data})
+
 
 	#Used to update each stage of a projects porcentage (which is displayed in the planSummary)
-	syssrv.update_stages_percentage = (projectId)->
-		check(projectId, String)
-
+	syssrv.updateStagesPercentage = (projectId)->
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
 		totalTime = planSummary.total.totalTime
 		stages = planSummary.timeEstimated
