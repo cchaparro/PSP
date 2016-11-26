@@ -54,28 +54,31 @@ Template.timesBar.events
 
 
 	'click .time-pause': (e,t) ->
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
+		e.stopPropagation()
+		e.preventDefault()
+		planSummary = @
+
 		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
 
-		unless @timeStarted == "false"
-			totalTime = new Date() - new Date(@timeStarted)
+		#This value has the date when the time register started
+		summaryTimeStarted = planSummary.timeStarted
+
+		unless summaryTimeStarted == "false"
+			totalTime = new Date() - new Date(summaryTimeStarted)
 			currentStage = _.first projectStages
 			currentStage.time = parseInt(totalTime)
 
-			Meteor.call "update_time_stage", FlowRouter.getParam("id"), currentStage, false, true, (error) ->
+			projectId = FlowRouter.getParam("id")
+
+			Meteor.call "update_time_stage", projectId, currentStage, false, true, (error) ->
 				if error
 					console.warn(error)
 					sys.flashStatus("error-new-time-project")
 				else
-					Meteor.call "update_stages_percentage", FlowRouter.getParam("id"), (error) ->
-						if error
-							console.warn(error)
-							sys.flashStatus("error-new-time-project")
-						else
-							sys.flashStatus("new-time-project")
-							sys.removeTimeMessage()
+					sys.flashStatus("new-time-project")
+					sys.removeTimeMessage()
 
 
 	'click .time-submit': (e,t) ->

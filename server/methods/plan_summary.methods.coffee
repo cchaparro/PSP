@@ -26,6 +26,9 @@ Meteor.methods
 	#This is for completing a stage or updating the time of the current stage
 	update_time_stage: (projectId, stage, finishStage=false, reset_timeStarted=false) ->
 		check(projectId, String)
+		check(stage, Object)
+		check(finishStage, Boolean)
+		check(reset_timeStarted, Boolean)
 
 		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
 
@@ -43,11 +46,12 @@ Meteor.methods
 		currentStage = _.findWhere planSummary.timeEstimated, {name: stage.name}
 		currentStage.time = stage.time + currentStage.time
 
+		actualProductivity = 0
+
 		if finishStage
 			currentStage.finished = true
-		actualProductivity = 0
 		if planSummary.total.totalTime + stage.time != 0
-			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime+stage.time)/3600000))
+			actualProductivity = parseInt((planSummary.total.actualAdd + planSummary.total.actualModified)/((planSummary.total.totalTime + stage.time)/3600000))
 		
 		data = {
 			"timeEstimated": planSummary.timeEstimated
@@ -58,6 +62,8 @@ Meteor.methods
 		if reset_timeStarted
 			data.timeStarted = "false"
 
+		#This updates all the project stages percentages
+		syssrv.update_stages_percentage(projectId)
 		db.plan_summary.update({"projectId": projectId}, {$set: data})
 
 
@@ -227,17 +233,14 @@ Meteor.methods
 	update_stages_percentage: (projectId)->
 		check(projectId, String)
 
-		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
+		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
 		totalTime = planSummary.total.totalTime
 		stages = planSummary.timeEstimated
 
 		_.each stages, (stage)->
-			stage.percentage = parseInt(((stage.time*100)/totalTime))
+			stage.percentage = parseInt((stage.time*100)/totalTime)
 
-		data = {
-			"timeEstimated":stages
-		}
-		db.plan_summary.update({ "projectId":projectId }, {$set: data })
+		db.plan_summary.update({ "projectId":projectId }, {$set: "timeEstimated": stages })
 
 
 	update_estimated: (projectId)->

@@ -83,4 +83,18 @@ if Meteor.isServer
 		db.plan_summary.update({"projectId": projectId}, {$set: data})
 
 
+	#Used to update each stage of a projects porcentage (which is displayed in the planSummary)
+	syssrv.update_stages_percentage = (projectId)->
+		check(projectId, String)
+
+		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
+		totalTime = planSummary.total.totalTime
+		stages = planSummary.timeEstimated
+
+		_.each stages, (stage)->
+			stage.percentage = parseInt((stage.time*100)/totalTime)
+
+		db.plan_summary.update({ "projectId":projectId }, {$set: "timeEstimated": stages })
+
+
 ##########################################
