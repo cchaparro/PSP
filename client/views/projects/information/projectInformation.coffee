@@ -93,16 +93,16 @@ Template.projectInformationTemplate.events
 				sys.flashStatus("save-description-project")
 
 	'click .close-project': (e,t) ->
-		Meteor.call "update_project", @_id, { completed: !@completed }, (error) ->
+		e.stopPropagation()
+		e.preventDefault()
+		projectId = @_id
+
+		Meteor.call "finish_project", projectId, (error) ->
 			if error
 				console.warn(error)
 				sys.flashStatus("error-finish-project")
 			else
-				Meteor.call "update_user_plan_summary", FlowRouter.getParam("id"), (error) ->
-					if error
-						console.warn(error)
-					else
-						sys.flashStatus("finish-project")
+				sys.flashStatus("finish-project")
 
 ##########################################
 Template.projectInformation.helpers

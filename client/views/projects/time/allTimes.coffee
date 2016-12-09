@@ -82,6 +82,9 @@ Template.timesBar.events
 
 
 	'click .time-submit': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+
 		project = db.projects.findOne({_id: FlowRouter.getParam("id")})
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
 		projectPSP = project?.levelPSP

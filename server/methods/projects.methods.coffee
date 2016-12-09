@@ -23,4 +23,14 @@ Meteor.methods
 		#This function update the values of a project like its title, description and completed field
 		db.projects.update({ _id: projectId }, {$set: value})
 
+
+	#This is used to finish a project and store his data in the users history
+	finish_project: (projectId) ->
+		check(projectId, String)
+
+		#Sets the project to completed
+		db.projects.update({ _id: projectId }, {$set: {completed: true}})
+		#Stores the projects data with the users history values
+		syssrv.projectDataToUserHistory(projectId)
+
 ##########################################
