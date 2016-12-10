@@ -222,9 +222,17 @@ Template.timesFooter.events
 ##########################################
 Template.timeClock.onCreated () ->
 	today = new Date()
+	planSummaryId = @.data._id
 
 	@autorun ->
-		elapsedTime = (Date.now() - today.getTime()) / 1000
+		startTime = db.plan_summary.findOne({ _id: planSummaryId }).timeStarted
+
+		if startTime != "false"
+			date = new Date(startTime)
+			elapsedTime = (Date.now() - date.getTime()) / 1000
+			TimeClock.start()
+		else
+			elapsedTime = 0
 		TimeClock.setElapsedSeconds(elapsedTime)
 
 

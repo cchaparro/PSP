@@ -212,6 +212,7 @@ Meteor.methods
 		db.plan_summary.update({ "projectId":projectId }, {$set: data })
 
 
+	#TODO - Remove everything that values estimated since this value is not being used anymore
 	update_estimated: (projectId)->
 		actualProject = db.projects.findOne({_id:projectId})
 		planSummary = db.plan_summary.findOne({"projectId":projectId,"summaryOwner": Meteor.userId()})
