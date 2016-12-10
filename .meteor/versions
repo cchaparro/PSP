@@ -3,6 +3,7 @@ accounts-facebook@1.0.10
 accounts-google@1.0.10
 accounts-oauth@1.1.13
 accounts-password@1.2.12
+aldeed:clock@1.0.1
 aldeed:collection2@2.9.1
 aldeed:collection2-core@1.1.1
 aldeed:schema-deny@1.0.1
@@ -91,6 +92,7 @@ msavin:jetsetter@2.0.0
 msavin:mongol@2.0.1
 npm-bcrypt@0.8.7
 npm-mongo@1.5.45
+numeral:numeral@1.5.3_1
 oauth@1.1.11
 oauth2@1.1.10
 observe-sequence@1.0.12

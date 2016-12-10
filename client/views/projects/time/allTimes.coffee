@@ -1,5 +1,6 @@
 ##########################################
 openStageStatus = new ReactiveVar(false)
+TimeClock = new ReactiveClock()
 
 ##########################################
 Template.timeTemplate.helpers
@@ -51,6 +52,7 @@ Template.timesBar.events
 					projectId = FlowRouter.getParam("fid")
 					iterationId = FlowRouter.getParam("id")
 					sys.flashTime(project.title, projectId, iterationId)
+					TimeClock.start()
 
 
 	'click .time-pause': (e,t) ->
@@ -79,6 +81,8 @@ Template.timesBar.events
 				else
 					sys.flashStatus("new-time-project")
 					sys.removeTimeMessage()
+					TimeClock.stop()
+					TimeClock.setElapsedSeconds(0)
 
 
 	'click .time-submit': (e,t) ->
@@ -214,5 +218,18 @@ Template.timesFooter.events
 	'click .status-time': (e,t) ->
 		openStatus = openStageStatus.get()
 		openStageStatus.set(!openStatus)
+
+##########################################
+Template.timeClock.onCreated () ->
+	today = new Date()
+
+	@autorun ->
+		elapsedTime = (Date.now() - today.getTime()) / 1000
+		TimeClock.setElapsedSeconds(elapsedTime)
+
+
+Template.timeClock.helpers
+	clock: () ->
+		return TimeClock.elapsedTime({format: '00:00:00'});
 
 ##########################################
