@@ -116,6 +116,10 @@ if Meteor.isServer
 		totalTime = planSummary.total.totalTime
 		stages = planSummary.timeEstimated
 
+		#If totalTime is zero then the percentage value would get a arithmetic error
+		if totalTime == 0
+			return
+
 		_.each stages, (stage)->
 			stage.percentage = parseInt((stage.time*100)/totalTime)
 
