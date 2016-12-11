@@ -21,8 +21,11 @@ if Meteor.isServer
 			#This adds from the current user history time the project just completed time data
 			if plannedTime
 				stageTime.time += plannedTime.time
-				stageTime.injected += planInjected?.injected
-				stageTime.removed += planRemoved?.removed
+				if planInjected?
+					stageTime.injected += planInjected?.injected
+
+				if planRemoved?
+					stageTime.removed += planRemoved?.removed
 
 			#In the case that plannedTime doesnt get the "PSP 2" stages then this values will just be the ones that are already in the user histtory
 			return stageTime

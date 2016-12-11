@@ -4,7 +4,7 @@ overviewInjectedChart = () ->
 	finishedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).fetch()
 	colors = Meteor.settings.public.chartColors
 
-	numberStages = 0 #TODO change to 8
+	numberStages = 0
 
 	#projectsTime saves the project injected values
 	projectsInjected = []
@@ -15,7 +15,7 @@ overviewInjectedChart = () ->
 		_.each finishedProjects, (project)->
 			projectSummary = db.plan_summary.findOne({projectId: project._id})
 			projectsInjected.push(projectSummary.injectedEstimated)
-			numberStages = projectSummary.injectedEstimated.length #TODO remove
+			numberStages = projectSummary.injectedEstimated.length
 
 		#Initialize arrays with the number of stages
 		position = 0

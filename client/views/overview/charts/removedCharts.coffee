@@ -4,7 +4,7 @@ overviewRemovedChart = () ->
 	finishedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).fetch()
 	colors = Meteor.settings.public.chartColors
 
-	numberStages = 0 #TODO it should be 8
+	numberStages = 0
 
 	#projectsTime saves the project timeEstimated values (stages time)
 	projectsRemoved = []
@@ -15,7 +15,7 @@ overviewRemovedChart = () ->
 		_.each finishedProjects, (project)->
 			planSummary = db.plan_summary.findOne({projectId: project._id})
 			projectsRemoved.push(planSummary.removedEstimated)
-			numberStages = planSummary.timeEstimated.length #TODO - remove
+			numberStages = planSummary.removedEstimated.length
 
 		#Initialize arrays with the number of stages
 		position = 0

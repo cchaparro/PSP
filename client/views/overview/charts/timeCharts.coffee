@@ -4,7 +4,7 @@ overviewTimeChart = () ->
 	finishedProjects = db.projects.find({ projectOwner: userId, completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
-	amountStages = 0 #TODO it should be 8
+	amountStages = 0
 
 	#projectsTime saves the project timeEstimated values (stages time)
 	projectsTime = []
