@@ -57,98 +57,13 @@ overviewRemovedChart = () ->
 		ReprubChart = [dataRemoved[4]]
 		ReposChart = [dataRemoved[5]]
 
-	#Removed bug chart Context
-	c1 = document.getElementById('ReplanChart')?.getContext('2d')
-	c1?.canvas.width = 400
-	c1?.canvas.height = 200
-	c2 = document.getElementById('RedisChart')?.getContext('2d')
-	c2?.canvas.width = 400
-	c2?.canvas.height = 200
-	c3 = document.getElementById('RecodChart')?.getContext('2d')
-	c3?.canvas.width = 400
-	c3?.canvas.height = 200
-	c4 = document.getElementById('RecomChart')?.getContext('2d')
-	c4?.canvas.width = 400
-	c4?.canvas.height = 200
-	c5 = document.getElementById('RepruChart')?.getContext('2d')
-	c5?.canvas.width = 400
-	c5?.canvas.height = 200
-	c6 = document.getElementById('ReposChart')?.getContext('2d')
-	c6?.canvas.width = 400
-	c6?.canvas.height = 200
-
-	#Chart properties, injected bugs
-	myLineChartT = new Chart(c1).Scatter(ReplanChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartI = new Chart(c2).Scatter(RedisChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c3).Scatter(RecodChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c4).Scatter(RecompChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c5).Scatter(ReprubChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c6).Scatter(ReposChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
+	#Creation of all the stages chart overviews
+	sys.overviewChart('ReplanChart', ReplanChart)
+	sys.overviewChart('RedisChart', RedisChart)
+	sys.overviewChart('RecodChart', RecodChart)
+	sys.overviewChart('RecomChart', RecompChart)
+	sys.overviewChart('RepruChart', ReprubChart)
+	sys.overviewChart('ReposChart', ReposChart)
 
 ##########################################
 Template.removedCharts.onRendered () ->

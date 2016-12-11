@@ -59,98 +59,13 @@ overviewInjectedChart = () ->
 		InprubChart = [dataInjected[4]]
 		InposChart = [dataInjected[5]]
 
-	#Injected bug chart Context
-	c1 = document.getElementById('InplanChart')?.getContext('2d')
-	c1?.canvas.width = 400
-	c1?.canvas.height = 200
-	c2 = document.getElementById('IndisChart')?.getContext('2d')
-	c2?.canvas.width = 400
-	c2?.canvas.height = 200
-	c3 = document.getElementById('IncodChart')?.getContext('2d')
-	c3?.canvas.width = 400
-	c3?.canvas.height = 200
-	c4 = document.getElementById('IncomChart')?.getContext('2d')
-	c4?.canvas.width = 400
-	c4?.canvas.height = 200
-	c5 = document.getElementById('InpruChart')?.getContext('2d')
-	c5?.canvas.width = 400
-	c5?.canvas.height = 200
-	c6 = document.getElementById('InposChart')?.getContext('2d')
-	c6?.canvas.width = 400
-	c6?.canvas.height = 200
-
-	#Chart properties, injected bugs
-	myLineChartT = new Chart(c1).Scatter(InplanChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartI = new Chart(c2).Scatter(IndisChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c3).Scatter(IncodChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c4).Scatter(IncompChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c5).Scatter(InprubChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
-
-	myLineChartR = new Chart(c6).Scatter(InposChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
+		#Creation of all the stages chart overviews
+		sys.overviewChart('InplanChart', InplanChart)
+		sys.overviewChart('IndisChart', IndisChart)
+		sys.overviewChart('IncodChart', IncodChart)
+		sys.overviewChart('IncomChart', IncompChart)
+		sys.overviewChart('InpruChart', InprubChart)
+		sys.overviewChart('InposChart', InposChart)
 
 ##########################################
 Template.injectedCharts.onRendered () ->
