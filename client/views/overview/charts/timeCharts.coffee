@@ -1,10 +1,10 @@
 ##########################################
 overviewTimeChart = () ->
 	userId = Meteor.userId()
-	finishedProjects = db.projects.find({ projectOwner: userId, completed: true}).fetch()
+	finishedProjects = db.projects.find({ projectOwner: userId, completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
-	amountStages = 6 #TODO it should be 8
+	amountStages = 0 #TODO it should be 8
 
 	#projectsTime saves the project timeEstimated values (stages time)
 	projectsTime = []
@@ -14,7 +14,14 @@ overviewTimeChart = () ->
 	if finishedProjects.length > 0
 		_.each finishedProjects, (project)->
 			projectSummary = db.plan_summary.findOne({ projectId: project._id })
+			summaryData = projectSummary?.timeEstimated
+
+			if summaryData?.length <= 6
+				summaryData.splice(2, 0, {"name": "Revisión Diseño", "time": 0})
+				summaryData.splice(4, 0, {"name": "Revisión Código", "time": 0})
+
 			projectsTime.push(projectSummary?.timeEstimated)
+			amountStages = projectSummary?.timeEstimated?.length
 
 		#Initialize arrays with the number of stages
 		position = 0
@@ -34,9 +41,14 @@ overviewTimeChart = () ->
 				stageTime = stageData.time
 				stageName = stageData.name
 
+				if stageTime == 0
+					stageTimeMinutes = 0
+				else
+					stageTimeMinutes = Math.ceil(stageTime / 60000)
+
 				data = {
 					x: position + 1
-					y: Math.ceil(stageTime / 60000)
+					y: stageTimeMinutes
 				}
 
 				values[projectPosition].push(data)
@@ -60,18 +72,22 @@ overviewTimeChart = () ->
 
 		planningChart = [finalData[0]]
 		designChart = [finalData[1]]
-		codeChart = [finalData[2]]
-		compilationChart = [finalData[3]]
-		testingChart = [finalData[4]]
-		postmortemChart = [finalData[5]]
+		reviewDesignChart = [finalData[2]]
+		codeChart = [finalData[3]]
+		reviewCodeChart = [finalData[4]]
+		compilationChart = [finalData[5]]
+		testingChart = [finalData[6]]
+		postmortemChart = [finalData[7]]
 
 		#Creation of all the stages chart overviews
-		sys.overviewChart('planChart', planningChart)
-		sys.overviewChart('disChart', designChart)
-		sys.overviewChart('codChart', codeChart)
-		sys.overviewChart('comChart', compilationChart)
-		sys.overviewChart('pruChart', testingChart)
-		sys.overviewChart('posChart', postmortemChart)
+		sys.overviewChart('planningChart', planningChart)
+		sys.overviewChart('designChart', designChart)
+		sys.overviewChart('reviewDesignChart', reviewDesignChart)
+		sys.overviewChart('codeChart', codeChart)
+		sys.overviewChart('reviewCodeChart', reviewCodeChart)
+		sys.overviewChart('compilationChart', compilationChart)
+		sys.overviewChart('testingChart', testingChart)
+		sys.overviewChart('postmortemChart', postmortemChart)
 
 ##########################################
 Template.timeCharts.onRendered () ->

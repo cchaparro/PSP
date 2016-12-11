@@ -64,13 +64,13 @@ overviewRemovedChart = () ->
 		ReprubChart = [finalData[4]]
 		ReposChart = [finalData[5]]
 
-	#Creation of all the stages chart overviews
-	sys.overviewChart('ReplanChart', ReplanChart)
-	sys.overviewChart('RedisChart', RedisChart)
-	sys.overviewChart('RecodChart', RecodChart)
-	sys.overviewChart('RecomChart', RecompChart)
-	sys.overviewChart('RepruChart', ReprubChart)
-	sys.overviewChart('ReposChart', ReposChart)
+		#Creation of all the stages chart overviews
+		sys.overviewChart('ReplanChart', ReplanChart)
+		sys.overviewChart('RedisChart', RedisChart)
+		sys.overviewChart('RecodChart', RecodChart)
+		sys.overviewChart('RecomChart', RecompChart)
+		sys.overviewChart('RepruChart', ReprubChart)
+		sys.overviewChart('ReposChart', ReposChart)
 
 ##########################################
 Template.removedCharts.onRendered () ->

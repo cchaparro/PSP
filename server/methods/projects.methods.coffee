@@ -28,8 +28,10 @@ Meteor.methods
 	finish_project: (projectId) ->
 		check(projectId, String)
 
+		currentDate = new Date()
+
 		#Sets the project to completed
-		db.projects.update({ _id: projectId }, {$set: {completed: true}})
+		db.projects.update({ _id: projectId }, {$set: {completed: true, completedAt: currentDate}})
 		#Stores the projects data with the users history values
 		syssrv.projectDataToUserHistory(projectId)
 

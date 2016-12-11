@@ -27,6 +27,11 @@ schemas.projects = new SimpleSchema
 			if @isInsert
 				return new Date()
 
+	"completedAt":
+		type: Date
+		label: "Date when the project was completed"
+		optional: true
+
 	"levelPSP":
 		type: String
 		label: "Level of PSP of the project"
