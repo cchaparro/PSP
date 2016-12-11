@@ -1,7 +1,7 @@
 ##########################################
 #Average inverse function
 overviewInjectedChart = () ->
-	finishedProjects = db.projects.find({"projectOwner":Meteor.userId(),"completed":true,"levelPSP":"PSP 0"}).fetch()
+	finishedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).fetch()
 	colors = Meteor.settings.public.chartColors
 
 	projectsInjected = [] #Defects Injected
@@ -27,28 +27,29 @@ overviewInjectedChart = () ->
 		while iterator < numberStages
 			valuesInjected.push([])
 			iterator+=1
-		i = 0
 
-		while i < projectsInjected.length
-			prjI = projectsInjected[i]
+		#Finished projects iterator
+		projectNumber = 0
+
+		while projectNumber < projectsInjected.length
+			prjI = projectsInjected[projectNumber]
 			valuePos = 0
-			j = 0
+			projectStage = 0
 			#Stage per project
-			while j < prjI.length
+			while projectStage < prjI.length
 				#Defects Injected per stage
-				sPrjI = prjI[j]
-				#i is the number of the project
-				valuesInjected[j].push({x:i+1,y:sPrjI.toDate})
+				sPrjI = prjI[projectStage]
+				valuesInjected[projectStage].push({x:projectNumber+1,y:sPrjI.injected})
 				stagesLabel.push(sPrjI.name)
-				j+=1
-			i+=1
+				projectStage+=1
+			projectNumber+=1
 
 		dataInjected = []
 		#Draw a line per stage, Defects injected Chart data
-		color_position = 0
+		stage_position = 0
 		_.each valuesInjected, (v)->
-			dataInjected.push({label: stagesLabel[color_position],strokeColor: colors[color_position],data:v})
-			color_position+=1
+			dataInjected.push({label: stagesLabel[stage_position],strokeColor: colors[stage_position],data:v})
+			stage_position+=1
 
 		#Stages values, injected bugs
 		InplanChart = [dataInjected[0]]

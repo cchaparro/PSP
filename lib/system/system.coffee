@@ -465,11 +465,24 @@ sys.selectColor = (last_color) ->
 	return colors[position]
 
 ##########################################
-###########- Global Variables -###########
+############- Chart Overview -############
 
-# This global variable is made to active the flashTime status
-# message when a project is taking a time recorder
-# sys.runningTimeProject = new ReactiveVar(false)
+sys.overviewChart = (chartName, data) ->
+	chartElement = document.getElementById(chartName)?.getContext('2d')
+	chartElement?.canvas.width = 400
+	chartElement?.canvas.height = 200
+
+	return new Chart(chartElement).Scatter(data,
+		animation : false
+		bezierCurve: true
+		showTooltips: true
+		scaleShowHorizontalLines: true
+		scaleShowLabels: true
+		scaleLabel: '<%=value%>'
+		scaleArgLabel: '<%=value%>'
+		emptyDataMessage: "No hay datos para graficar"
+		scaleBeginAtZero: true
+	)
 
 ##########################################
 
