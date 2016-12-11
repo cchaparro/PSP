@@ -5,14 +5,14 @@
 			<a href="{{pathFor 'projectGeneral' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectGeneral'}} active {{/if}}">
 				<li>Vista General</li>
 			</a>
+			<a href="{{pathFor 'projectSummary' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectSummary'}} active {{/if}}">
+				<li>Plan Summary</li>
+			</a>
 			<a href="{{pathFor 'projectTimeLog' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectTimeLog'}} active {{/if}}">
 				<li>Registro de tiempos</li>
 			</a>
 			<a href="{{pathFor 'projectDefectLog' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectDefectLog'}} active {{/if}}">
 				<li>Registro de defectos</li>
-			</a>
-			<a href="{{pathFor 'projectSummary' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectSummary'}} active {{/if}}">
-				<li>Plan Summary</li>
 			</a>
 			<a href="{{pathFor 'projectScripts' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectScripts'}} active {{/if}}">
 				<li>Scripts</li>
