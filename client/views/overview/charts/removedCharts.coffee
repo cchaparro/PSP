@@ -4,58 +4,65 @@ overviewRemovedChart = () ->
 	finishedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).fetch()
 	colors = Meteor.settings.public.chartColors
 
-	projectsRemoved = [] #Defects removed
-	numberStages = 0
-	ReplanChart = []
-	RedisChart = []
-	RecodChart = []
-	RecompChart = []
-	ReprubChart = []
-	ReposChart = []
+	numberStages = 0 #TODO it should be 8
+
+	#projectsTime saves the project timeEstimated values (stages time)
+	projectsRemoved = []
+	stagesLabel = []
+	values = []
 
 	if finishedProjects.length > 0
 		_.each finishedProjects, (project)->
-			planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId":project._id})
+			planSummary = db.plan_summary.findOne({projectId: project._id})
 			projectsRemoved.push(planSummary.removedEstimated)
-			numberStages=planSummary.timeEstimated.length
+			numberStages = planSummary.timeEstimated.length #TODO - remove
 
-		valuesRemoved = []
-		stagesLabel = []
 		#Initialize arrays with the number of stages
-		iterator = 0
-		while iterator < numberStages
-			valuesRemoved.push([])
-			iterator+=1
-		projectNumber = 0
+		position = 0
+		while position < numberStages
+			values.push([])
+			position+=1
 
-		while projectNumber < projectsRemoved.length
-			prjR = projectsRemoved[projectNumber]
-			valuePos = 0
-			projectStage = 0
-			#Stage per project
-			while projectStage < prjR.length
-				#Defects removed per stage
-				sPrjR = prjR[projectStage]
-				#i is the number of the project
-				valuesRemoved[projectStage].push({x:projectNumber+1,y:sPrjR.removed})
-				stagesLabel.push(sPrjR.name)
-				projectStage+=1
-			projectNumber+=1
+		position = 0
+		#Iteration that takes the time stage data from each completed project
+		while position < projectsRemoved.length
+			projectData = projectsRemoved[position]
 
-		dataRemoved = []
-		#Draw a line per stage, Defects injected Chart data
-		stage_position = 0
-		_.each valuesRemoved, (v)->
-			dataRemoved.push({label:stagesLabel[stage_position],strokeColor: colors[stage_position],data:v})
-			stage_position+=1
+			projectPosition = 0
+			#Iteration that saves the chart x, y axis values
+			while projectPosition < projectData.length
+				stageData = projectData[projectPosition]
+				stageRemoved = stageData.removed
+				stageName = stageData.name
+
+				data = {
+					x: position + 1
+					y: stageRemoved
+				}
+
+				values[projectPosition].push(data)
+				stagesLabel.push(stageName)
+				projectPosition+=1
+
+			position+=1
+
+		finalData = []
+		_.each values, (value, position) ->
+			data = {
+				label: stagesLabel[position]
+				strokeColor: colors[position]
+				data: value
+			}
+
+			finalData.push(data)
 
 		#Stages values, removed bugs
-		ReplanChart = [dataRemoved[0]]
-		RedisChart = [dataRemoved[1]]
-		RecodChart = [dataRemoved[2]]
-		RecompChart = [dataRemoved[3]]
-		ReprubChart = [dataRemoved[4]]
-		ReposChart = [dataRemoved[5]]
+		ReplanChart = [finalData[0]]
+		RedisChart = [finalData[1]]
+		RecodChart = [finalData[2]]
+		RecompChart = [finalData[3]]
+		ReprubChart = [finalData[4]]
+		ReposChart = [finalData[5]]
 
 	#Creation of all the stages chart overviews
 	sys.overviewChart('ReplanChart', ReplanChart)
