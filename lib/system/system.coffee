@@ -19,7 +19,7 @@ sys.isNumber = (number) ->
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate" or title == "forms"
+	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate" or title=="pqitemplate" or title == "forms"
 		return "Proyectos"
 	else if title == "overview"
 		return "Resumen"
@@ -447,6 +447,8 @@ sys.getSessionRoute = (value) ->
 			return "Ayuda"
 		when "estimatingTemplate"
 			return "Estimación"
+		when "pqiTemplate"
+			return "PQI"
 		when "community"
 			return "Comunidad"
 		when "community-question"
