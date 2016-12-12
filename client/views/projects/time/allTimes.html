@@ -24,24 +24,34 @@
 				<i class="material-icons time-pause {{#if projectIsCompleted}} disabled {{/if}}">pause_circle_filled</i>
 			{{/if}}
 
-			{{#if projectIsCompleted}}
-				<div class="btn disabled-button">
-					<span>Proyecto Finaliado</span>
-				</div>
-			{{else}}
-				{{#if currentStage}}
-					<div class="btn primary-button time-submit">
-						<span>Finalizar {{currentStage}}</span>
+			{{>timeClock}}
+
+			<div class="pull-right time-submit-action">
+				{{#if projectIsCompleted}}
+					<div class="btn disabled-button">
+						<span>Proyecto Finaliado</span>
 					</div>
 				{{else}}
-					<div class="btn disabled-button">
-						<span>Etapas Completadas</span>
-					</div>
+					{{#if currentStage}}
+						<div class="btn primary-button time-submit">
+							<span>Finalizar {{currentStage}}</span>
+						</div>
+					{{else}}
+						<div class="btn disabled-button">
+							<span>Etapas Completadas</span>
+						</div>
+					{{/if}}
 				{{/if}}
-			{{/if}}
+			</div>
 		</div>
 	{{/with}}
 </template>
+
+<!-- ###################################### -->
+<template name="timeClock">
+	<span class="timer">{{clock}}</span>
+</template>
+
 <!-- ###################################### -->
 <template name="timeStageRow">
 	<div class="stage-row">
@@ -98,4 +108,5 @@
 		<span>&bull; Cuando esta línea se completa significa que has consumido todo el tiempo que deberías utilizar en la etapa.</span>
 	</div>
 </template>
+
 <!-- ###################################### -->

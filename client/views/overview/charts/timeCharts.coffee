@@ -1,154 +1,93 @@
 ##########################################
-timeToMinutes = (time) ->
-	return Math.ceil(time / 60000)
-
 overviewTimeChart = () ->
-	#finished projects ids
-	finishedProjects = db.projects.find({"projectOwner":Meteor.userId(),"completed":true}).fetch()
+	userId = Meteor.userId()
+	finishedProjects = db.projects.find({ projectOwner: userId, completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
-	projectsTime = [] #Time
-	planChart = []
-	disChart = []
-	codChart = []
-	compChart = []
-	prubChart = []
-	posChart = []
+	amountStages = 0
 
-	numberStages=0
+	#projectsTime saves the project timeEstimated values (stages time)
+	projectsTime = []
+	stagesLabel = []
+	values = []
+
 	if finishedProjects.length > 0
 		_.each finishedProjects, (project)->
-			projectSummary = db.plan_summary.findOne({ "projectId": project._id })
-			projectsTime.push(projectSummary?.timeEstimated)
-			numberStages = projectSummary?.timeEstimated.length
+			projectSummary = db.plan_summary.findOne({ projectId: project._id })
+			summaryData = projectSummary?.timeEstimated
 
-		valuesTime = []
-		stagesLabel = []
+			if summaryData?.length <= 6
+				summaryData.splice(2, 0, {"name": "Revisión Diseño", "time": 0})
+				summaryData.splice(4, 0, {"name": "Revisión Código", "time": 0})
+
+			projectsTime.push(projectSummary?.timeEstimated)
+			amountStages = projectSummary?.timeEstimated?.length
 
 		#Initialize arrays with the number of stages
-		iterator = 0
-		while iterator < numberStages
-			valuesTime.push([])
-			iterator+=1
-		i = 0
+		position = 0
+		while position < amountStages
+			values.push([])
+			position+= 1
 
-		while i < projectsTime.length
-			prjT = projectsTime[i]
-			valuePos = 0
-			j = 0
-			#Stage per project
-			while j < prjT.length
-				#Time per stage
-				sPrjT = prjT[j]
-				#i is number of the project
-				valuesTime[j].push({x:i+1,y:timeToMinutes(sPrjT.time)})
-				stagesLabel.push(sPrjT.name)
-				j+=1
-			i+=1
+		position = 0
+		#Iteration that takes the time stage data from each completed project
+		while position < projectsTime.length
+			projectData = projectsTime[position]
+
+			projectPosition = 0
+			#Iteration that saves the chart x, y axis values
+			while projectPosition < projectData.length
+				stageData = projectData[projectPosition]
+				stageTime = stageData.time
+				stageName = stageData.name
+
+				if stageTime == 0
+					stageTimeMinutes = 0
+				else
+					stageTimeMinutes = Math.ceil(stageTime / 60000)
+
+				data = {
+					x: position + 1
+					y: stageTimeMinutes
+				}
+
+				values[projectPosition].push(data)
+				stagesLabel.push(stageName)
+				projectPosition+= 1
+
+			position+= 1
 
 
-		dataTime = []
-		#Draw a line per stage, Time Chart data
-		color_position = 0
-		_.each valuesTime, (value)->
-			dataTime.push({label: stagesLabel[color_position],strokeColor: colors[color_position],data:value})
-			color_position += 1
+		#This organizes the final data array for the charts
+		finalData = []
+		_.each values, (value, position) ->
+			data = {
+				label: stagesLabel[position]
+				strokeColor: colors[position]
+				data: value
+			}
 
-		#Stages values, time stages
-		planChart = [dataTime[0]]
-		disChart = [dataTime[1]]
-		codChart = [dataTime[2]]
-		compChart = [dataTime[3]]
-		prubChart = [dataTime[4]]
-		posChart = [dataTime[5]]
+			finalData.push(data)
 
-	#Context for each chart,Time Stages
-	c1 = document.getElementById('planChart')?.getContext('2d')
-	c1?.canvas.width = 400
-	c1?.canvas.height = 200
-	c2 = document.getElementById('disChart')?.getContext('2d')
-	c2?.canvas.width = 400
-	c2?.canvas.height = 200
-	c3 = document.getElementById('codChart').getContext('2d')
-	c3?.canvas.width = 400
-	c3?.canvas.height = 200
-	c4 = document.getElementById('comChart').getContext('2d')
-	c4?.canvas.width = 400
-	c4?.canvas.height = 200
-	c5 = document.getElementById('pruChart').getContext('2d')
-	c5?.canvas.width = 400
-	c5?.canvas.height = 200
-	c6 = document.getElementById('posChart').getContext('2d')
-	c6?.canvas.width = 400
-	c6?.canvas.height = 200
 
-	#Chart properties, Time Stages
-	myLineChartT = new Chart(c1).Scatter(planChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true
-	)
+		planningChart = [finalData[0]]
+		designChart = [finalData[1]]
+		reviewDesignChart = [finalData[2]]
+		codeChart = [finalData[3]]
+		reviewCodeChart = [finalData[4]]
+		compilationChart = [finalData[5]]
+		testingChart = [finalData[6]]
+		postmortemChart = [finalData[7]]
 
-	myLineChartI = new Chart(c2).Scatter(disChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true)
-
-	myLineChartR = new Chart(c3).Scatter(codChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true)
-
-	myLineChartR = new Chart(c4).Scatter(compChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true)
-
-	myLineChartR = new Chart(c5).Scatter(prubChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true)
-
-	myLineChartR = new Chart(c6).Scatter(posChart,
-		animation : false
-		bezierCurve: true
-		showTooltips: true
-		scaleShowHorizontalLines: true
-		scaleShowLabels: true
-		scaleLabel: '<%=value%>'
-		scaleArgLabel: '<%=value%>'
-		emptyDataMessage: "No hay datos para graficar"
-		scaleBeginAtZero: true)
+		#Creation of all the stages chart overviews
+		sys.overviewChart('planningChart', planningChart)
+		sys.overviewChart('designChart', designChart)
+		sys.overviewChart('reviewDesignChart', reviewDesignChart)
+		sys.overviewChart('codeChart', codeChart)
+		sys.overviewChart('reviewCodeChart', reviewCodeChart)
+		sys.overviewChart('compilationChart', compilationChart)
+		sys.overviewChart('testingChart', testingChart)
+		sys.overviewChart('postmortemChart', postmortemChart)
 
 ##########################################
 Template.timeCharts.onRendered () ->

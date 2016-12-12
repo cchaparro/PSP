@@ -176,7 +176,7 @@ Template.headerNavigation.helpers
 
 		if currentState == "projects" or currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="estimatingtemplate" or currentState=="forms"
 			initialRoute = "projects"
-		else if currentState == "community" or currentState == "community-question"
+		else if currentState == "community" or currentState == "community-question" or currentState == "help-tutorial"
 			initialRoute = "help"
 		else
 			initialRoute = currentState
@@ -219,6 +219,17 @@ Template.headerNavigation.helpers
 			Routes.push({
 				title: "Comunidad"
 				route: "community"
+				fid: false
+				pid: false
+				question: false
+				lastValue: true
+				displayMenu: false
+			})
+
+		if currentState == "help-tutorial"
+			Routes.push({
+				title: "Tutorial"
+				route: "tutorial"
 				fid: false
 				pid: false
 				question: false

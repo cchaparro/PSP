@@ -375,6 +375,17 @@
 		width: 100%;
 		@include clearfix;
 
+		.timer {
+			color: $text;
+			font-size: 13pt;
+			line-height: 64px;
+			padding-left: 5px;
+		}
+
+		.time-submit-action {
+			margin-right: 10px;
+		}
+
 		i {
 			padding: 15px 3px 15px 0px;
 			font-size: 26pt;

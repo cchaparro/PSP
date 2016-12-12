@@ -194,71 +194,127 @@ schemas.totalValues = new SimpleSchema
 	"totalTime":
 		type: Number
 		label: "Plan Summary total time consumed"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 	"totalSize":
 		type: Number
 		label: "Plan Summary total size of the project"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 	
 	"estimatedTotalSize":
 		type: Number
 		label: "Plan Summary estimated total size of the project"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedTime":
 		type: Number
 		label: "Estimated time the user gave for the project completion"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedBase":
 		type: Number
 		label: "Estimated base LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"actualBase":
 		type: Number
 		label: "Actual base LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedAdd":
 		type: Number
 		label: "Estimated added LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"actualAdd":
 		type: Number
 		label: "Actual added LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedModified":
 		type: Number
 		label: "Estimated modified LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"actualModified":
 		type: Number
 		label: "Actual modified LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedDeleted":
 		type: Number
 		label: "Estimated deleted LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"actualDeleted":
 		type: Number
 		label: "Actual deleted LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedReused":
 		type: Number
 		label: "Estimated reused LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"actualReused":
 		type: Number
 		label: "Actual reused LOC"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"estimatedAddedSize":
 		type: Number
 		label: "Estimated added and modified size using PROBE"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 	"proxyEstimated":
 		type: Number
 		label: "Estimated proxy size"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
+
 	"productivityPlan": 
 		type: Number
 		label: "Planned productivity of the project (A&M/totalTime)*60"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
+
 	"productivityActual":
 		type: Number
 		label: "Actual productivity of the project (A&M/totalTime)*60"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
 
 ##########################################
 ############## Main Schema ###############

@@ -195,7 +195,7 @@ sys.flashStatus = (type) ->
 			subject = "Has actualizado las etapas del proyecto correctamente."
 			css = "success"
 
-		when 'error-submit-stage-project'
+		when 'error-change-stage-time'
 			title = "Error"
 			subject = "No hemos podido actualizar las etapa del proyecto."
 			css = "danger"
@@ -451,8 +451,8 @@ sys.getSessionRoute = (value) ->
 			return "Comunidad"
 		when "community-question"
 			return "Pregunta Comunidad"
-		when "help-contact"
-			return "Contacto"
+		when "help-tutorial"
+			return "Tutorial"
 		when "formTemplate"
 			return "Formularios"
 
@@ -465,11 +465,24 @@ sys.selectColor = (last_color) ->
 	return colors[position]
 
 ##########################################
-###########- Global Variables -###########
+############- Chart Overview -############
 
-# This global variable is made to active the flashTime status
-# message when a project is taking a time recorder
-# sys.runningTimeProject = new ReactiveVar(false)
+sys.overviewChart = (chartName, data) ->
+	chartElement = document.getElementById(chartName)?.getContext('2d')
+	chartElement?.canvas.width = 400
+	chartElement?.canvas.height = 200
+
+	return new Chart(chartElement).Scatter(data,
+		animation : false
+		bezierCurve: true
+		showTooltips: true
+		scaleShowHorizontalLines: true
+		scaleShowLabels: true
+		scaleLabel: '<%=value%>'
+		scaleArgLabel: '<%=value%>'
+		emptyDataMessage: "No hay datos para graficar"
+		scaleBeginAtZero: true
+	)
 
 ##########################################
 

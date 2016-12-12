@@ -5,7 +5,6 @@ Meteor.methods
 			db.defects.remove({"projectId": data.projectId, "created": false})
 
 		if update_user
-			console.log "This is create_defect"
 			userStages = db.users.findOne({_id: Meteor.userId()})?.profile.summaryAmount
 			planSummary = db.plan_summary.findOne({"projectId": data.projectId})
 
@@ -43,7 +42,6 @@ Meteor.methods
 			db.defects.remove({"projectId": data.projectId, "created": false})
 
 		if update_user
-			console.log "This is update_defect"
 			userStages = db.users.findOne({_id: Meteor.userId()})?.profile.summaryAmount
 			planSummary = db.plan_summary.findOne({"projectId": data.projectId})
 
