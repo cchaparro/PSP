@@ -451,8 +451,8 @@ sys.getSessionRoute = (value) ->
 			return "Comunidad"
 		when "community-question"
 			return "Pregunta Comunidad"
-		when "help-contact"
-			return "Contacto"
+		when "help-tutorial"
+			return "Tutorial"
 		when "formTemplate"
 			return "Formularios"
 

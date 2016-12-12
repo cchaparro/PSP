@@ -204,10 +204,10 @@ Help.route '/community/:question',
 	subscriptions: (params, queryParams) ->
 		@register 'helpView', Meteor.subscribe "helpView"
 
-Help.route '/contact',
-	name: 'help-contact'
+Help.route '/tutorial',
+	name: 'help-tutorial'
 	action: ->
-		Session.set "route", "help-contact"
-		BlazeLayout.render 'masterLayout', main: 'contactTemplate'
+		Session.set "route", "help-tutorial"
+		BlazeLayout.render 'masterLayout', main: 'tutorialTemplate'
 
 ##########################################
