@@ -6,6 +6,9 @@ Template.projectViewMenu.helpers
 	notPSP0: () ->
 		return !(db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP=="PSP 0")
 
+	isPSP2: () ->
+		return (db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP=="PSP 2")
+
 	routeFid: () ->
 		return FlowRouter.getParam("fid")
 

@@ -150,6 +150,17 @@ Projects.route '/:fid/:id/estimating-template',
 		BlazeLayout.render 'masterLayout', main: 'estimatingTemplate', menu: "projectViewMenu"
 
 
+Projects.route '/:fid/:id/pqi-template',
+	name: 'pqitemplate'
+
+	subscriptions: (params) ->
+		@register 'projectView', Meteor.subscribe "estimatingView", params.id
+
+	action: () ->
+		Session.set "route", "pqiTemplate"
+		BlazeLayout.render 'masterLayout', main: 'pqiTemplate', menu: "projectViewMenu"
+
+
 Settings = FlowRouter.group(
 	prefix: '/settings'
 )
