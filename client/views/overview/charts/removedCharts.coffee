@@ -1,7 +1,7 @@
 ##########################################
 #Average inverse function
 overviewRemovedChart = () ->
-	finishedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).fetch()
+	finishedProjects = db.projects.find({ projectOwner: Meteor.userId(), completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
 	numberStages = 0
@@ -14,8 +14,15 @@ overviewRemovedChart = () ->
 	if finishedProjects.length > 0
 		_.each finishedProjects, (project)->
 			planSummary = db.plan_summary.findOne({projectId: project._id})
-			projectsRemoved.push(planSummary.removedEstimated)
-			numberStages = planSummary.removedEstimated.length
+			summaryData = planSummary?.removedEstimated
+
+			if summaryData?.length <= 6
+				summaryData.splice(2, 0, {"name": "Revisión Diseño", "removed": 0})
+				summaryData.splice(4, 0, {"name": "Revisión Código", "removed": 0})
+
+			projectsRemoved.push(planSummary?.removedEstimated)
+			numberStages = planSummary?.removedEstimated?.length
+
 
 		#Initialize arrays with the number of stages
 		position = 0
@@ -57,20 +64,24 @@ overviewRemovedChart = () ->
 			finalData.push(data)
 
 		#Stages values, removed bugs
-		ReplanChart = [finalData[0]]
-		RedisChart = [finalData[1]]
-		RecodChart = [finalData[2]]
-		RecompChart = [finalData[3]]
-		ReprubChart = [finalData[4]]
-		ReposChart = [finalData[5]]
+		RemplanningChart = 		[finalData[0]]
+		RemdesignChart = 			[finalData[1]]
+		RemreviewDesignChart = 	[finalData[2]]
+		RemcodeChart = 			[finalData[3]]
+		RemreviewCodeChart = 	[finalData[4]]
+		RemcompilationChart = 	[finalData[5]]
+		RemtestingChart = 		[finalData[6]]
+		RempostmortemChart = 	[finalData[7]]
 
 		#Creation of all the stages chart overviews
-		sys.overviewChart('ReplanChart', ReplanChart)
-		sys.overviewChart('RedisChart', RedisChart)
-		sys.overviewChart('RecodChart', RecodChart)
-		sys.overviewChart('RecomChart', RecompChart)
-		sys.overviewChart('RepruChart', ReprubChart)
-		sys.overviewChart('ReposChart', ReposChart)
+		sys.overviewChart('RemplanningChart', RemplanningChart)
+		sys.overviewChart('RemdesignChart', RemdesignChart)
+		sys.overviewChart('RemreviewDesignChart', RemreviewDesignChart)
+		sys.overviewChart('RemcodeChart', RemcodeChart)
+		sys.overviewChart('RemreviewCodeChart', RemreviewCodeChart)
+		sys.overviewChart('RemcompilationChart', RemcompilationChart)
+		sys.overviewChart('RemtestingChart', RemtestingChart)
+		sys.overviewChart('RempostmortemChart', RempostmortemChart)
 
 ##########################################
 Template.removedCharts.onRendered () ->

@@ -25,10 +25,22 @@ Meteor.methods
 			userStages = db.users.findOne({_id: Meteor.userId()})?.profile.summaryAmount
 			planSummary = db.plan_summary.findOne({"projectId": data.projectId})
 
+			amountStages = planSummary.injectedEstimated.length
+
 			injectedValues = []
 			removedValues = []
 			_.each userStages, (stage) ->
-				unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
+				if amountStages < 8
+					unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
+						removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
+						injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
+
+						injected = db.defects.find({"projectId": data.projectId, "injected": stage.name}).count()
+						removed = db.defects.find({"projectId": data.projectId, "removed": stage.name}).count()
+
+						injectedValues.push({'name': stage.name, 'injected': injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
+						removedValues.push({'name': stage.name, 'removed': removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
+				else
 					removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
 					injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
 

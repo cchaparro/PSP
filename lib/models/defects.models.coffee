@@ -13,11 +13,26 @@ if Meteor.isServer
 			injectedValues = []
 			removedValues = []
 
+			amountStages = planSummary.injectedEstimated.length
+
 			_.each userStages, (stage) ->
 				injected = db.defects.find({"injected": stage.name}).count()
 				removed = db.defects.find({"removed": stage.name}).count()
 
-				unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
+				if amountStages < 8
+					unless stage.name == "Revisión Diseño" or stage.name == "Revisión Código"
+						injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
+						if data.injected == injectedStage.name
+							injectedStage.injected += 1
+
+						removedStage = _.findWhere planSummary.removedEstimated, {name: stage.name}
+						if data.removed == removedStage.name
+							removedStage.removed += 1
+
+						injectedValues.push({'name': stage.name, 'injected': injectedStage.injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
+						removedValues.push({'name': stage.name, 'removed': removedStage.removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
+
+				else
 					injectedStage = _.findWhere planSummary.injectedEstimated, {name: stage.name}
 					if data.injected == injectedStage.name
 						injectedStage.injected += 1
@@ -28,6 +43,7 @@ if Meteor.isServer
 
 					injectedValues.push({'name': stage.name, 'injected': injectedStage.injected, "toDate": injectedStage.toDate, "percentage": injectedStage.percentage})
 					removedValues.push({'name': stage.name, 'removed': removedStage.removed, "toDate": removedStage.toDate, "percentage": removedStage.percentage})
+
 
 			summaryData = {
 				'injectedEstimated': injectedValues

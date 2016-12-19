@@ -1,7 +1,7 @@
 ##########################################
 #Average inverse function
 overviewInjectedChart = () ->
-	finishedProjects = db.projects.find({"projectOwner": Meteor.userId(), "completed": true}).fetch()
+	finishedProjects = db.projects.find({ projectOwner: Meteor.userId(), completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
 	numberStages = 0
@@ -14,8 +14,14 @@ overviewInjectedChart = () ->
 	if finishedProjects.length > 0
 		_.each finishedProjects, (project)->
 			projectSummary = db.plan_summary.findOne({projectId: project._id})
-			projectsInjected.push(projectSummary.injectedEstimated)
-			numberStages = projectSummary.injectedEstimated.length
+			summaryData = projectSummary?.injectedEstimated
+
+			if summaryData?.length <= 6
+				summaryData.splice(2, 0, {"name": "Revisión Diseño", "injected": 0})
+				summaryData.splice(4, 0, {"name": "Revisión Código", "injected": 0})
+
+			projectsInjected.push(projectSummary?.injectedEstimated)
+			numberStages = projectSummary?.injectedEstimated?.length
 
 		#Initialize arrays with the number of stages
 		position = 0
@@ -58,20 +64,24 @@ overviewInjectedChart = () ->
 			finalData.push(data)
 
 		#Stages values, injected bugs
-		InplanChart = [finalData[0]]
-		IndisChart = [finalData[1]]
-		IncodChart = [finalData[2]]
-		IncompChart = [finalData[3]]
-		InprubChart = [finalData[4]]
-		InposChart = [finalData[5]]
+		InplanningChart = 		[finalData[0]]
+		IndesignChart = 			[finalData[1]]
+		InreviewDesignChart = 	[finalData[2]]
+		IncodeChart = 				[finalData[3]]
+		InreviewCodeChart = 		[finalData[4]]
+		IncompilationChart = 	[finalData[5]]
+		IntestingChart = 			[finalData[6]]
+		InpostmortemChart = 		[finalData[7]]
 
 		#Creation of all the stages chart overviews
-		sys.overviewChart('InplanChart', InplanChart)
-		sys.overviewChart('IndisChart', IndisChart)
-		sys.overviewChart('IncodChart', IncodChart)
-		sys.overviewChart('IncomChart', IncompChart)
-		sys.overviewChart('InpruChart', InprubChart)
-		sys.overviewChart('InposChart', InposChart)
+		sys.overviewChart('InplanningChart', InplanningChart)
+		sys.overviewChart('IndesignChart', IndesignChart)
+		sys.overviewChart('InreviewDesignChart', InreviewDesignChart)
+		sys.overviewChart('IncodeChart', IncodeChart)
+		sys.overviewChart('InreviewCodeChart', InreviewCodeChart)
+		sys.overviewChart('IncompilationChart', IncompilationChart)
+		sys.overviewChart('IntestingChart', IntestingChart)
+		sys.overviewChart('InpostmortemChart', InpostmortemChart)
 
 ##########################################
 Template.injectedCharts.onRendered () ->
