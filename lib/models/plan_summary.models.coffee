@@ -7,18 +7,14 @@ summaryValues = (element, data) ->
 		field.toDate = currentStage[element]
 
 		#This can be totalInjected or totalRemoved
-		historyTotal = user.total[element]
+		#historyTotal = user.total[element]
 
 		switch element
 			when "time"
 				field.percentage = 0
 				field.estimated = 0
 			when "injected", "removed"
-				if (currentStage[element] == 0) or (historyTotal == 0)
-					field.percentage = 0
-				else
-					percentageValue = (currentStage[element] * 100) / historyTotal
-					field.percentage = percentageValue.toFixed(2)
+				field.percentage = 0
 		return field
 
 	return result
@@ -125,5 +121,29 @@ if Meteor.isServer
 
 		db.plan_summary.update({ "projectId":projectId }, {$set: "timeEstimated": stages })
 
+
+	#Used to update each stage of a projects defects porcentage (which is displayed in the planSummary)
+	syssrv.updateDefectsPercentage = (projectId) ->
+		planSummary = db.plan_summary.findOne({"projectId": projectId, "summaryOwner": Meteor.userId()})
+		totalInjected = planSummary.total.totalInjected
+		totalRemoved = planSummary.total.totalRemoved
+		stagesInjected = planSummary.injectedEstimated
+		stagesRemoved = planSummary.removedEstimated
+
+		if totalInjected == 0 or totalRemoved == 0
+			return
+
+		_.each stagesInjected, (stage)->
+			stage.percentage = parseInt((stage.injected*100)/totalInjected)
+
+		_.each stagesRemoved, (stage)->
+			stage.percentage = parseInt(((stage.removed*100)/totalRemoved))
+
+		data = {
+			"injectedEstimated": stagesInjected
+			"removedEstimated": stagesRemoved
+		}
+
+		db.plan_summary.update({ "projectId": projectId }, {$set: data })
 
 ##########################################

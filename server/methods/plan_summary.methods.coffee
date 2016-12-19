@@ -117,6 +117,8 @@ Meteor.methods
 
 		newtotal = {
 			totalTime:					planSummary.total.totalTime
+			totalInjected:				planSummary.total.totalInjected
+			totalRemoved:				planSummary.total.totalRemoved
 			totalSize:					totalNewSize
 			estimatedTotalSize:		totalEstimatedSize
 			estimatedTime:				planSummary.total.estimatedTime
