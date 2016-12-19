@@ -197,6 +197,21 @@ schemas.totalValues = new SimpleSchema
 		autoValue: (doc) ->
 			if @isInsert
 				return 0
+
+	"totalInjected":
+		type: Number
+		label: "Injected defects in this project"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
+
+	"totalRemoved":
+		type: Number
+		label: "Removed defects in this project"
+		autoValue: (doc) ->
+			if @isInsert
+				return 0
+
 	"totalSize":
 		type: Number
 		label: "Plan Summary total size of the project"
