@@ -7,13 +7,14 @@ Meteor.methods
 
 		projectId = data.projectId
 
-		syssrv.createDefect(data, delete_values, update_user)
+		result = syssrv.createDefect(data, delete_values, update_user)
 		#This updates all the project stages injected and removed defect percentages
 		syssrv.updateDefectsPercentage(projectId)
+		return result
 
 
 	update_defect: (did, data, delete_values=false, update_user=false) ->
-		defect = db.defects.findOne({_id: did}).time
+		defect = db.defects.findOne({_id: did})?.time
 		data.time = defect + data.time
 
 		db.defects.update({_id: did}, {$set: data})

@@ -55,7 +55,7 @@ if Meteor.isServer
 			db.plan_summary.update({'projectId': data.projectId}, {$set: summaryData})
 
 		#Creates the defect
-		db.defects.insert(data)
+		return db.defects.insert(data)
 
 
 	syssrv.deleteDefect = (defectId, projectId) ->
