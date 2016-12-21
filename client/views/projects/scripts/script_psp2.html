@@ -1,5 +1,5 @@
 <!-- ###################################### -->
-<template name="scriptPSP1">
+<template name="scriptPSP2">
 	<h4>Script del Proceso</h4>
 	<span class="description">El propósito de este es script es indicar que debe hacer en cada etapa del proceso. Antes de iniciar el proceso debe cumplir con los requisitos y no te olvides de registrar el tiempo en cada etapa.</span>
 
@@ -23,7 +23,9 @@
 		<h4><a href="#script1_developement">Actividad Desarrollo</a></h4>
 		<ul>
 			<li>Diseña el programa.</li>
+			<li>Revisa el diseño, corrige y registra los errores.</li>
 			<li>Implementa el programa.</li>
+			<li>Revisa el código, corrige y registra los errores.</li>
 			<li>Compila el programa, registra y corrige todos los defectos encontrados.</li>
 			<li>Pruebe el programa, registra y corrige todos los defectos encontrados.</li>
 			<li>Si es necesario completa el registro de los tiempos.</li>
@@ -56,7 +58,7 @@
 			<li>Utiliza el método <i>PROBE</i> para estimar el tamaño de las lineas modificadas y añadidas en este programa.</li>
 			<li>Completa la plantilla de estimación de tamañao del programa.</li>
 			<li>Utiliza el método <i>PROBE</i> para estimar el tiempo que tomará desarollar el proyecto</li>
-			<li><b>La herramienta asignará un tiempo planeado para etapa cada basandose en el último proyecto que hayas finalizado.</b></li>
+			<li><b>La herramienta asignará un tiempo planeado para cada etapa basandose en el último proyecto que hayas finalizado.</b></li>
 		</ul>
 	</div>
 
@@ -71,12 +73,34 @@
 		</ul>
 	</div>
 	<div class="script-row">
+		<h4>Revisión de Diseño</h4>
+		<ul>
+			<li>Prepara una estrategia para la revisión.</li>
+			<li>Revisa un módulo a la vez.</li>
+			<li>Debes revisar el diseño por cada categoria de errores.</li>
+			<li>Registra todos los defectos que encuentres.</li>
+			<li>Corrige y registra el tiempo de corrección de cada defecto.</li>
+			<li>No te olvides de registrar el tiempo.</li>
+		</ul>
+	</div>
+	<div class="script-row">
 		<h4>Etapa de Codificación</h4>
 		<ul>
 			<li>Implementa el programa de acuerdo al diseño.</li>
 			<li>Si encuentras algún error en el diseño registralo como un defecto.</li>
 			<li>No te olvides de registrar el tiempo.</li>
 			<li>Completa el reporte de pruebas con los resultados obtenidos.</li>
+		</ul>
+	</div>
+	<div class="script-row">
+		<h4>Revisión de Código</h4>
+		<ul>
+			<li>Prepara una estrategia para la revisión.</li>
+			<li>Revisa un módulo a la vez.</li>
+			<li>Debes revisar el código por cada categoria de errores.</li>
+			<li>Registra todos los defectos que encuentres.</li>
+			<li>Corrige y registra el tiempo de corrección de cada defecto.</li>
+			<li>No te olvides de registrar el tiempo.</li>
 		</ul>
 	</div>
 	<div class="script-row">
@@ -103,8 +127,10 @@
 			<li>Verifica que todos los datos del <i>Plan Summary</i> sean correctos.</li>
 			<li>Verifica que todos los datos de los defectos que encontraste sean correctos.</li>
 			<li>Verifica que el numero de defectos encontrados y corregidos sean coherentes.</li>
-			<li>Cuenta el tamaño total del programa, determina el tamaño de la base, lineas modificadas, añadidas, eliminadas, re usadas y nuevas lineas para reusar. Coloca estos datos en la plantilla para la estimación del tamaño.</li>
+			<li>Verifica que los valores de estimación sean razonables y correctos.</li>			
+			<li>Cuenta el tamaño del programa, determina el tamaño de la base, lineas modificadas, añadidas, eliminadas, re usadas y nuevas lineas para reusar. Coloca estos datos en la plantilla para la estimación del tamaño.</li>
 			<li>Completa el <i>PIP form</i></li>
+			<li>Si hay alguna inconsistencia, corrigela.</li>
 		</ul>
 	</div>
 </template>
