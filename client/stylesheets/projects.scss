@@ -1287,6 +1287,28 @@
 	}
 }
 
+.pqi-content {
+	background-color: white;
+	width: 100%;
+	@include border-radius($default-border-radius);
+	border-bottom: 2px solid $box-border;
+	margin-bottom: 20px;
+	@include clearfix;
+
+	h4 {
+		color: $text-dark;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		margin-left: 15px;
+		cursor: default;
+	}
+
+	.prj-information-chart {
+		text-align: center;
+		padding: 20px;
+	}
+}
+
 //------------------------------------------------
 
 // Portrait tablets and small desktops
