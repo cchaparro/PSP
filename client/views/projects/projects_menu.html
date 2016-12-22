@@ -20,6 +20,9 @@
 			<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'estimatingtemplate'}} active {{/if}} {{#unless notPSP0}} hidden {{/unless}}">
 				<li>Estimación</li>
 			</a>
+			<a href="{{pathFor 'pqitemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'pqitemplate'}} active {{/if}} {{#unless isPSP2}} hidden {{/unless}}">
+				<li>PQI</li>
+			</a>
 			<a href="{{pathFor 'forms' fid=routeFid id=routeId}}" class="{{#if $eq template 'forms'}} active {{/if}} {{#unless $and notPSP0 isPostmortem}} hidden {{/unless}}">
 				<li>Formularios</li>
 			</a>
