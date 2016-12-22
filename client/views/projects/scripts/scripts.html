@@ -8,7 +8,12 @@
 		{{else}}
 			{{#if $eq levelPSP "PSP 1"}}
 				{{>scriptPSP1}}
+			{{else}}
+				{{#if $eq levelPSP "PSP 2"}}
+					{{>scriptPSP2}}
+				{{/if}}
 			{{/if}}
+
 		{{/if}}
 	</div>
 </template>
