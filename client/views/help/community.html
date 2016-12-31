@@ -25,7 +25,7 @@
 </template>
 <!-- ###################################### -->
 <template name="question">
-	<a href="{{pathFor 'community-question' question=question._id}}">
+	<a href="{{pathFor 'privateRoute.communityQuestion' question=question._id}}">
 		<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
 			<div class="user-image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
 			<div class="user-content">

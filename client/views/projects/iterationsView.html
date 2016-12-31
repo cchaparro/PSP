@@ -4,7 +4,7 @@
 	<div class="allprojects-container">
 		<div class="allprojects-data">
 			{{#with selectedProject}}
-				<a href="{{pathFor 'projectGeneral' fid=_id id=_id}}">
+				<a href="{{pathFor 'privateRoute.projectGeneral' fid=_id id=_id}}">
 					<div class="project-for-iteration-box" style="border-left: 5px solid {{color}};">
 						<div class="project-content">
 							<h3>
@@ -38,7 +38,7 @@
 			<p>Estas seguro?</p>
 			<span class="btn confirm-delete">Eliminar Iteración</span>
 		</div>
-		<a href="{{pathFor 'projectGeneral' fid=parentId id=_id}}">
+		<a href="{{pathFor 'privateRoute.projectGeneral' fid=parentId id=_id}}">
 			<div class="project-content">
 				<h3>
 					{{#if isRegistering}}

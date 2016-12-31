@@ -6,20 +6,20 @@
 		</div>
 		<ul>
 			<li class="option-menu-mobile {{#if isProjectView}} active {{/if}}" data-value="projects">Proyectos</li>
-			<li class="option-menu-mobile {{#if $eq template 'overview'}} active {{/if}}" data-value="overview">Resumen</li>
-			<li class="option-menu-mobile {{#if isSettingsView}} active {{/if}}" data-value="defectTypeSettings">Configuración</li>
-			<li class="option-menu-mobile {{#if $eq template 'help'}} active {{/if}}" data-value="help">Ayuda</li>
+			<li class="option-menu-mobile {{#if $eq template 'privateRoute.overview'}} active {{/if}}" data-value="privateRoute.overview">Resumen</li>
+			<li class="option-menu-mobile {{#if isSettingsView}} active {{/if}}" data-value="privateRoute.settings">Configuración</li>
+			<li class="option-menu-mobile {{#if $eq template 'privateRoute.help'}} active {{/if}}" data-value="privateRoute.help">Ayuda</li>
 		</ul>
 	</div>
 	<div class="main-menu">
 		<div class="main-menu-content">
 			<div class="hidden-xs">
-				<a href="{{pathFor 'projects'}}"><svg class="project-logo" viewBox="0 0 100 100"><use xlink:href="/static/Logo.svg#Logo"></use></svg></a>
+				<a href="{{pathFor 'privateRoute.general'}}"><svg class="project-logo" viewBox="0 0 100 100"><use xlink:href="/static/Logo.svg#Logo"></use></svg></a>
 				<div class="main-menu-options">
-					<a href="{{pathFor 'projects'}}" class="{{#if isProjectView}} active {{/if}}"><span>Proyectos</span></a>
-					<a href="{{pathFor 'overview'}}" class="{{#if $eq template 'overview'}} active {{/if}}"><span>Resumen</span></a>
-					<a href="{{pathFor 'defectTypeSettings'}}" class="{{#if isSettingsView}} active {{/if}}"><span>Configuración</span></a>
-					<a href="{{pathFor 'help'}}" class="{{#if $eq template 'help'}} active {{/if}}"><span>Ayuda</span></a>
+					<a href="{{pathFor 'privateRoute.general'}}" class="{{#if isProjectView}} active {{/if}}"><span>Proyectos</span></a>
+					<a href="{{pathFor 'privateRoute.overview'}}" class="{{#if $eq template 'privateRoute.overview'}} active {{/if}}"><span>Resumen</span></a>
+					<a href="{{pathFor 'privateRoute.settings'}}" class="{{#if isSettingsView}} active {{/if}}"><span>Configuración</span></a>
+					<a href="{{pathFor 'privateRoute.help'}}" class="{{#if $eq template 'privateRoute.help'}} active {{/if}}"><span>Ayuda</span></a>
 				</div>
 			</div>
 
@@ -127,18 +127,18 @@
 			{{/each}}
 		</div>
 
-		{{#if $eq template "projects"}}
+		{{#if $eq template "privateRoute.general"}}
 			<span class="create-button create-project"><i class="material-icons">add</i> Crear Proyecto</span>
 		{{/if}}
-		{{#if $eq template "iterations"}}
+		{{#if $eq template "privateRoute.iterations"}}
 			<span class="create-button create-iteration"><i class="material-icons">add</i> Crear Iteración</span>
 		{{/if}}
-		{{#if $eq template "projectDefectLog"}}
+		{{#if $eq template "privateRoute.defectLog"}}
 			{{#unless projectCompleted}}
 				<span class="create-button create-defect"><i class="material-icons">add</i> Crear Defecto</span>
 			{{/unless}}
 		{{/if}}
-		{{#if $eq template "community"}}
+		{{#if $eq template "privateRoute.community"}}
 			<span class="create-button create-question"><i class="material-icons">add</i> Crear Pregunta</span>
 		{{/if}}
 	</div>

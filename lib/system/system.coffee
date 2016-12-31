@@ -19,17 +19,17 @@ sys.isNumber = (number) ->
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate" or title=="pqitemplate" or title == "forms"
+	if title == 'privateRoute.general' or title == "privateRoute.iterations" or title == "privateRoute.projectGeneral" or title == "privateRoute.timeLog" or title == "privateRoute.projectDefectLog" or title == "privateRoute.summary" or title == "privateRoute.scripts" or title =="privateRoute.estimating" or title=="privateRoute.pqi" or title == "privateRoute.forms"
 		return "Proyectos"
-	else if title == "overview"
+	else if title == "privateRoute.overview"
 		return "Resumen"
-	else if title == "defectTypeSettings"
+	else if title == "privateRoute.settings"
 		return "Ajustes"
-	else if title == "help"
+	else if title == "privateRoute.help"
 		return "Ayuda"
-	else if title == "community"
+	else if title == "privateRoute.community"
 		return "Comunidad"
-	else if title == "community-question"
+	else if title == "privateRoute.communityQuestion"
 		return "Pregunta Comunidad"
 	else
 		return "No Disponible"
@@ -425,38 +425,38 @@ sys.cutText = (text, limit, closing) ->
 #########- Document Title Route -#########
 sys.getSessionRoute = (value) ->
 	switch value
-		when "projects"
+		when 'privateRoute.general'
 			return "Proyectos"
-		when "iterations"
+		when 'privateRoute.iterations'
 			return "Iteraciones"
-		when "general"
+		when 'privateRoute.projectGeneral'
 			return "Proyecto"
-		when "timeLog"
+		when 'privateRoute.timeLog'
 			return "Log de tiempos"
-		when "defectLog"
+		when 'privateRoute.defectLog'
 			return "Log de defectos"
-		when "planSummary"
+		when 'privateRoute.summary'
 			return "Plan Summary"
-		when "scripts"
+		when 'privateRoute.scripts'
 			return "Scripts"
-		when "settings"
-			return "Ajustes"
-		when "defectTypes"
-			return "Tipos de defecto"
-		when "help"
-			return "Ayuda"
-		when "estimatingTemplate"
+		when 'privateRoute.forms'
+			return 'Formularios'
+		when 'privateRoute.estimating'
 			return "Estimación"
-		when "pqiTemplate"
+		when 'privateRoute.pqi'
 			return "PQI"
-		when "community"
+		when "privateRoute.settings"
+			return "Configuración"
+		when "privateRoute.overview"
+			return "Resumen"
+		when "privateRoute.help"
+			return "Ayuda"
+		when "privateRoute.community"
 			return "Comunidad"
-		when "community-question"
+		when "privateRoute.communityQuestion"
 			return "Pregunta Comunidad"
-		when "help-tutorial"
+		when "privateRoute.tutorial"
 			return "Tutorial"
-		when "formTemplate"
-			return "Formularios"
 
 ##########################################
 ########- Project Color Selector -########

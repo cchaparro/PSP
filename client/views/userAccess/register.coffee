@@ -74,7 +74,7 @@ Template.registerTemplate.events
 						$('#fname').val('')
 						$('#lname').val('')
 				else
-					FlowRouter.go("/projects")
+					FlowRouter.go('privateRoute.general')
 
 		else if !sys.isEmail(email) and email.length > 0
 			t.errorState.set("email")
@@ -95,6 +95,6 @@ Template.registerTemplate.events
 			t.errorState.set("missing-fields")
 
 	'click .access-selection-box': (e,t) ->
-		FlowRouter.go("/")
+		FlowRouter.go('publicRoute.login')
 
 ##################################################

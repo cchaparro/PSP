@@ -48,7 +48,7 @@ Template.loginTemplate.events
 						$('#password').val('')
 
 				else
-					FlowRouter.go("/")
+					FlowRouter.go('privateRoute.general')
 
 		if !sys.isEmail(email) and email.length > 0
 			t.errorState.set("email")
@@ -57,10 +57,10 @@ Template.loginTemplate.events
 
 
 	'click .access-selection-box': (e,t) ->
-		FlowRouter.go("/register")
+		FlowRouter.go("publicRoute.signup")
 
 	'click .forgot-password': (e,t) ->
-		FlowRouter.go("/forgot")
+		FlowRouter.go('publicRoute.forgot')
 
 	'click .user-access-facebook': (e,t) ->
 		e.preventDefault()

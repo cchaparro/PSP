@@ -15,12 +15,12 @@ Template.main_menuBar.helpers
 	isProjectView: () ->
 		FlowRouter.watchPathChange()
 		route = FlowRouter.current().route.name
-		return (route == 'projects') or (route == 'iterations') or (route == 'projectView') or (route == "projectGeneral") or (route == "projectTimeLog") or (route == "projectDefectLog") or (route == "projectSummary") or (route == "projectScripts") or (route == "estimatingtemplate") or (route == "forms")
+		return (route == 'privateRoute.general') or (route == 'privateRoute.iterations') or (route == 'privateRoute.projectView') or (route == "privateRoute.projectGeneral") or (route == "privateRoute.timeLog") or (route == "privateRoute.defectLog") or (route == "privateRoute.summary") or (route == "privateRoute.scripts") or (route == "privateRoute.estimating") or (route == "privateRoute.forms")
 
 	isSettingsView: () ->
 		FlowRouter.watchPathChange()
 		route = FlowRouter.current().route.name
-		return (route == 'accountSettings') or (route == 'defectTypeSettings')
+		return (route == 'accountSettings') or (route == 'privateRoute.settings')
 
 	userData: () ->
 		user = Meteor.users.findOne({_id: Meteor.userId()})
@@ -81,8 +81,9 @@ Template.userMenuDropdown.events
 	'click .logout': (e,t) ->
 		e.preventDefault()
 		e.stopPropagation()
-		Meteor.logout()
-		FlowRouter.go("/")
+
+		Meteor.logout () ->
+			FlowRouter.go('publicRoute.login')
 
 	'click .edit-profile': (e,t) ->
 		e.preventDefault()
@@ -137,7 +138,7 @@ Template.userNotification.events
 
 		if @type == 'question-response'
 			questionId = @data.questionId
-			FlowRouter.go("community-question", {"question": questionId})
+			FlowRouter.go('privateRoute.communityQuestion', {"question": questionId})
 			Session.set("display-notification-box", false)
 
 		unless @data?.reverted or @data?.disabled or @type != 'time-registered'
@@ -169,15 +170,15 @@ Template.headerNavigation.helpers
 		FlowRouter.watchPathChange()
 		currentState = FlowRouter.current().route.name
 
-		if currentState == "projects"
+		if currentState == "privateRoute.general"
 			displayMenu = true
 		else
 			displayMenu = false
 
-		if currentState == "projects" or currentState=="projectGeneral" or currentState=="projectTimeLog" or currentState=="projectDefectLog" or currentState=="projectSummary" or currentState=="projectScripts" or currentState=="estimatingtemplate" or currentState=="forms"
-			initialRoute = "projects"
-		else if currentState == "community" or currentState == "community-question" or currentState == "help-tutorial"
-			initialRoute = "help"
+		if currentState == "privateRoute.general" or currentState=='privateRoute.iterations' or currentState=="privateRoute.projectGeneral" or currentState=="privateRoute.timeLog" or currentState=="privateRoute.defectLog" or currentState=="privateRoute.summary" or currentState=="privateRoute.scripts" or currentState=="privateRoute.estimating" or currentState=="privateRoute.forms"
+			initialRoute = "privateRoute.general"
+		else if currentState == "privateRoute.community" or currentState == "privateRoute.communityQuestion" or currentState == "privateRoute.tutorial"
+			initialRoute = "privateRoute.help"
 		else
 			initialRoute = currentState
 
@@ -194,7 +195,7 @@ Template.headerNavigation.helpers
 		if FlowRouter.getParam("fid")
 			Routes.push({
 				title: "Iteraciones"
-				route: "iterations"
+				route: "privateRoute.iterations"
 				fid: FlowRouter.getParam("fid")
 				pid: false
 				question: false
@@ -208,17 +209,17 @@ Template.headerNavigation.helpers
 			if Project
 				Routes.push({
 					title: Project.title
-					route: "projectGeneral"
+					route: "privateRoute.projectGeneral"
 					fid: FlowRouter.getParam("fid")
 					pid: FlowRouter.getParam("id")
 					lastValue: false
 					displayMenu: false
 				})
 
-		if currentState == "community"
+		if currentState == "privateRoute.community"
 			Routes.push({
 				title: "Comunidad"
-				route: "community"
+				route: "privateRoute.community"
 				fid: false
 				pid: false
 				question: false
@@ -226,10 +227,10 @@ Template.headerNavigation.helpers
 				displayMenu: false
 			})
 
-		if currentState == "help-tutorial"
+		if currentState == "privateRoute.tutorial"
 			Routes.push({
 				title: "Tutorial"
-				route: "tutorial"
+				route: "privateRoute.tutorial"
 				fid: false
 				pid: false
 				question: false
@@ -240,7 +241,7 @@ Template.headerNavigation.helpers
 		if FlowRouter.getParam("question")
 			Routes.push({
 				title: "Comunidad"
-				route: "community"
+				route: "privateRoute.community"
 				fid: false
 				pid: false
 				question: false
@@ -250,7 +251,7 @@ Template.headerNavigation.helpers
 
 			Routes.push({
 				title: "Pregunta en Comunidad"
-				route: "community-question"
+				route: "privateRoute.communityQuestion"
 				fid: FlowRouter.getParam("fid")
 				pid: FlowRouter.getParam("id")
 				question: FlowRouter.getParam("question")

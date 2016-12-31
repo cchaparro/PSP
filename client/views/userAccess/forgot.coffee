@@ -16,7 +16,7 @@ Template.forgotPasswordTemplate.helpers
 
 Template.forgotPasswordTemplate.events
 	'click .access-selection-box': (e,t) ->
-		FlowRouter.go("/")
+		FlowRouter.go('publicRoute.login')
 
 	'submit form': (e,t) ->
 		e.preventDefault()
@@ -37,7 +37,7 @@ Template.forgotPasswordTemplate.events
 ##################################################
 Template.resetPasswordTemplate.events
 	'click .access-selection-box': (e,t) ->
-		FlowRouter.go("/")
+		FlowRouter.go('publicRoute.login')
 
 	'submit form': (e,t) ->
 		e.preventDefault()
@@ -52,5 +52,6 @@ Template.resetPasswordTemplate.events
 					console.warn(error)
 				else
 					Meteor.call "createNotification", "password-reset", Meteor.userId()
+					FlowRouter.go('privateRoute.general')
 
 ##################################################
