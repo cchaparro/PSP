@@ -1,0 +1,28 @@
+<template name="statusMessage">
+	{{#with statusMessage}}
+		<div class="warning-slide status-message">
+			<i class="material-icons close-status">clear</i>
+			<div class="label-content">
+				<h3>{{title}}</h3>
+				<span>{{subject}}</span>
+			</div>
+			<div class="label-{{css}}">
+				<i class="material-icons">{{messageIcon}}</i>
+			</div>
+		</div>
+	{{/with}}
+</template>
+
+<template name="statusTimeMessage">
+	{{#with timeMessage}}
+		<div class="warning-slide status-time-message">
+			<div class="label-content">
+				<h3>{{title}}</h3>
+				<span>{{subject}}</span>
+			</div>
+			<div class="label-warning">
+				<i class="material-icons">warning</i>
+			</div>
+		</div>
+	{{/with}}
+</template>

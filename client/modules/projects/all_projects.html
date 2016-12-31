@@ -1,0 +1,40 @@
+<template name="projectsTemplate">
+	{{>headerNavigation}}
+	{{#unless amountProjects}}
+		<div class="empty-projects">
+			<div>
+				<i class="material-icons">sentiment_very_dissatisfied</i>
+				<h4>No has creado ningun proyecto aún.</h4>
+				<span>Para crear un nuevo proyecto debes dar click en el botón que se encuentra en la parte superior.</span>
+			</div>
+		</div>
+	{{/unless}}
+	<div class="projects-container">
+		{{#each projects}}
+			<div class="project-box" style="border-left: 5px solid {{color}};">
+				<div class="project-box-delete">
+					<i class="material-icons {{hoverIcon}}">{{hoverIcon}}</i>
+				</div>
+				<div class="project-box-delete-confirm">
+					<p>Estas seguro?</p>
+					<span class="confirm-delete-project">Eliminar Proyecto</span>
+				</div>
+
+				<a href="{{pathFor 'privateRoute.iterations' fid=_id}}">
+					<h4 class="project-box-title">
+						<i class="material-icons {{#if projectCompleted}} color-disabled {{else}} color-success {{/if}}">brightness_1</i>
+						{{cutText title 35}}
+					</h4>
+					<span class="project-box-description">{{cutText description 125}}</span>
+					<span class="project-box-information">
+						Creado {{dateFormat date=createdAt format="DD.MM.YYYY"}} - {{levelPSP}}
+						{{#if isRegistering}}
+							<span class="project-box-time">Registrando</span>
+						{{/if}}
+					</span>
+				</a>
+			</div>
+		{{/each}}
+	</div>
+</template>
+<!-- ###################################### -->

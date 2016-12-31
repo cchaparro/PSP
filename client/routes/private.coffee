@@ -101,8 +101,6 @@ privateRoutes.route '/project/:fid/:id/pqi-template',
 
 
 
-
-
 privateRoutes.route '/settings',
 	name: 'privateRoute.settings'
 	subscriptions: (params, queryParams) ->
@@ -111,6 +109,7 @@ privateRoutes.route '/settings',
 	action: ->
 		Session.set 'route', 'privateRoute.settings'
 		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate', menu: "settingsMenu"
+
 
 
 privateRoutes.route '/overview',
@@ -122,11 +121,13 @@ privateRoutes.route '/overview',
 		BlazeLayout.render 'masterLayout', main: 'overviewTemplate'
 
 
+
 privateRoutes.route '/help/',
 	name: 'privateRoute.help'
 	action: ->
 		Session.set "route", "privateRoute.help"
 		BlazeLayout.render 'masterLayout', main: 'helpTemplate'
+
 
 privateRoutes.route '/help/community',
 	name: 'privateRoute.community'
@@ -135,6 +136,7 @@ privateRoutes.route '/help/community',
 	action: ->
 		Session.set "route", "privateRoute.community"
 		BlazeLayout.render 'masterLayout', main: 'communityTemplate'
+
 
 privateRoutes.route '/help/community/:question',
 	name: 'privateRoute.communityQuestion'
@@ -145,9 +147,9 @@ privateRoutes.route '/help/community/:question',
 	subscriptions: (params, queryParams) ->
 		@register 'helpView', Meteor.subscribe "helpView"
 
+
 privateRoutes.route '/help/tutorial',
 	name: 'privateRoute.tutorial'
 	action: ->
 		Session.set "route", 'privateRoute.tutorial'
 		BlazeLayout.render 'masterLayout', main: 'tutorialTemplate'
-

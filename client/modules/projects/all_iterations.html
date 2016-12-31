@@ -1,0 +1,44 @@
+<template name="iterationsViewTemplate">
+	{{>headerNavigation}}
+	<div class="projects-container">
+		<div class="allprojects-data">
+			{{#with projectParent}}
+				<div class="project-box" style="border-left: 5px solid {{color}};">
+					<a href="{{pathFor 'privateRoute.projectGeneral' fid=_id id=_id}}">
+						<h4 class="project-box-title">
+							<i class="material-icons {{#if completed}} color-disabled {{else}} color-success {{/if}}">brightness_1</i>
+							{{cutText title 35}}
+						</h4>
+						<span class="project-box-description">{{cutText description 125}}</span>
+						<span class="project-box-information">Created at {{dateFormat date=createdAt format="DD.MM.YYYY"}} - {{levelPSP}}</span>
+					</a>
+				</div>
+			{{/with}}
+		</div>
+		{{#each iterations}}
+			<div class="project-box" style="border-left: 5px solid {{color}};">
+				<div class="project-box-delete">
+					<i class="material-icons {{hoverIcon}}">{{hoverIcon}}</i>
+				</div>
+				<div class="project-box-delete-confirm">
+					<p>Estas seguro?</p>
+					<span class="confirm-delete-project">Eliminar Proyecto</span>
+				</div>
+
+				<a href="{{pathFor 'privateRoute.projectGeneral' fid=parentId id=_id}}">
+					<h4 class="project-box-title">
+						<i class="material-icons {{#if completed}} color-disabled {{else}} color-success {{/if}}">brightness_1</i>
+						{{cutText title 35}}
+					</h4>
+					<span class="project-box-description">{{cutText description 125}}</span>
+					<span class="project-box-information">
+						Creado {{dateFormat date=createdAt format="DD.MM.YYYY"}} - {{levelPSP}}
+						{{#if isRegistering}}
+							<span class="project-box-time">Registrando</span>
+						{{/if}}
+					</span>
+				</a>
+			</div>
+		{{/each}}
+	</div>
+</template>

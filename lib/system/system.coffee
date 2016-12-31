@@ -117,46 +117,65 @@ sys.removeMessage = () ->
 sys.flashStatus = (type) ->
 	# CSS field can get success, warning and danger
 	switch type
-		# AllProjects and AllIterations view
-		when "create-project"
-			title = "Creado"
-			subject = "El proyecto se ha creado correctamente."
+		when 'create-project-successful'
+			title = "Proyecto creado"
+			subject = "El proyecto que acabas de ingresar se ha creado correctamente."
 			css = "success"
 
-		when "error-create-project"
+		when 'create-project-error'
 			title = "Error"
-			subject = "No hemos podido crear el proyecto nuevo."
+			subject = "No pudimos crear el proyecto correctamente. Por favor inténtelo nuevamente."
 			css = "danger"
 
-		when "project-delete"
-			title = "Eliminado"
-			subject = "El projecto ha sido removido correctamente."
+		when "delete-project-successful"
+			title = "Proyecto Eliminado"
+			subject = "El projecto seleccionado se ha eliminado correctamente."
 			css = "success"
 
-		when "error-project-delete"
+		when "delete-project-error"
 			title = "Error"
-			subject = "No hemos podido remover el proyecto seleccionado."
+			subject = "No pudimos eliminar el proyecto que seleccionaste. Por favor inténtelo nuevamente."
 			css = "danger"
 
-		when "create-iteration"
-			title = "Creado"
-			subject = "La iteración se ha creado correctamente."
+		when 'change-project-sorting-successful'
+			title = "Proyectos reordenados"
+			subject = "El orden de los proyectos se ha cambiado correctamente."
 			css = "success"
 
-		when "error-create-iteration"
+		when 'change-project-sorting-error'
 			title = "Error"
-			subject = "No hemos podido crear la nueva iteración."
-			css = "danger"
-
-		when "iteration-delete"
-			title = "Eliminado"
-			subject = "El projecto ha sido removido correctamente."
+			subject = "No se pudo cambiar el orden de los proyectos. Por favor inténtelo nuevamente."
 			css = "success"
 
-		when "error-iteration-delete"
+		when 'create-iteration-successful'
+			title = "Iteración creada"
+			subject = "Se ha creado correctamente la nueva iteración del proyecto."
+			css = "success"
+
+		when 'create-iteration-error'
 			title = "Error"
-			subject = "No hemos podido remover la iteración seleccionada."
+			subject = "No pudimos crear la nueva iteración del proyecto. Por favor inténtelo nuevamente."
 			css = "danger"
+
+		when 'delete-iteration-successful'
+			title = "Iteración eliminada"
+			subject = "La iteración que has seleccionado se ha eliminado correctamente."
+			css = "success"
+
+		when 'delete-iteration-error'
+			title = "Error"
+			subject = "No pudimos eliminar la iteración que seleccionaste. Por favor inténtelo nuevamente."
+			css = "danger"
+
+
+
+
+
+
+
+
+
+
 
 
 		# Time log from the projects view and editTime modal
@@ -386,7 +405,8 @@ sys.flashStatus = (type) ->
 			css = "danger"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
-	window.setTimeout sys.removeMessage, 3800
+	window.setTimeout sys.removeMessage, 5000
+
 
 # This is used to fade-out the notification
 sys.removeTimeMessage = () ->

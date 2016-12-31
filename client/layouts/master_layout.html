@@ -1,0 +1,64 @@
+<template name="masterLayout">
+	<div class="navbar-wrapper">
+		<div class="navbar-logo">
+			<img src="/LogoMenu.png" alt="PSP Connect">
+		</div>
+
+		<span class="navbar-title">Vista General</span>
+		{{>navbar
+			navbarClass='main-navbar'
+			navbarElements=navbarElements
+		}}
+
+		<br>
+		<div class="{{#unless inProjectView}} hidden {{/unless}}">
+			<span class="navbar-title">Vista Proyecto</span>
+			{{>navbar
+				navbarClass='main-navbar'
+				navbarElements=projectElements
+			}}
+		</div>
+	</div>
+	<div class="main-wrapper">
+		{{>mainHeader}}
+		<div class="main-content">
+			{{>Template.dynamic template=main}}
+		</div>
+	</div>
+
+
+
+	<!-- {{> main_menuBar}}
+	<div class="master-content">
+		<div class="master-content-data">
+			{{#if menu}}
+				<div class="content-menu-extra">
+					{{> Template.dynamic template=menu}}
+					{{> Template.dynamic template=information}}
+				</div>
+				<div class="content-menu-box">
+					{{> Template.dynamic template=main}}
+				</div>
+			{{else}}
+				{{> Template.dynamic template=main}}
+			{{/if}}
+		</div>
+	</div> -->
+	<div class="status-box">
+		{{#unless $.Meteor.status.connected}}
+			<div class="warning-slide status-message">
+				<i class="material-icons close-status">clear</i>
+				<div class="label-content">
+					<h3>Conectando</h3>
+					<span>Estamos tratando de conectarnos a la plataforma. Por favor espera o vuelva a cargar la pagina.</span>
+				</div>
+				<div class="label-danger">
+					<i class="material-icons">clear</i>
+				</div>
+			</div>
+		{{/unless}}
+		{{> statusMessage}}
+		{{> statusTimeMessage}}
+		{{documentTitle}}
+	</div>
+</template>

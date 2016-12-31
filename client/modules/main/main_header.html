@@ -1,0 +1,60 @@
+<template name="mainHeader">
+	<div class="main-header">
+		<div class="options">
+			{{>Template.dynamic template=headerActions}}
+		</div>
+	</div>
+</template>
+
+<template name="mainAvatarDropdown">
+	<div class="main-avatar-dropdown {{#unless $.Session.get 'main-avatar-dropdown'}} hidden {{/unless}}">
+		<ul>
+			<div class="main-avatar-information">
+				<span class="popup-title">Usuario</span>
+				<p>{{cutText (userName $.Meteor.userId) 20}}</p>
+			</div>
+			<span class="popup-title">Opciones</span>
+			<li class="account-edit">
+				<span>Ajustes de cuenta</span>
+			</li>
+			<li class="account-logout">
+				<span>Cerrar sesión</span>
+			</li>
+		</ul>
+	</div>
+</template>
+
+<template name="createProjectAction">
+	<div class="create-option">
+		<span class="create-project">Crear Proyecto</span>
+		<i class="material-icons">add_circle</i>
+	</div>
+	<div class="sort-option">
+		<span class="{{#if $.Session.get 'project-sort-dropdown'}} active {{/if}}">
+			<i class="material-icons sort-option">sort</i>
+		</span>
+		{{>projectSortDropdown}}
+	</div>
+</template>
+
+<template name="projectSortDropdown">
+	<div class="project-sort-dropdown {{#unless $.Session.get 'project-sort-dropdown'}} hidden {{/unless}}">
+		<ul>
+			<div class="main-avatar-information">
+				<span class="popup-title">Ordenar</span>
+			</div>
+			{{#each sortElements}}
+				<li class="project-sort-option {{#if active}} selected {{/if}}">
+					<span>{{title}}</span>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="createIterationAction">
+	<div class="create-option">
+		<span class="create-iteration">Crear Iteración</span>
+		<i class="material-icons">add_circle</i>
+	</div>
+</template>

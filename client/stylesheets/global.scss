@@ -1,5 +1,18 @@
 @import '_variables.scss';
 
+.color-disabled {
+	color: #95A6B9;
+}
+
+.color-success {
+	color: $success;
+}
+
+
+
+
+
+
 //----------------- General Colors ---------------
 .success {
 	background-color: $success;
@@ -360,207 +373,12 @@
 	overflow: hidden;
 }
 
-
-//----------------- Status Messages --------------
-.status-box {
-	position: absolute;
-	z-index: 99;
-	bottom: 5px;
-	right: 15px;
-	width: 290px;
-	//z-index: 1051;
-
-	.status-message,
-	.status-time-message {
-		width: 100%;
-		min-height: 80px;
-		float: right;
-		display: block;
-		position: relative;
-		background-color: $popup-bg;
-		border-radius: $default-border-radius;
-		padding-bottom: 10px;
-		margin-bottom: 10px;
-		overflow: hidden;
-		cursor: default;
-
-		.close-status {
-			position: absolute;
-			right: 10px;
-			top: 10px;
-			cursor: pointer;
-			color: $text;
-
-			&:hover {
-				color: $text-dark;
-			}
-		}
-
-		.label-content {
-			width: 240px;
-			height: 100%;
-			float: right;
-
-			h3 {
-				font-size: 12pt;
-				font-weight: bold;
-				padding-left: 10px;
-				padding-top: 10px;
-				margin: 0;
-				display: block;
-				color: $primary-bg;
-			}
-
-			span {
-				display: inline-block;
-				font-size: 10pt;
-				font-weight: 500;
-				padding: 5px 20px 0 10px;
-				color: $black;
-			}
-		}
-
-		.label-success {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 50px;
-			height: 100%;
-			float: left;
-			display: inline-block;
-			background-color: $status-success;
-
-			i {
-				color: $status-dark-success;
-				font-size: 16pt;
-				width: 100%;
-				padding-top: 15px;
-				text-align: center;
-			}
-		}
-
-		.label-warning {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 50px;
-			height: 100%;
-			float: left;
-			display: inline-block;
-			background-color: $status-warning;
-
-			i {
-				color: $status-dark-warning;
-				font-size: 16pt;
-				width: 100%;
-				padding-top: 15px;
-				text-align: center;
-			}
-		}
-
-		.label-danger {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 50px;
-			height: 100%;
-			float: left;
-			display: inline-block;
-			background-color: $status-danger;
-
-			i {
-				color: $status-dark-danger;
-				font-size: 16pt;
-				width: 100%;
-				padding-top: 15px;
-				text-align: center;
-			}
-		}
-
-	}
-}
-
-.warning-slide {
-	-webkit-animation-name: status-slide;
-	-webkit-animation-duration: 0.8s;
-	-webkit-animation-timing-function: ease-out;
-	-webkit-animation-iteration-count: 1;
-
-	animation-name: status-slide;
-	animation-duration: 0.8s;
-	animation-timing-function: ease-out;
-	animation-iteration-count: 1;
-}
-
-@keyframes status-slide {
-	0%, 60%, 75%, 90%, 100% {
-		-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
-	}
-	0% {
-		opacity: 0;
-		-webkit-transform: translate3d(3000px, 0, 0);
-		transform: translate3d(3000px, 0, 0)
-	}
-	60% {
-		opacity: 1;
-		-webkit-transform: translate3d(-25px, 0, 0);
-		transform: translate3d(-25px, 0, 0)
-	}
-	75% {
-		-webkit-transform: translate3d(10px, 0, 0);
-		transform: translate3d(10px, 0, 0)
-	}
-	90% {
-		-webkit-transform: translate3d(-5px, 0, 0);
-		transform: translate3d(-5px, 0, 0)
-	}
-	100% {
-		-webkit-transform: none;
-		transform: none
-	}
-}
-
-@-webkit-keyframes status-slide {
-	0%, 60%, 75%, 90%, 100% {
-		-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
-	}
-	0% {
-		opacity: 0;
-		-webkit-transform: translate3d(3000px, 0, 0);
-		transform: translate3d(3000px, 0, 0)
-	}
-	60% {
-		opacity: 1;
-		-webkit-transform: translate3d(-25px, 0, 0);
-		transform: translate3d(-25px, 0, 0)
-	}
-	75% {
-		-webkit-transform: translate3d(10px, 0, 0);
-		transform: translate3d(10px, 0, 0)
-	}
-	90% {
-		-webkit-transform: translate3d(-5px, 0, 0);
-		transform: translate3d(-5px, 0, 0)
-	}
-	100% {
-		-webkit-transform: none;
-		transform: none
-	}
-}
-
 //---------- Fix Chrome Yellow Input Color -------
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 //------------------------------------------------
-// Portrait tablets and small desktops
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-
 // Landscape phones and portrait tablets
 @media (max-width: 767px) {
 	.content-menu-box {

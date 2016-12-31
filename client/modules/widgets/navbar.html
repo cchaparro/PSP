@@ -1,0 +1,17 @@
+<template name="navbar">
+	<ul class="{{navbarClass}}">
+		{{#each navbarElements}}
+			{{#unless hide}}
+				<li class="{{#if active}} active {{/if}}">
+					<a href="#" class="nav-selector">
+						<i class="material-icons">{{icon}}</i>
+						<span>{{title}}</span>
+					</a>
+					{{#if template}}
+						{{>Template.dynamic template=template}}
+					{{/if}}
+				</li>
+			{{/unless}}
+		{{/each}}
+	</ul>
+</template>

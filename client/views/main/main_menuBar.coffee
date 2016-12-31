@@ -271,31 +271,6 @@ Template.headerNavigation.events
 		currentState = Session.get("navigation-menu")
 		Session.set("navigation-menu", !currentState)
 
-	'click .create-project': (e,t) ->
-		e.preventDefault()
-		e.stopPropagation()
-		Modal.show('createProjectModal')
-
-	'click .create-iteration': (e,t) ->
-		e.preventDefault()
-		e.stopPropagation()
-		currentProject = db.projects.findOne({ _id: FlowRouter.getParam("fid") })
-
-		# The currentProject takes the parent projects levelPSP and gives it to the new interation
-		data = {
-			title: "Nueva iteración"
-			description: "Descripción de esta nueva iteración"
-			levelPSP: currentProject.levelPSP
-			parentId: FlowRouter.getParam("fid")
-		}
-
-		Meteor.call "create_project", data, (error) ->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-create-iteration")
-			else
-				sys.flashStatus("create-iteration")
-
 	'click .create-defect': (e,t) ->
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 		unless project.completed
@@ -305,16 +280,3 @@ Template.headerNavigation.events
 		e.preventDefault()
 		e.stopPropagation()
 		Modal.show('createQuestionModal')
-
-	'click .project-order': (e,t) ->
-		e.preventDefault()
-		e.stopPropagation()
-		value = $(e.target).closest(".project-order").data('value')
-
-		Meteor.call "change_project_sorting_settings", value, (error) ->
-			if error
-				console.warn(error)
-			else
-				sys.flashStatus("change-project-sorting")
-
-##################################################

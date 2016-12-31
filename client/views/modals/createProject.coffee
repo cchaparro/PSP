@@ -70,9 +70,9 @@ Template.createProject.events
 			Meteor.call "create_project", data, (error)->
 				if error
 					console.warn(error)
-					sys.flashStatus("error-create-project")
+					sys.flashStatus('create-project-error')
 				else
-					sys.flashStatus("create-project")
+					sys.flashStatus('create-project-successful')
 
 			$('.pry-new-title').val('')
 			$('.pry-new-description').val('')

@@ -114,7 +114,7 @@
 					<span class="{{#if lastValue}} hide {{/if}} hidden-xs">
 						<svg class="breadcrumb-arrow" viewBox="0 0 100 100"><use xlink:href="/images/ArrowBreadcrumb.svg#arrowsBreadCrumb"></use></svg>
 					</span>
-					{{#if displayMenu}}
+					<!-- {{#if displayMenu}}
 						<div class="navigation-menu {{#unless $.Session.get 'navigation-menu'}} hidden {{/unless}}">
 							<ul>
 								<li class="project-order {{#if $eq ordenProyectos 'date'}} active {{/if}}" data-value="date"><i class="material-icons">check</i> Reciente</li>
@@ -122,17 +122,17 @@
 								<li class="project-order {{#if $eq ordenProyectos 'color'}} active {{/if}}" data-value="color"><i class="material-icons">check</i> Color</li>
 							</ul>
 						</div>
-					{{/if}}
+					{{/if}} -->
 				</div>
 			{{/each}}
 		</div>
 
-		{{#if $eq template "privateRoute.general"}}
+		<!--{{#if $eq template "privateRoute.general"}}
 			<span class="create-button create-project"><i class="material-icons">add</i> Crear Proyecto</span>
 		{{/if}}
 		{{#if $eq template "privateRoute.iterations"}}
 			<span class="create-button create-iteration"><i class="material-icons">add</i> Crear Iteración</span>
-		{{/if}}
+		{{/if}}-->
 		{{#if $eq template "privateRoute.defectLog"}}
 			{{#unless projectCompleted}}
 				<span class="create-button create-defect"><i class="material-icons">add</i> Crear Defecto</span>

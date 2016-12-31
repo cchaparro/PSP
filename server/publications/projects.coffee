@@ -5,6 +5,13 @@ Meteor.publish "allProjects", () ->
 		db.plan_summary.find({"summaryOwner": @userId})
 	]
 
+Meteor.publish "sortView", () ->
+	fields = {
+		'settings'
+	}
+	return db.users.find({_id: @userId}, {fields: fields})
+
+
 Meteor.publish "projectView", (pid) ->
 	return [
 		db.defects.find({"defectOwner": @userId, "projectId": pid}),
