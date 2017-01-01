@@ -314,26 +314,12 @@ html, body {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//----------- Dynamic Master Template ------------
 .notification-box {
 	position: absolute;
 	background-color: $white;
 	border-radius: 4px;
 	height: 370px;
-	width: 320px;
+	width: 325px;
 	top: -50px;
 	left: 190px;
 	z-index: 4;
@@ -365,11 +351,9 @@ html, body {
 			border-left: 2px solid $white;
 			border-radius: 0;
 			height: auto;
-			padding-top: 10px;
-			padding-bottom: 5px;
+			padding: 10px 7px 5px 20px;
 			margin: 0;
 			margin-bottom: 0;
-			padding-left: 20px;
 			z-index: 5;
 			border-bottom: 1px solid #F8F9FA;
 
@@ -466,241 +450,9 @@ html, body {
 
 		}
 	}
-
-	// .notification-item {
-	// 	.notification-content-disabled {
-	// 		cursor: default;
-	// 		span {
-	// 			font-size: 11pt;
-	// 			color: rgba($text, 0.5);
-	// 			font-weight: 300;
-	// 		}
-
-	// 		.notification-revert {
-	// 			color: rgba($blue, 0.5);
-	// 			font-weight: 400;
-	// 		}
-	// 	}
-
-	// }
-
 }
 
-
-
-.general-header {
-	margin-left: 20px;
-	margin-right: 20px;
-	width: calc(100% - 40px);
-	height: 55px;
-	padding-left: 20px;
-	line-height: 55px;
-	border-bottom: 2px solid $box-border;
-	background-color: $white;
-	@include border-radius($default-border-radius);
-	margin-bottom: 20px;
-}
-
-.master-content {
-	width: 100%;
-	height: calc(100% - 65px);
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	background-color: $background;
-	overflow-y: scroll;
-	padding-top: 20px;
-
-	.master-content-data {
-		height: 100%;
-		width: $width-content;
-		max-width: $max-width-content;
-		margin-left: auto;
-		margin-right: auto;
-
-		.general-header {
-			width: 100%;
-			height: 55px;
-			padding-left: 20px;
-			line-height: 55px;
-			border-bottom: 2px solid $box-border;
-			background-color: $white;
-			@include border-radius($default-border-radius);
-			margin-bottom: 20px;
-		}
-
-		.box-content {
-			width: 100%;
-			border-bottom: 2px solid $box-border;
-			background-color: $white;
-			@include border-radius($default-border-radius);
-			margin-bottom: 20px;
-		}
-
-	}
-}
-
-//------------------- Main Menu ------------------
-.main-menu {
-	width: 100%;
-	height: 65px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: $primary-bg;
-
-	.main-menu-content {
-		height: 100%;
-		width: $width-content;
-		max-width: $max-width-content;
-		margin-left: auto;
-		margin-right: auto;
-
-		.project-logo {
-			width: 30px;
-			height: 30px;
-			margin-top: 17.5px;
-			margin-right: 20px;
-			fill: $blue;
-			float: left;
-
-			&:hover {
-				fill: $blue-dark;
-			}
-		}
-
-		.main-menu-options {
-			display: inline-block;
-			float: left;
-			line-height: 65px;
-
-			a {
-				padding-right: 15px;
-				font-weight: 600;
-				font-size: 11pt;
-				color: $primary-light-bg;
-				text-decoration: none;
-				cursor: pointer;
-
-				&:hover {
-					color: $white;
-				}
-
-				&.active {
-					color: $white;
-				}
-			}
-		}
-
-		.mobile-menu {
-			position: absolute;
-			color: $primary-light-bg;
-			font-size: 23pt;
-			margin-top: 17.5px;
-			cursor: pointer;
-
-			&:hover {
-				color: $white;
-			}
-		}
-
-		.main-menu-user {
-			float: right;
-			height: 100%;
-
-			.notification-option {
-				position: relative;
-				display: inline-block;
-				padding-right: 20px;
-
-				i {
-					width: 20px;
-					height: 20px;
-					padding-top: 20px;
-					padding-bottom: 22.5px;
-					color: $primary-light-bg;
-					cursor: pointer;
-				}
-
-				.new-notification {
-					width: 12px;
-					height: 12px;
-					background-color: $danger;
-					border: 2px solid $primary-bg;
-					display: inline;
-					position: absolute;
-					right: 16px;
-					top: 18px;
-					cursor: pointer;
-					@include border-radius($circle-border-radius);
-				}
-			}
-		}
-
-	}
-}
-
-//---------------- Main User Menu ----------------
-.mobile-natigation {
-	display: inline-block;
-	float: left;
-	position: relative;
-
-	span {
-		outline: none;
-		line-height: 50px;
-		font-weight: 500;
-		padding: 0;
-		color: $text-dark;
-		cursor: pointer;
-
-		i {
-			float: right;
-			line-height: 55px;
-			color: $text;
-		}
-	}
-
-	.dropdown-menu {
-		top: 55px;
-		left: -20px;
-		border: 1px solid $border;
-
-		a {
-			text-decoration: none;
-		}
-
-		li {
-			padding: 5px 10px 5px 10px;
-			line-height: 15px;
-			color: $text-dark;
-			cursor: pointer;
-
-			i {
-				font-size: 11pt;
-				font-weight: 600;
-				color: $white;
-			}
-
-			&:hover i {
-				color: $text;
-			}
-
-			&.active {
-				color: $green;
-				font-weight: 600;
-
-				i {
-					color: $green;
-				}
-
-				&:hover {
-					color: $green;
-				}
-			}
-		}
-	}
-}
+//---------------- Breadcrumb ----------------
 .navigation {
 	height: 100%;
 	margin-left: 20px;
@@ -822,137 +574,6 @@ html, body {
 	}
 }
 
-.avatar-box {
-	height: 100%;
-	padding: 15px 0;
-	float: right;
-	position: relative;
-	display: inline-block;
-
-	.avatar {
-		width: 35px;
-		height: 35px;
-		display: inline-block;
-		float: right;
-		border-radius: 50%;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-		cursor: pointer;
-	}
-}
-
-.user-dropdown {
-	width: 200px;
-	position: absolute;
-	right: -2px;
-	top: 65px;
-	background-color: $white;
-	@include border-radius($default-border-radius);
-	@include box-shadow($popup-box-shadow);
-	padding-left: 0;
-	z-index: 2;
-
-	&:after, &:before {
-		position: absolute;
-		top: -7px;
-		right: 13px;
-		display: inline-block;
-		border-right: 7px solid transparent;
-		border-bottom: 7px solid $white;
-		border-left: 7px solid transparent;
-		color: $white;
-		content: '';
-	}
-
-	ul {
-		padding-left: 0;
-		margin: 0;
-		overflow: hidden;
-
-		li {
-			cursor: pointer;
-			padding: 11px 15px;
-			cursor: pointer;
-			z-index: 3;
-
-			svg {
-				width: 18px;
-				height: 18px;
-				fill: $icon;
-				float: left;
-				margin-top: 1px;
-			}
-
-			span {
-				color: $text;
-				font-size: 11pt;
-				float: left;
-				padding-left: 10px;
-			}
-
-			&:first-child {
-				border-bottom: 1px solid $border;
-			}
-
-			&:hover span {
-				color: $text-dark;
-			}
-
-		}
-	}
-
-}
-
-.mobile-menu-options {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	z-index: 100;
-	background-color: $white;
-
-	.close-mobile-menu {
-		padding: 20px 20px 0 20px;
-		color: $text-dark;
-	}
-
-	.option-menu-mobile.active {
-		color: $text-dark;
-		font-weight: 600;
-	}
-
-	ul {
-		list-style: none;
-		padding: 20px;
-
-		li {
-			padding-bottom: 10px;
-			font-size: 14pt;
-			color: $text;
-			font-weight: 500;
-
-			a {
-				text-decoration: none;
-			}
-		}
-	}
-}
-
-// .mobile-menu {
-// 	width: 30px;
-// 	height: 100%;
-// 	display: inline;
-// 	padding-right: 20px;
-
-// 	svg {
-// 		width: 22px;
-// 		height: 25px;
-// 		fill: $primary-light-bg;
-// 		position: absolute;
-// 		left: 17.5px;
-// 		top: 17.5px;
-// 	}
-// }
 //------------------------------------------------
 // Portrait tablets and small desktops
 @media (min-width: 768px) and (max-width: 991px) {
@@ -961,31 +582,5 @@ html, body {
 
 // Landscape phones and portrait tablets
 @media (max-width: 767px) {
-	// .master-content {
-	// 	width: 100%;
-
-	// 	.allprojects-container {
-	// 		width: 100%;
-	// 		margin: 0;
-	// 	}
-
-	// 	.project-box {
-	// 		width: 100%;
-	// 		margin-left: 0;
-	// 		margin-right: 0;
-	// 	}
-	// }
-
-	// .create-btn {
-	// 	right: 75px;
-	// }
-
-	// .main-user {
-	// 	background-color: $primary-bg;
-
-	// 	.avatar {
-	// 		border: 2px solid $primary-light-bg;
-	// 	}
-	// }
 
 }

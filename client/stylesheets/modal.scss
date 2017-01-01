@@ -152,119 +152,67 @@
 // }
 
 // //-------------- Create Defect Modal -------------
-// .row-defect-buttons {
-// 	padding: 5px 0;
+.create-defect-modal {
+	width: 430px;
+}
 
-// 	.time-btn {
-// 		margin-top: 2px;
-// 		padding: 15px 15px 13px 15px;
-// 		@include border-radius($default-border-radius * 2);
-// 	}
+.row-defect-buttons {
+	margin-bottom: 10px;
+}
 
-// 	.defect-log-time {
-// 		margin-left: 5px;
-// 		color: $text;
-// 		line-height: 10px;
-// 		cursor: default;
-// 	}
+.create-defect-time {
+	// background-color: red;
+	width: calc(50% - 20px);
+	margin-left: 15px;
 
-// 	.defect-create-son {
-// 		padding-left: 0;
-// 		padding-right: 0;
-// 	}
-// }
+	.time-button {
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		color: $white;
+		cursor: pointer;
+		display: inline-block;
+		float: left;
 
-// .defect-create-son {
-// 	width: 100%;
-// 	padding-top: 0;
-// 	margin-top: 0;
-// }
+		.material-icons {
+			width: 100%;
+			text-align: center;
+			line-height: 40px;
+			font-size: 30px;
+		}
+	}
 
-// .defect-time {
-// 	padding-bottom: 10px;
-// 	padding-right: 0;
-// 	i {
-// 		margin-top: 0;
-// 		margin-right: 5px;
+	span {
+		margin-left: 10px;
+		line-height: 40px;
+		display: inline-block;
+		font-size: 15px;
+		color: #80A1B2;
+	}
+}
 
-// 		&:first-child {
-// 			margin-left: 0;
-// 		}
-// 	}
+.defect-create-son {
+	width: calc(50% - 20px);
+	text-align: center;
+	margin-right: 15px;
+	background-color: #F8F9FA;
+	color: #80A1B2;
+	border-radius: 20px;
+	padding: 0 17.5px;
+	line-height: 40px;
+	cursor: pointer;
 
-// 	span {
-// 		line-height: 35px;
-// 	}
-// }
+	span {
+		float: left;
+	}
 
-// .defect-header-description {
-// 	cursor: default;
-// 	background-color: #FED36E;
-// 	@include border-radius($default-border-radius);
-// 	padding: 15px;
-// 	text-align: left;
-// 	color: #B27F1B!important;
-// 	font-weight: 300;
-// 	margin-top: 10px;
-// 	margin-bottom: -10px;
-// }
+	.material-icons {
+		line-height: inherit;
+		float: right;
+	}
+}
 
-// .create-defect-modal {
-// 	.row {
-// 		div {
-// 			&:first-child {
-// 				padding-right: 2px;
-// 			}
-
-// 			&:nth-child(2) {
-// 				padding-left: 7px;
-// 				padding-right: 12px;
-// 			}
-// 		}
-
-// 		input[type="number"] {
-// 			padding-right: 15px;
-// 		}
-// 	}
-// }
-
-// .defect-type-dropdown {
-// 	li {
-// 		position: relative;
-// 		width: 100%;
-// 		cursor: pointer;
-
-// 		&:hover span {
-// 			display: inline;
-// 		}
-// 		span {
-// 			width: 214px;
-// 			background: $menu-popup-bg;
-// 			position: absolute;
-// 			top: -3px;
-// 			right: -224px;
-// 			padding: 7px 7px 7px 12px;
-// 			font-size: 10pt;
-// 			color: $white;
-// 			border-radius: 5px;
-// 			display: none;
-
-// 			i {
-// 				width: 15px;
-// 				height: 15px;
-// 				position: absolute;
-// 				left: -5px;
-// 				top: 10px;
-// 				border-radius: 3px;
-// 				background: $menu-popup-bg;
-// 				transform: rotate(45deg);
-// 				-webkit-transform: rotate(45deg);
-// 			}
-// 		}
-// 	}
-// }
-
-// //--------------- Edit Time Modal ----------------
+//--------------- Edit Time Modal ----------------
 .edit-time-label {
 	display: block;
 		color: $text;
@@ -399,7 +347,7 @@
 
 }
 
-// //-------------- Edit Profile Modal --------------
+//-------------- Edit Profile Modal --------------
 .profile-avatar {
 	width: 100px;
 	height: 100px;
@@ -620,6 +568,12 @@
 	font-size: 13px;
 	font-style: italic;
 	padding: 0 10px 10px 10px;
+	cursor: default;
+
+	a {
+		color: $blue;
+		cursor: pointer;
+	}
 }
 
 .modal-close-action {
@@ -645,7 +599,7 @@
 	color: #566C78;
 	display: block;
 	font-size: 13px;
-	height: 40px;
+	height: 42px;
 	margin-bottom: 10px;
 	max-width: 100%;
 	outline: none;
@@ -657,12 +611,23 @@
 	}
 }
 
+.modal-input-split {
+	width: 100%;
+
+	.split-element {	
+		width: calc(50% - 5px);
+		max-width: calc(50% - 5px);
+	}
+}
+
 textarea.modal-input-field {
 	height: 80px;
 }
 
 .modal-dropdown {
 	position: relative;
+	margin-bottom: 10px;
+	border: 1px solid $white;
 
 	button {
 		background-color: #F8F9FA;
@@ -671,7 +636,6 @@ textarea.modal-input-field {
 		color: #566C78;
 		font-size: 13px;
 		height: 40px;
-		margin-bottom: 10px;
 		outline: none;
 		padding: 10px;
 		text-align: left;
@@ -685,6 +649,11 @@ textarea.modal-input-field {
 		}
 	}
 
+	&.error {
+		border: 1px solid $danger;
+		border-radius: 4px;
+	}
+
 	.dropdown-menu {
 		margin-top: -5px;
 		width: 100%;
@@ -695,6 +664,7 @@ textarea.modal-input-field {
 			cursor: pointer;
 			padding-top: 5px;
 			padding-left: 10px;
+			position: relative;
 
 			padding-bottom: 5px;
 
@@ -702,6 +672,36 @@ textarea.modal-input-field {
 				color: black;
 				background-color: #F8F9FA;
 				border-radius: 20px;
+			}
+
+			&:hover span {
+				display: inline;
+			}
+
+			span {
+				position: absolute;
+				top: 0;
+				right: -220px;
+				width: 200px;
+				background: $menu-popup-bg;
+				position: absolute;
+				padding: 7px 7px 7px 12px;
+				font-size: 10pt;
+				color: $white;
+				border-radius: 5px;
+				display: none;
+
+				&:after {
+					background-color: $menu-popup-bg;
+					content: "";
+					display: block;
+					height: 10px;
+					position: absolute;
+					left: -5px;
+					top: 10px;
+					transform: rotate(45deg);
+					width: 10px;
+				}
 			}
 		}
 	}

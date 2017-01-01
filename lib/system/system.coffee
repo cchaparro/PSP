@@ -167,6 +167,17 @@ sys.flashStatus = (type) ->
 			subject = "No pudimos eliminar la iteración que seleccionaste. Por favor inténtelo nuevamente."
 			css = "danger"
 
+		when "delete-defect-successful"
+			title = "Defecto eliminado"
+			subject = "El defecto seleccionado se ha eliminado correctamente."
+			css = "success"
+
+		when "delete-defect-error"
+			title = "Error"
+			subject = "No pudimos eliminar el defecto que seleccionaste. Por favor inténtelo nuevamente."
+			css = "danger"
+
+
 
 
 
@@ -225,10 +236,6 @@ sys.flashStatus = (type) ->
 			css = "warning"
 
 		# Defects log from the projects view and New defect modal
-		when "delete-defect"
-			title = "Eliminado"
-			subject = "El defecto ha sido removido correctamente."
-			css = "success"
 
 		when "save-defect"
 			title = "Guardado"

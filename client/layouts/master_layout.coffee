@@ -156,6 +156,14 @@ Template.masterLayout.helpers
 				action: () ->
 					projectViewAction(@route)
 			,
+				icon: 'rate_review'
+				title: 'Formularios'
+				route: 'privateRoute.forms'
+				active: () ->
+					return elementActive('privateRoute.forms')
+				action: () ->
+					projectViewAction(@route)
+			,
 				icon: 'description'
 				title: 'Scripts'
 				route: 'privateRoute.scripts'

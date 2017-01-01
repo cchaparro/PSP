@@ -1,40 +1,12 @@
-###########################################
 # titleStatus true is Create title and false is Modify title
 titleStatus = new ReactiveVar(true)
 defectsParent = new ReactiveVar(false)
 defectData = new ReactiveVar({})
 defectId = new ReactiveVar('')
 timeStarted = new ReactiveVar(false)
+TimeClock = new ReactiveClock("TimeClock")
 
-###########################################
-Template.createDefectModal.helpers
-	displayTitle: () ->
-		if titleStatus.get()
-			return "Crear nuevo defecto"
-		else
-			return "Modificar defecto"
-
-	parentId: () ->
-		return defectsParent.get()
-
-
-Template.createDefectModal.events
-	'click .defect-header-description a': (e,t) ->
-		parentId = defectsParent.get()
-		parentData = db.defects.findOne({_id: parentId})
-
-		defectData.set(parentData)
-		defectId.set(parentData._id)
-		titleStatus.set(false)
-		timeStarted.set(new Date())
-
-		if parentData.parentId?
-			defectsParent.set(parentData.parentId)
-		else
-			defectsParent.set(false)
-
-###########################################
-Template.createDefect.onCreated () ->
+Template.createDefectModal.onCreated () ->
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
 	@descriptionError = new ReactiveVar(false)
@@ -52,19 +24,29 @@ Template.createDefect.onCreated () ->
 
 		defectId.set(@data._id)
 		defectData.set(@data)
-		titleStatus.set(false)
+		date = new Date(@data.time)
+		titleStatus.set(date)
 	else
 		defectData.set({
-			"typeDefect":"Elegir tipo"
-			"injected":"Elegir etapa"
-			"removed":"Elegir etapa"
+			"typeDefect": "Elegir tipo"
+			"injected": "Elegir etapa"
+			"removed": "Elegir etapa"
 			"fixCount": "1"
 			"description": ""
 			"parentId": ""
 		})
 
 
-Template.createDefect.helpers
+Template.createDefectModal.helpers
+	displayTitle: () ->
+		if titleStatus.get()
+			return "Crear nuevo defecto"
+		else
+			return "Modificar defecto"
+
+	parentId: () ->
+		return defectsParent.get()
+
 	allDefectTypes: () ->
 		userDefectListId = db.projects.findOne({_id: FlowRouter.getParam("id")})?.defectTypesId
 		return db.defect_types.findOne({_id: userDefectListId})?.defects
@@ -104,12 +86,16 @@ Template.createDefect.helpers
 	projectCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
-
 	errorState: () ->
 		return Template.instance().errorState.get()
 
 	timeStatus: () ->
 		return timeStarted.get()
+
+	timeIcon: () ->
+		recordStatus = timeStarted.get()
+		return 'stop' if recordStatus
+		return 'play_arrow'
 
 	ifLoadsData: () ->
 		return titleStatus.get()
@@ -124,8 +110,27 @@ Template.createDefect.helpers
 		return sys.displayShortTime(time)
 
 
-Template.createDefect.events
+
+Template.createDefectModal.events
+	'click .modal-description a': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		parentId = defectsParent.get()
+		parentData = db.defects.findOne({_id: parentId})
+
+		defectData.set(parentData)
+		defectId.set(parentData._id)
+		titleStatus.set(false)
+		timeStarted.set(new Date())
+
+		if parentData.parentId?
+			defectsParent.set(parentData.parentId)
+		else
+			defectsParent.set(false)
+
 	'click .defect-select-field': (e,t) ->
+		e.preventDefault()
+		# e.stopPropagation()
 		field = $(e.target).data('value')
 		type = $(e.target).data('type')
 		Defect = defectData.get()
@@ -152,6 +157,8 @@ Template.createDefect.events
 		defectData.set(Defect)
 
 	'click .pry-modal-create': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		DefectId = defectId.get()
 		TimeStarted = timeStarted.get()
 		Defect = defectData.get()
@@ -199,12 +206,19 @@ Template.createDefect.events
 					sys.flashStatus("create-defect")
 
 	'click .close-error-box': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		t.errorState.set(0)
 
-	'click .fa-play': (e,t) ->
+	'click .time-button.background-success': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		timeStarted.set(new Date())
+		TimeClock.start()
 
-	'click .fa-pause': (e,t) ->
+	'click .time-button.background-danger': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		DefectId = defectId.get()
 		Defect = defectData.get()
 		TimeStarted = timeStarted.get()
@@ -244,9 +258,14 @@ Template.createDefect.events
 						timeStarted.set(false)
 						defectId.set(result)
 
+			TimeClock.stop()
+
 
 	'click .defect-create-son': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		TimeStarted = timeStarted.get()
+
 		if TimeStarted
 			DefectId = defectId.get()
 			Defect = defectData.get()
@@ -287,4 +306,17 @@ Template.createDefect.events
 		defectId.set('')
 		titleStatus.set(true)
 
-# ##########################################
+
+
+Template.defectClock.onCreated () ->
+	startRecording = timeStarted.get()
+	date = new Date(startRecording)
+	elapsedTime = (Date.now() - date.getTime()) / 1000
+	elapsedTime = Math.ceil(elapsedTime)
+	TimeClock.setElapsedSeconds(elapsedTime)
+	TimeClock.start()
+
+
+Template.defectClock.helpers
+	clock: () ->
+		return TimeClock.elapsedTime({format: '00:00:00'})
