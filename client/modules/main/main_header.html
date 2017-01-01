@@ -1,5 +1,20 @@
 <template name="mainHeader">
+	<!-- TODO - Organize this -->
 	<div class="main-header">
+		<div class="navigation hidden-xs hidden-sm">
+			{{#each navigationState}}
+				<div class="navigation-option">
+					<a href="{{pathFor route fid=fid id=pid question=question}}">
+						<span class="menu-state {{#if lastValue}} active {{/if}} {{#if displayMenu}} state-menu {{/if}}">{{cutText title 25}}</span>
+					</a>
+					<span class="{{#if lastValue}} hide {{/if}} hidden-xs">
+						<svg class="breadcrumb-arrow" viewBox="0 0 100 100"><use xlink:href="/images/ArrowBreadcrumb.svg#arrowsBreadCrumb"></use></svg>
+					</span>
+				</div>
+			{{/each}}
+		</div>
+
+
 		<div class="options">
 			{{>Template.dynamic template=headerActions}}
 		</div>
@@ -20,6 +35,42 @@
 			<li class="account-logout">
 				<span>Cerrar sesión</span>
 			</li>
+		</ul>
+	</div>
+</template>
+
+<template name="notificationsDropdown">
+	<div class="notification-box {{#unless $.Session.get 'main-notification-dropdown'}} hidden {{/unless}}">
+		<span class="popup-title">Notificaciones</span>
+		<ul>
+			{{#each userNotifications}}
+				<li class="notification-item {{#if notReverted}} not-seen {{/if}}">
+					<div class="notification-header">
+						<div class="avatar" style="background-image: url('{{getUserAvatarUrl title.sender}}');"></div>
+						<div class="badge {{badgeStatus}}">
+							{{#if $eq badgeStatus 'success'}}
+								<i class="material-icons">check</i>
+							{{else}}
+								<i class="material-icons">warning</i>
+							{{/if}}
+						</div>
+					</div>
+					<div class="notification-content">
+						<h4>
+							<span class="notification-sender">{{userName title.sender}}</span>
+							{{title.main}}
+							<span class="notification-secondary">{{title.secondary}}</span>
+						</h4>
+						<span class="notification-text">
+							{{subject}}
+							{{#if revertMessage}}
+								<span class="notification-revert">Modificado</span>
+							{{/if}}
+						</span>
+						<p><i class="material-icons">access_time</i> {{momentToNow createdAt}}</p>
+					</div>
+				</li>
+			{{/each}}
 		</ul>
 	</div>
 </template>
@@ -55,6 +106,22 @@
 <template name="createIterationAction">
 	<div class="create-option">
 		<span class="create-iteration">Crear Iteración</span>
+		<i class="material-icons">add_circle</i>
+	</div>
+</template>
+
+<template name="createDefectAction">
+	{{#unless projectCompleted}}
+		<div class="create-option">
+			<span class="create-defect">Crear Defecto</span>
+			<i class="material-icons">add_circle</i>
+		</div>
+	{{/unless}}
+</template>
+
+<template name="createCommunityQuestionAction">
+	<div class="create-option">
+		<span class="create-question">Crear Pregunta</span>
 		<i class="material-icons">add_circle</i>
 	</div>
 </template>

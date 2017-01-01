@@ -1,270 +1,270 @@
 @import '_variables.scss';
 
 //---------------- Modals ----------------
-.general-modal {
-	width: $modal-width;
+// .general-modal {
+// 	width: $modal-width;
 
-	.modal-content {
-		padding: 30px;
-		@include border-radius($default-border-radius);
-		box-shadow: $popup-box-shadow;
-		border: none;
+// 	.modal-content {
+// 		padding: 30px;
+// 		@include border-radius($default-border-radius);
+// 		box-shadow: $popup-box-shadow;
+// 		border: none;
 
-		.modal-header {
-			padding: 0;
-			border-bottom: 0;
+// 		.modal-header {
+// 			padding: 0;
+// 			border-bottom: 0;
 
-			span {
-				cursor: pointer;
-				font-size: 14pt;
-				display: inline;
-				position: absolute;
-				top: 35px;
-				right: 30px;
+// 			span {
+// 				cursor: pointer;
+// 				font-size: 14pt;
+// 				display: inline;
+// 				position: absolute;
+// 				top: 35px;
+// 				right: 30px;
 
-				i {
-					color: $text;
+// 				i {
+// 					color: $text;
 
-					&:hover {
-						color: $text-dark;
-					}
-				}
-			}
+// 					&:hover {
+// 						color: $text-dark;
+// 					}
+// 				}
+// 			}
 
-			p {
-				padding-top: 10px;
-				padding-right: 30px;
-				font-weight: 300;
-				color: $text;
-			}
+// 			p {
+// 				padding-top: 10px;
+// 				padding-right: 30px;
+// 				font-weight: 300;
+// 				color: $text;
+// 			}
 
-			h3 {
-				margin: 0;
-				padding-top: 5px;
-				font-size: 15pt;
-				color: $text-dark;
-			}
-		}
+// 			h3 {
+// 				margin: 0;
+// 				padding-top: 5px;
+// 				font-size: 15pt;
+// 				color: $text-dark;
+// 			}
+// 		}
 
-		.modal-body {
-			padding: 0;
-			padding-top: 20px;
-		}
+// 		.modal-body {
+// 			padding: 0;
+// 			padding-top: 20px;
+// 		}
 
-		.modal-footer {
-			margin: -20px -15px;
-			border: none;
-		}
+// 		.modal-footer {
+// 			margin: -20px -15px;
+// 			border: none;
+// 		}
 
-	}
-}
+// 	}
+// }
 
-.profile-modal {
-	@extend .general-modal;
-	width: $profile-modal-width;
+// .profile-modal {
+// 	@extend .general-modal;
+// 	width: $profile-modal-width;
 
-	.primary-button {
-		width: 100%;
-	}
+// 	.primary-button {
+// 		width: 100%;
+// 	}
 
-	.modal-content {
-		.modal-body {
-			margin-top: 20px;
-			padding-top: 0px;
-		}
-	}
-}
+// 	.modal-content {
+// 		.modal-body {
+// 			margin-top: 20px;
+// 			padding-top: 0px;
+// 		}
+// 	}
+// }
 
 
-//------------- Create Project Modal -------------
-.create-project-row {
-	@include clearfix();
+// //------------- Create Project Modal -------------
+// .create-project-row {
+// 	@include clearfix();
 
-	div {
-		display: inline-block;
+// 	div {
+// 		display: inline-block;
 
-		&:first-child {
-			width: 60%;
-			float: left;
-			padding-right: 10px;
-		}
+// 		&:first-child {
+// 			width: 60%;
+// 			float: left;
+// 			padding-right: 10px;
+// 		}
 
-		&:last-child {
-			width: 40%;
-			float: right;
-		}
-	}
+// 		&:last-child {
+// 			width: 40%;
+// 			float: right;
+// 		}
+// 	}
 
-	.input-error-box {
-		i {
-			padding-right: 10px;
-		}
-	}
-}
+// 	.input-error-box {
+// 		i {
+// 			padding-right: 10px;
+// 		}
+// 	}
+// }
 
-.create-project-color-row {
-	margin-bottom: 10px;
-	height: 40px;
-	line-height: 40px;
+// .create-project-color-row {
+// 	margin-bottom: 10px;
+// 	height: 40px;
+// 	line-height: 40px;
 
-	span {
-		color: $text;
-		float: left;
-		font-weight: 300;
-		padding-right: 10px;
-	}
+// 	span {
+// 		color: $text;
+// 		float: left;
+// 		font-weight: 300;
+// 		padding-right: 10px;
+// 	}
 
-	.color-option {
-		width: 28px;
-		height: 28px;
-		float: left;
-		margin-top: 6px;
-		margin-right: 5px;
-		@include border-radius($circle-border-radius);
-		display: inline-block;
-		border: 1px solid $white;
-		cursor: pointer;
-		position: relative;
+// 	.color-option {
+// 		width: 28px;
+// 		height: 28px;
+// 		float: left;
+// 		margin-top: 6px;
+// 		margin-right: 5px;
+// 		@include border-radius($circle-border-radius);
+// 		display: inline-block;
+// 		border: 1px solid $white;
+// 		cursor: pointer;
+// 		position: relative;
 
-		&.selected {
-			border: 2px solid $text;
+// 		&.selected {
+// 			border: 2px solid $text;
 
-			svg {
-				left: 7px;
-				top: 6.5px;
-			}
-		}
+// 			svg {
+// 				left: 7px;
+// 				top: 6.5px;
+// 			}
+// 		}
 
-		div {
-			width: 100%;
-			height: 100%;
-			@include border-radius($circle-border-radius);
-		}
+// 		div {
+// 			width: 100%;
+// 			height: 100%;
+// 			@include border-radius($circle-border-radius);
+// 		}
 
-		svg {
-			width: 10px;
-			left: 8px;
-			top: 7.5px;
-			position: absolute;
-			fill: rgba($white, 0.8);
-		}
-	}
-}
+// 		svg {
+// 			width: 10px;
+// 			left: 8px;
+// 			top: 7.5px;
+// 			position: absolute;
+// 			fill: rgba($white, 0.8);
+// 		}
+// 	}
+// }
 
-//-------------- Create Defect Modal -------------
-.row-defect-buttons {
-	padding: 5px 0;
+// //-------------- Create Defect Modal -------------
+// .row-defect-buttons {
+// 	padding: 5px 0;
 
-	.time-btn {
-		margin-top: 2px;
-		padding: 15px 15px 13px 15px;
-		@include border-radius($default-border-radius * 2);
-	}
+// 	.time-btn {
+// 		margin-top: 2px;
+// 		padding: 15px 15px 13px 15px;
+// 		@include border-radius($default-border-radius * 2);
+// 	}
 
-	.defect-log-time {
-		margin-left: 5px;
-		color: $text;
-		line-height: 10px;
-		cursor: default;
-	}
+// 	.defect-log-time {
+// 		margin-left: 5px;
+// 		color: $text;
+// 		line-height: 10px;
+// 		cursor: default;
+// 	}
 
-	.defect-create-son {
-		padding-left: 0;
-		padding-right: 0;
-	}
-}
+// 	.defect-create-son {
+// 		padding-left: 0;
+// 		padding-right: 0;
+// 	}
+// }
 
-.defect-create-son {
-	width: 100%;
-	padding-top: 0;
-	margin-top: 0;
-}
+// .defect-create-son {
+// 	width: 100%;
+// 	padding-top: 0;
+// 	margin-top: 0;
+// }
 
-.defect-time {
-	padding-bottom: 10px;
-	padding-right: 0;
-	i {
-		margin-top: 0;
-		margin-right: 5px;
+// .defect-time {
+// 	padding-bottom: 10px;
+// 	padding-right: 0;
+// 	i {
+// 		margin-top: 0;
+// 		margin-right: 5px;
 
-		&:first-child {
-			margin-left: 0;
-		}
-	}
+// 		&:first-child {
+// 			margin-left: 0;
+// 		}
+// 	}
 
-	span {
-		line-height: 35px;
-	}
-}
+// 	span {
+// 		line-height: 35px;
+// 	}
+// }
 
-.defect-header-description {
-	cursor: default;
-	background-color: #FED36E;
-	@include border-radius($default-border-radius);
-	padding: 15px;
-	text-align: left;
-	color: #B27F1B!important;
-	font-weight: 300;
-	margin-top: 10px;
-	margin-bottom: -10px;
-}
+// .defect-header-description {
+// 	cursor: default;
+// 	background-color: #FED36E;
+// 	@include border-radius($default-border-radius);
+// 	padding: 15px;
+// 	text-align: left;
+// 	color: #B27F1B!important;
+// 	font-weight: 300;
+// 	margin-top: 10px;
+// 	margin-bottom: -10px;
+// }
 
-.create-defect-modal {
-	.row {
-		div {
-			&:first-child {
-				padding-right: 2px;
-			}
+// .create-defect-modal {
+// 	.row {
+// 		div {
+// 			&:first-child {
+// 				padding-right: 2px;
+// 			}
 
-			&:nth-child(2) {
-				padding-left: 7px;
-				padding-right: 12px;
-			}
-		}
+// 			&:nth-child(2) {
+// 				padding-left: 7px;
+// 				padding-right: 12px;
+// 			}
+// 		}
 
-		input[type="number"] {
-			padding-right: 15px;
-		}
-	}
-}
+// 		input[type="number"] {
+// 			padding-right: 15px;
+// 		}
+// 	}
+// }
 
-.defect-type-dropdown {
-	li {
-		position: relative;
-		width: 100%;
-		cursor: pointer;
+// .defect-type-dropdown {
+// 	li {
+// 		position: relative;
+// 		width: 100%;
+// 		cursor: pointer;
 
-		&:hover span {
-			display: inline;
-		}
-		span {
-			width: 214px;
-			background: $menu-popup-bg;
-			position: absolute;
-			top: -3px;
-			right: -224px;
-			padding: 7px 7px 7px 12px;
-			font-size: 10pt;
-			color: $white;
-			border-radius: 5px;
-			display: none;
+// 		&:hover span {
+// 			display: inline;
+// 		}
+// 		span {
+// 			width: 214px;
+// 			background: $menu-popup-bg;
+// 			position: absolute;
+// 			top: -3px;
+// 			right: -224px;
+// 			padding: 7px 7px 7px 12px;
+// 			font-size: 10pt;
+// 			color: $white;
+// 			border-radius: 5px;
+// 			display: none;
 
-			i {
-				width: 15px;
-				height: 15px;
-				position: absolute;
-				left: -5px;
-				top: 10px;
-				border-radius: 3px;
-				background: $menu-popup-bg;
-				transform: rotate(45deg);
-				-webkit-transform: rotate(45deg);
-			}
-		}
-	}
-}
+// 			i {
+// 				width: 15px;
+// 				height: 15px;
+// 				position: absolute;
+// 				left: -5px;
+// 				top: 10px;
+// 				border-radius: 3px;
+// 				background: $menu-popup-bg;
+// 				transform: rotate(45deg);
+// 				-webkit-transform: rotate(45deg);
+// 			}
+// 		}
+// 	}
+// }
 
-//--------------- Edit Time Modal ----------------
+// //--------------- Edit Time Modal ----------------
 .edit-time-label {
 	display: block;
 		color: $text;
@@ -399,7 +399,7 @@
 
 }
 
-//-------------- Edit Profile Modal --------------
+// //-------------- Edit Profile Modal --------------
 .profile-avatar {
 	width: 100px;
 	height: 100px;
@@ -532,47 +532,178 @@
 
 
 
-.pip-row {
-	span {
-		float: left;
+// .pip-row {
+// 	span {
+// 		float: left;
+// 	}
+// }
+
+// .title-pip{
+// 	color:#95a6b9;
+// }
+// .pip-checkbox-container{
+// 	width: 100%;
+// 	padding: 0;
+// 	.pip-checkbox-row{
+// 		width: 50%;
+// 		display: block;
+// 		float: left;
+// 		label{
+// 			display: flex;
+// 			font-weight: normal;
+// 			color: #5f6c80;
+// 		}
+// 		input{
+// 			width: 15%;			
+// 		}
+// 	}
+// }
+
+
+// //------------------------------------------------
+
+// // Portrait tablets and small desktops
+// @media (min-width: 768px) and (max-width: 991px) {
+
+// }
+
+// // Landscape phones and portrait tablets
+// @media (max-width: 767px) {
+// 	.modal-dialog {
+// 		width: calc(100% - 20px);
+
+// 	}
+// }
+
+//------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+.create-project-modal {
+	width: 390px;
+}
+
+.modal-dialog {
+	.modal-content {
+		padding: 10px;
+		border-radius: 4px;
+		border: none;
+		box-shadow: none;
 	}
 }
 
-.title-pip{
-	color:#95a6b9;
-}
-.pip-checkbox-container{
-	width: 100%;
+.modal-header, .modal-footer {
 	padding: 0;
-	.pip-checkbox-row{
-		width: 50%;
-		display: block;
-		float: left;
-		label{
-			display: flex;
-			font-weight: normal;
-			color: #5f6c80;
-		}
-		input{
-			width: 15%;			
-		}
+	border: none;
+}
+
+.modal-title {
+	color: #566C78;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 20px;
+	margin-top: 0;
+	margin-bottom: 5px;
+	padding: 10px 10px 0 10px;
+}
+
+.modal-description {
+	color: #b1b7c1;
+	display: inline-block;
+	font-size: 13px;
+	font-style: italic;
+	padding: 0 10px 10px 10px;
+}
+
+.modal-close-action {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	color: #566C78;
+}
+
+.modal-input-title {
+	color: #566C78;
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+.modal-input-field {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 40px;
+	margin-bottom: 10px;
+	max-width: 100%;
+	outline: none;
+	padding: 10px;
+	width: 100%;
+
+	&.error {
+		border: 1px solid $danger;
 	}
 }
 
-
-//------------------------------------------------
-
-// Portrait tablets and small desktops
-@media (min-width: 768px) and (max-width: 991px) {
-
+textarea.modal-input-field {
+	height: 80px;
 }
 
-// Landscape phones and portrait tablets
-@media (max-width: 767px) {
-	.modal-dialog {
-		width: calc(100% - 20px);
+.modal-dropdown {
+	position: relative;
 
+	button {
+		background-color: #F8F9FA;
+		border: none;
+		border-radius: 4px;
+		color: #566C78;
+		font-size: 13px;
+		height: 40px;
+		margin-bottom: 10px;
+		outline: none;
+		padding: 10px;
+		text-align: left;
+		width: 100%;
+
+		i {
+			line-height: 40px;
+			position: absolute;
+			right: 5px;
+			top: 0;
+		}
 	}
-}
 
-//------------------------------------------------
+	.dropdown-menu {
+		margin-top: -5px;
+		width: 100%;
+		padding: 10px;
+
+		li {
+			color: #566C78;
+			cursor: pointer;
+			padding-top: 5px;
+			padding-left: 10px;
+
+			padding-bottom: 5px;
+
+			&:hover {
+				color: black;
+				background-color: #F8F9FA;
+				border-radius: 20px;
+			}
+		}
+	}
+	
+}

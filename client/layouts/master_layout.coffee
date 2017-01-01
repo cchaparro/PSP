@@ -1,8 +1,6 @@
 elementActive = (route) ->
 	FlowRouter.watchPathChange()
 	currentRoute = FlowRouter.current().route.name
-
-	return false if Session.get 'main-avatar-dropdown'
 	return route is currentRoute
 
 closePopups = () ->
@@ -20,6 +18,15 @@ projectViewAction = (route) ->
 		fid: iterationId
 		id: projectId
 	})
+
+projectViewActive = () ->
+	if elementActive('privateRoute.general')
+		return true
+
+	FlowRouter.watchPathChange()
+	currentRoute = FlowRouter.current().route.name
+	projectViews = ['privateRoute.iterations', 'privateRoute.projectGeneral', 'privateRoute.summary', 'privateRoute.timeLog', 'privateRoute.defectLog', 'privateRoute.estimating', 'privateRoute.pqi', 'privateRoute.scripts']
+	return _.contains projectViews, currentRoute
 
 
 Template.masterLayout.onCreated () ->
@@ -45,7 +52,7 @@ Template.masterLayout.helpers
 				title: 'Proyectos'
 				route: 'privateRoute.general'
 				active: () ->
-					return elementActive('privateRoute.general')
+					return projectViewActive()
 				action: () ->
 					closePopups()
 					return FlowRouter.go(@route)
@@ -79,10 +86,14 @@ Template.masterLayout.helpers
 			,
 				icon: 'notifications'
 				title: 'Notificaciones'
+				template: 'notificationsDropdown'
 				active: () ->
 					return notificationsDropdownState
 				action: () ->
-					return true
+					Meteor.call "notificationsSeen"
+					Session.set 'main-avatar-dropdown', false
+					return Session.set 'main-notification-dropdown', false if notificationsDropdownState
+					return Session.set 'main-notification-dropdown', true
 			,
 				icon: 'account_circle'
 				title: 'Perfil'
@@ -90,6 +101,7 @@ Template.masterLayout.helpers
 				active: () ->
 					return avatarDropdownState
 				action: () ->
+					Session.set 'main-notification-dropdown', false
 					return Session.set 'main-avatar-dropdown', false if avatarDropdownState
 					return Session.set 'main-avatar-dropdown', true
 		]
@@ -167,6 +179,7 @@ Template.masterLayout.events
 
 		if checkItem($this, ".main-wrapper")
 			Session.set "main-avatar-dropdown", false
+			Session.set "main-notification-dropdown", false
 
 			unless checkItem($this, ".options")
 				Session.set "project-sort-dropdown", false
@@ -176,30 +189,13 @@ Template.masterLayout.events
 				Session.set "main-avatar-dropdown", false
 				Session.set "project-sort-dropdown", false
 
+			unless checkItem($this, ".notification-box")
+				Session.set "main-notification-dropdown", false
+				Session.set "project-sort-dropdown", false
+
 	'click .close-status': (e,t) ->
 		e.stopPropagation()
 		e.preventDefault()
 
 		$(e.target).closest('.status-message').animate { opacity: 0 }, 200, ->
 			Session.set "statusMessage", false
-
-	# 	if checkItem($this, ".master-content")
-	# 		Session.set("display-notification-box", false)
-	# 		Session.set("display-user-box", false)
-	# 		unless checkItem($this, ".navigation-option")
-	# 			Session.set("navigation-menu", false)
-
-	# 	if checkItem($this, ".main-menu-content")
-	# 		unless checkItem($this, ".notification") or checkItem($this, ".notification-box")
-	# 			Session.set("display-notification-box", false)
-	# 		unless checkItem($this, ".avatar-box")
-	# 			Session.set("display-user-box", false)
-
-	# 		Session.set("navigation-menu", false)
-
-	# 	if checkItem($this, ".main-menu-user")
-	# 		unless checkItem($this, ".notification") or checkItem($this, ".notification-box")
-	# 			Session.set("display-notification-box", false)
-	# 		unless checkItem($this, ".avatar-box")
-	# 			Session.set("display-user-box", false)
-

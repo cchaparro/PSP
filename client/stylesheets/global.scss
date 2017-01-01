@@ -8,7 +8,32 @@
 	color: $success;
 }
 
+.primary-button {
+	background-color: $blue;
+	border: none;
+	border-radius: 4px;
+	color: $white;
+	font-size: 13px;
+	height: 40px;
+	outline: none;
+	padding: 10px;
+	cursor: pointer;
 
+	&:hover {
+		background-color: $blue-dark;
+	}
+}
+
+.cancel-button {
+	border: 2px solid #EBEBEB;
+	border-radius: 4px;
+	color: #566C78;
+	font-size: 13px;
+	height: 40px;
+	outline: none;
+	padding: 9px 10px 11px 10px;
+	cursor: pointer;
+}
 
 
 
@@ -32,35 +57,35 @@
 
 
 
-.primary-button {
-	height: 45px;
-	display: inline-block;
-	padding-left: 15px;
-	padding-right: 15px;
-	background-color: $white;
-	color: $blue;
-	font-size: 11.5pt;
-	margin-top: 10px;
-	border: none;
-	line-height: 42.5px;
-	cursor: pointer;
-	text-align: center;
-	border: 1px solid $blue;
-	outline: none!important;
-	@include border-radius($default-border-radius);
+// .primary-button {
+// 	height: 45px;
+// 	display: inline-block;
+// 	padding-left: 15px;
+// 	padding-right: 15px;
+// 	background-color: $white;
+// 	color: $blue;
+// 	font-size: 11.5pt;
+// 	margin-top: 10px;
+// 	border: none;
+// 	line-height: 42.5px;
+// 	cursor: pointer;
+// 	text-align: center;
+// 	border: 1px solid $blue;
+// 	outline: none!important;
+// 	@include border-radius($default-border-radius);
 
-	&:hover {
-		background-color: $blue;
-		border: 1px solid $blue;
-		color: $white;
-	}
+// 	&:hover {
+// 		background-color: $blue;
+// 		border: 1px solid $blue;
+// 		color: $white;
+// 	}
 
-	&:focus {
-		background-color: $blue;
-		border: 1px solid $blue;
-		color: $white;
-	}
-}
+// 	&:focus {
+// 		background-color: $blue;
+// 		border: 1px solid $blue;
+// 		color: $white;
+// 	}
+// }
 
 .new-button {
 	padding: 10px 15px;
@@ -223,69 +248,69 @@
 }
 
 
-.dropdown-box {
-	width: 100%;
-	position: relative;
+// .dropdown-box {
+// 	width: 100%;
+// 	position: relative;
 
-	span {
-		display: block;
-		color: $text;
-		font-weight: 400;
-		padding-bottom: 5px;
-	}
+// 	span {
+// 		display: block;
+// 		color: $text;
+// 		font-weight: 400;
+// 		padding-bottom: 5px;
+// 	}
 
-	button {
-		width: 100%;
-		position: relative;
-		outline: none;
-		padding: 12px 26px 12px 12px;
-		margin-bottom: 10px;
-		color: $text-dark;
-		font-size: 11pt;
-		text-align: left;
-		background-color: $white;
-		@include border-radius($default-border-radius);
-		@include placeholder-color($text, 200);
-		border: 1px solid $border-input;
+// 	button {
+// 		width: 100%;
+// 		position: relative;
+// 		outline: none;
+// 		padding: 12px 26px 12px 12px;
+// 		margin-bottom: 10px;
+// 		color: $text-dark;
+// 		font-size: 11pt;
+// 		text-align: left;
+// 		background-color: $white;
+// 		@include border-radius($default-border-radius);
+// 		@include placeholder-color($text, 200);
+// 		border: 1px solid $border-input;
 
-		&:focus {
-			border: 1px solid $blue;
-		}
+// 		&:focus {
+// 			border: 1px solid $blue;
+// 		}
 
-		i {
-			position: absolute;
-			top: 3.5px;
-			right: 3.5px;
-			color: $text-dark;
-			font-size: 10pt;
-			padding: 12px 6px;
-		}
-	}
+// 		i {
+// 			position: absolute;
+// 			top: 3.5px;
+// 			right: 3.5px;
+// 			color: $text-dark;
+// 			font-size: 10pt;
+// 			padding: 12px 6px;
+// 		}
+// 	}
 
-	.dropdown-menu {
-		width: 100%;
-		margin-top: -5px;
-		border: 1px solid $border;
+// 	.dropdown-menu {
+// 		width: 100%;
+// 		margin-top: -5px;
+// 		border: 1px solid $border;
 
-		li {
-			padding: 5px 5px 5px 10px;
-			color: $text-dark;
-			cursor: pointer;
+// 		li {
+// 			padding: 5px 5px 5px 10px;
+// 			color: $text-dark;
+// 			cursor: pointer;
 
-			&:hover {
-				background-color: $background;
-			}
-		}
-	}
-}
+// 			&:hover {
+// 				background-color: $background;
+// 			}
+// 		}
+// 	}
+// }
 
-.dropdown-error-box {
-	@extend .dropdown-box;
+// .dropdown-error-box {
+// 	@extend .dropdown-box;
 
-	button {
-		border: 1px solid $danger;
-	}
-}
+// 	button {
+// 		border: 1px solid $danger;
+// 	}
+// }
 
 .textarea-box {
 	width: 100%;

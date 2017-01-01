@@ -1,11 +1,13 @@
 <!-- ###################################### -->
 <template name="defectsTemplate">
 	{{>projectMessages}}
-	{{>headerNavigation}}
 	{{#unless amountDefects}}
-		<div class="empty-data-box">
-			<h3>No has creado ningun defecto aun.</h3>
-			<span>Para crear un nuevo defecto debes dar click en el botón verde superior.</span>
+		<div class="empty-projects">
+			<div>
+				<i class="material-icons">sentiment_very_dissatisfied</i>
+				<h4>No has creado ningun defecto aún.</h4>
+				<span>Para crear un nuevo defecto debes dar click en el botón que se encuentra en la parte superior.</span>
+			</div>
 		</div>
 	{{/unless}}
 	<div class="defects">

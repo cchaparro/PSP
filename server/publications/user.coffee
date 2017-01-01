@@ -1,4 +1,3 @@
-####################################
 Meteor.publish "UserMenu", () ->
 	return [
 		db.notifications.find({"notificationOwner": @userId})
@@ -22,5 +21,3 @@ Meteor.publish "accountSettings", () ->
 		db.plan_summary.find({"summaryOwner": @userId})
 		#db.files.find({ "metadata.fileOwner": @userId})
 	]
-
-####################################

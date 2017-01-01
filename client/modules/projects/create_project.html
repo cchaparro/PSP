@@ -1,0 +1,43 @@
+<template name="createProjectModal">
+	{{#modal modalClasses="create-project-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">Crear Nuevo Proyecto</h3>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<span class="modal-input-title">Titulo proyecto</span>
+			<input class="modal-input-field project-title {{#if titleError}} error {{/if}}" type="text" placeholder="Ingresar titulo">
+
+			<span class="modal-input-title">Nivel PSP</span>
+			<div class="dropdown-box modal-dropdown">
+				<button type="button" data-toggle="dropdown">
+					{{currentPSPLevel}}
+					<i class="material-icons">arrow_drop_down</i>
+				</button>
+				<ul class="dropdown-menu">
+					<li class="project-level-option" data-value="PSP 0">Personal Software Process 0</li>
+					<li class="project-level-option" data-value="PSP 1">Personal Software Process 1</li>
+					<li class="project-level-option" data-value="PSP 2">Personal Software Process 2</li>
+				</ul>
+			</div>
+
+			<span class="modal-input-title">Elegir color</span>
+			<div class="project-color-container">
+				{{#each projectColors}}
+					<div class="project-color-option">
+						{{#if selected}}
+							<i class="material-icons">check</i>
+						{{/if}}
+						<div style="background-color: {{color}}"></div>
+					</div>
+				{{/each}}
+			</div>
+
+			<span class="modal-input-title">Descripción color</span>
+			<textarea class="modal-input-field project-description {{#if descriptionError}} error {{/if}}" placeholder="Ingresar descripción del nuevo proyecto ..."></textarea>
+			<div class="modal-footer">
+				<span class="primary-button pull-right project-create">Crear Proyecto</span>
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>

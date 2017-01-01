@@ -128,7 +128,7 @@ sys.flashStatus = (type) ->
 			css = "danger"
 
 		when "delete-project-successful"
-			title = "Proyecto Eliminado"
+			title = "Proyecto eliminado"
 			subject = "El projecto seleccionado se ha eliminado correctamente."
 			css = "success"
 
@@ -405,7 +405,7 @@ sys.flashStatus = (type) ->
 			css = "danger"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
-	window.setTimeout sys.removeMessage, 5000
+	window.setTimeout sys.removeMessage, 5300
 
 
 # This is used to fade-out the notification
