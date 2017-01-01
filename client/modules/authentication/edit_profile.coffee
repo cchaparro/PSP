@@ -1,39 +1,20 @@
-#######################################
-Template.profileView.onCreated () ->
+Template.editProfileModal.onCreated () ->
 	Meteor.subscribe "UserMenu"
 	@currentUpload = new ReactiveVar(false)
 
 
-Template.profileView.helpers
-	userData: () ->
-		return db.users.findOne({_id: Meteor.userId()})
+Template.editProfileModal.helpers
+	user: () ->
+		return Meteor.user()
 
 	currentUpload: () ->
 		return Template.instance().currentUpload.get()
 
-	registeredService: () ->
-		if @profile?.service?
-			switch @profile?.service
-				when "email"
-					return "fa-envelope"
-				when "google"
-					return "fa-google"
-				when "facebook"
-					return "fa-facebook-official"
-		else
-			return ""
 
-
-Template.profileView.events
-	'click .back-profile': (e,t) ->
-		activeTab = $(e.target).closest(".profile-slide")
-		activeTab.removeClass("activate")
-
-	'click .general-view-avatar': (e,t) ->
-		activeTab = $(e.target).closest(".profile-slide")
-		activeTab.addClass("activate")
-
-	'click .profile-upload-box': (e,t) ->
+Template.editProfileModal.events
+	'click .edit-profile-upload': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
 		$fileUploader = t.$(".image-upload")
 		$fileUploader.click()
 
@@ -79,7 +60,10 @@ Template.profileView.events
 
 				uploadInstance.start()
 
-	'click .profile-default-image': (e,t) ->
+	'click .edit-profile-default-image': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+
 		data = {
 			"profile.profileImageUrl": null
 		}
@@ -87,16 +71,19 @@ Template.profileView.events
 			unless error
 				sys.flashStatus("update-profile-image")
 
-	'click .save-profile-settings': (e,t) ->
+	'click .edit-profile-save': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		userId = Meteor.userId()
+
 		data = {
-			"profile.fname": $("#fname").val()
-			"profile.lname": $("#lname").val()
+			"profile.fname": t.$('[name="firstName"]').val()
+			"profile.lname": t.$('[name="lastName"]').val()
 		}
-		Meteor.call "update_user_public_info", Meteor.userId(), data, (error) ->
+		Meteor.call "update_user_public_info", userId, data, (error) ->
 			if error
 				console.warn(error)
 				sys.flashStatus("error-profile-update")
 			else
 				sys.flashStatus("profile-update")
 
-#######################################

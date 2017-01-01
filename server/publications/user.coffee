@@ -1,8 +1,12 @@
 Meteor.publish "UserMenu", () ->
+	fields = {
+		'settings'
+	}
+
 	return [
 		db.notifications.find({"notificationOwner": @userId})
 		db.plan_summary.find({"summaryOwner": @userId})
-		db.users.find({_id: @userId})
+		db.users.find({_id: @userId}, {fields: fields})
 		db.Images.find({userId: @userId}).cursor
 	]
 

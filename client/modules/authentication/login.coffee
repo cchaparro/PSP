@@ -1,7 +1,5 @@
-##################################################
 Template.loginTemplate.onCreated () ->
 	@errorState = new ReactiveVar(false)
-	document.title = "Inicio de Sesión"
 
 
 Template.loginTemplate.helpers
@@ -9,69 +7,72 @@ Template.loginTemplate.helpers
 		return Template.instance().errorState.get()
 
 	errorMessage: () ->
-		switch Template.instance().errorState.get()
+		errorState = Template.instance().errorState.get()
+		switch errorState
 			when 'user'
-				return "El correo ingresado no esta registrado"
+				return "El correo electrónico ingresado no esta registrado."
 			when 'email'
-				return "Ingresaste un correo que no es valido"
+				return "Ingresaste un correo electrónico que no es valido"
 			when 'password'
 				return "La contraseña ingresada es incorrecta"
-
-		return "\xa0"
+			else
+				return false
 
 
 Template.loginTemplate.events
-	'keypress #email': (e,t) ->
+	'keypress [name="emailAddress"]': (e,t) ->
 		if t.errorState.get()
 			t.errorState.set(false)
 
-	'keypress #password': (e,t) ->
+	'keypress [name="password"]': (e,t) ->
 		if t.errorState.get()
 			t.errorState.set(false)
 
-	'submit form': (e,t) ->
+	'submit form': (e, t) ->
 		e.preventDefault()
+		e.stopPropagation()
 
-		email = $('#email').val()
-		password = $('#password').val()
+		email = t.$('[name="emailAddress"]').val()
+		password = t.$('[name="password"]').val()
 
-		if sys.isEmail(email) and (email!= '') and (password!= '')
+		if sys.isEmail(email) and password
 			Meteor.loginWithPassword email, password, (error) ->
 				if error
 					if error.reason == "User not found"
 						t.errorState.set("user")
-						$('#email').val('')
-						$('#password').val('')
+						t.$('[name="emailAddress"]').val('')
+						t.$('[name="password"]').val('')
 
 					else if error.reason == "Incorrect password"
 						t.errorState.set("password")
-						$('#password').val('')
-
+						t.$('[name="password"]').val('')
 				else
-					FlowRouter.go('privateRoute.general')
+					FlowRouter.go("privateRoute.general")
 
 		if !sys.isEmail(email) and email.length > 0
 			t.errorState.set("email")
-			$('#email').val('')
-			$('#password').val('')
+			t.$('[name="emailAddress"]').val('')
+			t.$('[name="password"]').val('')
 
-
-	'click .access-selection-box': (e,t) ->
-		FlowRouter.go("publicRoute.signup")
-
-	'click .forgot-password': (e,t) ->
+	'click .auth-forgot': (e,t) ->
 		FlowRouter.go('publicRoute.forgot')
 
-	'click .user-access-facebook': (e,t) ->
+	'click .auth-facebook': (e,t) ->
 		e.preventDefault()
+		e.stopPropagation()
+
 		Meteor.loginWithFacebook { requestPermissions: [ 'email' ] }, (error) ->
 			if error
 				console.warn(error)
+			else
+				FlowRouter.go("privateRoute.general")
 
-	'click .user-access-google': (e,t) ->
+	'click .auth-google': (e,t) ->
 		e.preventDefault()
+		e.stopPropagation()
+
 		Meteor.loginWithGoogle { requestPermissions: [ 'email' ] }, (error) ->
 			if error
 				console.warn(error)
-
-##################################################
+			else
+				FlowRouter.go("privateRoute.general")
