@@ -1,26 +1,23 @@
-##################################################
+defectTypeList = new ReactiveVar([])
+
 Template.defectTypeSettingsTemplate.onCreated ()->
 	Meteor.subscribe "projectSettings"
-	@defectTypeList = new ReactiveVar([])
 	@displayWarning = new ReactiveVar(false)
 
-
-Template.defectTypeSettingsTemplate.helpers
-	createDefectList: () ->
+	@autorun ->
 		defectTypeId = db.users.findOne({_id: Meteor.userId()})?.defectTypes?.current
 		defectTypes = db.defect_types.findOne({_id: defectTypeId})?.defects
 
-		pos = 1
 		defects = []
-		_.each defectTypes, (defect) ->
-			defects.push({position: pos, name: defect.name, description: defect.description})
-			pos += 1
+		_.each defectTypes, (defect, position) ->
+			defects.push({position: position, name: defect.name, description: defect.description})
 
-		Template.instance().defectTypeList.set(defects)
-		return
+		defectTypeList.set(defects)
 
+
+Template.defectTypeSettingsTemplate.helpers
 	defectTypes: () ->
-		return Template.instance().defectTypeList.get()
+		return defectTypeList.get()
 
 	displayWarning: () ->
 		return Template.instance().displayWarning.get()
@@ -28,40 +25,34 @@ Template.defectTypeSettingsTemplate.helpers
 
 Template.defectTypeSettingsTemplate.events
 	'blur .defect-type-title': (e,t) ->
-		defectList = t.defectTypeList.get()
+		defectList = defectTypeList.get()
 		value = $(e.target).text()
 
 		defectList[@position-1].name = value
-		t.defectTypeList.set(defectList)
+		defectTypeList.set(defectList)
 
 	'blur .defect-type-description': (e,t) ->
-		defectList = t.defectTypeList.get()
+		defectList = defectTypeList.get()
 		value = $(e.target).text()
 
 		defectList[@position-1].description = value
-		t.defectTypeList.set(defectList)
+		defectTypeList.set(defectList)
 
-	'click .create-type': (e,t) ->
-		defectList = t.defectTypeList.get()
-		defectList.push({position: defectList.length+1, name: "Nuevo tipo de defecto", description: "Aquí va la descripción del nuevo tipo de defecto"})
-		t.defectTypeList.set(defectList)
-		sys.flashStatus("add-defect-dype")
-
-	'click .delete-type': (e,t) ->
-		defectList = t.defectTypeList.get()
+	'click .defect-type-delete': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		defectList = defectTypeList.get()
 		currentDefect = @
 
-		pos = 1
 		defects = []
-		_.each defectList, (defect) ->
+		_.each defectList, (defect, position) ->
 			unless defect.position == currentDefect.position
-				defects.push({position: pos, name: defect.name, description: defect.description})
-				pos += 1
+				defects.push({position: position, name: defect.name, description: defect.description})
 
-		t.defectTypeList.set(defects)
+		defectTypeList.set(defects)
 
 	'click .save-defect-types': (e,t) ->
-		defects = t.defectTypeList.get()
+		defects = defectTypeList.get()
 
 		defectList = _.map defects, (defect) ->
 			return {name: defect.name, description: defect.description}
@@ -84,6 +75,15 @@ Template.defectTypeSettingsTemplate.events
 			defects.push({position: pos, name: defect.name, description: defect.description})
 			pos += 1
 
-		t.defectTypeList.set(defects)
+		defectTypeList.set(defects)
 
-##################################################
+
+Template.createDefectTypeAction.events
+	'click .create-defect-type': (e,t) ->
+		e.preventDefault()
+		e.stopPropagation()
+		defectList = defectTypeList.get()
+
+		defectList.push({position: defectList.length+1, name: "Nuevo tipo de defecto", description: "Aquí va la descripción del nuevo tipo de defecto"})
+		defectTypeList.set(defectList)
+		sys.flashStatus("add-defect-dype")

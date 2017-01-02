@@ -1,0 +1,29 @@
+<template name="defectTypeSettingsTemplate">
+	<div class="main-option-container">
+		<h4 class="main-option-title">Tipo de defectos</h4>
+		{{#each defectTypes}}
+			<div class="defect-type-element">
+				{{{contentEditable class='defect-type-input' value=name}}}
+				{{{contentEditable class='defect-type-input description' value=description}}}
+				<i class="material-icons defect-type-delete">delete</i>
+			</div>
+		{{/each}}
+		{{#if displayWarning}}
+			<div class="project-message-bubble">
+				<i class="material-icons">info</i>
+				<span>Estos cambios solo se veran reflejados en los proyectos o iteraciones creados a partir de este momento.</span>
+			</div>
+		{{/if}}
+		<div class="defect-type-footer">
+			<span class="primary-button pull-right save-defect-types">Guardar cambios</span>
+			<span class="cancel-button pull-left reset-defect-types">Volver a valores predeterminados</span>
+		</div>
+	</div>
+</template>
+
+<template name="createDefectTypeAction">
+	<div class="create-option">
+		<span class="create-defect-type">Crear Tipo Defecto</span>
+		<i class="material-icons">add_circle</i>
+	</div>
+</template>

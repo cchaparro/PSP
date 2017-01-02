@@ -108,7 +108,7 @@ privateRoutes.route '/settings',
 
 	action: ->
 		Session.set 'route', 'privateRoute.settings'
-		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate', menu: "settingsMenu"
+		BlazeLayout.render 'masterLayout', main: 'defectTypeSettingsTemplate'
 
 
 

@@ -12,6 +12,8 @@ Template.mainHeader.helpers
 				return 'createCommunityQuestionAction'
 			when 'privateRoute.defectLog'
 				return 'createDefectAction'
+			when 'privateRoute.settings'
+				return 'createDefectTypeAction'
 			else
 				return ''
 

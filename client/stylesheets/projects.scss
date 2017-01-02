@@ -11,7 +11,7 @@
 	cursor: default;
 	margin-bottom: -10px;
 	background-color: #FED36E;
-	@include border-radius($default-border-radius);
+	border-radius: 4px;
 	padding: 15px;
 	text-align: left;
 	color: #B27F1B;

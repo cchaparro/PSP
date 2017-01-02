@@ -86,4 +86,5 @@ Template.editProfileModal.events
 				sys.flashStatus("error-profile-update")
 			else
 				sys.flashStatus("profile-update")
+				Modal.hide('editProfileModal')
 

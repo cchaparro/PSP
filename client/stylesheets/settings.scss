@@ -1,187 +1,243 @@
 @import '_variables.scss';
 
-//---------------- Switch Checkbox ---------------
-.switch {
+
+.defect-type-element {
 	position: relative;
-	display: inline-block;
-	width: 44px;
-	height: 26px;
-}
+	border-left: 2px solid $blue;
+	padding: 10px 20px;
+	margin-bottom: 2px;
+	padding-right: 85px;
+	border-bottom: 1px solid #F8F9FA;
 
-// Hide default HTML checkbox
-.switch input {
-	display:none;
-}
+	.defect-type-input {
+		background-color: #F8F9FA;
+		border: none;
+		border-radius: 4px;
+		color: #566C78;
+		display: block;
+		font-size: 13px;
+		height: 42px;
+		margin-bottom: 10px;
+		max-width: 100%;
+		outline: none;
+		padding: 12px;
+		width: 100%;
 
-.switch-slider {
-	position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: $danger;
-	-webkit-transition: .4s;
-	transition: .4s;
-
-	&.round {
-		border-radius: 34px;
-
-		&:before {
-			border-radius: 50%;
+		&.description {
+			height: 80px;
 		}
 	}
 
-	&:before {
+	.defect-type-delete {
+		color: #80A1B2;
+		font-size: 25px;
 		position: absolute;
-		content: "";
-		height: 22px;
-		width: 22px;
-		left: 2px;
-		bottom: 2px;
-		background-color: $white;
-		@include transition(.4s);
-	}
-}
+		right: 20px;
+		top: 10px;
+		cursor: pointer;
+		padding: 8px;
+		border-radius: 100%;
 
-input:checked + .switch-slider {
-	background-color: $success;
-}
-
-input:focus + .switch-slider {
-	box-shadow: 0 0 1px $success;
-}
-
-input:checked + .switch-slider:before {
-	@include translateX(18px);
-}
-
-//------------- Defect Types Settings ------------
-.defect-type-settings-content {
-	background-color: white;
-	width: 100%;
-	@include border-radius($default-border-radius);
-	border-bottom: 2px solid $box-border;
-	margin-bottom: 20px;
-	@include clearfix;
-
-	h4 {
-		color: $text-dark;
-		margin-top: 15px;
-		margin-bottom: 15px;
-		margin-left: 15px;
-		cursor: default;
-		display: inline-block;
-	}
-
-	.defect-type-box {
-		border-bottom: 1px solid $border;
-		min-height: 70px;
-		display: block;
-		@include clearfix;
-
-		.information {
-			display: inline-block;
-			width: calc(100% - 60px);
-			float: left;
-			padding-top: 10px;
-			padding-left: 10px;
-			padding-bottom: 15px;
-			font-size: 12pt;
-
-			.defect-type-title {
-				color: $text-dark;
-				padding: 5px;
-				cursor: text;
-				outline: none;
-				@include border-radius($default-border-radius);
-
-				&:hover, &:focus {
-					background-color: $background-dark;
-				}
-			}
-
-			.defect-type-description {
-				color: $text;
-				padding-left: 5px;
-				padding-right: 5px;
-				font-size: 11pt;
-				outline: none;
-				@include border-radius($default-border-radius);
-
-				&:hover, &:focus {
-					background-color: $background-dark;
-				}
-			}
-		}
-
-		.delete-box {
-			color: $text;
-			float: right;
-			display: inline-block;
-			padding: 15px;
-			margin-top: 12px;
-			cursor: pointer;
-
-			&:hover {
-				color: $text-dark;
-			}
-		}
-	}
-
-	.defect-type-save-nav {
-		@include clearfix();
-		padding: 15px;
-
-		button {
-			padding-top: 0;
-		}
-	}
-
-	.defect-type-error-box {
-		color: $warning-dark;
-		cursor: default;
-		display: block;
-		@include clearfix;
-
-		float: left;
-		padding: 10px;
-		padding-left: 15px;
-
-		i {
-			float: left;
-		}
-
-		span {
-			width: calc(100% - 40px);
-			line-height: 25px;
-			float: right;
-		}
-
-	}
-}
-
-.line-fix {
-	border-bottom: 1px solid $border;
-}
-
-//------------------------------------------------
-// Portrait tablets and small desktops
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-
-// Landscape phones and portrait tablets
-@media (max-width: 767px) {
-	.defect-type-settings-content {
-		.line-fix {
-			margin-top: 50px;
-		}
-
-		.create-type {
-			float: left;
-			padding-left: 15px;
+		&:hover {
+			background-color: #F8F9FA;
 		}
 	}
 }
-//------------------------------------------------
+
+.defect-type-footer {
+	@include clearfix();
+	display: block;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+
+
+
+// //---------------- Switch Checkbox ---------------
+// .switch {
+// 	position: relative;
+// 	display: inline-block;
+// 	width: 44px;
+// 	height: 26px;
+// }
+
+// // Hide default HTML checkbox
+// .switch input {
+// 	display:none;
+// }
+
+// .switch-slider {
+// 	position: absolute;
+// 	cursor: pointer;
+// 	top: 0;
+// 	left: 0;
+// 	right: 0;
+// 	bottom: 0;
+// 	background-color: $danger;
+// 	-webkit-transition: .4s;
+// 	transition: .4s;
+
+// 	&.round {
+// 		border-radius: 34px;
+
+// 		&:before {
+// 			border-radius: 50%;
+// 		}
+// 	}
+
+// 	&:before {
+// 		position: absolute;
+// 		content: "";
+// 		height: 22px;
+// 		width: 22px;
+// 		left: 2px;
+// 		bottom: 2px;
+// 		background-color: $white;
+// 		@include transition(.4s);
+// 	}
+// }
+
+// input:checked + .switch-slider {
+// 	background-color: $success;
+// }
+
+// input:focus + .switch-slider {
+// 	box-shadow: 0 0 1px $success;
+// }
+
+// input:checked + .switch-slider:before {
+// 	@include translateX(18px);
+// }
+
+// //------------- Defect Types Settings ------------
+// .defect-type-settings-content {
+// 	background-color: white;
+// 	width: 100%;
+// 	@include border-radius($default-border-radius);
+// 	border-bottom: 2px solid $box-border;
+// 	margin-bottom: 20px;
+// 	@include clearfix;
+
+// 	h4 {
+// 		color: $text-dark;
+// 		margin-top: 15px;
+// 		margin-bottom: 15px;
+// 		margin-left: 15px;
+// 		cursor: default;
+// 		display: inline-block;
+// 	}
+
+// 	.defect-type-box {
+// 		border-bottom: 1px solid $border;
+// 		min-height: 70px;
+// 		display: block;
+// 		@include clearfix;
+
+// 		.information {
+// 			display: inline-block;
+// 			width: calc(100% - 60px);
+// 			float: left;
+// 			padding-top: 10px;
+// 			padding-left: 10px;
+// 			padding-bottom: 15px;
+// 			font-size: 12pt;
+
+// 			.defect-type-title {
+// 				color: $text-dark;
+// 				padding: 5px;
+// 				cursor: text;
+// 				outline: none;
+// 				@include border-radius($default-border-radius);
+
+// 				&:hover, &:focus {
+// 					background-color: $background-dark;
+// 				}
+// 			}
+
+// 			.defect-type-description {
+// 				color: $text;
+// 				padding-left: 5px;
+// 				padding-right: 5px;
+// 				font-size: 11pt;
+// 				outline: none;
+// 				@include border-radius($default-border-radius);
+
+// 				&:hover, &:focus {
+// 					background-color: $background-dark;
+// 				}
+// 			}
+// 		}
+
+// 		.delete-box {
+// 			color: $text;
+// 			float: right;
+// 			display: inline-block;
+// 			padding: 15px;
+// 			margin-top: 12px;
+// 			cursor: pointer;
+
+// 			&:hover {
+// 				color: $text-dark;
+// 			}
+// 		}
+// 	}
+
+// 	.defect-type-save-nav {
+// 		@include clearfix();
+// 		padding: 15px;
+
+// 		button {
+// 			padding-top: 0;
+// 		}
+// 	}
+
+// 	.defect-type-error-box {
+// 		color: $warning-dark;
+// 		cursor: default;
+// 		display: block;
+// 		@include clearfix;
+
+// 		float: left;
+// 		padding: 10px;
+// 		padding-left: 15px;
+
+// 		i {
+// 			float: left;
+// 		}
+
+// 		span {
+// 			width: calc(100% - 40px);
+// 			line-height: 25px;
+// 			float: right;
+// 		}
+
+// 	}
+// }
+
+// .line-fix {
+// 	border-bottom: 1px solid $border;
+// }
+
+// //------------------------------------------------
+// // Portrait tablets and small desktops
+// @media (min-width: 768px) and (max-width: 991px) {
+
+// }
+
+// // Landscape phones and portrait tablets
+// @media (max-width: 767px) {
+// 	.defect-type-settings-content {
+// 		.line-fix {
+// 			margin-top: 50px;
+// 		}
+
+// 		.create-type {
+// 			float: left;
+// 			padding-left: 15px;
+// 		}
+// 	}
+// }
+// //------------------------------------------------

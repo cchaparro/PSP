@@ -41,6 +41,32 @@ html, body {
 	width: $navbar-width;
 }
 
+.main-option-container {
+	width: calc(100% - 40px);
+	background-color: $white;
+	border-radius: 4px;
+	margin: 0 20px 20px 20px;
+
+	.main-option-title {
+		color: #566C78;
+		display: block;
+		margin: 0 20px;
+		padding: 20px 0;
+		border-bottom: 1px solid #F8F9FA;
+		font-weight: 600;
+		font-size: 14px;
+		text-transform: uppercase;
+		cursor: default;
+	}
+
+	.project-message-bubble {
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 20px;
+		display: block;
+	}
+}
+
 
 .navbar-logo {
 	background-color: #333F49;
