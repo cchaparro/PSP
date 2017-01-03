@@ -1,7 +1,7 @@
-##########################################
 projectFields = new ReactiveVar([])
-##########################################
-drawProjectInfoChart = () ->
+
+
+drawProjectInfoChart = (chart_width) ->
 	projectStages = db.plan_summary.findOne("projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId())
 	colors = Meteor.settings.public.chartColors
 
@@ -27,22 +27,25 @@ drawProjectInfoChart = () ->
 	}
 
 	ctx = $('#projectInformationChart')?.get(0)?.getContext('2d')
-	ctx?.canvas.width = 200
-	ctx?.canvas.height = 200
+	ctx?.canvas.width = chart_width
+	ctx?.canvas.height = chart_width
 	if ctx
 		new Chart(ctx).Doughnut(data, options)
 
-##########################################
+
+
 Template.projectInformationChart.onRendered () ->
+	containerWidth = document.getElementById("project-general-chart").offsetWidth
+	chartWidth = (containerWidth/2) - 20
 	Deps.autorun ->
-		drawProjectInfoChart()
+		drawProjectInfoChart(chartWidth)
 
 
 Template.projectInformationChart.helpers
 	chartFields: () ->
 		return projectFields.get()
 
-##########################################
+
 Template.projectInformationTemplate.onCreated () ->
 	Meteor.subscribe "projectView", FlowRouter.getParam("id")
 
@@ -63,48 +66,44 @@ Template.projectInformationTemplate.helpers
 	dateDisplay:(date) ->
 		return sys.dateDisplay(date)
 
-	projectIsCompleted: () ->
-		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+	projectClosed: () ->
+		projectId = FlowRouter.getParam("id")
+		return db.projects.findOne({ _id: projectId })?.completed
+
+	colorProjectStatus: () ->
+		projectId = FlowRouter.getParam("id")
+		return 'background-danger' if db.projects.findOne({ _id: projectId })?.completed
+		return 'background-success'
 
 
 Template.projectInformationTemplate.events
 	'blur .project-title': (e,t) ->
-		data = {
-			"title": $('.project-title').text()
-		}
+		unless @completed
+			data = {
+				"title": $('.project-title').text()
+			}
 
-		Meteor.call "update_project", FlowRouter.getParam("id"), data, (error)->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-save-title-project")
-			else
-				sys.flashStatus("save-title-project")
+			Meteor.call "update_project", FlowRouter.getParam("id"), data, (error)->
+				if error
+					console.warn(error)
+					sys.flashStatus("project-title-save-error")
+				else
+					sys.flashStatus("project-title-save-successful")
 
 	'blur .project-description': (e,t) ->
-		set = {
-			"description": $('.project-description').text()
-		}
+		unless @completed
+			set = {
+				"description": $('.project-description').text()
+			}
 
-		Meteor.call "update_project", FlowRouter.getParam("id"), set, (error)->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-save-description-project")
-			else
-				sys.flashStatus("save-description-project")
+			Meteor.call "update_project", FlowRouter.getParam("id"), set, (error)->
+				if error
+					console.warn(error)
+					sys.flashStatus("project-description-save-error")
+				else
+					sys.flashStatus("project-description-save-successful")
 
-	'click .close-project': (e,t) ->
-		e.stopPropagation()
-		e.preventDefault()
-		projectId = @_id
 
-		Meteor.call "finish_project", projectId, (error) ->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-finish-project")
-			else
-				sys.flashStatus("finish-project")
-
-##########################################
 Template.projectInformation.helpers
 	isPostmortem: () ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
@@ -118,4 +117,30 @@ Template.projectInformation.helpers
 	isPSP0: () ->
 		return db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP == "PSP 0"
 
-##########################################
+
+Template.finishProjectAction.helpers
+	projectClosed: () ->
+		projectId = FlowRouter.getParam("id")
+		return db.projects.findOne({ _id: projectId })?.completed
+
+	actionTitle: () ->
+		projectId = FlowRouter.getParam("id")
+		parentId = db.projects.findOne({ _id: projectId })?.parentId
+		if parentId
+			return 'Finalizar Iteración'
+		else
+			return 'Finalizar Proyecto'
+
+
+Template.finishProjectAction.events
+	'click .close-project': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+		projectId = FlowRouter.getParam("id")
+
+		Meteor.call "finish_project", projectId, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("project-finish-error")
+			else
+				sys.flashStatus("project-finish-successful")

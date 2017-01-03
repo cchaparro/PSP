@@ -177,6 +177,36 @@ sys.flashStatus = (type) ->
 			subject = "No pudimos eliminar el defecto que seleccionaste. Por favor inténtelo nuevamente."
 			css = "danger"
 
+		when 'project-title-save-successful'
+			title = "Titulo guardado"
+			subject = "El titulo que ingresaste para el proyecto se ha cambiado correctamente."
+			css = "success"
+
+		when 'project-title-save-error'
+			title = "Error"
+			subject = "No pudimos cambiar el titulo del proyecto por el que acabas de ingresar. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'project-description-save-successful'
+			title = "Descripción guardada"
+			subject = "La descripción que ingresaste para el proyecto se ha guardado correctamente."
+			css = "success"
+
+		when 'project-description-save-error'
+			title = "Error"
+			subject = "No pudimos cambiar la descripción del proyecto que acabas de ingresar. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'project-finish-successful'
+			title = "Proyecto finalizado"
+			subject = "El proyecto se ha finalizado correctamente."
+			css = "success"
+
+		when 'project-finish-error'
+			title = "Error"
+			subject = "No hemos podido finalizar proyecto. Por favor inténtelo nuevamente."
+			css = "danger"
+
 
 
 
@@ -255,38 +285,6 @@ sys.flashStatus = (type) ->
 		when "error-create-defect"
 			title = "Error"
 			subject = "No hemos podido crear el nuevo defecto."
-			css = "danger"
-
-
-		# Project information from the projects view
-		when 'save-title-project'
-			title = "Guardado"
-			subject = "El titulo del proyecto se ha cambiado correctamente."
-			css = "success"
-
-		when 'error-save-title-project'
-			title = "Error"
-			subject = "No hemos podido cambiar el titulo del proyecto."
-			css = "danger"
-
-		when 'save-description-project'
-			title = "Guardado"
-			subject = "Se ha cambiado la descripción del proyecto correctamente."
-			css = "success"
-
-		when 'error-save-description-project'
-			title = "Error"
-			subject = "No hemos podido cambiar la descripción del proyecto."
-			css = "danger"
-
-		when 'finish-project'
-			title = "Guardado"
-			subject = "El proyecto se ha finalizado correctamente."
-			css = "success"
-
-		when 'error-finish-project'
-			title = "Error"
-			subject = "No hemos podido finalizar proyecto."
 			css = "danger"
 
 

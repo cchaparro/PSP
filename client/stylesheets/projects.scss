@@ -500,212 +500,193 @@
 }
 
 //---------- General Project Information ---------
-.prj-information-content {
-	background-color: white;
-	width: 100%;
-	@include border-radius($default-border-radius);
-	border-bottom: 2px solid $box-border;
-	margin-bottom: 20px;
-	@include clearfix;
 
-	h4 {
-		color: $text-dark;
-		margin-top: 15px;
-		margin-bottom: 15px;
-		margin-left: 15px;
-		cursor: default;
-		display: inline-block;
+.project-information-box {
+	padding-bottom: 20px;
+}
 
-		span {
-			width: 12px;
-			height: 12px;
-			display: inline-block;
-			line-height: 10px;
-			margin-left: 2px;
-			@include border-radius($circle-border-radius);
-			background-color: $success;
+.project-input-field {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	margin: 0 20px 10px 20px;
+	max-width: 100%;
+	outline: none;
+	padding: 12px;
+	// width: 100%;
 
-			&.completed {
-				background-color: $text;
-			}
-		}
-	}
-
-	.close-project {
-		color: $green;
-		float: right;
-		font-weight: 500;
-		font-size: 11pt;
-		padding-right: 20px;
-		cursor: pointer;
-		line-height: 53px;
-
-		i {
-			float: left;
-			line-height: inherit;
-			font-size: 15pt;
-			padding-right: 2px;
-			font-weight: 500;
-		}
-
-		&:hover {
-			color: $green-dark;
-		}
-	}
-
-	.project-completed {
-		color: $danger;
-		float: right;
-		font-weight: 500;
-		font-size: 11pt;
-		cursor: default;
-		line-height: 53px;
-		padding-right: 20px;
-	}
-
-	.information-row {
-		width: 100%;
-		padding-bottom: 15px;
-		padding-right: 15px;
-		display: block;
-		//border-bottom: 1px solid $border;
-		border-top: 1px solid $border;
-		position: relative;
-
-		h4 {
-			font-size: 12pt;
-			color: $text;
-		}
-
-		.project-title, .project-description {
-			margin: 0 0 3px 15px;
-			background-color: $background-dark;
-			padding: 5px 10px;
-			font-weight: 700;
-			font-size: 13pt;
-			color: $text-dark;
-			@include border-radius($default-border-radius);
-			border: 1px solid $border;
-			outline: none;
-
-			&:focus {
-				border: 1px solid $blue;
-			}
-		}
-
-		.project-description {
-			font-weight: 400;
-			font-size: 11pt;
-		}
-
-		.project-completed-title, .project-completed-description {
-			display: block;
-			padding-left: 15px;
-			font-weight: 700;
-			font-size: 13pt;
-			cursor: default;
-		}
-
-		.project-completed-description {
-			font-weight: 400;
-			font-size: 11pt;
-		}
+	&.description {
+		min-height: 80px;
 	}
 }
 
-.prj-information-values-box {
-	.information-box {
-		background-color: white;
-		@include border-radius($default-border-radius);
-		border-bottom: 2px solid $box-border;
-		margin-bottom: 20px;
-		@include clearfix;
+.project-label {
+	color: #566C78;
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	margin-left: 20px;
+	margin-bottom: 7px;
+	text-transform: uppercase;
+	cursor: default;
+}
 
-		h4 {
-			color: $text-dark;
-			margin-top: 15px;
-			margin-bottom: 15px;
-			margin-left: 15px;
-			cursor: default;
-			display: block;
-		}
+.project-general-state {
+	position: absolute;
+	top: 0;
+	right: 0;
 
-		&.charts {
-			width: calc(100% - 255px);
-			height: 300px;
-			float: left;
-
-			.prj-information-chart {
-				width: 50%;
-				height: 200px;
-				text-align: center;
-				padding: 0;
-				float: left;
-
-				canvas {
-					margin-top: 7.7px;
-					margin-left: 15px;
-					cursor: default;
-				}
-			}
-
-			.prj-information-chart-values {
-				width: 50%;
-				float: right;
-				display: inline-block;
-				list-style: none;
-				padding-top: 35px;
-				padding-left: 30px;
-				cursor: default;
-
-				li {
-					text-decoration: none;
-					font-size: 12pt;
-					padding-bottom: 3px;
-
-					i {
-						padding-right: 10px;
-						font-size: 13pt;
-					}
-				}
-			}
-
-		}
-
+	span {
+		color: #566C78;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		cursor: default;
+		line-height: 56px;
 	}
 
-	.prj-registered-values {
-		width: 230px;
-		height: 300px;
-		margin-left: 20px;
+	div {
+		width: 13px;
+		height: 13px;
+		border-radius: 100%;
+		margin-top: 20px;
+		display: inline-block;
 		float: right;
+		margin-left: 7px;
+		margin-right: 15px;
+	}
+}
+
+.project-bubble {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.project-general-completed {
+	.project-input-field {
 		cursor: default;
+		padding-right: 40px;
+	}
+}
+
+.project-general-input-container {
+	position: relative;
+
+	.material-icons {
+		font-size: 20px;
+		position: absolute;
+		top: 10px;
+		right: 30px;
+		color: #E3E4E5;
+		cursor: default;
+	}
+}
+
+.project-general-extra {
+	#project-general-chart {
+		width: calc(70% - 30px);
+		display: inline-block;
+		float: left;
+		// @include clearfix();
+
+		.prj-information-chart {
+			width: 50%;
+			height: 100%;
+			text-align: center;
+			padding: 0;
+			float: left;
+			padding-bottom: 15px;
+			padding-top: 7px;
+
+			canvas {
+				margin-top: 7.7px;
+				margin-left: 15px;
+				cursor: default;
+			}
+		}
+
+		.project-information-chart-values {
+			width: 50%;
+			float: right;
+			display: inline-block;
+			list-style: none;
+			margin-top: 30px;
+			padding-left: 0;
+			padding-bottom: 10px;
+			cursor: default;
+
+			li {
+				margin: 0 auto;
+				text-decoration: none;
+				font-size: 12pt;
+				padding-bottom: 3px;
+				background-color: #F8F9FA;
+				padding: 5px;
+				border-radius: 20px;
+				margin-bottom: 5px;
+				max-width: 200px;
+				line-height: 20px;
+
+				i {
+					padding-right: 10px;
+					font-size: 15px;
+					float: left;
+					line-height: inherit;
+					margin-left: 10px;
+				}
+
+				span {
+					color: #566C78;
+					// display: block;
+					font-size: 13px;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	.project-general-data {
+		width: calc(30% - 30px);
+		display: inline-block;
+		float: right;
+		margin-left: 0;
+		cursor: default;
+		text-align: center;
+		padding-bottom: 20px;
 
 		div {
-			padding-left: 15px;
-			padding-bottom: 15px;
+			margin-top: 20px;
+		}
 
-			svg {
-				width: 30px;
+		span {
+			display: block;
+			color: #566C78;
+			padding-bottom: 5px;
+		}
+
+		.project-general-data-item {
+			line-height: 20px;
+			display: inline-block;
+			font-size: 13px;
+			font-weight: 600;
+			text-transform: uppercase;
+
+			i, span {
+				line-height: inherit;
+			}
+
+			.material-icons {
 				float: left;
-				fill: $icon;
-				padding-top: 7px;
-			}
-
-			span {
-				font-size: 12pt;
-				color: $text-dark;
-				font-weight: 700;
-				padding-left: 10px;
-			}
-
-			p {
-				font-size: 11pt;
-				padding-left: 40px;
+				font-size: 20px;
+				margin-right: 5px;
 			}
 		}
 	}
-
 }
 
 //----------- Project Plan Summary View ----------

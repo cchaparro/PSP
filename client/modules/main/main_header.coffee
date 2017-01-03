@@ -14,6 +14,8 @@ Template.mainHeader.helpers
 				return 'createDefectAction'
 			when 'privateRoute.settings'
 				return 'createDefectTypeAction'
+			when 'privateRoute.projectGeneral'
+				return 'finishProjectAction'
 			else
 				return ''
 

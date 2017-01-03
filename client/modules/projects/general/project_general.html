@@ -1,0 +1,97 @@
+<template name="projectInformationTemplate">
+	{{>projectMessages}}
+	{{#with projectInfo}}
+		{{printthis}}
+		<div class="main-option-container {{#if projectClosed}} project-general-completed {{/if}}">
+			<h4 class="main-option-title">Informacion General</h4>
+			<div class="project-general-state">
+				{{#if projectClosed}}
+					<span>Proyecto Finalizado</span>
+				{{else}}
+					<span>Proyecto Activo</span>
+				{{/if}}
+				<div class="{{colorProjectStatus}}"></div>
+			</div>
+
+			<div class="project-information-box">
+				<h4 class="project-label">Titulo del Proyecto</h4>
+				<div class="project-general-input-container">
+					{{#if projectClosed}}
+						<span class="project-input-field">{{title}}</span>
+						<i class="material-icons">lock</i>
+					{{else}}
+						{{{contentEditable class='project-input-field project-title' value=title}}}
+					{{/if}}
+				</div>
+				<h4 class="project-label">Descripción del Proyecto</h4>
+				<div class="project-general-input-container">
+					{{#if projectClosed}}
+						<span class="project-input-field description">{{description}}</span>
+						<i class="material-icons">lock</i>
+					{{else}}
+						{{{contentEditable class='project-input-field description project-description' value=description}}}
+					{{/if}}
+				</div>
+			</div>
+		</div>
+
+		<div class="project-general-extra">
+			<div class="main-option-container" id="project-general-chart">
+				<h4 class="main-option-title">Tiempo registrado</h4>
+				{{> projectInformationChart}}
+			</div>
+			<div class="main-option-container project-general-data">
+				<h4 class="main-option-title">Datos registrados</h4>
+				<div>
+					<span class="project-general-data-item"><i class="material-icons">access_time</i> Tiempo total</span>
+					<span>{{projectTotalTime}}</span>
+				</div>
+				<div>
+					<span class="project-general-data-item"><i class="material-icons">date_range</i> Fecha creación</span>
+					<span>{{dateDisplay createdAt}}</span>
+				</div>
+				{{#if completedAt}}
+					<div>
+						<span class="project-general-data-item"><i class="material-icons">date_range</i> Fecha Finalización</span>
+						<span>{{dateDisplay completedAt}}</span>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	{{/with}}
+</template>
+
+<template name="finishProjectAction">
+	{{#unless projectClosed}}
+		<div class="create-option">
+			<span class="close-project">{{actionTitle}}</span>
+			<i class="material-icons">done_all</i>
+		</div>
+	{{/unless}}
+</template>
+
+<template name="projectInformationChart">
+	<div class="prj-information-chart">
+		<canvas id="projectInformationChart"></canvas>
+	</div>
+	<ul class="project-information-chart-values">
+		{{#each chartFields}}
+			<li>
+				<i class="material-icons" style="color: {{color}}">brightness_1</i>
+				<span>{{name}}</span>
+			</li>
+		{{/each}}
+	</ul>
+</template>
+
+
+
+<!-- TODO - Borrar esto -->
+<template name="projectInformation">
+	{{#unless $or isPostmortem isPSP0}}
+		<div class="information-menu hidden-xs">
+			<h4>Información Extra</h4>
+			<span>&bull; Los formularios se habilitan cuando estés en la etapa postmortem.</span>
+		</div>
+	{{/unless}}
+</template>
