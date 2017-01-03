@@ -25,7 +25,12 @@ Template.defectsTemplate.helpers
 		return sys.cutText(@description, 70, " ...") or "" if @description
 
 	projectColor: () ->
-		return db.projects.findOne({_id: FlowRouter.getParam("id")})?.color
+		projectId = FlowRouter.getParam("id")
+		return db.projects.findOne({_id: projectId})?.color
+
+	projectCompleted: () ->
+		projectId = FlowRouter.getParam("id")
+		return db.projects.findOne({_id: projectId})?.completed
 
 
 Template.defectsTemplate.events

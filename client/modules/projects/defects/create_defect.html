@@ -9,9 +9,15 @@
 		{{#modal_body}}
 			<div class="row row-defect-buttons">
 				<div class="create-defect-time pull-left">
-					<div class="time-button {{#if timeStatus}} background-danger {{else}} background-success {{/if}}">
-						<i class="material-icons">{{timeIcon}}</i>
-					</div>
+					{{#if projectCompleted}}
+						<div class="time-button background-disabled">
+							<i class="material-icons">{{timeIcon}}</i>
+						</div>
+					{{else}}
+						<div class="time-button {{#if timeStatus}} background-danger {{else}} background-success {{/if}}">
+							<i class="material-icons">{{timeIcon}}</i>
+						</div>
+					{{/if}}
 					{{>defectClock}}
 				</div>
 				<div class="defect-create-son pull-right">

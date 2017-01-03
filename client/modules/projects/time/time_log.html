@@ -14,9 +14,15 @@
 <template name="timesBar">
 	{{#with planSummary}}
 		<div class="time-log-register-header">
-			<div class="time-register-button {{#if isRecordingTime}} background-danger {{else}} background-success {{/if}}">
-				<i class="material-icons">{{timeIcon}}</i>
-			</div>
+			{{#if projectIsCompleted}}
+				<div class="time-register-button background-disabled">
+					<i class="material-icons">{{timeIcon}}</i>
+				</div>
+			{{else}}
+				<div class="time-register-button {{#if isRecordingTime}} background-danger {{else}} background-success {{/if}}">
+					<i class="material-icons">{{timeIcon}}</i>
+				</div>
+			{{/if}}
 			{{>timeClock}}
 		</div>
 		{{#if projectIsCompleted}}
@@ -66,9 +72,9 @@
 		{{#if editAvailable}}
 			<i class="material-icons edit-stage">mode_edit</i>
 		{{/if}}
-		<div class="stage-progress">
+		<!-- <div class="stage-progress">
 			<div class="{{#if overTime}} extra-progress {{/if}}" style="width: {{estimatedPercentage}}%;"></div>
-		</div>
+		</div> -->
 	</div>
 </template>
 

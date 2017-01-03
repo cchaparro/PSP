@@ -7,6 +7,7 @@ timeStarted = new ReactiveVar(false)
 TimeClock = new ReactiveClock("TimeClock")
 
 Template.createDefectModal.onCreated () ->
+	projectCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 	#State 0(Default), State 1(Missing Field)
 	@errorState = new ReactiveVar(0)
 	@descriptionError = new ReactiveVar(false)
@@ -16,7 +17,11 @@ Template.createDefectModal.onCreated () ->
 	defectId.set('')
 	defectData.set({})
 	defectsParent.set(false)
-	timeStarted.set(new Date())
+
+	if projectCompleted
+		timeStarted.set(false)
+	else
+		timeStarted.set(new Date())
 
 	if @data
 		if @data.parentId
@@ -39,7 +44,7 @@ Template.createDefectModal.onCreated () ->
 
 Template.createDefectModal.helpers
 	displayTitle: () ->
-		if titleStatus.get()
+		if titleStatus.get() is true
 			return "Crear nuevo defecto"
 		else
 			return "Modificar defecto"
@@ -98,7 +103,7 @@ Template.createDefectModal.helpers
 		return 'play_arrow'
 
 	ifLoadsData: () ->
-		return titleStatus.get()
+		return titleStatus.get() is true
 
 	projectTotalTime: () ->
 		DefectId = defectId.get()
@@ -309,12 +314,18 @@ Template.createDefectModal.events
 
 
 Template.defectClock.onCreated () ->
-	startRecording = timeStarted.get()
-	date = new Date(startRecording)
-	elapsedTime = (Date.now() - date.getTime()) / 1000
-	elapsedTime = Math.ceil(elapsedTime)
-	TimeClock.setElapsedSeconds(elapsedTime)
-	TimeClock.start()
+	projectCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+
+	if projectCompleted
+		TimeClock.setElapsedSeconds(0)
+		TimeClock.stop()
+	else
+		startRecording = timeStarted.get()
+		date = new Date(startRecording)
+		elapsedTime = (Date.now() - date.getTime()) / 1000
+		elapsedTime = Math.ceil(elapsedTime)
+		TimeClock.setElapsedSeconds(elapsedTime)
+		TimeClock.start()
 
 
 Template.defectClock.helpers

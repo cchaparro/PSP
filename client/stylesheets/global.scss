@@ -20,6 +20,11 @@
 	background-color: $danger;
 }
 
+.background-disabled {
+	background-color: $border;
+	cursor: default!important;
+}
+
 .primary-button {
 	background-color: $blue;
 	border: none;
