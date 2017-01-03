@@ -17,7 +17,7 @@
 			</div>
 		</div>
 	{{/with}} -->
-	<table class="table estimation">
+	<table class="table estimation table-historical-data">
 		<thead>
 			<tr>
 				<th></th>
@@ -40,7 +40,7 @@
 					</div>
 				</td>
 				<td>Este método usa tu mejor suposición, usalo si crees que los ajustes realizados por los demás métodos no son acertados</td>
-				<td><div class="{{#unless probeEditable}} hide {{/unless}} btn primary-button save-data-time">Escoger</div></td>
+				<td><div class="{{#unless probeEditable}} hide {{/unless}} primary-button save-data-time">Escoger</div></td>
 			</tr>
 			<tr>
 				<td>Líneas añadidas y modificadas</td>
@@ -54,7 +54,7 @@
 					</div>
 				</td>
 				<td>Este método usa tu mejor suposición para el estimado de las líneas añadidas y modificadas de este proyecto.</td>
-				<td><div class="{{#unless probeEditable}} hide {{/unless}} btn primary-button save-data-size">Escoger</div></td>
+				<td><div class="{{#unless probeEditable}} hide {{/unless}} primary-button save-data-size">Escoger</div></td>
 			</tr>
 		{{/with}}
 

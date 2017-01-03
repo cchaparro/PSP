@@ -1,10 +1,6 @@
-##########################################
 Template.historicalData.onCreated () ->
 	@historicalProjectsData = new ReactiveVar([])
-
-
-Template.historicalData.helpers
-	gethistoricalProjects:()->
+	@autorun ->
 		projects = db.projects.find({"completed":true}).fetch()
 		data = []
 
@@ -16,14 +12,15 @@ Template.historicalData.helpers
 					{
 						"Name":project.title
 						"ProxyE":psProject?.proxyEstimated
-						"ActualLOC": psProject.actualAdd + psProject.actualModified
-						"EstimatedTime":psProject.estimatedTime
-						"ActualTime":psProject.totalTime
-						"PlanLOC":psProject.estimatedAddedSize
+						"ActualLOC": psProject?.actualAdd + psProject?.actualModified
+						"EstimatedTime":psProject?.estimatedTime
+						"ActualTime":psProject?.totalTime
+						"PlanLOC":psProject?.estimatedAddedSize
 					})
+
 		Template.instance().historicalProjectsData.set(data)
 
+
+Template.historicalData.helpers
 	historicalProjects:()->
 		return Template.instance().historicalProjectsData.get()
-
-##########################################

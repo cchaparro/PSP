@@ -246,7 +246,7 @@ Template.createIterationAction.events
 		# The currentProject takes the parent projects levelPSP and gives it to the new interation
 		data = {
 			title: "Nueva iteración"
-			description: "Este proyecto aun no tiene asignado una descripción general sobre el mismo."
+			description: "Este proyecto aún no tiene asignado una descripción general sobre el mismo."
 			levelPSP: currentProject.levelPSP
 			parentId: projectParent
 		}
