@@ -1,20 +1,17 @@
 <!-- ###################################### -->
 <template name="pspOneTemplate">
-	<div class="plan-summary-content">
-		<h3>Tamaño del programa</h3>
+	<div class="main-option-container plan-summary-content">
+		<h4 class="main-option-title">Tamaño del programa</h4>
 		{{> sizeSummary}}
 	</div>
-	<div class="plan-summary-content">
-		<h3>Estimación de tamaño</h3>
-    <h4><span>&bull;</span> Estimación Base (Estimado | Actual)</h4>
+	<div class="main-option-container plan-summary-content">
+		<h4 class="main-option-title">Estimación de tamaño</h4>
+
+		<h4 class="main-option-title inside-element">Estimación Base (Estimado | Actual)</h4>
 		{{> baseSummary}}
-	</div><br>
-	<div class="plan-summary-content">
-		<h4><span>&bull;</span> Partes Añadidas (Estimado | Actual)</h4>
+		<h4 class="main-option-title inside-element">Partes Añadidas (Estimado | Actual)</h4>
 		{{> addSummary}}
-	</div><br>
-	<div class="plan-summary-content">
-    <h4><span>&bull;</span> Partes Reusadas (Estimado | Actual)</h4>
+		<h4 class="main-option-title inside-element">Partes Reusadas (Estimado | Actual)</h4>
 		{{> reusedSummary}}
 	</div>
 </template>

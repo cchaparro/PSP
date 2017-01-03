@@ -1,24 +1,32 @@
-<!-- ###################################### -->
 <template name="planSummaryTemplate">
 	{{>projectMessages}}
-	<div class="{{#unless sizeForPSP0}} hidden {{/unless}} plan-summary-content">
-		<h4>Tamaño del programa (Opcional)</h4>
+
+	{{#with totalValues}}
+		{{#if $and estimationEditable totalTimeEmpty}}
+			<div class="project-message-bubble project-bubble">
+				<i class="material-icons">info</i>
+				<span>Debes ingresar el tiempo que estimas que te tomara realizar el proyecto. Para ingresar este valor, de <a href="#time-estimated-summary">Click Aqui</a></span>
+			</div>
+		{{/if}}
+	{{/with}}
+	<div class="{{#unless sizeForPSP0}} hidden {{/unless}} main-option-container plan-summary-content size">
+		<h4 class="main-option-title">Tamaño del programa (Opcional)</h4>
 		{{> sizePSP0}}
 	</div>
 
-	<div class="plan-summary-content">
+	<div class="main-option-container plan-summary-content">
 		{{#with userData}}
-			<h4>Tiempo en Fase</h4>
+			<h4 class="main-option-title">Tiempo en Fase</h4>
 			<div class="summary-time">
 				{{>summaryTimeRow}}
 			</div>
 
-			<h4 class="inside-element">Defectos Inyectados</h4>
+			<h4 class="main-option-title inside-element">Defectos Inyectados</h4>
 			<div class="summary-time">
 				{{>summaryInjectedRow}}
 			</div>
 
-			<h4 class="inside-element">Defectos Removidos</h4>
+			<h4 class="main-option-title inside-element">Defectos Removidos</h4>
 			<div class="summary-time">
 				{{>summaryRemovedRow}}
 			</div>
@@ -30,13 +38,10 @@
 		{{/if}}
 	{{/with}}
 </template>
-<!-- ###################################### -->
+
 <template name="summaryTimeRow">
 	{{#each timeEstimatedStages}}
 		<div class="summary-row">
-			<div class="summary-icon">
-				<i class="material-icons">play_circle_outline</i>
-			</div>
 			<div class="stage-information">
 				<h4 class="hidden-xs">Etapa de {{name}}</h4>
 				<h4 class="visible-xs">{{name}}</h4>
@@ -66,7 +71,7 @@
 			<div class="percentage-stage {{#if estimationEditable}} stage-input {{/if}}">
 				{{#if estimationEditable}}
 					<div>
-						<input class="user-estimated" type="text" value="{{timeInOnlyMinutes estimatedTime}}">
+						<input class="user-estimated" id="time-estimated-summary" type="text" value="{{timeInOnlyMinutes estimatedTime}}">
 					</div>
 					<span class="label">Estimado Total (mins)</span>
 				{{else}}
@@ -83,13 +88,10 @@
 		</div>
 	{{/with}}
 </template>
-<!-- ###################################### -->
+
 <template name="summaryInjectedRow">
 	{{#each injectedDefects}}
 		<div class="summary-row">
-			<div class="summary-icon">
-				<i class="material-icons">play_circle_outline</i>
-			</div>
 			<div class="stage-information">
 				<h4 class="hidden-xs">Etapa de {{name}}</h4>
 				<h4 class="visible-xs">{{name}}</h4>
@@ -123,9 +125,6 @@
 <template name="summaryRemovedRow">
 	{{#each removedDefects}}
 		<div class="summary-row">
-			<div class="summary-icon">
-				<i class="material-icons {{#if currentStage}} current {{/if}}">play_circle_outline</i>
-			</div>
 			<div class="stage-information">
 				<h4 class="hidden-xs">Etapa de {{name}}</h4>
 				<h4 class="visible-xs">{{name}}</h4>
