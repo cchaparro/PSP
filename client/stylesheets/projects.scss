@@ -832,6 +832,10 @@
 }
 
 //------------------ Scripts View -----------------
+.inside-element {
+	padding-top: 60px!important;
+}
+
 .script-content {
 	background-color: white;
 	width: 100%;
@@ -858,6 +862,7 @@
 		margin-right: 15px;
 		display: block;
 		cursor: default;
+		margin-top: 15px;
 	}
 
 	.script-row {
@@ -868,11 +873,15 @@
 		border-bottom: 1px solid $border;
 		line-height: 22px;
 		position: relative;
-		background-color: $background-dark;
+		// background-color: $background-dark;
 
 		&.first {
 			border-top: 1px solid $border;
 			margin-top: 15px;
+		}
+
+		&.no-border-top {
+			border-top: 0;
 		}
 
 		h4 {
