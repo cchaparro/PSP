@@ -259,7 +259,6 @@ textarea.modal-input-field {
 }
 
 .create-defect-time {
-	// background-color: red;
 	width: calc(50% - 20px);
 	margin-left: 15px;
 
@@ -311,15 +310,39 @@ textarea.modal-input-field {
 }
 
 //--------------- Edit Time Modal ----------------
-.edit-time-label {
-	display: block;
-	color: $text;
-	font-weight: 400;
-	padding-bottom: 5px;
+
+.edit-time-modal {
+	width: 390px;
+}
+
+.time-footer-description {
+	cursor: default;
+	margin-bottom: -10px;
+	background-color: #FED36E;
+	@include border-radius($default-border-radius);
+	padding: 15px;
+	text-align: left;
+	color: #B27F1B;
+	font-weight: 300;
+	margin-bottom: 20px;
+	line-height: 20px;
+
+	.material-icons {
+		float: left;
+		line-height: inherit;
+		font-size: 15px;
+		margin-right: 5px;
+		margin-left: -3px;
+	}
+
+	span {
+		display: block;
+	}
 }
 
 .edit-time-options {
 	display: block;
+
 	div {
 		display: inline-block;
 		width: 49%;
@@ -356,64 +379,38 @@ textarea.modal-input-field {
 			border: 2px solid $success;
 		}
 	}
-
-	.time-disabled {
-		cursor: default;
-		span {
-			border: 2px solid $disabled-button;
-		}
-
-		p {
-			color: $disabled-button;
-		}
-	}
-}
-
-.time-footer-description {
-	cursor: default;
-	margin-bottom: -10px;
-	background-color: #FED36E;
-	@include border-radius($default-border-radius);
-	padding: 15px;
-	text-align: left;
-	color: #B27F1B;
-	font-weight: 300;
-	margin-bottom: 20px;
-
-	span {
-		display: block;
-	}
 }
 
 .time-selector-box {
 	div {
-		width: 32.7%;
+		width: 32.6%;
 		display: inline-block;
 		text-align: center;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		position: relative;
 
 		div {
-			background-color: $background;
-			@include border-radius($default-border-radius);
+			border: 1px solid #F8F9FA;
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
 			padding: 0;
-			width: 20px;
+			width: 22px;
 			float: left;
 			text-align: center;
 
 			i {
 				color: $text;
-				font-size: 8pt;
+				font-size: 20px;
 				cursor: pointer;
 				display: block;
-				height: 20px;
+				height: 19px;
 
 				&:first-child {
 					padding-top: 2px;
 				}
 
 				&:last-child {
-					padding-top: 8px;
+					padding-top: 0px;
 				}
 
 				&:hover {
@@ -424,25 +421,29 @@ textarea.modal-input-field {
 
 		span {
 			color: $text;
-			font-size: 13pt;
+			font-size: 14px;
 			cursor: default;
+			padding-right: 10px;
 		}
 
 		input {
+			float: left;
 			width: calc(100% - 30px);
-			height: 40px;
-			padding: 5px 10px;
-			display: inline-block;
-			outline: none;
-			border: 1px solid $border;
-			color: $text;
-			margin-bottom: 5px;
 			text-align: center;
-			@include border-radius($default-border-radius);
-			@include placeholder-color($text, 300);
+			background-color: #F8F9FA;
+			border: 1px solid #F8F9FA;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			color: #566C78;
+			display: inline-block;
+			font-size: 13px;
+			height: 40px;
+			margin-bottom: 10px;
+			max-width: 100%;
+			outline: none;
+			padding: 10px;
 		}
 	}
-
 }
 
 //-------------- Edit Profile Modal --------------

@@ -1,0 +1,89 @@
+<template name="timeTemplate">
+	{{>projectMessages}}
+	<div class="main-option-container">
+		<h4 class="main-option-title">Registro de tiempos</h4>
+		{{>timesBar}}
+		<div class="time-log-stages">
+			{{#each projectStages}}
+				{{>timeStageRow}}
+			{{/each}}
+		</div>
+	</div>
+</template>
+
+<template name="timesBar">
+	{{#with planSummary}}
+		<div class="time-log-register-header">
+			<div class="time-register-button {{#if isRecordingTime}} background-danger {{else}} background-success {{/if}}">
+				<i class="material-icons">{{timeIcon}}</i>
+			</div>
+			{{>timeClock}}
+		</div>
+		{{#if projectIsCompleted}}
+			<div class="project-time-state">
+				<span>Proyecto Finalizado</span>
+			</div>
+		{{else}}
+			{{#if currentStage}}
+				<div class="project-submit-action">
+					<span>Finalizar {{currentStage}}</span>
+					<i class="material-icons">done_all</i>
+				</div>
+			{{else}}
+				<div class="project-completed-action">
+					<span>Etapas Completadas</span>
+				</div>
+			{{/if}}
+		{{/if}}
+	{{/with}}
+</template>
+
+<template name="timeClock">
+	<span class="timer">{{clock}}</span>
+</template>
+
+<template name="timeStageRow">
+	<div class="stage-row">
+		<div class="stage-icon">
+			{{#if finished}}
+				<i class="material-icons completed {{#if openStageStatus}} check-enabled {{/if}}">check_circle</i>
+			{{else}}
+				{{#if openStageStatus}}
+					<span class="check-status"></span>
+				{{else}}
+					<i class="material-icons {{#if currentStage}} current {{/if}}">access_time</i>
+				{{/if}}
+			{{/if}}
+		</div>
+		<div class="stage-information">
+			<h4 class="{{#if $or finished currentStage}} title-finished {{/if}}">Etapa de {{name}}</h4>
+			<span class="hidden-xs">
+				Tiempo Registrado: <strong>{{timeFormat time}}</strong>
+				<!--Tiempo Registrado: <strong>{{timeFormat estimated}}</strong>-->
+			</span>
+			<span class="visible-xs"><strong>{{timeFormat time}}</strong></span>
+		</div>
+		{{#if editAvailable}}
+			<i class="material-icons edit-stage">mode_edit</i>
+		{{/if}}
+		<div class="stage-progress">
+			<div class="{{#if overTime}} extra-progress {{/if}}" style="width: {{estimatedPercentage}}%;"></div>
+		</div>
+	</div>
+</template>
+
+<template name="timeLogAction">
+	{{#unless projectIsCompleted}}
+		<div class="create-option">
+			{{#if openStageStatus}}
+				<span class="status-time">Guardar Cambios</span>
+				<i class="material-icons">done_all</i>
+			{{else}}
+				{{#if availableOpenStage}}
+					<span class="status-time">Editar Etapas</span>
+					<i class="material-icons">update</i>
+				{{/if}}
+			{{/if}}
+		</div>
+	{{/unless}}
+</template>

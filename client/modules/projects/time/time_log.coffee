@@ -1,13 +1,12 @@
-##########################################
 openStageStatus = new ReactiveVar(false)
 TimeClock = new ReactiveClock()
 
-##########################################
+
 Template.timeTemplate.helpers
 	projectStages: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})?.timeEstimated
 
-##########################################
+
 Template.timesBar.onCreated () ->
 	@disablePlayButton = new ReactiveVar(false)
 
@@ -16,13 +15,16 @@ Template.timesBar.helpers
 	planSummary: () ->
 		return db.plan_summary.findOne({projectId: FlowRouter.getParam("id")})
 
-	isRecordingTime:() ->
+	isRecordingTime: () ->
 		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id"), "summaryOwner": Meteor.userId()})
 		return planSummary?.timeStarted != "false"
 
+	timeIcon: () ->
+		return 'stop' if @timeStarted != "false"
+		return 'play_arrow'
+
 	currentStage: () ->
-		planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
-		projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+		projectStages = _.filter @timeEstimated, (stage) ->
 			unless stage.finished
 				return stage
 		currentPos = _.first(projectStages)?.name
@@ -39,7 +41,7 @@ Template.timesBar.helpers
 
 
 Template.timesBar.events
-	'click .time-play': (e,t) ->
+	'click .time-register-button.background-success': (e,t) ->
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
 
 		unless t.disablePlayButton.get() or project?.completed
@@ -55,7 +57,7 @@ Template.timesBar.events
 					TimeClock.start()
 
 
-	'click .time-pause': (e,t) ->
+	'click .time-register-button.background-danger': (e,t) ->
 		e.stopPropagation()
 		e.preventDefault()
 		planSummary = @
@@ -85,7 +87,7 @@ Template.timesBar.events
 					TimeClock.setElapsedSeconds(0)
 
 
-	'click .time-submit': (e,t) ->
+	'click .project-submit-action': (e,t) ->
 		e.stopPropagation()
 		e.preventDefault()
 
@@ -142,7 +144,7 @@ Template.timesBar.events
 									sys.flashStatus("postmortem-psp0")
 							sys.removeTimeMessage()
 
-##################################################
+
 Template.timeStageRow.helpers
 	editAvailable: () ->
 		project = db.projects.findOne({ _id: FlowRouter.getParam("id") })
@@ -185,12 +187,9 @@ Template.timeStageRow.events
 		Meteor.call "update_stage_completed_value", FlowRouter.getParam("id"), currentStage, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-submit-stage-project")
-			else
-				sys.flashStatus("submit-stage-project")
 
-##########################################
-Template.timesFooter.helpers
+
+Template.timeLogAction.helpers
 	openStageStatus: () ->
 		return openStageStatus.get()
 
@@ -214,12 +213,15 @@ Template.timesFooter.helpers
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
 
-Template.timesFooter.events
+Template.timeLogAction.events
 	'click .status-time': (e,t) ->
 		openStatus = openStageStatus.get()
 		openStageStatus.set(!openStatus)
 
-##########################################
+		if openStatus
+			sys.flashStatus("submit-stage-project")
+
+
 Template.timeClock.onCreated () ->
 	today = new Date()
 	planSummaryId = @.data._id
@@ -239,5 +241,3 @@ Template.timeClock.onCreated () ->
 Template.timeClock.helpers
 	clock: () ->
 		return TimeClock.elapsedTime({format: '00:00:00'});
-
-##########################################

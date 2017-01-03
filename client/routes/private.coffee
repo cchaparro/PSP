@@ -52,7 +52,7 @@ privateRoutes.route '/project/:fid/:id/time',
 		Session.set 'route', 'privateRoute.timeLog'
 		@register 'projectView', Meteor.subscribe "projectView", params.id
 	action: () ->
-		BlazeLayout.render 'masterLayout', main: 'timeTemplate', menu: "projectViewMenu", information: "timeLogInformation"
+		BlazeLayout.render 'masterLayout', main: 'timeTemplate', menu: "projectViewMenu"
 
 
 privateRoutes.route '/project/:fid/:id/defects',
