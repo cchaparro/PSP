@@ -594,8 +594,8 @@
 
 	&.size {
 		.summary-row {
-			height: 40px;
-			line-height: 40px;
+			height: 45px;
+			line-height: 45px;
 
 			.stage-information h4 {
 				font-size: 14px;
@@ -604,7 +604,7 @@
 
 			.summary-icon {
 				line-height: inherit;
-				height: 39px;
+				height: 44px;
 
 				.material-icons {
 					line-height: inherit;
@@ -614,7 +614,7 @@
 			}
 
 			.percentage-stage.size-input {
-				line-height: 40px;
+				line-height: 45px;
 				padding: 0;
 
 				span {
@@ -765,6 +765,20 @@
 			}
 		}
 	}
+}
+
+.size-input-field input {
+	background-color: #F8F9FA;
+	border: none;
+	margin-top: 5px;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 35px;
+	margin-bottom: 10px;
+	outline: none;
+	padding: 10px;
 }
 
 .size-summary {

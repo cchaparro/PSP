@@ -175,6 +175,19 @@ Template.masterLayout.helpers
 					return elementActive('privateRoute.forms')
 				action: () ->
 					projectViewAction(@route)
+				hide: () ->
+					projectId = FlowRouter.getParam("id")
+
+					if projectId
+						planSummary = db.plan_summary.findOne({projectId: projectId})
+						projectStages = _.filter planSummary?.timeEstimated, (stage) ->
+							unless stage.finished
+								return stage
+						currentPos = _.first(projectStages)?.name
+
+						return true if currentPos != "Postmortem"
+						return true if db.projects.findOne({_id: projectId})?.levelPSP == "PSP 0"
+					return false
 			,
 				icon: 'description'
 				title: 'Scripts'
