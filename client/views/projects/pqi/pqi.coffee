@@ -108,7 +108,6 @@ drawPQIChart = (chart_width) ->
 Template.pqiTemplate.onRendered () ->
 	containerWidth = document.getElementById("pqi-information-chart").offsetWidth
 	chartWidth = containerWidth - 20
-	console.log chartWidth
 	Deps.autorun ->
 		drawPQIChart(chartWidth)
 

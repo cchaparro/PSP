@@ -15,6 +15,65 @@
 	}
 }
 
+.overview-charts-container {
+	display: block;
+	margin: 15px;
+	width: calc(100% - 30px);
+	@include clearfix();
+}
+
+#overview-chart {
+	width: calc(50% - 30px);
+	// height: 300px;
+	float: left;
+	// background-color: red;
+	margin-left: 10px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	position: relative;
+
+	&:nth-child(2n) {
+		// background-color: blue;
+		margin-left: 15px;
+		margin-right: 0;
+	}
+
+	span {
+		display: block;
+		margin-left: 10px;
+		margin-bottom: 15px;
+		font-size: 14px;
+		color: #566C78;
+	}
+
+	.overview-chart-label {
+		line-height: 20px;
+		cursor: default;
+		height: 20px;
+		color: #566C78;
+		display: inline-block;
+
+		span {
+			float: left;
+			margin-left: 0;
+		}
+
+		i {
+			line-height: inherit;
+			float: left;
+
+			&.space {
+				margin-left: 15px;
+			}
+		}
+	}
+}
+
+.chart-label {
+	text-align: center;
+	display: block;
+}
+
 .overview-chart-box {
 	width: 49%;
 	height: 300px;

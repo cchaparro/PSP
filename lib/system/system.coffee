@@ -533,10 +533,10 @@ sys.selectColor = (last_color) ->
 ##########################################
 ############- Chart Overview -############
 
-sys.overviewChart = (chartName, data) ->
+sys.overviewChart = (chartName, data, chart_width) ->
 	chartElement = document.getElementById(chartName)?.getContext('2d')
-	chartElement?.canvas.width = 400
-	chartElement?.canvas.height = 200
+	chartElement?.canvas?.width = chart_width
+	chartElement?.canvas?.height = chart_width/2
 
 	return new Chart(chartElement).Scatter(data,
 		animation : false
