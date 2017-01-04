@@ -19,6 +19,16 @@ projectViewAction = (route) ->
 		id: projectId
 	})
 
+helpViewActive = () ->
+	if elementActive('privateRoute.help')
+		return true
+
+	FlowRouter.watchPathChange()
+	currentRoute = FlowRouter.current().route.name
+	projectViews = ['privateRoute.community', 'privateRoute.communityQuestion', 'privateRoute.tutorial']
+	return _.contains projectViews, currentRoute
+
+
 projectViewActive = () ->
 	if elementActive('privateRoute.general')
 		return true
@@ -79,7 +89,7 @@ Template.masterLayout.helpers
 				title: 'Ayuda'
 				route: 'privateRoute.help'
 				active: () ->
-					return elementActive('privateRoute.help')
+					return helpViewActive()
 				action: () ->
 					closePopups()
 					return FlowRouter.go(@route)
