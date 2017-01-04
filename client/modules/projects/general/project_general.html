@@ -2,7 +2,8 @@
 	{{>projectMessages}}
 	{{#with projectInfo}}
 		<div class="main-option-container {{#if projectClosed}} project-general-completed {{/if}}">
-			<h4 class="main-option-title">Informacion General</h4>
+			<h4 class="main-option-title hidden-xs">Informacion General</h4>
+			<h4 class="main-option-title visible-xs">&nbsp;</h4>
 			<div class="project-general-state">
 				{{#if projectClosed}}
 					<span>Proyecto Finalizado</span>

@@ -99,3 +99,22 @@
 }
 
 //------------------------------------------------
+
+@media (max-width: 767px) {
+	#overview-chart {
+		width: calc(100% - 10px);
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 50px;
+
+		&:nth-child(2n) {
+			margin-left: 0;
+		}
+	}
+
+	.overview-chart-label {
+		span {
+			margin-bottom: 0!important;
+		}
+	}
+}

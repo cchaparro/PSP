@@ -1594,8 +1594,142 @@
 
 @media (max-width: 639px) {
 	.project-box {
-		width: calc(100% - 40px)!important;
-		margin-left: 20px;
-		margin-right: 20px;
+		width: calc(100% - 20px)!important;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+
+	.project-general-extra {
+		#project-general-chart {
+			width: calc(100% - 20px);
+
+			.prj-information-chart {
+				width: 100%;
+			}
+
+			.project-information-chart-values {
+				width: 100%;
+			}
+		}
+
+		.project-general-data {
+			width: calc(100% - 20px);
+		}
+	}
+
+	.summary-row {
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
+
+	.stage-row {
+		width: 100%;
+		height: 70px;
+		display: block;
+		border-bottom: 1px solid rgba($border, .6);
+		line-height: 67.5px;
+		position: relative;
+
+		.stage-icon {
+			float: left;
+			color: $text;
+			line-height: 10px;
+
+			i {
+				padding-left: 5px;
+				padding-top: 21px;
+				padding-bottom: 20.5px;
+				cursor: default;
+			}
+
+			.check-status {
+				width: 20px;
+				height: 20px;
+				margin: 22px 2px 21px 7px;
+				@include border-radius($circle-border-radius);
+				border: 2px solid $success;
+				float: left;
+				cursor: pointer;
+			}
+
+			.completed {
+				color: $success;
+			}
+
+			.current {
+				color: $text-dark;
+			}
+
+			.check-enabled {
+				cursor: pointer;
+			}
+		}
+
+		.stage-progress {
+			height: 1px;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+
+			div {
+				height: 100%;
+				background-color: $blue;
+				overflow: hidden;
+			}
+		}
+
+		.stage-information {
+			display: inline-block;
+			vertical-align: middle;
+			line-height: 20px;
+			padding-left: 10px;
+			cursor: default;
+
+			.time-lapse {
+				float: right;
+				font-size: 12pt;
+				line-height: inherit;
+				padding-left: 3px;
+				cursor: pointer;
+			}
+
+			h4 {
+				margin: 0;
+				font-size: 12pt;
+				color: $text;
+
+				&.title-finished {
+					color: $text-dark;
+				}
+			}
+
+			span {
+				font-size: 10pt;
+				color: $text; 
+			}
+		}
+
+		.edit-stage {
+			margin-right: 0;
+			margin-top: 13px;
+			margin-bottom: 12px;
+		}
+	}
+
+	#pqi-information-chart {
+		width: 100%;
+
+		canvas {
+			margin-left: 0;
+		}
+	}
+
+	.pqi-information-chart-values {
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }

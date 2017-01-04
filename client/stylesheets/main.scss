@@ -1,7 +1,7 @@
 @import '_variables.scss';
 
 $navbar-width: 190px;
-$navbar-mobile-width: 60px;
+$navbar-mobile-width: 50px;
 $main-header-height: 60px;
 
 html, body {
@@ -617,7 +617,74 @@ html, body {
 
 }
 
-// Landscape phones and portrait tablets
 @media (max-width: 767px) {
+	.main-wrapper {
+		width: calc(100% - #{$navbar-mobile-width});
+	}
 
+	.navbar-wrapper {
+		width: $navbar-mobile-width;
+
+		br {
+			display: none;
+		}
+	}
+
+	.main-navbar {
+		margin: 0;
+
+		li {
+			margin: 2px 6px;
+		}
+
+		li a span {
+			display: none;
+		}
+
+		li a i {
+			margin: 0 7px;
+		}
+	}
+
+	.navbar-title {
+		display: none;
+	}
+
+	.navbar-logo img {
+		padding-left: 9.5px;
+	}
+
+	.main-content {
+		padding-top: 10px;
+	}
+
+	.main-option-container {
+		width: calc(100% - 20px);
+		margin: 0 10px 10px 10px;
+
+		.project-message-bubble {
+			margin-left: 10px;
+			margin-right: 10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	}
+
+	.project-bubble {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+
+	.main-avatar-dropdown {
+		top: 0;
+		left: 50px;
+	}
+
+	.notification-box {
+		height: 370px;
+		width: 255px;
+		top: -50px;
+		left: 50px;
+	}
 }

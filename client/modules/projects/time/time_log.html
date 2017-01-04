@@ -32,7 +32,7 @@
 		{{else}}
 			{{#if currentStage}}
 				<div class="project-submit-action">
-					<span>Finalizar {{currentStage}}</span>
+					<span class="hidden-xs">Finalizar {{currentStage}}</span>
 					<i class="material-icons">done_all</i>
 				</div>
 			{{else}}
@@ -62,7 +62,8 @@
 			{{/if}}
 		</div>
 		<div class="stage-information">
-			<h4 class="{{#if $or finished currentStage}} title-finished {{/if}}">Etapa de {{name}}</h4>
+			<h4 class="{{#if $or finished currentStage}} title-finished {{/if}} hidden-xs">Etapa de {{name}}</h4>
+			<h4 class="{{#if $or finished currentStage}} title-finished {{/if}} visiable-xs">{{name}}</h4>
 			<span class="hidden-xs">
 				Tiempo Registrado: <strong>{{timeFormat time}}</strong>
 				<!--Tiempo Registrado: <strong>{{timeFormat estimated}}</strong>-->
