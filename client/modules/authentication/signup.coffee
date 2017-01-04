@@ -67,6 +67,7 @@ Template.registerTemplate.events
 						t.$('[name="lastName"]').val('')
 				else
 					FlowRouter.go("privateRoute.general")
+					Modal.show('tutorialModal', {first_time: true})
 
 		else if !sys.isEmail(email) and email.length > 0
 			t.errorState.set("email")

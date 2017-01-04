@@ -1,0 +1,131 @@
+<template name="tutorialModal">
+	{{#modal modalClasses="tutorial-modal"}}
+		{{#modal_title}}
+			{{#unless showGreetings}}
+				<h3 class="modal-title tutorial-title">Tutorial</h3>
+			{{/unless}}
+		{{/modal_title}}
+		{{#modal_body}}
+			{{> Template.dynamic template=currentPage}}
+			<br>
+			{{#if showGreetings}}
+				<div class="tutorial-modal-footer">
+					<div>
+						<span class="pull-left start-tutorial">Iniciar Tutorial<i class="material-icons">arrow_forward</i></span>
+					</div>
+				</div>
+			{{else}}
+				<div class="tutorial-modal-footer-more">
+					{{#if $and showBack ($not lastPage)}}
+						<span class="pull-left tutorial-back"><i class="material-icons">arrow_backward</i> Atras</span>
+					{{/if}}
+					{{#if lastPage}}
+						<span class="pull-right tutorial-end">Finalizar<i class="material-icons">arrow_forward</i></span>
+					{{else}}
+						<span class="pull-right tutorial-next">Siguiente<i class="material-icons">arrow_forward</i></span>
+					{{/if}}
+				</div>
+			{{/if}}
+		{{/modal_body}}
+	{{/modal}}
+</template>
+
+<template name="tutorial-initial">
+	<div class="tutorial-initial">
+		<img src="/LogoMenuDark.png" alt="PSP Connect">
+		<h4>Bienvenido a <span>pspconnect.co</span></h4>
+		<span>Gracias por elegirnos como herramienta de apoyo para el desarrollo del Personal Software Process. A continuación sigue un pequeño tutorial con los elementos mas basicos de la herramienta y luego podras acceder a la misma.</span>
+		<br><br>
+		<span>Si no deseas seguir el tutorial puedes cerrarlo con el boton que se encuentra en la parte superior derecha.</span>
+	</div>
+</template>
+
+<template name="tutorial-page-1">
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial1.png">
+		</div>
+		<div class="element-description">
+			<h4>Crear un proyecto</h4>
+			<span>Un proyecto contiene elementos como el registro de tiempo, registro de defectos, entre otros. Para crear un proyecto nuevo debes dar click en el botón de la parte superior derecha.</span>
+		</div>
+	</div>
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial2.png">
+		</div>
+		<div class="element-description">
+			<h4>Crear una iteración</h4>
+			<span>Al abrir un proyecto tendras acceso a la lista de iteraciones del mismo. Para crear una nueva iteración debes dar click en el botón de la parte superior derecha.</span>
+		</div>
+	</div>
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial3.png">
+		</div>
+		<div class="element-description">
+			<h4>Eliminar un Proyecto/Iteración</h4>
+			<span>Para eliminar un proyecto/iteración debes de dar click en la parte superior derecha del bloque proyecto. Luego debes confirmar la acción para completar el proceso.</span>
+		</div>
+	</div>
+</template>
+
+<template name="tutorial-page-2">
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial4.png">
+		</div>
+		<div class="element-description">
+			<h4>Registro de tiempo</h4>
+			<span>Para registrar un tiempo debes de dar click en el botón play/stop o en el botón editar que se encuentra en la fila de cada etapa del proyecto.</span>
+		</div>
+	</div>
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial5.png">
+		</div>
+		<div class="element-description">
+			<h4>Registro de defectos</h4>
+			<span>Para eliminar un proyecto/iteración debes de dar click en la parte superior derecha del bloque proyecto. Luego debes confirmar la acción para completar el proceso.</span>
+		</div>
+	</div>
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial6.png">
+		</div>
+		<div class="element-description">
+			<h4>Plan Summary del Proyecto</h4>
+			<span>Esta lista contiene un resumen general del proyecto. Si estas en un proyecto con PSP1 o PSP2 podras ingresar la estimación de tamaño en la parte inferior del plan summary</span>
+		</div>
+	</div>
+</template>
+
+<template name="tutorial-page-3">
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial7.png">
+		</div>
+		<div class="element-description">
+			<h4>Resumen de proyectos finalizados</h4>
+			<span>Para eliminar un proyecto/iteración debes de dar click en la parte superior derecha del bloque proyecto. Luego debes confirmar la acción para completar el proceso.</span>
+		</div>
+	</div>
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial8.png">
+		</div>
+		<div class="element-description">
+			<h4>Lista tipo de defectos</h4>
+			<span>En la vista configuración se encuentra la lista de tipos de defectos utilizada en los proyectos. Esta lista puede ser modificada y en la parte inferior derecha se encuentra el boton de guardar.</span>
+		</div>
+	</div>
+	<div class="tutorial-element">
+		<div class="element-image">
+			<img src="/tutorial/Tutorial9.png">
+		</div>
+		<div class="element-description">
+			<h4>Ayuda de la comunidad</h4>
+			<span>Todas las dudas que tengas que no son resueltas en este tutorial puedes escribirlas en la comunidad. Todos los usuarios de la plataforma tienen acceso a este y podrán ayudarte.</span>
+		</div>
+	</div>
+</template>
