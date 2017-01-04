@@ -1,14 +1,14 @@
 <template name="pqiTemplate">
 	{{>projectMessages}}
 
-	<div class="pqi-content">
-		<div class="prj-information-chart">
+	<div class=" main-option-container clearfix">
+		<div id="pqi-information-chart">
 			<canvas id="projectPQIChart"></canvas>
 		</div>
-		<ul class="prj-information-chart-values">
-		{{#each PQIValues}}
-			<li>{{name}} ({{alias}}): {{value}}</li>
-		{{/each}}
+		<ul class="pqi-information-chart-values">
+			{{#each PQIValues}}
+				<li>{{name}} ({{alias}}): {{value}}</li>
+			{{/each}}
 			<li>PQI: {{getPQI}}</li>
 		</ul>
 	</div>

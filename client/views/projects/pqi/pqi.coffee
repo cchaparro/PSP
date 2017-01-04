@@ -2,7 +2,7 @@ PQIMetrics = new ReactiveVar([])
 PQIValue = new ReactiveVar(0)
 
 
-drawPQIChart = ()->
+drawPQIChart = (chart_width) ->
 	planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
 	finalSize = planSummary?.total?.totalSize
 	# CD: Calidad Diseño
@@ -99,14 +99,19 @@ drawPQIChart = ()->
     }
 
 	ctx = $('#projectPQIChart')?.get(0)?.getContext('2d')
-	ctx?.canvas.width = 400
-	ctx?.canvas.height = 400
+	ctx?.canvas.width = chart_width
+	ctx?.canvas.height = chart_width
 	if ctx
 		new Chart(ctx).Radar(data, options)
 
+
 Template.pqiTemplate.onRendered () ->
+	containerWidth = document.getElementById("pqi-information-chart").offsetWidth
+	chartWidth = containerWidth - 20
+	console.log chartWidth
 	Deps.autorun ->
-		drawPQIChart()
+		drawPQIChart(chartWidth)
+
 
 Template.pqiTemplate.helpers
 	PQIValues: ()->

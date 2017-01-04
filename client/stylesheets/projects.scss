@@ -1037,25 +1037,59 @@
 	width: 390px;
 }
 
-.pqi-content {
-	background-color: white;
-	width: 100%;
-	@include border-radius($default-border-radius);
-	border-bottom: 2px solid $box-border;
-	margin-bottom: 20px;
-	@include clearfix;
+#pqi-information-chart {
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	padding: 0;
+	float: left;
+	padding-bottom: 15px;
+	padding-top: 7px;
 
-	h4 {
-		color: $text-dark;
-		margin-top: 15px;
-		margin-bottom: 15px;
+	canvas {
+		margin-top: 7.7px;
 		margin-left: 15px;
 		cursor: default;
 	}
+}
 
-	.prj-information-chart {
-		text-align: center;
-		padding: 20px;
+.pqi-information-chart-values {
+	width: 50%;
+	float: right;
+	display: inline-block;
+	list-style: none;
+	margin-top: 30px;
+	padding-left: 0;
+	padding-bottom: 10px;
+	cursor: default;
+
+	li {
+		margin: 0 auto;
+		text-decoration: none;
+		font-size: 12pt;
+		padding-bottom: 3px;
+		background-color: #F8F9FA;
+		padding: 5px;
+		border-radius: 20px;
+		margin-bottom: 5px;
+		max-width: 300px;
+		line-height: 20px;
+
+		i {
+			padding-right: 10px;
+			font-size: 15px;
+			float: left;
+			line-height: inherit;
+			margin-left: 10px;
+		}
+
+		span {
+			color: #566C78;
+			// display: block;
+			font-size: 13px;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
 	}
 }
 
