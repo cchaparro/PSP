@@ -207,6 +207,45 @@ sys.flashStatus = (type) ->
 			subject = "No hemos podido finalizar proyecto. Por favor inténtelo nuevamente."
 			css = "danger"
 
+		when "delete-pip-successful"
+			title = "PIP eliminado"
+			subject = "se ha eliminado correctamente la propuesta de mejora seleccionada."
+			css = "success"
+
+		when "delete-pip-error"
+			title = "Error"
+			subject = "No pudimos eliminar la propuesta de mejora seleccionada. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "delete-test-successful"
+			title = "Reporte eliminado"
+			subject = "El reporte de prueba se ha eliminado correctamente."
+			css = "success"
+
+		when "delete-test-error"
+			title = "Error"
+			subject = "No pudimos eliminar el reporte de prueba seleccionado. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'create-test-successful'
+			title = "Reporte creado"
+			subject = "El reporte de prueba que acabas de ingresar se ha creado correctamente."
+			css = "success"
+
+		when 'create-test-error'
+			title = "Error"
+			subject = "No pudimos crear el reporte de prueba correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'create-pip-successful'
+			title = "Reporte creado"
+			subject = "La propuesta de mejora que acabas de ingresar se ha creado correctamente."
+			css = "success"
+
+		when 'create-pip-error'
+			title = "Error"
+			subject = "No pudimos crear la propuesta de mejora correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
 
 
 

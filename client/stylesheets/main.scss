@@ -163,6 +163,12 @@ html, body {
 				border-radius: 20px;
 			}
 
+			&.active-always {
+				background-color: #F8F9FA;
+				border-radius: 20px;
+				padding-right: 5px;
+			}
+
 			span, .material-icons {
 				line-height: inherit;
 				float: left;

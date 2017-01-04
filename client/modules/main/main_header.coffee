@@ -18,6 +18,8 @@ Template.mainHeader.helpers
 				return 'finishProjectAction'
 			when 'privateRoute.timeLog'
 				return 'timeLogAction'
+			when 'privateRoute.forms'
+				return 'createFormAction'
 			else
 				return ''
 

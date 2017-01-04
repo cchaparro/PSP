@@ -161,6 +161,12 @@ Template.masterLayout.helpers
 					return elementActive('privateRoute.pqi')
 				action: () ->
 					projectViewAction(@route)
+				hide: () ->
+					projectId = FlowRouter.getParam("id")
+					if projectId
+						project = db.projects.findOne({_id: projectId})
+						return project?.levelPSP != "PSP 2"
+					return true
 			,
 				icon: 'rate_review'
 				title: 'Formularios'

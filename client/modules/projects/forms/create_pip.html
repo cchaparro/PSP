@@ -1,0 +1,41 @@
+<template name="createPipModal">
+	{{#modal modalClasses="create-pip-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">{{displayTitle}}</h3>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<span class="modal-input-title">Titulo PIP</span>
+			<input class="modal-input-field pip-new-title {{#if titleError}} error {{/if}}" type="text" placeholder="Ingresar titulo" value="{{pipData.title}}">
+
+			<span class="modal-input-title">Descripción del Problema</span>	
+			<textarea class="modal-input-field problem-pip {{#if problemError}} error {{/if}}" data-field="description" placeholder="Descripción del Problema..." value="{{pipData.problemDescription}}"></textarea>
+
+			<span class="modal-input-title">Solución propuesta</span>
+			<textarea class="modal-input-field solution-pip {{#if solutionError}} error {{/if}}" data-field="description" placeholder="Solución propuesta..." value="{{pipData.proposalDescription}}"></textarea>
+
+			<span class="modal-input-title">Defectos solucionados</span>	
+			{{#if hasDefects}}
+				<ul class="pip-checkbox-container">
+					{{#each userDefects}}
+						<li class="pip-checkbox-row">
+							<label><input type="checkbox" class="add-checkbox" {{isChecked selected}}> {{type}}</label>
+						</li>
+					{{/each}}
+				</ul>
+			{{else}}
+				<p class="title-pip">No hay tipos defectos registrados en este proyecto.</p>
+			{{/if}}
+
+			<div class="modal-footer">
+				{{#unless projectIsCompleted}}
+					{{#if ifLoadsData}}
+						<span class="primary-button pull-right test-create">Crear PIP</span>
+					{{else}}
+						<span class="primary-button pull-right test-create">Guardar Cambios</span>
+					{{/if}}
+				{{/unless}}
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>

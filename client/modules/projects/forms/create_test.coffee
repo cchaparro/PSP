@@ -1,19 +1,10 @@
-###########################################
 # titleStatus true is Create title and false is Modify title
 titleStatus = new ReactiveVar(true)
 testData = new ReactiveVar({})
 testId = new ReactiveVar('')
 
-###########################################
-Template.createTestModal.helpers
-	displayTitle: () ->
-		if titleStatus.get()
-			return "Crear nuevo Reporte"
-		else
-			return "Modificar Reporte"
 
-###########################################
-Template.createTest.onCreated () ->
+Template.createTestModal.onCreated () ->
 	#Error for missing fields
 	@expectedError = new ReactiveVar(false)
 	@actualError = new ReactiveVar(false)
@@ -35,7 +26,13 @@ Template.createTest.onCreated () ->
 		})
 
 
-Template.createTest.helpers
+Template.createTestModal.helpers
+	displayTitle: () ->
+		if titleStatus.get()
+			return "Crear nuevo Reporte"
+		else
+			return "Modificar Reporte"
+
 	testData: () ->
 		return testData.get()
 
@@ -54,7 +51,8 @@ Template.createTest.helpers
 	projectIsCompleted: () ->
 		return db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
 
-Template.createTest.events
+
+Template.createTestModal.events
 	'keypress .expected-test': (e,t) ->
 		if $(e.target).val().length > 0
 			t.expectedError.set(false)
@@ -67,7 +65,7 @@ Template.createTest.events
 		if $(e.target).val().length > 0
 			t.titleError.set(false)
 
-	'click .pry-modal-create': (e,t) ->
+	'click .report-create': (e,t) ->
 		TestId = testId.get()
 		TestModalData = testData.get()
 		TestModalData.purpose = $('.test-new-title').val()
@@ -89,13 +87,11 @@ Template.createTest.events
 			Meteor.call "create_test_report",TestId, data, false, (error) ->
 				if error
 					console.warn(error)
-					sys.flashStatus("error-create-defect")
+					sys.flashStatus("create-test-error")
 				else
 					Modal.hide('createTestModal')
-					sys.flashStatus("create-defect")
+					sys.flashStatus("create-test-successful")
 		else
 			Template.instance().expectedError.set(data.expectedResults.trim().length == 0)
 			Template.instance().actualError.set(data.actualResults.trim().length == 0)
 			Template.instance().titleError.set(data.purpose.trim().length == 0)
-
-##########################################

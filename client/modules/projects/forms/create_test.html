@@ -1,0 +1,29 @@
+<template name="createTestModal">
+	{{#modal modalClasses="create-test-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">{{displayTitle}}</h3>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<span class="modal-input-title">Propósito de la Prueba</span>
+			<input class="modal-input-field test-new-title {{#if titleError}} error {{/if}}" type="text" placeholder="Propósito de la prueba" value="{{testData.purpose}}">
+
+			<span>Resultados Esperados</span>	
+			<textarea class="modal-input-field expected-test {{#if expectedError}} error {{/if}}" placeholder="Ingresar resultados esperados..." value="{{testData.expectedResults}}"></textarea>
+
+
+			<span class="modal-input-title">Resultados Obtenidos</span>
+			<textarea class="modal-input-field actual-test {{#if actualError}} error {{/if}}" placeholder="Ingresar resultados obtenidos..." value="{{testData.actualResults}}"></textarea>
+
+			<div class="modal-footer">
+				{{#unless projectIsCompleted}}
+					{{#if ifLoadsData}}
+						<span class="primary-button pull-right report-create">Crear Reporte</span>
+					{{else}}
+						<span class="primary-button pull-right report-create">Guardar Cambios</span>
+					{{/if}}
+				{{/unless}}
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>

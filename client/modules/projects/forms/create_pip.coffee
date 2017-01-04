@@ -1,19 +1,11 @@
-#########################
 # titleStatus true is Create title and false is Modify title
 titleStatus = new ReactiveVar(true)
 pipData = new ReactiveVar({})
 pipDefects = new ReactiveVar([])
 pipId = new ReactiveVar('')
-###########################################
-Template.createPipModal.helpers
-	displayTitle: () ->
-		if titleStatus.get()
-			return "Crear nuevo PIP"
-		else
-			return "Modificar PIP"
 
-###########################################
-Template.createPip.onCreated () ->
+
+Template.createPipModal.onCreated () ->
 	#Error for missing fields
 	@problemError = new ReactiveVar(false)
 	@solutionError = new ReactiveVar(false)
@@ -62,7 +54,13 @@ Template.createPip.onCreated () ->
 		})
 
 
-Template.createPip.helpers
+Template.createPipModal.helpers
+	displayTitle: () ->
+		if titleStatus.get()
+			return "Crear nuevo PIP"
+		else
+			return "Modificar PIP"
+
 	pipData: () ->
 		return pipData.get()
 
@@ -93,7 +91,7 @@ Template.createPip.helpers
 		return pipDefects.get()
 
 
-Template.createPip.events
+Template.createPipModal.events
 	'keypress .problem-pip': (e,t) ->
 		if $(e.target).val().length > 0
 			t.problemError.set(false)
@@ -113,7 +111,7 @@ Template.createPip.events
 		data[@position].selected = value
 		pipDefects.set(data)		
 		
-	'click .pry-modal-create': (e,t) ->
+	'click .test-create': (e,t) ->
 		PipId = pipId.get()
 		PipModalData = pipData.get()
 		PipModalData.title = $('.pip-new-title').val()
@@ -140,13 +138,11 @@ Template.createPip.events
 			Meteor.call "create_pip",PipId, data, false, (error) ->
 				if error
 					console.warn(error)
-					sys.flashStatus("error-create-defect")
+					sys.flashStatus("create-pip-error")
 				else
 					Modal.hide('createPipModal')
-					sys.flashStatus("create-defect")
+					sys.flashStatus("create-pip-successful")
 		else
 			Template.instance().solutionError.set(data.proposalDescription.trim().length == 0)
 			Template.instance().problemError.set(data.problemDescription.trim().length == 0)
 			Template.instance().titleError.set(data.title.trim().length == 0)
-
-##########################################
