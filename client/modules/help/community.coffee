@@ -1,15 +1,16 @@
-##########################################
 Template.communityTemplate.helpers
-	generalQuestions: () ->
-		return db.questions.find({questionOwner: {$ne: Meteor.userId()}, parentId: null})
-
 	userQuestions: () ->
-		return db.questions.find({questionOwner: Meteor.userId(), parentId: null})
+		userId = Meteor.userId()
+		return db.questions.find({questionOwner: userId, parentId: null})
+
+	generalQuestions: () ->
+		userId = Meteor.userId()
+		return db.questions.find({questionOwner: {$ne: userId}, parentId: null})
 
 	noQuestions: () ->
 		return db.questions.find({parentId: null}).count() == 0
 
-##########################################
+
 Template.question.helpers
 	categoryColor: () ->
 		switch @question.category
@@ -20,13 +21,45 @@ Template.question.helpers
 			when "psp"
 				return "#ffb427"
 
+	questionCategory: () ->
+		switch @question.category
+			when "general"
+				return "General"
+			when "interface"
+				return "Interfaz"
+			when "psp"
+				return "Metodologia PSP"
+
 	questionTitle: () ->
 		return sys.cutText(@question.title, 70, " ...") or "" if @question.title
 
 	questionDescription: () ->
-		return sys.cutText(@question.description, 220, " ...") or "" if @question.description
+		return sys.cutText(@question.description, 165, " ...") or "" if @question.description
 
-##########################################
+
+Template.closeQuestionAction.helpers
+	questionDisabled: () ->
+		questionId = FlowRouter.getParam("question")
+		userId = Meteor.userId()
+		return true if db.questions.findOne({_id: questionId})?.questionOwner != userId
+		return true if db.questions.findOne({_id: questionId})?.completed
+		return false
+
+
+Template.closeQuestionAction.events
+	'click .question-close': (e,t) ->
+		e.stopPropagation()
+		e.preventDefault()
+		questionId = FlowRouter.getParam("question")
+
+		Meteor.call "cumplete_question", questionId, (error) ->
+			if error
+				console.warn(error)
+				sys.flashStatus("question-close-error")
+			else
+				sys.flashStatus("question-close-successful")
+
+
 Template.questionTemplate.helpers
 	questionView: () ->
 		questionId = FlowRouter.getParam("question")
@@ -40,26 +73,8 @@ Template.questionTemplate.helpers
 		questionId = FlowRouter.getParam("question")
 		return db.questions.findOne({_id: questionId})?.completed
 
-	isOwner: () ->
-		questionId = FlowRouter.getParam("question")
-		return db.questions.findOne({_id: questionId})?.questionOwner == Meteor.userId()
 
-
-Template.questionTemplate.events
-	'click .close-question': (e,t) ->
-		questionId = FlowRouter.getParam("question")
-		Meteor.call "cumplete_question", questionId, (error) ->
-			if error
-				console.warn(error)
-				sys.flashStatus("error-finish-question")
-			else
-				sys.flashStatus("finish-question")
-
-##########################################
 Template.generalQuestion.helpers
-	momentToNow: (createdAt) ->
-		return moment(createdAt).fromNow()
-
 	categoryColor: () ->
 		switch @category
 			when "general"
@@ -69,12 +84,16 @@ Template.generalQuestion.helpers
 			when "psp"
 				return "#ffb427"
 
-##########################################
-Template.questionAnswer.helpers
-	momentToNow: (createdAt) ->
-		return moment(createdAt).fromNow()
+	questionCategory: () ->
+		switch @category
+			when "general"
+				return "General"
+			when "interface"
+				return "Interfaz"
+			when "psp"
+				return "Metodologia PSP"
 
-##########################################
+
 Template.addQuestionAnswer.events
 	'click .add-answer': (e,t) ->
 		questionId = FlowRouter.getParam("question")
@@ -93,10 +112,8 @@ Template.addQuestionAnswer.events
 		Meteor.call "create_question", data, true, (error) ->
 			if error
 				console.warn(error)
-				sys.flashStatus("error-create-question")
+				sys.flashStatus("question-answer-error")
 			else
-				sys.flashStatus("create-question")
+				sys.flashStatus("question-answer-successful")
 				$(".answer-text").val('')
 
-
-##########################################

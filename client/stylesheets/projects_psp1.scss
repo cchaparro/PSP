@@ -60,6 +60,7 @@
 			.size-base-title {
 				text-align: left;
 				width: 150px;
+				padding-left: 10px;
 			}
 		}
 
@@ -314,8 +315,24 @@
 	}
 }
 
+.disabled-summary-input {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	max-width: 100%;
+	outline: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 42px;
 
-
+	&.last {
+		margin-right: 5px;
+	}
+}
 
 
 //--------------- Add LOC Table --------------

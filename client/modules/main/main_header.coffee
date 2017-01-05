@@ -20,6 +20,8 @@ Template.mainHeader.helpers
 				return 'timeLogAction'
 			when 'privateRoute.forms'
 				return 'createFormAction'
+			when 'privateRoute.communityQuestion'
+				return 'closeQuestionAction'
 			else
 				return ''
 

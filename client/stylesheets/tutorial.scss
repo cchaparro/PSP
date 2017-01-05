@@ -156,3 +156,13 @@
 		font-size: 14px;
 	}
 }
+
+@media (max-width: 767px) {
+	.tutorial-modal {
+		width: calc(100% - 20px);
+
+		.tutorial-modal-footer-more {
+			margin: 0 -15px -15px -15px;
+		}
+	}
+}

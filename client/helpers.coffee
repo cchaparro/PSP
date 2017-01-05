@@ -16,12 +16,8 @@ Template.registerHelper "dateFormat", (context) ->
 		return context
 
 
-
-
-
-
-
-
+Template.registerHelper "momentToNow", (createdAt) ->
+	return moment(createdAt).fromNow()
 
 
 # This is used to bring the users Avatar or if he
