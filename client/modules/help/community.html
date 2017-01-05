@@ -34,7 +34,7 @@
 					{{#if question.completed}}
 						<span class="project-category completed">Finalizada</span>
 					{{/if}}
-					{{momentToNow createdAt}}
+					{{momentToNow question.createdAt}}
 				</span>
 				<div class="question-count {{#if question.completed}} completed {{/if}}">
 					<h2>
