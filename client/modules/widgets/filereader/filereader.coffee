@@ -1,4 +1,3 @@
-##################################################
 Template.filereaderTemplate.events
 	'click .filereader_action': (e, t) ->
 		$filereader = t.$(".filereader_file")
@@ -15,5 +14,3 @@ Template.filereaderTemplate.events
 			self.settings.success(result, file.type)
 
 		reader.readAsText(file)
-
-##################################################
