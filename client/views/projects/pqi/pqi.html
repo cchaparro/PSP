@@ -9,7 +9,12 @@
 			{{#each PQIValues}}
 				<li>{{name}} ({{alias}}): {{value}}</li>
 			{{/each}}
-			<li>PQI: {{getPQI}}</li>
+			{{#if applyStyle}}
+				<li style="color:red; font-weight: bold;">PQI: {{getPQI}}, valores por debajo de 0,5 indican baja calidad.</li>
+			{{else}}
+				<li style="color:green; font-weight: bold;">PQI: {{getPQI}}, valores por encima de 0,5 son aceptables.</li>
+			{{/if}}
 		</ul>
 	</div>
+	{{>pspTwoTemplate}}
 </template>

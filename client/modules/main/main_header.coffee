@@ -36,7 +36,7 @@ Template.mainHeader.helpers
 		else
 			displayMenu = false
 
-		if currentState == "privateRoute.general" or currentState=='privateRoute.iterations' or currentState=="privateRoute.projectGeneral" or currentState=="privateRoute.timeLog" or currentState=="privateRoute.defectLog" or currentState=="privateRoute.summary" or currentState=="privateRoute.scripts" or currentState=="privateRoute.estimating" or currentState=="privateRoute.forms"
+		if currentState == "privateRoute.general" or currentState=='privateRoute.iterations' or currentState=="privateRoute.projectGeneral" or currentState=="privateRoute.timeLog" or currentState=="privateRoute.defectLog" or currentState=="privateRoute.summary" or currentState=="privateRoute.scripts" or currentState=="privateRoute.estimating" or currentState=="privateRoute.forms" or currentState=='privateRoute.pqi'
 			initialRoute = "privateRoute.general"
 		else if currentState == "privateRoute.community" or currentState == "privateRoute.communityQuestion" or currentState == "privateRoute.tutorial"
 			initialRoute = "privateRoute.help"
