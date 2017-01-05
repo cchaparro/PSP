@@ -5,23 +5,91 @@
 		[
 			[
 				"padd",
-				"padding-left"
+				"padding-bottom"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"border-bo",
+				"border-bottom-left-radius"
+			],
+			[
+				"bord",
+				"border-top"
+			],
+			[
+				"time",
+				"timeCharts"
+			],
+			[
+				"pips",
+				"pipsTemplate"
+			],
+			[
+				"borde",
+				"border-top"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"get",
+				"getParam"
+			],
+			[
+				"border-t",
+				"border-top-right-radius"
+			],
+			[
+				"tabl",
+				"table-cell"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"finis",
+				"finishProjectAction"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"ali",
+				"text-align"
+			],
+			[
+				"border-bott",
+				"border-bottom"
+			],
+			[
+				"projec",
+				"projectId"
+			],
+			[
+				"Ses",
+				"Session.set\tMeteor: Session.set(key, value)"
 			],
 			[
 				"over",
 				"overflow"
-			],
-			[
-				"font",
-				"font-weight"
-			],
-			[
-				"text",
-				"text-decoration"
-			],
-			[
-				"margin",
-				"margin-top"
 			],
 			[
 				"fon",
@@ -34,14 +102,6 @@
 			[
 				"border",
 				"border-top"
-			],
-			[
-				"border-bott",
-				"border-bottom-left-radius"
-			],
-			[
-				"pad",
-				"padding-top"
 			],
 			[
 				"def",
@@ -62,10 +122,6 @@
 			[
 				"even",
 				"events\tMeteor: Template.myTemplate.events(eventMap)"
-			],
-			[
-				"bord",
-				"border-radius"
 			],
 			[
 				"avatar",
@@ -108,16 +164,8 @@
 				"iterationId"
 			],
 			[
-				"borde",
-				"border-left"
-			],
-			[
 				"defa",
 				"default-box-shadow\t projects.scss"
-			],
-			[
-				"projec",
-				"projects"
 			],
 			[
 				"proje",
@@ -126,10 +174,6 @@
 			[
 				"cl",
 				"clearfix()\t _variables.scss"
-			],
-			[
-				"mar",
-				"margin-left"
 			],
 			[
 				"defect-log-",
@@ -380,47 +424,22 @@
 	"buffers":
 	[
 		{
-			"file": "lib/models/plan_summary.models.coffee",
+			"file": "mup.json",
 			"settings":
 			{
-				"buffer_size": 3367,
+				"buffer_size": 1301,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 163 files for \"yield\"\n\n0 matches\n\nSearching 163 files for \"yield\"\n\n0 matches\n\nSearching 163 files for \"{{>yield\"\n\n0 matches\n\nSearching 163 files for \"{{> yield\"\n\n0 matches",
+			"file": "/Volumes/Juanpmd/Copia Portatil/bashprofile.txt",
 			"settings":
 			{
-				"buffer_size": 181,
+				"buffer_size": 2323,
+				"encoding": "UTF-8",
 				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "client/views/main/main.html",
-			"settings":
-			{
-				"buffer_size": 2290,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "settings.json",
-			"settings":
-			{
-				"buffer_size": 6589,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/models/projects.models.coffee",
-			"settings":
-			{
-				"buffer_size": 2706,
-				"line_ending": "Unix"
+				"name": "export CLICOLOR=1"
 			}
 		}
 	],
@@ -432,7 +451,7 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "",
+		"last_filter": "rein",
 		"selected_items":
 		[
 			[
