@@ -5,12 +5,17 @@ Template.defectTypeSettingsTemplate.onCreated ()->
 	@displayWarning = new ReactiveVar(false)
 
 	@autorun ->
-		defectTypeId = db.users.findOne({_id: Meteor.userId()})?.defectTypes?.current
+		userId = Meteor.userId()
+		defectTypeId = db.users.findOne({_id: userId})?.defectTypes?.current
 		defectTypes = db.defect_types.findOne({_id: defectTypeId})?.defects
 
 		defects = []
 		_.each defectTypes, (defect, position) ->
-			defects.push({position: position, name: defect.name, description: defect.description})
+			defects.push({
+				position: position
+				name: defect.name
+				description: defect.description
+			})
 
 		defectTypeList.set(defects)
 
@@ -84,6 +89,11 @@ Template.createDefectTypeAction.events
 		e.stopPropagation()
 		defectList = defectTypeList.get()
 
-		defectList.push({position: defectList.length+1, name: "Nuevo tipo de defecto", description: "Aquí va la descripción del nuevo tipo de defecto"})
+		defectList.push({
+			position: defectList.length + 1
+			name: "Nuevo tipo de defecto"
+			description: "Aquí va la descripción del nuevo tipo de defecto"
+		})
+
 		defectTypeList.set(defectList)
 		sys.flashStatus("add-defect-dype")
