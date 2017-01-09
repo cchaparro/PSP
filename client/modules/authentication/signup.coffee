@@ -48,6 +48,7 @@ Template.registerTemplate.events
 			service: 'email'
 			password: password
 			profile:
+				email: email
 				fname: firstName
 				lname: lastName
 				profileImageUrl: null

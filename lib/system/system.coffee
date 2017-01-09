@@ -304,7 +304,7 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Debes ingresar un tiempo estimado en el Plan Summary para continuar."
 			css = "danger"
-		
+
 		when "actual-size-missing"
 			title = "Error"
 			subject = "Debes ingresar tamaño actual en el Plan Summary para continuar."
@@ -545,9 +545,9 @@ sys.selectColor = (last_color) ->
 ############- Chart Overview -############
 
 sys.overviewChart = (chartName, data, chart_width) ->
-	chartElement = document.getElementById(chartName)?.getContext('2d')
-	chartElement?.canvas?.width = chart_width
-	chartElement?.canvas?.height = chart_width/2
+	chartElement = document.getElementById(chartName).getContext('2d')
+	chartElement?.canvas.width = chart_width
+	chartElement?.canvas.height = chart_width/2
 
 	return new Chart(chartElement).Scatter(data,
 		animation : false
@@ -584,7 +584,7 @@ sys.regressionDataSize = (Data,PROBE,x,y)->
 				sumsquarex += Math.pow(d.ProxyE,2)
 				sumsquarey += Math.pow(d.ActualLOC,2)
 				sumxy+= d.ProxyE * d.ActualLOC
-	
+
 	correlationNumerator = (n*sumxy)-(x*y)
 	correlationDenominator = Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2)))
 	correlation = 0
@@ -606,7 +606,7 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 	sumsquarex = 0
 	xavg = x/n
 	yavg = y/n
-	sumsquarey = 0 
+	sumsquarey = 0
 	sumxy = 0
 	switch PROBE
 		when "B"
@@ -619,7 +619,7 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 				sumsquarex += Math.pow(d.ProxyE,2)
 				sumsquarey += Math.pow(d.ActualTime,2)
 				sumxy+= d.ProxyE * d.ActualTime
-	
+
 	correlationNumerator = (n*sumxy)-(x*y)
 	correlationDenominator = Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2)))
 	correlation = 0
@@ -630,6 +630,6 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 	betaDenominator = sumsquarex-(n*Math.pow(xavg,2))
 	b1 = 0
 	if betaDenominator != 0
-		b1 = betaNumerator/betaDenominator	
+		b1 = betaNumerator/betaDenominator
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}

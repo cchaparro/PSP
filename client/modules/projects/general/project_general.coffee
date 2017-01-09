@@ -38,7 +38,8 @@ Template.projectInformationChart.onRendered () ->
 	containerWidth = document.getElementById("project-general-chart").offsetWidth
 	chartWidth = (containerWidth/2) - 20
 	Deps.autorun ->
-		drawProjectInfoChart(chartWidth)
+		if chartWidth
+			drawProjectInfoChart(chartWidth)
 
 
 Template.projectInformationChart.helpers
