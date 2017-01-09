@@ -126,6 +126,20 @@ Template.masterLayout.helpers
 				action: () ->
 					projectViewAction(@route)
 			,
+				icon: 'timer'
+				title: 'Estimación'
+				route: 'privateRoute.estimating'
+				active: () ->
+					return elementActive('privateRoute.estimating')
+				action: () ->
+					projectViewAction(@route)
+				hide: () ->
+					projectId = FlowRouter.getParam("id")
+					if projectId
+						project = db.projects.findOne({_id: projectId})
+						return project?.levelPSP == "PSP 0"
+					return true
+			,
 				icon: 'assessment'
 				title: 'Plan Summary'
 				route: 'privateRoute.summary'
@@ -149,20 +163,6 @@ Template.masterLayout.helpers
 					return elementActive('privateRoute.defectLog')
 				action: () ->
 					projectViewAction(@route)
-			,
-				icon: 'timer'
-				title: 'Estimación'
-				route: 'privateRoute.estimating'
-				active: () ->
-					return elementActive('privateRoute.estimating')
-				action: () ->
-					projectViewAction(@route)
-				hide: () ->
-					projectId = FlowRouter.getParam("id")
-					if projectId
-						project = db.projects.findOne({_id: projectId})
-						return project?.levelPSP == "PSP 0"
-					return true
 			,
 				icon: 'show_chart'
 				title: 'Graficos PQI'
