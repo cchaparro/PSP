@@ -284,6 +284,23 @@ sys.flashStatus = (type) ->
 
 
 
+		when 'create-contact-successful'
+			title = "Mensaje enviado"
+			subject = "El mensaje que acabas de escribir se ha enviado correctamente."
+			css = "success"
+
+		when 'create-contact-error'
+			title = "Error"
+			subject = "No pudimos enviar el mensaje correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
+
+
+
+
+
+
+
+
 
 
 

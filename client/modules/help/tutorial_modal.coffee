@@ -65,8 +65,3 @@ Template.tutorialModal.events
 		e.stopPropagation()
 		e.preventDefault()
 		Modal.hide('tutorialModal')
-		
-
-
-
-
