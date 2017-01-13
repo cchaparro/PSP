@@ -1,19 +1,34 @@
 <template name="helpTemplate">
-	<div class="main-option-container pull-left help-container">
+	<div class="main-option-container help-container">
 		<h4 class="main-option-title">Tutorial Plataforma</h4>
-		<p>Aquí podrás encontrar un tutorial básico de la plataforma web. Este tutorial busca expresar de manera general las diferentes funcionalidades que puedes ejecutar dentro de la herramienta y el lugar en el que se encuentran cada una de estas. Para acceder a este tutorial, debes de dar click al siguiente botón.</p>
-		<span class="primary-button open-tutorial">Ingresar al Tutorial</span>
+		<div>
+			<img src="/images/helpIcon.png" alt="">
+		</div>
+		<div>
+			<span class="primary-button open-tutorial">Ingresar al Tutorial</span>
+		</div>
+		<p>Aquí podrás encontrar un tutorial básico de la plataforma web. Este tutorial busca expresar de manera general las diferentes funcionalidades que puedes ejecutar dentro de la herramienta y el lugar en el que se encuentran cada una de estas.</p>
 	</div>
 
-	<div class="main-option-container pull-right help-container">
+	<div class="main-option-container help-container">
 		<h4 class="main-option-title">Comunidad</h4>
-		<p>Aquí buscamos dar un lugar libre para los usuarios poder comunicarse entre si y resolver cualquier duda o inquietud que cada uno tenga. En la parte inferior puedes responder o hacer preguntas a la comunidad y de tal manera poder seguir con el desarrollo personal en la herramienta.</p>
-		<a href="{{pathFor 'privateRoute.community'}}"><span class="primary-button">Ingresar a la Comunidad</span></a>
+		<div>
+			<img src="/images/tutorialIcon.png" alt="">
+		</div>
+		<div>
+			<a href="{{pathFor 'privateRoute.community'}}"><span class="primary-button">Ingresar a la Comunidad</span></a>
+		</div>
+		<p>Aquí buscamos crear un lugar en donde los usuarios puedan comunicarse libremente y resolver cualquier inquietud o duda que tengan referente a la herramienta, la metodologia o pregunta general.</p>
 	</div>
 
-	<div class="main-option-container pull-left help-container">
+	<div class="main-option-container help-container">
 		<h4 class="main-option-title">Contáctenos</h4>
-		<p>Si no has podido resolver una duda contactate con nosotros. Aqui puedes mandarnos un mensaje.</p>
-		<span class="primary-button contact-owners">Escribir Mensaje</span>
+		<div>
+			<img src="/images/messageIcon.png" alt="">
+		</div>
+		<div>
+			<span class="primary-button contact-owners">Escribir Mensaje</span>
+		</div>
+		<p>Si en la comunidad no encontraste la solucion a uno de tus problemas y el tutorial no tiene la información suficiente, puedes comunicarte directamente con nosotros mandandonos un mensaje directo por aquí.</p>
 	</div>
 </template>

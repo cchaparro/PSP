@@ -277,13 +277,6 @@ sys.flashStatus = (type) ->
 			subject = "No pudimos crear la respuesta que ingresaste. Por favor inténtelo nuevamente."
 			css = "danger"
 
-
-
-
-
-
-
-
 		when 'create-contact-successful'
 			title = "Mensaje enviado"
 			subject = "El mensaje que acabas de escribir se ha enviado correctamente."

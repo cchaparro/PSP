@@ -1,4 +1,3 @@
-##########################################
 Meteor.methods
 	send_email: (data) ->
 		check(data, Object)
@@ -16,5 +15,3 @@ Meteor.methods
 
 	cumplete_question: (questionId) ->
 		db.questions.update({_id: questionId}, {$set: {"completed": true}})
-
-##########################################
