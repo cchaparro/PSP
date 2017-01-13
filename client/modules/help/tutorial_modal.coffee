@@ -17,6 +17,15 @@ Template.tutorialModal.helpers
 		currentState = t.state.get()
 		return true if currentState is 3
 
+	tutorialState: () ->
+		t = Template.instance()
+		currentState = t.state.get()
+		return [
+			{ active: currentState == 1 }
+			{ active: currentState == 2 }
+			{ active: currentState == 3 }
+		]
+
 	currentPage: () ->
 		t = Template.instance()
 		currentState = t.state.get()

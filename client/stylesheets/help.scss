@@ -43,8 +43,21 @@
 	.primary-button {
 		margin: 15px 15px 0 15px;
 		display: inline-block;
-		height: 50px;
-		padding: 16px;
+	}
+}
+
+.tutorial-modal-state {
+	text-align: center;
+	margin-top: 15px;
+
+	div {
+		display: inline-block;
+
+		.material-icons {
+			font-size: 13px;
+			color: #566C78;
+			cursor: default;
+		}
 	}
 }
 

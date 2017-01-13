@@ -7,6 +7,19 @@
 		{{/modal_title}}
 		{{#modal_body}}
 			{{> Template.dynamic template=currentPage}}
+			{{#unless showGreetings}}
+				<div class="tutorial-modal-state">
+					<div>
+						{{#each tutorialState}}
+							{{#if active}}
+								<i class="material-icons">lens</i>
+							{{else}}
+								<i class="material-icons">panorama_fish_eye</i>
+							{{/if}}
+						{{/each}}
+					</div>
+				</div>
+			{{/unless}}
 			<br>
 			{{#if showGreetings}}
 				<div class="tutorial-modal-footer">
