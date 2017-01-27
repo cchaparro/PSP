@@ -1,6 +1,6 @@
 ##########################################
 #Average inverse function
-overviewInjectedChart = () ->
+overviewInjectedChart = (chart_width) ->
 	finishedProjects = db.projects.find({ projectOwner: Meteor.userId(), completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
@@ -11,7 +11,7 @@ overviewInjectedChart = () ->
 	stagesLabel = []
 	values = []
 
-	if finishedProjects.length > 0
+	if finishedProjects?.length > 0
 		_.each finishedProjects, (project)->
 			projectSummary = db.plan_summary.findOne({projectId: project._id})
 			summaryData = projectSummary?.injectedEstimated
@@ -31,12 +31,12 @@ overviewInjectedChart = () ->
 
 		position = 0
 		#Iteration that takes the time stage data from each completed project
-		while position < projectsInjected.length
+		while position < projectsInjected?.length
 			projectData = projectsInjected[position]
 
 			projectPosition = 0
 			#Iteration that saves the chart x, y axis values
-			while projectPosition < projectData.length
+			while projectPosition < projectData?.length
 				stageData = projectData[projectPosition]
 				stageInjected = stageData.injected
 				stageName = stageData.name
@@ -74,18 +74,20 @@ overviewInjectedChart = () ->
 		InpostmortemChart = 		[finalData[7]]
 
 		#Creation of all the stages chart overviews
-		sys.overviewChart('InplanningChart', InplanningChart)
-		sys.overviewChart('IndesignChart', IndesignChart)
-		sys.overviewChart('InreviewDesignChart', InreviewDesignChart)
-		sys.overviewChart('IncodeChart', IncodeChart)
-		sys.overviewChart('InreviewCodeChart', InreviewCodeChart)
-		sys.overviewChart('IncompilationChart', IncompilationChart)
-		sys.overviewChart('IntestingChart', IntestingChart)
-		sys.overviewChart('InpostmortemChart', InpostmortemChart)
+		sys.overviewChart('InplanningChart', InplanningChart, chart_width)
+		sys.overviewChart('IndesignChart', IndesignChart, chart_width)
+		sys.overviewChart('InreviewDesignChart', InreviewDesignChart, chart_width)
+		sys.overviewChart('IncodeChart', IncodeChart, chart_width)
+		sys.overviewChart('InreviewCodeChart', InreviewCodeChart, chart_width)
+		sys.overviewChart('IncompilationChart', IncompilationChart, chart_width)
+		sys.overviewChart('IntestingChart', IntestingChart, chart_width)
+		sys.overviewChart('InpostmortemChart', InpostmortemChart, chart_width)
 
 ##########################################
 Template.injectedCharts.onRendered () ->
-	@autorun ->
-		overviewInjectedChart()
+	containerWidth = document.getElementById("overview-chart").offsetWidth
+	chartWidth = containerWidth
+	Deps.autorun ->
+		overviewInjectedChart(chartWidth)
 
 ##########################################

@@ -1,0 +1,168 @@
+@import '_variables.scss';
+
+.tutorial-modal {
+	width: 430px;
+
+	.tutorial-element {
+		@include clearfix();
+		width: calc(100% + 10px);
+		min-height: 120px;
+		margin-left: -5px;
+		margin-right: -5px;
+		margin-bottom: 5px;
+
+		.element-image {
+			width: 120px;
+			height: 120px;
+			float: left;
+
+			img {
+				width: 110px;
+				margin-left: 5px;
+				margin-top: 10px;
+			}
+		}
+
+		.element-description {
+			width: calc(100% - 120px);
+			height: 100%;
+			float: right;
+			padding-left: 10px;
+			cursor: default;
+
+			h4 {
+				color: #566C78;
+				display: block;
+				font-size: 14px;
+				font-weight: 600;
+				margin-bottom: 5px;
+				text-transform: uppercase;
+			}
+
+			span {
+				color: #80A1B2;
+				font-size: 13px;
+			}
+		}
+	}
+
+	.tutorial-modal-footer {
+		height: 70px;
+		background-color: $blue;
+		margin: 0 -25px -25px -25px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		line-height: 70px;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $blue-dark;
+		}
+
+		div {
+			display: inline-block;
+		}
+
+		span {
+			width: 100%;
+			color: $white;
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+
+		.material-icons {
+			line-height: inherit;
+			float: right;
+			margin-left: 5px;
+			font-size: 20px;
+		}
+	}
+
+	.tutorial-modal-footer-more {
+		height: 70px;
+		background-color: $blue;
+		margin: 0 -25px -25px -25px;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		line-height: 70px;
+
+		span {
+			color: $white;
+			text-transform: uppercase;
+			font-size: 14px;
+			cursor: pointer;
+
+			&:hover {
+				color: lightgray;
+			}
+		}
+
+		.material-icons {
+			line-height: inherit;
+			font-size: 20px;
+		}
+
+		.tutorial-back {
+			margin-left: 15px;
+			float: left;
+
+			.material-icons {
+				float: left;
+				width: 25px;
+			}
+		}
+
+		.tutorial-next, .tutorial-end {
+			margin-right: 15px;
+			float: right;
+
+			.material-icons {
+				float: right;
+				margin-left: 5px;
+			}
+		}
+	}
+}
+
+.tutorial-title {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.tutorial-initial {
+	img {
+		width: 210px;
+		margin: 0 auto;
+		display: block;
+	}
+
+	h4 {
+		margin-top: 30px;
+		margin-bottom: 10px;
+		text-align: center;
+		font-size: 16px;
+		font-weight: 600;
+
+		span {
+			color: $blue;
+			font-size: 18px;
+		}
+	}
+
+	span {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 767px) {
+	.tutorial-modal {
+		width: calc(100% - 20px);
+
+		.tutorial-modal-footer-more {
+			margin: 0 -15px -15px -15px;
+		}
+	}
+}

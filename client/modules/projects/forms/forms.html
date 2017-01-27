@@ -1,0 +1,112 @@
+<template name="formTemplate">
+	{{>projectMessages}}
+	{{>Template.dynamic template=template}}
+</template>
+
+<template name="pipsTemplate">
+	{{#unless amountPips}}
+		<div class="empty-projects">
+			<div>
+				<i class="material-icons">sentiment_very_dissatisfied</i>
+				<h4>No has creado aún ninguna propuesta de mejora.</h4>
+				<span>Para crear una nueva propuesta de mejora debes dar click en el botón que se encuentra en la parte superior.</span>
+			</div>
+		</div>
+	{{/unless}}
+	{{#each pips}}
+		<div class="project-box" style="border-left: 5px solid {{projectColor}};">
+			{{#unless projectCompleted}}
+				<div class="project-box-delete">
+					<i class="material-icons {{hoverIcon}}">{{hoverIcon}}</i>
+				</div>
+				<div class="project-box-delete-confirm">
+					<p>Estas seguro?</p>
+					<span class="confirm-delete-project">Eliminar PIP</span>
+				</div>
+			{{/unless}}
+
+			<a href="#" class="pip-content">
+				<h4 class="project-box-title">
+					{{cutText title 35}}
+				</h4>
+				<span class="project-box-description form-description">{{cutText problemDescription 125}}</span>
+				<span class="project-box-information">
+					Creado {{dateFormat date=createdAt format="DD.MM.YYYY"}}
+				</span>
+			</a>
+		</div>
+	{{/each}}
+</template>
+
+<template name="testTemplate">
+	{{#unless amountTests}}
+		<div class="empty-projects">
+			<div>
+				<i class="material-icons">sentiment_very_dissatisfied</i>
+				<h4>No has creado aún ningún reporte de prueba.</h4>
+				<span>Para crear un nuevo reporte de prueba, debes dar click en el botón que se encuentra en la parte superior.</span>
+			</div>
+		</div>
+	{{/unless}}
+	{{#each tests}}
+		<div class="project-box" style="border-left: 5px solid {{projectColor}};">
+			{{#unless projectCompleted}}
+				<div class="project-box-delete">
+					<i class="material-icons {{hoverIcon}}">{{hoverIcon}}</i>
+				</div>
+				<div class="project-box-delete-confirm">
+					<p>Estas seguro?</p>
+					<span class="confirm-delete-project">Eliminar Reporte</span>
+				</div>
+			{{/unless}}
+
+			<a href="#" class="pip-content">
+				<h4 class="project-box-title">
+					{{cutText purpose 35}}
+				</h4>
+				<span class="project-box-description form-description">{{cutText expectedResults 125}}</span>
+				<span class="project-box-information">
+					Creado {{dateFormat date=createdAt format="DD.MM.YYYY"}}
+				</span>
+			</a>
+		</div>
+	{{/each}}
+	<!-- {{#each tests}}
+		<div class="form-row">
+			<div class="information">
+				<h4 class="hidden-xs">{{cutText purpose 40}}</h4>
+				<span class="hidden-xs">{{cutText expectedResults 90}}</span>
+				<h4 class="visible-xs">{{cutText purpose 20}}</h4>
+				<span class="visible-xs">{{cutText expectedResults 50}}</span>
+			</div>
+				<div class="actions">
+					{{#unless projectIsCompleted}}
+						<i class="material-icons edit-test">mode_edit</i>
+						<i class="material-icons delete-test">delete</i>
+					{{else}}
+						<i class="material-icons edit-test">remove_red_eye</i>
+					{{/unless}}
+				</div>
+		</div>
+	{{/each}} -->
+</template>
+
+<template name="createFormAction">
+	<div class="create-option active-always">
+		{{#if isPip}}
+			<span class="change-to-test">Ver Reportes</span>
+		{{else}}
+			<span class="change-to-pip">Ver PIPs</span>
+		{{/if}}
+	</div>
+	{{#unless projectIsCompleted}}
+		<div class="create-option">
+			{{#if isPip}}
+				<span class="create-pip">Crear PIP</span>
+			{{else}}
+				<span class="create-report">Crear Reporte</span>
+			{{/if}}
+			<i class="material-icons">add_circle</i>
+		</div>
+	{{/unless}}
+</template>

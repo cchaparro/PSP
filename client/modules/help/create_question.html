@@ -1,0 +1,33 @@
+<template name="createQuestionModal">
+	{{#modal modalClasses="create-project-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">Crear Nueva Pregunta</h3>
+			<span class="modal-description">Aqui puedes crear una nueva pregunta para la comunidad.</span>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<span class="modal-input-title">Titulo pregunta</span>
+			<input class="modal-input-field question-title {{#if errorStateTitle}} error {{/if}}" type="text" placeholder="Titulo de la pregunta...">
+
+			<span class="modal-input-title">Categoria de la pregunta</span>
+			<div class="dropdown-box modal-dropdown">
+				<button type="button" data-toggle="dropdown">
+					{{questionCategory}}
+					<i class="material-icons">arrow_drop_down</i>
+				</button>
+				<ul class="dropdown-menu">
+					<li class="question-category-option" data-value="general">General</li>
+					<li class="question-category-option" data-value="interface">Interfaz</li>
+					<li class="question-category-option" data-value="psp">Metodología PSP</li>
+				</ul>
+			</div>
+
+			<span class="modal-input-title">Descripción</span>
+			<textarea class="modal-input-field question-description {{#if errorStateDescription}} error {{/if}}" placeholder="Ingresar la descripción de tu pregunta ..."></textarea>
+
+			<div class="modal-footer">
+				<span class="primary-button pull-right question-create">Crear Pregunta</span>
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>

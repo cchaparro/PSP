@@ -1,189 +1,9 @@
 @import '_variables.scss';
 
-//--------------- All Projects View --------------
+
 .allprojects-container {
 	width: 100%;
 	@include clearfix();
-}
-
-//------------------ Project Box -----------------
-.project-box {
-	height: 160px;
-	position: relative;
-	display: inline-block;
-	margin-bottom: 20px;
-	padding: 0 10px;
-	float: left;
-	background-color: $white;
-	border-top-right-radius: 7px;
-	border-bottom-right-radius: 7px;
-	cursor: pointer;
-	z-index: 1;
-
-	a {
-		text-decoration: none;
-	}
-
-	.project-delete-confirm {
-		display: none;
-	}
-
-	.project-content {
-		width: 100%;
-		height: 100%;
-
-		.fa-circle {
-			position: absolute;
-			top: 13px;
-			right: 12px;
-		}
-
-		svg {
-			width: 17px;
-			fill: $text;
-			position: absolute;
-			margin-top: 1px;
-			top: 10px;
-			right: 10px;
-		}
-
-		h3 {
-			font-size: 13pt;
-			margin-top: 10px;
-			margin-bottom: 0;
-			padding-right: 22px;
-			color: $primary-bg;
-			font-weight: bold;
-			display: block;
-		}
-
-		span {
-			display: block;
-			font-size: 11pt;
-			padding-top: 10px;
-			color: $text;
-		}
-	}
-
-	&:hover {
-		@include box-shadow($default-box-shadow);
-
-		.project-delete {
-			opacity: 1;
-		}
-	}
-}
-
-.prj-success {
-	color: $success;
-}
-
-.prj-completed {
-	color: $text;
-}
-
-.project-delete,
-.iteration-delete,
-.defect-delete {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	top: -10px;
-	right: -10px;
-	opacity: 0;
-	background-color: $white;
-	@include box-shadow($default-box-shadow);
-	@include border-radius($circle-border-radius);
-	text-align: center;
-	z-index: 3;
-
-	.fa-times {
-		padding: 10px 11px;
-		font-size: 15pt;
-		color: $danger;
-	}
-
-	.fa-arrow-left {
-		padding: 10px 11px;
-		font-size: 15pt;
-		color: rgba($black, 0.7);
-	}
-}
-
-//-------------- Project Iteration Box ------------
-.project-for-iteration-box {
-	@extend .project-box;
-}
-
-.iteration-box {
-	@extend .project-box;
-	background-color: $popup-bg;
-
-	span {
-		color: $white!important;
-	}
-
-	&:hover {
-		.iteration-delete {
-			opacity: 1;
-		}
-	}
-
-	.iteration-delete-confirm {
-		display: none;
-	}
-}
-
-//---- Project, Iteration and Defect Hover Box ----
-.project-box-hover,
-.iteration-box-hover,
-.defect-box-hover {
-
-	.project-content {
-		opacity: 0;
-	}
-
-	.project-delete-confirm,
-	.iteration-delete-confirm,
-	.defect-delete-confirm {
-		width: calc(100% + 5px);
-		height: 100%;
-		display: inline!important;
-		position: absolute;
-		left: -5px;
-		background-color: rgba($primary-dark-bg, 0.6);
-		border-top-right-radius: $default-border-radius;
-		border-bottom-right-radius: $default-border-radius;
-		z-index: 2;
-		font-weight: 300;
-		color: $white;
-
-		p {
-			font-size: 12pt;
-			text-align: center;
-			width: 100%;
-			padding-top: 30px;
-		}
-
-		.btn {
-			background-color: $danger;
-			position: absolute;
-			left: calc(50% - 70px);
-			bottom: 45px;
-			padding: 10px 15px;
-
-			&:hover {
-				color: $white;
-				background-color: $danger-dark;
-			}
-		}
-	}
-
-	.project-delete,
-	.iteration-delete,
-	.defect-delete {
-		opacity: 1;
-	}
 }
 
 //------------ General Project Messages -----------
@@ -191,7 +11,7 @@
 	cursor: default;
 	margin-bottom: -10px;
 	background-color: #FED36E;
-	@include border-radius($default-border-radius);
+	border-radius: 4px;
 	padding: 15px;
 	text-align: left;
 	color: #B27F1B;
@@ -367,525 +187,388 @@
 }
 
 //------------------- Time View ------------------
-.time-content {
+
+.time-log-register-header {
+	display: inline-block;
+	height: 50px;
+	margin-left: 20px;
+	margin-top: 10px;
+
+	.time-register-button {
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		color: $white;
+		cursor: pointer;
+		display: inline-block;
+		float: left;
+
+		.material-icons {
+			width: 100%;
+			text-align: center;
+			line-height: 40px;
+			font-size: 30px;
+		}
+	}
+
+	span {
+		margin-left: 10px;
+		line-height: 40px;
+		display: inline-block;
+		font-size: 15px;
+		color: #80A1B2;
+	}
+}
+
+.project-submit-action {
+	padding: 5px 10px 5px 15px;
+	border-radius: 20px;
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	line-height: 30px;
+	display: inline-block;
+	font-size: 15px;
+	color: #80A1B2;
+	cursor: pointer;
+	margin-right: 15px;
+	background-color: #F8F9FA;
+
+	.material-icons {
+		line-height: inherit;
+		float: right;
+		margin-left: 5px;
+	}
+
+	&:hover {
+		background-color: #F8F9FA;
+	}
+}
+
+.project-completed-action {
+	line-height: 40px;
+	color: #80A1B2;
+	margin-top: 10px;
+	margin-right: 15px;
+	cursor: default;
+	float: right;
+	display: inline-block;
+}
+
+.project-time-state {
+	position: absolute;
+	top: 0;
+	right: 20px;
+
+	span {
+		color: #566C78;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		cursor: default;
+		line-height: 56px;
+	}
+}
+
+.time-log-stages {
+	border-top: 1px solid rgba($border, .6);
+}
+
+.stage-row {
 	width: 100%;
+	height: 70px;
+	display: block;
+	border-bottom: 1px solid rgba($border, .6);
+	line-height: 67.5px;
+	position: relative;
 
-	.time-menu {
-		display: block;
-		width: 100%;
-		@include clearfix;
-
-		.timer {
-			color: $text;
-			font-size: 13pt;
-			line-height: 64px;
-			padding-left: 5px;
-		}
-
-		.time-submit-action {
-			margin-right: 10px;
-		}
+	.stage-icon {
+		float: left;
+		color: $text;
+		line-height: 10px;
 
 		i {
-			padding: 15px 3px 15px 0px;
-			font-size: 26pt;
-			cursor: pointer;
-			color: $text;
-			float: left;
-
-			&:first-child {
-				padding-left: 15px;
-			}
-
-			&.active {
-				color: $success;
-			}
-		}
-
-		.disabled {
-			color: $popup-bg;
-			cursor: default;
-		}
-
-		.btn {
-			float: left;
-			padding-top: 0;
-			margin-left: 15px;
-		}
-	}
-	
-	.time-box {
-		border-top: 1px solid $border;
-
-		.stage-row {
-			width: 100%;
-			height: 70px;
-			display: block;
-			border-bottom: 1px solid $border;
-			line-height: 67.5px;
-			position: relative;
-
-			&:hover {
-				background-color: $background-dark;
-			}
-
-			.stage-icon {
-				float: left;
-				color: $text;
-				line-height: 10px;
-
-				i {
-					padding-left: 15px;
-					padding-top: 21px;
-					padding-bottom: 20.5px;
-					cursor: default;
-				}
-
-				.check-status {
-					width: 20px;
-					height: 20px;
-					margin: 22px 2px 21px 17px;
-					@include border-radius($circle-border-radius);
-					border: 2px solid $success;
-					float: left;
-					cursor: pointer;
-				}
-
-				.completed {
-					color: $success;
-				}
-
-				.current {
-					color: $text-dark;
-				}
-
-				.check-enabled {
-					cursor: pointer;
-				}
-			}
-
-			.stage-progress {
-				height: 1px;
-				width: 100%;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				overflow: hidden;
-
-				div {
-					height: 100%;
-					background-color: $blue;
-					overflow: hidden;
-				}
-			}
-
-			.stage-information {
-				display: inline-block;
-				vertical-align: middle;
-				line-height: 20px;
-				padding-left: 10px;
-				cursor: default;
-
-				.time-lapse {
-					float: right;
-					font-size: 12pt;
-					line-height: inherit;
-					padding-left: 3px;
-					cursor: pointer;
-				}
-
-				h4 {
-					margin: 0;
-					font-size: 12pt;
-					color: $text;
-
-					&.title-finished {
-						color: $text-dark;
-					}
-				}
-
-				span {
-					font-size: 10pt;
-					color: $text; 
-				}
-			}
-
-			.edit-stage {
-				float: right;
-				display: inline-block;
-				color: $text;
-				padding: 10px;
-				font-size: 17pt;
-				margin-right: 5px;
-				margin-top: 12px;
-				margin-bottom: 12px;
-				cursor: pointer;
-
-				&:hover {
-					color: $text-dark;
-				}
-			}
-		}
-	}
-
-	.time-edit-box {
-		width: 100%;
-		height: 64px;
-		display: table;
-		padding-right: 10px;
-		@include clearfix;
-
-		.btn {
-			float: left;
-			padding-top: 0;
-			margin-left: 10px;
-			margin-right: 10px;
-		}
-
-		.information {
-			color: $text;
-			display: table-cell;
-			vertical-align: middle;
+			padding-left: 15px;
+			padding-top: 21px;
+			padding-bottom: 20.5px;
 			cursor: default;
 		}
 
 		.check-status {
 			width: 20px;
 			height: 20px;
-			margin: 21px 12px 21px 17px;
+			margin: 22px 2px 21px 17px;
 			@include border-radius($circle-border-radius);
 			border: 2px solid $success;
 			float: left;
 			cursor: pointer;
 		}
 
-		.uncheck-status {
-			float: left;
+		.completed {
 			color: $success;
-			padding-left: 15px;
-			padding-right: 10px;
-			padding-top: 20px;
-			padding-bottom: 20.5px;
+		}
+
+		.current {
+			color: $text-dark;
+		}
+
+		.check-enabled {
 			cursor: pointer;
 		}
 	}
-}
 
-.time-btn {
-	float: left;
-	margin-right: 10px;
-	padding: 12px 12px 10px 12px;
-	@include border-radius($default-border-radius);
-	font-size: 8pt;
-	border: 1px solid $border;
-	cursor: pointer;
-	color: $text;
-
-	&:first-child {
-		margin-right: 5px;
-	}
-}
-
-.time-btn-play {
-	background-color: $success;
-	color: $white;
-	border: 1px solid $success;
-}
-
-.time-btn-disabled {
-	background-color: $disabled-button;
-	border: 1px solid $disabled-button;
-	color: $white;
-	cursor: default;
-}
-
-.time-status-pause {
-	background-color: $text;
-	color: $white;
-	border: 1px solid $text;
-}
-
-.time-completed {
-	width: 25px;
-	height: 25px;
-	margin: 0 auto;
-	@include border-radius($circle-border-radius);
-	background-color: $success;
-
-	i {
-		color: $background;
-		padding: 6px;
-	}
-}
-
-.time-stage-status {
-	@extend .time-completed;
-	border: 2px solid $success;
-	background-color: $background;
-	cursor: pointer;
-
-	i {
-		padding-top: 4px;
-		padding-left: 4px;
-	}
-
-	&.active {
-		background-color: $success;
-	}
-}
-
-.open-stage-box {
-	position: relative;
-	right: 0;
-
-	&.popup-active:hover {
-		.reopen-stage-popup {
-			display: inline;
-		}
-	}
-
-	.reopen-stage-popup {
-		width: 230px;
-		background: $menu-popup-bg;
+	.stage-progress {
+		height: 1px;
+		width: 100%;
 		position: absolute;
-		top: 54px;
-		right: 0px;
-		padding: 7px 7px 7px 12px;
-		font-size: 10pt;
-		color: $white;
-		border-radius: 5px;
-		cursor: default;
-		display: none;
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
 
-		i {
-			width: 15px;
-			height: 15px;
-			position: absolute;
-			right: 10px;
-			top: -5px;
-			border-radius: 3px;
-			background: $menu-popup-bg;
-			transform: rotate(45deg);
-			-webkit-transform: rotate(45deg);
+		div {
+			height: 100%;
+			background-color: $blue;
+			overflow: hidden;
 		}
 	}
-}
 
-.edit-time {
-	border: 2px solid $text;
-	color: $text;
-	padding: 8px 15px;
-	cursor: pointer;
-	@include border-radius(20px);
+	.stage-information {
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 20px;
+		padding-left: 10px;
+		cursor: default;
+
+		.time-lapse {
+			float: right;
+			font-size: 12pt;
+			line-height: inherit;
+			padding-left: 3px;
+			cursor: pointer;
+		}
+
+		h4 {
+			margin: 0;
+			font-size: 12pt;
+			color: $text;
+
+			&.title-finished {
+				color: $text-dark;
+			}
+		}
+
+		span {
+			font-size: 10pt;
+			color: $text; 
+		}
+	}
+
+	.edit-stage {
+		float: right;
+		display: inline-block;
+		color: $text;
+		padding: 10px;
+		font-size: 17pt;
+		margin-right: 15px;
+		margin-top: 13px;
+		margin-bottom: 12px;
+		cursor: pointer;
+		border-radius: 100%;
+
+		&:hover {
+			background-color: #F8F9FA;
+		}
+	}
 }
 
 //---------- General Project Information ---------
-.prj-information-content {
-	background-color: white;
-	width: 100%;
-	@include border-radius($default-border-radius);
-	border-bottom: 2px solid $box-border;
-	margin-bottom: 20px;
-	@include clearfix;
 
-	h4 {
-		color: $text-dark;
-		margin-top: 15px;
-		margin-bottom: 15px;
-		margin-left: 15px;
-		cursor: default;
-		display: inline-block;
+.project-information-box {
+	padding-bottom: 20px;
+}
 
-		span {
-			width: 12px;
-			height: 12px;
-			display: inline-block;
-			line-height: 10px;
-			margin-left: 2px;
-			@include border-radius($circle-border-radius);
-			background-color: $success;
+.project-input-field {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	margin: 0 20px 10px 20px;
+	max-width: 100%;
+	outline: none;
+	padding: 12px;
 
-			&.completed {
-				background-color: $text;
-			}
-		}
-	}
-
-	.close-project {
-		color: $green;
-		float: right;
-		font-weight: 500;
-		font-size: 11pt;
-		padding-right: 20px;
-		cursor: pointer;
-		line-height: 53px;
-
-		i {
-			float: left;
-			line-height: inherit;
-			font-size: 15pt;
-			padding-right: 2px;
-			font-weight: 500;
-		}
-
-		&:hover {
-			color: $green-dark;
-		}
-	}
-
-	.project-completed {
-		color: $danger;
-		float: right;
-		font-weight: 500;
-		font-size: 11pt;
-		cursor: default;
-		line-height: 53px;
-		padding-right: 20px;
-	}
-
-	.information-row {
-		width: 100%;
-		padding-bottom: 15px;
-		padding-right: 15px;
-		display: block;
-		//border-bottom: 1px solid $border;
-		border-top: 1px solid $border;
-		position: relative;
-
-		h4 {
-			font-size: 12pt;
-			color: $text;
-		}
-
-		.project-title, .project-description {
-			margin: 0 0 3px 15px;
-			background-color: $background-dark;
-			padding: 5px 10px;
-			font-weight: 700;
-			font-size: 13pt;
-			color: $text-dark;
-			@include border-radius($default-border-radius);
-			border: 1px solid $border;
-			outline: none;
-
-			&:focus {
-				border: 1px solid $blue;
-			}
-		}
-
-		.project-description {
-			font-weight: 400;
-			font-size: 11pt;
-		}
-
-		.project-completed-title, .project-completed-description {
-			display: block;
-			padding-left: 15px;
-			font-weight: 700;
-			font-size: 13pt;
-			cursor: default;
-		}
-
-		.project-completed-description {
-			font-weight: 400;
-			font-size: 11pt;
-		}
+	&.description {
+		min-height: 80px;
+		overflow-y: scroll;
 	}
 }
 
-.prj-information-values-box {
-	.information-box {
-		background-color: white;
-		@include border-radius($default-border-radius);
-		border-bottom: 2px solid $box-border;
-		margin-bottom: 20px;
-		@include clearfix;
+.project-label {
+	color: #566C78;
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	margin-left: 20px;
+	margin-bottom: 7px;
+	text-transform: uppercase;
+	cursor: default;
+}
 
-		h4 {
-			color: $text-dark;
-			margin-top: 15px;
-			margin-bottom: 15px;
-			margin-left: 15px;
-			cursor: default;
-			display: block;
-		}
+.project-general-state {
+	position: absolute;
+	top: 0;
+	right: 0;
 
-		&.charts {
-			width: calc(100% - 255px);
-			height: 300px;
-			float: left;
-
-			.prj-information-chart {
-				width: 50%;
-				height: 200px;
-				text-align: center;
-				padding: 0;
-				float: left;
-
-				canvas {
-					margin-top: 7.7px;
-					margin-left: 15px;
-					cursor: default;
-				}
-			}
-
-			.prj-information-chart-values {
-				width: 50%;
-				float: right;
-				display: inline-block;
-				list-style: none;
-				padding-top: 35px;
-				padding-left: 30px;
-				cursor: default;
-
-				li {
-					text-decoration: none;
-					font-size: 12pt;
-					padding-bottom: 3px;
-
-					i {
-						padding-right: 10px;
-						font-size: 13pt;
-					}
-				}
-			}
-
-		}
-
+	span {
+		color: #566C78;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		cursor: default;
+		line-height: 56px;
 	}
 
-	.prj-registered-values {
-		width: 230px;
-		height: 300px;
-		margin-left: 20px;
+	div {
+		width: 13px;
+		height: 13px;
+		border-radius: 100%;
+		margin-top: 20px;
+		display: inline-block;
 		float: right;
+		margin-left: 7px;
+		margin-right: 15px;
+	}
+}
+
+.project-bubble {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.project-general-completed {
+	.project-input-field {
 		cursor: default;
+		padding-right: 40px;
+	}
+}
+
+.project-general-input-container {
+	position: relative;
+
+	.material-icons {
+		font-size: 20px;
+		position: absolute;
+		top: 10px;
+		right: 30px;
+		color: #E3E4E5;
+		cursor: default;
+	}
+}
+
+.project-general-extra {
+	#project-general-chart {
+		width: calc(70% - 30px);
+		display: inline-block;
+		float: left;
+		// @include clearfix();
+
+		.prj-information-chart {
+			width: 50%;
+			height: 100%;
+			text-align: center;
+			padding: 0;
+			float: left;
+			padding-bottom: 15px;
+			padding-top: 7px;
+
+			canvas {
+				margin-top: 7.7px;
+				margin-left: 15px;
+				cursor: default;
+			}
+		}
+
+		.project-information-chart-values {
+			width: 50%;
+			float: right;
+			display: inline-block;
+			list-style: none;
+			margin-top: 30px;
+			padding-left: 0;
+			padding-bottom: 10px;
+			cursor: default;
+
+			li {
+				margin: 0 auto;
+				text-decoration: none;
+				font-size: 12pt;
+				padding-bottom: 3px;
+				background-color: #F8F9FA;
+				padding: 5px;
+				border-radius: 20px;
+				margin-bottom: 5px;
+				max-width: 200px;
+				line-height: 20px;
+
+				i {
+					padding-right: 10px;
+					font-size: 15px;
+					float: left;
+					line-height: inherit;
+					margin-left: 10px;
+				}
+
+				span {
+					color: #566C78;
+					// display: block;
+					font-size: 13px;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	.project-general-data {
+		width: calc(30% - 30px);
+		display: inline-block;
+		float: right;
+		margin-left: 0;
+		cursor: default;
+		text-align: center;
+		padding-bottom: 20px;
 
 		div {
-			padding-left: 15px;
-			padding-bottom: 15px;
+			margin-top: 20px;
+		}
 
-			svg {
-				width: 30px;
+		span {
+			display: block;
+			color: #566C78;
+			padding-bottom: 5px;
+		}
+
+		.project-general-data-item {
+			line-height: 20px;
+			display: inline-block;
+			font-size: 13px;
+			font-weight: 600;
+			text-transform: uppercase;
+
+			i, span {
+				line-height: inherit;
+			}
+
+			.material-icons {
 				float: left;
-				fill: $icon;
-				padding-top: 7px;
-			}
-
-			span {
-				font-size: 12pt;
-				color: $text-dark;
-				font-weight: 700;
-				padding-left: 10px;
-			}
-
-			p {
-				font-size: 11pt;
-				padding-left: 40px;
+				font-size: 20px;
+				margin-right: 5px;
 			}
 		}
 	}
-
 }
 
 //----------- Project Plan Summary View ----------
@@ -906,26 +589,56 @@
 	}
 
 	.inside-element {
-		padding-top: 60px;
+		padding-top: 60px!important;
 	}
 
-	.summary-time {
-		border-top: 1px solid $border;
+	&.size {
+		.summary-row {
+			height: 45px;
+			line-height: 45px;
+
+			.stage-information h4 {
+				font-size: 14px;
+				float: left!important;
+			}
+
+			.summary-icon {
+				line-height: inherit;
+				height: 44px;
+
+				.material-icons {
+					line-height: inherit;
+					padding: 0;
+					float: left;
+				}
+			}
+
+			.percentage-stage.size-input {
+				line-height: 45px;
+				padding: 0;
+
+				span {
+					padding: 0;
+				}
+			}
+		}
 	}
 
 	.summary-row {
 		width: 100%;
 		height: 75px;
 		display: block;
-		border-bottom: 1px solid $border;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-bottom: 1px solid rgba($border, .5);
 		line-height: 72.5px;
 
 		&.first {
-			border-top: 1px solid $border;
+			border-top: 1px solid rgba($border, .5);
 		}
 
 		&.total {
-			background-color: $background-dark;
+			background-color: #F8F9FA;
 
 			.percentage-stage {
 				padding-top: 20px;
@@ -938,10 +651,6 @@
 
 		&.has-warning {
 			height: 130px;
-		}
-
-		&:hover {
-			background-color: $background-dark;
 		}
 
 		.summary-icon {
@@ -1058,6 +767,26 @@
 	}
 }
 
+.size-input-field input {
+	background-color: #F8F9FA;
+	border: none;
+	margin-top: 5px;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 35px;
+	margin-bottom: 10px;
+	outline: none;
+	padding: 10px;
+}
+
+.size-summary {
+	tbody tr td:first-child{
+		text-align: left;
+	}
+}
+
 .summary-information {
 	color: $warning-dark;
 	cursor: default;
@@ -1117,6 +846,10 @@
 }
 
 //------------------ Scripts View -----------------
+.inside-element {
+	padding-top: 60px!important;
+}
+
 .script-content {
 	background-color: white;
 	width: 100%;
@@ -1143,6 +876,7 @@
 		margin-right: 15px;
 		display: block;
 		cursor: default;
+		margin-top: 15px;
 	}
 
 	.script-row {
@@ -1153,11 +887,15 @@
 		border-bottom: 1px solid $border;
 		line-height: 22px;
 		position: relative;
-		background-color: $background-dark;
+		// background-color: $background-dark;
 
 		&.first {
 			border-top: 1px solid $border;
 			margin-top: 15px;
+		}
+
+		&.no-border-top {
+			border-top: 0;
 		}
 
 		h4 {
@@ -1287,25 +1025,71 @@
 	}
 }
 
-.pqi-content {
-	background-color: white;
-	width: 100%;
-	@include border-radius($default-border-radius);
-	border-bottom: 2px solid $box-border;
-	margin-bottom: 20px;
-	@include clearfix;
+.form-description {
+	margin-left: 0!important;
+}
 
-	h4 {
-		color: $text-dark;
-		margin-top: 15px;
-		margin-bottom: 15px;
+.create-test-modal {
+	width: 390px;
+}
+
+.create-pip-modal {
+	width: 390px;
+}
+
+#pqi-information-chart {
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	padding: 0;
+	float: left;
+	padding-bottom: 15px;
+	padding-top: 7px;
+
+	canvas {
+		margin-top: 7.7px;
 		margin-left: 15px;
 		cursor: default;
 	}
+}
 
-	.prj-information-chart {
-		text-align: center;
-		padding: 20px;
+.pqi-information-chart-values {
+	width: 50%;
+	float: right;
+	display: inline-block;
+	list-style: none;
+	margin-top: 30px;
+	padding-left: 0;
+	padding-bottom: 10px;
+	cursor: default;
+
+	li {
+		margin: 0 auto;
+		text-decoration: none;
+		font-size: 12pt;
+		padding-bottom: 3px;
+		background-color: #F8F9FA;
+		padding: 5px;
+		border-radius: 20px;
+		margin-bottom: 5px;
+		max-width: 300px;
+		line-height: 20px;
+
+		i {
+			padding-right: 10px;
+			font-size: 15px;
+			float: left;
+			line-height: inherit;
+			margin-left: 10px;
+		}
+
+		span {
+			color: #566C78;
+			// display: block;
+			font-size: 13px;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
 	}
 }
 
@@ -1510,156 +1294,442 @@
 
 }
 
-//--------- Mobile View for Project-box ----------
+.table-historical-data {
+	margin-left: 15px;
+	margin-right: 15px;
+	width: calc(100% - 30px);
+
+	thead tr th {
+		border-bottom: 0;
+		color: #566C78;
+		text-align: center;
+		vertical-align: middle;
+		font-weight: normal;
+		font-size: 14px;
+	}
+
+	tbody {
+		border-bottom: 1px solid rgba($border, .5);
+
+		tr {
+			td {
+				font-size: 13px;
+				text-align: center;
+				color: #95a6b9;
+				cursor: default;
+				vertical-align: middle;
+				border-top: 1px solid rgba($border, .5);
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Final code
+
+.projects-container {
+	@include clearfix();
+	width: 100%;
+}
+
+.empty-projects {
+	display: table;
+	height: calc(100% + 20px);
+	margin: -20px auto 0 auto;
+	max-width: 400px;
+	cursor: default;
+
+	div {
+		text-align: center;
+		display: table-cell;
+		position: relative;
+		vertical-align: middle;
+
+		.material-icons {
+			font-size: 60px;
+			color: #566C78;
+		}
+
+		h4 {
+			color: #566C78;
+		}
+
+		span {
+			color: #7795A5;
+		}
+	}
+}
+
+.project-data-container {
+	background-color: $white;
+	padding: 20px;
+	border-radius: 4px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.project-box {
+	background-color: $white;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	cursor: pointer;
+	display: inline-block;
+	float: left;
+	height: 160px;
+	margin-bottom: 20px;
+	position: relative;
+
+	a {
+		display: block;
+		height: 100%;
+		padding: 15px;
+		text-decoration: none;
+		width: 100%;
+	}
+
+	.project-box-title {
+		color: #566C78;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 20px;
+		margin-top: 0;
+		margin-bottom: 5px;
+
+		.material-icons {
+			font-size: 12px;
+			margin-right: 5px;
+		}
+	}
+
+	.project-box-description {
+		color: #b1b7c1;
+		display: inline-block;
+		font-size: 13px;
+		font-style: italic;
+		margin-left: 20px;
+	}
+
+	.project-box-information {
+		width: 100%;
+		bottom: 15px;
+		color: #b1b7c1;
+		font-size: 11px;
+		font-style: italic;
+		left: 15px;
+		opacity: .4;
+		position: absolute;
+	}
+
+	.project-box-time {
+		background-color: lightgray;
+		color: $white;
+		border-radius: 20px;
+		padding: 2px 7px;
+		margin-left: 5px;
+	}
+
+	.project-box-delete-confirm {
+		display: none;
+	}
+
+	&:hover .project-box-delete {
+		opacity: 1;
+	}
+
+	.defect-content {
+		.project-box-description {
+			margin-left: 0;
+		}
+
+		.defect-time-text {
+			position: absolute;
+			background-color: lightgray;
+			color: $white;
+			border-radius: 20px;
+			padding: 2px 7px;
+			margin-left: 5px;
+
+			bottom: 15px;
+			font-size: 11px;
+			font-style: italic;
+			left: 10px;
+		}
+	}
+}
+
+.project-color-container {
+	cursor: default;
+	margin-bottom: 10px;
+
+	.project-color-option {
+		border-radius: 50%;
+		cursor: pointer;
+		display: inline-block;
+		height: 32.5px;
+		margin-right: 5px;
+		overflow: hidden;
+		width: 32.5px;
+
+		div {
+			width: inherit;
+			height: inherit;
+		}
+
+		.material-icons {
+			color: $white;
+			font-size: 20px;
+			font-weight: 600;
+			height: inherit;
+			line-height: 32.5px;
+			position: absolute;
+			text-align: center;
+			width: inherit;
+		}
+	}
+}
+
+.project-box-delete {
+	background-color: $white;
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0,0,0,.1);
+	height: 40px;
+	opacity: 0;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -12px;
+	width: 40px;
+	z-index: 3;
+
+	.material-icons {
+		color: $danger;
+		font-weight: 600;
+		font-size: 25px;
+		line-height: 40px;
+		padding: 1px 7px;
+	}
+}
+
+.project-box-hover {
+	.project-box-delete-confirm {
+		background-color: rgba(#3D4C59, 0.8);
+		border-bottom-right-radius: 4px;
+		border-top-right-radius: 4px;
+		color: $white;
+		display: inline-block;
+		font-weight: 300;
+		height: 100%;
+		left: -5px;
+		position: absolute;
+		top: 0;
+		width: calc(100% + 5px);
+		z-index: 1;
+
+		p {
+			font-size: 15px;
+			padding-top: 40px;
+			text-align: center;
+			width: 100%;
+		}
+
+		.confirm-delete-project {
+			background-color: $danger;
+			border-radius: 4px;
+			color: $white;
+			display: block;
+			font-size: 13px;
+			line-height: 40px;
+			margin: 20px;
+			text-align: center;
+
+			&:hover {
+				background-color: $danger-dark;
+			}
+		}
+	}
+
+	.project-box-delete {
+		opacity: 1;
+	}
+}
+
+
 @media (min-width: 1301px) {
-	.allprojects-container {
-		max-width: 1489px;
-
-		.project-box {
-			width: calc(20% - 16px)!important;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(5n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(5n+1) {
-				margin-left: 0;
-			}
-		}
+	.project-box {
+		width: calc(20% - 24px)!important;
+		margin-left: 20px;
 	}
 }
 
-@media (min-width: 1031px) and (max-width: 1300px) {
-	.allprojects-container {
-		max-width: 1205px;
-
-		.project-box {
-			width: calc(25% - 15px)!important;
-			margin-left: 0;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(4n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(4n+1) {
-				margin-left: 0;
-			}
-		}
+@media (min-width: 1080px) and (max-width: 1300px) {
+	.project-box {
+		width: calc(25% - 25px)!important;
+		margin-left: 20px;
 	}
 }
 
-@media (min-width: 768px) and (max-width: 1030px){
-	.allprojects-container {
-		max-width: 985px;
-
-		.project-box {
-			width: calc(33.333% - 14px)!important;
-			margin-left: 0;
-			margin-right: 0;
-			margin-left: 20px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(3n) {
-				margin-right: 0;
-			}
-
-			&:nth-child(3n+1) {
-				margin-left: 0;
-			}
-		}
+@media (min-width: 969px) and (max-width: 1079px){
+	.project-box {
+		width: calc(33.333% - 26px)!important;
+		margin-left: 20px;
 	}
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
-	.allprojects-container {
-		max-width: 723px;
-
-		.project-box {
-			width: calc(50% - 10px)!important;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(2n) {
-				margin-left: 20px;
-				margin-right: 0;
-			}
-		}
+@media (min-width: 640px) and (max-width: 970px) {
+	.project-box {
+		width: calc(50% - 30px)!important;
+		margin-left: 20px;
 	}
 }
 
-@media (max-width: 480px) {
-	.allprojects-container {
-		max-width: 445px;
+@media (max-width: 639px) {
+	.project-box {
+		width: calc(100% - 20px)!important;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
 
-		.project-box {
+
+	.project-general-extra {
+		#project-general-chart {
+			width: calc(100% - 20px);
+
+			.prj-information-chart {
+				width: 100%;
+			}
+
+			.project-information-chart-values {
+				width: 100%;
+			}
+		}
+
+		.project-general-data {
+			width: calc(100% - 20px);
+		}
+	}
+
+	.summary-row {
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
+
+	.stage-row {
+		width: 100%;
+		height: 70px;
+		display: block;
+		border-bottom: 1px solid rgba($border, .6);
+		line-height: 67.5px;
+		position: relative;
+
+		.stage-icon {
+			float: left;
+			color: $text;
+			line-height: 10px;
+
+			i {
+				padding-left: 5px;
+				padding-top: 21px;
+				padding-bottom: 20.5px;
+				cursor: default;
+			}
+
+			.check-status {
+				width: 20px;
+				height: 20px;
+				margin: 22px 2px 21px 7px;
+				@include border-radius($circle-border-radius);
+				border: 2px solid $success;
+				float: left;
+				cursor: pointer;
+			}
+
+			.completed {
+				color: $success;
+			}
+
+			.current {
+				color: $text-dark;
+			}
+
+			.check-enabled {
+				cursor: pointer;
+			}
+		}
+
+		.stage-progress {
+			height: 1px;
 			width: 100%;
-			margin-left: 0;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+
+			div {
+				height: 100%;
+				background-color: $blue;
+				overflow: hidden;
+			}
+		}
+
+		.stage-information {
+			display: inline-block;
+			vertical-align: middle;
+			line-height: 20px;
+			padding-left: 10px;
+			cursor: default;
+
+			.time-lapse {
+				float: right;
+				font-size: 12pt;
+				line-height: inherit;
+				padding-left: 3px;
+				cursor: pointer;
+			}
+
+			h4 {
+				margin: 0;
+				font-size: 12pt;
+				color: $text;
+
+				&.title-finished {
+					color: $text-dark;
+				}
+			}
+
+			span {
+				font-size: 10pt;
+				color: $text; 
+			}
+		}
+
+		.edit-stage {
 			margin-right: 0;
+			margin-top: 13px;
+			margin-bottom: 12px;
 		}
 	}
-}
 
-//--------- Mobile View for Defect-box ----------
-@media (min-width: 1001px){
-	.content-menu-box {
-		.defect-box {
-			width: calc(33.333% - 14px)!important;
-			margin-right: 0;
+	#pqi-information-chart {
+		width: 100%;
+
+		canvas {
 			margin-left: 0;
-
-			&:nth-child(3n) {
-				margin-left: 20px;
-			}
-
-			&:nth-child(3n+2) {
-				margin-left: 20px;
-			}
 		}
 	}
-}
 
-@media (min-width: 481px) and (max-width: 1000px) {
-	.content-menu-box {
-		.defect-box {
-			width: calc(50% - 10px)!important;
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:nth-child(2n) {
-				margin-left: 20px;
-				margin-right: 0;
-			}
-		}
+	.pqi-information-chart-values {
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }
-
-@media (max-width: 480px) {
-	.content-menu-box {
-		.defect-box {
-			width: 100%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-	}
-}
-
-//------------------------------------------------

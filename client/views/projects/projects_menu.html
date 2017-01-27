@@ -1,40 +1,40 @@
 <!-- ###################################### -->
-<template name="projectViewMenu">
+<!-- <template name="projectViewMenu">
 	<div class="project-menu">
 		<ul>
-			<a href="{{pathFor 'projectGeneral' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectGeneral'}} active {{/if}}">
+			<a href="{{pathFor 'privateRoute.projectGeneral' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.projectGeneral'}} active {{/if}}">
 				<li>Vista General</li>
 			</a>
-			<a href="{{pathFor 'projectSummary' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectSummary'}} active {{/if}}">
+			<a href="{{pathFor 'privateRoute.summary' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.summary'}} active {{/if}}">
 				<li>Plan Summary</li>
 			</a>
-			<a href="{{pathFor 'projectTimeLog' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectTimeLog'}} active {{/if}}">
+			<a href="{{pathFor 'privateRoute.timeLog' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.timeLog'}} active {{/if}}">
 				<li>Registro de tiempos</li>
 			</a>
-			<a href="{{pathFor 'projectDefectLog' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectDefectLog'}} active {{/if}}">
+			<a href="{{pathFor 'privateRoute.defectLog' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.defectLog'}} active {{/if}}">
 				<li>Registro de defectos</li>
 			</a>
-			<a href="{{pathFor 'projectScripts' fid=routeFid id=routeId}}" class="{{#if $eq template 'projectScripts'}} active {{/if}}">
+			<a href="{{pathFor 'privateRoute.scripts' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.scripts'}} active {{/if}}">
 				<li>Scripts</li>
 			</a>
-			<a href="{{pathFor 'estimatingtemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'estimatingtemplate'}} active {{/if}} {{#unless notPSP0}} hidden {{/unless}}">
+			<a href="{{pathFor 'privateRoute.estimating' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.estimating'}} active {{/if}} {{#unless notPSP0}} hidden {{/unless}}">
 				<li>Estimación</li>
 			</a>
-			<a href="{{pathFor 'pqitemplate' fid=routeFid id=routeId}}" class="{{#if $eq template 'pqitemplate'}} active {{/if}} {{#unless isPSP2}} hidden {{/unless}}">
+			<a href="{{pathFor 'privateRoute.pqi' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.pqi'}} active {{/if}} {{#unless isPSP2}} hidden {{/unless}}">
 				<li>PQI</li>
 			</a>
-			<a href="{{pathFor 'forms' fid=routeFid id=routeId}}" class="{{#if $eq template 'forms'}} active {{/if}} {{#unless $and notPSP0 isPostmortem}} hidden {{/unless}}">
+			<a href="{{pathFor 'privateRoute.forms' fid=routeFid id=routeId}}" class="{{#if $eq template 'privateRoute.forms'}} active {{/if}} {{#unless $and notPSP0 isPostmortem}} hidden {{/unless}}">
 				<li>Formularios</li>
 			</a>
 		</ul>
 	</div>
-</template>
+</template> -->
 <!-- ###################################### -->
 <template name="projectMessages">
 	{{#if projectCompleted}}
-		<div class="project-message-bubble">
+		<div class="project-message-bubble project-bubble">
 			<i class="material-icons">info</i>
-			<span>Este proyecto ya esta finalizado. Debido a esto no puedes modificar o registrar ningún dato dentro de esta sección.</span>
+			<span>Este proyecto ya se finalizó. Debido a esto no puedes modificar o registrar mas datos dentro de este proyecto.</span>
 		</div>
 	{{/if}}
 </template>

@@ -1,0 +1,58 @@
+<template name="editTimeModal">
+	{{#modal modalClasses="edit-time-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">{{modalTitle}}</h3>
+			<span class="modal-description">{{modalDescription}}</span>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<span class="modal-input-title">Tiempo a modificar</span>
+			<div class="time-selector-box">
+				<div>
+					<div>
+						<i class="material-icons edit-time-up" data-value="hours-selector">arrow_drop_up</i>
+						<i class="material-icons edit-time-down" data-value="hours-selector">arrow_drop_down</i>
+					</div>
+					<input type="text" class="edit-time-hours" value="{{hoursValue}}">
+					<span>HOR</span>
+				</div>
+				<div>
+					<div>
+						<i class="material-icons edit-time-up" data-value="minutes-selector">arrow_drop_up</i>
+						<i class="material-icons edit-time-down" data-value="minutes-selector">arrow_drop_down</i>
+					</div>
+					<input type="text" class="edit-time-minutes" value="{{minutesValue}}">
+					<span>MIN</span>
+				</div>
+				<div>
+					<div>
+						<i class="material-icons edit-time-up" data-value="seconds-selector">arrow_drop_up</i>
+						<i class="material-icons edit-time-down" data-value="seconds-selector">arrow_drop_down</i>
+					</div>
+					<input type="text" class="edit-time-seconds" value="{{secondsValue}}">
+					<span>SEG</span>
+				</div>
+			</div>
+			<span class="modal-input-title">Seleccionar accion</span>
+			<div class="edit-time-options">
+				<div class="time-option {{#if $eq selectedOption 'add-time'}} time-selected {{/if}}" data-value="add-time">
+					<span><i class="fa fa-fw fa-check"></i></span>
+					<p>Agregar tiempo</p>
+				</div>
+				<div class="time-option {{#if $eq selectedOption 'delete-time'}} time-selected {{/if}}" data-value="delete-time">
+					<span><i class="fa fa-fw fa-check"></i></span>
+					<p>Restar tiempo</p>
+				</div>
+			</div>
+
+			<div class="time-footer-description">
+				<span><i class="material-icons">info</i> Tu tiempo actual en la etapa "{{currentStage}}" es {{currentTime}} y el nuevo valor será {{newTime}}.</span>
+			</div>
+			<div class="modal-footer">
+				{{#if selectedOption}}
+					<span class="primary-button pull-right finish-edit-time">Asignar Tiempo</span>
+				{{/if}}
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>

@@ -1,0 +1,108 @@
+<template name="communityTemplate">
+	{{#if noQuestions}}
+		<div class="empty-projects">
+			<div>
+				<i class="material-icons">sentiment_very_dissatisfied</i>
+				<h4>No hay preguntas en la comunidad.</h4>
+				<span>Para crear una nueva pregunta, debes dar click en el botón que se encuentra en la parte superior.</span>
+			</div>
+		</div>
+	{{else}}
+		<div class="main-option-container">
+			<h4 class="main-option-title">Comunidad</h4>
+			<div class="community-content">
+				{{#each userQuestions}}
+					{{>question ownQuestion=true question=this}}
+				{{/each}}
+				{{#each generalQuestions}}
+					{{>question question=this}}
+				{{/each}}
+			</div>
+		</div>
+	{{/if}}
+</template>
+
+<template name="question">
+	<a href="{{pathFor 'privateRoute.communityQuestion' question=question._id}}">
+		<div class="question {{#unless ownQuestion}} user-question {{/unless}}">
+			<div class="user-image" style="background-image: url('{{getUserAvatarUrl question.questionOwner}}');"></div>
+			<div class="user-content">
+				<h4>{{questionTitle}}</h4>
+				<span>{{questionDescription}}</span>
+				<span class="information">
+					<span class="project-category" style="background-color: {{categoryColor}};">{{questionCategory}}</span>
+					{{#if question.completed}}
+						<span class="project-category completed">Finalizada</span>
+					{{/if}}
+					{{momentToNow question.createdAt}}
+				</span>
+				<div class="question-count {{#if question.completed}} completed {{/if}}">
+					<h2>
+						<i class="material-icons {{#unless question.completed}} hidden {{/unless}}">check</i>
+						{{question.amountAnswers}}
+					</h2>
+					<span>Respuestas</span>
+				</div>
+			</div>
+		</div>
+	</a>
+</template>
+
+<template name="questionTemplate">
+	<div class="main-option-container">
+		{{#with questionView}}
+			{{>generalQuestion}}
+		{{/with}}
+		{{#each questionAnswers}}
+			{{>questionAnswer answer=this}}
+		{{/each}}
+		{{#unless isFinished}}
+			{{>addQuestionAnswer}}
+		{{/unless}}
+	</div>
+</template>
+
+<template name="generalQuestion">
+	<div class="general-question">
+		<div class="image" style="background-image: url('{{getUserAvatarUrl questionOwner}}');"></div>
+		<div class="content">
+			<span class="information">
+				<span class="project-category" style="background-color: {{categoryColor}};">{{questionCategory}}</span>
+				{{momentToNow createdAt}} de <strong>{{userName questionOwner}}</strong>
+			</span>
+			<h4>{{title}}</h4>
+			<span class="description">{{description}}</span>
+		</div>
+	</div>
+</template>
+
+<template name="closeQuestionAction">
+	{{#unless questionDisabled}}
+		<div class="create-option">
+			<span class="question-close">Finalizar Pregunta</span>
+			<i class="material-icons">done_all</i>
+		</div>
+	{{/unless}}
+</template>
+
+<template name="questionAnswer">
+	<div class="question-answer">
+		<div class="image" style="background-image: url('{{getUserAvatarUrl answer.questionOwner}}');"></div>
+		<div class="content">
+			<span class="information"><strong>{{momentToNow answer.createdAt}}</strong> de <strong class="name">{{userName answer.questionOwner}}</strong></span>
+			<h4>{{answer.title}}</h4>
+			<span class="description">{{answer.description}}</span>
+		</div>
+	</div>
+</template>
+
+<template name="addQuestionAnswer">
+	<div class="general-question">
+		<div class="image" style="background-image: url('{{getUserAvatarUrl $.Meteor.userId}}');"></div>
+		<div class="content">
+			<textarea class="answer-text" placeholder="Ingresar respuesta aqui..."></textarea>
+			<br>
+			<span class="primary-button add-answer">Crear Respuesta</span>
+		</div>
+	</div>
+</template>

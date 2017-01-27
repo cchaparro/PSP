@@ -1,0 +1,61 @@
+
+<template name="pspTwoTemplate">
+	<div class="main-option-container plan-summary-content">
+		<h4 class="main-option-title">Métricas</h4>
+		<table class="table table-historical-data">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Plan</th>
+					<th>Actual</th>
+					<th>A la fecha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				{{#with codeReviewRate}}
+					<td>Tasa de revisión de código</td>
+					<td>{{plan}}</td>
+					<td>{{actual}}</td>
+					<td>{{toDate}}</td>
+				{{/with}}
+				</tr>
+				<tr>
+					{{#with yieldValue}}
+						<td>Yield</td>
+						<td>-</td>
+						<td>{{actual}}</td>
+						<td>{{toDate}}</td>
+					{{/with}}
+				</tr>
+				<tr>
+					{{#with productivity}}
+						<td>Productividad</td>
+						<td>{{plan}}</td>
+						<td>{{actual}}</td>
+						<td>{{toDate}}</td>
+					{{/with}}
+				</tr>
+				<tr>
+					{{#with testDefects}}
+						<td>Defectos Pruebas/KLOC</td>
+						<td>-</td>
+						<td>{{actual}}</td>
+						<td>{{toDate}}</td>
+					{{/with}}
+				</tr>
+
+				<tr>
+					{{#with totalDefects}}
+						<td>Total Defectos/KLOC</td>
+						<td>-</td>
+						<td>{{actual}}</td>
+						<td>{{toDate}}</td>
+					{{/with}}
+				</tr>
+			</tbody>
+
+		</table>
+		
+	</div>
+</template>

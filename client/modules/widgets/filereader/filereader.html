@@ -1,0 +1,12 @@
+<template name="filereaderTemplate">
+	{{#if $eq type 'a'}}
+		<a href="#" class="filereader_action {{classes}}">{{{text}}}</a>
+	{{/if}}
+	{{#if $eq type 'span'}}
+		<span class="filereader_action {{classes}}">{{{text}}}</span>
+	{{/if}}
+	{{#if $eq type 'button'}}
+		<button class="filereader_action {{classes}}">{{{text}}}</button>
+	{{/if}}
+	<input type="file" class="filereader_file hide" enctype="multipart/form-data" accept="{{accepted}}"/>
+</template>

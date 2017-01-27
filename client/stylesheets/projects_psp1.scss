@@ -4,6 +4,9 @@
 .table-size-base {
 	background-color: $white;
 	margin-bottom: 0;
+	margin-left: 15px;
+	margin-right: 15px;
+	width: calc(100% - 30px);
 
 	thead {
 		& > tr > th{
@@ -38,6 +41,18 @@
 				text-align: center;
 			}
 
+			.input-box input {
+				background-color: #F8F9FA;
+				border: none;
+				border-radius: 4px;
+				color: #566C78;
+				display: block;
+				font-size: 13px;
+				height: 42px;
+				max-width: 100%;
+				outline: none;
+			}
+
 			&:first-child {
 				padding: 0;
 			}
@@ -45,6 +60,7 @@
 			.size-base-title {
 				text-align: left;
 				width: 150px;
+				padding-left: 10px;
 			}
 		}
 
@@ -61,6 +77,10 @@
 				&.base-actual-last {
 					padding-right: 5px;
 				}
+			}
+
+			.input-box input {
+				background-color: $white;
 			}
 		}
 
@@ -85,10 +105,17 @@
 }
 .base-option-bar {
 	@include clearfix();
+	padding-left: 15px;
+	padding-right: 15px;
 
 	div {
 		padding-top: 0;
 		padding-bottom: 0;
+		line-height: 40px;
+
+		&:hover {
+			color: $white;
+		}
 
 		&:nth-child(2) {
 			margin-left: 10px;
@@ -99,9 +126,12 @@
 .add-size-table {
 	background-color: $white;
 	margin-bottom: 0;
+	margin-left: 15px;
+	margin-right: 15px;
+	width: calc(100% - 30px);
 
 	thead {
-		& > tr > th{
+		& > tr > th {
 			padding-bottom: 0;
 			text-align: center;
 			border-bottom: 0px;
@@ -131,13 +161,86 @@
 				padding: 0;
 			}
 
+			.input-box input {
+				background-color: #F8F9FA;
+				border: none;
+				border-radius: 4px;
+				color: #566C78;
+				display: block;
+				font-size: 13px;
+				height: 42px;
+				max-width: 100%;
+				outline: none;
+			}
+
 			button {
 				margin-bottom: 0;
+				background-color: #F8F9FA;
+				border: none;
+				border-radius: 4px;
+				color: #566C78;
+				display: block;
+				font-size: 13px;
+				height: 42px;
+				max-width: 100%;
+				outline: none;
+				min-width: 80px;
+			}
+
+			.dropdown-box {
+				position: relative;
 			}
 
 			.dropdown-menu {
 				margin-top: 2px;
+				padding: 10px;
 				@include box-shadow($default-box-shadow);
+
+				li {
+					color: #566C78;
+					cursor: pointer;
+					padding-top: 5px;
+					padding-left: 10px;
+					position: relative;
+
+					padding-bottom: 5px;
+
+					&:hover {
+						color: black;
+						background-color: #F8F9FA;
+						border-radius: 20px;
+					}
+
+					&:hover span {
+						display: inline;
+					}
+
+					span {
+						position: absolute;
+						top: 0;
+						right: -220px;
+						width: 200px;
+						background: $menu-popup-bg;
+						position: absolute;
+						padding: 7px 7px 7px 12px;
+						font-size: 10pt;
+						color: $white;
+						border-radius: 5px;
+						display: none;
+
+						&:after {
+							background-color: $menu-popup-bg;
+							content: "";
+							display: block;
+							height: 10px;
+							position: absolute;
+							left: -5px;
+							top: 10px;
+							transform: rotate(45deg);
+							width: 10px;
+						}
+					}
+				}
 			}
 
 			.checkbox-box {
@@ -168,6 +271,10 @@
 					padding-right: 5px;
 				}
 			}
+
+			.input-box input {
+				background-color: $white;
+			}
 		}
 
 		.add-delete-row {
@@ -191,10 +298,16 @@
 
 .add-option-bar {
 	@include clearfix();
+	padding: 0 15px;
 
 	div {
 		padding-top: 0;
 		padding-bottom: 0;
+		line-height: 40px;
+
+		&:hover {
+			color: $white;
+		}
 
 		&:nth-child(2) {
 			margin-left: 10px;
@@ -202,14 +315,33 @@
 	}
 }
 
+.disabled-summary-input {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	max-width: 100%;
+	outline: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 42px;
 
-
+	&.last {
+		margin-right: 5px;
+	}
+}
 
 
 //--------------- Add LOC Table --------------
 .reused-size-table {
 	background-color: $white;
 	margin-bottom: 0;
+	margin-left: 15px;
+	margin-right: 15px;
+	width: calc(100% - 30px);
 
 	thead {
 		& > tr > th{
@@ -236,6 +368,18 @@
 				margin-top: 9px;
 				padding: 12px;
 				text-align: center;
+			}
+
+			.input-box input {
+				background-color: #F8F9FA;
+				border: none;
+				border-radius: 4px;
+				color: #566C78;
+				display: block;
+				font-size: 13px;
+				height: 42px;
+				max-width: 100%;
+				outline: none;
 			}
 
 			&:first-child {
@@ -266,6 +410,10 @@
 					padding-right: 5px;
 				}
 			}
+
+			.input-box input {
+				background-color: $white;
+			}
 		}
 
 		.reused-delete-row {
@@ -289,10 +437,17 @@
 
 .reused-option-bar {
 	@include clearfix();
+	padding: 0 15px;
+	margin-bottom: 15px;
 
 	div {
 		padding-top: 0;
 		padding-bottom: 0;
+		line-height: 40px;
+
+		&:hover {
+			color: $white;
+		}
 
 		&:nth-child(2) {
 			margin-left: 10px;

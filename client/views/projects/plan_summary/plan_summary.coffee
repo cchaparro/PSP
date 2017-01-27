@@ -16,6 +16,29 @@ Template.planSummaryTemplate.helpers
 		return true if project?.levelPSP == "PSP 0" and (projectStages.length < 2 or project?.completed)
 		return false
 
+	totalValues: () ->
+		planSummary = db.plan_summary.findOne({"summaryOwner": Meteor.userId(), "projectId": FlowRouter.getParam("id")})?.total
+
+		return {
+			estimatedTime: planSummary?.estimatedTime
+			totalTime: planSummary?.totalTime
+			totalToDate: @profile?.total?.time
+			probeC: @?.settings?.probeC
+			probeD: @?.settings?.probeD
+		}
+
+	totalTimeEmpty: () ->
+		return !(@estimatedTime > 0)
+
+	estimationEditable: () ->
+		projectStages = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})?.timeEstimated
+		currentStage = _.findWhere projectStages, {finished: false}
+		projectIsCompleted = db.projects.findOne({ _id: FlowRouter.getParam("id") })?.completed
+		levelPSP = db.projects.findOne({"_id":FlowRouter.getParam("id")})?.levelPSP
+		return false if projectIsCompleted
+		return true if currentStage?.name == "Planeación" and levelPSP == "PSP 0"
+		return false
+
 ##########################################
 Template.summaryTimeRow.helpers
 	timeEstimatedStages: () ->

@@ -1,5 +1,5 @@
 ##########################################
-overviewTimeChart = () ->
+overviewTimeChart = (chart_width) ->
 	userId = Meteor.userId()
 	finishedProjects = db.projects.find({ projectOwner: userId, completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
@@ -11,7 +11,7 @@ overviewTimeChart = () ->
 	stagesLabel = []
 	values = []
 
-	if finishedProjects.length > 0
+	if finishedProjects?.length > 0
 		_.each finishedProjects, (project)->
 			projectSummary = db.plan_summary.findOne({ projectId: project._id })
 			summaryData = projectSummary?.timeEstimated
@@ -31,12 +31,12 @@ overviewTimeChart = () ->
 
 		position = 0
 		#Iteration that takes the time stage data from each completed project
-		while position < projectsTime.length
+		while position < projectsTime?.length
 			projectData = projectsTime[position]
 
 			projectPosition = 0
 			#Iteration that saves the chart x, y axis values
-			while projectPosition < projectData.length
+			while projectPosition < projectData?.length
 				stageData = projectData[projectPosition]
 				stageTime = stageData.time
 				stageName = stageData.name
@@ -62,9 +62,9 @@ overviewTimeChart = () ->
 		finalData = []
 		_.each values, (value, position) ->
 			data = {
-				label: stagesLabel[position]
-				strokeColor: colors[position]
-				data: value
+				"label": stagesLabel[position]
+				"strokeColor": colors[position]
+				"data": value
 			}
 
 			finalData.push(data)
@@ -80,18 +80,18 @@ overviewTimeChart = () ->
 		postmortemChart = [finalData[7]]
 
 		#Creation of all the stages chart overviews
-		sys.overviewChart('planningChart', planningChart)
-		sys.overviewChart('designChart', designChart)
-		sys.overviewChart('reviewDesignChart', reviewDesignChart)
-		sys.overviewChart('codeChart', codeChart)
-		sys.overviewChart('reviewCodeChart', reviewCodeChart)
-		sys.overviewChart('compilationChart', compilationChart)
-		sys.overviewChart('testingChart', testingChart)
-		sys.overviewChart('postmortemChart', postmortemChart)
+		sys.overviewChart('planningChart', planningChart, chart_width)
+		sys.overviewChart('designChart', designChart, chart_width)
+		sys.overviewChart('reviewDesignChart', reviewDesignChart, chart_width)
+		sys.overviewChart('codeChart', codeChart, chart_width)
+		sys.overviewChart('reviewCodeChart', reviewCodeChart, chart_width)
+		sys.overviewChart('compilationChart', compilationChart, chart_width)
+		sys.overviewChart('testingChart', testingChart, chart_width)
+		sys.overviewChart('postmortemChart', postmortemChart, chart_width)
 
-##########################################
+
 Template.timeCharts.onRendered () ->
-	@autorun ->
-		overviewTimeChart()
-
-##########################################
+	containerWidth = document.getElementById("overview-chart").offsetWidth
+	chartWidth = containerWidth
+	Deps.autorun ->
+		overviewTimeChart(chartWidth)

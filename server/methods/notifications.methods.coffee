@@ -11,6 +11,6 @@ Meteor.methods
 
 	# This is used to change the state of a time notification that was used to revert a projects value (This makes sure that only happends one time)
 	disable_notification: (notificationId) ->
-		db.notifications.update({_id: notificationId}, {$set: {"data.reverted": true}})
+		db.notifications.update({_id: notificationId}, {$set: {"data.reverted": true, "seen": true}})
 
 #######################################

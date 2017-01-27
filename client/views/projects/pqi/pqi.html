@@ -1,16 +1,20 @@
 <template name="pqiTemplate">
 	{{>projectMessages}}
-	{{>headerNavigation}}
 
-	<div class="pqi-content">
-		<div class="prj-information-chart">
+	<div class=" main-option-container clearfix">
+		<div id="pqi-information-chart">
 			<canvas id="projectPQIChart"></canvas>
 		</div>
-		<ul class="prj-information-chart-values">
-		{{#each PQIValues}}
-			<li>{{name}} ({{alias}}): {{value}}</li>
-		{{/each}}
-			<li>PQI: {{getPQI}}</li>
+		<ul class="pqi-information-chart-values">
+			{{#each PQIValues}}
+				<li>{{name}} ({{alias}}): {{value}}</li>
+			{{/each}}
+			{{#if applyStyle}}
+				<li style="color:red; font-weight: bold;">PQI: {{getPQI}}, valores por debajo de 0,5 indican baja calidad.</li>
+			{{else}}
+				<li style="color:green; font-weight: bold;">PQI: {{getPQI}}, valores por encima de 0,5 son aceptables.</li>
+			{{/if}}
 		</ul>
 	</div>
+	{{>pspTwoTemplate}}
 </template>

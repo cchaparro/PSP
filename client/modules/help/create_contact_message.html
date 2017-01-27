@@ -1,0 +1,25 @@
+<template name="createContactModal">
+	{{#modal modalClasses="create-project-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">Contáctenos</h3>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<span class="modal-input-title">Nombre</span>
+			<input class="modal-input-field contact-name {{#if nameError}} error {{/if}}" type="text" placeholder="Ingresa tu nombre ...">
+
+			<span class="modal-input-title">Correo electrónico</span>
+			<input class="modal-input-field contact-email {{#if emailError}} error {{/if}}" type="email" placeholder="Ingresa tu correo electrónico ...">
+
+			<span class="modal-input-title">Asunto</span>
+			<input class="modal-input-field contact-subject {{#if subjectError}} error {{/if}}" type="text" placeholder="Asunto del mensaje ...">
+
+			<span class="modal-input-title">Mensaje</span>
+			<textarea class="modal-input-field contact-message {{#if messageError}} error {{/if}}" placeholder="Ingresa tu mensaje aquí ..."></textarea>
+
+			<div class="modal-footer">
+				<span class="primary-button pull-right contact-create">Enviar Mensaje</span>
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>
