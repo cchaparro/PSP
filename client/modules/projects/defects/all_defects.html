@@ -1,0 +1,37 @@
+<template name="defectsTemplate">
+	{{>projectMessages}}
+	{{#unless amountDefects}}
+		<div class="empty-projects">
+			<div>
+				<i class="material-icons">sentiment_very_dissatisfied</i>
+				<h4>No has creado ningun defecto aún.</h4>
+				<span>Para crear un nuevo defecto debes dar click en el botón que se encuentra en la parte superior.</span>
+			</div>
+		</div>
+	{{/unless}}
+	<div class="projects-container">
+		{{#each defects}}
+			<div class="project-box" style="border-left: 5px solid {{projectColor}};">
+				{{#unless projectCompleted}}
+					<div class="project-box-delete">
+						<i class="material-icons {{hoverIcon}}">{{hoverIcon}}</i>
+					</div>
+					<div class="project-box-delete-confirm">
+						<p>Estas seguro?</p>
+						<span class="confirm-delete-project">Eliminar Defecto</span>
+					</div>
+				{{/unless}}
+
+				<a href="#" class="defect-content">
+					<h4 class="project-box-title">Defecto</h4>
+					<span class="project-box-description">{{cutText defectDescription 30}}</span>
+					<div class="defect-content-stage">
+						<span class="project-box-description">Injectado en la etapa {{injected}}.</span>
+						<span class="project-box-description">Removido en la etapa {{removed}}.</span>
+					</div>
+					<span class="defect-time-text">{{timeFormat time}}</span>
+				</a>
+			</div>
+		{{/each}}
+	</div>
+</template>

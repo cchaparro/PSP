@@ -1,16 +1,20 @@
-<!-- ###################################### -->
 <template name="overviewTemplate">
-	<div class="overview-content">
-		<h3>Tiempo por etapas</h3>
-		{{> timeCharts}}
+	<div class="main-option-container clearfix">
+		<h4 class="main-option-title">Tiempo por etapas</h4>
+		<div class="overview-charts-container">
+			{{> timeCharts}}
+		</div>
 	</div>
-	<div class="overview-content">
-		<h3>Defectos inyectados por etapa</h3>
-		{{> injectedCharts}}
+	<div class="main-option-container clearfix">
+		<h4 class="main-option-title">Defectos inyectados por etapa</h4>
+		<div class="overview-charts-container">
+			{{> injectedCharts}}
+		</div>
 	</div>
-	<div class="overview-content">
-		<h3>Defectos Removidos por etapa</h3>
-		{{> removedCharts}}
+	<div class="main-option-container clearfix">
+		<h4 class="main-option-title">Defectos Removidos por etapa</h4>
+		<div class="overview-charts-container">
+			{{> removedCharts}}
+		</div>
 	</div>
 </template>
-<!-- ###################################### -->

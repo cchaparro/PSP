@@ -1,9 +1,0 @@
-<svg id="generalSummaryLogo" xmlns="http://www.w3.org/2000/svg" viewBox="-367 152 376 376">
-	<rect x="-273" y="246" width="47" height="47"/>
-	<rect x="-273" y="316.5" width="47" height="47"/>
-	<rect x="-273" y="387" width="47" height="47"/>
-	<rect x="-179" y="387" width="94" height="47"/>
-	<path d="M-14.5 152h-329c-13 0-23.5 10.5-23.5 23.5v329c0 13 10.5 23.5 23.5 23.5h329c13 0 23.5-10.5 23.5-23.5v-329C9 162.5-1.5 152-14.5 152zM-38 481h-282V199h282V481z"/>
-	<rect x="-179" y="316.5" width="94" height="47"/>
-	<rect x="-179" y="246" width="94" height="47"/>
-</svg>

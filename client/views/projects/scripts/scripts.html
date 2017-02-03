@@ -1,20 +1,6 @@
-<!-- ###################################### -->
 <template name="scriptsTemplate">
 	{{>projectMessages}}
-	{{>headerNavigation}}
-	<div class="script-content">
-		{{#if $eq levelPSP "PSP 0"}}
-			{{>scriptPSP0}}
-		{{else}}
-			{{#if $eq levelPSP "PSP 1"}}
-				{{>scriptPSP1}}
-			{{else}}
-				{{#if $eq levelPSP "PSP 2"}}
-					{{>scriptPSP2}}
-				{{/if}}
-			{{/if}}
-
-		{{/if}}
+	<div class="main-option-container script-content">
+		{{>Template.dynamic template=scriptTemplate}}
 	</div>
 </template>
-<!-- ###################################### -->

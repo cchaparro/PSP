@@ -1,0 +1,52 @@
+<template name="editProfileModal">
+	{{#modal modalClasses="edit-profile-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">Editar Perfil</h3>
+	 	{{/modal_title}}
+		{{#modal_body}}
+			{{#with user}}
+				<div class="edit-profile-image">
+					<div class="avatar" style="background-image: url('{{getUserAvatarUrl}}');" id="profilePicUploader"></div>
+				</div>
+
+				<div class="modal-input-split clearfix">
+					<div class="split-element pull-left">
+						<span class="edit-profile-button edit-profile-upload">
+							<i class="material-icons pull-left">file_upload</i>
+							Cambiar imagen
+						</span>
+					</div>
+					<div class="split-element pull-right">
+						<span class="edit-profile-button edit-profile-default-image">Elegir Predeterminada</span>
+					</div>
+				</div>
+
+				<input type="file" class="image-upload hide" enctype="multipart/form-data" accept="image/*"/>
+
+				<div>
+					<span class="modal-input-title">Correo electrónico</span>
+					<div class="edit-profile-information">
+						<span>{{profile.email}}</span>
+						<i class="material-icons">lock</i>
+					</div>
+				</div>
+
+				<div class="modal-input-split">
+					<div class="split-element pull-left">
+						<span class="modal-input-title">Nombre</span>
+						<input class="modal-input-field" name="firstName" value="{{profile.fname}}" type="text" placeholder="Nombre">
+					</div>
+					<div class="split-element pull-right">
+						<span class="modal-input-title">Apellido</span>
+						<input class="modal-input-field" name="lastName" value="{{profile.lname}}" type="text" placeholder="Apellido">
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<span class="primary-button pull-right edit-profile-save">Guardar Cambios</span>
+					<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+				</div>
+			{{/with}}
+		{{/modal_body}}
+	{{/modal}}
+</template>

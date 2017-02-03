@@ -1,0 +1,19 @@
+<template name="forgotPasswordTemplate">
+	<form>
+		<img src="/LogoMenuDark.png" alt="PSP Connect">
+		{{#if emailIsSent}}
+			<div>
+				<span>Te hemos enviado un mensaje de verificación al correo electrónico</span>
+			</div>
+		{{else}}
+			<input type="email" name="email" placeholder="Correo electrónico">
+			{{#if errorMessage}}
+				<div class="auth-message">
+					<span>{{errorMessage}}</span>
+				</div>
+			{{/if}}
+			<input type="submit" class="auth-submit" value='Enviar correo cambio de contraseña'>
+		{{/if}}
+		<a href="/login" class="auth-signup">Volver a Iniciar sesión</a>
+	</form>
+</template>

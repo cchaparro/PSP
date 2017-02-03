@@ -19,17 +19,17 @@ sys.isNumber = (number) ->
 ##########################################
 ###############- Page Name -##############
 sys.getPageName = (title) ->
-	if title == "projects" or title == "iterations" or title == "projectGeneral" or title == "projectTimeLog" or title == "projectDefectLog" or title == "projectSummary" or title == "projectScripts" or title =="estimatingtemplate" or title=="pqitemplate" or title == "forms"
+	if title == 'privateRoute.general' or title == "privateRoute.iterations" or title == "privateRoute.projectGeneral" or title == "privateRoute.timeLog" or title == "privateRoute.projectDefectLog" or title == "privateRoute.summary" or title == "privateRoute.scripts" or title =="privateRoute.estimating" or title=="privateRoute.pqi" or title == "privateRoute.forms"
 		return "Proyectos"
-	else if title == "overview"
+	else if title == "privateRoute.overview"
 		return "Resumen"
-	else if title == "defectTypeSettings"
+	else if title == "privateRoute.settings"
 		return "Ajustes"
-	else if title == "help"
+	else if title == "privateRoute.help"
 		return "Ayuda"
-	else if title == "community"
+	else if title == "privateRoute.community"
 		return "Comunidad"
-	else if title == "community-question"
+	else if title == "privateRoute.communityQuestion"
 		return "Pregunta Comunidad"
 	else
 		return "No Disponible"
@@ -117,46 +117,186 @@ sys.removeMessage = () ->
 sys.flashStatus = (type) ->
 	# CSS field can get success, warning and danger
 	switch type
-		# AllProjects and AllIterations view
-		when "create-project"
-			title = "Creado"
-			subject = "El proyecto se ha creado correctamente."
+		when 'create-project-successful'
+			title = "Proyecto creado"
+			subject = "El proyecto que acabas de ingresar se ha creado correctamente."
 			css = "success"
 
-		when "error-create-project"
+		when 'create-project-error'
 			title = "Error"
-			subject = "No hemos podido crear el proyecto nuevo."
+			subject = "No pudimos crear el proyecto correctamente. Por favor inténtelo nuevamente."
 			css = "danger"
 
-		when "project-delete"
-			title = "Eliminado"
-			subject = "El projecto ha sido removido correctamente."
+		when "delete-project-successful"
+			title = "Proyecto eliminado"
+			subject = "El projecto seleccionado se ha eliminado correctamente."
 			css = "success"
 
-		when "error-project-delete"
+		when "delete-project-error"
 			title = "Error"
-			subject = "No hemos podido remover el proyecto seleccionado."
+			subject = "No pudimos eliminar el proyecto que seleccionaste. Por favor inténtelo nuevamente."
 			css = "danger"
 
-		when "create-iteration"
-			title = "Creado"
-			subject = "La iteración se ha creado correctamente."
+		when 'change-project-sorting-successful'
+			title = "Proyectos reordenados"
+			subject = "El orden de los proyectos se ha cambiado correctamente."
 			css = "success"
 
-		when "error-create-iteration"
+		when 'change-project-sorting-error'
 			title = "Error"
-			subject = "No hemos podido crear la nueva iteración."
-			css = "danger"
-
-		when "iteration-delete"
-			title = "Eliminado"
-			subject = "El projecto ha sido removido correctamente."
+			subject = "No se pudo cambiar el orden de los proyectos. Por favor inténtelo nuevamente."
 			css = "success"
 
-		when "error-iteration-delete"
+		when 'create-iteration-successful'
+			title = "Iteración creada"
+			subject = "Se ha creado correctamente la nueva iteración del proyecto."
+			css = "success"
+
+		when 'create-iteration-error'
 			title = "Error"
-			subject = "No hemos podido remover la iteración seleccionada."
+			subject = "No pudimos crear la nueva iteración del proyecto. Por favor inténtelo nuevamente."
 			css = "danger"
+
+		when 'delete-iteration-successful'
+			title = "Iteración eliminada"
+			subject = "La iteración que has seleccionado se ha eliminado correctamente."
+			css = "success"
+
+		when 'delete-iteration-error'
+			title = "Error"
+			subject = "No pudimos eliminar la iteración que seleccionaste. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "delete-defect-successful"
+			title = "Defecto eliminado"
+			subject = "El defecto seleccionado se ha eliminado correctamente."
+			css = "success"
+
+		when "delete-defect-error"
+			title = "Error"
+			subject = "No pudimos eliminar el defecto que seleccionaste. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'project-title-save-successful'
+			title = "Titulo guardado"
+			subject = "El titulo que ingresaste para el proyecto se ha cambiado correctamente."
+			css = "success"
+
+		when 'project-title-save-error'
+			title = "Error"
+			subject = "No pudimos cambiar el titulo del proyecto por el que acabas de ingresar. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'project-description-save-successful'
+			title = "Descripción guardada"
+			subject = "La descripción que ingresaste para el proyecto se ha guardado correctamente."
+			css = "success"
+
+		when 'project-description-save-error'
+			title = "Error"
+			subject = "No pudimos cambiar la descripción del proyecto que acabas de ingresar. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'project-finish-successful'
+			title = "Proyecto finalizado"
+			subject = "El proyecto se ha finalizado correctamente."
+			css = "success"
+
+		when 'project-finish-error'
+			title = "Error"
+			subject = "No hemos podido finalizar proyecto. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "delete-pip-successful"
+			title = "PIP eliminado"
+			subject = "se ha eliminado correctamente la propuesta de mejora seleccionada."
+			css = "success"
+
+		when "delete-pip-error"
+			title = "Error"
+			subject = "No pudimos eliminar la propuesta de mejora seleccionada. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "delete-test-successful"
+			title = "Reporte eliminado"
+			subject = "El reporte de prueba se ha eliminado correctamente."
+			css = "success"
+
+		when "delete-test-error"
+			title = "Error"
+			subject = "No pudimos eliminar el reporte de prueba seleccionado. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'create-test-successful'
+			title = "Reporte creado"
+			subject = "El reporte de prueba que acabas de ingresar se ha creado correctamente."
+			css = "success"
+
+		when 'create-test-error'
+			title = "Error"
+			subject = "No pudimos crear el reporte de prueba correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'create-pip-successful'
+			title = "Reporte creado"
+			subject = "La propuesta de mejora que acabas de ingresar se ha creado correctamente."
+			css = "success"
+
+		when 'create-pip-error'
+			title = "Error"
+			subject = "No pudimos crear la propuesta de mejora correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "create-question-successful"
+			title = "Pregunta creada"
+			subject = "La pregunta que acabas de ingresar se ha creado correctamente."
+			css = "success"
+
+		when "create-question-error"
+			title = "Error"
+			subject = "No pudimos crear la nueva pregunta correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "question-close-successful"
+			title = "Pregunta finalizada"
+			subject = "La pregunta que acabas de seleccionar se ha finalizado correctamente."
+			css = "success"
+
+		when "question-close-error"
+			title = "Error"
+			subject = "No pudimos cerrar la pregunta que seleccionaste. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when "question-answer-successful"
+			title = "Respuesta creada"
+			subject = "La respuesta que acabas de ingresar se ha creado correctamente."
+			css = "success"
+
+		when "question-answer-error"
+			title = "Error"
+			subject = "No pudimos crear la respuesta que ingresaste. Por favor inténtelo nuevamente."
+			css = "danger"
+
+		when 'create-contact-successful'
+			title = "Mensaje enviado"
+			subject = "El mensaje que acabas de escribir se ha enviado correctamente."
+			css = "success"
+
+		when 'create-contact-error'
+			title = "Error"
+			subject = "No pudimos enviar el mensaje correctamente. Por favor inténtelo nuevamente."
+			css = "danger"
+
+
+
+
+
+
+
+
+
+
+
 
 
 		# Time log from the projects view and editTime modal
@@ -174,7 +314,7 @@ sys.flashStatus = (type) ->
 			title = "Error"
 			subject = "Debes ingresar un tiempo estimado en el Plan Summary para continuar."
 			css = "danger"
-		
+
 		when "actual-size-missing"
 			title = "Error"
 			subject = "Debes ingresar tamaño actual en el Plan Summary para continuar."
@@ -206,10 +346,6 @@ sys.flashStatus = (type) ->
 			css = "warning"
 
 		# Defects log from the projects view and New defect modal
-		when "delete-defect"
-			title = "Eliminado"
-			subject = "El defecto ha sido removido correctamente."
-			css = "success"
 
 		when "save-defect"
 			title = "Guardado"
@@ -229,38 +365,6 @@ sys.flashStatus = (type) ->
 		when "error-create-defect"
 			title = "Error"
 			subject = "No hemos podido crear el nuevo defecto."
-			css = "danger"
-
-
-		# Project information from the projects view
-		when 'save-title-project'
-			title = "Guardado"
-			subject = "El titulo del proyecto se ha cambiado correctamente."
-			css = "success"
-
-		when 'error-save-title-project'
-			title = "Error"
-			subject = "No hemos podido cambiar el titulo del proyecto."
-			css = "danger"
-
-		when 'save-description-project'
-			title = "Guardado"
-			subject = "Se ha cambiado la descripción del proyecto correctamente."
-			css = "success"
-
-		when 'error-save-description-project'
-			title = "Error"
-			subject = "No hemos podido cambiar la descripción del proyecto."
-			css = "danger"
-
-		when 'finish-project'
-			title = "Guardado"
-			subject = "El proyecto se ha finalizado correctamente."
-			css = "success"
-
-		when 'error-finish-project'
-			title = "Error"
-			subject = "No hemos podido finalizar proyecto."
 			css = "danger"
 
 
@@ -364,29 +468,10 @@ sys.flashStatus = (type) ->
 			subject = "El tiempo estimado no puede ser 0"
 			css = "danger"
 
-		when "create-question"
-			title = "Creado"
-			subject = "La pregunta se ha creado correctamente."
-			css = "success"
-
-		when "error-create-question"
-			title = "Error"
-			subject = "No hemos podido crear la nueva pregunta."
-			css = "danger"
-
-		#Help template view
-		when "finish-question"
-			title = "Exito"
-			subject = "La pregunta se ha cerrado correctamente."
-			css = "success"
-
-		when "error-finish-question"
-			title = "Error"
-			subject = "No hemos podido cerrar la pregunta."
-			css = "danger"
 
 	Session.set "statusMessage", {title: title, subject: subject, css: css}
-	window.setTimeout sys.removeMessage, 3800
+	window.setTimeout sys.removeMessage, 5300
+
 
 # This is used to fade-out the notification
 sys.removeTimeMessage = () ->
@@ -425,38 +510,38 @@ sys.cutText = (text, limit, closing) ->
 #########- Document Title Route -#########
 sys.getSessionRoute = (value) ->
 	switch value
-		when "projects"
+		when 'privateRoute.general'
 			return "Proyectos"
-		when "iterations"
+		when 'privateRoute.iterations'
 			return "Iteraciones"
-		when "general"
+		when 'privateRoute.projectGeneral'
 			return "Proyecto"
-		when "timeLog"
+		when 'privateRoute.timeLog'
 			return "Log de tiempos"
-		when "defectLog"
+		when 'privateRoute.defectLog'
 			return "Log de defectos"
-		when "planSummary"
+		when 'privateRoute.summary'
 			return "Plan Summary"
-		when "scripts"
+		when 'privateRoute.scripts'
 			return "Scripts"
-		when "settings"
-			return "Ajustes"
-		when "defectTypes"
-			return "Tipos de defecto"
-		when "help"
-			return "Ayuda"
-		when "estimatingTemplate"
+		when 'privateRoute.forms'
+			return 'Formularios'
+		when 'privateRoute.estimating'
 			return "Estimación"
-		when "pqiTemplate"
+		when 'privateRoute.pqi'
 			return "PQI"
-		when "community"
+		when "privateRoute.settings"
+			return "Configuración"
+		when "privateRoute.overview"
+			return "Resumen"
+		when "privateRoute.help"
+			return "Ayuda"
+		when "privateRoute.community"
 			return "Comunidad"
-		when "community-question"
+		when "privateRoute.communityQuestion"
 			return "Pregunta Comunidad"
-		when "help-tutorial"
+		when "privateRoute.tutorial"
 			return "Tutorial"
-		when "formTemplate"
-			return "Formularios"
 
 ##########################################
 ########- Project Color Selector -########
@@ -469,10 +554,10 @@ sys.selectColor = (last_color) ->
 ##########################################
 ############- Chart Overview -############
 
-sys.overviewChart = (chartName, data) ->
-	chartElement = document.getElementById(chartName)?.getContext('2d')
-	chartElement?.canvas.width = 400
-	chartElement?.canvas.height = 200
+sys.overviewChart = (chartName, data, chart_width) ->
+	chartElement = document.getElementById(chartName).getContext('2d')
+	chartElement?.canvas.width = chart_width
+	chartElement?.canvas.height = chart_width/2
 
 	return new Chart(chartElement).Scatter(data,
 		animation : false
@@ -509,7 +594,7 @@ sys.regressionDataSize = (Data,PROBE,x,y)->
 				sumsquarex += Math.pow(d.ProxyE,2)
 				sumsquarey += Math.pow(d.ActualLOC,2)
 				sumxy+= d.ProxyE * d.ActualLOC
-	
+
 	correlationNumerator = (n*sumxy)-(x*y)
 	correlationDenominator = Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2)))
 	correlation = 0
@@ -531,7 +616,7 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 	sumsquarex = 0
 	xavg = x/n
 	yavg = y/n
-	sumsquarey = 0 
+	sumsquarey = 0
 	sumxy = 0
 	switch PROBE
 		when "B"
@@ -544,7 +629,7 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 				sumsquarex += Math.pow(d.ProxyE,2)
 				sumsquarey += Math.pow(d.ActualTime,2)
 				sumxy+= d.ProxyE * d.ActualTime
-	
+
 	correlationNumerator = (n*sumxy)-(x*y)
 	correlationDenominator = Math.sqrt(((n*sumsquarex)-Math.pow(x,2))*((n*sumsquarey)-Math.pow(y,2)))
 	correlation = 0
@@ -555,6 +640,6 @@ sys.regressionDataTime = (Data,PROBE,x,y)->
 	betaDenominator = sumsquarex-(n*Math.pow(xavg,2))
 	b1 = 0
 	if betaDenominator != 0
-		b1 = betaNumerator/betaDenominator	
+		b1 = betaNumerator/betaDenominator
 	b0 = yavg - (b1*xavg)
 	return {"Beta0":b0,"Beta1":b1,"Correlation":correlation}

@@ -1,109 +1,161 @@
-<!-- ###################################### -->
 <template name="timeCharts">
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Planeación</span>
 		<canvas id="planningChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Diseño</span>
 		<canvas id="designChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Revisión Diseño</span>
 		<canvas id="reviewDesignChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Código</span>
 		<canvas id="codeChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Revisión Código</span>
 		<canvas id="reviewCodeChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Compilación</span>
 		<canvas id="compilationChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Pruebas</span>
 		<canvas id="testingChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Postmortem</span>
 		<canvas id="postmortemChart"></canvas>
+		{{>overviewTimeChartLabel}}
 	</div>
 </template>
-<!-- ###################################### -->
+
 <template name="injectedCharts">
-	<!--Defectos Inyectados-->
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Planeación</span>
 		<canvas id="InplanningChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Diseño</span>
 		<canvas id="IndesignChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Revisión Diseño</span>
 		<canvas id="InreviewDesignChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Código</span>
 		<canvas id="IncodeChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Revisión Código</span>
 		<canvas id="InreviewCodeChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Compilación</span>
 		<canvas id="IncompilationChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Pruebas</span>
 		<canvas id="IntestingChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Postmortem</span>
 		<canvas id="InpostmortemChart"></canvas>
+		{{>overviewInjectedChartLabel}}
 	</div>
 </template>
-<!-- ###################################### -->
+
 <template name="removedCharts">
-	<!--Defectos Removidos-->
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Planeación</span>
 		<canvas id="RemplanningChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Diseño</span>
 		<canvas id="RemdesignChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Revisión Diseño</span>
 		<canvas id="RemreviewDesignChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Código</span>
 		<canvas id="RemcodeChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Revisión Código</span>
 		<canvas id="RemreviewCodeChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Compilación</span>
 		<canvas id="RemcompilationChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Pruebas</span>
 		<canvas id="RemtestingChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
-	<div class="overview-chart-box">
+	<div id="overview-chart">
 		<span>Postmortem</span>
 		<canvas id="RempostmortemChart"></canvas>
+		{{>overviewRemovedChartLabel}}
 	</div>
 </template>
-<!-- ###################################### -->
 
+<template name="overviewTimeChartLabel">
+	<div class="chart-label">
+		<span class="overview-chart-label">
+			<i class="material-icons">arrow_upward</i>
+			<span>Tiempo (mins)</span>
+			<i class="material-icons space">arrow_forward</i>
+			<span>Proyectos Finalizados</span>
+		</span>
+	</div>
+</template>
+
+<template name="overviewInjectedChartLabel">
+	<div class="chart-label">
+		<span class="overview-chart-label">
+			<i class="material-icons">arrow_upward</i>
+			<span>Defectos Inyectados</span>
+			<i class="material-icons space">arrow_forward</i>
+			<span>Proyectos Finalizados</span>
+		</span>
+	</div>
+</template>
+
+<template name="overviewRemovedChartLabel">
+	<div class="chart-label">
+		<span class="overview-chart-label">
+			<i class="material-icons">arrow_upward</i>
+			<span>Defectos Removidos</span>
+			<i class="material-icons space">arrow_forward</i>
+			<span>Proyectos Finalizados</span>
+		</span>
+	</div>
+</template>

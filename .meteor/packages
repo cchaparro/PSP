@@ -4,43 +4,52 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.0.4									# Packages every Meteor app needs to have
-mobile-experience@1.0.4							# Packages for a great mobile UX
-mongo@1.1.10										# The database Meteor supports right now
-blaze-html-templates@1.0.4						# Compile .html files into Meteor Blaze views
-reactive-var@1.0.10								# Reactive variable for tracker
-jquery@1.11.9										# Helpful client-side library
-tracker@1.1.0										# Meteor's client-side reactive programming library
+meteor-base@1.0.4						# Packages every Meteor app needs to have
+mobile-experience@1.0.4				# Packages for a great mobile UX
+mongo@1.1.10							# The database Meteor supports right now
+blaze-html-templates@1.0.4			# Compile .html files into Meteor Blaze views
+reactive-var@1.0.10					# Reactive variable for tracker
+jquery@1.11.9							# Helpful client-side library
+tracker@1.1.0							# Meteor's client-side reactive programming library
 
-standard-minifier-css@1.1.8					# CSS minifier run for production mode
-standard-minifier-js@1.1.8						# JS minifier run for production mode
-es5-shim@4.6.13									# ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.7									# Enable ECMAScript2015+ syntax in app code
+standard-minifier-css@1.1.8		# CSS minifier run for production mode
+standard-minifier-js@1.1.8			# JS minifier run for production mode
+es5-shim@4.6.13						# ECMAScript 5 compatibility for older browsers.
+ecmascript@0.5.7						# Enable ECMAScript2015+ syntax in app code
 
-coffeescript@1.2.3								# This is coffeescript
-underscore@1.0.9									# Package with great JavaScript functions
-twbs:bootstrap										# This is the bootstrap 3 file
-fourseven:scss										# This is SCSS
-kadira:flow-router								# This is the routing package
-kadira:blaze-layout								# This is a package extension for flow:router
-arillo:flow-router-helpers						# This package brings to flow:router the extension PathFor
-aldeed:collection2								# This package verifies inserts with schema for security
-raix:handlebar-helpers							# Package for extra options in Blaze
-accounts-password@1.2.12						# User Accounts package
-fortawesome:fontawesome							# Font Awesome icons
-peppelg:bootstrap-3-modal						# This brings the option of using well made modals
-meteortoys:allthings								# Package of Meteor Toys
-chart:chart											# Package for using charts
-matb33:collection-hooks
-session												# Package for the session variables
-momentjs:moment									# Package to get more time display options
-gwendall:auth-client-callbacks				# Package used for the onLogin, onLogout in Flowrouter
-accounts-facebook
-accounts-google
-ostrio:files										#Package for uploading files
-u2622:persistent-session
+fourseven:scss							# Sass and SCSS support
+twbs:bootstrap							# Bootstrap 3
+peppelg:bootstrap-3-modal			# Bootstrap Modal helpers
+
+coffeescript@1.2.3					# Adds Coffeescript syntax
+underscore@1.0.9						# Package with great JavaScript functions
+check										# Checks data type of a element
+
+kadira:flow-router					# Routing package
+kadira:blaze-layout					# Layout Manager for Blaze
+arillo:flow-router-helpers			# Template helpers for FlowRouter
+
+accounts-password@1.2.12			# Accounts package
+accounts-facebook						# Facebook accounts package
+accounts-google						# Google accounts package
+
+meteortoys:allthings					# Development Tools for development mode
+raix:handlebar-helpers				# Handy handlers for Meteor handlebars
+aldeed:collection2					# This package adds a schema to Mongo.Collection for security
+momentjs:moment						# Package to get more time display options
+matb33:collection-hooks				# Meteor Collection Hooks
+
+email										# Package to send emails
+ostrio:files							# Package for uploading files
+session									# Package for the session variables
+u2622:persistent-session			# Package for perssistent sessions
+chart:chart								# Package for using chart.js
+
+gwendall:auth-client-callbacks	# Package used for the onLogin, onLogout in Flowrouter
 modernize:chart-scatter
-email
-check
 aldeed:clock
 numeral:numeral
+
+
+fortawesome:fontawesome				# Font Awesome icons
+rzymek:moment-locale-es

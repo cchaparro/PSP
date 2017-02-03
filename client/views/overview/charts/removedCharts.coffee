@@ -1,6 +1,6 @@
 ##########################################
 #Average inverse function
-overviewRemovedChart = () ->
+overviewRemovedChart = (chart_width) ->
 	finishedProjects = db.projects.find({ projectOwner: Meteor.userId(), completed: true}, {sort: {completedAt: 1}}).fetch()
 	colors = Meteor.settings.public.chartColors
 
@@ -74,18 +74,20 @@ overviewRemovedChart = () ->
 		RempostmortemChart = 	[finalData[7]]
 
 		#Creation of all the stages chart overviews
-		sys.overviewChart('RemplanningChart', RemplanningChart)
-		sys.overviewChart('RemdesignChart', RemdesignChart)
-		sys.overviewChart('RemreviewDesignChart', RemreviewDesignChart)
-		sys.overviewChart('RemcodeChart', RemcodeChart)
-		sys.overviewChart('RemreviewCodeChart', RemreviewCodeChart)
-		sys.overviewChart('RemcompilationChart', RemcompilationChart)
-		sys.overviewChart('RemtestingChart', RemtestingChart)
-		sys.overviewChart('RempostmortemChart', RempostmortemChart)
+		sys.overviewChart('RemplanningChart', RemplanningChart, chart_width)
+		sys.overviewChart('RemdesignChart', RemdesignChart, chart_width)
+		sys.overviewChart('RemreviewDesignChart', RemreviewDesignChart, chart_width)
+		sys.overviewChart('RemcodeChart', RemcodeChart, chart_width)
+		sys.overviewChart('RemreviewCodeChart', RemreviewCodeChart, chart_width)
+		sys.overviewChart('RemcompilationChart', RemcompilationChart, chart_width)
+		sys.overviewChart('RemtestingChart', RemtestingChart, chart_width)
+		sys.overviewChart('RempostmortemChart', RempostmortemChart, chart_width)
 
 ##########################################
 Template.removedCharts.onRendered () ->
-	@autorun ->
-		overviewRemovedChart()
+	containerWidth = document.getElementById("overview-chart").offsetWidth
+	chartWidth = containerWidth
+	Deps.autorun ->
+		overviewRemovedChart(chartWidth)
 
 ##########################################

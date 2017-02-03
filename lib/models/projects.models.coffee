@@ -42,6 +42,9 @@ if Meteor.isServer
 		db.defects.remove({ "projectId": pid })
 		db.plan_summary.remove({ "projectId": pid })
 
+		# When you delete a project, all his notifications should be disabled
+		syssrv.disableTimeNotifications(planSummary._id)
+
 
 
 	syssrv.createProject = (data) ->

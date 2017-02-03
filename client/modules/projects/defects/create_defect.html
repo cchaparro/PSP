@@ -1,0 +1,102 @@
+<template name="createDefectModal">
+	{{#modal modalClasses="create-defect-modal"}}
+		{{#modal_title}}
+			<h3 class="modal-title">{{displayTitle}}</h3>
+			{{#if parentId}}
+				<span class="modal-description">Este defecto tiene un defecto padre. Puedes volver al defecto padre dando <a>click aqui</a>.</span>
+			{{/if}}
+	 	{{/modal_title}}
+		{{#modal_body}}
+			<div class="row row-defect-buttons">
+				<div class="create-defect-time pull-left">
+					{{#if projectCompleted}}
+						<div class="time-button background-disabled">
+							<i class="material-icons">{{timeIcon}}</i>
+						</div>
+					{{else}}
+						<div class="time-button {{#if timeStatus}} background-danger {{else}} background-success {{/if}}">
+							<i class="material-icons">{{timeIcon}}</i>
+						</div>
+					{{/if}}
+					{{>defectClock}}
+				</div>
+				<div class="defect-create-son pull-right">
+					<span>Crear Defecto hijo</span>
+					<i class="material-icons hidden-xs">add_circle</i>
+				</div>
+			</div>
+
+			<div class="modal-input-split">
+				<div class="split-element pull-left">
+					<span class="modal-input-title">Tipo de defecto</span>
+					<div class="dropdown-box modal-dropdown {{#if $and errorState ($eq defectData.typeDefect 'Elegir tipo')}} error {{/if}}">
+						<button type="button" data-toggle="dropdown">
+							{{defectData.typeDefect}}
+							<i class="material-icons">arrow_drop_down</i>
+						</button>
+						<ul class="dropdown-menu">
+							{{#each allDefectTypes}}
+								<li class="defect-select-field" data-type="typeDefect" data-value="{{name}}">
+									{{name}}
+									<span>{{description}}</span>
+								</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+				<div class="split-element pull-right">
+					<span class="modal-input-title hidden-xs">Numero veces registrado</span>
+					<span class="modal-input-title visible-xs">veces registrado</span>
+					<input class="modal-input-field defect-input-field" type="number" min="1" value="{{defectData.fixCount}}" data-field="fixCount" placeholder="Conteo de Correcciones">
+				</div>
+			</div>
+
+			<div class="modal-input-split">
+				<div class="split-element pull-left">
+					<span class="modal-input-title">Etapa inyectado</span>
+					<div class="dropdown-box modal-dropdown {{#if $and errorState ($eq defectData.injected 'Elegir etapa')}} error {{/if}}">
+						<button type="button" data-toggle="dropdown">
+							{{defectData.injected}}
+							<i class="material-icons">arrow_drop_down</i>
+						</button>
+						<ul class="dropdown-menu">
+							{{#each injectedPhases}}
+								<li class="defect-select-field" data-type="injected" data-value="{{name}}">{{name}}</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+				<div class="split-element pull-right">
+					<span class="modal-input-title">Etapa removido</span>
+					<div class="dropdown-box modal-dropdown {{#if $and errorState ($eq defectData.removed 'Elegir etapa')}} error {{/if}}">
+						<button type="button" data-toggle="dropdown">
+							{{defectData.removed}}
+							<i class="material-icons">arrow_drop_down</i>
+						</button>
+						<ul class="dropdown-menu">
+							{{#each removedPhases}}
+								<li class="defect-select-field" data-type="removed" data-value="{{name}}">{{name}}</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<span class="modal-input-title">Descripción</span>
+			<textarea type="text" class="modal-input-field defect-modal-description defect-input-field {{#if descripcionError}} error {{/if}}" data-field="description" placeholder="Ingresar descripción del nuevo defecto ..." value="{{defectData.description}}"></textarea>
+			
+			<div class="modal-footer">
+				{{#if ifLoadsData}}
+					<span class="primary-button pull-right pry-modal-create">Crear Defecto</span>
+				{{else}}
+					<span class="primary-button pull-right pry-modal-create {{#if projectCompleted}} hidden {{/if}}">Guardar Cambios</span>
+				{{/if}}
+				<span class="cancel-button pull-left modal-cancel" data-dismiss="modal">Cancelar</span>
+			</div>
+		{{/modal_body}}
+	{{/modal}}
+</template>
+
+<template name="defectClock">
+	<span>{{clock}}</span>
+</template>

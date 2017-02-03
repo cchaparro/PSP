@@ -1,0 +1,24 @@
+<template name="modal">
+	<div class="modal fade">
+		<div class="modal-dialog {{modalClasses}}">
+			<div class="modal-content">
+				{{> Template.contentBlock}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="modal_title">
+	<div class="modal-header">
+		<a href="#" class="modal-close-action" data-dismiss="modal">
+			<i class="material-icons">clear</i>
+		</a>
+		{{> Template.contentBlock}}
+	</div>
+</template>
+
+<template name="modal_body">
+	<div class="modal-body">
+		{{> Template.contentBlock}}
+	</div>
+</template>

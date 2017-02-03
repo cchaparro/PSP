@@ -11,6 +11,7 @@ Meteor.methods
 
 
 	change_project_sorting_settings: (value) ->
+		check(value, String)
 		db.users.update({_id: Meteor.userId()}, {$set: { "settings.projectSort": value }})
 
 

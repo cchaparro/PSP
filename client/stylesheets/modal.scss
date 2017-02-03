@@ -1,279 +1,273 @@
 @import '_variables.scss';
 
-//---------------- Modals ----------------
-.general-modal {
-	width: $modal-width;
-
+.modal-dialog {
 	.modal-content {
-		padding: 30px;
-		@include border-radius($default-border-radius);
-		box-shadow: $popup-box-shadow;
+		padding: 10px;
+		border-radius: 4px;
 		border: none;
+		box-shadow: none;
+	}
+}
 
-		.modal-header {
-			padding: 0;
-			border-bottom: 0;
+.modal-header, .modal-footer {
+	padding: 0;
+	border: none;
+}
+
+.modal-title {
+	color: #566C78;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 20px;
+	margin-top: 0;
+	margin-bottom: 5px;
+	padding: 10px 10px 0 10px;
+}
+
+.modal-description {
+	color: #b1b7c1;
+	display: inline-block;
+	font-size: 13px;
+	font-style: italic;
+	padding: 0 10px 10px 10px;
+	cursor: default;
+
+	a {
+		color: $blue;
+		cursor: pointer;
+	}
+}
+
+.modal-close-action {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	color: #566C78;
+	z-index: 10;
+}
+
+.modal-input-title {
+	color: #566C78;
+	display: block;
+	font-size: 12px;
+	font-weight: 600;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+.modal-input-field {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	margin-bottom: 10px;
+	max-width: 100%;
+	outline: none;
+	padding: 10px;
+	width: 100%;
+
+	&.error {
+		border: 1px solid $danger;
+	}
+}
+
+.modal-input-split {
+	width: 100%;
+
+	.split-element {	
+		width: calc(50% - 5px);
+		max-width: calc(50% - 5px);
+	}
+}
+
+textarea.modal-input-field {
+	height: 80px;
+}
+
+.modal-dropdown {
+	position: relative;
+	margin-bottom: 10px;
+	border: 1px solid $white;
+
+	button {
+		background-color: #F8F9FA;
+		border: none;
+		border-radius: 4px;
+		color: #566C78;
+		font-size: 13px;
+		height: 40px;
+		outline: none;
+		padding: 10px;
+		text-align: left;
+		width: 100%;
+
+		i {
+			line-height: 40px;
+			position: absolute;
+			right: 5px;
+			top: 0;
+		}
+	}
+
+	&.error {
+		border: 1px solid $danger;
+		border-radius: 4px;
+	}
+
+	.dropdown-menu {
+		margin-top: -5px;
+		width: 100%;
+		padding: 10px;
+
+		li {
+			color: #566C78;
+			cursor: pointer;
+			padding-top: 5px;
+			padding-left: 10px;
+			position: relative;
+
+			padding-bottom: 5px;
+
+			&:hover {
+				color: black;
+				background-color: #F8F9FA;
+				border-radius: 20px;
+			}
+
+			&:hover span {
+				display: inline;
+			}
 
 			span {
-				cursor: pointer;
-				font-size: 14pt;
-				display: inline;
 				position: absolute;
-				top: 35px;
-				right: 30px;
+				top: 0;
+				right: -220px;
+				width: 200px;
+				background: $menu-popup-bg;
+				position: absolute;
+				padding: 7px 7px 7px 12px;
+				font-size: 10pt;
+				color: $white;
+				border-radius: 5px;
+				display: none;
 
-				i {
-					color: $text;
-
-					&:hover {
-						color: $text-dark;
-					}
+				&:after {
+					background-color: $menu-popup-bg;
+					content: "";
+					display: block;
+					height: 10px;
+					position: absolute;
+					left: -5px;
+					top: 10px;
+					transform: rotate(45deg);
+					width: 10px;
 				}
 			}
-
-			p {
-				padding-top: 10px;
-				padding-right: 30px;
-				font-weight: 300;
-				color: $text;
-			}
-
-			h3 {
-				margin: 0;
-				padding-top: 5px;
-				font-size: 15pt;
-				color: $text-dark;
-			}
-		}
-
-		.modal-body {
-			padding: 0;
-			padding-top: 20px;
-		}
-
-		.modal-footer {
-			margin: -20px -15px;
-			border: none;
-		}
-
-	}
-}
-
-.profile-modal {
-	@extend .general-modal;
-	width: $profile-modal-width;
-
-	.primary-button {
-		width: 100%;
-	}
-
-	.modal-content {
-		.modal-body {
-			margin-top: 20px;
-			padding-top: 0px;
 		}
 	}
 }
 
-
-//------------- Create Project Modal -------------
-.create-project-row {
-	@include clearfix();
-
-	div {
-		display: inline-block;
-
-		&:first-child {
-			width: 60%;
-			float: left;
-			padding-right: 10px;
-		}
-
-		&:last-child {
-			width: 40%;
-			float: right;
-		}
-	}
-
-	.input-error-box {
-		i {
-			padding-right: 10px;
-		}
-	}
+.create-project-modal {
+	width: 390px;
 }
 
-.create-project-color-row {
+// //-------------- Create Defect Modal -------------
+.create-defect-modal {
+	width: 430px;
+}
+
+.row-defect-buttons {
 	margin-bottom: 10px;
-	height: 40px;
-	line-height: 40px;
+}
+
+.create-defect-time {
+	width: calc(50% - 20px);
+	margin-left: 15px;
+
+	.time-button {
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		color: $white;
+		cursor: pointer;
+		display: inline-block;
+		float: left;
+
+		.material-icons {
+			width: 100%;
+			text-align: center;
+			line-height: 40px;
+			font-size: 30px;
+		}
+	}
 
 	span {
-		color: $text;
-		float: left;
-		font-weight: 300;
-		padding-right: 10px;
-	}
-
-	.color-option {
-		width: 28px;
-		height: 28px;
-		float: left;
-		margin-top: 6px;
-		margin-right: 5px;
-		@include border-radius($circle-border-radius);
+		margin-left: 10px;
+		line-height: 40px;
 		display: inline-block;
-		border: 1px solid $white;
-		cursor: pointer;
-		position: relative;
-
-		&.selected {
-			border: 2px solid $text;
-
-			svg {
-				left: 7px;
-				top: 6.5px;
-			}
-		}
-
-		div {
-			width: 100%;
-			height: 100%;
-			@include border-radius($circle-border-radius);
-		}
-
-		svg {
-			width: 10px;
-			left: 8px;
-			top: 7.5px;
-			position: absolute;
-			fill: rgba($white, 0.8);
-		}
-	}
-}
-
-//-------------- Create Defect Modal -------------
-.row-defect-buttons {
-	padding: 5px 0;
-
-	.time-btn {
-		margin-top: 2px;
-		padding: 15px 15px 13px 15px;
-		@include border-radius($default-border-radius * 2);
-	}
-
-	.defect-log-time {
-		margin-left: 5px;
-		color: $text;
-		line-height: 10px;
-		cursor: default;
-	}
-
-	.defect-create-son {
-		padding-left: 0;
-		padding-right: 0;
+		font-size: 15px;
+		color: #80A1B2;
 	}
 }
 
 .defect-create-son {
-	width: 100%;
-	padding-top: 0;
-	margin-top: 0;
-}
-
-.defect-time {
-	padding-bottom: 10px;
-	padding-right: 0;
-	i {
-		margin-top: 0;
-		margin-right: 5px;
-
-		&:first-child {
-			margin-left: 0;
-		}
-	}
+	width: calc(50% - 20px);
+	text-align: center;
+	margin-right: 15px;
+	background-color: #F8F9FA;
+	color: #80A1B2;
+	border-radius: 20px;
+	padding: 0 17.5px;
+	line-height: 40px;
+	cursor: pointer;
 
 	span {
-		line-height: 35px;
+		float: left;
 	}
-}
 
-.defect-header-description {
-	cursor: default;
-	background-color: #FED36E;
-	@include border-radius($default-border-radius);
-	padding: 15px;
-	text-align: left;
-	color: #B27F1B!important;
-	font-weight: 300;
-	margin-top: 10px;
-	margin-bottom: -10px;
-}
-
-.create-defect-modal {
-	.row {
-		div {
-			&:first-child {
-				padding-right: 2px;
-			}
-
-			&:nth-child(2) {
-				padding-left: 7px;
-				padding-right: 12px;
-			}
-		}
-
-		input[type="number"] {
-			padding-right: 15px;
-		}
-	}
-}
-
-.defect-type-dropdown {
-	li {
-		position: relative;
-		width: 100%;
-		cursor: pointer;
-
-		&:hover span {
-			display: inline;
-		}
-		span {
-			width: 214px;
-			background: $menu-popup-bg;
-			position: absolute;
-			top: -3px;
-			right: -224px;
-			padding: 7px 7px 7px 12px;
-			font-size: 10pt;
-			color: $white;
-			border-radius: 5px;
-			display: none;
-
-			i {
-				width: 15px;
-				height: 15px;
-				position: absolute;
-				left: -5px;
-				top: 10px;
-				border-radius: 3px;
-				background: $menu-popup-bg;
-				transform: rotate(45deg);
-				-webkit-transform: rotate(45deg);
-			}
-		}
+	.material-icons {
+		line-height: inherit;
+		float: right;
 	}
 }
 
 //--------------- Edit Time Modal ----------------
-.edit-time-label {
-	display: block;
-		color: $text;
-		font-weight: 400;
-		padding-bottom: 5px;
+
+.edit-time-modal {
+	width: 390px;
+}
+
+.time-footer-description {
+	cursor: default;
+	margin-bottom: -10px;
+	background-color: #FED36E;
+	@include border-radius($default-border-radius);
+	padding: 15px;
+	text-align: left;
+	color: #B27F1B;
+	font-weight: 300;
+	margin-bottom: 20px;
+	line-height: 20px;
+
+	.material-icons {
+		float: left;
+		line-height: inherit;
+		font-size: 15px;
+		margin-right: 5px;
+		margin-left: -3px;
+	}
+
+	span {
+		display: block;
+	}
 }
 
 .edit-time-options {
 	display: block;
+
 	div {
 		display: inline-block;
 		width: 49%;
@@ -310,64 +304,38 @@
 			border: 2px solid $success;
 		}
 	}
-
-	.time-disabled {
-		cursor: default;
-		span {
-			border: 2px solid $disabled-button;
-		}
-
-		p {
-			color: $disabled-button;
-		}
-	}
-}
-
-.time-footer-description {
-	cursor: default;
-	margin-bottom: -10px;
-	background-color: #FED36E;
-	@include border-radius($default-border-radius);
-	padding: 15px;
-	text-align: left;
-	color: #B27F1B;
-	font-weight: 300;
-	margin-bottom: 20px;
-
-	span {
-		display: block;
-	}
 }
 
 .time-selector-box {
 	div {
-		width: 32.7%;
+		width: 32.6%;
 		display: inline-block;
 		text-align: center;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		position: relative;
 
 		div {
-			background-color: $background;
-			@include border-radius($default-border-radius);
+			border: 1px solid #F8F9FA;
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
 			padding: 0;
-			width: 20px;
+			width: 22px;
 			float: left;
 			text-align: center;
 
 			i {
 				color: $text;
-				font-size: 8pt;
+				font-size: 20px;
 				cursor: pointer;
 				display: block;
-				height: 20px;
+				height: 19px;
 
 				&:first-child {
 					padding-top: 2px;
 				}
 
 				&:last-child {
-					padding-top: 8px;
+					padding-top: 0px;
 				}
 
 				&:hover {
@@ -378,201 +346,163 @@
 
 		span {
 			color: $text;
-			font-size: 13pt;
+			font-size: 14px;
 			cursor: default;
+			padding-right: 10px;
 		}
 
 		input {
+			float: left;
 			width: calc(100% - 30px);
-			height: 40px;
-			padding: 5px 10px;
-			display: inline-block;
-			outline: none;
-			border: 1px solid $border;
-			color: $text;
-			margin-bottom: 5px;
 			text-align: center;
-			@include border-radius($default-border-radius);
-			@include placeholder-color($text, 300);
+			background-color: #F8F9FA;
+			border: 1px solid #F8F9FA;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			color: #566C78;
+			display: inline-block;
+			font-size: 13px;
+			height: 40px;
+			margin-bottom: 10px;
+			max-width: 100%;
+			outline: none;
+			padding: 10px;
 		}
 	}
-
 }
 
 //-------------- Edit Profile Modal --------------
-.profile-avatar {
-	width: 100px;
-	height: 100px;
-	background: $text;
-	margin: 0 auto;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	overflow: hidden;
-	background-color: $white;
-	@include border-radius($circle-border-radius);
-
-	i {
-		color: $white;
-		font-size: 14pt;
-		opacity: 0;
-	}
-
-	&:hover {
-		.centered-outer {
-			background-color: rgba($black, 0.7);
-
-			i {
-				opacity: 1;
-			}
-		}
-	}
+.edit-profile-modal {
+	width: 390px;
 }
 
-.general-view-avatar {
-	cursor: pointer;
-}
+.edit-profile-image {
+	margin-bottom: 20px;
+	display: block;
 
-.profile-default-image {
-	margin-bottom: 130px;
-}
-
-.profile-user-information {
-	text-align: center;
-	cursor: default;
-	padding-top: 10px;
-	padding-bottom: 40px;
-
-	h4 {
-		color: $text-dark;
-		margin-bottom: 15px;
-		font-weight: 700;
-	}
-
-	span {
-		color: $text;
-		padding: 10px 35px;
-		border: 1px solid $border-input;
-		@include border-radius($default-border-radius);
-
-		i {
-			padding-right: 10px;
-		}
-	}
-}
-
-.profile-upload-box {
-	div {
-		height: 100%;
+	.avatar {
+		width: 70px;
+		height: 70px;
+		border-radius: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
 		margin: 0 auto;
-		display: inline-block;
-
-		svg {
-			width: 25px;
-			fill: $blue;
-			float: left;
-			padding-top: 9px;
-			margin-right: 5px;
-		}
-
-		span {
-			display: inline-block;
-			padding-top: -10px;
-			float: left;
-			text-align: center;
-			color: $blue;
-		}
-	}
-
-	&:hover {
-		svg, span {
-			fill: $white;
-			color: $white;
-		}
+		margin-bottom: 10px;
 	}
 }
 
-.save-profile-settings {
-	margin-top: 20px;
-}
+.edit-profile-information {
+	background-color: #F8F9FA;
+	border: none;
+	border-radius: 4px;
+	color: #566C78;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	margin-bottom: 10px;
+	max-width: 100%;
+	outline: none;
+	padding: 10px;
+	width: 100%;
 
-.profile-slide {
-	overflow: hidden;
-	position: relative;
-
-	.profile-active {
-		position: relative;
-		left: 0;
-		-webkit-transition: 0.35s ease-in-out;
-		-moz-transition: 0.35s ease-in-out;
-		-o-transition: 0.35s ease-in-out;
-	}
-
-	.profile-hidden {
-		left: 100%;
-		top: 0;
-		width: 100%;
-		position: absolute;
-		-webkit-transition: 0.35s ease-in-out;
-		-moz-transition: 0.35s ease-in-out;
-		-o-transition: 0.35s ease-in-out;
-	}
-
-	&.activate {
-		.profile-active {
-			left: -100%;
-		}
-
-		.profile-hidden {
-			left: 0;
-		}
-	}
-}
-
-
-
-
-.pip-row {
 	span {
 		float: left;
+		line-height: 20px;
+	}
+
+	.material-icons {
+		float: right;
+		font-size: 20px;
+		cursor: default;
+		color: #E3E4E5;
 	}
 }
 
-.title-pip{
-	color:#95a6b9;
+.edit-profile-button {
+	border: 2px solid $blue;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	color: $blue;
+	display: block;
+	font-size: 13px;
+	height: 42px;
+	margin-bottom: 10px;
+	max-width: 100%;
+	outline: none;
+	padding: 10px;
+	width: 100%;
+	line-height: 20px;
+	cursor: pointer;
+
+	.material-icons {
+		line-height: inherit;
+		font-size: 20px;
+		margin-left: 3px;
+		margin-right: 8px;
+	}
 }
-.pip-checkbox-container{
+
+.pip-checkbox-container {
+	@include clearfix();
 	width: 100%;
 	padding: 0;
-	.pip-checkbox-row{
+	padding-bottom: 10px;
+
+	.pip-checkbox-row {
 		width: 50%;
 		display: block;
 		float: left;
-		label{
+
+		label {
 			display: flex;
 			font-weight: normal;
 			color: #5f6c80;
 		}
-		input{
+
+		input {
 			width: 15%;			
 		}
 	}
 }
 
 
-//------------------------------------------------
 
-// Portrait tablets and small desktops
-@media (min-width: 768px) and (max-width: 991px) {
 
-}
+// // Portrait tablets and small desktops
+// @media (min-width: 768px) and (max-width: 991px) {
+
+// }
 
 // Landscape phones and portrait tablets
 @media (max-width: 767px) {
 	.modal-dialog {
 		width: calc(100% - 20px);
 
+		.modal-body {
+			padding: 15px 5px 5px 5px;
+		}
 	}
-}
 
-//------------------------------------------------
+	.defect-create-son {
+		width: calc(50% - 20px);
+		text-align: center;
+		margin-right: 15px;
+		background-color: #F8F9FA;
+		color: #80A1B2;
+		border-radius: 20px;
+		padding: 0 17.5px;
+		line-height: 20px;
+		cursor: pointer;
+
+		span {
+			float: left;
+		}
+
+		.material-icons {
+			line-height: inherit;
+			float: right;
+		}
+	}
+
+}

@@ -25,7 +25,7 @@
 							<input type="text" class="size-add-title" value="{{Estimated.name}}" data-value="Estimated.name" placeholder="Ingresar nombre...">
 						</div>
 					{{else}}
-						<div class="input-box">
+						<div class="input-box disabled-summary-input">
 							<span>{{Estimated.name}}</span>
 						</div>
 					{{/if}}
@@ -47,7 +47,7 @@
 							</ul>
 						</div>
 					{{else}}
-						<div class="input-box">
+						<div class="input-box disabled-summary-input">
 							<span>{{Estimated.type}}</span>
 						</div>
 					{{/if}}
@@ -58,7 +58,7 @@
 							<input type="text" value="{{Estimated.items}}" data-value="Estimated.items">
 						</div>
 					{{else}}
-						<div class="input-box">
+						<div class="input-box disabled-summary-input">
 							<span>{{Estimated.items}}</span>
 						</div>
 					{{/if}}
@@ -79,7 +79,7 @@
 							</ul>
 						</div>
 					{{else}}
-						<div class="input-box">
+						<div class="input-box disabled-summary-input">
 							<span>{{Estimated.relSize}}</span>
 						</div>
 					{{/if}}
@@ -90,7 +90,7 @@
 							<input type="text" value="{{Estimated.size}}" data-value="Estimated.size">
 						</div>
 					{{else}}
-						<div class="input-box">
+						<div class="input-box disabled-summary-input">
 							<span>{{Estimated.size}}</span>
 						</div>
 					{{/if}}
@@ -148,17 +148,17 @@
 	</table>
 
 	{{#if $or estimationEditable actualEditable}}
-	<div class="add-option-bar">
-		<div class="pull-left btn primary-button add-row">Nueva Fila</div>
-		<div class="pull-left btn primary-button add-active-delete">
-			{{#if activeDelete}}
-				Deshabilitar Eliminar
-			{{else}}
-				Habilitar Eliminar
-			{{/if}}
+		<div class="add-option-bar">
+			<div class="pull-left btn primary-button add-row">Nueva Fila</div>
+			<div class="pull-left btn primary-button add-active-delete">
+				{{#if activeDelete}}
+					Deshabilitar Eliminar
+				{{else}}
+					Habilitar Eliminar
+				{{/if}}
+			</div>
+			<div class="pull-right btn primary-button add-save-data">Guardar Cambios</div>
 		</div>
-		<div class="pull-right btn primary-button add-save-data">Guardar Cambios</div>
-	</div>
 	{{/if}}
 </template>
 <!-- ###################################### -->

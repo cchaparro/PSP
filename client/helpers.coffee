@@ -1,5 +1,24 @@
-##################################################
-################- Global Helpers -################
+# This is a helper to show the data that passes through a html section, you call it by {{printthis}}
+Template.registerHelper "printthis", () ->
+	console.log @
+	return ''
+
+
+Template.registerHelper "dateFormat", (context) ->
+	if window.moment
+		format = context.hash.format or "MMM Do, YYYY"
+		date = context.hash.date or new Date().getTime()
+		if typeof date.getTime == 'function'
+			date = date.getTime()
+		return moment(date).format(format)
+	else
+		#moment plugin is not available
+		return context
+
+
+Template.registerHelper "momentToNow", (createdAt) ->
+	return moment(createdAt).fromNow()
+
 
 # This is used to bring the users Avatar or if he
 # doesn't have one it brings the default image.
@@ -22,13 +41,6 @@ Template.registerHelper "userName", (userId) ->
 	user = db.users.findOne({_id: userId})?.profile
 
 	return user?.fname + " " + user?.lname
-
-
-# This is a helper to show the data that passes through
-# a html section, you call it by {{printthis}}
-Template.registerHelper "printthis", () ->
-	console.log @
-	return ''
 
 
 Template.registerHelper "cutText", (text, amount) ->

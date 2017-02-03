@@ -2,7 +2,7 @@ PQIMetrics = new ReactiveVar([])
 PQIValue = new ReactiveVar(0)
 
 
-drawPQIChart = ()->
+drawPQIChart = (chart_width) ->
 	planSummary = db.plan_summary.findOne({"projectId": FlowRouter.getParam("id")})
 	finalSize = planSummary?.total?.totalSize
 	# CD: Calidad Diseño
@@ -22,13 +22,14 @@ drawPQIChart = ()->
 	_.each timeStages, (stage)->
 		switch stage.name
 			when 'Diseño'
-				TimeDesign=stage.time
+				TimeDesign = sys.timeToHours(stage.time)
 			when 'Revisión Diseño'			
-				TimeDesignRevision=stage.time
+				TimeDesignRevision = sys.timeToHours(stage.time)
 			when 'Código'
-				TimeCodification=stage.time
+				TimeCodification = sys.timeToHours(stage.time)
 			when 'Revisión Código'
-				TimeCodeRevision=stage.time
+				TimeCodeRevision = sys.timeToHours(stage.time)
+
 	defectStages = planSummary?.injectedEstimated
 	#defects in stages
 	_.each defectStages, (stage)->
@@ -37,46 +38,51 @@ drawPQIChart = ()->
 				TestDefects=stage.injected
 			when 'Compilación'
 				CompilationDefects=stage.injected
-	CD = 0
-	CRD = 0
-	CC = 0
-	CRC = 0
-	CP = 0
+	CD = 1
+	CRD = 1
+	CC = 1
+	CRC = 1
+	CP = 1
+
 	if TimeCodification!=0
 		CD = TimeDesign/TimeCodification
-		CRC = 2*(TimeCodeRevision/TimeCodification)
+		CRC = Math.min(2*(TimeCodeRevision/TimeCodification))
+
 	if TimeDesign!=0
-		CRD = 2*(TimeDesignRevision/TimeDesign)
+		CRD = Math.min(2*(TimeDesignRevision/TimeDesign),1)
+
 	if finalSize!=0
-		CC = 20/(10+(CompilationDefects/finalSize))	
-		CP = 10/(5+(TestDefects/finalSize))
+		CC = Math.min(20/(10+((CompilationDefects*1000)/finalSize)),1)
+		CP = Math.min(10/(5+((TestDefects*1000)/finalSize)),1)
+
 	valuesPQI = [
 		{
 			"alias":"CD"
 			"name":"Calidad Diseño"
-			"value":CD
+			"value":CD.toFixed(2)
 		},
 		{
 			"alias":"CRD"
 			"name":"Calidad Revisión Diseño"
-			"value":CRD
+			"value":CRD.toFixed(2)
 		},
 		{
 			"alias":"CC"
 			"name":"Calidad Código"
-			"value":CC
+			"value":CC.toFixed(2)
 			},
 		{
 			"alias":"CRC"
 			"name":"Calidad Revisión Código"
-			"value":CRC
+			"value":CRC.toFixed(2)
 			},
 		{
 			"alias":"CP"
 			"name":"Calidad Programa"
-			"value":CP
+			"value":CP.toFixed(2)
 		}
 	]
+
 	PQIMetrics.set(valuesPQI)
 	PQIValue.set(CD*CRD*CC*CRC*CP)
 	#Chart data
@@ -85,7 +91,7 @@ drawPQIChart = ()->
 		datasets: [
 			{
 				backgroundColor: "#FFFFFF"
-				data: [CD, CRD, CC, CRC, CP]
+				data: [CD.toFixed(2), CRD.toFixed(2), CC.toFixed(2), CRC.toFixed(2), CP.toFixed(2)]
 			}
 		]
 	}
@@ -99,17 +105,25 @@ drawPQIChart = ()->
     }
 
 	ctx = $('#projectPQIChart')?.get(0)?.getContext('2d')
-	ctx?.canvas.width = 400
-	ctx?.canvas.height = 400
+	ctx?.canvas.width = chart_width
+	ctx?.canvas.height = chart_width
 	if ctx
 		new Chart(ctx).Radar(data, options)
 
+
 Template.pqiTemplate.onRendered () ->
+	containerWidth = document.getElementById("pqi-information-chart").offsetWidth
+	chartWidth = containerWidth - 20
 	Deps.autorun ->
-		drawPQIChart()
+		drawPQIChart(chartWidth)
+
 
 Template.pqiTemplate.helpers
 	PQIValues: ()->
 		return PQIMetrics.get()
+
 	getPQI: ()->
-		return PQIValue.get()
+		return PQIValue.get().toFixed(2)
+
+	applyStyle:()->
+		return PQIValue.get() < 0.5
