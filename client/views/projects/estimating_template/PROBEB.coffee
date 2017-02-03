@@ -154,7 +154,7 @@ Template.PROBEB.events
 		else
 			plannedProductivity = parseInt(planSummary?.productivityPlan)
 		data= {
-			"total.estimatedTime": sys.hoursToTime(Template.instance().adjustedTime.get())
+			"total.estimatedTime": sys.hoursToTime(parseInt(Template.instance().adjustedTime.get()))
 			"total.productivityPlan" : plannedProductivity
 			"probeTime":"B"
 		}

@@ -119,7 +119,7 @@ Template.PROBEC.events
 		planSummary = db.plan_summary.findOne({"projectId":FlowRouter.getParam("id")})?.total
 		plannedProductivity = parseInt(planSummary?.estimatedAddedSize/Template.instance().adjustedTime.get())
 		data= {
-			"total.estimatedTime": sys.hoursToTime(Template.instance().adjustedTime.get())
+			"total.estimatedTime": sys.hoursToTime(parseInt(Template.instance().adjustedTime.get()))
 			"total.productivityPlan" : plannedProductivity
 			"probeTime":"C"
 		}
